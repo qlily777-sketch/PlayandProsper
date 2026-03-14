@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>财富人格测评 · 百日AI财富觉醒营</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
 :root{
   --bg:#0a0a0f;--card:#14141f;--gold:#C9A54E;--gold2:#E8C864;
@@ -13,6 +14,9 @@
   --rational:#3498DB;--emotional:#E74C3C;
 }
 *{margin:0;padding:0;box-sizing:border-box}
+canvas{outline:none!important;border:none!important}
+canvas:focus{outline:none!important}
+canvas:focus-visible{outline:none!important}
 body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;overflow-x:hidden}
 .app{max-width:480px;margin:0 auto;padding:20px;min-height:100vh;position:relative}
 
@@ -51,15 +55,18 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--txt)
 .result-header .type-name{font-size:32px;font-weight:900;margin-bottom:8px;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .result-header .summary{font-size:14px;color:var(--dim);line-height:1.8}
 
-/* Radar / Dimensions */
-.dims{padding:20px;margin:16px 0}
-.dim{margin:14px 0}
-.dim-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
-.dim-label{font-size:13px;font-weight:700;color:var(--txt)}
-.dim-score{font-size:13px;font-weight:800;color:var(--gold)}
-.dim-bar{height:8px;background:#1a1a2e;border-radius:4px;overflow:hidden;position:relative}
-.dim-fill{height:100%;border-radius:4px;transition:width 1.5s ease}
-.dim-ends{display:flex;justify-content:space-between;margin-top:4px;font-size:11px;color:var(--dim)}
+/* Radar Chart */
+.radar-wrap{padding:20px;margin:16px 0;display:flex;flex-direction:column;align-items:center;background:var(--card);border:1px solid #2a2a3a;border-radius:16px;animation:fadeUp .8s}
+.radar-title{font-size:16px;font-weight:900;letter-spacing:3px;color:var(--gold);margin-bottom:16px;text-align:center}
+.radar-canvas-wrap{position:relative;width:100%;max-width:300px}
+.radar-canvas-wrap canvas{outline:none;display:block}
+.radar-scores{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px;width:100%;max-width:300px}
+.radar-score-item{background:#0a0a0f;border:1px solid #2a2a3a;border-radius:10px;padding:10px 14px;display:flex;align-items:center;gap:10px;transition:border-color .3s}
+.radar-score-item:hover{border-color:rgba(201,165,78,.4)}
+.radar-score-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;box-shadow:0 0 6px currentColor}
+.radar-score-info{display:flex;flex-direction:column}
+.radar-score-label{font-size:11px;color:var(--dim);margin-bottom:3px}
+.radar-score-val{font-size:18px;font-weight:900;color:var(--gold);line-height:1}
 
 /* Analysis card */
 .analysis{background:var(--card);border:1px solid #2a2a3a;border-radius:16px;margin:16px 0;padding:20px;animation:fadeUp .8s}
@@ -334,15 +341,22 @@ function showResult(){
   html += '<div class="summary">'+type.summary+'</div>';
   html += '</div>';
   
-  // Dimensions
-  html += '<div class="dims">';
-  dims.forEach(d => {
-    html += '<div class="dim">';
-    html += '<div class="dim-header"><span class="dim-label">'+d.label+'</span><span class="dim-score">'+d.score+'/10</span></div>';
-    html += '<div class="dim-bar"><div class="dim-fill" style="width:'+d.score*10+'%;background:'+d.color+'"></div></div>';
-    html += '<div class="dim-ends"><span>'+d.left+'</span><span>'+d.right+'</span></div>';
-    html += '</div>';
+  // Radar Chart
+  html += '<div class="radar-wrap">';
+  html += '<div class="radar-title">财富人格维度雷达</div>';
+  html += '<div class="radar-canvas-wrap"><canvas id="radarChart" width="320" height="320"></canvas></div>';
+  // Score cards
+  html += '<div class="radar-scores">';
+  const dotColors = ['#1A7A6D','#E67E22','#8E44AD','#3498DB'];
+  dims.forEach((d,i) => {
+    html += '<div class="radar-score-item">';
+    html += '<div class="radar-score-dot" style="background:'+dotColors[i]+'"></div>';
+    html += '<div class="radar-score-info">';
+    html += '<span class="radar-score-label">'+d.label+'</span>';
+    html += '<span class="radar-score-val">'+d.score+' <span style="font-size:11px;color:var(--dim);font-weight:400">/ 10</span></span>';
+    html += '</div></div>';
   });
+  html += '</div>';
   html += '</div>';
   
   // Blind spot
@@ -367,12 +381,68 @@ function showResult(){
   document.getElementById('resultArea').innerHTML = html;
   document.getElementById('resultArea').classList.remove('hidden');
   
-  // Animate bars
+  // Draw Radar Chart
   setTimeout(()=>{
-    document.querySelectorAll('.dim-fill').forEach(el=>{
-      el.style.transition = 'width 1.5s ease';
+    const canvasEl = document.getElementById('radarChart');
+    canvasEl.setAttribute('tabindex', '-1');
+    const ctx = canvasEl.getContext('2d');
+    const labels = dims.map(d => d.label);
+    const data = dims.map(d => d.score);
+    new Chart(ctx, {
+      type: 'radar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: type.name,
+          data: data,
+          backgroundColor: 'rgba(201,165,78,0.15)',
+          borderColor: 'rgba(201,165,78,0.9)',
+          borderWidth: 2,
+          pointBackgroundColor: ['#1A7A6D','#E67E22','#8E44AD','#3498DB'],
+          pointBorderColor: '#0a0a0f',
+          pointBorderWidth: 2,
+          pointRadius: 6,
+          pointHoverRadius: 8
+        }]
+      },
+      options: {
+        animation: { duration: 1200, easing: 'easeInOutQuart' },
+        scales: {
+          r: {
+            min: 0,
+            max: 10,
+            ticks: {
+              stepSize: 2,
+              color: 'rgba(136,136,136,0.7)',
+              font: { size: 9 },
+              backdropColor: 'transparent'
+            },
+            grid: { color: 'rgba(42,42,58,0.8)' },
+            angleLines: { color: 'rgba(42,42,58,0.8)' },
+            pointLabels: {
+              color: '#e8e4de',
+              font: { size: 12, weight: '700', family: "'Noto Sans SC', sans-serif" }
+            }
+          }
+        },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: '#14141f',
+            borderColor: 'rgba(201,165,78,0.4)',
+            borderWidth: 1,
+            titleColor: '#C9A54E',
+            bodyColor: '#e8e4de',
+            callbacks: {
+              label: ctx => ' ' + ctx.raw + ' / 10'
+            }
+          }
+        }
+      }
     });
-  },100);
+    canvasEl.blur();
+    canvasEl.style.outline = 'none';
+  }, 100);
 }
 
 function restart(){
