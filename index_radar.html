@@ -367,8 +367,8 @@ function showResult(){
   
 
   // Radar Chart
-  const radarSize = 260;
-  const cx = 130, cy = 130, r = 90;
+  const radarSize = 420;
+  const cx = 210, cy = 130, r = 90;
   const axes = [
     {label:"🛡️ 安全感", score:norm[0], color:"#1A7A6D"},
     {label:"💰 消费",   score:norm[1], color:"#E67E22"},
@@ -417,7 +417,7 @@ function showResult(){
 
   html += '<div style="background:#14141f;border:1px solid #2a2a3a;border-radius:16px;padding:20px 16px;margin:16px 0;text-align:center;">';
   html += '<div style="font-size:11px;letter-spacing:3px;color:var(--gold);font-weight:700;margin-bottom:14px;">财富人格维度雷达</div>';
-  html += '<svg width="'+radarSize+'" height="'+radarSize+'" viewBox="0 0 260 260" style="max-width:100%;">';
+  html += '<svg width="'+radarSize+'" height="260" viewBox="0 0 420 260" style="max-width:100%;">';
   html += svgGrid + svgAxes;
   html += '<polygon points="'+dataPoly+'" fill="rgba(201,165,78,0.18)" stroke="#C9A54E" stroke-width="2" stroke-linejoin="round"/>';
   html += svgDots + svgLabels;
