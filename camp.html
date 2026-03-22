@@ -28,9 +28,9 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--txt)
 .header-sub{font-size:13px;color:var(--dim);margin-bottom:16px}
 .header-tags{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
 .htag{background:rgba(201,165,78,.1);border:1px solid rgba(201,165,78,.3);color:var(--gold);font-size:11px;padding:4px 14px;border-radius:20px;letter-spacing:1px}
-.formula{max-width:480px;margin:0 16px 16px;padding:20px 24px;background:var(--card);border:1px solid rgba(201,165,78,.2);border-radius:16px;text-align:center}
+.formula{max-width:480px;margin:0 auto 16px;padding:20px 24px;background:var(--card);border:1px solid rgba(201,165,78,.2);border-radius:16px;text-align:center}
 .formula-label{font-size:10px;letter-spacing:3px;color:var(--gold);margin-bottom:10px;font-weight:700}
-.formula-eq{font-size:17px;font-weight:800;line-height:1.8}
+.formula-eq{font-size:17px;font-weight:800;line-height:1.8;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:2px}
 .f-gold{color:#F39C12}.f-blue{color:#3498DB}.f-green{color:#2ECC71}.f-dim{color:rgba(255,255,255,.3);margin:0 6px}
 .formula-result{font-size:13px;color:var(--dim);margin-top:6px}
 .victories{max-width:480px;margin:0 auto 16px;padding:0 16px;display:flex;gap:8px;flex-wrap:wrap}
@@ -139,7 +139,7 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--txt)
 const weeks=[
   {week:"W1",date:"3/8",phase:"开营",color:"#C0392B",master:"—",title:"🎉 百日觉醒，从今天开始",impact:"欢迎来到百日AI财富觉醒营。接下来100天，我们不讲道理、不灌鸡汤——我们用AI和你自己的真实数据，让你亲眼看见自己和钱的关系。今天是起点，100天后你会成为不同的人。",must:"写下一句话：「100天后，我希望自己在财富方面最大的变化是____」。发到社群，这是你的起跑线。",challenge:"给100天后的自己写一封信（不限字数），交给AI保管，结营时打开。",book:"—",bookSub:"",tool:"—"},
   {week:"W2",date:"3/15",phase:"觉醒",color:"#27AE60",master:"芒格 Munger",title:"你是哪种财富人格？",impact:"每个人都有一个看不见的金钱剧本——你的父母、经历、恐惧、渴望，早就替你写好了你和钱的关系。你从没「客观」看过钱。",must:"⭐ 必做（5分钟）：做完测评后，把你的财富画像截图，发到「💎 100 百日营-我的觉醒」群，写一句话——「我是XX型，这个结果让我____」。",challenge:"🏆 挑战题（自选）：读《金钱心理学》第一章，大概15分钟。读完问自己：「你小时候听过的关于钱的一句话是什么？它现在还在影响你吗？」答案发到觉醒群。",book:"Ch.1 没有人是疯子",bookSub:"你的金钱观来自你的经历",tool:"智能体"},
-  {week:"W3",date:"3/22",phase:"觉醒",color:"#27AE60",master:"清崎 Kiyosaki",title:"你一小时值多少钱？",impact:"大多数人从没算过自己一小时值多少钱。算完你会发现，你花时间的方式正在让你越来越穷。",must:"把月收入和每天工作时间告诉AI，算出你的「真实时薪」。一个数字，10分钟。（隐私提示：可以用收入区间代替精确数字。）",challenge:"挑出你一周中最耗时的3个活动，让AI算出每个活动烧掉了多少钱。",book:"Ch.7 自由",bookSub:"钱最大的价值是买回时间",tool:"智能体"},
+  {week:"W3",date:"3/22",phase:"觉醒",color:"#27AE60",master:"清崎 Kiyosaki",title:"你一小时值多少钱？",impact:"大多数人从没算过自己一小时值多少钱。算完你会发现，你花时间的方式正在让你越来越穷。",must:"把月收入和每天工作时间告诉AI，算出你的「真实时薪」。一个数字，10分钟。（隐私提示：可以用收入区间代替精确数字。）",challenge:"挑出你一周中最耗时的3个活动，让AI算出每个活动烧掉了多少钱。",book:"Ch.7 自由",bookSub:"钱最大的价值是买回时间",bookLink:"W3_Ch07_Freedom.html",toolLink:"W3_HowMuch.html",tool:"智能体"},
   {week:"W4",date:"3/29",phase:"联动",color:"#95A5A6",master:"—",title:"⭐ 106期智能体路演结营",impact:"观摩路演，看看别人用AI做出了什么。不是学技术，是看「可能性」——原来普通人真的可以。",must:"观摩路演后，打开AI写下1句话：「今天最让我震惊的一个可能性是____」。",challenge:"找到一位路演学员交流，让AI帮你整理3个最受启发的做法和你的行动计划。",book:"—",bookSub:"",tool:"—"},
   {week:"W5",date:"4/5",phase:"觉醒",color:"#27AE60",master:"清崎 Kiyosaki",title:"✅ 你的钱花对了吗？",impact:"第一次胜利。收入≠财富。月薪2万，扣掉房租、消费、税、通勤，真正留下来的可能不到10%。你现在知道了财富人格、真实时薪、钱的流向——三个真相，大多数人一辈子没算过。",must:"估算上月三笔最大支出，告诉AI分类到四个桶。做完后把W2截图发给AI，生成「30天变化图」。",challenge:"拉完整月度消费记录做精确版，并把变化图和感受分享到社群。",book:"Ch.10 存钱",bookSub:"储蓄率是你唯一能控制的变量",tool:"智能体"},
   {week:"W6",date:"4/12",phase:"做到",color:"#2980B9",master:"巴菲特 Buffett",title:"你身上最值钱的是什么？",impact:"巴菲特说「能力圈」——你最值钱的不是你想学的东西，而是你已经会的、别人不会的东西。",must:"回答AI的5个问题（你做过什么工作？帮人解决过什么？别人常问你什么？），AI生成你的「隐藏资产清单」。⚠️ 截图保存，W9要用。",challenge:"选一个隐藏资产，让AI帮你找到3个可能为此付费的人群。",book:"Ch.9 真正的财富看不见",bookSub:"财富是你选择不花的钱",tool:"提示词"},
@@ -215,9 +215,20 @@ function renderDetailCard(i){
           <div class="dc-challenge">${w.challenge}</div>
         </div>
         ${w.book!=='—'?`
-        <div class="dc-book">
+        <div class="dc-book" ${w.bookLink?`style="cursor:pointer" onclick="window.location.href='${w.bookLink}'"`:''} >
           <span style="font-size:22px">📖</span>
-          <div><div class="dc-book-title">${w.book}</div><div class="dc-book-sub">${w.bookSub}</div></div>
+          <div style="flex:1">
+            <div class="dc-book-title">${w.book}${w.bookLink?` <span style="font-size:10px;color:#5dade2;letter-spacing:1px">→ 点击阅读</span>`:''}</div>
+            <div class="dc-book-sub">${w.bookSub}</div>
+          </div>
+        </div>`:''}
+        ${w.toolLink?`
+        <div class="dc-book" style="cursor:pointer;background:rgba(26,188,156,.08);border-color:rgba(26,188,156,.25);margin-top:10px" onclick="window.location.href='${w.toolLink}'">
+          <span style="font-size:22px">🧮</span>
+          <div>
+            <div class="dc-book-title" style="color:#1ABC9C">真实时薪计算器 <span style="font-size:10px;letter-spacing:1px">→ 点击使用</span></div>
+            <div class="dc-book-sub">算出你一小时真正值多少钱</div>
+          </div>
         </div>`:''}
       </div>
     </div>`;
