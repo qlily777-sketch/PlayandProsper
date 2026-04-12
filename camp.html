@@ -75,6 +75,19 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--txt)
 .bottom-label{font-size:11px;color:var(--gold);font-weight:700;letter-spacing:2px;margin-bottom:8px}
 .bottom-text{font-size:15px;font-weight:700;line-height:1.7;color:var(--txt)}
 .bottom-sub{font-size:12px;color:var(--dim);margin-top:6px}
+/* ── 智能体入口卡片 ── */
+.agent-section{max-width:480px;margin:20px auto 0;padding:0 16px}
+.agent-card{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(26,188,156,.10) 0%,rgba(41,128,185,.12) 100%);border:1px solid rgba(26,188,156,.35);border-radius:16px;padding:22px 24px;text-align:center}
+.agent-card::before{content:'';position:absolute;top:-50px;right:-50px;width:140px;height:140px;background:radial-gradient(circle,rgba(26,188,156,.18),transparent 70%);pointer-events:none}
+.agent-card::after{content:'';position:absolute;bottom:-40px;left:-40px;width:110px;height:110px;background:radial-gradient(circle,rgba(41,128,185,.14),transparent 70%);pointer-events:none}
+.agent-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(26,188,156,.15);border:1px solid rgba(26,188,156,.4);color:#1ABC9C;font-size:10px;font-weight:700;letter-spacing:2px;padding:4px 14px;border-radius:20px;margin-bottom:12px}
+.agent-week-tag{display:inline-block;background:rgba(41,128,185,.25);border:1px solid rgba(41,128,185,.4);color:#5dade2;font-size:10px;font-weight:700;letter-spacing:1px;padding:3px 12px;border-radius:20px;margin-bottom:14px;margin-left:6px}
+.agent-title{font-family:'Noto Serif SC',serif;font-size:19px;font-weight:700;color:#fff;margin-bottom:8px;line-height:1.4}
+.agent-title em{font-style:normal;color:#1ABC9C}
+.agent-desc{font-size:13px;color:var(--dim);line-height:1.85;margin-bottom:18px}
+.agent-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#1ABC9C,#16A085);color:#fff;font-size:14px;font-weight:700;padding:13px 32px;border-radius:30px;text-decoration:none;letter-spacing:0.5px;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 18px rgba(26,188,156,.32)}
+.agent-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(26,188,156,.48)}
+.agent-hint{font-size:11px;color:#444;margin-top:10px}
 .footer{max-width:480px;margin:24px auto 0;padding:20px 16px 40px;text-align:center;font-size:11px;color:#444;border-top:1px solid var(--border)}
 .hidden{display:none}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
@@ -134,6 +147,27 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--txt)
     <div class="bottom-sub">从此用不同的眼光看钱、看时间、看自己</div>
   </div>
 </div>
+
+<!-- W6 智能体入口 -->
+<div class="agent-section">
+  <div class="agent-card">
+    <div>
+      <span class="agent-badge">🤖 W6 专属智能体</span>
+      <span class="agent-week-tag">边玩边赚</span>
+    </div>
+    <div class="agent-title">隐藏资产<em>挖掘机</em></div>
+    <div class="agent-desc">
+      你身上藏着别人愿意付费的东西，只是你从没认真盘点过。<br>
+      回答 5 个问题，AI 帮你生成专属「隐藏资产清单」——<br>
+      这份清单，W9 变现时还会用到。
+    </div>
+    <a class="agent-btn" href="https://udify.app/chat/oYRRAocqEC3NEilB" target="_blank" rel="noopener">
+      🚀 立即开始挖掘
+    </a>
+    <div class="agent-hint">⚠️ 截图保存你的清单，W9 要用</div>
+  </div>
+</div>
+
 <div class="footer">百日AI财富觉醒营 · 边玩边赚俱乐部 · 2026</div>
 <script>
 const weeks=[
@@ -142,14 +176,14 @@ const weeks=[
   {week:"W3",date:"3/22",phase:"觉醒",color:"#27AE60",master:"清崎 Kiyosaki",title:"你一小时值多少钱？",impact:"大多数人从没算过自己一小时值多少钱。算完你会发现，你花时间的方式正在让你越来越穷。",must:"把月收入和每天工作时间告诉AI，算出你的「真实时薪」。一个数字，10分钟。（隐私提示：可以用收入区间代替精确数字。）",challenge:"挑出你一周中最耗时的3个活动，让AI算出每个活动烧掉了多少钱。",book:"Ch.7 自由",bookSub:"钱最大的价值是买回时间",bookLink:"W3_Ch07_Freedom.html",toolLink:"W3_HowMuch.html",tool:"智能体"},
   {week:"W4",date:"3/29",phase:"联动",color:"#95A5A6",master:"—",title:"⭐ 106期智能体路演结营",impact:"观摩路演，看看别人用AI做出了什么。不是学技术，是看「可能性」——原来普通人真的可以。",must:"观摩路演后，打开AI写下1句话：「今天最让我震惊的一个可能性是____」。",challenge:"找到一位路演学员交流，让AI帮你整理3个最受启发的做法和你的行动计划。",book:"—",bookSub:"",tool:"—"},
   {week:"W5",date:"4/5",phase:"觉醒",color:"#27AE60",master:"清崎 Kiyosaki",title:"✅ 你的钱花对了吗？",impact:"第一次胜利。收入≠财富。月薪2万，扣掉房租、消费、税、通勤，真正留下来的可能不到10%。你现在知道了财富人格、真实时薪、钱的流向——三个真相，大多数人一辈子没算过。",must:"估算上月三笔最大支出，告诉AI分类到四个桶。做完后把W2截图发给AI，生成「30天变化图」。",challenge:"拉完整月度消费记录做精确版，并把变化图和感受分享到社群。",book:"Ch.10 存钱",bookSub:"储蓄率是你唯一能控制的变量",tool:"智能体"},
-  {week:"W6",date:"4/12",phase:"做到",color:"#2980B9",master:"巴菲特 Buffett",title:"你身上最值钱的是什么？",impact:"巴菲特说「能力圈」——你最值钱的不是你想学的东西，而是你已经会的、别人不会的东西。",must:"回答AI的5个问题（你做过什么工作？帮人解决过什么？别人常问你什么？），AI生成你的「隐藏资产清单」。⚠️ 截图保存，W9要用。",challenge:"选一个隐藏资产，让AI帮你找到3个可能为此付费的人群。",book:"Ch.9 真正的财富看不见",bookSub:"财富是你选择不花的钱",tool:"提示词"},
+  {week:"W6",date:"4/12",phase:"做到",color:"#2980B9",master:"巴菲特 Buffett",title:"你身上最值钱的是什么？",impact:"巴菲特说「能力圈」——你最值钱的不是你想学的东西，而是你已经会的、别人不会的东西。",must:"回答AI的5个问题（你做过什么工作？帮人解决过什么？别人常问你什么？），AI生成你的「隐藏资产清单」。⚠️ 截图保存，W9要用。",challenge:"选一个隐藏资产，让AI帮你找到3个可能为此付费的人群。",book:"Ch.9 真正的财富看不见",bookSub:"财富是你选择不花的钱",agentLink:"https://udify.app/chat/oYRRAocqEC3NEilB",agentName:"隐藏资产挖掘机",tool:"智能体"},
   {week:"W7",date:"4/19",phase:"做到",color:"#2980B9",master:"巴菲特 Buffett",title:"你的复利拐点在哪年？",impact:"复利不是投资概念，是人生概念。你每天进步1%，一年后是37倍。但大多数人高估一年，低估十年。",must:"输入你的年龄和一个每月可投入的数字，AI模拟10/20/30年后的复利曲线。（隐私提示：可以用假设数字。）",challenge:"做两条曲线对比——「如果5年前就开始」vs「从今天开始」，感受差距。",book:"Ch.4 复利的困惑",bookSub:"时间是财富最大的杠杆",tool:"提示词"},
   {week:"W8",date:"4/26",phase:"联动",color:"#95A5A6",master:"—",title:"⭐ 107期智能体路演结营",impact:"第二次观摩。这次你不是旁观者——你已经有了自己的数据、自己的觉醒。对比你和50天前的自己。",must:"把W2测评截图发给AI，再说说你现在的状态，AI帮你总结一句话：「你最大的变化是____」。",challenge:"把AI生成的变化总结展开，写成一段「50天觉醒小结」。",book:"—",bookSub:"",tool:"—"},
   {week:"W9",date:"5/3",phase:"做到",color:"#2980B9",master:"巴菲特 Buffett",title:"你的经验，能帮谁？",impact:"从0到1的变现不是赚钱，是「找到你能帮的人」。巴菲特11岁买入人生第一支股票，金额不重要，动手重要。",must:"把W6隐藏资产截图发给AI，让它生成一张「产品卡」——一句话说清卖什么、卖给谁、多少钱。",challenge:"把这张产品卡真的发出去（朋友圈/社群/闲鱼），尝试成交。赚到1块钱算赢。",book:"Ch.15 天下没有免费的午餐",bookSub:"一切好东西都有代价",tool:"提示词"},
   {week:"W10",date:"5/10",phase:"做到",color:"#2980B9",master:"巴菲特 Buffett",title:"✅ 我赚到了第一块钱",impact:"第二次胜利。不管赚到了还是没赚到，你做了大多数人不敢做的事——把自己的价值标了价、亮了出去。迈出这一步的勇气，比赚多少钱都重要。",must:"不管赚没赚到，把你的尝试过程告诉AI，它帮你分析：做对了什么？卡在哪里？下一步怎么调？",challenge:"根据AI的建议调整产品卡，做第二次变现尝试。",book:"Ch.5 致富vs守富",bookSub:"赚到和守住是完全不同的能力",tool:"提示词"},
   {week:"W11",date:"5/17",phase:"成为",color:"#8E44AD",master:"达利欧 Dalio",title:"你的账单，暴露了你",impact:"达利欧说：原则决定行为，行为暴露原则。你的消费记录就是你真实价值观的X光片。",must:"估算上月3笔消费，告诉AI：哪些是「买给自己的」，哪些是「买给别人看的」？AI给你算比例。（隐私提示：只说类型和比例即可。）",challenge:"拉3个月完整消费，做深度「消费价值观透视」。",book:"Ch.8 豪车悖论",bookSub:"没人在乎你的车，他们只是在想象自己开",tool:"智能体"},
   {week:"W12",date:"5/24",phase:"成为",color:"#8E44AD",master:"特约嘉宾",title:"你的故事，谁会买单？",impact:"每个人都有独一无二的经历，但99%的人不会讲。你的失败、转折、领悟——这些不是过去，是资产。",must:"回答AI的3个问题（你最大的转折？最后悔的决定？最骄傲的事？），AI帮你提炼出一条故事线。",challenge:"让AI把你的故事线扩展成一篇完整故事，你修改打磨到满意为止。",book:"Ch.18 当你什么都信",bookSub:"控制叙事就是控制财富",tool:"提示词"},
-  {week:"W13",date:"5/31",phase:"成为",color:"#8E44AD",master:"芒格 Munger",title:"✅ 你的赚钱系统是什么？",impact:"芒格说：找到一个有效的系统，然后重复。第三次胜利：100天前你带着旧认知走进来，现在你要写出属于你自己的金钱哲学。",must:"两件事：①回答AI的3个问题，生成「我的赚钱系统图」。②重做W2测评，AI生成《我的百日财富觉醒》个人手册。",challenge:"把手册中最触动你的一章扩展成完整文章，参选第三本书联合作者。准备W15登台展示。",book:"Ch.6 尾部事件",bookSub:"少数大赢才决定一切",tool:"智能体"},
+  {week:"W13",date:"5/31",phase:"成为",color:"#8E44AD",master:"芒格 Munger",title:"✅ 你的赚钱系统是什么？",impact:"芒格说：找到一个有效的系统，然后重复。第三次胜利：100天前你带着旧认知走进来，现在你要写出属于你自己的金钱哲学。",must:"两件事：①回答AI的3个问题，生成「我的赚钱系统图」；②把W2、W5、W9的截图一起发给AI，生成《我的百日财富觉醒》个人手册封面。",challenge:"把觉醒手册发到社群，写一段话：「100天前我以为____，现在我知道____」。",book:"Ch.20 忏悔录",bookSub:"最终，一切都归结于行为",tool:"智能体"},
   {week:"W14",date:"6/7",phase:"回望",color:"#566573",master:"—",title:"💌 写给100天前的自己",impact:"上周你生成了觉醒手册，拿到了你的金钱哲学。今天不用AI，不用数据，不用提示词。只用你自己——写一封信给100天前走进来的那个人。",must:"打开W1时写的心想事成，对照今天的你，给100天前的自己写一封回信。不限字数，不限格式，只需真实。存进「我的觉醒」群。",challenge:"把这封信读给一个你在乎的人听——家人、朋友、或者在社群里朗读。",book:"—",bookSub:"",tool:"—"},
   {week:"W15",date:"6/14",phase:"结营",color:"#C0392B",master:"四位大师",title:"🎓 百日觉醒，毕业庆典",impact:"毕业庆典。100天前你写下了一句期待，今天你带着一份属于自己的觉醒手册站在这里。不是结束，是新的开始。",must:"登台展示你的觉醒手册（3分钟），念出你的金钱哲学，领取结营证书。打开W1那天写给自己的信。",challenge:"把觉醒手册和金钱哲学发到朋友圈，开启你作为「有金钱哲学的人」的新身份。",book:"—",bookSub:"",tool:"—"}
 ];
@@ -228,6 +262,14 @@ function renderDetailCard(i){
           <div>
             <div class="dc-book-title" style="color:#1ABC9C">真实时薪计算器 <span style="font-size:10px;letter-spacing:1px">→ 点击使用</span></div>
             <div class="dc-book-sub">算出你一小时真正值多少钱</div>
+          </div>
+        </div>`:''}
+        ${w.agentLink?`
+        <div class="dc-book" style="cursor:pointer;background:rgba(26,188,156,.08);border:1px solid rgba(26,188,156,.28);margin-top:10px" onclick="window.open('${w.agentLink}','_blank')">
+          <span style="font-size:22px">🤖</span>
+          <div style="flex:1">
+            <div class="dc-book-title" style="color:#1ABC9C">${w.agentName} <span style="font-size:10px;letter-spacing:1px">→ 点击使用</span></div>
+            <div class="dc-book-sub">回答5个问题，生成你的隐藏资产清单</div>
           </div>
         </div>`:''}
       </div>
