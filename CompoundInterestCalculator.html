@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>复利拐点计算器</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+    background: #0a0a0f;
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ─── 粒子背景 ─── */
+  #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+
+  /* ─── 主容器 ─── */
+  .container {
+    position: relative; z-index: 1;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  /* ─── 标题区 ─── */
+  .hero {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #f5a623;
+    border: 1px solid rgba(245,166,35,0.4);
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 900;
+    line-height: 1.2;
+    background: linear-gradient(135deg, #fff 0%, #f5a623 60%, #ff6b35 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 16px;
+  }
+  .hero p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.8;
+  }
+  .hero .formula {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #f5a623;
+    background: rgba(245,166,35,0.1);
+    border: 1px solid rgba(245,166,35,0.3);
+    padding: 8px 24px;
+    border-radius: 8px;
+  }
+
+  /* ─── 输入面板 ─── */
+  .input-panel {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 36px;
+    margin-bottom: 40px;
+    backdrop-filter: blur(10px);
+  }
+  .input-panel h2 {
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 28px;
+    text-transform: uppercase;
+  }
+  .input-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .input-item label {
+    display: block;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+  .input-item .value-display {
+    font-size: 32px;
+    font-weight: 900;
+    color: #f5a623;
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+  .input-item .unit {
+    font-size: 14px;
+    color: rgba(255,255,255,0.4);
+    margin-left: 4px;
+  }
+  input[type="range"] {
+    width: 100%;
+    -webkit-appearance: none;
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #f5a623;
+    box-shadow: 0 0 10px rgba(245,166,35,0.6);
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.3); }
+  .range-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: rgba(255,255,255,0.25);
+    margin-top: 4px;
+  }
+
+  .calc-btn {
+    width: 100%;
+    padding: 18px;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: inherit;
+    color: #0a0a0f;
+    background: linear-gradient(135deg, #f5a623, #ff6b35);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .calc-btn::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+  }
+  .calc-btn:hover::after { left: 100%; }
+  .calc-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(245,166,35,0.4); }
+  .calc-btn:active { transform: translateY(0); }
+
+  /* ─── 结果区 ─── */
+  #result-section {
+    display: none;
+    animation: fadeInUp 0.6s ease;
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── 关键数字卡片 ─── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .stat-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 24px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .stat-card:hover { transform: translateY(-4px); border-color: rgba(245,166,35,0.4); }
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #f5a623, #ff6b35);
+    transform: scaleX(0);
+    transition: transform 0.5s;
+  }
+  .stat-card.revealed::before { transform: scaleX(1); }
+  .stat-card .year-label {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+  .stat-card .amount {
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 6px;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-card .gain {
+    font-size: 12px;
+    color: #4ade80;
+  }
+  .stat-card.highlight { border-color: rgba(245,166,35,0.5); background: rgba(245,166,35,0.06); }
+  .stat-card.highlight .amount { color: #f5a623; }
+
+  /* ─── 图表容器 ─── */
+  .chart-wrapper {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 28px;
+    margin-bottom: 32px;
+    position: relative;
+  }
+  .chart-title {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  #main-chart { width: 100%; height: 380px; }
+
+  /* ─── 对比区 ─── */
+  .compare-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .compare-card {
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .compare-card.no-invest {
+    background: rgba(100,100,120,0.15);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .compare-card.with-invest {
+    background: rgba(245,166,35,0.08);
+    border: 1px solid rgba(245,166,35,0.3);
+  }
+  .compare-card .label {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+  .compare-card .big-num {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .compare-card.no-invest .big-num { color: rgba(255,255,255,0.4); }
+  .compare-card.with-invest .big-num { color: #f5a623; }
+  .compare-card .desc { font-size: 13px; color: rgba(255,255,255,0.35); line-height: 1.6; }
+
+  /* ─── 差值展示 ─── */
+  .diff-banner {
+    background: linear-gradient(135deg, rgba(245,166,35,0.15), rgba(255,107,53,0.15));
+    border: 1px solid rgba(245,166,35,0.3);
+    border-radius: 16px;
+    padding: 28px;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .diff-banner .diff-label {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+  .diff-banner .diff-num {
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 900;
+    color: #f5a623;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .diff-banner .diff-quote {
+    font-size: 15px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.8;
+    font-style: italic;
+  }
+
+  /* ─── 拐点解读模块 ─── */
+  .insight-block {
+    margin-bottom: 32px;
+  }
+  .insight-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .insight-header .insight-title {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+  }
+  .insight-meaning {
+    background: rgba(255,107,53,0.08);
+    border: 1px solid rgba(255,107,53,0.25);
+    border-left: 4px solid #ff6b35;
+    border-radius: 0 12px 12px 0;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+  }
+  .insight-meaning .meaning-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #ff6b35;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .insight-meaning .meaning-text {
+    font-size: 15px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.9;
+  }
+  .insight-meaning .meaning-text strong {
+    color: #f5a623;
+  }
+  .advice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+  }
+  .advice-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 20px;
+    transition: border-color 0.3s, transform 0.3s;
+    cursor: default;
+  }
+  .advice-card:hover {
+    border-color: rgba(245,166,35,0.35);
+    transform: translateY(-3px);
+  }
+  .advice-card .advice-icon {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  .advice-card .advice-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #f5a623;
+    margin-bottom: 8px;
+  }
+  .advice-card .advice-body {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+  }
+  .advice-card .advice-impact {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #4ade80;
+    font-weight: 700;
+  }
+
+  /* ─── 每日1%模块 ─── */
+  .daily-section {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 28px;
+    margin-bottom: 32px;
+  }
+  .daily-section h3 {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+  #daily-chart { width: 100%; height: 240px; }
+
+  /* ─── 金句 ─── */
+  .quote-block {
+    text-align: center;
+    padding: 40px 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .quote-block p {
+    font-size: clamp(16px, 2.5vw, 22px);
+    font-weight: 700;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.8;
+    max-width: 600px;
+    margin: 0 auto 16px;
+  }
+  .quote-block .author {
+    font-size: 13px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 2px;
+  }
+
+  /* ─── 响应式 ─── */
+  @media (max-width: 600px) {
+    .stats-row { grid-template-columns: 1fr; }
+    .compare-section { grid-template-columns: 1fr; }
+    .input-panel { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 顶部导航 -->
+<nav style="position:sticky;top:0;z-index:200;background:rgba(10,10,15,0.96);backdrop-filter:blur(12px);border-bottom:1px solid #1e1e30;padding:0 16px">
+  <div style="max-width:960px;margin:0 auto;display:flex;align-items:center;overflow-x:auto;scrollbar-width:none">
+    <a href="index.html" style="flex:1;min-width:0;padding:14px 8px;text-align:center;font-size:12px;font-weight:700;color:#888;letter-spacing:0.5px;text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap;transition:all .3s">《边玩边赚》系列</a>
+    <a href="agent.html" style="flex:1;min-width:0;padding:14px 8px;text-align:center;font-size:12px;font-weight:700;color:#888;letter-spacing:0.5px;text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap;transition:all .3s">人人都能做AI智能体</a>
+    <a href="camp.html" style="flex:1;min-width:0;padding:14px 8px;text-align:center;font-size:12px;font-weight:700;color:#C9A54E;letter-spacing:0.5px;text-decoration:none;border-bottom:2px solid #C9A54E;white-space:nowrap;transition:all .3s">百日AI财富营</a>
+  </div>
+</nav>
+<!-- 返回链接 -->
+<div style="max-width:960px;margin:0 auto;padding:14px 24px 0">
+  <a href="camp.html" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#888;text-decoration:none;transition:color .2s" onmouseover="this.style.color='#C9A54E'" onmouseout="this.style.color='#888'">← 返回 W7 课程页</a>
+</div>
+
+<canvas id="particles"></canvas>
+
+<div class="container">
+
+  <!-- 标题 -->
+  <div class="hero">
+    <div class="hero-tag">Compound Interest Calculator</div>
+    <h1>你的复利拐点<br>在哪一天？</h1>
+    <p>大多数人不是因为起步晚，<br>而是因为看不起小。</p>
+    <div class="formula">1.01<sup>365</sup> = <strong>37.78</strong> &nbsp;·&nbsp; 每天进步 1%，一年后你是现在的 37 倍</div>
+  </div>
+
+  <!-- 输入面板 -->
+  <div class="input-panel">
+    <h2>输入你的参数</h2>
+    <div class="input-grid">
+      <div class="input-item">
+        <label>📅 当前年龄</label>
+        <div class="value-display"><span id="age-val">30</span><span class="unit">岁</span></div>
+        <input type="range" id="age" min="18" max="88" value="30" oninput="document.getElementById('age-val').textContent=this.value">
+        <div class="range-labels"><span>18</span><span>88</span></div>
+      </div>
+      <div class="input-item">
+        <label>💰 每月投入</label>
+        <div class="value-display"><span id="monthly-val">1,000</span><span class="unit">元</span></div>
+        <input type="range" id="monthly" min="100" max="100000" step="100" value="1000"
+          oninput="document.getElementById('monthly-val').textContent=Number(this.value).toLocaleString()">
+        <div class="range-labels"><span>100</span><span>100,000</span></div>
+      </div>
+      <div class="input-item">
+        <label>📈 年化收益率</label>
+        <div class="value-display"><span id="rate-val">8</span><span class="unit">%</span></div>
+        <input type="range" id="rate" min="3" max="20" value="8" oninput="document.getElementById('rate-val').textContent=this.value">
+        <div class="range-labels"><span>3%</span><span>20%</span></div>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calculate()">⚡ 看见我的拐点</button>
+  </div>
+
+  <!-- 结果区 -->
+  <div id="result-section">
+
+    <!-- 关键数字 -->
+    <div class="stats-row" id="stats-row"></div>
+
+    <!-- 主图表 -->
+    <div class="chart-wrapper">
+      <div class="chart-title">▎ 复利曲线 vs. 只存本金</div>
+      <div id="main-chart"></div>
+    </div>
+
+    <!-- 拐点解读模块 -->
+    <div id="inflection-insight"></div>
+
+    <!-- 对比 -->
+    <div class="compare-section" id="compare-section"></div>
+
+    <!-- 差值 -->
+    <div class="diff-banner" id="diff-banner"></div>
+
+    <!-- 每日1%图表 -->
+    <div class="daily-section">
+      <h3>▎ 每天进步 1% 的力量（365天）</h3>
+      <div id="daily-chart"></div>
+    </div>
+
+    <!-- 金句 -->
+    <div class="quote-block">
+      <p>你的拐点不是某一笔大钱到账的日子——<br>是你愿意把一件小事，认真做到第 365 天的那一天。</p>
+      <div class="author">— 复利的秘密从来不是「多」，是「不停」</div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ─── 粒子背景 ───
+(function() {
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let W, H, dots = [];
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  for (let i = 0; i < 80; i++) {
+    dots.push({
+      x: Math.random() * 1920, y: Math.random() * 1080,
+      r: Math.random() * 1.5 + 0.3,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      a: Math.random() * 0.5 + 0.1
+    });
+  }
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    dots.forEach(d => {
+      d.x += d.vx; d.y += d.vy;
+      if (d.x < 0) d.x = W; if (d.x > W) d.x = 0;
+      if (d.y < 0) d.y = H; if (d.y > H) d.y = 0;
+      ctx.beginPath();
+      ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(245,166,35,${d.a})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// ─── 格式化金额 ───
+function fmt(n) {
+  if (n >= 1e8) return (n / 1e8).toFixed(2) + ' 亿';
+  if (n >= 1e4) return (n / 1e4).toFixed(1) + ' 万';
+  return n.toFixed(0);
+}
+function fmtFull(n) {
+  return Math.round(n).toLocaleString('zh-CN') + ' 元';
+}
+
+// ─── 计算核心 ───
+function calcCompound(monthly, rate, years) {
+  const r = rate / 100 / 12;
+  if (r === 0) return monthly * 12 * years;
+  return monthly * ((Math.pow(1 + r, years * 12) - 1) / r) * (1 + r);
+}
+
+// ─── 主计算 ───
+function calculate() {
+  const age = parseInt(document.getElementById('age').value);
+  const monthly = parseInt(document.getElementById('monthly').value);
+  const rate = parseInt(document.getElementById('rate').value);
+
+  const milestones = [10, 20, 30];
+  const results = milestones.map(y => ({ year: y, value: calcCompound(monthly, rate, y) }));
+  const principal30 = monthly * 12 * 30;
+
+  // 显示结果区
+  const sec = document.getElementById('result-section');
+  sec.style.display = 'block';
+  setTimeout(() => sec.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+
+  // ─── 关键数字卡片 ───
+  const statsRow = document.getElementById('stats-row');
+  statsRow.innerHTML = '';
+  results.forEach((r, i) => {
+    const gain = ((r.value / (monthly * 12 * r.year) - 1) * 100).toFixed(0);
+    const card = document.createElement('div');
+    card.className = 'stat-card' + (i === 2 ? ' highlight' : '');
+    card.innerHTML = `
+      <div class="year-label">${r.year} 年后（${age + r.year} 岁）</div>
+      <div class="amount">${fmt(r.value)}</div>
+      <div class="gain">↑ 收益 +${gain}%</div>
+    `;
+    statsRow.appendChild(card);
+    setTimeout(() => card.classList.add('revealed'), 300 + i * 200);
+  });
+
+  // ─── 主图表 ───
+  const chartDom = document.getElementById('main-chart');
+  const myChart = echarts.init(chartDom, 'dark');
+
+  const years = Array.from({ length: 31 }, (_, i) => i);
+  const compoundData = years.map(y => y === 0 ? 0 : calcCompound(monthly, rate, y));
+  const principalData = years.map(y => monthly * 12 * y);
+
+  // 拐点定义：复利总额首次超过本金总额 1.5 倍的那一年
+  // 即「收益超过本金 50%」，视觉上是曲线明显抬头的时刻
+  let inflectionYear = 20; // fallback
+  for (let y = 1; y <= 30; y++) {
+    if (principalData[y] > 0 && compoundData[y] / principalData[y] >= 1.5) {
+      inflectionYear = y;
+      break;
+    }
+  }
+
+  const option = {
+    backgroundColor: 'transparent',
+    tooltip: {
+      trigger: 'axis',
+      backgroundColor: 'rgba(10,10,20,0.9)',
+      borderColor: 'rgba(245,166,35,0.3)',
+      textStyle: { color: '#fff', fontFamily: 'Noto Sans SC' },
+      formatter: params => {
+        const y = params[0].dataIndex;
+        let html = `<div style="font-weight:700;margin-bottom:8px">第 ${y} 年（${age + y} 岁）</div>`;
+        params.forEach(p => {
+          html += `<div style="color:${p.color}">${p.seriesName}：${fmtFull(p.value)}</div>`;
+        });
+        return html;
+      }
+    },
+    legend: {
+      data: ['复利增长', '仅存本金'],
+      textStyle: { color: 'rgba(255,255,255,0.5)', fontFamily: 'Noto Sans SC' },
+      top: 0
+    },
+    grid: { left: '2%', right: '4%', bottom: '10%', top: '14%', containLabel: true },
+    xAxis: {
+      type: 'category',
+      data: years.map(y => `${y}年`),
+      axisLine: { lineStyle: { color: 'rgba(255,255,255,0.1)' } },
+      axisLabel: { color: 'rgba(255,255,255,0.4)', fontFamily: 'Noto Sans SC', interval: 4 },
+      splitLine: { show: false }
+    },
+    yAxis: {
+      type: 'value',
+      axisLabel: {
+        color: 'rgba(255,255,255,0.4)',
+        fontFamily: 'Noto Sans SC',
+        formatter: v => fmt(v)
+      },
+      splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } }
+    },
+    series: [
+      {
+        name: '仅存本金',
+        type: 'line',
+        data: principalData,
+        smooth: false,
+        lineStyle: { color: 'rgba(255,255,255,0.2)', width: 2, type: 'dashed' },
+        itemStyle: { color: 'rgba(255,255,255,0.2)' },
+        areaStyle: { color: 'rgba(255,255,255,0.02)' },
+        symbol: 'none'
+      },
+      {
+        name: '复利增长',
+        type: 'line',
+        data: compoundData,
+        smooth: true,
+        lineStyle: {
+          color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+            { offset: 0, color: '#f5a623' },
+            { offset: 1, color: '#ff6b35' }
+          ]),
+          width: 3
+        },
+        itemStyle: { color: '#f5a623' },
+        areaStyle: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            { offset: 0, color: 'rgba(245,166,35,0.3)' },
+            { offset: 1, color: 'rgba(245,166,35,0.01)' }
+          ])
+        },
+        symbol: 'none',
+        markPoint: {
+          data: milestones.map((y, idx) => {
+            // 标签偏移：拐点年份附近的里程碑向左上偶避
+            const isNearInflection = Math.abs(y - inflectionYear) <= 2;
+            const offsetX = isNearInflection ? -30 : (idx === 2 ? -14 : 14);
+            const offsetY = isNearInflection ? -28 : -20;
+            return {
+              name: `${y}年`,
+              coord: [y, compoundData[y]],
+              label: {
+                formatter: fmt(compoundData[y]),
+                color: '#f5a623',
+                fontFamily: 'Noto Sans SC',
+                fontSize: 12,
+                fontWeight: 700,
+                offset: [offsetX, offsetY]
+              },
+              itemStyle: { color: '#f5a623', borderColor: '#fff', borderWidth: 2 },
+              symbol: 'circle',
+              symbolSize: 10
+            };
+          })
+        },
+        markLine: {
+          silent: true,
+          symbol: ['none', 'circle'],
+          symbolSize: 6,
+          data: [
+            {
+              xAxis: inflectionYear,
+              lineStyle: { color: 'rgba(255,107,53,0.7)', type: 'dashed', width: 2 },
+              label: { show: false }
+            }
+          ]
+        }
+      }
+    ],
+    animationDuration: 2000,
+    animationEasing: 'cubicOut'
+  };
+  myChart.setOption(option);
+
+  // ─── 拐点解读模块 ───
+  const insightEl = document.getElementById('inflection-insight');
+  const inflectionValue = compoundData[inflectionYear];
+  const inflectionPrincipal = principalData[inflectionYear];
+  const earnedAtInflection = inflectionValue - inflectionPrincipal;
+  const earnedRatio = ((inflectionValue / inflectionPrincipal - 1) * 100).toFixed(0);
+
+  // 根据拐点早晚生成不同文案
+  let meaningText, urgencyText;
+  if (inflectionYear <= 7) {
+    meaningText = `你的拐点在第 <strong>${inflectionYear} 年</strong>（${age + inflectionYear} 岁）到来。这是一个极好的信号——高年化收益率让复利在很短的时间内就开始显现威力。到那一天，你的收益将超过本金的 ${earnedRatio}%，即已赚到 <strong>${fmt(earnedAtInflection)}</strong>。从那一天起，复利的飞轮将进入真正的加速模式。`;
+    urgencyText = '拐点来得很快，不要浪费任何一天';
+  } else if (inflectionYear <= 15) {
+    meaningText = `你的拐点在第 <strong>${inflectionYear} 年</strong>（${age + inflectionYear} 岁）到来。这是复利的经典节奏——前期看起来平淡，到了第 ${inflectionYear} 年收益首次超过本金的 ${earnedRatio}%，共赚到 <strong>${fmt(earnedAtInflection)}</strong>。大多数人在第 5–8 年看不到明显变化而放弃，正是在拐点前一步放弃的。`;
+    urgencyText = '坚持到拐点，是最关键的一步';
+  } else if (inflectionYear <= 22) {
+    meaningText = `你的拐点在第 <strong>${inflectionYear} 年</strong>（${age + inflectionYear} 岁）到来。这说明当前收益率偏低，复利需要更长的时间发酵。到拐点时你将赚到 <strong>${fmt(earnedAtInflection)}</strong>的收益。最大的优化空间在于提升收益率——即便提升 2–3 个百分点，拐点也能提前 3–5 年到来。`;
+    urgencyText = '提升收益率是最快的捷径';
+  } else {
+    meaningText = `你的拐点在第 <strong>${inflectionYear} 年</strong>（${age + inflectionYear} 岁）到来。当前收益率偏低，复利增速较慢。建议重新评估投资组合，将收益率提升到 6% 以上，拐点将显著提前。即便现在开始，也比一直等待要好得多。`;
+    urgencyText = '现在开始永远不晚';
+  }
+
+  // 生成拐点提前方案（提升投入、提升收益率、增加年限）
+  const adviceCards = [
+    {
+      icon: '💰',
+      title: '方案 A · 加大每月投入',
+      body: `将每月投入从 <strong>${monthly.toLocaleString()}</strong> 元提升到 <strong>${(monthly * 1.5).toLocaleString()}</strong> 元（增加50%），30年后总资产可达 <strong>${fmt(calcCompound(monthly * 1.5, rate, 30))}</strong>，相比现方案多出 <strong>${fmt(calcCompound(monthly * 1.5, rate, 30) - results[2].value)}</strong>。`,
+      impact: `拐点时间不变，但最终资产提升 50%`
+    },
+    {
+      icon: '📈',
+      title: '方案 B · 提升年化收益率',
+      body: `将年化收益率从 <strong>${rate}%</strong> 提升到 <strong>${Math.min(rate + 3, 20)}%</strong>（提升 3 个百分点），30年后可达 <strong>${fmt(calcCompound(monthly, Math.min(rate + 3, 20), 30))}</strong>。拐点提前至第 <strong>${(() => { for(let y=1;y<=30;y++){if(principalData[y]>0&&calcCompound(monthly,Math.min(rate+3,20),y)/principalData[y]>=1.5)return y;} return 20; })()} 年</strong>。`,
+      impact: `收益率每提升 1%，拐点提前约 1–2 年`
+    },
+    {
+      icon: '⏰',
+      title: '方案 C · 延长投资年限',
+      body: `将投资周期从 30 年延长至 35 年，年化 ${rate}% 不变，最终资产可达 <strong>${fmt(calcCompound(monthly, rate, 35))}</strong>。多坚持 5 年，资产增加 <strong>${fmt(calcCompound(monthly, rate, 35) - results[2].value)}</strong>。`,
+      impact: `时间是复利最大的杖杆`
+    },
+    {
+      icon: '🔄',
+      title: '方案 D · 收益再投入',
+      body: `将每年收益的 20% 再次投入，形成“复利的复利”。收益越多、再投入越多，拐点将比方案 A 更早到来。这是巧妈难为无米之炊的复利加速器。`,
+      impact: `拐点可提前 2–4 年，效果随时间复利增强`
+    }
+  ];
+
+  insightEl.innerHTML = `
+    <div class="insight-block">
+      <div class="insight-header">
+        <div class="insight-title">◎ 拐点解读</div>
+        <div style="font-size:11px;color:rgba(255,107,53,0.8);background:rgba(255,107,53,0.1);border:1px solid rgba(255,107,53,0.3);padding:3px 10px;border-radius:20px;">${urgencyText}</div>
+      </div>
+      <div class="insight-meaning">
+        <div class="meaning-label">▶ 这个拐点意味着什么？</div>
+        <div class="meaning-text">${meaningText}</div>
+      </div>
+      <div class="insight-header" style="margin-top:24px;">
+        <div class="insight-title">◎ 如何让拐点更早到来？</div>
+      </div>
+      <div class="advice-grid">
+        ${adviceCards.map(c => `
+          <div class="advice-card">
+            <div class="advice-icon">${c.icon}</div>
+            <div class="advice-title">${c.title}</div>
+            <div class="advice-body">${c.body}</div>
+            <div class="advice-impact">${c.impact}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+
+  // ─── graphic 标注拐点垂线 ───
+  // 用 graphic 组件在拐点垂线顶部添加横排标注
+  // 先等图表渲染完成再计算坐标
+  setTimeout(() => {
+    const chartWidth = myChart.getWidth();
+    const gridLeft = Math.round(chartWidth * 0.10); // 左边距
+    const gridRight = Math.round(chartWidth * 0.04);
+    const gridWidth = chartWidth - gridLeft - gridRight;
+    const totalYears = 30;
+    const xRatio = inflectionYear / totalYears;
+    const xPx = gridLeft + Math.round(gridWidth * xRatio);
+
+    myChart.setOption({
+      graphic: [
+        {
+          type: 'group',
+          left: xPx - 36,
+          top: 16,
+          children: [
+            {
+              type: 'rect',
+              shape: { x: 0, y: 0, width: 72, height: 22, r: 4 },
+              style: { fill: 'rgba(255,107,53,0.9)' }
+            },
+            {
+              type: 'text',
+              style: {
+                text: `拐点 第${inflectionYear}年`,
+                x: 36, y: 11,
+                textAlign: 'center',
+                textVerticalAlign: 'middle',
+                fill: '#fff',
+                font: 'bold 11px "Noto Sans SC", sans-serif'
+              }
+            }
+          ]
+        }
+      ]
+    });
+  }, 100);
+
+  window.addEventListener('resize', () => myChart.resize());
+
+  // ─── 对比区 ───
+  const compareSection = document.getElementById('compare-section');
+  compareSection.innerHTML = `
+    <div class="compare-card no-invest">
+      <div class="label">如果你一直等待</div>
+      <div class="big-num">${fmt(principal30)}</div>
+      <div class="desc">30年仅存本金<br>每月 ${monthly.toLocaleString()} 元 × 360 个月</div>
+    </div>
+    <div class="compare-card with-invest">
+      <div class="label">如果你今天就开始</div>
+      <div class="big-num">${fmt(results[2].value)}</div>
+      <div class="desc">30年复利增长<br>年化 ${rate}% 的魔法</div>
+    </div>
+  `;
+
+  // ─── 差值 ───
+  const diff = results[2].value - principal30;
+  const diffBanner = document.getElementById('diff-banner');
+  diffBanner.innerHTML = `
+    <div class="diff-label">复利为你多创造的财富</div>
+    <div class="diff-num">+ ${fmt(diff)}</div>
+    <div class="diff-quote">这是你因为「看不起小」而错过的钱。<br>每月只是 ${monthly.toLocaleString()} 元，30年后多出 ${fmt(diff)}。</div>
+  `;
+
+  // ─── 每日1%图表 ───
+  const dailyDom = document.getElementById('daily-chart');
+  const dailyChart = echarts.init(dailyDom, 'dark');
+  const days = Array.from({ length: 366 }, (_, i) => i);
+  const dailyGrowth = days.map(d => Math.pow(1.01, d));
+  const dailyFlat = days.map(() => 1);
+
+  dailyChart.setOption({
+    backgroundColor: 'transparent',
+    tooltip: {
+      trigger: 'axis',
+      backgroundColor: 'rgba(10,10,20,0.9)',
+      borderColor: 'rgba(245,166,35,0.3)',
+      textStyle: { color: '#fff', fontFamily: 'Noto Sans SC' },
+      formatter: params => {
+        const d = params[0].dataIndex;
+        // params[0] = '不进步'(恒为1), params[1] = '每天进步1%'
+        const growthSeries = params.find(p => p.seriesName === '每天进步1%');
+        const val = growthSeries ? growthSeries.value : params[0].value;
+        return `第 ${d} 天：<strong style="color:#f5a623">${Number(val).toFixed(2)} 倍</strong>`;
+      }
+    },
+    grid: { left: '2%', right: '4%', bottom: '10%', top: '8%', containLabel: true },
+    xAxis: {
+      type: 'category',
+      data: days.map(d => d + '天'),
+      axisLabel: { color: 'rgba(255,255,255,0.4)', fontFamily: 'Noto Sans SC', interval: 60 },
+      axisLine: { lineStyle: { color: 'rgba(255,255,255,0.1)' } },
+      splitLine: { show: false }
+    },
+    yAxis: {
+      type: 'value',
+      axisLabel: { color: 'rgba(255,255,255,0.4)', fontFamily: 'Noto Sans SC', formatter: v => v + '倍' },
+      splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } }
+    },
+    series: [
+      {
+        name: '不进步',
+        type: 'line',
+        data: dailyFlat,
+        lineStyle: { color: 'rgba(255,255,255,0.15)', width: 1, type: 'dashed' },
+        symbol: 'none'
+      },
+      {
+        name: '每天进步1%',
+        type: 'line',
+        data: dailyGrowth,
+        smooth: true,
+        lineStyle: { color: '#f5a623', width: 2 },
+        areaStyle: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            { offset: 0, color: 'rgba(245,166,35,0.4)' },
+            { offset: 1, color: 'rgba(245,166,35,0.01)' }
+          ])
+        },
+        symbol: 'none'
+        // 终点标注改用 graphic 组件，避免与图表边缘重叠
+      }
+    ],
+    animationDuration: 2500,
+    animationEasing: 'cubicOut'
+  });
+  // 用 graphic 在每日1%图表右上角绘制独立横排标注，避免 pin 标签重叠
+  setTimeout(() => {
+    const dw = dailyChart.getWidth();
+    const dh = dailyChart.getHeight();
+    dailyChart.setOption({
+      graphic: [
+        // 主标注：37.78倍
+        {
+          type: 'group',
+          right: 8,
+          top: 10,
+          children: [
+            {
+              type: 'rect',
+              shape: { x: 0, y: 0, width: 88, height: 44, r: 6 },
+              style: { fill: 'rgba(245,166,35,0.92)', shadowBlur: 8, shadowColor: 'rgba(245,166,35,0.5)' }
+            },
+            {
+              type: 'text',
+              style: {
+                text: '37.78 倍',
+                x: 44, y: 14,
+                textAlign: 'center',
+                textVerticalAlign: 'middle',
+                fill: '#0a0a0f',
+                font: 'bold 15px "Noto Sans SC", sans-serif'
+              }
+            },
+            {
+              type: 'text',
+              style: {
+                text: '第 365 天',
+                x: 44, y: 32,
+                textAlign: 'center',
+                textVerticalAlign: 'middle',
+                fill: 'rgba(10,10,15,0.7)',
+                font: '11px "Noto Sans SC", sans-serif'
+              }
+            }
+          ]
+        },
+        // 小圆点标记终点
+        {
+          type: 'circle',
+          right: dw - dailyChart.convertToPixel({ seriesIndex: 1 }, [365, 37.78])[0] + 4,
+          top: dailyChart.convertToPixel({ seriesIndex: 1 }, [365, 37.78])[1] - 4,
+          shape: { r: 5 },
+          style: { fill: '#f5a623', stroke: '#fff', lineWidth: 2 }
+        }
+      ]
+    });
+  }, 200);
+
+  window.addEventListener('resize', () => dailyChart.resize());
+}
+</script>
+</body>
+</html>
