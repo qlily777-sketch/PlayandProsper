@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《边玩边赚 3》数钱搭子配对星图</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 100%; height: 100%; overflow: hidden;
+    background: #02030a;
+    font-family: 'PingFang SC', 'Microsoft YaHei', 'STHeiti', sans-serif;
+  }
+  #stage {
+    position: fixed; inset: 0;
+    background: radial-gradient(ellipse at 50% 55%, #0a0e2a 0%, #050818 50%, #02030a 100%);
+    overflow: hidden;
+  }
+  #bgCanvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+  #constellation { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+  #pairBanner {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 600px;
+    max-width: 80%;
+    background: rgba(10, 14, 42, 0.85);
+    border: 1px solid rgba(255, 232, 156, 0.4);
+    border-radius: 12px;
+    padding: 16px 32px;
+    color: #FFE89C;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: 10;
+  }
+  #pairBanner.show { opacity: 1; }
+  #pairNumber { font-size: 14px; color: #9FB8DE; letter-spacing: 3px; margin-bottom: 6px; }
+  #pairTitle { font-size: 22px; font-weight: 600; letter-spacing: 2px; }
+  #pairCities { font-size: 13px; color: #B5D4F4; margin-top: 6px; letter-spacing: 1px; }
+
+  #controls {
+    position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 10px; z-index: 10;
+    background: rgba(10, 14, 42, 0.85);
+    padding: 8px 12px; border-radius: 8px;
+    border: 0.5px solid rgba(255, 232, 156, 0.3);
+  }
+  #controls button {
+    background: rgba(255, 232, 156, 0.08);
+    border: 0.5px solid rgba(255, 232, 156, 0.4);
+    color: #FFE89C;
+    padding: 8px 14px; border-radius: 6px;
+    font-size: 13px; cursor: pointer; font-family: inherit;
+    transition: all 0.2s;
+    min-width: 80px;
+  }
+  #controls button:hover { background: rgba(255, 232, 156, 0.18); }
+  #controls button:disabled { opacity: 0.3; cursor: not-allowed; }
+  #progress {
+    color: #FFE89C; font-family: monospace; font-size: 13px;
+    display: flex; align-items: center; padding: 0 12px;
+    letter-spacing: 1px;
+  }
+
+  #hint {
+    position: absolute; top: 20px; left: 24px;
+    color: #5C7AB8; font-size: 11px; opacity: 0.6; z-index: 10;
+    line-height: 1.6;
+  }
+  #brandText {
+    position: absolute; top: 20px; right: 24px;
+    color: #F0A23E; font-size: 16px; font-weight: 600;
+    letter-spacing: 4px; z-index: 10; opacity: 0.7;
+  }
+</style>
+</head>
+<body>
+
+<div id="stage">
+  <canvas id="bgCanvas"></canvas>
+
+  <svg id="constellation" viewBox="0 0 1000 625" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <filter id="glow-strong" x="-100%" y="-100%" width="300%" height="300%">
+        <feGaussianBlur stdDeviation="4" result="b1"/>
+        <feMerge><feMergeNode in="b1"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="glow-soft" x="-100%" y="-100%" width="300%" height="300%">
+        <feGaussianBlur stdDeviation="2" result="b1"/>
+        <feMerge><feMergeNode in="b1"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="line-glow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="2.5" result="b1"/>
+        <feMerge><feMergeNode in="b1"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <radialGradient id="goldcore" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#FFF6C8"/>
+        <stop offset="40%" stop-color="#FFD86B"/>
+        <stop offset="100%" stop-color="#C8881F"/>
+      </radialGradient>
+      <radialGradient id="silvercore" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#FFFFFF"/>
+        <stop offset="50%" stop-color="#CDE5FF"/>
+        <stop offset="100%" stop-color="#5A8BC4"/>
+      </radialGradient>
+      <radialGradient id="bluecore" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#E8F1FF"/>
+        <stop offset="100%" stop-color="#6FA8E8"/>
+      </radialGradient>
+      <radialGradient id="dustcore" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#FFFFFF"/>
+        <stop offset="100%" stop-color="#9FB8DE"/>
+      </radialGradient>
+    </defs>
+
+    <g id="pair-lines"></g>
+    <g id="stars-layer"></g>
+  </svg>
+
+  <div id="brandText">数钱搭子 · 揭晓</div>
+  <div id="hint">空格键 / → 下一对　　← 上一对　　R 重置　　F 全屏</div>
+
+  <div id="pairBanner">
+    <div id="pairNumber">第 0 对 / 17</div>
+    <div id="pairTitle">—</div>
+    <div id="pairCities">—</div>
+  </div>
+
+  <div id="controls">
+    <button id="btn-prev">← 上一对</button>
+    <div id="progress">0 / 17</div>
+    <button id="btn-next">下一对 →</button>
+    <button id="btn-all">全部展开</button>
+    <button id="btn-reset">重置</button>
+    <button id="btn-fullscreen">全屏</button>
+  </div>
+</div>
+
+<script>
+(function() {
+  // 35 位作者 · 全部参与数钱搭子配对
+  const authors = {
+    "Jason 杰森": {c:"旧金山", tier:4, x:90, y:230},
+    "April 王伊迪": {c:"西雅图", tier:2, x:135, y:355},
+    "千百合": {c:"达拉斯", tier:4, x:220, y:240},
+    "Connie 德州康姐": {c:"达拉斯", tier:4, x:255, y:330},
+    "Pauline": {c:"达拉斯", tier:2, x:215, y:415},
+    "Ronny 张荣辉": {c:"多伦多", tier:4, x:355, y:280},
+    "馨怡 Jie": {c:"多伦多", tier:2, x:380, y:390},
+    "卢蔚青 Jennifer": {c:"纽约", tier:2, x:430, y:330},
+    "贺丽轩 / 轩儿": {c:"以色列", tier:3, x:540, y:300},
+    "时光叙事者": {c:"新加坡", tier:1, x:790, y:480},
+    "邹娜": {c:"北京", tier:4, x:880, y:220},
+    "清川": {c:"北京", tier:1, x:830, y:240},
+    "金闰迪": {c:"深圳", tier:4, x:835, y:275},
+    "木晓": {c:"上海", tier:4, x:935, y:280},
+    "文亮": {c:"天津", tier:4, x:920, y:335},
+    "魏宏翰": {c:"深圳", tier:3, x:790, y:345},
+    "唐笑长": {c:"西安", tier:2, x:770, y:235},
+    "官荣堃": {c:"成都", tier:2, x:735, y:400},
+    "张一一": {c:"香港", tier:1, x:935, y:395},
+    "Linda 张翠玲": {c:"江门", tier:1, x:840, y:390},
+    "杨永松": {c:"遵义", tier:1, x:880, y:430},
+    "温张敏": {c:"温州", tier:1, x:880, y:170},
+    "钟智勋": {c:"广州", tier:1, x:785, y:430},
+    "Lisa 志铮": {c:"深圳", tier:1, x:830, y:495},
+    "杨历": {c:"厦门", tier:1, x:760, y:480},
+    "半亩方塘": {c:"深圳", tier:1, x:870, y:515},
+    "曹玲瑜": {c:"东莞", tier:1, x:790, y:510},
+    "金春华 / 无为": {c:"上海", tier:1, x:960, y:340},
+    "倪一琳 Angela": {c:"浙江", tier:1, x:910, y:380},
+    "大利": {c:"杭州", tier:1, x:880, y:310},
+    "浩子哥": {c:"深圳", tier:1, x:720, y:345},
+    "万可": {c:"昆明", tier:1, x:705, y:470},
+    "邓邓-窈窕姐姐": {c:"广州", tier:1, x:730, y:520},
+    "Melody 小麦": {c:"广州", tier:1, x:660, y:420},
+    "杜慧贞": {c:"广州", tier:1, x:660, y:365}
+  };
+
+  // 17 个配对（按念出顺序）：1 个 3 人超级组 + 7 对海外×国内 + 9 对国内×国内
+  const pairs = [
+    {n:1, type:"super", names:["千百合", "Pauline", "Jason 杰森"], title:"千百合 + Pauline + Jason", desc:"达拉斯 · 达拉斯 · 旧金山　|　主编 + 企业家 + 投资人"},
+    {n:2, type:"overseas", names:["Connie 德州康姐", "魏宏翰"], title:"Connie 德州康姐 × 魏宏翰", desc:"达拉斯 → 深圳　|　财富自由导师 × 商业架构师"},
+    {n:3, type:"overseas", names:["Ronny 张荣辉", "唐笑长"], title:"Ronny 张荣辉 × 唐笑长", desc:"多伦多 → 西安　|　系统思考 × 书法办学"},
+    {n:4, type:"overseas", names:["贺丽轩 / 轩儿", "万可"], title:"轩儿 × 万可", desc:"以色列 → 昆明　|　跨文化 × 女性身心"},
+    {n:5, type:"overseas", names:["馨怡 Jie", "杨历"], title:"馨怡 Jie × 杨历", desc:"多伦多 → 厦门　|　会计师 × 生殖医疗"},
+    {n:6, type:"overseas", names:["April 王伊迪", "大利"], title:"April × 大利", desc:"西雅图 → 杭州　|　杭州同乡 · 风控 × 商业哲学"},
+    {n:7, type:"overseas", names:["卢蔚青 Jennifer", "倪一琳 Angela"], title:"Jennifer × Angela", desc:"纽约 → 浙江　|　中美房产女将"},
+    {n:8, type:"overseas", names:["时光叙事者", "杜慧贞"], title:"时光叙事者 × 杜慧贞", desc:"新加坡 → 广州　|　哲学博士 × 高校老师"},
+    {n:9, type:"domestic", names:["金闰迪", "Lisa 志铮"], title:"金闰迪 × Lisa 志铮", desc:"深圳 → 深圳　|　健康 × 商业地产"},
+    {n:10, type:"domestic", names:["邹娜", "清川"], title:"邹娜 × 清川", desc:"北京 → 北京　|　AI 私域 × 信息化 25 年"},
+    {n:11, type:"domestic", names:["木晓", "金春华 / 无为"], title:"木晓 × 无为", desc:"上海 → 上海　|　摄影美学 × 跨境出海"},
+    {n:12, type:"domestic", names:["文亮", "温张敏"], title:"文亮 × 温张敏", desc:"天津 → 温州　|　主编 × 操盘手"},
+    {n:13, type:"domestic", names:["钟智勋", "邓邓-窈窕姐姐"], title:"钟智勋 × 邓邓-窈窕姐姐", desc:"广州 → 广州　|　AI 智能体 × 国学疗愈"},
+    {n:14, type:"domestic", names:["官荣堃", "曹玲瑜"], title:"官荣堃 × 曹玲瑜", desc:"成都 → 东莞　|　建材双雄"},
+    {n:15, type:"domestic", names:["张一一", "杨永松"], title:"张一一 × 杨永松", desc:"香港 → 遵义　|　教育 × 心理"},
+    {n:16, type:"domestic", names:["浩子哥", "Melody 小麦"], title:"浩子哥 × Melody 小麦", desc:"深圳 → 广州　|　传媒设计 × 组织变革"},
+    {n:17, type:"domestic", names:["半亩方塘", "Linda 张翠玲"], title:"半亩方塘 × Linda 张翠玲", desc:"深圳 → 江门　|　广东省内 · 跨界系统派"}
+  ];
+
+  // ============ 背景星空 ============
+  const canvas = document.getElementById("bgCanvas");
+  const ctx = canvas.getContext("2d");
+  let bgStars = [];
+  function initBg() {
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+    canvas.style.width = window.innerWidth + 'px';
+    canvas.style.height = window.innerHeight + 'px';
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.scale(dpr, dpr);
+    bgStars = [];
+    const count = Math.floor((window.innerWidth * window.innerHeight) / 7000);
+    for (let i = 0; i < count; i++) {
+      bgStars.push({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        r: Math.random() * 1.4 + 0.2,
+        a: Math.random() * 0.6 + 0.2,
+        s: Math.random() * 0.02 + 0.005
+      });
+    }
+  }
+  function drawBg(t) {
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+    for (const s of bgStars) {
+      const alpha = s.a + Math.sin(t * s.s + s.x) * 0.25;
+      ctx.fillStyle = `rgba(220, 230, 255, ${Math.max(0.1, Math.min(1, alpha))})`;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    requestAnimationFrame(drawBg);
+  }
+  initBg();
+  window.addEventListener("resize", initBg);
+  requestAnimationFrame(drawBg);
+
+  // ============ 星点 ============
+  function tierStyle(tier) {
+    if (tier === 4) return { r: 11, fill: "url(#goldcore)", core: 4.5, glow: "glow-strong", stroke: "#FFE89C" };
+    if (tier === 3) return { r: 8.5, fill: "url(#silvercore)", core: 3.5, glow: "glow-strong", stroke: "#E0EBFF" };
+    if (tier === 2) return { r: 6.5, fill: "url(#bluecore)", core: 2.5, glow: "glow-soft", stroke: "#B5D4F4" };
+    return { r: 4, fill: "url(#dustcore)", core: 1.5, glow: "glow-soft", stroke: "#9FB8DE" };
+  }
+
+  const starsLayer = document.getElementById("stars-layer");
+  const lineLayer = document.getElementById("pair-lines");
+  const banner = document.getElementById("pairBanner");
+
+  // 渲染所有星点
+  Object.entries(authors).forEach(([name, a]) => {
+    const s = tierStyle(a.tier);
+    const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    g.setAttribute("transform", `translate(${a.x}, ${a.y})`);
+
+    const halo = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    halo.setAttribute("r", s.r);
+    halo.setAttribute("fill", s.fill);
+    halo.setAttribute("opacity", "0.4");
+    halo.setAttribute("filter", `url(#${s.glow})`);
+    g.appendChild(halo);
+
+    const core = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    core.setAttribute("r", s.core);
+    core.setAttribute("fill", "#FFFFFF");
+    core.setAttribute("filter", `url(#${s.glow})`);
+    g.appendChild(core);
+
+    const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    label.setAttribute("y", s.r + 12);
+    label.setAttribute("text-anchor", "middle");
+    label.setAttribute("fill", a.tier === 4 ? "#FFE89C" : (a.tier === 3 ? "#E0EBFF" : "#9FB8DE"));
+    label.setAttribute("font-size", a.tier === 4 ? "10" : "9");
+    label.textContent = name;
+    g.appendChild(label);
+
+    starsLayer.appendChild(g);
+  });
+
+  // ============ 配对金线绘制 ============
+  let currentPair = 0;
+
+  function drawLine(x1, y1, x2, y2, delay, color = "#FFD86B", strokeWidth = 1.2) {
+    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    line.setAttribute("x1", x1);
+    line.setAttribute("y1", y1);
+    line.setAttribute("x2", x1);
+    line.setAttribute("y2", y1);
+    line.setAttribute("stroke", color);
+    line.setAttribute("stroke-width", strokeWidth);
+    line.setAttribute("opacity", "0.8");
+    line.setAttribute("filter", "url(#line-glow)");
+    lineLayer.appendChild(line);
+
+    setTimeout(() => {
+      line.style.transition = "all 1.2s ease-out";
+      line.setAttribute("x2", x2);
+      line.setAttribute("y2", y2);
+    }, delay);
+    return line;
+  }
+
+  function showPair(idx) {
+    if (idx < 0 || idx >= pairs.length) return;
+    const pair = pairs[idx];
+
+    document.getElementById("pairNumber").textContent = (pair.type === "super" ? "🌟 钱搭子超级组" : "第 " + pair.n + " 对 / 17");
+    document.getElementById("pairTitle").textContent = pair.title;
+    document.getElementById("pairCities").textContent = pair.desc;
+    banner.classList.add("show");
+
+    if (pair.type === "super") {
+      const a = authors[pair.names[0]];
+      const b = authors[pair.names[1]];
+      const c = authors[pair.names[2]];
+      drawLine(a.x, a.y, b.x, b.y, 100, "#FFE89C", 1.5);
+      drawLine(b.x, b.y, c.x, c.y, 300, "#FFE89C", 1.5);
+      drawLine(c.x, c.y, a.x, a.y, 500, "#FFE89C", 1.5);
+    } else {
+      const a = authors[pair.names[0]];
+      const b = authors[pair.names[1]];
+      const color = pair.type === "overseas" ? "#FFD86B" : "#FFC850";
+      drawLine(a.x, a.y, b.x, b.y, 100, color, 1.2);
+    }
+
+    currentPair = idx + 1;
+    updateProgress();
+  }
+
+  function reset() {
+    lineLayer.innerHTML = "";
+    banner.classList.remove("show");
+    currentPair = 0;
+    updateProgress();
+  }
+
+  function updateProgress() {
+    document.getElementById("progress").textContent = currentPair + " / 17";
+    document.getElementById("btn-prev").disabled = currentPair === 0;
+    document.getElementById("btn-next").disabled = currentPair >= 17;
+  }
+
+  function next() {
+    if (currentPair < pairs.length) {
+      showPair(currentPair);
+    }
+  }
+
+  function prev() {
+    if (currentPair > 0) {
+      const lines = lineLayer.querySelectorAll("line");
+      if (currentPair >= 1) {
+        const lastPair = pairs[currentPair - 1];
+        const linesToRemove = lastPair.type === "super" ? 3 : 1;
+        for (let i = 0; i < linesToRemove; i++) {
+          if (lines[lines.length - 1 - i]) {
+            lines[lines.length - 1 - i].remove();
+          }
+        }
+      }
+      currentPair--;
+      if (currentPair > 0) {
+        const pair = pairs[currentPair - 1];
+        document.getElementById("pairNumber").textContent = (pair.type === "super" ? "🌟 钱搭子超级组" : "第 " + pair.n + " 对 / 17");
+        document.getElementById("pairTitle").textContent = pair.title;
+        document.getElementById("pairCities").textContent = pair.desc;
+      } else {
+        banner.classList.remove("show");
+      }
+      updateProgress();
+    }
+  }
+
+  function showAll() {
+    reset();
+    pairs.forEach((p, i) => {
+      setTimeout(() => showPair(i), i * 600);
+    });
+  }
+
+  document.getElementById("btn-next").addEventListener("click", next);
+  document.getElementById("btn-prev").addEventListener("click", prev);
+  document.getElementById("btn-reset").addEventListener("click", reset);
+  document.getElementById("btn-all").addEventListener("click", showAll);
+  document.getElementById("btn-fullscreen").addEventListener("click", () => {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+    else document.exitFullscreen();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === " " || e.key === "ArrowRight" || e.key === "Enter") { e.preventDefault(); next(); }
+    if (e.key === "ArrowLeft") { e.preventDefault(); prev(); }
+    if (e.key.toLowerCase() === "r") reset();
+    if (e.key.toLowerCase() === "f") {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
+    }
+    if (e.key.toLowerCase() === "a") showAll();
+  });
+
+  let pulseT = 0;
+  setInterval(() => {
+    pulseT += 0.04;
+    const halos = starsLayer.querySelectorAll("g");
+    halos.forEach((g, i) => {
+      const halo = g.querySelector("circle");
+      if (halo) {
+        const o = 0.4 + Math.sin(pulseT + i * 0.3) * 0.15;
+        halo.setAttribute("opacity", o.toFixed(2));
+      }
+    });
+  }, 50);
+
+  updateProgress();
+})();
+</script>
+
+</body>
+</html>
