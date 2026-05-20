@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《边玩边赚 3》作者星图 · AI 时代的财富思维</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #02030a;
+    font-family: 'PingFang SC', 'Microsoft YaHei', 'STHeiti', sans-serif;
+    cursor: default;
+  }
+  #stage {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 55%, #0a0e2a 0%, #050818 50%, #02030a 100%);
+    overflow: hidden;
+  }
+  #bgCanvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  #constellation {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  #counter {
+    position: absolute;
+    top: 20px;
+    left: 24px;
+    color: #FFE89C;
+    font-size: 14px;
+    font-family: monospace;
+    opacity: 0.7;
+    letter-spacing: 1.5px;
+    z-index: 10;
+  }
+  #controls {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    opacity: 0;
+    transition: opacity 0.8s;
+    z-index: 10;
+  }
+  #controls button {
+    background: rgba(255, 232, 156, 0.08);
+    border: 0.5px solid rgba(255, 232, 156, 0.4);
+    color: #FFE89C;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+  }
+  #controls button:hover {
+    background: rgba(255, 232, 156, 0.18);
+  }
+  #controls.show { opacity: 1; }
+  #infoCard {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    min-width: 220px;
+    max-width: 280px;
+    background: rgba(10, 14, 42, 0.92);
+    border: 0.5px solid rgba(255, 232, 156, 0.3);
+    border-radius: 8px;
+    padding: 14px 16px;
+    color: #E8F0FF;
+    font-size: 13px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    backdrop-filter: blur(8px);
+    z-index: 10;
+  }
+  #infoName { font-size: 15px; color: #FFE89C; margin-bottom: 5px; font-weight: 500; }
+  #infoStars { font-size: 12px; color: #FFD86B; margin-bottom: 8px; letter-spacing: 1px; }
+  #infoCity { font-size: 12px; color: #9FB8DE; line-height: 1.6; }
+  #infoExtra { font-size: 12px; color: #9FB8DE; line-height: 1.6; margin-top: 6px; }
+  #hint {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    color: #5C7AB8;
+    font-size: 11px;
+    opacity: 0.6;
+    z-index: 10;
+  }
+</style>
+</head>
+<body>
+
+<div id="stage">
+  <canvas id="bgCanvas"></canvas>
+
+  <svg id="constellation" viewBox="0 0 1000 625" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <filter id="glow-strong" x="-100%" y="-100%" width="300%" height="300%">
+        <feGaussianBlur stdDeviation="4" result="b1"/>
+        <feMerge><feMergeNode in="b1"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="glow-soft" x="-100%" y="-100%" width="300%" height="300%">
+        <feGaussianBlur stdDeviation="2" result="b1"/>
+        <feMerge><feMergeNode in="b1"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="title-glow" x="-30%" y="-30%" width="160%" height="160%">
+        <feGaussianBlur stdDeviation="3" result="b1"/>
+        <feMerge><feMergeNode in="b1"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <radialGradient id="goldcore" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#FFF6C8"/>
+        <stop offset="40%" stop-color="#FFD86B"/>
+        <stop offset="100%" stop-color="#C8881F"/>
+      </radialGradient>
+      <radialGradient id="silvercore" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#FFFFFF"/>
+        <stop offset="50%" stop-color="#CDE5FF"/>
+        <stop offset="100%" stop-color="#5A8BC4"/>
+      </radialGradient>
+      <radialGradient id="bluecore" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#E8F1FF"/>
+        <stop offset="100%" stop-color="#6FA8E8"/>
+      </radialGradient>
+      <radialGradient id="dustcore" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#FFFFFF"/>
+        <stop offset="100%" stop-color="#9FB8DE"/>
+      </radialGradient>
+    </defs>
+
+    <g id="tz-arcs" opacity="0.18">
+      <path d="M 60 540 Q 500 250 940 540" fill="none" stroke="#5C7AB8" stroke-width="0.6" stroke-dasharray="2 4"/>
+      <path d="M 60 560 Q 500 300 940 560" fill="none" stroke="#5C7AB8" stroke-width="0.6" stroke-dasharray="2 4"/>
+      <path d="M 60 580 Q 500 350 940 580" fill="none" stroke="#5C7AB8" stroke-width="0.6" stroke-dasharray="2 4"/>
+    </g>
+
+    <g id="tz-labels" fill="#7B95C8" font-size="11" opacity="0.55" text-anchor="middle">
+      <text x="115" y="600">北京 09:00 / 美西</text>
+      <text x="240" y="600">北京 10:00 / 达拉斯</text>
+      <text x="395" y="600">北京 11:00 / 多伦多 · 纽约</text>
+      <text x="545" y="600">北京 16:00 / 以色列</text>
+      <text x="870" y="600">北京 21:00 / 中国 · 新加坡</text>
+    </g>
+
+    <g id="connections" opacity="0"></g>
+    <g id="stars-layer"></g>
+
+    <text x="500" y="105" text-anchor="middle" fill="#F0A23E" font-size="54" font-weight="700"
+          font-family="'STHeiti','PingFang SC','Microsoft YaHei',sans-serif"
+          opacity="0" id="brand-text" filter="url(#title-glow)" style="letter-spacing: 12px;">边玩边赚</text>
+    <text x="500" y="142" text-anchor="middle" fill="#FFE89C" font-size="17" font-weight="500"
+          opacity="0" id="title-text" style="letter-spacing: 5px;">AI 时代的财富思维</text>
+    <text x="500" y="166" text-anchor="middle" fill="#9FB8DE" font-size="11"
+          opacity="0" id="subtitle-text" style="letter-spacing: 2px;">9 颗四星 · 1 颗三星 · 9 颗双星 · 16 颗新星 · 横跨 5 个时区 · 35 位作者</text>
+  </svg>
+
+  <div id="counter">点亮中 <span id="count-current">0</span> / 35</div>
+
+  <div id="controls">
+    <button id="btn-replay">重新点亮</button>
+    <button id="btn-filter-4">只看四星</button>
+    <button id="btn-filter-all">显示全部</button>
+    <button id="btn-fullscreen">全屏</button>
+  </div>
+
+  <div id="infoCard">
+    <div id="infoName"></div>
+    <div id="infoStars"></div>
+    <div id="infoCity"></div>
+    <div id="infoExtra"></div>
+  </div>
+
+  <div id="hint">按 F11 全屏 · 按 R 重播 · 鼠标悬停查看作者</div>
+</div>
+
+<script>
+(function() {
+  // 35 位作者数据 · 北京时间为基准
+  // tz 字段保留 UTC 偏移以正确排序点亮顺序（从美西最早 → 中国最晚）
+  const authors = [
+    {n:"Jason 杰森", c:"旧金山", tz:-7, tier:4, x:90, y:230, ext:"美国 · 企业家 / 投资人"},
+    {n:"April 王伊迪", c:"西雅图", tz:-7, tier:2, x:135, y:355, ext:"美国 · 金融咨询 / 风险管理"},
+    {n:"千百合", c:"达拉斯", tz:-5, tier:4, x:220, y:240, ext:"美国 · 主编 · 数钱日发起人"},
+    {n:"Connie 德州康姐", c:"达拉斯", tz:-5, tier:4, x:255, y:330, ext:"美国 · 财富自由导师"},
+    {n:"Pauline 王宝玲", c:"达拉斯", tz:-5, tier:2, x:215, y:415, ext:"美国 · 企业家"},
+    {n:"Ronny 张荣辉", c:"多伦多", tz:-4, tier:4, x:355, y:280, ext:"加拿大 · 企业家 / 投资人"},
+    {n:"馨怡 Jie", c:"多伦多", tz:-4, tier:2, x:380, y:390, ext:"加拿大 · 注册会计师"},
+    {n:"卢蔚青 Jennifer", c:"纽约", tz:-4, tier:2, x:430, y:330, ext:"美国 · 地产投资管理"},
+    {n:"贺丽轩 / 轩儿", c:"以色列", tz:3, tier:3, x:540, y:300, ext:"以色列 · 跨文化连接者 · 四娃妈妈"},
+    {n:"时光叙事者", c:"新加坡", tz:8, tier:1, x:790, y:480, ext:"新加坡 · 哲学博士 · 出版人"},
+    {n:"邹娜", c:"北京", tz:8, tier:4, x:880, y:220, ext:"中国 · 护航队 · AI 私域"},
+    {n:"清川", c:"北京", tz:8, tier:1, x:830, y:240, ext:"中国 · 信息化 25 年"},
+    {n:"金闰迪", c:"深圳", tz:8, tier:4, x:835, y:275, ext:"中国 · 健康 · 排毒女王"},
+    {n:"木晓", c:"上海", tz:8, tier:4, x:935, y:280, ext:"中国 · 护航队 · 摄影艺术家"},
+    {n:"文亮", c:"天津", tz:8, tier:4, x:920, y:335, ext:"中国 · 护航队 · AI 联合创始人"},
+    {n:"魏宏翰", c:"深圳", tz:8, tier:4, x:790, y:345, ext:"中国 · 商业架构师"},
+    {n:"唐笑长", c:"西安", tz:8, tier:2, x:770, y:235, ext:"中国 · 书法 / 教育科技"},
+    {n:"官荣堃", c:"成都", tz:8, tier:2, x:735, y:400, ext:"中国 · 建材 25 年"},
+    {n:"张一一", c:"香港", tz:8, tier:1, x:935, y:395, ext:"中国 · 教培 · 生生文化"},
+    {n:"Linda 张翠玲", c:"江门", tz:8, tier:2, x:840, y:390, ext:"中国 · 企业管理 + AI"},
+    {n:"杨永松", c:"遵义", tz:8, tier:1, x:880, y:430, ext:"中国 · 教育 / 心理"},
+    {n:"温张敏", c:"温州", tz:8, tier:1, x:880, y:170, ext:"中国 · 知识 IP 操盘手 · 3 本畅销书作者"},
+    {n:"钟智勋", c:"广州", tz:8, tier:1, x:785, y:430, ext:"中国 · AI 智能体专家"},
+    {n:"Lisa 志铮", c:"深圳", tz:8, tier:2, x:830, y:495, ext:"中国 · 商业地产 · 主持人"},
+    {n:"杨历", c:"厦门", tz:8, tier:1, x:760, y:480, ext:"中国 · 生殖医疗"},
+    {n:"半亩方塘", c:"深圳", tz:8, tier:1, x:870, y:515, ext:"中国 · 叶建荣 · 通信 / 教育"},
+    {n:"曹玲瑜", c:"东莞", tz:8, tier:1, x:790, y:510, ext:"中国 · 曹魏魏 · 建材 / 美业"},
+    {n:"金春华 / 无为", c:"上海", tz:8, tier:1, x:960, y:340, ext:"中国 · 16 年跨境出海"},
+    {n:"倪一琳 Angela", c:"浙江", tz:8, tier:1, x:910, y:380, ext:"中国 · 创业导师 + AI"},
+    {n:"大利", c:"杭州", tz:8, tier:1, x:880, y:310, ext:"中国 · 身心升级 / 顾问"},
+    {n:"浩子哥", c:"深圳", tz:8, tier:1, x:720, y:345, ext:"中国 · 张浩 · 传媒设计"},
+    {n:"万可", c:"昆明", tz:8, tier:2, x:705, y:470, ext:"中国 · 女性身心疗愈"},
+    {n:"邓邓-窈窕姐姐", c:"广州", tz:8, tier:1, x:730, y:520, ext:"中国 · 国学 / 礼仪"},
+    {n:"Melody 小麦", c:"广州", tz:8, tier:1, x:660, y:420, ext:"中国 · 组织变革 / 跑马"},
+    {n:"杜慧贞", c:"广州", tz:8, tier:1, x:660, y:365, ext:"中国 · 高校教育"}
+  ];
+
+  const canvas = document.getElementById("bgCanvas");
+  const ctx = canvas.getContext("2d");
+  let bgStars = [];
+
+  function initBg() {
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+    canvas.style.width = window.innerWidth + 'px';
+    canvas.style.height = window.innerHeight + 'px';
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.scale(dpr, dpr);
+    bgStars = [];
+    const count = Math.floor((window.innerWidth * window.innerHeight) / 7000);
+    for (let i = 0; i < count; i++) {
+      bgStars.push({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        r: Math.random() * 1.4 + 0.2,
+        a: Math.random() * 0.6 + 0.2,
+        s: Math.random() * 0.02 + 0.005
+      });
+    }
+  }
+
+  function drawBg(t) {
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+    for (const s of bgStars) {
+      const alpha = s.a + Math.sin(t * s.s + s.x) * 0.25;
+      ctx.fillStyle = `rgba(220, 230, 255, ${Math.max(0.1, Math.min(1, alpha))})`;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    requestAnimationFrame(drawBg);
+  }
+
+  initBg();
+  window.addEventListener("resize", initBg);
+  requestAnimationFrame(drawBg);
+
+  const starsLayer = document.getElementById("stars-layer");
+  const connLayer = document.getElementById("connections");
+  const counter = document.getElementById("count-current");
+  const infoCard = document.getElementById("infoCard");
+
+  function tierStyle(tier) {
+    if (tier === 4) return { r: 11, fill: "url(#goldcore)", core: 4.5, glow: "glow-strong", stroke: "#FFE89C", label: "★★★★ 四星" };
+    if (tier === 3) return { r: 8.5, fill: "url(#silvercore)", core: 3.5, glow: "glow-strong", stroke: "#E0EBFF", label: "★★★ 三星" };
+    if (tier === 2) return { r: 6.5, fill: "url(#bluecore)", core: 2.5, glow: "glow-soft", stroke: "#B5D4F4", label: "★★ 双星" };
+    return { r: 4, fill: "url(#dustcore)", core: 1.5, glow: "glow-soft", stroke: "#9FB8DE", label: "★ 新星" };
+  }
+
+  let starNodes = [];
+
+  function createStars() {
+    starsLayer.innerHTML = "";
+    starNodes = [];
+    authors.forEach((a) => {
+      const s = tierStyle(a.tier);
+      const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+      g.setAttribute("transform", `translate(${a.x}, ${a.y})`);
+      g.style.opacity = "0";
+      g.style.cursor = "pointer";
+
+      const halo = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      halo.setAttribute("r", s.r);
+      halo.setAttribute("fill", s.fill);
+      halo.setAttribute("opacity", "0.4");
+      halo.setAttribute("filter", `url(#${s.glow})`);
+      g.appendChild(halo);
+
+      const core = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      core.setAttribute("r", s.core);
+      core.setAttribute("fill", "#FFFFFF");
+      core.setAttribute("filter", `url(#${s.glow})`);
+      g.appendChild(core);
+
+      if (a.tier >= 3) {
+        const ring = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        ring.setAttribute("r", s.r + 3);
+        ring.setAttribute("fill", "none");
+        ring.setAttribute("stroke", s.stroke);
+        ring.setAttribute("stroke-width", "0.4");
+        ring.setAttribute("opacity", "0.5");
+        g.appendChild(ring);
+      }
+
+      const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      const ly = a.tier === 4 ? s.r + 14 : s.r + 11;
+      label.setAttribute("y", ly);
+      label.setAttribute("text-anchor", "middle");
+      label.setAttribute("fill", a.tier === 4 ? "#FFE89C" : (a.tier === 3 ? "#E0EBFF" : "#9FB8DE"));
+      label.setAttribute("font-size", a.tier === 4 ? "11" : (a.tier === 3 ? "10" : "9"));
+      label.textContent = a.n;
+      g.appendChild(label);
+
+      // 把作者所在地的北京时间显示
+      function beijingTimeFor(tz) {
+        const offsetFromBeijing = 8 - tz;
+        return offsetFromBeijing;
+      }
+
+      g.addEventListener("mouseenter", function() {
+        document.getElementById("infoName").textContent = a.n;
+        document.getElementById("infoStars").textContent = s.label;
+        const bjDiff = 8 - a.tz;
+        const localTimeStr = a.tz === 8
+          ? "当地时间 = 北京时间"
+          : `当地时间 比北京晚 ${bjDiff} 小时`;
+        document.getElementById("infoCity").textContent = a.c + " · " + localTimeStr;
+        document.getElementById("infoExtra").textContent = a.ext;
+        infoCard.style.opacity = "1";
+        halo.setAttribute("opacity", "0.8");
+      });
+      g.addEventListener("mouseleave", function() {
+        infoCard.style.opacity = "0";
+        halo.setAttribute("opacity", "0.4");
+      });
+
+      starsLayer.appendChild(g);
+      starNodes.push({ el: g, halo, core, author: a, style: s });
+    });
+  }
+
+  function ignite(animateMode) {
+    counter.textContent = "0";
+    connLayer.innerHTML = "";
+    connLayer.style.opacity = "0";
+    document.getElementById("brand-text").style.opacity = "0";
+    document.getElementById("title-text").style.opacity = "0";
+    document.getElementById("subtitle-text").style.opacity = "0";
+    document.getElementById("controls").classList.remove("show");
+
+    starNodes.forEach(n => {
+      n.el.style.opacity = "0";
+      n.el.style.transition = "opacity 0.6s, transform 0.6s";
+    });
+
+    // 按时区 → 星级排序点亮
+    const order = starNodes.map((n, i) => i).sort((a, b) => {
+      const A = starNodes[a].author, B = starNodes[b].author;
+      if (A.tz !== B.tz) return A.tz - B.tz;
+      if (A.tier !== B.tier) return B.tier - A.tier;
+      return 0;
+    });
+
+    let lit = 0;
+    order.forEach((idx, i) => {
+      setTimeout(() => {
+        const n = starNodes[idx];
+        n.el.style.opacity = "1";
+        n.el.style.transform = `translate(${n.author.x}px, ${n.author.y}px) scale(1.4)`;
+        setTimeout(() => {
+          n.el.style.transform = `translate(${n.author.x}px, ${n.author.y}px) scale(1)`;
+        }, 250);
+        lit++;
+        counter.textContent = lit;
+      }, animateMode ? i * 115 : 0);
+    });
+
+    const totalTime = animateMode ? order.length * 115 + 300 : 100;
+
+    setTimeout(() => {
+      const fourStars = starNodes.filter(n => n.author.tier === 4);
+      const cx = fourStars.reduce((s, n) => s + n.author.x, 0) / fourStars.length;
+      const cy = fourStars.reduce((s, n) => s + n.author.y, 0) / fourStars.length;
+      const sorted = [...fourStars].sort((a, b) => {
+        return Math.atan2(a.author.y - cy, a.author.x - cx) - Math.atan2(b.author.y - cy, b.author.x - cx);
+      });
+      for (let i = 0; i < sorted.length; i++) {
+        const A = sorted[i].author;
+        const B = sorted[(i + 1) % sorted.length].author;
+        const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        line.setAttribute("x1", A.x);
+        line.setAttribute("y1", A.y);
+        line.setAttribute("x2", A.x);
+        line.setAttribute("y2", A.y);
+        line.setAttribute("stroke", "#FFD86B");
+        line.setAttribute("stroke-width", "0.6");
+        line.setAttribute("opacity", "0.5");
+        line.setAttribute("filter", "url(#glow-soft)");
+        connLayer.appendChild(line);
+        setTimeout(() => {
+          line.style.transition = "all 0.8s ease-out";
+          line.setAttribute("x2", B.x);
+          line.setAttribute("y2", B.y);
+        }, i * 120 + 50);
+      }
+      connLayer.style.transition = "opacity 0.6s";
+      connLayer.style.opacity = "1";
+
+      setTimeout(() => {
+        document.getElementById("brand-text").style.transition = "opacity 1.2s ease-in";
+        document.getElementById("brand-text").style.opacity = "1";
+        document.getElementById("title-text").style.transition = "opacity 1s 0.5s";
+        document.getElementById("title-text").style.opacity = "1";
+        document.getElementById("subtitle-text").style.transition = "opacity 1s 0.9s";
+        document.getElementById("subtitle-text").style.opacity = "0.85";
+        document.getElementById("controls").classList.add("show");
+      }, sorted.length * 120 + 400);
+    }, totalTime);
+  }
+
+  createStars();
+  setTimeout(() => ignite(true), 200);
+
+  document.getElementById("btn-replay").addEventListener("click", () => ignite(true));
+  document.getElementById("btn-filter-4").addEventListener("click", () => {
+    starNodes.forEach(n => {
+      n.el.style.transition = "opacity 0.4s";
+      n.el.style.opacity = n.author.tier === 4 ? "1" : "0.08";
+    });
+  });
+  document.getElementById("btn-filter-all").addEventListener("click", () => {
+    starNodes.forEach(n => {
+      n.el.style.transition = "opacity 0.4s";
+      n.el.style.opacity = "1";
+    });
+  });
+
+  // 全屏按钮
+  document.getElementById("btn-fullscreen").addEventListener("click", () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+    } else {
+      document.exitFullscreen();
+    }
+  });
+
+  // 键盘快捷键
+  document.addEventListener("keydown", (e) => {
+    if (e.key.toLowerCase() === "r") ignite(true);
+    if (e.key.toLowerCase() === "f") {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    }
+    if (e.key === "1") {
+      starNodes.forEach(n => {
+        n.el.style.transition = "opacity 0.4s";
+        n.el.style.opacity = n.author.tier === 4 ? "1" : "0.08";
+      });
+    }
+    if (e.key === "0") {
+      starNodes.forEach(n => {
+        n.el.style.transition = "opacity 0.4s";
+        n.el.style.opacity = "1";
+      });
+    }
+  });
+
+  // 四星和三星的光环呼吸效果
+  let pulseT = 0;
+  setInterval(() => {
+    pulseT += 0.04;
+    starNodes.forEach(n => {
+      if (n.author.tier >= 3) {
+        const o = 0.4 + Math.sin(pulseT + n.author.x * 0.01) * 0.25;
+        n.halo.setAttribute("opacity", o.toFixed(2));
+      }
+    });
+  }, 50);
+})();
+</script>
+
+</body>
+</html>
