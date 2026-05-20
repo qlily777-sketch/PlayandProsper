@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小鸭子写法 ·《AI 时代的财富思维》建议写法</title>
+<style>
+  :root {
+    --bg-page: #FAFAF7;
+    --bg-card: #FFFFFF;
+    --bg-secondary: #F1EFE8;
+    --text-primary: #1A1A1A;
+    --text-secondary: #5F5E5A;
+    --text-tertiary: #888780;
+    --border: rgba(0,0,0,0.08);
+    --border-strong: rgba(0,0,0,0.15);
+    --font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    --font-serif: "Songti SC", "STSong", "SimSun", Georgia, serif;
+    --font-mono: "SF Mono", "Menlo", "Consolas", monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-page: #1A1A1A;
+      --bg-card: #2A2A2A;
+      --bg-secondary: #242422;
+      --text-primary: #F0F0F0;
+      --text-secondary: #B4B2A9;
+      --text-tertiary: #888780;
+      --border: rgba(255,255,255,0.08);
+      --border-strong: rgba(255,255,255,0.15);
+    }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--bg-page);
+    color: var(--text-primary);
+    line-height: 1.85;
+    padding: 2rem 1.2rem 4rem;
+  }
+
+  .container { max-width: 720px; margin: 0 auto; }
+
+  .book-tag {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 500;
+    margin: 0 0 0.4rem;
+    letter-spacing: 0.5px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin: 0 0 3rem;
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 3rem 0 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  h3 {
+    font-size: 17px;
+    font-weight: 500;
+    margin: 2rem 0 0.8rem;
+  }
+
+  p { margin: 0 0 1rem; font-size: 15px; }
+  .lead { font-size: 16px; }
+  .muted { color: var(--text-secondary); font-size: 14px; }
+  strong { font-weight: 500; }
+
+  .intro-box {
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 1.3rem 1.5rem;
+    margin: 1.5rem 0 2rem;
+    font-size: 15px;
+    line-height: 1.85;
+  }
+
+  .tagline {
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 1.3rem 1.5rem;
+    margin: 1.5rem 0 2rem;
+    font-size: 16px;
+  }
+  .tagline .big {
+    font-size: 19px;
+    font-weight: 500;
+    margin-top: 0.4rem;
+    display: block;
+  }
+
+  .story {
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 1.8rem 2rem;
+    margin: 1.5rem 0;
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    line-height: 2;
+  }
+  .story p { margin: 0 0 1rem; }
+  .story p:last-child { margin-bottom: 0; }
+
+  .rule-card {
+    border: 0.5px solid var(--border-strong);
+    border-radius: 12px;
+    padding: 1.3rem 1.5rem;
+    margin: 1rem 0 1.5rem;
+    background: var(--bg-card);
+  }
+  .rule-number {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 1.5px;
+    margin-bottom: 0.5rem;
+  }
+  .rule-card h3 { margin: 0 0 0.8rem; font-size: 18px; }
+
+  .compare {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 1rem 0 1.2rem;
+  }
+  .compare-row {
+    border-radius: 8px;
+    padding: 0.95rem 1.15rem;
+    font-size: 14.5px;
+    line-height: 1.8;
+  }
+  .less { background: #F1EFE8; color: #2C2C2A; }
+  .more { background: #E1F5EE; color: #04342C; }
+  @media (prefers-color-scheme: dark) {
+    .less { background: #2C2C2A; color: #D3D1C7; }
+    .more { background: #1A3D32; color: #9FE1CB; }
+  }
+  .compare-row .label {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    margin-bottom: 0.4rem;
+    opacity: 0.7;
+  }
+
+  .callout {
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    font-size: 14.5px;
+  }
+  .callout .label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .soft-tip {
+    background: #FAEEDA;
+    color: #412402;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    font-size: 14.5px;
+    line-height: 1.75;
+  }
+  @media (prefers-color-scheme: dark) {
+    .soft-tip { background: #2E1F08; color: #FAC775; }
+  }
+  .soft-tip .label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .list-replace {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+  .list-replace li {
+    padding: 0.8rem 0;
+    border-bottom: 0.5px solid var(--border);
+    font-size: 14.5px;
+    line-height: 1.75;
+  }
+  .list-replace li:last-child { border-bottom: none; }
+  .list-replace .arrow {
+    color: var(--text-secondary);
+    margin: 0 8px;
+  }
+
+  .number-chain {
+    background: #FAEEDA;
+    color: #412402;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    font-size: 14.5px;
+    line-height: 1.75;
+  }
+  @media (prefers-color-scheme: dark) {
+    .number-chain { background: #2E1F08; color: #FAC775; }
+  }
+  .number-chain .chain {
+    font-family: var(--font-mono);
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    margin: 0.5rem 0;
+    display: block;
+  }
+
+  .checklist {
+    background: var(--bg-card);
+    border: 0.5px solid var(--border-strong);
+    border-radius: 12px;
+    padding: 1.4rem 1.6rem;
+    margin: 1.5rem 0;
+  }
+  .checklist ol { padding-left: 1.5rem; margin: 0.8rem 0 0; }
+  .checklist li {
+    font-size: 14.5px;
+    line-height: 1.95;
+    padding: 0.3rem 0;
+  }
+  .checklist .footer {
+    margin-top: 1.2rem;
+    padding-top: 1rem;
+    border-top: 0.5px solid var(--border);
+    font-size: 14.5px;
+    color: var(--text-secondary);
+  }
+
+  .mantra {
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 1.6rem 1.8rem;
+    margin: 2rem 0;
+    font-family: var(--font-serif);
+    font-size: 17px;
+    line-height: 2.2;
+    text-align: center;
+  }
+  .mantra p { margin: 0; }
+
+  .closing {
+    margin: 2.5rem 0 0;
+    padding-top: 1.8rem;
+    border-top: 0.5px solid var(--border);
+  }
+  .closing .quote {
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 0.9rem 1.2rem;
+    margin: 0.8rem 0;
+    font-size: 14.5px;
+    font-family: var(--font-serif);
+  }
+
+  .divider {
+    text-align: center;
+    color: var(--text-tertiary);
+    margin: 2.5rem 0;
+    font-size: 14px;
+    letter-spacing: 6px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<span class="book-tag">《AI 时代的财富思维》 · 建议写法</span>
+<h1>小鸭子写法</h1>
+<p class="subtitle">写给每一位作者的一份参考</p>
+
+<div class="intro-box">
+  这是我们为这本书提供的一份<strong>建议写法</strong>，不是统一规定。每位作者都有自己的笔法和风格，这份参考的目的，是希望全书读起来有一种共同的呼吸感——故事有温度、细节有画面、读者读完心里有东西。<br><br>
+  如果某些建议不适合你的故事和你的笔法，可以放心地越过它。我们更在意的是<strong>真实</strong>，而不是<strong>整齐</strong>。
+</div>
+
+<h2>这本书希望的笔法</h2>
+
+<p class="lead">我们给这套笔法起了个名字，叫<strong>「小鸭子写法」</strong>——名字来自一个具体的故事（在下面）。它的内核是中文写作里早就有的白描传统，也参考了一些现代财经写作的表达方式（比如《金钱心理学》作者豪泽尔的风格）。</p>
+
+<div class="tagline">
+  如果只能记住一句话——
+  <span class="big">尽量不讲道理，让细节说话。</span>
+</div>
+
+<h2>为什么叫小鸭子写法</h2>
+
+<p>这个名字来自我小时候的一个故事。把这个故事放在手册的最前面，是因为读完它，你大概就能感觉到我们这本书想要的文字是什么样的。</p>
+
+<p>故事是这样的——</p>
+
+<div class="story">
+  <p>我小时候，家在哈尔滨旁边的一个县里，住在郊区。那年我读小学，八岁。</p>
+  <p>春天，我妈妈给我买了六只刚出生的小鸭子。毛茸茸的，黄黄的，特别可爱。</p>
+  <p>妈妈告诉我，等小鸭子长大了，可以拿去市场卖。卖了钱，我可以买我喜欢的东西，比如买书、交学费。</p>
+  <p>从那天开始，我每天都围着它们转——喂水、喂小米，带它们去田埂上放鸭，把菜叶切得细细的喂它们，看着它们从一小团毛球慢慢长大。</p>
+  <p>后来鸭子养大了。我才真正明白妈妈那句话的意思——原来，劳动是可以变成钱的。原来一个小孩子，也可以靠自己的努力创造价值。</p>
+  <p>出发去集市前，妈妈跟我说：现在鸭子的价格是两块五一只，你要是能卖到两块，也可以。</p>
+  <p>我抱着其中一只最大最壮的鸭子，第一次去了集市。</p>
+  <p>我蹲在市场边上，等人来买。等了半天，没有人来。</p>
+  <p>后来终于来了一个穿得很体面的成年人。他问我：小姑娘，这鸭子多少钱？</p>
+  <p>我心里想着妈妈的话——两块五，最低两块。我已经站了半天了，不敢多要。我说：两块。</p>
+  <p>他说：一块八卖不卖？</p>
+  <p>我想了想，答应了。</p>
+  <p>可他并没有立刻给我钱。他说：你跟我来，我给你拿钱。</p>
+  <p>于是我抱着鸭子跟着他，离开了热闹的市场，走到一个比较偏僻的地方。</p>
+  <p>然后他把手伸进口袋，摸了一会儿。又把另一边口袋也摸了一遍。最后他把两个口袋都翻了出来——口袋是空的，只有底下躺着一块二。</p>
+  <p>他看着我说：小姑娘，我只有一块二，你就一块二卖给我吧。</p>
+  <p>我一下愣住了。我年纪太小，不知道怎么拒绝。最后他拿走了我的鸭子，只给了我一块二。</p>
+  <p>那是我人生第一笔生意。也是我人生第一次，在金钱里感受到委屈。</p>
+  <p>我站在那里哭。不是因为少了一块三。而是因为——那只鸭子是我一个夏天亲手养大的，我每天喂它、照顾它、陪它长大。更重要的是，我第一次发现：原来，大人也会骗小孩。</p>
+  <p>很多年以后我才明白，那不是一只鸭子的故事。那是我人生财富观真正开始的地方。</p>
+  <p>那只毛毛鸭，后来没有了。但它让我第一次明白——钱，从来不只是钱。钱背后，藏着一个人的时间、劳动、感情、信任，还有尊严。</p>
+</div>
+
+<p>这段话不到 800 字，但你读完之后——那个蹲在市场边上等了半天没人来的八岁小女孩、她怀里抱的那只养得最大最壮的鸭子、那个穿得体面的男人、她心里默默想着的"两块五，最低两块"、她最后只敢说出口的"两块"、那两个被翻出来的空口袋、口袋底下躺着的那一块二——这些画面可能会留在你心里。</p>
+
+<p>整个故事里，没有出现"我们要警惕人性"、"诚信是商业的基础"、"童年经历塑造金钱观"这样的话。但这些感受，读者大概能自己感受到。</p>
+
+<p>这就是「小鸭子写法」想表达的——<strong>故事讲到位了，道理可以不用直接讲，读者会自己得到</strong>。</p>
+
+<div class="divider">· · ·</div>
+
+<h2>小鸭子写法的 5 条参考</h2>
+
+<p>把那个故事拆开看，里面藏着 5 条规律。这 5 条规律，可以作为你写这一章时的参考——能用上的就用，不顺手的就放下，别被它束缚。</p>
+
+<div class="rule-card">
+  <span class="rule-number">参考 01</span>
+  <h3>开场建议直接进场景</h3>
+  <div class="compare">
+    <div class="compare-row less">
+      <span class="label">道理开场</span>
+      "我想跟大家分享一个关于诚信的故事。这件事改变了我对金钱的看法……"
+    </div>
+    <div class="compare-row more">
+      <span class="label">场景开场</span>
+      "我小时候，家在哈尔滨旁边的一个县里，住在郊区。那年我读小学，八岁。"
+    </div>
+  </div>
+  <p>第一句话如果能给一个画面、一个具体事实、一个动作，读者比较容易一脚踩进故事里。门口先讲三分钟道理的开场，读者有时候会失去耐心。</p>
+</div>
+
+<div class="rule-card">
+  <span class="rule-number">参考 02</span>
+  <h3>句子可以短一些</h3>
+  <p>数一下小鸭子故事的句子——大部分都在 25 字左右。</p>
+  <div class="compare">
+    <div class="compare-row less">
+      <span class="label">长句</span>
+      "我当时年纪很小不知道怎么拒绝这个看起来很体面但其实是来骗小孩的成年人。"
+    </div>
+    <div class="compare-row more">
+      <span class="label">拆开来</span>
+      "我一下愣住了。我年纪太小，不知道怎么拒绝。最后他拿走了我的鸭子，只给了我一块二。"
+    </div>
+  </div>
+  <p>短句的好处是节奏——读起来像有人在耳边说话，不像在讲课。当然，如果某些段落需要长句营造氛围或铺陈思绪，那也完全可以——这是一个手感的事，不是死规矩。</p>
+</div>
+
+<div class="rule-card">
+  <span class="rule-number">参考 03</span>
+  <h3>数字、年份、地点尽量具体</h3>
+  <div class="compare">
+    <div class="compare-row less">
+      <span class="label">偏模糊</span>
+      "我小时候卖过一只鸭子，被一个人压了价。"
+    </div>
+    <div class="compare-row more">
+      <span class="label">偏具体</span>
+      "那年我八岁。市场价是两块五一只，妈妈说最低两块也可以。他出价一块八。最后他给了我一块二。"
+    </div>
+  </div>
+  <p>具体数字是这种写法的支柱。"两块"比"几块"更有质感，"八岁"比"小时候"更近，"哈尔滨郊区"比"乡下"更落地。</p>
+  <p>更有意思的是——<strong>数字本身也可以讲故事</strong>。小鸭子故事里的数字其实串成了一条让步的链条：</p>
+  <div class="number-chain">
+    一个孩子是怎么一步一步被砍到地板上的——
+    <span class="chain">2.5 → 2 → 1.8 → 1.2</span>
+    读者看着这条链条，自己就能感觉到。
+  </div>
+  <p class="muted">当然，如果你的故事就是需要"很多年前"、"那个夏天"这样的模糊时间感来营造氛围，也完全可以。具体不是绝对的好，模糊不是绝对的不好——看你的故事需要什么。</p>
+</div>
+
+<div class="rule-card">
+  <span class="rule-number">参考 04</span>
+  <h3>尽量让细节说话，少用抒情</h3>
+  <p>这一条，可能是这份建议里最值得琢磨的一条。</p>
+  <div class="compare">
+    <div class="compare-row less">
+      <span class="label">抒情写法</span>
+      "我感到非常委屈和愤怒。那种被欺骗的感觉，让我幼小的心灵受到了巨大的创伤。我深深地体会到了大人世界的复杂和残酷。"
+    </div>
+    <div class="compare-row more">
+      <span class="label">白描写法</span>
+      "他把手伸进口袋，摸了一会儿。又把另一边口袋也摸了一遍。最后他把两个口袋都翻了出来——口袋是空的，只有底下躺着一块二。"
+    </div>
+  </div>
+  <p>注意——白描那一段没有一个抒情词。写的全是<strong>动作</strong>（伸进、摸、翻、躺着），不是<strong>感受</strong>（委屈、愤怒、震惊、绝望）。但读完，那些感受大概都能传到读者那里。你甚至能看到那个成年人演戏的样子——他不是真的没钱，他是在表演给一个八岁的孩子看。这个表演，才是这一段最有力量的地方。</p>
+  <p>再看一组——同样是写一个孩子的紧张：</p>
+  <div class="compare">
+    <div class="compare-row less">
+      <span class="label">抒情</span>
+      "我非常焦虑，担心鸭子卖不出去。"
+    </div>
+    <div class="compare-row more">
+      <span class="label">白描</span>
+      "我蹲在市场边上，等人来买。等了半天，没有人来。"
+    </div>
+  </div>
+  <p>后一句没说"焦虑"两个字，但那个蹲在市场边上的孩子的孤独和紧张，读者大概能感受到。</p>
+  <p>这就是白描的魅力。<strong>能不直接说出情绪，就让动作和细节去传递</strong>——这一条多试试，可能会有惊喜。</p>
+  <div class="soft-tip">
+    <span class="label">小提醒</span>
+    抒情形容词不是不能用——比如"难过""复杂""震撼"这类词，少用一点、关键时候用一次，反而更有力。如果一段里堆三四个，读者就麻木了。
+  </div>
+  <p><strong>可以试试这样替换</strong>——不是说原来的写法不对，而是替换之后，画面感会更强：</p>
+  <ul class="list-replace">
+    <li>"我很难过" <span class="arrow">→</span> "我站在那里，手里的鸭子还在叫"</li>
+    <li>"我非常震惊" <span class="arrow">→</span> "我把账单看了三遍"</li>
+    <li>"心情很复杂" <span class="arrow">→</span> "我把烟点上，又掐灭了"</li>
+    <li>"他在骗我" <span class="arrow">→</span> "他把两个口袋都翻了出来，口袋是空的"</li>
+    <li>"我很焦虑" <span class="arrow">→</span> "我蹲在市场边上，等了半天，没有人来"</li>
+  </ul>
+</div>
+
+<div class="rule-card">
+  <span class="rule-number">参考 05</span>
+  <h3>结尾可以试着不下结论</h3>
+  <div class="compare">
+    <div class="compare-row less">
+      <span class="label">关上一扇门</span>
+      "所以我们要警惕人性的复杂，做生意一定要小心。"
+    </div>
+    <div class="compare-row more">
+      <span class="label">打开一扇窗</span>
+      "钱，从来不只是钱。钱背后，藏着一个人的时间、劳动、感情、信任，还有尊严。"
+    </div>
+  </div>
+  <p>前一种是告诉读者"故事结束了，道理我也讲完了"；后一种是让读者站在窗前往外看，自己想下去。</p>
+  <div class="callout">
+    <span class="label">如果结尾能凝练成一句话，这一句话最好——</span>
+    · 短一些（25 字以内手感最好）<br>
+    · 有画面感或反差感<br>
+    · 让读者愿意带走（发朋友圈、记在心里、某个夜里突然想起来）
+  </div>
+  <p>当然，如果你的故事就是适合一个明确的结论收尾，那也完全可以。这一条更多是一个"试试看"的建议。</p>
+</div>
+
+<h2>4 个可以对照的反例</h2>
+
+<p>下面 4 个例子，是写作时常见的几种容易让故事力量变弱的情况。看一下，可能对你检查自己的稿子有帮助。</p>
+
+<h3>反例 1 · 议论开场太长</h3>
+<div class="compare">
+  <div class="compare-row less">
+    <span class="label">议论开场</span>
+    "在我们的人生中，会遇到很多关于金钱的考验。这些考验往往以意想不到的方式出现，并深刻地影响我们的价值观。我记得我小时候卖鸭子的经历……"
+  </div>
+  <div class="compare-row more">
+    <span class="label">场景开场</span>
+    "我抱着一只最大最壮的鸭子，蹲在市场边上。那年我八岁。"
+  </div>
+</div>
+<p class="muted">开头如果有三句话都在讲道理，读者还没进入故事就可能走神了。</p>
+
+<h3>反例 2 · 抒情词堆叠</h3>
+<div class="compare">
+  <div class="compare-row less">
+    <span class="label">堆叠抒情</span>
+    "当那个男人把口袋翻给我看时，我的内心受到了巨大的冲击，那种被欺骗的感觉如同一把利刃，深深地刺痛了我幼小而脆弱的心灵。"
+  </div>
+  <div class="compare-row more">
+    <span class="label">让动作说话</span>
+    "他把两个口袋翻了出来。口袋是空的。我抱着鸭子，没说话。"
+  </div>
+</div>
+<p class="muted">四个抒情词叠在一起，反而冲淡了情绪的力量。一句"没说话"的份量，有时候比四个形容词都重。</p>
+
+<h3>反例 3 · 信息模糊</h3>
+<div class="compare">
+  <div class="compare-row less">
+    <span class="label">偏模糊</span>
+    "我小时候养过一些鸭子，后来在集市上卖给了一个大人，但是被他压了价。"
+  </div>
+  <div class="compare-row more">
+    <span class="label">偏具体</span>
+    "那年我八岁。市场价两块五，妈妈说最低两块。他出一块八。最后给了我一块二。"
+  </div>
+</div>
+<p class="muted">"一些"、"一个"、"压了价"——这些词读者抓不住，画面就立不起来。</p>
+
+<h3>反例 4 · 结尾直接说教</h3>
+<div class="compare">
+  <div class="compare-row less">
+    <span class="label">说教结尾</span>
+    "通过这件事，我明白了：在商业活动中，我们一定要保持警惕，学会保护自己的合法权益，不要轻信他人。"
+  </div>
+  <div class="compare-row more">
+    <span class="label">留白结尾</span>
+    "那只毛毛鸭，后来没有了。但它让我第一次明白——钱，从来不只是钱。"
+  </div>
+</div>
+<p class="muted">说教式的结尾，读者会觉得被当成学生。留白式的结尾，读者会想自己接下去。</p>
+
+<h2>写完之后，可以用这 5 个问题检查一下</h2>
+
+<div class="checklist">
+  <p style="margin: 0 0 0.5rem; font-size: 14px; color: var(--text-secondary);">不是必答题，是用来发现可以再打磨的地方——</p>
+  <ol>
+    <li>开场第一句，有画面或具体事实吗？</li>
+    <li>有没有过长的句子可以拆？</li>
+    <li>数字、年份、地点，是不是可以再具体一点？</li>
+    <li>有没有抒情形容词可以用动作或细节替换？</li>
+    <li>结尾那句话，是教训式的，还是留白式的？</li>
+  </ol>
+  <div class="footer">5 条都能轻松回应，这一稿大概就比较接近小鸭子写法了。</div>
+</div>
+
+<h2>一句话记住小鸭子写法</h2>
+
+<div class="mantra">
+  <p>故事讲到位了，道理可以不讲。</p>
+  <p>细节说出来了，情绪自己到。</p>
+  <p>窗户打开了，读者自己看。</p>
+</div>
+
+<div class="closing">
+  <p>这就是这本书想跟每位作者分享的一份写作参考。如果有一天，有读者读完你的那一章，对自己说一句——</p>
+  <div class="quote">"我好像看到了那个画面。"</div>
+  <p style="margin: 0.8rem 0 0;">那这一章就成了。</p>
+</div>
+
+</div>
+</body>
+</html>
