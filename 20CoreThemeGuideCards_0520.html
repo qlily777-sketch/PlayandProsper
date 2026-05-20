@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>20 个母题导读卡 v2 · 边玩边赚:AI 时代的财富思维</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;900&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1612;
+    --ink-mid: #3d3328;
+    --ink-light: #6b5d52;
+    --ink-faint: #c0b0a0;
+    --paper: #f7f3ee;
+    --paper-warm: #efe9e0;
+    --gold: #b8860b;
+    --c1: #5c3d2e; --c1-bg: #f5ede6;
+    --c2: #2d5a3d; --c2-bg: #e8f4ed;
+    --c3: #7a2020; --c3-bg: #f5e8e8;
+    --c4: #1a4a6b; --c4-bg: #e8f0f8;
+    --c5: #5a3a7a; --c5-bg: #f0eaf8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+  .page {
+    position: relative; z-index: 1;
+    max-width: 680px; margin: 0 auto;
+    padding: 60px 32px 120px;
+  }
+
+  /* header */
+  .header {
+    text-align: center; margin-bottom: 40px;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.1s;
+  }
+  .header-tag {
+    font-size: 11px; letter-spacing: 0.2em; color: var(--ink-light);
+    border: 0.5px solid var(--ink-faint);
+    display: inline-block; padding: 5px 16px; margin-bottom: 20px;
+  }
+  .header-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(24px, 4vw, 34px); font-weight: 900;
+    color: var(--ink); margin-bottom: 10px; line-height: 1.3;
+  }
+  .header-line { width: 36px; height: 1.5px; background: var(--gold); margin: 16px auto; }
+  .header-desc {
+    font-size: 14px; color: var(--ink-light); line-height: 2;
+    max-width: 520px; margin: 0 auto;
+  }
+
+  /* soul box —— 灵魂句 */
+  .soul {
+    background: var(--paper-warm);
+    border: 0.5px solid var(--ink-faint);
+    padding: 28px 28px 22px;
+    text-align: center;
+    margin-bottom: 44px;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+  .soul-label {
+    font-size: 10px; letter-spacing: 0.25em;
+    color: var(--gold); margin-bottom: 14px;
+    font-weight: 500;
+  }
+  .soul-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 19px; color: var(--ink);
+    line-height: 2; font-weight: 600;
+  }
+  .soul-text .soul-divider {
+    display: block; width: 24px; height: 0.5px;
+    background: var(--ink-faint); margin: 10px auto;
+  }
+  .soul-sub {
+    margin-top: 16px;
+    font-size: 12px; color: var(--ink-light);
+    line-height: 1.8;
+  }
+
+  /* how to use */
+  .how-to {
+    background: var(--ink); color: var(--paper);
+    padding: 28px 32px; margin-bottom: 52px;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.3s;
+  }
+  .how-to .ht-title {
+    color: #d4a843; font-weight: 500;
+    font-size: 11px; letter-spacing: 0.2em;
+    display: block; margin-bottom: 20px;
+  }
+  .how-to .steps { list-style: none; }
+  .how-to .steps li {
+    display: flex; gap: 16px; align-items: flex-start;
+    margin-bottom: 16px; font-size: 14px; line-height: 1.8;
+    color: #d4c8bc;
+  }
+  .how-to .steps li:last-child { margin-bottom: 0; }
+  .step-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px; font-weight: 900;
+    color: #d4a843; min-width: 24px; line-height: 1.4;
+  }
+  .step-text strong { color: #fff; font-weight: 500; }
+  .how-to .ht-tip {
+    margin-top: 20px; padding-top: 18px;
+    border-top: 0.5px solid #3a3028;
+    font-size: 12px; color: #8a7a6e; line-height: 1.9;
+  }
+
+  /* chapter */
+  .chapter { margin-bottom: 52px; opacity: 0; animation: fadeUp 0.8s ease forwards; }
+  .ch1 { animation-delay: 0.4s; }
+  .ch2 { animation-delay: 0.55s; }
+  .ch3 { animation-delay: 0.7s; }
+  .ch4 { animation-delay: 0.85s; }
+  .ch5 { animation-delay: 1.0s; }
+
+  .chapter-header {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 16px; padding-bottom: 14px;
+    border-bottom: 1px solid var(--ink-faint);
+  }
+  .chapter-num { font-size: 10px; letter-spacing: 0.15em; color: var(--ink-light); min-width: 40px; }
+  .chapter-name { font-family: 'Noto Serif SC', serif; font-size: 20px; font-weight: 900; flex: 1; }
+  .chapter-sub { font-size: 12px; color: var(--ink-light); text-align: right; line-height: 1.5; max-width: 200px; }
+
+  .ch1 .chapter-name { color: var(--c1); }
+  .ch2 .chapter-name { color: var(--c2); }
+  .ch3 .chapter-name { color: var(--c3); }
+  .ch4 .chapter-name { color: var(--c4); }
+  .ch5 .chapter-name { color: var(--c5); }
+
+  /* cards */
+  .cards { display: flex; flex-direction: column; gap: 10px; }
+  .card {
+    border: 0.5px solid var(--ink-faint);
+    padding: 18px 20px; background: var(--paper-warm);
+    cursor: pointer; user-select: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .card:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.07); }
+  .card:active { transform: translateY(0); }
+
+  .ch1 .card { border-left: 3px solid var(--c1); }
+  .ch2 .card { border-left: 3px solid var(--c2); }
+  .ch3 .card { border-left: 3px solid var(--c3); }
+  .ch4 .card { border-left: 3px solid var(--c4); }
+  .ch5 .card { border-left: 3px solid var(--c5); }
+
+  .ch1 .card.selected { background: var(--c1-bg); border-color: var(--c1); }
+  .ch2 .card.selected { background: var(--c2-bg); border-color: var(--c2); }
+  .ch3 .card.selected { background: var(--c3-bg); border-color: var(--c3); }
+  .ch4 .card.selected { background: var(--c4-bg); border-color: var(--c4); }
+  .ch5 .card.selected { background: var(--c5-bg); border-color: var(--c5); }
+
+  .card-top { display: flex; align-items: flex-start; gap: 12px; }
+  .card-num { font-size: 10px; letter-spacing: 0.1em; color: var(--ink-faint); min-width: 24px; padding-top: 4px; }
+  .card-title { font-family: 'Noto Serif SC', serif; font-size: 15px; font-weight: 600; color: var(--ink); flex: 1; line-height: 1.6; }
+  .card-check {
+    width: 26px; height: 26px;
+    border: 1.5px solid var(--ink-faint); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 14px;
+    transition: all 0.2s ease; color: transparent; margin-top: 1px;
+  }
+  .card.selected .card-check { background: #e84393; border-color: #e84393; color: white; }
+  .card-desc { font-size: 13px; color: var(--ink-light); line-height: 1.8; padding-left: 36px; margin-top: 8px; }
+
+  .card-expand {
+    margin-top: 12px; margin-left: 36px;
+    overflow: hidden; max-height: 0;
+    transition: max-height 0.4s ease;
+  }
+  .card.selected .card-expand { max-height: 400px; }
+
+  .card-prompt {
+    font-size: 13px; color: var(--ink-mid); line-height: 1.9;
+    padding: 12px 16px; background: rgba(255,255,255,0.7);
+    border-left: 2px solid var(--gold);
+    margin-bottom: 10px;
+  }
+  .card-prompt.ai-hook {
+    border-left-color: #1a4a6b;
+    background: rgba(232, 240, 248, 0.6);
+    margin-top: 8px;
+  }
+  .card-prompt-label {
+    display: block;
+    font-size: 10px; letter-spacing: 0.15em;
+    color: var(--ink-light);
+    margin-bottom: 6px; font-weight: 500;
+  }
+  .card-action {
+    margin-top: 10px; font-size: 12px;
+    color: var(--ink-light); line-height: 1.8;
+    font-style: italic;
+  }
+
+  /* bottom */
+  .bottom {
+    opacity: 0; animation: fadeUp 0.8s ease forwards 1.2s;
+  }
+  .bottom-prose {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 17px; color: var(--ink-mid);
+    line-height: 2.2; text-align: center;
+    margin-bottom: 28px;
+  }
+  .bottom-box {
+    background: var(--ink); color: var(--paper);
+    padding: 28px 32px;
+  }
+  .bottom-box .bb-label {
+    color: #d4a843; font-weight: 500;
+    font-size: 11px; letter-spacing: 0.18em;
+    display: block; margin-bottom: 16px;
+  }
+  .bottom-steps { list-style: none; }
+  .bottom-steps li {
+    display: flex; align-items: flex-start; gap: 12px;
+    font-size: 14px; color: #d4c8bc; padding: 10px 0;
+    border-bottom: 0.5px solid #2a2018;
+    line-height: 1.7;
+  }
+  .bottom-steps li:last-child { border-bottom: none; }
+  .bs-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px; font-weight: 900;
+    color: #d4a843; min-width: 20px;
+  }
+  .bottom-note { margin-top: 18px; font-size: 12px; color: #8a7a6e; line-height: 1.9; }
+
+  .hr { border: none; border-top: 0.5px solid var(--ink-faint); margin: 44px 0; }
+
+  /* counter */
+  .counter-bar {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: var(--ink); color: var(--paper);
+    padding: 14px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    z-index: 100;
+    transform: translateY(100%); transition: transform 0.3s ease;
+  }
+  .counter-bar.visible { transform: translateY(0); }
+  .counter-left { font-size: 14px; }
+  .counter-left strong { color: #d4a843; font-size: 20px; margin: 0 4px; }
+  .counter-right { font-size: 11px; color: #8a7a6e; letter-spacing: 0.08em; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @media (max-width: 480px) {
+    .page { padding: 40px 18px 100px; }
+    .chapter-sub { display: none; }
+    .how-to { padding: 22px 20px; }
+    .bottom-box { padding: 22px 20px; }
+    .soul { padding: 22px 18px; }
+    .soul-text { font-size: 17px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- header -->
+  <div class="header">
+    <div class="header-tag">边玩边赚 · 35 位作者的写作入口</div>
+    <h1 class="header-title">20 个母题导读卡</h1>
+    <div class="header-line"></div>
+    <p class="header-desc">
+      这本书要写的,不是财富方法论,是财富故事。<br>
+      不是教读者怎么赚钱,是带他们看见——<br>
+      "玩"如何被"AI"转换成"赚"。
+    </p>
+  </div>
+
+  <!-- 灵魂句 -->
+  <div class="soul">
+    <span class="soul-label">这本书的灵魂句</span>
+    <div class="soul-text">
+      玩是心法,赚是结果
+      <span class="soul-divider"></span>
+      AI 是连接这两者的转换器
+    </div>
+    <p class="soul-sub">
+      每张卡片都在帮你找到一个具体瞬间——<br>
+      让"玩"显形,让"赚"自然来,让"AI"成为你的助力。
+    </p>
+  </div>
+
+  <!-- how to use -->
+  <div class="how-to">
+    <span class="ht-title">怎么用这 20 张卡</span>
+    <ul class="steps">
+      <li>
+        <span class="step-num">1</span>
+        <span class="step-text">从头读到尾,不用想太多,就是读。</span>
+      </li>
+      <li>
+        <span class="step-num">2</span>
+        <span class="step-text">读到哪张让你<strong>心跳</strong>——身体有反应,脑子里冒出一个画面——就点它。</span>
+      </li>
+      <li>
+        <span class="step-num">3</span>
+        <span class="step-text">心跳的卡会展开两个追问:<strong>故事问题</strong>挖你过去的那个瞬间,<strong>AI 钩问题</strong>把你带到今天。</span>
+      </li>
+      <li>
+        <span class="step-num">4</span>
+        <span class="step-text">两个问题都想清楚之后,<strong>打开 AI</strong>,把它们一起说给它听,让它陪你继续挖。</span>
+      </li>
+    </ul>
+    <p class="ht-tip">建议圈出 3-5 个心跳的。不需要全部圈,圈太多反而找不到重点。</p>
+  </div>
+
+  <!-- 第一篇:起源 -->
+  <div class="chapter ch1">
+    <div class="chapter-header">
+      <span class="chapter-num">第一篇</span>
+      <span class="chapter-name">底色</span>
+      <span class="chapter-sub">钱,最初是怎么进入我生命的</span>
+    </div>
+    <div class="cards">
+
+      <div class="card" onclick="toggleCard(this)">
+        <div class="card-top"><span class="card-num">01</span><span class="card-title">我家是怎么谈钱的</span><div class="card-check">♥</div></div>
+        <p class="card-desc">钱在你家是公开的话题,还是压低声音才能说的秘密?家里那种谈钱的方式,塑造了你今天的钱观。</p>
+        <div class="card-expand">
+          <div class="card-prompt">
+            <span class="card-prompt-label">故事问题</span>
+            👉 有没有一个画面,是你家人谈到钱时你至今还记得的?那天,你在哪里?他们说了什么?
+          </div>
+          <div class="card-prompt ai-hook">
+            <span class="card-prompt-label">AI 钩问题</span>
+            👉 现在 AI 时代,你那个从家里继承来的"钱观",还在帮你吗,还是在限制你?
+          </div>
+          <p class="card-action">想清楚这两个问题,打开 AI 一起说给它听。</p>
+        </div>
+      </div>
+
+      <div class="card" onclick="toggleCard(this)">
+        <div class="card-top"><span class="card-num">02</span><span class="card-title">第一次手里有钱</span><div class="card-check">♥</div></div>
+        <p class="card-desc">不是赚得最多的那次,是第一次。手里攥着钱的那一刻,你身体里冒出来的是什么?</p>
+        <div class="card-expand">
+          <div class="card-prompt">
+            <span class="card-prompt-label">故事问题</span>
+            👉 你第一次手里攥着钱,是几岁?那是什么钱?后来你拿这笔钱干嘛了?
+          </div>
+          <div class="card-prompt ai-hook">
+            <span class="card-prompt-label">AI 钩问题</span>
+            👉 那一刻心里冒出来的"渴望",今天 AI 让你更容易实现了吗,还是反而让你想要的变了?
+          </div>
+          <p class="card-action">想清楚这两个问题,打开 AI 一起说给它听。</p>
+        </div>
+      </div>
+
+      <div class="card" onclick="toggleCard(this)">
+        <div class="card-top"><span class="card-num">03</span><span class="card-title">穷过,或者怕穷过</span><div class="card-check">♥</div></div>
+        <p class="card-desc">穷本身不是问题,怕穷才是。那个恐惧从哪里来?你今天还带着它吗?</p>
+        <div class="card-expand">
+          <div class="card-prompt">
+            <span class="card-prompt-label">故事问题</span>
+            👉 你人生里有没有一段时间,钱这件事让你睡不着觉?那段时间最难的一天,你做了什么?
+          </div>
+          <div class="card-prompt ai-hook">
+            <span class="card-prompt-label">AI 钩问题</span>
+            👉 今天有了 AI,你那个"怕穷"的恐惧,有没有松动一些?哪一刻你意识到——"原来我可以不怕"?
+          </div>
+          <p class="card-action">想清楚这两个问题,打开 AI 一起说给它听。</p>
+        </div>
+      </div>
+
+      <div class="card" onclick="toggleCard(this)">
+        <div class="card-top"><span class="card-num">04</span><span class="card-title">第一次为钱低过头</span><div class="card-check">♥</div></div>
+        <p class="card-desc">为了钱(或者为了省钱),做过一件事——事后想起来心里有点别扭,但当时觉得"就这样吧"。</p>
+        <div class="card-expand">
+          <div class="card-prompt">
+            <span class="card-prompt-label">故事问题</span>
+            👉 那件事是什么?发生在哪里?有没有别人在场?你做完之后第一个反应是什么?
+          </div>
+          <div class="card-prompt ai-hook">
+            <span class="card-prompt-label">AI 钩问题</span>
+            👉 今天再遇到一次,你会怎么做?AI 让你有了哪些以前没有的选择,可以不再"低头"?
+          </div>
+          <p class="card-action">想清楚这两个问题,打开 AI 一起说给它听。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 第二篇:看穿 -->
+  <div class="chapter ch2">
+    <div class="chapter-header">
+      <span class="chapter-num">第二篇</span>
+      <span class="chapter-name">看穿</span>
+      <span class="chapter-sub">那一刻,我看清了一件事</span>
+    </div>
+    <div class="cards">
+
+      <div class="card" onclick="toggleCard(this)">
+        <div class="card-top"><span class="card-num">05</span><span class="card-title">我以为努力就够了,直到那一天</span><div class="card-check">♥</div></div>
+        <p class="card-desc">你一直相信"努力 = 回报"。直到某一天,这个等式在你心里碎了。那一天发生了什么?</p>
+        <div class="card-expand">
+          <div class="card-prompt">
+            <span class="card-prompt-label">故事问题</span>
+            👉 那一天的具体场景是什么?谁说了什么,你看见了什么,你做了什么?
+          </div>
+          <div class="card-prompt ai-hook">
+            <span class="card-prompt-label">AI 钩问题</span>
+            👉 现在 AI 替你卷掉了一部分"硬"的努力,你有没有空出来的时间,做了一件"真正的"自己?
+          </div>
+          <p class="card-action">想清楚这两个问题,打开 AI 一起说给它听。</p>
+        </div>
+      </div>
+
+      <div class="card" onclick="toggleCard(this)">
+        <div class="card-top"><span class="card-num">06</span><span class="card-title">我以为是为了钱,后来发现不是</span><div class="card-check">♥</div></div>
+        <p class="card-desc">你有过一次,以为自己在"谈钱",后来才发现你真正在乎的根本不是钱。</p>
+        <div class="card-expand">
+          <div class="card-prompt">
+            <span class="card-prompt-label">故事问题</span>
+            👉 那次你以为自己在"争钱",其实在争的是什么?(尊严?话语权?被看见?自由?)
+          </div>
+          <div class="card-prompt ai-hook">
+            <span class="card-prompt-label">AI 钩问题</span>
+            👉 看清楚了"其实不是钱"之后,你现在面对类似的事,处理方式有没有变?
+          </div>
+          <p class="card-action">想清楚这两个问题,打开 AI 一起说给它听。</p>
+        </div>
+      </div>
+
+      <div class="card" onclick="toggleCard(this)">
+        <div class="card-top"><span class="card-num">07</span><span class="card-title">AI 算不出来的那个东西</span><div class="card-check">♥</div></div>
+        <p class="card-desc">你身上有一样东西,是 AI 学不会、复制不了的。它不是你的技能,是你的源代码。</p>
+        <div class="card-expand">
+          <div class="card-prompt">
+            <span class="card-prompt-label">故事问题</span>
+            👉 你身上有什么"别人觉得是缺点,你后来发现是底色"的特点?第一次发现它有用是什么时候?
+          </div>
+          <div class="card-prompt ai-hook">
+            <span class="card-prompt-label">AI 钩问题</span>
+            👉 AI 出来之后,你的这个"底色"是被淹没了,还是反而更被需要了?
+          </div>
+          <p class="card-action">想清楚这两个问题,打开 AI 一起说给它听。</p>
+        </div>
+      </div>
+
+      <div class="card" onclick="toggleCard(this)">
+        <div class="card-top"><span class="card-num">08</span><span class="card-title">AI 让一切变快,我还慢得下来吗</span><div class="card-check">♥</div></div>
+        <p class="card-desc">这是 AI 时代最尖锐的悖论:工具越快,人越急。你怎么处理这件事?</p>
+        <div class="card-expand">
+          <div class="card-prompt">
+            <span class="card-prompt-label">故事问题</span>
+            👉 你有没有一段时间,因为 AI 让你做事变快了,你反而比以前更焦虑?那段日子是怎么过的?
+          </div>
+          <div class="card-prompt ai-hook">
+            <span class="card-prompt-label">AI 钩问题</span>
+            👉 你后来怎么调过来的?是哪一刻你决定——"AI 替我快,我自己慢"?
+          </div>
+          <p class="card-action">想清楚这两个问题,打开 AI 一起说给它听。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 第三篇:上场 -->
+  <div class="chapter ch3">
+    <div class="chapter-header">
+      <span class="chapter-num">第三篇 ★</span>
+      <span class="chapter-name">上场</span>
+      <span class="chapter-sub">AI 让我做了以前不敢想的事</span>
+    </div>
+    <div class="cards">
+
+      <div class="card" onclick="toggleCard(this)">
+        <div class="card-top"><span class="card-num">09</span><span class="card-title">我用 AI 做了一件以前不敢想的事</span><div class="card-check">♥</div></div>
+        <p class="card-desc">不是学会了一个工具,是做成了一件事。一件你以前会说"我哪行"的事。</p>
+        <div class="card-expand">
+          <div class="card-prompt">
+            <span class="card-prompt-label">故事问题</span>
+            👉 那件事是什么?如果没有 AI,你会在什么时候做到,或者根本不会做?
+          </div>
+          <div class="card-prompt ai-hook">
+            <span class="card-prompt-label">AI 钩问题</span>
+            👉 做成了那件事之后,你心里那个"我不行"的声音,变小了一点吗?它还在跟你说什么?
+          </div>
+          <p class="card-action">想清楚这两个问题,打开 AI 一起说给它听。</p>
+        </div>
+      </div>
+
+      <div class="card" onclick="toggleCard(this)">
+        <div class="card-top"><span class="card-num">10</span><span class="card-title">用很小的东西,撬动了很大的结果</span><div class="card-check">♥</div></div>
+        <p class="card-desc">杠杆不是有钱人的专利。一个对话、一个智能体、一句话——也能撬动一件大事。</p>
+        <div class="card-expand">
+          <div class="card-prompt">
+            <span class="card-prompt-label">故事问题</span>
+            👉 你有没有一次,用很小的投入(几分钟、几句话、几次对话),撬动了一个让你自己都吃惊的结果?
+          </div>
+          <div class="card-prompt ai-hook">
+            <span class="card-prompt-label">AI 钩问题</span>
+            👉 那一刻你才意识到——"原来我也可以这样"。这种感觉,在 AI 之前你经历过吗?
+          </div>
+          <p class="card-action">想清楚这两个问题,打开 AI 一起说给它听。</p>
+        </div>
+      </div>
+
+      <div class="card" onclick="toggleCard(this)">
+        <div class="card-top"><span class="card-num">11</span><span class="card-title">热爱能变成钱吗</span><div class="card-check">♥</div></div>
+        <p class="card-desc">这是这本书最锋利的问题——你"玩"的那件事,真的能变成"赚"吗?你经历过这个转折点吗?</p>
+        <div class="card-expand">
+          <div class="card-prompt">
+            <span class="card-prompt-label">故事问题</span>
+            👉 你有没有一件事,做着做着,突然发现有人愿意为它付钱?那个人是谁?那笔钱多少?
+          </div>
+          <div class="card-prompt ai-hook">
+            <span class="card-prompt-label">AI 钩问题</span>
+            👉 AI 让你的"玩"放大了多少倍?从只能一个人玩,到可以服务多少人?
+          </div>
+          <p class="card-action">想清楚这两个问题,打开 AI 一起说给它听。</p>
+        </div>
+      </div>
+
+      <div class="card" onclick="toggleCard(this)">
+        <div class="card-top"><span class="card-num">12</span><span class="card-title">我原来不知道还有另一条路</span><div class="card-check">♥</div></div>
+        <p class="card-desc">第一曲线是你原来走的路。第二条曲线,是你后来才看见的那条。它怎么出现的?</p>
+        <div class="card-expand">
+          <div class="card-prompt">
+            <span class="card-prompt-label">故事问题</span>
+            👉 你现在的收入或事业里,有没有一部分是五年前完全想不到的?它是怎么开始的?
+          </div>
+          <div class="card-prompt ai-hook">
+            <span class="card-prompt-label">AI 钩问题</span>
+            👉 没有 AI,这条"第二曲线"能不能长出来?AI 在这条新路上,具体替你做了什么?
+          </div>
+          <p class="card-action">想清楚这两个问题,打开 AI 一起说给它听。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 第四篇:松弛 -->
+  <div class="chapter ch4">
+    <div class="chapter-header">
+      <span class="chapter-num">第四篇</span>
+      <span class="chapter-name">松弛</span>
+      <span class="chapter-sub">慢下来之后,反而走得更远</span>
+    </div>
+    <div class="cards">
+
+      <div class="card" onclick="toggleCard(this)">
+        <div class="card-top"><span class="card-num">13</span><span class="card-title">慢下来那一刻</span><div class="card-check">♥</div></div>
+        <p class="card-desc">不是累了停下来,是主动选择慢下来。是什么让你做了这个决定?</p>
+        <div class="card-expand">
+          <div class="card-prompt">
+            <span class="card-prompt-label">故事问题</span>
+            👉 你有没有一段时间,故意放慢了,结果反而走得更远?那段时间你具体做了什么、不做什么?
+          </div>
+          <div class="card-prompt ai-hook">
+            <span class="card-prompt-label">AI 钩问题</span>
+            👉 AI 替你卷掉了哪一部分,你才有空间慢下来?如果没有 AI,你能慢下来吗?
+          </div>
+          <p class="card-action">想清楚这两个问题,打开 AI 一起说给它听。</p>
+        </div>
+      </div>
+
+      <div class="card" onclick="toggleCard(this)">
+        <div class="card-top"><span class="card-num">14</span><span class="card-title">那些不在账户里的财富</span><div class="card-check">♥</div></div>
+        <p class="card-desc">最值钱的东西往往看不见——时间、健康、关系、判断力。你后来才看见的那一样是什么?</p>
+        <div class="card-expand">
+          <div class="card-prompt">
+            <span class="card-prompt-label">故事问题</span>
+            👉 你有没有一次,意识到自己拥有的某样东西比钱更值钱?那一刻发生在哪里?
+          </div>
+          <div class="card-prompt ai-hook">
+            <span class="card-prompt-label">AI 钩问题</span>
+            👉 AI 时代,这些"看不见的财富",反而变得更稀缺、还是更普通了?
+          </div>
+          <p class="card-action">想清楚这两个问题,打开 AI 一起说给它听。</p>
+        </div>
+      </div>
+
+      <div class="card" onclick="toggleCard(this)">
+        <div class="card-top"><span class="card-num">15</span><span class="card-title">钱够用就好,这句话你信吗</span><div class="card-check">♥</div></div>
+        <p class="card-desc">这句话说起来容易。你是什么时候开始真正相信(或者不再相信)它的?</p>
+        <div class="card-expand">
+          <div class="card-prompt">
+            <span class="card-prompt-label">故事问题</span>
+            👉 你有没有一个时刻,主动放弃了更多的钱,选择了别的什么?那个"别的"是什么?
+          </div>
+          <div class="card-prompt ai-hook">
+            <span class="card-prompt-label">AI 钩问题</span>
+            👉 AI 让你赚得更轻松之后,你对"够用"这两个字,有没有新的理解?
+          </div>
+          <p class="card-action">想清楚这两个问题,打开 AI 一起说给它听。</p>
+        </div>
+      </div>
+
+      <div class="card" onclick="toggleCard(this)">
+        <div class="card-top"><span class="card-num">16</span><span class="card-title">我在给谁打工</span><div class="card-check">♥</div></div>
+        <p class="card-desc">不一定是给老板。可能是给一个目标、一个执念、一个早就过时的自己。你现在的答案是什么?</p>
+        <div class="card-expand">
+          <div class="card-prompt">
+            <span class="card-prompt-label">故事问题</span>
+            👉 你有没有某一天突然意识到,你一直在为一个错误的目标努力?那一天发生了什么?
+          </div>
+          <div class="card-prompt ai-hook">
+            <span class="card-prompt-label">AI 钩问题</span>
+            👉 AI 让你看见了——你其实可以"不给那个人打工"了吗?现在你为谁工作?
+          </div>
+          <p class="card-action">想清楚这两个问题,打开 AI 一起说给它听。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 第五篇:活法 -->
+  <div class="chapter ch5">
+    <div class="chapter-header">
+      <span class="chapter-num">第五篇</span>
+      <span class="chapter-name">活法</span>
+      <span class="chapter-sub">不卷不累,活成自己想要的样子</span>
+    </div>
+    <div class="cards">
+
+      <div class="card" onclick="toggleCard(this)">
+        <div class="card-top"><span class="card-num">17</span><span class="card-title">时间自由和财富自由,哪个先来</span><div class="card-check">♥</div></div>
+        <p class="card-desc">很多人以为财富自由了才有时间自由。你的经历是这样吗,还是反过来?</p>
+        <div class="card-expand">
+          <div class="card-prompt">
+            <span class="card-prompt-label">故事问题</span>
+            👉 你有没有一段时间,钱不多但时间是自己的——那段时间你怎么过的?后悔吗?
+          </div>
+          <div class="card-prompt ai-hook">
+            <span class="card-prompt-label">AI 钩问题</span>
+            👉 AI 让"时间自由"先于"财富自由"第一次成为可能吗?在你身上,这件事是怎么发生的?
+          </div>
+          <p class="card-action">想清楚这两个问题,打开 AI 一起说给它听。</p>
+        </div>
+      </div>
+
+      <div class="card" onclick="toggleCard(this)">
+        <div class="card-top"><span class="card-num">18</span><span class="card-title">不卷的代价</span><div class="card-check">♥</div></div>
+        <p class="card-desc">不卷不是不努力,但它有代价。你付过什么代价?你后悔吗?</p>
+        <div class="card-expand">
+          <div class="card-prompt">
+            <span class="card-prompt-label">故事问题</span>
+            👉 你有没有因为选择"不卷",失去过什么或者被人质疑过?那个时刻是怎么熬过来的?
+          </div>
+          <div class="card-prompt ai-hook">
+            <span class="card-prompt-label">AI 钩问题</span>
+            👉 AI 时代,这种"不卷的代价",是变小了还是变大了?你现在还愿意付吗?
+          </div>
+          <p class="card-action">想清楚这两个问题,打开 AI 一起说给它听。</p>
+        </div>
+      </div>
+
+      <div class="card" onclick="toggleCard(this)">
+        <div class="card-top"><span class="card-num">19</span><span class="card-title">我和钱现在的关系</span><div class="card-check">♥</div></div>
+        <p class="card-desc">不是你有多少钱,是你们之间的关系。现在是什么状态?</p>
+        <div class="card-expand">
+          <div class="card-prompt">
+            <span class="card-prompt-label">故事问题</span>
+            👉 用一个比喻形容你现在和钱的关系——是老朋友、陌生人、伙伴、还是别的什么?
+          </div>
+          <div class="card-prompt ai-hook">
+            <span class="card-prompt-label">AI 钩问题</span>
+            👉 从过去到现在,你跟钱的关系变了几次?最近一次的变化,跟 AI 有关吗?
+          </div>
+          <p class="card-action">想清楚这两个问题,打开 AI 一起说给它听。</p>
+        </div>
+      </div>
+
+      <div class="card" onclick="toggleCard(this)">
+        <div class="card-top"><span class="card-num">20</span><span class="card-title">20 年后,你希望读者记住什么</span><div class="card-check">♥</div></div>
+        <p class="card-desc">这本书会被读到 2046 年。20 年后,有人读到你这一章——你希望他/她带走一句什么话?</p>
+        <div class="card-expand">
+          <div class="card-prompt">
+            <span class="card-prompt-label">故事问题</span>
+            👉 如果你的孩子、或者一个 20 年后的陌生人读到你这章,你希望他们记住哪一句话?
+          </div>
+          <div class="card-prompt ai-hook">
+            <span class="card-prompt-label">AI 钩问题</span>
+            👉 这一句话,放到 20 年后,还成立吗?它能穿越 AI 时代,继续生效吗?
+          </div>
+          <p class="card-action">想清楚这两个问题,打开 AI 一起说给它听。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="hr"></div>
+
+  <!-- bottom -->
+  <div class="bottom">
+    <p class="bottom-prose">
+      母题是入口,不是终点。<br>
+      心跳了,不要停在心跳那里。<br>
+      找出那个具体瞬间,接上 AI,边玩边赚就此开始。
+    </p>
+    <div class="bottom-box">
+      <span class="bb-label">完整行动链</span>
+      <ul class="bottom-steps">
+        <li><span class="bs-num">1</span>读 20 张卡,圈出心跳的 3-5 个</li>
+        <li><span class="bs-num">2</span>对着"故事问题",想出一个具体瞬间(根)</li>
+        <li><span class="bs-num">3</span>对着"AI 钩问题",想清楚它在你今天的延续(阳光)</li>
+        <li><span class="bs-num">4</span>打开 AI,把两个答案一起说给它听</li>
+        <li><span class="bs-num">5</span>让 AI 陪你挖深,直到一篇 2000 字成稿浮出来</li>
+      </ul>
+      <p class="bottom-note">不需要写完,不需要写好。你只需要找到那个瞬间,然后启动。<br>玩是心法,赚是结果——AI 在中间,等着你。</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="counter-bar" id="counterBar">
+  <span class="counter-left">已选 <strong id="countNum">0</strong> 个心跳母题</span>
+  <span class="counter-right">建议选 3-5 个</span>
+</div>
+
+<script>
+  let count = 0;
+  function toggleCard(card) {
+    const was = card.classList.contains('selected');
+    card.classList.toggle('selected');
+    count += was ? -1 : 1;
+    document.getElementById('countNum').textContent = count;
+    document.getElementById('counterBar').classList.toggle('visible', count > 0);
+  }
+</script>
+</body>
+</html>
