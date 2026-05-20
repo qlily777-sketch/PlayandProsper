@@ -405,6 +405,28 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--txt)
   content:'';flex:1;height:1px;
   background:linear-gradient(90deg,var(--border),transparent);
 }
+.modal-workbench-title{
+  font-size:16px;
+  font-weight:900;
+  color:#FFE89C;
+  letter-spacing:2px;
+  margin:2px 0 14px;
+}
+.modal-workbench-divider{
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--border),transparent);
+  margin:0 0 18px;
+}
+.modal-group-title{
+  font-size:12px;
+  font-weight:800;
+  color:var(--orange);
+  letter-spacing:2px;
+  margin:18px 0 10px;
+}
+.modal-group-title:first-child{
+  margin-top:0;
+}
 .modal-links{
   display:flex;flex-direction:column;gap:10px;
   margin-bottom:24px;
@@ -669,56 +691,55 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--txt)
       </div>
     </div>
 
-    <div class="modal-section-title">写作与出版历程</div>
+    <div class="modal-section-title">作者工作台</div>
+    <div class="modal-workbench-title">《边玩边赚》作者工作台</div>
+    <div class="modal-workbench-divider"></div>
+
     <div class="modal-links">
+      <div class="modal-group-title">一、先看这里</div>
 
       <a class="modal-link" href="PNP-2026-0517-财富思维邀请函.html">
-        <span class="modal-link-icon">💎</span>
+        <span class="modal-link-icon">1</span>
         <div>
-          <div class="modal-link-name">PNP 财富思维邀请函</div>
+          <div class="modal-link-name">邀请函</div>
           <div class="modal-link-desc">点击查看 2026.05.17 财富思维邀请函</div>
         </div>
         <span class="modal-link-arrow">→</span>
       </a>
 
       <a class="modal-link" href="PNP-2026-0520-01_V2_财富思维_定位终稿.html">
-        <span class="modal-link-icon">📍</span>
+        <span class="modal-link-icon">2</span>
         <div>
-          <div class="modal-link-name">PNP 财富思维定位终稿</div>
+          <div class="modal-link-name">定位终稿</div>
           <div class="modal-link-desc">点击查看 2026.05.20 财富思维定位终稿</div>
         </div>
         <span class="modal-link-arrow">→</span>
       </a>
 
+      <div class="modal-group-title">二、开始写</div>
+
       <a class="modal-link" href="两条路.html">
-        <span class="modal-link-icon">🛤️</span>
+        <span class="modal-link-icon">3</span>
         <div>
           <div class="modal-link-name">两条路</div>
-          <div class="modal-link-desc">点击查看《两条路》页面</div>
-        </div>
-        <span class="modal-link-arrow">→</span>
-      </a>
-
-      <a class="modal-link" href="小鸭子写法.html">
-        <span class="modal-link-icon">🦆</span>
-        <div>
-          <div class="modal-link-name">小鸭子写法</div>
-          <div class="modal-link-desc">点击查看《小鸭子写法》页面</div>
+          <div class="modal-link-desc">快车道与慢路 · 选择你的写作路径</div>
         </div>
         <span class="modal-link-arrow">→</span>
       </a>
 
       <a class="modal-link" href="边玩边赚3_时间线.html">
-        <span class="modal-link-icon">🗓️</span>
+        <span class="modal-link-icon">4</span>
         <div>
-          <div class="modal-link-name">写作出版时间线</div>
+          <div class="modal-link-name">时间线</div>
           <div class="modal-link-desc">5 月 — 10 月 · 五个月旅程 · 2026.06.06 全员交稿</div>
         </div>
         <span class="modal-link-arrow">→</span>
       </a>
 
+      <div class="modal-group-title">三、找同伴</div>
+
       <a class="modal-link" href="边玩边赚3_作者星图_0520.html">
-        <span class="modal-link-icon">🌟</span>
+        <span class="modal-link-icon">5</span>
         <div>
           <div class="modal-link-name">作者星图</div>
           <div class="modal-link-desc">35 颗星 · 每一位作者的故事与轨迹</div>
@@ -727,9 +748,9 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--txt)
       </a>
 
       <a class="modal-link" href="边玩边赚3_数钱搭子配对星图-0520.html">
-        <span class="modal-link-icon">💫</span>
+        <span class="modal-link-icon">6</span>
         <div>
-          <div class="modal-link-name">数钱搭子配对星图</div>
+          <div class="modal-link-name">数钱搭子</div>
           <div class="modal-link-desc">17 组搭子结成网 · 找到你的财富同行人</div>
         </div>
         <span class="modal-link-arrow">→</span>
