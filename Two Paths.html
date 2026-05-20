@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>两条路 ·《AI 时代的财富思维》写作路径</title>
+<style>
+  :root {
+    --bg-page: #FAFAF7;
+    --bg-card: #FFFFFF;
+    --bg-secondary: #F1EFE8;
+    --text-primary: #1A1A1A;
+    --text-secondary: #5F5E5A;
+    --text-tertiary: #888780;
+    --border: rgba(0,0,0,0.08);
+    --border-strong: rgba(0,0,0,0.15);
+    --accent-fast: #185FA5;
+    --accent-fast-bg: #E6F1FB;
+    --accent-slow: #0F6E56;
+    --accent-slow-bg: #E1F5EE;
+    --font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    --font-serif: "Songti SC", "STSong", "SimSun", Georgia, serif;
+    --font-mono: "SF Mono", "Menlo", "Consolas", monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-page: #1A1A1A;
+      --bg-card: #2A2A2A;
+      --bg-secondary: #242422;
+      --text-primary: #F0F0F0;
+      --text-secondary: #B4B2A9;
+      --text-tertiary: #888780;
+      --border: rgba(255,255,255,0.08);
+      --border-strong: rgba(255,255,255,0.15);
+      --accent-fast: #85B7EB;
+      --accent-fast-bg: #042C53;
+      --accent-slow: #5DCAA5;
+      --accent-slow-bg: #04342C;
+    }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--bg-page);
+    color: var(--text-primary);
+    line-height: 1.85;
+    padding: 2rem 1.2rem 4rem;
+  }
+
+  .container { max-width: 720px; margin: 0 auto; }
+
+  .book-tag {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 500;
+    margin: 0 0 0.4rem;
+    letter-spacing: 0.5px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin: 0 0 3rem;
+  }
+
+  h2 {
+    font-size: 22px;
+    font-weight: 500;
+    margin: 3rem 0 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  h3 {
+    font-size: 17px;
+    font-weight: 500;
+    margin: 2rem 0 0.8rem;
+  }
+
+  h4 {
+    font-size: 15px;
+    font-weight: 500;
+    margin: 1.4rem 0 0.6rem;
+    color: var(--text-secondary);
+  }
+
+  p { margin: 0 0 1rem; font-size: 15px; }
+  .lead { font-size: 16px; }
+  .muted { color: var(--text-secondary); font-size: 14px; }
+  strong { font-weight: 500; }
+
+  .intro-box {
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 1.3rem 1.5rem;
+    margin: 1.5rem 0 2rem;
+    font-size: 15px;
+    line-height: 1.85;
+  }
+
+  .path-overview {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 1.5rem 0 2rem;
+  }
+  .path-card {
+    border-radius: 12px;
+    padding: 1.2rem 1.4rem;
+    border: 0.5px solid var(--border-strong);
+  }
+  .path-card.fast { background: var(--accent-fast-bg); }
+  .path-card.slow { background: var(--accent-slow-bg); }
+  @media (prefers-color-scheme: dark) {
+    .path-card.fast { background: rgba(133, 183, 235, 0.08); }
+    .path-card.slow { background: rgba(93, 202, 165, 0.08); }
+  }
+  .path-card .name {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+  }
+  .path-card.fast .name { color: var(--accent-fast); }
+  .path-card.slow .name { color: var(--accent-slow); }
+  .path-card .deadline {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+  }
+  .path-card .desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-primary);
+  }
+
+  .path-section {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: var(--bg-card);
+    border: 0.5px solid var(--border-strong);
+    border-radius: 12px;
+  }
+  .path-section.fast { border-top: 3px solid var(--accent-fast); }
+  .path-section.slow { border-top: 3px solid var(--accent-slow); }
+  .path-section h2 {
+    margin-top: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .path-section.fast h2 { color: var(--accent-fast); }
+  .path-section.slow h2 { color: var(--accent-slow); }
+
+  .stage-card {
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 1.3rem 1.5rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .stage-number {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 1.5px;
+    margin-bottom: 0.5rem;
+  }
+  .stage-card h3 { margin: 0 0 0.8rem; font-size: 17px; }
+  .stage-card p { font-size: 14.5px; line-height: 1.85; }
+
+  .stage-card .why,
+  .stage-card .how,
+  .stage-card .checkpoint {
+    margin-top: 1rem;
+  }
+  .stage-card .meta-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    color: var(--text-tertiary);
+    margin-bottom: 0.4rem;
+  }
+
+  .epoch-list {
+    background: var(--bg-card);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+  }
+  .epoch-list .epoch {
+    padding: 0.7rem 0;
+    border-bottom: 0.5px solid var(--border);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .epoch-list .epoch:last-child { border-bottom: none; }
+  .epoch-list .epoch-name {
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.2rem;
+    display: block;
+  }
+  .epoch-list .epoch-questions {
+    color: var(--text-secondary);
+    font-size: 13.5px;
+  }
+
+  /* 12 题 + 4 题问题清单的样式 */
+  .question-list {
+    background: var(--bg-card);
+    border: 0.5px solid var(--border-strong);
+    border-radius: 12px;
+    padding: 1.2rem 1.4rem;
+    margin: 1.2rem 0;
+  }
+  .question-list .group-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 1px;
+    margin: 0 0 0.8rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .question-list .group-title:not(:first-child) {
+    margin-top: 1.2rem;
+  }
+  .question-list ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: q-counter;
+  }
+  .question-list ol li {
+    counter-increment: q-counter;
+    padding: 0.55rem 0 0.55rem 2.2rem;
+    font-size: 14.5px;
+    line-height: 1.75;
+    position: relative;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .question-list ol li:last-child { border-bottom: none; }
+  .question-list ol li::before {
+    content: counter(q-counter);
+    position: absolute;
+    left: 0;
+    top: 0.65rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+  }
+  .question-list ol.deepening { counter-reset: q-counter 12; }
+  .path-section.fast .question-list ol li::before {
+    background: var(--accent-fast-bg);
+    color: var(--accent-fast);
+  }
+  .path-section.slow .question-list ol li::before {
+    background: var(--accent-slow-bg);
+    color: var(--accent-slow);
+  }
+
+  .note-block {
+    background: #FAEEDA;
+    color: #412402;
+    border-radius: 8px;
+    padding: 0.9rem 1.2rem;
+    margin: 1rem 0;
+    font-size: 14px;
+    line-height: 1.75;
+  }
+  @media (prefers-color-scheme: dark) {
+    .note-block { background: #2E1F08; color: #FAC775; }
+  }
+  .note-block .label {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    margin-bottom: 0.4rem;
+  }
+
+  .checkpoint-block {
+    background: var(--accent-slow-bg);
+    color: var(--accent-slow);
+    border-radius: 8px;
+    padding: 0.9rem 1.2rem;
+    margin: 1rem 0;
+    font-size: 14px;
+    line-height: 1.75;
+    font-style: italic;
+  }
+  .path-section.fast .checkpoint-block {
+    background: var(--accent-fast-bg);
+    color: var(--accent-fast);
+  }
+  @media (prefers-color-scheme: dark) {
+    .checkpoint-block {
+      background: rgba(93, 202, 165, 0.1);
+      color: var(--accent-slow);
+    }
+    .path-section.fast .checkpoint-block {
+      background: rgba(133, 183, 235, 0.1);
+      color: var(--accent-fast);
+    }
+  }
+  .checkpoint-block .label {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    margin-bottom: 0.4rem;
+    font-style: normal;
+    opacity: 0.7;
+  }
+
+  .formula {
+    background: var(--bg-card);
+    border: 0.5px solid var(--border-strong);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    color: var(--text-primary);
+  }
+
+  .quote-block {
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 1.6rem 1.8rem;
+    margin: 2rem 0;
+    font-family: var(--font-serif);
+    font-size: 16px;
+    line-height: 2.1;
+    text-align: center;
+  }
+  .quote-block p { margin: 0 0 0.8rem; }
+  .quote-block p:last-child { margin: 0; }
+
+  .reminder-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+  .reminder-list li {
+    padding: 0.8rem 1rem;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    font-size: 14.5px;
+    line-height: 1.7;
+  }
+  .reminder-list li strong {
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .divider {
+    text-align: center;
+    color: var(--text-tertiary);
+    margin: 2.5rem 0;
+    font-size: 14px;
+    letter-spacing: 6px;
+  }
+
+  .tip-inline {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    margin: 0.5rem 0 1rem;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<span class="book-tag">《AI 时代的财富思维》 · 写作路径</span>
+<h1>两条路</h1>
+<p class="subtitle">快车道 与 慢路 · 怎么走</p>
+
+<div class="intro-box">
+  写《AI 时代的财富思维》这一章，我们设了两条路——快车道和慢路。<br><br>
+  两条路的终点是一样的：一章 2000 字左右、按小鸭子写法呈现、有你自己名字的财富故事。<br><br>
+  两条路的起点不同——
+</div>
+
+<div class="path-overview">
+  <div class="path-card fast">
+    <div class="name">快车道</div>
+    <div class="deadline">截稿 5/22 周四 23:59</div>
+    <div class="desc">适合那个瞬间已经在你心里很清楚的作者。从瞬间出发，三天左右出稿。</div>
+  </div>
+  <div class="path-card slow">
+    <div class="name">慢路</div>
+    <div class="deadline">截稿 5/29 周四 23:59</div>
+    <div class="desc">适合想借这次写作把自己和钱的关系梳理一遍的作者。从童年开始走，挖到今天，最后挑出那个真正改变你的瞬间深入。</div>
+  </div>
+</div>
+
+<p>下面分别讲清楚两条路怎么走。</p>
+
+<div class="divider">· · ·</div>
+
+<div class="path-section fast">
+
+<h2>快车道</h2>
+
+<h3>这条路适合谁</h3>
+<p>如果你心里已经有一个瞬间——不需要多戏剧化，但你想起它的时候会愣一下，那就是它——你可以走快车道。</p>
+
+<h3>怎么走</h3>
+<p>快车道分三个阶段。如果顺利的话，加起来 1.5 到 2 小时就能出一稿。</p>
+
+<div class="stage-card">
+  <span class="stage-number">阶段一</span>
+  <h3>把瞬间摸出来</h3>
+  <p>打开 AI（豆包、ChatGPT、Claude 都行），把你想写的那个瞬间用一句话告诉它。然后让它按下面 12 个问题依次问你——<strong>一次只问一个</strong>，你答完一个再问下一个。</p>
+  <p class="tip-inline">用语音回答，不要打字。完整的 AI 指令在第三份《傻瓜指令》文档里，复制粘贴就能用。</p>
+
+  <div class="question-list">
+    <div class="group-title">瞬间打捞 · 12 个问题</div>
+    <ol>
+      <li>这个瞬间发生在哪里？周围长什么样？光线、天气、颜色？</li>
+      <li>你身上穿的、手里拿的是什么？</li>
+      <li>有什么声音？人声、环境音、还是安静？</li>
+      <li>有什么气味或温度？</li>
+      <li>你身体里的反应是什么？心跳、发热、发冷、愣住、想哭？</li>
+      <li>那一年你多大？是哪一年？</li>
+      <li>涉及多少钱？要具体数字。</li>
+      <li>这件事持续了多久？</li>
+      <li>那个瞬间里，有谁说了一句你到今天还记得的话？把原话告诉我。</li>
+      <li>多年以后，你才明白……（请你补完）</li>
+      <li>这件事改变了你后来对什么的看法？</li>
+      <li>如果今天有一个跟当年的你一样大的孩子站在你面前，你会跟他/她说什么？</li>
+    </ol>
+  </div>
+
+  <p>12 题答完后，AI 会把你的回答整理成一份《瞬间档案》给你看。</p>
+  <p class="muted">这一步大概需要 30-45 分钟。</p>
+</div>
+
+<div class="stage-card">
+  <span class="stage-number">阶段二</span>
+  <h3>选一个标题</h3>
+  <p>AI 会基于《瞬间档案》给你 3 个备选标题。你选一个，或者要求重新出。</p>
+  <p>标题选定，整章的"气口"就定下来了。</p>
+</div>
+
+<div class="stage-card">
+  <span class="stage-number">阶段三</span>
+  <h3>一次性出整章</h3>
+  <p>选定标题后，AI 一次性输出完整的 2000 字：开场 150 字 + 故事 1200 字 + 提炼 500 字 + 金句 50 字。</p>
+  <p>读一遍，把不像你说话的句子改掉，把感觉不到温度的细节删掉。<strong>这一步只做减法，不做加法</strong>。</p>
+  <p>如果觉得某些地方还差点意思，让 AI 按小鸭子写法的 5 条建议再打磨一遍——句子太长的拆短一点、抒情形容词换成动作、结尾少一点说教。</p>
+</div>
+
+<h3>快车道的关键提醒</h3>
+<div class="note-block">
+  <span class="label">提醒</span>
+  快车道不是"赶出来"，是"准出来"。如果你在阶段一打捞的时候，发现那个瞬间比你想象的复杂、需要更多时间——可以随时切到慢路，截稿日延到 5/29，没有任何代价。<br><br>
+  <strong>切到慢路不是降级，是你的故事配得上更厚的处理。</strong>
+</div>
+
+</div>
+
+<div class="path-section slow">
+
+<h2>慢路</h2>
+
+<h3>这条路适合谁</h3>
+<p>如果你想借这次写作，回到过去把自己和钱的关系认真梳理一遍——不只是为了写出一章好文章，而是想在写完之后，自己也对一些事更通透一点，那么慢路是为你准备的。</p>
+
+<p>慢路的核心，是在动笔之前，先做两件快车道作者没有时间做的事——<strong>考古</strong>和<strong>选址</strong>。这两件事做完，剩下的写作过程和快车道完全一样。</p>
+
+<p>也就是说——</p>
+
+<div class="formula">
+  慢路 = 考古 + 选址 + 快车道
+</div>
+
+<h3>怎么走</h3>
+<p>慢路分四个阶段。前两个阶段是慢路独有的，后两个阶段和快车道一样。</p>
+
+<div class="stage-card">
+  <span class="stage-number">阶段一 · 慢路独有</span>
+  <h3>考古</h3>
+  <p><strong>这一阶段做什么</strong>：把你人生里和钱有关的事，全部掏出来摆在桌上。</p>
+
+  <div class="why">
+    <span class="meta-label">为什么要这样做</span>
+    <p>很多人坐下来写"我和钱的故事"，第一反应是去想"哪个故事最戏剧化、最适合写"——这是从结果倒推过程，写出来的东西往往是"表演给读者看的故事"，不是"长在你身上的故事"。</p>
+    <p>慢路反过来——先不想要写什么，先把所有和钱有关的记忆都翻出来。等你看到桌上摆着十几个、二十几个瞬间，才能从里面挑出真正属于你的那一个。</p>
+  </div>
+
+  <div class="how">
+    <span class="meta-label">怎么做</span>
+    <p>打开 AI，对它说你想做"财富考古"，让它一个时间段一个时间段地问你。你不用一气呵成做完，可以分几次——今天聊童年，明天聊少年，后天聊青年。</p>
+    <p>四个时间段的入口问题大致是这样：</p>
+  </div>
+
+  <div class="epoch-list">
+    <div class="epoch">
+      <span class="epoch-name">童年</span>
+      <span class="epoch-questions">你最早对钱的记忆是什么？爸妈是怎么谈钱的？家里有没有过和钱有关的争吵或喜悦？你第一次主动想要"拥有"什么？第一次知道"贵"和"便宜"的差别是怎么知道的？</span>
+    </div>
+    <div class="epoch">
+      <span class="epoch-name">少年</span>
+      <span class="epoch-questions">读书时和钱有关的、让你印象最深的三件事是什么？有没有过因为钱而羡慕、自卑、骄傲的瞬间？第一次自己赚到钱是怎么赚的？</span>
+    </div>
+    <div class="epoch">
+      <span class="epoch-name">青年</span>
+      <span class="epoch-questions">第一份工作的工资是多少？第一笔大额收入或支出是什么？第一次因为钱做的重要决定是什么？有没有过为钱委屈、丢脸、被骗、被低估？</span>
+    </div>
+    <div class="epoch">
+      <span class="epoch-name">成年到现在</span>
+      <span class="epoch-questions">这几年和钱有关的转折点、痛点、顿悟点。哪一次决定让你今天还后悔？哪一次让你庆幸？AI 时代来了之后，你对钱的看法有没有过某一刻突然变了？</span>
+    </div>
+  </div>
+
+  <div class="note-block">
+    <span class="label">两个重要说明</span>
+    <strong>一、不必按时间顺序。</strong>如果聊童年的时候突然想起一件去年的事，就先讲那件事——记忆冒出来的顺序，往往比时间表更接近真相。<br><br>
+    <strong>二、不必每个时间段都聊得一样多。</strong>可能某个阶段你有很多故事，某个阶段你想了半天什么都想不起来——这本身就是信息。哪个阶段记忆密度高，哪个阶段就是你的金矿。
+  </div>
+
+  <div class="checkpoint-block">
+    <span class="label">怎么知道这一阶段可以结束了</span>
+    当你感觉"桌上的瞬间够多了，再翻已经是凑数了"——就可以了。一般会有十几个到二十几个瞬间。让 AI 把这些内容整理成一份《个人财富图谱》。
+  </div>
+</div>
+
+<div class="stage-card">
+  <span class="stage-number">阶段二 · 慢路独有</span>
+  <h3>选址</h3>
+  <p><strong>这一阶段做什么</strong>：在这一桌子瞬间里，选出真正改变你的那一个。</p>
+
+  <div class="why">
+    <span class="meta-label">为什么要这样做</span>
+    <p>这本书每位作者只写一章 2000 字，所以慢路的核心不是"写多"，是"挖深"。挖深的前提，是选对那一个瞬间——选错了，再深挖也是浪费力气。</p>
+  </div>
+
+  <div class="how">
+    <span class="meta-label">怎么做</span>
+    <p>看着你的财富图谱，问自己一个问题：</p>
+    <p style="font-style: italic; color: var(--text-secondary); padding-left: 1rem; border-left: 2px solid var(--border-strong);">"这一长串瞬间里，哪一个是真正改变了我的？如果没有它，今天的我会不一样。"</p>
+    <p>不是"最戏剧化的"，不是"最有故事性的"——是<strong>如果抽走它，你今天就是另一个人</strong>的那一个。</p>
+    <p>挑的时候有几个判断标准可以参考：</p>
+    <ul style="padding-left: 1.4rem; margin: 0.5rem 0 1rem;">
+      <li style="margin-bottom: 0.4rem; font-size: 14.5px;">它至今还会让你愣一下——你想到它的时候，心里有一个微小的"咯噔"</li>
+      <li style="margin-bottom: 0.4rem; font-size: 14.5px;">它后来在你别的人生节点反复出现过——比如那个童年的瞬间，后来在你买房时、辞职时、和家人吵架时都隐隐冒出来</li>
+      <li style="margin-bottom: 0.4rem; font-size: 14.5px;">它有一个具体的画面——你闭上眼能看到它，而不是只能用一段话概括它</li>
+    </ul>
+    <p>如果犹豫不决，让 AI 帮你挑：把财富图谱给它，让它告诉你"在这份图谱里，哪一个瞬间最值得展开？为什么？" AI 看得到你自己看不到的连接——它会发现你反复提到的人、反复出现的情绪、你以为不重要但其实是关键的细节。</p>
+  </div>
+
+  <div class="note-block">
+    <span class="label">关于其他瞬间不浪费</span>
+    被你放弃的那些瞬间不会白翻。它们会成为你这一章里的<strong>背景纹理</strong>——你写核心瞬间的时候，那些没被选中的瞬间会自然渗透进来，让你的核心故事站得更稳。
+  </div>
+
+  <div class="checkpoint-block">
+    <span class="label">怎么知道这一阶段可以结束了</span>
+    当你确定那个瞬间，并且你能用一句话清楚地告诉别人"我要写哪个瞬间"——就可以进入下一阶段。
+  </div>
+</div>
+
+<div class="stage-card">
+  <span class="stage-number">阶段三 · 和快车道同路</span>
+  <h3>打捞 + 深挖</h3>
+  <p>从这一步开始，慢路和快车道走的是<strong>同一条路</strong>——只是慢路因为有时间，可以挖得更深一层。</p>
+
+  <div class="how">
+    <span class="meta-label">怎么做</span>
+    <p>把选定的瞬间告诉 AI，按快车道阶段一里那 12 个打捞问题（场景、感官、数字、对话、人物、提炼）依次回答。</p>
+    <p>12 题答完后，AI 会问你："要不要再深挖几个问题？" 慢路作者建议答"要"——再回答下面 4 个深挖问题：</p>
+  </div>
+
+  <div class="question-list">
+    <div class="group-title">瞬间深挖 · 4 个问题（慢路专属）</div>
+    <ol class="deepening">
+      <li>那个瞬间发生之前的 24 小时，你在做什么？你那天本来是什么心情？</li>
+      <li>那个瞬间之后的一周，你做了什么、没做什么？那一周你是怎么过的？</li>
+      <li>那个瞬间里，除了你之外的人，他们当时可能在想什么？试着站到对方的位置想一下。</li>
+      <li>这件事，你今天讲给别人听过吗？如果讲过，每次讲的版本一样吗？</li>
+    </ol>
+  </div>
+
+  <p><strong>最后这个问题特别重要</strong>——同一件事在不同时期讲的不同版本，里面藏着的是你不同时期的自己。把这些版本的差异说出来，你会突然看清楚某些东西。</p>
+
+  <div class="note-block">
+    <span class="label">关于挖到想停的地方</span>
+    如果挖到某个地方你想哭、想停、想跳过——<strong>停下来</strong>。这就是金子在的位置，也是疗愈最容易发生的地方。<br><br>
+    不是要你硬挖下去。是说——注意它，记住它在哪里。可以休息一下，倒杯水，过几天再回来。也可以告诉 AI："这个问题我先不答，我们继续下一个。" 这个瞬间的金子，可以最后再回来取。
+  </div>
+
+  <div class="checkpoint-block">
+    <span class="label">怎么知道这一阶段可以结束了</span>
+    当你读完《瞬间档案》，对自己说一句"哎，原来这件事里有这么多东西我自己都没意识到"——就可以了。
+  </div>
+</div>
+
+<div class="stage-card">
+  <span class="stage-number">阶段四 · 和快车道同路</span>
+  <h3>选标题 + 出整章</h3>
+  <p>这一步和快车道完全一样——</p>
+  <p>AI 基于《瞬间档案》给你 3 个备选标题，你选一个。然后让它一次性出整章：开场 150 字 + 故事 1200 字 + 提炼 500 字 + 金句 50 字。</p>
+  <p>慢路出来的成稿和快车道相比，最大的区别在<strong>提炼 500 字这一段</strong>——因为你不只是在写"那个瞬间教会我什么"，你是在写"那个瞬间在我整段人生里的位置"。提炼会更厚、更有层次。</p>
+  <p>读完初稿，按小鸭子写法的 5 条建议自己打磨一遍。</p>
+
+  <div class="checkpoint-block">
+    <span class="label">怎么知道这一阶段可以结束了</span>
+    当你读完自己的稿子，对自己说一句"嗯，这个故事我讲清楚了"——就可以了。不需要追求完美。
+  </div>
+</div>
+
+<h3>慢路的几句话</h3>
+
+<ul class="reminder-list">
+  <li>
+    <strong>慢路不是"写得慢"，是"挖得深"。</strong>
+    如果你只是因为不想赶时间所以选了慢路——那其实不需要走完整四个阶段，可以走类似快车道的路径，只是把时间拉长。慢路真正的价值，在前两个阶段——考古和选址。这是快车道作者没有时间做的事。
+  </li>
+  <li>
+    <strong>慢路允许换故事。</strong>
+    如果你在阶段三深挖某个瞬间的时候，发现这个瞬间还没准备好被写出来——可以换。回到阶段二的财富图谱，从里面再挑一个。这一桌子瞬间里，一定还有别的在等你。
+  </li>
+  <li>
+    <strong>慢路允许停下来。</strong>
+    如果你在任何一个阶段需要停几天消化——停。这是属于你自己的过程，不是任务。
+  </li>
+  <li>
+    <strong>写作的疗愈不是逼自己面对最痛的事。</strong>
+    是让你看清楚自己一路走来的样子。看清楚本身，就是疗愈。
+  </li>
+</ul>
+
+</div>
+
+<h2>两条路都要记住的一句话</h2>
+
+<div class="quote-block">
+  <p>这本书最后能不能打动人，</p>
+  <p>不取决于你的故事多戏剧化，</p>
+  <p>取决于你写的时候——</p>
+  <p style="font-weight: 500;">有没有真的回到那个瞬间里。</p>
+</div>
+
+<p>AI 可以帮你结构化、打磨、问问题，但 AI 没法替你"回去"。那一趟，只有你自己能走。</p>
+
+<p>走完了，文字里有没有温度，读者一眼就看得出来。</p>
+
+</div>
+</body>
+</html>
