@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>边玩边赚 · 四部曲 · 第四部 · 作者星海</title>
+<style>
+  :root{--serif:"Songti SC","STSong","思源宋体","Noto Serif SC",Georgia,serif;
+    --sans:"PingFang SC","思源黑体","Noto Sans SC","Microsoft YaHei",sans-serif;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;background:#04100c;overflow:hidden;font-family:var(--sans)}
+  canvas{display:block;position:fixed;inset:0}
+  .top{position:fixed;top:3.2%;left:0;right:0;z-index:3;text-align:center;pointer-events:none;opacity:0;transition:opacity 1.4s ease}.top.show{opacity:1}
+  .bk{font-family:var(--serif);font-weight:700;font-size:clamp(2.4rem,6.6vw,4.6rem);letter-spacing:.22em;text-indent:.22em;
+    background-image:linear-gradient(180deg,#ffe9a6 0%,#f7cd57 52%,#e0a838 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 46px rgba(244,196,90,.38)}
+  .bksub{margin-top:.3rem;font-family:var(--serif);font-weight:600;font-size:clamp(1.05rem,3vw,1.9rem);letter-spacing:.3em;text-indent:.3em;color:#d8ecdf}
+  .tag{margin-top:.45rem;font-weight:300;font-size:clamp(.74rem,1.9vw,1rem);letter-spacing:.5em;text-indent:.5em;color:#8fb6a3}
+  .cnt{position:fixed;top:18px;left:20px;z-index:6;font-family:var(--serif);font-size:.98rem;color:#cfe6d8;opacity:0;transition:opacity 1.4s ease;line-height:1.5}
+  .cnt.show{opacity:1}.cnt b{color:#f6dc97;font-weight:700}
+  .cnt .series{font-size:.76rem;letter-spacing:.3em;color:#9bbfad;margin-top:2px}
+  .ctrls{position:fixed;top:16px;right:16px;z-index:6;display:flex;gap:8px}
+  .ctrls button{font-family:var(--sans);font-size:.8rem;letter-spacing:.1em;color:#bcd0c5;background:rgba(14,34,26,.7);border:1px solid rgba(120,200,160,.28);border-radius:20px;padding:8px 15px;cursor:pointer;transition:.2s}
+  .ctrls button:hover{color:#eef6f0;border-color:rgba(240,200,110,.55)}
+  .ctrls button.on{color:#f6dc97;border-color:rgba(240,200,110,.7);background:rgba(40,30,10,.6)}
+  .legend{position:fixed;left:20px;bottom:18px;z-index:4;opacity:0;transition:opacity 1.4s ease;font-size:.8rem;line-height:1.95;color:#c2d6cb}.legend.show{opacity:1}
+  .legend .d{display:inline-block;border-radius:50%;margin-right:10px;vertical-align:middle;transform:translateY(-1px)}
+  .legend b{font-weight:600;color:#eef6f0}
+  .hint{position:fixed;right:20px;bottom:18px;z-index:5;font-weight:300;font-size:.74rem;letter-spacing:.18em;color:rgba(255,255,255,.3)}.hint b{color:rgba(255,255,255,.58);font-weight:500}
+  #tip{position:fixed;z-index:9;pointer-events:none;opacity:0;transform:translate(-50%,calc(-100% - 20px));transition:opacity .16s ease;min-width:140px;max-width:260px;
+    background:linear-gradient(180deg,rgba(10,26,20,.97),rgba(6,18,14,.97));border:1px solid rgba(120,200,160,.3);border-radius:13px;padding:12px 16px;box-shadow:0 14px 40px rgba(0,0,0,.55);text-align:center}
+  #tip.gold{border-color:rgba(240,200,110,.55)}
+  #tip .nm{font-family:var(--serif);font-size:1.25rem;font-weight:700;color:#eef6f0}#tip.gold .nm{color:#f6dc97}
+  #tip .tg{margin-top:4px;font-size:.84rem;color:#a9c6b8;font-weight:300}
+  #tip .mk{margin-top:8px;font-size:.7rem;letter-spacing:.16em;color:#7fa893}
+  #tip .mk i{font-style:normal;color:#3a5a4c;margin:0 1px}#tip .mk i.on{color:#f0c869}
+  #tip:after{content:"";position:absolute;left:50%;top:100%;transform:translateX(-50%);border:8px solid transparent;border-top-color:rgba(10,26,20,.97)}
+</style></head><body>
+  <canvas id="c"></canvas>
+  <div class="top" id="top">
+    <div class="bk">边 玩 边 赚</div>
+    <div class="bksub">AI 时代的个人品牌</div>
+  </div>
+  <div class="cnt" id="cntBox">
+    <div>点亮 <b id="cnt">0</b> / 35</div>
+    <div class="series">四部曲 · 第四部</div>
+  </div>
+  <div class="ctrls"><button id="bReplay">重新点亮</button><button id="bGold">只看金心</button><button id="bFull">全屏</button></div>
+  <div class="legend" id="lg">
+    <span class="d" style="width:15px;height:15px;background:#f7d57a;box-shadow:0 0 11px #f0c25a"></span><b>金心恒星</b> · 9　四度全勤 · 居中成心<br>
+    <span class="d" style="width:12px;height:12px;background:#7fdcab;box-shadow:0 0 0 2px #e6c25a,0 0 9px #d7a94f"></span><b>金边翻页人</b> · 7　（＋9 金心＝翻页 16）<br>
+    <span class="d" style="width:10px;height:10px;background:#9fe6c4;box-shadow:0 0 8px #5fd6a2"></span><b>纯新星</b> · 14<br>
+    <span class="d" style="width:10px;height:10px;background:#8fe0bd;box-shadow:0 0 8px #6fd6ac"></span><b>归来者</b> · 5　拖彗尾 · 走过又回来
+  </div>
+  <div class="hint"><b>悬停 / 点</b>星看本人 &nbsp;·&nbsp; <b>R</b> 重播 &nbsp;·&nbsp; <b>F</b> 全屏</div>
+  <div id="tip"><div class="nm"></div><div class="tg"></div><div class="mk"></div></div>
+<script>
+const AUTHORS=[{"name": "千百合", "mk": "1234", "tag": "AI时代商业重构者", "city": "达拉斯"}, {"name": "木晓", "mk": "1234", "tag": "正念摄影艺术家", "city": "上海"}, {"name": "邹娜", "mk": "1234", "tag": "AI智能体私域落地顾问", "city": "北京"}, {"name": "文亮", "mk": "1234", "tag": "一名感性的理工男", "city": "天津"}, {"name": "杰森（Jason）", "mk": "1234", "tag": "第二曲线开拓者", "city": "旧金山"}, {"name": "瑞秋（Rachel）", "mk": "24", "tag": "短租专家", "city": "多伦多"}, {"name": "德州康姐（Connie ）", "mk": "1234", "tag": "财富自由导师", "city": "达拉斯"}, {"name": "荣辉（Ronny）", "mk": "1234", "tag": "系统型思考者", "city": "多伦多"}, {"name": "杨志伶（Bridgit）", "mk": "4", "tag": "标签和自我介绍，我需要再想一想，晚些", "city": "达拉斯"}, {"name": "馨怡（JIE）", "mk": "234", "tag": "行动派创业者", "city": "多伦多"}, {"name": "李红烨", "mk": "4", "tag": "新思维的探索者", "city": "美国旧金山"}, {"name": "Michelle", "mk": "4", "tag": "靠谱", "city": "Houston,"}, {"name": "魏宏翰", "mk": "1234", "tag": "极客玩家", "city": "深圳"}, {"name": "金闰迪", "mk": "1234", "tag": "国家级营养师", "city": "深圳"}, {"name": "林子", "mk": "14", "tag": "学霸领航", "city": "深圳的黄冈人，"}, {"name": "微微", "mk": "24", "tag": "自在闲堂文创负责人", "city": "东莞成都"}, {"name": "易辰", "mk": "24", "tag": "18年资深地产营销总", "city": "深圳"}, {"name": "一雁", "mk": "4", "tag": "九江网络名人", "city": "九江 · 鄱阳湖"}, {"name": "唐笑长（唐于山）", "mk": "34", "tag": "全国硬笔书法金奖获得者", "city": "西安"}, {"name": "官荣堃", "mk": "34", "tag": "建材行业从业者｜孤勇者｜追光人", "city": "成都"}, {"name": "天山灵芝", "mk": "4", "tag": "中医传人及闻思修佛学智慧践行者", "city": "新疆乌鲁木齐"}, {"name": "刘小玲", "mk": "4", "tag": "积极正能量", "city": "38岁"}, {"name": "宝华", "mk": "24", "tag": "制造业通关老玩家", "city": "东莞"}, {"name": "小屿", "mk": "4", "tag": "玩愈岛岛主", "city": "沈阳"}, {"name": "张翠玲（Linda）", "mk": "34", "tag": "管理系统顾问｜AI应用实践者｜公益慈", "city": "广东省江门市"}, {"name": "黄庆", "mk": "4", "tag": "一人公司创业者：创内给实践者", "city": "深圳"}, {"name": "马继红", "mk": "4", "tag": "身心健康", "city": "普洱"}, {"name": "万可", "mk": "34", "tag": "35+女性身心疗愈领航者", "city": "云南昆明"}, {"name": "洪梓萱", "mk": "4", "tag": "资深疗愈师", "city": "上海"}, {"name": "顾也红", "mk": "4", "tag": "懂孩子+懂家长+有方法+有成果的全能", "city": "江苏连云港市"}, {"name": "唐墨池（莫迟）", "mk": "4", "tag": "【标签】", "city": "西安"}, {"name": "黄志铮（Lisa）", "mk": "34", "tag": "20年商业地产资深运营", "city": "深圳"}, {"name": "杨淇", "mk": "4", "tag": "", "city": "洛杉矶"}, {"name": "卢蔚青（Jennifer）", "mk": "134", "tag": "房地产规划与投资管理者", "city": "纽约"}, {"name": "韩玉娟（Sophia）", "mk": "4", "tag": "", "city": "达拉斯"}];
+const FSE='"Songti SC","STSong","Noto Serif SC",serif',FSA='"PingFang SC","Noto Sans SC",sans-serif';
+const cv=document.getElementById('c'),ctx=cv.getContext('2d'),tip=document.getElementById('tip');
+const elTop=document.getElementById('top'),elLg=document.getElementById('lg'),elCnt=document.getElementById('cnt'),elCntBox=document.getElementById('cntBox');
+let W,H,DPR,cx,cy,LR,TOPSAFE,stars=[],deco=[],links=[],bridges=[],petals=[],center=null,t0=performance.now(),goldOnly=false;
+let _s=20260607;function rnd(){_s=(_s*1664525+1013904223)>>>0;return _s/4294967296;}
+function tier(mk){return mk.length;}
+function role(mk){const h3=mk.includes('3'),h4=mk.includes('4');
+  if(mk==='1234')return'gold';if(h3&&h4)return'edge';if(h4&&!h3&&mk.length>1)return'ret';return'new';}
+function heartPts(n,off){const P=[];for(let i=0;i<n;i++){const t=Math.PI/2+off+i/n*2*Math.PI;
+  const x=16*Math.pow(Math.sin(t),3);const y=13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t);P.push([x,y]);}return P;}
+function build(){
+  DPR=Math.min(devicePixelRatio||1,2);W=cv.width=innerWidth*DPR;H=cv.height=innerHeight*DPR;
+  cv.style.width=innerWidth+'px';cv.style.height=innerHeight+'px';
+  cx=W/2;cy=H*0.605;LR=Math.min(W,H)*0.350;TOPSAFE=H*0.245;_s=20260607;stars=[];links=[];bridges=[];petals=[];
+  const gold=[],edge=[],nw=[],ret=[];
+  AUTHORS.forEach(a=>{a._r=role(a.mk);(a._r==='gold'?gold:a._r==='edge'?edge:a._r==='ret'?ret:nw).push(a);});
+  let qi=gold.findIndex(a=>a.name.indexOf('千百合')>=0);if(qi<0)qi=0;
+  const qbh=gold.splice(qi,1)[0];
+  {const _j=gold.findIndex(a=>a.name.indexOf('Jason')>=0||a.name.indexOf('杰森')>=0),
+       _w=gold.findIndex(a=>a.name.indexOf('魏宏翰')>=0);
+   if(_j>=0&&_w>=0){const tmp=gold[_j];gold[_j]=gold[_w];gold[_w]=tmp;}}
+  const SZ={4:0.039,3:0.029,2:0.0235,1:0.0182};
+  const hp=heartPts(gold.length,0.18);const xs=hp.map(p=>p[0]),ys=hp.map(p=>p[1]);
+  const miX=Math.min(...xs),maX=Math.max(...xs),miY=Math.min(...ys),maY=Math.max(...ys);
+  const hsc=(LR*1.0)/Math.max(maX-miX,maY-miY),hcx=(miX+maX)/2,hcy=(miY+maY)/2;
+  const ring=[];gold.forEach((a,i)=>{const px=cx+(hp[i][0]-hcx)*hsc,py=cy-(hp[i][1]-hcy)*hsc;
+    const s={a,x:px,y:py,role:'gold',r:LR*SZ[4],tw:rnd()*6.28,twS:.6+rnd()*.5,revealAt:4500+i*160};ring.push(s);stars.push(s);});
+  let mx=0,my=0;ring.forEach(s=>{mx+=s.x;my+=s.y;});mx/=ring.length;my/=ring.length;
+  center={a:qbh,x:mx,y:my,role:'gold',r:LR*SZ[4],tw:0,twS:.5,revealAt:4150,isCenter:true};stars.push(center);
+  ring.forEach(s=>petals.push({a:center,b:s,reveal:4350}));
+  for(let i=0;i<ring.length;i++)petals.push({a:ring[i],b:ring[(i+1)%ring.length],reveal:4700,outline:true});
+  const UP=-Math.PI/2, GAP=0.85, A0=UP+GAP, ASPAN=2*Math.PI-2*GAP;  // keep top-center clear for the title
+  function place(arr,r0,r1,phase,jit){const n=arr.length;
+    arr.forEach((a,i)=>{const ang=A0+ASPAN*((i+0.5)/n)+phase+(rnd()-.5)*jit,rad=r0+(r1-r0)*((i+rnd()*.6)/n);
+      const px=cx+Math.cos(ang)*rad,py=cy+Math.sin(ang)*rad*0.84;
+      const s={a,x:px,y:py,role:a._r,r:LR*SZ[tier(a.mk)],tw:rnd()*6.28,twS:.6+rnd()*.8,revealAt:400+rnd()*3200};
+      if(a._r==='ret'){const ta=Math.atan2(py-cy,px-cx);s.tail={tx:px+Math.cos(ta)*LR*0.20,ty:py+Math.sin(ta)*LR*0.18};}
+      stars.push(s);});}
+  place(edge,LR*0.56,LR*0.74,0.00,0.22);
+  place(ret ,LR*0.84,LR*1.02,0.35,0.22);
+  place(nw  ,LR*0.92,LR*1.22,0.15,0.22);
+  stars.filter(s=>s.role==='edge').forEach(s=>{let best=ring[0],bd=1e9;
+    ring.forEach(h=>{const d=Math.hypot(s.x-h.x,s.y-h.y);if(d<bd){bd=d;best=h;}});bridges.push({a:s,b:best,reveal:s.revealAt+200});});
+  const field=stars.filter(s=>s.role!=='gold');
+  field.forEach(s=>{let best=null,bd=1e9;field.forEach(o=>{if(o===s)return;const d=Math.hypot(s.x-o.x,s.y-o.y);if(d<bd){bd=d;best=o;}});
+    if(best&&bd<LR*0.52)links.push({a:s,b:best,reveal:Math.max(s.revealAt,best.revealAt)+150});});
+  deco=[];const dn=Math.round(Math.min(W,H)/DPR*0.20);
+  for(let i=0;i<dn;i++){const br=rnd();deco.push({x:rnd()*W,y:rnd()*H,r:(rnd()*1.3+.5)*DPR,
+    tw:rnd()*6.28,twS:.5+rnd()*1.7,dx:(rnd()-.5)*0.05*DPR,dy:(rnd()-.5)*0.04*DPR,
+    base:0.07+br*0.15,amp:0.09+rnd()*0.20,g:rnd()>.4});}
+  computeLabels();
+}
+addEventListener('resize',build);
+function clp(v){return v<0?0:v>1?1:v;}
+function dimF(s){return goldOnly&&s.role!=='gold'?0.1:1;}
+function orb(x,y,r,ap,gold){const R=r*2.2;const g=ctx.createRadialGradient(x,y,0,x,y,R);
+  if(gold){g.addColorStop(0,'rgba(255,252,244,'+ap+')');g.addColorStop(.16,'rgba(252,228,150,'+ap+')');g.addColorStop(.42,'rgba(236,184,82,'+(0.55*ap)+')');g.addColorStop(1,'rgba(236,184,82,0)');}
+  else{g.addColorStop(0,'rgba(246,255,251,'+ap+')');g.addColorStop(.2,'rgba(158,238,205,'+ap+')');g.addColorStop(.46,'rgba(58,192,140,'+(0.5*ap)+')');g.addColorStop(1,'rgba(58,192,140,0)');}
+  ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,R,0,6.29);ctx.fill();
+  ctx.fillStyle='rgba(255,255,255,'+ap+')';ctx.beginPath();ctx.arc(x,y,r*0.52,0,6.29);ctx.fill();}
+function glint(x,y,len,a){const grd=(x1,y1,x2,y2)=>{const g=ctx.createLinearGradient(x1,y1,x2,y2);
+  g.addColorStop(0,'rgba(255,240,200,0)');g.addColorStop(.5,'rgba(255,243,210,'+a+')');g.addColorStop(1,'rgba(255,240,200,0)');return g;};
+  ctx.lineWidth=Math.max(1,len*0.035);
+  ctx.strokeStyle=grd(x-len,y,x+len,y);ctx.beginPath();ctx.moveTo(x-len,y);ctx.lineTo(x+len,y);ctx.stroke();
+  ctx.strokeStyle=grd(x,y-len,x,y+len);ctx.beginPath();ctx.moveTo(x,y-len);ctx.lineTo(x,y+len);ctx.stroke();}
+function computeLabels(){
+  const pad=Math.max(10,LR*0.021);
+  for(const s of stars){const isG=s.role==='gold';
+    s._fs=Math.max(18,LR*0.050);
+    ctx.font=(isG?'700 ':'600 ')+s._fs+'px '+(isG?FSE:FSA);
+    s._lw=ctx.measureText(s.a.name).width;
+    let dx,dy;
+    if(s.isCenter){dx=0;dy=1;}else{dx=s.x-cx;dy=s.y-cy;const dl=Math.hypot(dx,dy)||1;dx/=dl;dy/=dl;}
+    s._lalign=dx>0.18?'left':dx<-0.18?'right':'center';
+    const off=s.r*1.7+8;
+    let acx=s.x+dx*off, acy=s.isCenter?(s.y+s.r*2.4+s._fs*0.7):(s.y+dy*(s.r*1.3+6));
+    s._lcx=acx + (s._lalign==='left'? s._lw/2 : s._lalign==='right'? -s._lw/2 : 0);
+    s._lcy=acy; s._ancx=s._lcx; s._ancy=acy;}
+  const HH=s=>s._fs*0.66;
+  for(let it=0;it<150;it++){
+    for(let i=0;i<stars.length;i++)for(let j=i+1;j<stars.length;j++){
+      const a=stars[i],b=stars[j];
+      const hwA=a._lw/2+pad,hwB=b._lw/2+pad,hhA=HH(a)+pad*0.55,hhB=HH(b)+pad*0.55;
+      const ddx=a._lcx-b._lcx,ddy=a._lcy-b._lcy;
+      const ox=(hwA+hwB)-Math.abs(ddx),oy=(hhA+hhB)-Math.abs(ddy);
+      if(ox>0&&oy>0){
+        if(oy<=ox*0.8){const sg=ddy===0?((i%2)?1:-1):(ddy>0?1:-1);a._lcy+=sg*oy/2;b._lcy-=sg*oy/2;}
+        else{const sg=ddx===0?((i%2)?1:-1):(ddx>0?1:-1);a._lcx+=sg*ox/2;b._lcx-=sg*ox/2;
+          const sy=ddy>=0?1:-1;a._lcy+=sy*oy*0.18;b._lcy-=sy*oy*0.18;}
+      }}
+    for(const s of stars){s._lcx+=(s._ancx-s._lcx)*0.032;s._lcy+=(s._ancy-s._lcy)*0.032;
+      const minY=TOPSAFE+s._fs*0.7;if(s._lcy<minY)s._lcy=minY;if(s._lcy>H-44)s._lcy=H-44;
+      const hw=s._lw/2;s._lcx=Math.max(70+hw,Math.min(W-70-hw,s._lcx));}
+  }
+}
+function drawLabel(s,ap){const df=dimF(s),isG=s.role==='gold';
+  ctx.font=(isG?'700 ':'600 ')+s._fs+'px '+(isG?FSE:FSA);
+  ctx.textAlign='center';ctx.textBaseline='middle';
+  const lx=s._lcx,ly=s._lcy,dxs=lx-s.x,dys=ly-s.y,dist=Math.hypot(dxs,dys);
+  if(dist>s.r*3+s._fs*0.9){const ux=dxs/dist,uy=dys/dist;
+    ctx.strokeStyle='rgba(180,212,196,'+(0.2*ap*df)+')';ctx.lineWidth=Math.max(1,LR*0.0013);
+    ctx.beginPath();ctx.moveTo(s.x+ux*s.r*1.6,s.y+uy*s.r*1.6);ctx.lineTo(lx-ux*s._fs*0.7,ly-uy*s._fs*0.7);ctx.stroke();}
+  ctx.lineJoin='round';ctx.lineWidth=Math.max(3.5,s._fs*0.24);ctx.strokeStyle='rgba(0,12,8,'+(0.82*ap*df)+')';ctx.strokeText(s.a.name,lx,ly);
+  ctx.fillStyle=isG?'rgba(250,224,156,'+(ap*df)+')':'rgba(226,244,233,'+(ap*df)+')';ctx.fillText(s.a.name,lx,ly);}
+function frame(now){const t=now-t0;
+  ctx.fillStyle='#04100c';ctx.fillRect(0,0,W,H);
+  const neb=ctx.createRadialGradient(cx,cy,0,cx,cy,LR*2.0);
+  neb.addColorStop(0,'rgba(20,86,60,.24)');neb.addColorStop(.45,'rgba(12,50,36,.12)');neb.addColorStop(1,'rgba(4,16,12,0)');
+  ctx.fillStyle=neb;ctx.beginPath();ctx.arc(cx,cy,LR*2.0,0,6.29);ctx.fill();
+  const dShow=clp(t/1600);
+  for(const d of deco){d.tw+=0.02*d.twS;d.x+=d.dx;d.y+=d.dy;
+    if(d.x<0)d.x+=W;else if(d.x>W)d.x-=W;if(d.y<0)d.y+=H;else if(d.y>H)d.y-=H;
+    const tk=0.5+0.5*Math.sin(d.tw),a=(d.base+d.amp*tk)*dShow,rr=d.r*(0.78+0.44*tk);
+    ctx.beginPath();ctx.arc(d.x,d.y,rr,0,6.29);ctx.fillStyle=(d.g?'rgba(205,238,222,':'rgba(165,222,196,')+a+')';ctx.fill();}
+  ctx.lineWidth=Math.max(.8,LR*0.0015);
+  for(const L of links){const lp=clp((t-L.reveal)/900);if(lp<=0)continue;
+    ctx.strokeStyle='rgba(120,210,165,'+(0.13*lp*Math.min(dimF(L.a),dimF(L.b)))+')';ctx.beginPath();ctx.moveTo(L.a.x,L.a.y);ctx.lineTo(L.b.x,L.b.y);ctx.stroke();}
+  ctx.lineWidth=Math.max(1,LR*0.0024);
+  for(const B of bridges){const lp=clp((t-B.reveal)/1000);if(lp<=0)continue;
+    ctx.strokeStyle='rgba(244,205,118,'+(0.28*lp*dimF(B.a))+')';ctx.shadowColor='rgba(244,205,118,.4)';ctx.shadowBlur=LR*0.018;
+    ctx.beginPath();ctx.moveTo(B.a.x,B.a.y);ctx.lineTo(B.b.x,B.b.y);ctx.stroke();ctx.shadowBlur=0;}
+  for(const P of petals){const lp=clp((t-P.reveal)/1100);if(lp<=0)continue;
+    ctx.lineWidth=P.outline?Math.max(1.4,LR*0.0032):Math.max(1,LR*0.0020);
+    ctx.strokeStyle='rgba(247,212,124,'+((P.outline?0.6:0.32)*lp)+')';ctx.shadowColor='rgba(244,205,118,.5)';ctx.shadowBlur=LR*0.022;
+    const ex=P.a.x+(P.b.x-P.a.x)*lp,ey=P.a.y+(P.b.y-P.a.y)*lp;ctx.beginPath();ctx.moveTo(P.a.x,P.a.y);ctx.lineTo(ex,ey);ctx.stroke();ctx.shadowBlur=0;}
+  let lit=0;
+  for(const s of stars){s.tw+=0.028*s.twS;const ap=clp((t-s.revealAt)/700);
+    if(t>=s.revealAt)lit++;if(ap<=0){s._sr=0;continue;}
+    const df=dimF(s),tk=0.6+0.4*Math.sin(s.tw),isG=s.role==='gold';
+    if(s.tail){const g=ctx.createLinearGradient(s.tail.tx,s.tail.ty,s.x,s.y);
+      g.addColorStop(0,'rgba(150,230,200,0)');g.addColorStop(1,'rgba(170,240,210,'+(0.5*ap*tk*df)+')');
+      ctx.strokeStyle=g;ctx.lineWidth=Math.max(1.5,LR*0.006);ctx.lineCap='round';ctx.beginPath();ctx.moveTo(s.tail.tx,s.tail.ty);ctx.lineTo(s.x,s.y);ctx.stroke();}
+    const r=isG?(s.r*ap*(1+0.05*Math.sin(t/700))):(s.r*(0.9+0.16*tk)*ap);
+    ctx.globalAlpha=df;orb(s.x,s.y,r,ap,isG);
+    if(isG)glint(s.x,s.y,r*3.0,0.5*ap);
+    if(s.role==='edge'){ctx.globalAlpha=df;ctx.lineWidth=Math.max(1.4,LR*0.0038);ctx.strokeStyle='rgba(244,205,118,'+(0.9*ap*tk)+')';ctx.beginPath();ctx.arc(s.x,s.y,r*1.5,0,6.29);ctx.stroke();}
+    ctx.globalAlpha=1;drawLabel(s,ap);s._sx=s.x;s._sy=s.y;s._sr=r;}
+  elCnt.textContent=Math.min(lit,35);
+  if(t>700){elTop.classList.add('show');elCntBox.classList.add('show');}
+  if(t>5900)elLg.classList.add('show');
+  requestAnimationFrame(frame);}
+function pick(mx,my){mx*=DPR;my*=DPR;let best=null,bd=1e9;
+  for(const s of stars){if(!s._sr)continue;if(goldOnly&&s.role!=='gold')continue;
+    const d=Math.hypot(mx-s._sx,my-s._sy),hit=Math.max(s._sr*2.6,18*DPR);if(d<hit&&d<bd){bd=d;best=s;}}return best;}
+function showTip(s){if(!s){tip.style.opacity='0';return;}const a=s.a;
+  tip.classList.toggle('gold',s.role==='gold');
+  tip.querySelector('.nm').textContent=a.name;
+  tip.querySelector('.tg').textContent=a.tag+(a.city?(' · '+a.city):'');
+  tip.querySelector('.mk').innerHTML='第 '+'1234'.split('').map(d=>'<i class="'+(a.mk.includes(d)?'on':'')+'">'+d+'</i>').join('·')+' 期';
+  tip.style.left=(s._sx/DPR)+'px';tip.style.top=(s._sy/DPR)+'px';tip.style.opacity='1';}
+cv.addEventListener('pointermove',e=>showTip(pick(e.clientX,e.clientY)));
+cv.addEventListener('pointerleave',()=>tip.style.opacity='0');
+cv.addEventListener('pointerdown',e=>showTip(pick(e.clientX,e.clientY)));
+function replay(){t0=performance.now();elTop.classList.remove('show');elLg.classList.remove('show');elCntBox.classList.remove('show');tip.style.opacity='0';build();}
+document.getElementById('bReplay').onclick=replay;
+document.getElementById('bGold').onclick=function(){goldOnly=!goldOnly;this.classList.toggle('on',goldOnly);this.textContent=goldOnly?'显示全部':'只看金心';};
+document.getElementById('bFull').onclick=()=>{if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.();};
+addEventListener('keydown',e=>{const k=e.key.toLowerCase();if(k==='r')replay();if(k==='f'){if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.();}});
+build();requestAnimationFrame(frame);
+</script></body></html>
