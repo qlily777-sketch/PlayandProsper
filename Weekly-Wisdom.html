@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>周锦囊 · 一句话回顾</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF6EC;--paper2:#F4E9D5;--ink:#2A2018;--dim:#7D7060;
+    --red:#D2372E;--redDeep:#A81E20;--gold:#B08A2E;--goldLite:#E8C766;
+    --jade:#1F6F78;--rule:rgba(42,32,24,.16);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:#EFE6D6;color:var(--ink);
+    font-family:"Noto Sans SC",-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+    display:flex;justify-content:center;padding:24px 12px 60px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .sheet{width:100%;max-width:750px;background:var(--paper);
+    box-shadow:0 2px 40px rgba(42,32,24,.1)}
+
+  .head{padding:36px 30px 30px;text-align:center;position:relative}
+  .head:before{content:"";position:absolute;left:16px;right:16px;top:16px;bottom:16px;
+    border:1px solid rgba(210,55,46,.3);pointer-events:none}
+  .head:after{content:"";position:absolute;left:21px;right:21px;top:21px;bottom:21px;
+    border:1px solid rgba(176,138,46,.35);pointer-events:none}
+  .brand{font-size:11px;letter-spacing:.42em;color:var(--red);font-weight:500;margin-bottom:20px}
+  .doctitle{font-family:"Noto Serif SC",serif;font-weight:900;font-size:50px;
+    letter-spacing:.34em;text-indent:.34em;color:var(--ink);line-height:1.1}
+  .docsub{margin-top:16px;font-size:15px;color:#4A3E32;letter-spacing:.08em}
+  .docmeta{margin-top:14px;font-family:"JetBrains Mono",monospace;font-size:11px;
+    letter-spacing:.16em;color:var(--dim)}
+
+  .lede{padding:30px 30px 26px;text-align:center;background:var(--paper2);
+    border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+  .lede p{font-family:"Noto Serif SC",serif;font-size:17px;line-height:2.05;color:#4A3E32}
+  .lede b{color:var(--red)}
+
+  /* 锦囊行 */
+  .list{padding:6px 0}
+  .item{padding:22px 30px;border-bottom:1px solid var(--rule);display:flex;gap:16px}
+  .item:last-child{border-bottom:none}
+  .lft{flex:0 0 52px;padding-top:2px}
+  .wk{font-family:"JetBrains Mono",monospace;font-weight:700;font-size:15px;
+    color:#FFF7E8;background:var(--red);padding:4px 0;text-align:center;letter-spacing:.04em}
+  .wk.plain{background:var(--gold)}
+  .dt{margin-top:7px;font-family:"JetBrains Mono",monospace;font-size:11px;
+    color:var(--dim);text-align:center;letter-spacing:.02em}
+  .rgt{flex:1;min-width:0}
+  .topic{font-size:14.5px;color:var(--dim);margin-bottom:8px;line-height:1.6}
+  .tip{font-family:"Noto Serif SC",serif;font-weight:600;font-size:25px;
+    line-height:1.55;color:var(--ink);letter-spacing:.03em}
+  .by{margin-top:11px;display:flex;align-items:center;gap:8px}
+  .byk{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.18em;color:var(--dim)}
+  .byn{font-size:16px;font-weight:700;color:var(--red);letter-spacing:.06em}
+
+  /* 断层 */
+  .gap{padding:26px 30px;background:var(--paper2);border-bottom:1px solid var(--rule);
+    border-top:1px solid var(--rule);text-align:center}
+  .gapk{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.2em;
+    color:var(--dim);margin-bottom:12px}
+  .gapt{font-family:"Noto Serif SC",serif;font-size:19px;line-height:1.95;color:#4A3E32}
+  .gapt b{color:var(--red);font-weight:700}
+
+  .foot{background:linear-gradient(165deg,var(--redDeep) 0%,#821518 100%);
+    padding:44px 30px 38px;text-align:center;color:#FFEFD6}
+  .foot .big{font-family:"Noto Serif SC",serif;font-size:27px;line-height:1.95;color:#FFF6E4}
+  .foot .big span{color:var(--goldLite)}
+  .foot .sub{margin-top:24px;font-size:15px;line-height:2;color:#F3D9BC}
+  .foot .sig{margin-top:30px;padding-top:18px;border-top:1px solid rgba(232,199,102,.28);
+    font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.18em;color:#DDB88E}
+
+  @media(max-width:520px){
+    .doctitle{font-size:36px}
+    .tip{font-size:21px}
+    .item{padding:20px 18px;gap:12px}
+    .lft{flex:0 0 46px}
+    .head{padding:28px 18px 26px}
+    .lede{padding:26px 18px 22px}
+    .gap{padding:22px 18px}
+    .foot .big{font-size:22px}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="head">
+    <div class="brand">边玩边赚 · 百日 AI 财富觉醒营</div>
+    <div class="doctitle">周锦囊</div>
+    <div class="docsub">一周一句，这是这一期听过的全部道理</div>
+    <div class="docmeta">12 场分享 &nbsp;/&nbsp; 2026.03.08 — 08.09</div>
+  </div>
+
+  <div class="lede">
+    <p>
+      刚才那张账，数的是我们<b>做出了什么</b>。<br>
+      这张，数的是我们<b>听过什么</b>。
+    </p>
+  </div>
+
+  <div class="list">
+
+    <div class="item">
+      <div class="lft"><div class="wk">W1</div><div class="dt">03.08</div></div>
+      <div class="rgt">
+        <div class="topic">开营 · 百日觉醒，从今天开始</div>
+        <div class="tip">说出口，才算数</div>
+        <div class="by"><span class="byk">主讲</span><span class="byn">千百合</span></div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="lft"><div class="wk">W2</div><div class="dt">03.15</div></div>
+      <div class="rgt">
+        <div class="topic">你是哪种财富人格？</div>
+        <div class="tip">没有人是疯子</div>
+        <div class="by"><span class="byk">主讲</span><span class="byn">千百合</span></div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="lft"><div class="wk">W3</div><div class="dt">03.22</div></div>
+      <div class="rgt">
+        <div class="topic">你一小时值多少钱？</div>
+        <div class="tip">时间得先标价</div>
+        <div class="by"><span class="byk">主讲</span><span class="byn">Ronny</span></div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="lft"><div class="wk">W4</div><div class="dt">03.29</div></div>
+      <div class="rgt">
+        <div class="topic">106 期智能体路演 · 观摩</div>
+        <div class="tip">原来普通人真的可以</div>
+        <div class="by"><span class="byk">主讲</span><span class="byn">路演学员</span></div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="lft"><div class="wk">W5</div><div class="dt">04.05</div></div>
+      <div class="rgt">
+        <div class="topic">你的钱花对了吗？</div>
+        <div class="tip">看清流向，<br>比看清收入重要</div>
+        <div class="by"><span class="byk">主讲</span><span class="byn">韦崇辉</span></div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="lft"><div class="wk">W6</div><div class="dt">04.12</div></div>
+      <div class="rgt">
+        <div class="topic">你身上最值钱的是什么？</div>
+        <div class="tip">值钱的是你已经会的</div>
+        <div class="by"><span class="byk">主讲</span><span class="byn">张一一</span></div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="lft"><div class="wk">W7</div><div class="dt">04.19</div></div>
+      <div class="rgt">
+        <div class="topic">你的复利拐点在哪年？</div>
+        <div class="tip">高估一年，低估十年</div>
+        <div class="by"><span class="byk">主讲</span><span class="byn">木晓</span></div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="lft"><div class="wk">W8</div><div class="dt">04.26</div></div>
+      <div class="rgt">
+        <div class="topic">你的经验，能帮谁？</div>
+        <div class="tip">先找到你能帮的人</div>
+        <div class="by"><span class="byk">主讲</span><span class="byn">金闰迪</span></div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="lft"><div class="wk">W9</div><div class="dt">05.03</div></div>
+      <div class="rgt">
+        <div class="topic">你有钱搭子吗？</div>
+        <div class="tip">一个人数钱容易停，<br>两个人才数得久</div>
+        <div class="by"><span class="byk">主讲</span><span class="byn">宝玲</span></div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="lft"><div class="wk">W10</div><div class="dt">05.10</div></div>
+      <div class="rgt">
+        <div class="topic">我赚到了第一块钱</div>
+        <div class="tip">敢标价，<br>比标多少重要</div>
+        <div class="by"><span class="byk">主讲</span><span class="byn">Rachel</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="gap">
+    <div class="gapk">05.10 — 08.02</div>
+    <div class="gapt">
+      这中间，我们没有按周开课。<br>
+      因为大家都在<b>写书、开课、跑公开课</b>。<br>
+      课表停了，人没停。
+    </div>
+  </div>
+
+  <div class="list">
+
+    <div class="item">
+      <div class="lft"><div class="wk plain">08.02</div></div>
+      <div class="rgt">
+        <div class="topic">数钱日 · 钱搭子 · 钱还在</div>
+        <div class="tip">见与不见，<br>钱都在那里</div>
+        <div class="by"><span class="byk">主讲</span><span class="byn">千百合</span></div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="lft"><div class="wk plain">08.09</div></div>
+      <div class="rgt">
+        <div class="topic">知足者富 · 暨云南心能量之旅</div>
+        <div class="tip">知足者富</div>
+        <div class="by"><span class="byk">主讲</span><span class="byn">云南同行的人</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="foot">
+    <div class="big">这一期，<br><span>不是一个人讲的。</span></div>
+    <div class="sub">
+      十二场分享，名字都在上面。<br>
+      一周一句，连起来就是这一期的全部道理。
+    </div>
+    <div class="sig">百日 AI 财富觉醒营 · 第一期结营 · DAY 162 · 2026.08.16</div>
+  </div>
+
+</div>
+</body>
+</html>
