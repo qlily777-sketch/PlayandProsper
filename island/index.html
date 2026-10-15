@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style>
+</head><body>
+<title>包下一座岛</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="边玩边赚：包下一座岛。2026 年 12 月 6–11 日，巴拉望鲜花岛，整座私人岛只属于 24 位首届岛民。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
+<style>
+/* Layout: a tide chart — full-bleed photo bands alternate with narrow text columns; one signature moment per band (moon strip, seat map). */
+:root{
+  --paper:#F2F4F0;      /* limestone */
+  --band:#E4E9E3;
+  --card:#FBFCFA;
+  --ink:#10282C;        /* deep lagoon ink */
+  --muted:#506668;
+  --line:rgba(16,40,44,.14);
+  --lagoon:#0E7378;
+  --hibiscus:#D2402F;
+  --sand:#B89D68;
+  --on-photo:#FFFFFF;
+  --shade:rgba(6,22,26,.55);
+  --f-display:"Noto Serif SC","Songti SC","STSong",serif;
+  --f-body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --s1:clamp(2.6rem,7.5vw,5.6rem);
+  --s2:clamp(1.8rem,4.2vw,2.9rem);
+  --s3:clamp(1.25rem,2.4vw,1.6rem);
+  --gut:max(16px,env(safe-area-inset-left,0px));
+  --gutr:max(16px,env(safe-area-inset-right,0px));
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#091A1D;--band:#0E2428;--card:#122C31;--ink:#E6EEEA;--muted:#97AEAB;--line:rgba(230,238,234,.14);
+  --lagoon:#4CBDBB;--hibiscus:#F06A58;--sand:#D2B988;--shade:rgba(0,10,12,.62);color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#091A1D;--band:#0E2428;--card:#122C31;--ink:#E6EEEA;--muted:#97AEAB;--line:rgba(230,238,234,.14);
+  --lagoon:#4CBDBB;--hibiscus:#F06A58;--sand:#D2B988;--shade:rgba(0,10,12,.62);color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.25}
+p{margin:0}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding-left:var(--gut);padding-right:var(--gutr)}
+.narrow{max-width:720px}
+section{padding-block:clamp(64px,10vw,120px)}
+#story{padding-bottom:clamp(36px,5vw,56px)}
+.eyebrow{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--lagoon);margin-bottom:14px;display:block}
+.lead{font-size:clamp(1.05rem,1.6vw,1.2rem);color:var(--muted);max-width:38em}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;gap:10px;font:inherit;font-weight:700;background:var(--hibiscus);color:#fff;border:0;border-radius:999px;padding:14px 26px;text-decoration:none;cursor:pointer;transition:transform .2s ease, box-shadow .2s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -10px var(--hibiscus)}
+.btn:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid var(--lagoon);outline-offset:3px}
+.btn.ghost{background:transparent;color:inherit;border:1.5px solid currentColor}
+
+/* top bar */
+.top{position:fixed;inset:0 0 auto 0;z-index:20;padding-top:env(safe-area-inset-top,0px);transition:background .3s}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;color:#fff}
+.top.solid{background:var(--paper);box-shadow:0 1px 0 var(--line)}
+.top.solid .wrap{color:var(--ink)}
+.brand{font-family:var(--f-display);font-weight:700;letter-spacing:.04em;text-decoration:none}
+.top nav{display:flex;gap:22px;font-size:.92rem}
+.top nav a{text-decoration:none;opacity:.85}
+.top nav a:hover{opacity:1}
+.top .apply-mini{padding:8px 16px;font-size:.88rem}
+@media (max-width:760px){.top nav{display:none}}
+
+/* hero */
+.hero{position:relative;min-height:min(92vh,860px);display:flex;align-items:flex-end;color:var(--on-photo);overflow:hidden;padding:0}
+.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,20,24,.35) 0%,rgba(4,20,24,.05) 35%,rgba(4,20,24,.75) 100%)}
+.hero .wrap{position:relative;z-index:1;width:100%;padding-block:120px 64px}
+.hero .kicker{font-family:var(--f-mono);font-size:.82rem;letter-spacing:.18em;opacity:.9}
+.hero h1{font-size:var(--s1);font-weight:900;margin:18px 0 8px;letter-spacing:.02em}
+.hero h1 .colon{color:var(--sand)}
+.hero .tag{font-family:var(--f-display);font-size:clamp(1.3rem,3vw,2rem);font-weight:500;opacity:.95}
+.hero .meta{display:flex;flex-wrap:wrap;gap:10px 26px;margin:28px 0 34px;font-size:.95rem}
+.hero .meta span{display:flex;align-items:center;gap:8px}
+.hero .meta b{font-family:var(--f-mono);font-weight:500}
+.hero .row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.hero .seats-left{font-family:var(--f-mono);font-size:.9rem;opacity:.9}
+
+/* story */
+.story{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(28px,5vw,72px);align-items:center}
+.story figure{margin:0;position:relative}
+.story figure img{border-radius:6px;aspect-ratio:3/4;object-fit:cover;width:100%}
+.story figcaption{font-family:var(--f-mono);font-size:.75rem;color:var(--muted);margin-top:10px}
+.story h2{font-size:var(--s2);margin-bottom:22px}
+.story p+p{margin-top:16px}
+.story .sign{font-family:var(--f-display);font-weight:700;margin-top:22px;color:var(--lagoon)}
+@media (max-width:820px){.story{grid-template-columns:1fr}.story figure img{aspect-ratio:4/3}}
+
+
+.film{padding-block:0 clamp(64px,10vw,120px)}
+.film-box{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:28px;align-items:end}
+.film video{width:100%;max-width:100%;aspect-ratio:1296/1080;background:#071518;border-radius:6px;display:block}
+.film-cap p{font-family:var(--f-display);font-size:var(--s3);font-weight:700;line-height:1.5}
+@media (max-width:760px){.film-box{grid-template-columns:1fr}}
+
+/* numbers band */
+.island{position:relative;color:#fff;padding:0}
+.island img.bg{width:100%;height:clamp(420px,62vw,680px);object-fit:cover}
+.island .over{position:absolute;inset:0;background:linear-gradient(0deg,rgba(4,20,24,.78),rgba(4,20,24,.1) 60%);display:flex;align-items:flex-end}
+.island .over .wrap{width:100%;padding-block:48px}
+.island h2{font-size:var(--s2);margin-bottom:28px;max-width:16em}
+.nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;border-top:1px solid rgba(255,255,255,.35);padding-top:22px}
+.nums div{display:flex;flex-direction:column;gap:4px}
+.nums b{font-family:var(--f-display);font-size:clamp(2rem,5vw,3.4rem);font-weight:900;line-height:1}
+.nums span{font-size:.92rem;opacity:.9}
+@media (max-width:640px){.nums{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* moon */
+.moon{background:#071518;color:#E6EEEA}
+.moon .eyebrow{color:#D2B988}
+.moon .lead{color:#A9BDBA}
+.moon h2{font-size:var(--s2);margin-bottom:18px}
+.phases{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin:48px 0 22px}
+.phase{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.phase svg{width:min(78px,100%);height:auto}
+.phase .d{font-family:var(--f-mono);font-size:.82rem}
+.phase .n{font-size:.78rem;color:#A9BDBA;min-height:2.6em;line-height:1.4}
+.phase.key .d{color:#D2B988}
+.phase.key .n{color:#E6EEEA}
+.moon .rituals{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;margin-top:48px;border-top:1px solid rgba(230,238,234,.15);padding-top:30px}
+.moon .rituals.reasons{margin-top:28px;border-top:0;padding-top:0}
+.moon .rituals h3{font-size:1.15rem;margin-bottom:8px;color:#fff}
+.moon .rituals p{color:#A9BDBA;font-size:.95rem}
+@media (max-width:700px){.phases{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:28px}.moon .rituals{grid-template-columns:1fr}}
+
+/* pillars */
+.pillars-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.pillars-head h2{font-size:var(--s2)}
+.pillars{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px}
+.pillar{grid-column:span 2;background:var(--card);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;border:1px solid var(--line)}
+.pillar.wide{grid-column:span 3}
+.pillar img{aspect-ratio:16/10;object-fit:cover;width:100%}
+.pillar .body{padding:22px 22px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.pillar h3{font-size:1.35rem}
+.pillar .who{font-family:var(--f-mono);font-size:.76rem;color:var(--lagoon);letter-spacing:.06em}
+.pillar p{color:var(--muted);font-size:.96rem}
+.pillar .take{margin-top:auto;padding-top:12px;border-top:1px dashed var(--line);font-size:.92rem}
+.pillar .take b{color:var(--hibiscus);font-weight:700}
+@media (max-width:900px){.pillar,.pillar.wide{grid-column:span 3}}
+@media (max-width:620px){.pillar,.pillar.wide{grid-column:span 6}}
+
+/* days */
+.days{background:var(--band)}
+.days h2{font-size:var(--s2);margin-bottom:12px}
+.timeline{margin-top:44px;display:flex;flex-direction:column}
+.day{display:grid;grid-template-columns:120px minmax(0,1fr) minmax(0,1fr);gap:24px;padding:22px 0;border-top:1px solid var(--line)}
+.day:last-child{border-bottom:1px solid var(--line)}
+.day .when{font-family:var(--f-mono);font-size:.9rem}
+.day .when b{display:block;font-family:var(--f-display);font-size:1.3rem;font-weight:700}
+.day .slot small{display:block;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;margin-bottom:4px}
+.day.new .when b{color:var(--hibiscus)}
+@media (max-width:720px){.day{grid-template-columns:1fr;gap:10px}}
+
+/* gallery */
+.life h2{font-size:var(--s2);margin-bottom:12px}
+.mosaic{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:clamp(150px,18vw,230px);gap:10px;margin-top:40px}
+.mosaic figure{margin:0;position:relative;overflow:hidden;border-radius:6px}
+.mosaic img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.mosaic figure:hover img{transform:scale(1.04)}
+.mosaic figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 12px 10px;color:#fff;font-size:.86rem;background:linear-gradient(0deg,rgba(4,20,24,.72),transparent)}
+.m-tall{grid-row:span 2}.m-wide{grid-column:span 2}
+@media (max-width:700px){.mosaic{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.honest{margin-top:26px;display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:18px 20px;font-size:.95rem;color:var(--muted)}
+.honest b{color:var(--ink)}
+
+
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.tabs button{font:inherit;font-family:var(--f-display);font-weight:700;font-size:1.05rem;border:1.5px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:8px 22px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.tabs + .mosaic,.mosaic{grid-auto-flow:dense}
+.life .mosaic{margin-top:18px}
+.incl h2{font-size:var(--s2);margin-bottom:8px}
+.incl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0;margin-top:32px;border-top:1px solid var(--line)}
+.incl-grid div{display:flex;flex-direction:column;gap:2px;padding:16px 16px 16px 0;border-bottom:1px solid var(--line)}
+.incl-grid b{font-family:var(--f-display);font-size:1.05rem}
+.incl-grid b::before{content:"✓ ";color:var(--lagoon);font-family:var(--f-mono)}
+.incl-grid span{font-size:.9rem;color:var(--muted)}
+.incl .extra{margin-top:22px;font-size:.92rem;color:var(--muted);max-width:52em}
+.incl .extra b{color:var(--ink)}
+
+/* guests */
+.guests{background:var(--band)}
+.guests h2{font-size:var(--s2);margin-bottom:12px}
+.guest-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:40px}
+.guest{background:var(--card);border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+.guest img{aspect-ratio:16/9;object-fit:cover;width:100%}
+.guest .body{padding:22px 24px 26px}
+.guest h3{font-size:1.4rem;margin-bottom:4px}
+.guest .role{font-family:var(--f-mono);font-size:.78rem;color:var(--lagoon);margin-bottom:12px;display:block}
+.guest p{color:var(--muted);font-size:.96rem}
+.guest q{display:block;margin-top:14px;font-family:var(--f-display);font-size:1.08rem;color:var(--ink);quotes:"「" "」"}
+@media (max-width:760px){.guest-grid{grid-template-columns:1fr}}
+
+
+.cloud h2{font-size:var(--s2);margin-bottom:18px}
+.cloud blockquote{margin:34px 0 0;padding:22px 0 0;border-top:1px solid var(--line);font-family:var(--f-display);font-size:clamp(1.3rem,2.6vw,1.75rem);font-weight:700;color:var(--lagoon);line-height:1.5}
+.cloud cite{display:block;margin-top:10px;font-family:var(--f-body);font-style:normal;font-size:.9rem;font-weight:400;color:var(--muted)}
+
+/* value */
+.value h2{font-size:var(--s2);margin-bottom:12px}
+.vtable{width:100%;border-collapse:collapse;margin-top:36px;font-size:.98rem}
+.vtable th,.vtable td{text-align:left;padding:14px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.vtable th{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.1em;color:var(--muted);font-weight:500;text-transform:uppercase}
+.vtable td.v{font-family:var(--f-mono);white-space:nowrap;text-align:right}
+.vtable td small{display:block;color:var(--muted);font-size:.84rem}
+.tablebox{overflow-x:auto}
+.vtotal td{font-weight:700;border-bottom:0;padding-top:20px}
+.vtotal td.v{color:var(--hibiscus);font-size:1.15rem}
+
+/* price */
+.price{background:var(--ink);color:var(--paper)}
+.price .eyebrow{color:var(--sand)}
+.price h2{font-size:var(--s2);margin-bottom:12px}
+.price .lead{color:color-mix(in srgb,var(--paper) 70%,transparent)}
+.tiers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:40px}
+.tiers.one{grid-template-columns:minmax(0,1fr);max-width:760px}
+.tier{border:1px solid color-mix(in srgb,var(--paper) 25%,transparent);border-radius:8px;padding:26px}
+.tier.feat{border-color:var(--sand)}
+.tier small{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.1em;opacity:.8}
+.tier .amt{font-family:var(--f-display);font-size:clamp(2.2rem,5vw,3.2rem);font-weight:900;margin:8px 0 6px;line-height:1.1}
+.tier p{opacity:.85;font-size:.95rem}
+.calc{margin-top:28px;border-radius:8px;background:color-mix(in srgb,var(--paper) 7%,transparent);padding:26px}
+.calc h3{font-size:1.3rem;margin-bottom:6px}
+.calc .opts{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.calc .opts button{font:inherit;border-radius:999px;border:1.5px solid color-mix(in srgb,var(--paper) 40%,transparent);background:transparent;color:inherit;padding:8px 18px;cursor:pointer}
+.calc .opts button[aria-pressed="true"]{background:var(--sand);border-color:var(--sand);color:#10282C;font-weight:700}
+.calc .out{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 18px}
+.calc .out b{font-family:var(--f-display);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900}
+.calc .out span{opacity:.85}
+.costs{width:100%;border-collapse:collapse;margin-top:28px;font-size:.94rem}
+.costs th,.costs td{padding:12px 10px;border-bottom:1px solid color-mix(in srgb,var(--paper) 18%,transparent);text-align:left}
+.costs td.n{font-family:var(--f-mono);text-align:right;white-space:nowrap}
+.costs th{font-weight:500;opacity:.75;font-size:.82rem}
+.price .fine{margin-top:16px;font-size:.86rem;opacity:.7}
+@media (max-width:700px){.tiers{grid-template-columns:1fr}}
+
+/* apply */
+.apply h2{font-size:var(--s2);margin-bottom:12px}
+.apply-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,64px);margin-top:44px;align-items:start}
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:18px;counter-reset:s}
+.steps li{display:grid;grid-template-columns:36px minmax(0,1fr);gap:12px;counter-increment:s}
+.steps li::before{content:counter(s);width:32px;height:32px;border-radius:50%;border:1.5px solid var(--lagoon);color:var(--lagoon);display:grid;place-items:center;font-family:var(--f-mono);font-size:.9rem}
+.steps b{display:block}
+.steps span{color:var(--muted);font-size:.94rem}
+.dates{margin-top:30px;border-top:1px solid var(--line)}
+.dates div{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--line);font-size:.94rem}
+.dates div span:first-child{font-family:var(--f-mono)}
+.seatmap{margin-top:30px}
+.seatmap .grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px;margin-top:12px}
+.seat{aspect-ratio:1;border-radius:50%;border:1.5px dashed var(--lagoon);display:grid;place-items:center;font-family:var(--f-mono);font-size:.7rem;color:var(--lagoon)}
+.seat.taken{background:var(--lagoon);border-style:solid;color:var(--paper)}
+.seatmap p{font-size:.9rem;color:var(--muted);margin-top:10px}
+form.app{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:clamp(20px,3vw,32px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 18px}
+form.app .full{grid-column:1/-1}
+form.app label{display:flex;flex-direction:column;gap:6px;font-size:.88rem;font-weight:500}
+form.app input,form.app select,form.app textarea{font:inherit;font-size:.96rem;border:1px solid var(--line);border-radius:6px;padding:11px 12px;background:var(--paper);color:var(--ink);width:100%}
+form.app textarea{min-height:96px;resize:vertical}
+form.app .checks{display:flex;flex-direction:column;gap:8px;font-weight:400;font-size:.9rem}
+form.app .checks label{flex-direction:row;align-items:flex-start;gap:10px;font-weight:400}
+form.app .checks input{width:auto;margin-top:5px}
+form.app .actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.result{grid-column:1/-1;background:var(--band);border-radius:8px;padding:18px}
+.result pre{white-space:pre-wrap;font-family:var(--f-body);font-size:.9rem;margin:10px 0 14px;max-height:260px;overflow:auto}
+.result .ok{color:var(--lagoon);font-weight:700}
+@media (max-width:860px){.apply-grid{grid-template-columns:1fr}}
+@media (max-width:520px){form.app{grid-template-columns:1fr}.seatmap .grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
+
+/* faq */
+.faq{background:var(--band)}
+.faq h2{font-size:var(--s2);margin-bottom:28px}
+.faq details{border-top:1px solid var(--line);padding:18px 0}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;font-weight:700;font-size:1.04rem;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::after{content:"+";font-family:var(--f-mono);color:var(--lagoon)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{color:var(--muted);margin-top:10px;max-width:46em}
+
+/* closing */
+.closing{position:relative;color:#fff;padding:0}
+.closing img{width:100%;height:clamp(380px,48vw,560px);object-fit:cover}
+.closing .over{position:absolute;inset:0;background:rgba(4,20,24,.5);display:grid;place-items:center;text-align:center}
+.closing h2{font-size:var(--s2);margin-bottom:16px}
+.closing p{opacity:.9;margin-bottom:28px}
+footer{padding-block:36px;font-size:.86rem;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#hero">边玩边赚 · 包下一座岛</a>
+    <nav aria-label="页面导航">
+      <a href="#island">这座岛</a><a href="#incl">包含什么</a><a href="#pillars">五天做什么</a><a href="#days">日程</a><a href="#price">费用</a><a href="#faq">常见问题</a>
+    </nav>
+    <a class="btn apply-mini" href="#apply">申请入驻</a>
+  </div>
+</header>
+
+<section class="hero" id="hero">
+  <img class="poster" src="img/hero-poster.jpg" alt="巴拉望鲜花岛航拍：石灰岩小岛、白沙滩和长长的码头">
+  <video id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="img/hero-poster.jpg" aria-hidden="true">
+    <source src="img/hero.mp4" type="video/mp4">
+  </video>
+  <div class="wrap">
+    <span class="kicker">PLAY AND PROSPER · 首届 · 新月</span>
+    <h1>边玩边赚<span class="colon">：</span><br>包下一座岛</h1>
+    <p class="tag">整座岛，只有我们。</p>
+    <div class="meta">
+      <span>日期 <b>2026.12.06 — 12.11</b></span>
+      <span>地点 <b>菲律宾 · 巴拉望 · 鲜花岛</b></span>
+      <span>人数 <b>24 位岛民</b></span>
+    </div>
+    <div class="row">
+      <a class="btn" href="#apply">申请成为首届岛民</a>
+      <span class="seats-left">剩余 <b>17</b> / 24 席 · 申请截止 11 月 5 日</span>
+    </div>
+  </div>
+</section>
+
+<section id="story">
+  <div class="wrap story">
+    <figure>
+      <img src="img/lily-boat.jpg" alt="千百合在去鲜花岛的快艇上张开双臂" loading="lazy">
+      <figcaption>2026.09.24 · 千百合上岛踩点</figcaption>
+    </figure>
+    <div>
+      <span class="eyebrow">写在前面</span>
+      <h2>借一座岛，<br>还一个新的自己。</h2>
+      <p>我们正在写一本书，叫《边玩边赚：走遍世界，活成自己》。写着写着我就想：以前是我一个人走遍世界、活成自己，为什么不多一些人一起，边玩边赚？</p>
+      <p>2024 年我第一次来巴拉望，去的是公主港，一去就爱得不行，当时就说：以后一定要带着家人再来。身边有这么多人有梦想，要是能包下一座小岛，大家聚在一起写各自的故事，该多好。</p>
+      <p>今年 9 月 24 日，我坐快艇上了鲜花岛，从码头走到餐厅，再走进每一间房。走着走着就想：要是能把它整个包下来，和伙伴们一起住几天，该多好！</p>
+      <p>伙伴里，有人今年的梦想是出一次国，也有人许过愿。所以这一次，我要和我的大家庭、边玩边赚的伙伴们一起来，书里的作者、作者的家人和朋友，带着这些愿望去。一起玩，顺便想想接下来怎么活，喜欢的事能不能养活自己。</p>
+      <p>我不是来带大家的，是来跟大家一起玩的。你带上你自己就好。</p>
+      <p class="sign">—— 千百合</p>
+    </div>
+  </div>
+</section>
+
+<section class="film" id="film">
+  <div class="wrap">
+    <div class="film-box">
+      <video controls playsinline preload="none" poster="img/palawan-2024-poster.jpg">
+        <source src="img/palawan-2024.mp4" type="video/mp4">
+      </video>
+      <div class="film-cap"><span class="eyebrow">2024 · 公主港</span><p>千百合第一次来巴拉望。那次回去，就说以后一定要再来。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="island" id="island">
+  <img class="bg" src="img/island-blue.jpg" alt="鲜花岛全景，岛在平静的蓝色海面上" loading="lazy">
+  <div class="over"><div class="wrap">
+    <span class="eyebrow" style="color:#D2B988">这座岛</span>
+    <h2>5 天里，这座岛上只有我们，和 12 位为我们服务的人。</h2>
+    <div class="nums">
+      <div><b class="mono">1</b><span>整座私人岛，整岛包下</span></div>
+      <div><b class="mono">24</b><span>岛的上限，也是名额上限</span></div>
+      <div><b class="mono">5</b><span>晚，健康三餐全包</span></div>
+      <div><b class="mono">12</b><span>位岛上工作人员，只为我们服务</span></div>
+    </div>
+  </div></div>
+</section>
+
+<section class="moon" id="moon">
+  <div class="wrap">
+    <span class="eyebrow">为什么是这几天</span>
+    <h2>为什么是这 5 天？</h2>
+    <div class="rituals reasons">
+      <div><h3>带着愿望去</h3><p>边玩边赚的伙伴里，有人今年的梦想是出国，也有人许过愿。我们带着这些愿望出发，在今年一起把它们实现，12 月正好赶得上。</p></div>
+      <div><h3>岛最美的时候</h3><p>12 月是巴拉望的旺季，海最清，天最好，也是一年里在岛上最舒服的时候。</p></div>
+      <div><h3>一个没有月亮的夜晚</h3><p>12 月 9 日是新月，马尼拉时间早上 8:52。前后几晚没有月光，岛上又没有城市灯光，银河会清楚到让人说不出话。新月也是新的开始。</p></div>
+    </div>
+    <div class="phases" id="phases" aria-label="12 月 6 日到 11 日的月相"></div>
+    <div class="rituals">
+      <div><h3>星空下许愿</h3><p>新月夜，每个人在星空下写下：接下来我要活成什么样。</p></div>
+      <div><h3>一年后的信</h3><p>写给一年后的自己。我们收好，2027 年 12 月 9 日寄到你手里。</p></div>
+      <div><h3>首届岛民编号</h3><p>No.01 到 No.24，印在你的 T 恤和证书上。第一届只有一次。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="pillars">
+  <div class="wrap">
+    <div class="pillars-head">
+      <div><span class="eyebrow">五天做什么</span><h2>带走三样东西：<br>一个新的自己、一份作品、一群人。</h2></div>
+      <a class="btn ghost" href="#days">看每天的安排</a>
+    </div>
+    <div class="pillars">
+      <article class="pillar wide">
+        <img src="img/circle.jpg" alt="一群人在沙滩上围圈静坐" loading="lazy">
+        <div class="body">
+          <span class="who">继红老师 · 两天半</span>
+          <h3>活法</h3>
+          <p>没有教室，没有 PPT。沙滩上、树荫下围圈坐，继红老师带你找到、活成真正的自己。她平时一门课 ¥6,000–10,000。</p>
+          <p class="take">带走：<b>一个新的自己</b></p>
+        </div>
+      </article>
+      <article class="pillar wide">
+        <img src="img/resort-aerial.jpg" alt="鲜花岛上的度假村、泳池和沙滩航拍" loading="lazy">
+        <div class="body">
+          <span class="who">AI 实战工作坊 · 大家一起做</span>
+          <h3>如果这座岛是你的</h3>
+          <p>分组用 AI 研究一件真事：买一座岛、经营一座岛要算哪些账。调研、算账、写路演稿、做一页网站，最后一晚上台路演。不会 AI 也没关系，模板和助教都备好了。</p>
+          <p class="take">带走：<b>一份方案和一个网页</b></p>
+        </div>
+      </article>
+      <article class="pillar">
+        <img src="img/longtable.jpg" alt="夜晚海边的长桌" loading="lazy">
+        <div class="body">
+          <span class="who">小组私董会 · 互相出主意</span>
+          <h3>私董会</h3>
+          <p>出发前 AI 先帮你理一份自己的商业初诊。岛上 6 人一组，每人轮流讲讲自己在做的事，大家一起出主意。</p>
+          <p class="take">带走：<b>一份行动清单</b></p>
+        </div>
+      </article>
+      <article class="pillar">
+        <img src="img/coconut.jpg" alt="桌上插着扶桑花的椰子" loading="lazy">
+        <div class="body">
+          <span class="who">AI 电子书</span>
+          <h3>《包下一座岛》</h3>
+          <p>每人一次 15 分钟访谈，AI 把你的故事写成书里的一章，配上专业摄影师给你拍的照片。离岛两周内送到。</p>
+          <p class="take">带走：<b>书里属于你的一章</b></p>
+        </div>
+      </article>
+      <article class="pillar">
+        <img src="img/night-circle.jpg" alt="夜晚灯串下围坐的人们" loading="lazy">
+        <div class="body">
+          <span class="who">首届岛民</span>
+          <h3>一群人</h3>
+          <p>资源对接夜：每人说一个需求、一个能给的资源，当场配对。离岛后还有 21 天小群跟进。</p>
+          <p class="take">带走：<b>24 个同路人，包括你自己</b></p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="days" id="days">
+  <div class="wrap">
+    <span class="eyebrow">日程 · 草案</span>
+    <h2>岛上 5 天</h2>
+    <p class="lead">爱妮岛机场接机，坐 1 小时 20 分钟的 van 到码头，再坐 10 分钟快艇上岛。离岛那天早上是全程最低潮，我们中午后才走。</p>
+    <div class="timeline">
+      <div class="day"><div class="when"><b>12/6</b>周日 · 上岛</div><div class="slot"><small>白天</small>机场接机，van + 快艇上岛。环岛、浮潜、划皮划艇，先玩起来。</div><div class="slot"><small>晚上</small>开营仪式，领取岛民编号。</div></div>
+      <div class="day"><div class="when"><b>12/7</b>周一</div><div class="slot"><small>全天</small>继红老师：活法。沙滩围圈。</div><div class="slot"><small>晚上</small>资源对接夜。</div></div>
+      <div class="day"><div class="when"><b>12/8</b>周二</div><div class="slot"><small>全天</small>继红老师：活法。</div><div class="slot"><small>晚上</small>星空合影。</div></div>
+      <div class="day new"><div class="when"><b>12/9</b>周三 · 新月</div><div class="slot"><small>上午 / 下午</small>继红老师课程收尾；下午专业摄影摄像日、自由活动、电子书访谈。</div><div class="slot"><small>晚上</small>新月夜：星空下许愿，写一年后的信。</div></div>
+      <div class="day"><div class="when"><b>12/10</b>周四</div><div class="slot"><small>上午 / 下午</small>AI 工作坊「如果这座岛是你的」；小组私董会轮流进行。</div><div class="slot"><small>晚上</small>路演 + 结营照片夜。</div></div>
+      <div class="day"><div class="when"><b>12/11</b>周五 · 离岛</div><div class="slot"><small>上午</small>复盘，收拾行李。</div><div class="slot"><small>中午后</small>快艇 + van 送回爱妮岛机场，约下午 3 点到。</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="life" id="life">
+  <div class="wrap">
+    <span class="eyebrow">岛上的日子</span>
+    <h2>上课之外，这座岛就是你的。</h2>
+    <p class="lead">11 公顷，6 片沙滩，一座只属于我们的岛。点下面看看海、吃、住、夜。</p>
+    <div class="tabs" role="tablist" aria-label="照片分类"><button type="button" role="tab" id="tab-sea" aria-controls="panel-sea" aria-selected="true">海</button><button type="button" role="tab" id="tab-eat" aria-controls="panel-eat" aria-selected="false">吃</button><button type="button" role="tab" id="tab-stay" aria-controls="panel-stay" aria-selected="false">住</button><button type="button" role="tab" id="tab-night" aria-controls="panel-night" aria-selected="false">夜</button></div>
+    <div class="mosaic" role="tabpanel" id="panel-sea" aria-labelledby="tab-sea"><figure class="m-tall m-wide"><img src="img/kayak-aerial.jpg" alt="航拍：海湾里一只皮划艇" loading="lazy"><figcaption>划着皮划艇绕岛</figcaption></figure><figure class="m-tall"><img src="img/snorkel-turtle.jpg" alt="浮潜时遇到海龟" loading="lazy"><figcaption>浮潜</figcaption></figure><figure><img src="img/aerial-reef.jpg" alt="航拍：沙滩和珊瑚礁" loading="lazy"><figcaption>岛边的珊瑚礁</figcaption></figure><figure><img src="img/clownfish.jpg" alt="珊瑚里的小丑鱼" loading="lazy"><figcaption>水下</figcaption></figure><figure class="m-wide"><img src="img/dock-aerial.jpg" alt="航拍：码头尽头的茅草亭" loading="lazy"><figcaption>码头尽头</figcaption></figure><figure><img src="img/jump.jpg" alt="从码头跳进海里" loading="lazy"><figcaption>从码头跳海</figcaption></figure><figure><img src="img/hut.jpg" alt="海上的茅草亭和栈桥" loading="lazy"><figcaption>海上茅草亭</figcaption></figure><figure class="m-wide"><img src="img/reflection.jpg" alt="石灰岩小岛倒映在平静的海面上" loading="lazy"><figcaption>无风的早晨</figcaption></figure><figure><img src="img/volleyball.jpg" alt="沙滩排球" loading="lazy"><figcaption>沙滩排球</figcaption></figure><figure><img src="img/sunset.jpg" alt="码头上的日落" loading="lazy"><figcaption>码头日落</figcaption></figure></div><div class="mosaic" role="tabpanel" id="panel-eat" aria-labelledby="tab-eat" hidden><figure class="m-tall m-wide"><img src="img/food-table.jpg" alt="餐桌上摆满菜肴" loading="lazy"><figcaption>一日三餐都包</figcaption></figure><figure class="m-tall"><img src="img/food-fruit.jpg" alt="芭蕉叶上铺满水果和菜" loading="lazy"><figcaption>芭蕉叶大餐</figcaption></figure><figure><img src="img/drink-coconut.jpg" alt="插着花的椰子" loading="lazy"><figcaption>现开椰子</figcaption></figure><figure><img src="img/food-fish.jpg" alt="烤鱼配柠檬" loading="lazy"><figcaption>岛上厨房</figcaption></figure><figure class="m-wide"><img src="img/night-table.jpg" alt="夜晚沙滩上的长桌" loading="lazy"><figcaption>沙滩晚餐</figcaption></figure><figure><img src="img/coconut.jpg" alt="桌上插着扶桑花的椰子" loading="lazy"><figcaption>踩点实拍：欢迎椰子</figcaption></figure><figure><img src="img/clubhouse.jpg" alt="开放式餐厅" loading="lazy"><figcaption>Clubhouse 餐厅</figcaption></figure></div><div class="mosaic" role="tabpanel" id="panel-stay" aria-labelledby="tab-stay" hidden><figure class="m-tall"><img src="img/walkway.jpg" alt="通往岛上的竹栈桥" loading="lazy"><figcaption>踩点实拍：上岛的路</figcaption></figure><figure class="m-wide"><img src="img/room.jpg" alt="挂着白色蚊帐的卧室" loading="lazy"><figcaption>海滩房</figcaption></figure><figure><img src="img/room-net.jpg" alt="带蚊帐的大床" loading="lazy"><figcaption>安静的房间</figcaption></figure><figure><img src="img/cliff-cottage.jpg" alt="崖边的茅草屋" loading="lazy"><figcaption>崖边小屋</figcaption></figure><figure><img src="img/bighouse.jpg" alt="丛林里的木屋" loading="lazy"><figcaption>Big House</figcaption></figure><figure><img src="img/clubhouse-stairs.jpg" alt="Clubhouse 的楼梯和吧台" loading="lazy"><figcaption>Clubhouse</figcaption></figure><figure class="m-wide"><img src="img/visit-dock.jpg" alt="鲜花岛码头和石灰岩山" loading="lazy"><figcaption>踩点实拍：码头</figcaption></figure><figure><img src="img/massage-hut.jpg" alt="海边的按摩亭" loading="lazy"><figcaption>按摩亭（自费）</figcaption></figure><figure><img src="img/massage.jpg" alt="按摩" loading="lazy"><figcaption>按摩（自费）</figcaption></figure></div><div class="mosaic" role="tabpanel" id="panel-night" aria-labelledby="tab-night" hidden><figure class="m-tall m-wide"><img src="img/pool-night.jpg" alt="夜晚亮灯的泳池和木屋" loading="lazy"><figcaption>夜里的泳池</figcaption></figure><figure class="m-tall"><img src="img/dock-night.jpg" alt="夜晚亮灯的码头" loading="lazy"><figcaption>夜里的码头</figcaption></figure><figure><img src="img/hut-sunset.jpg" alt="茅草亭里看日落" loading="lazy"><figcaption>茅草亭日落</figcaption></figure><figure><img src="img/bonfire.jpg" alt="沙滩篝火" loading="lazy"><figcaption>沙滩篝火</figcaption></figure><figure class="m-wide"><img src="img/dock-dawn.jpg" alt="清晨码头和远处的岛" loading="lazy"><figcaption>天刚亮的时候</figcaption></figure><figure><img src="img/night-dinner.jpg" alt="夜晚灯串下的晚餐" loading="lazy"><figcaption>灯串晚宴</figcaption></figure><figure><img src="img/longtable.jpg" alt="夜晚海边的长桌" loading="lazy"><figcaption>长桌夜话</figcaption></figure></div>
+    <div class="honest"><span class="mono" style="color:var(--hibiscus)">提前说</span><p><b>这是岛，不是酒店。</b>24 个人全部包住，有床也有厚地铺。大家来不是为了床，是为了这座岛和彼此。岛上用太阳能和 Starlink，请大家一起省水省电，信号够用但比不上 5G。</p></div>
+  </div>
+</section>
+
+<section class="incl" id="incl">
+  <div class="wrap">
+    <span class="eyebrow">全部包含</span>
+    <h2>上了岛，这些都不用再掏钱。</h2>
+    <div class="incl-grid">
+      <div><b>整座岛</b><span>11 公顷，6 片沙滩，5 天只有我们</span></div>
+      <div><b>住</b><span>24 人全部包住，房间有空调</span></div>
+      <div><b>一日三餐</b><span>岛上厨房做的健康餐，也有素食</span></div>
+      <div><b>咖啡、茶、饮用水</b><span>全天供应</span></div>
+      <div><b>浮潜和划船</b><span>浮潜装备、皮划艇、划桨船</span></div>
+      <div><b>泳池和海上浮台</b><span>还有跳水板</span></div>
+      <div><b>登顶步道</b><span>300 多级台阶，山顶看 360° 全景</span></div>
+      <div><b>Clubhouse</b><span>餐厅、吧台、二楼游戏室</span></div>
+      <div><b>沙滩篝火</b><span>晚上围着火聊天</span></div>
+      <div><b>接送</b><span>爱妮岛机场 van 接送 + 快艇上下岛</span></div>
+      <div><b>Starlink 网络</b><span>卫星上网，日常和视频通话够用</span></div>
+      <div><b>救生员和急救</b><span>岛上有救生员，员工受过急救培训</span></div>
+      <div><b>客房清洁</b><span>需要时随时叫</span></div>
+      <div><b>珊瑚礁修复</b><span>这座岛参与珊瑚礁修复项目</span></div>
+    </div>
+    <p class="extra"><b>自费：</b>按摩、酒水和饮料、出岛游（日落游船、跳岛、瀑布）。退房时各付各的，刷卡加收 3.5%，建议带些菲律宾比索现金。部分沙滩有沙蝇，Clubhouse 有香茅油卖。</p>
+    <p class="extra" style="margin-top:6px">资料来源：鲜花岛 Airbnb 房源说明与岛主书面报价。</p>
+  </div>
+</section>
+
+<section class="guests" id="guests">
+  <div class="wrap">
+    <span class="eyebrow">隔壁的榜样</span>
+    <h2>离鲜花岛一小时车程，有两个活成了自己的人。</h2>
+    <p class="lead">他们在爱妮岛住了十多年。这次 Henry 会和岛民分享他的故事，Sylvia 正在邀请中。</p>
+    <div class="guest-grid">
+      <article class="guest">
+        <img src="img/henry-dive.jpg" alt="Henry 在海里自由潜水" loading="lazy">
+        <div class="body">
+          <h3>Henry 许明顺</h3>
+          <span class="role">H Hospitality Group 创始人</span>
+          <p>14 岁创业，31 岁退休，背包旅行三年后因为爱上自由潜水找到爱妮岛，从零做起。如今每年 180 天在岛上做事业，180 天去旅行。</p>
+          <q>财富自由很简单，时间自由得到后，就是心灵自由。</q>
+        </div>
+      </article>
+      <article class="guest">
+        <img src="img/sylvia-turtle.jpg" alt="Sylvia 在沙滩上放归小海龟" loading="lazy">
+        <div class="body">
+          <h3>海龟女神 Sylvia 吴晏芸</h3>
+          <span class="role">巴拉望最大海龟孵育中心创办人 · 《边玩边赚：走遍世界，活成自己》作者</span>
+          <p>曾是台北 101 三十九楼的上班族，辞职去当背包客，最后在爱妮岛的沙滩住了下来。从一桶 47 颗、一只都没孵出来的海龟蛋开始，一做十年，野放了七万多只小海龟回到大海。如今她一边守护海龟，一边打碟、旅行、写作。</p>
+          <q>小时候我为一条毛毛虫哭，长大了我为七万只海龟留下来。</q>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="cloud" id="xiaoyu">
+  <div class="wrap narrow">
+    <span class="eyebrow">从云端到岛上</span>
+    <h2>她有一座岛，一直在云端。<br>这一次，带它上真的岛。</h2>
+    <p class="lead">小屿是「玩愈岛」的主理人，也是边玩边赚的伙伴。玩愈岛是她在山野里长出来的：每周带一家人爬一座山，在玩里觉察，在陪伴里疗愈，再用 AI 把这些故事写下来、拍出来。</p>
+    <p class="lead" style="margin-top:14px">这座岛一直在云端。12 月，她会带着它，在鲜花岛上真正当几天岛主。其实这 5 天，我们每个人都是岛主。</p>
+    <blockquote>山野治愈了我，我把它开成了一座岛。<cite>—— 小屿｜玩愈岛</cite></blockquote>
+  </div>
+</section>
+
+<section class="price" id="price">
+  <div class="wrap">
+    <span class="eyebrow">费用</span>
+    <h2>一个价格，全部包含。</h2>
+    <p class="lead">驻岛费用从爱妮岛机场接机开始，到送回爱妮岛机场结束。</p>
+    <div class="tiers one">
+      <div class="tier feat"><small>驻岛费用 · 每人</small><div class="amt mono">¥29,800</div><p>包含：爱妮岛机场接送、快艇上下岛、整座私人岛 5 晚、健康三餐、继红老师两天半课程、AI 工作坊与私董会、专业摄影摄像日、AI 电子书、T 恤帽子和伴手礼、浮潜装备与皮划艇。</p></div>
+    </div>
+    <div class="tablebox">
+      <table class="costs">
+        <thead><tr><th>全程大约要花多少（提前说清楚）</th><th style="text-align:right">中国出发</th><th style="text-align:right">美国出发</th></tr></thead>
+        <tbody>
+          <tr><td>驻岛费用</td><td class="n">¥29,800</td><td class="n">¥29,800</td></tr>
+          <tr><td>国际机票、马尼拉到克拉克、克拉克一晚、克拉克往返爱妮岛、保险</td><td class="n">约 ¥7,000</td><td class="n">约 ¥13,600</td></tr>
+          <tr><td><b>合计</b></td><td class="n"><b>约 ¥3.7 万</b></td><td class="n"><b>约 ¥4.3 万</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fine">前段机票和住宿由合作旅行社统一代订、统一出票，你直接付给旅行社，大家一起走。旅游险必须包含境外医疗、紧急救援转运和水上活动。12 月 11 日后想在爱妮岛多玩两天，可以加订，另算。</p>
+  </div>
+</section>
+
+<section class="apply" id="apply">
+  <div class="wrap">
+    <span class="eyebrow">申请入驻</span>
+    <h2>这不是报名，是申请。</h2>
+    <p class="lead">岛很偏，中途想走都走不了。所以我们会和每位申请人通一次电话，确认这 5 天适合你。</p>
+    <div class="apply-grid">
+      <div>
+        <ol class="steps">
+          <li><div><b>填写申请</b><span>右边这张表，3 分钟。</span></div></li>
+          <li><div><b>15 分钟电话</b><span>聊聊你为什么想来、现在在做什么。</span></div></li>
+          <li><div><b>收到入驻邀请</b><span>交定金后，名额才算锁定。</span></div></li>
+          <li><div><b>保险和安全须知</b><span>交保单截图，签安全须知，你就是首届岛民了。</span></div></li>
+        </ol>
+        <div class="dates">
+                    <div><span>11/05</span><span>申请截止</span></div>
+          <div><span>11/15</span><span>退款截止，之后不退</span></div>
+          <div><span>12/06</span><span>上岛</span></div>
+        </div>
+        <div class="seatmap">
+          <b>岛民座位</b>
+          <div class="grid" id="seats" aria-label="24 个座位，已入驻 7 位"></div>
+          <p>实心 = 已入驻，空心 = 等你。满员即止。</p>
+        </div>
+      </div>
+      <form class="app" id="appForm" novalidate>
+        <label>你的名字<input id="f-name" required autocomplete="name"></label>
+        <label>微信号或手机<input id="f-contact" required></label>
+        <label>现居城市<input id="f-city" autocomplete="address-level2"></label>
+        <label>从哪里出发<select id="f-from"><option>中国大陆</option><option>美国</option><option>其他地区</option></select></label>
+        <label class="full">推荐人（谁邀请你来的）<input id="f-ref" placeholder="没有可不填"></label>
+        <label class="full">你现在在做什么？<textarea id="f-now" placeholder="工作、事业，或者正在过的一段人生"></textarea></label>
+        <label class="full">为什么想来这 5 天？最想带走什么？<textarea id="f-why"></textarea></label>
+        <label>床位意向<select id="f-bed"><option>睡床或地铺都可以</option><option>希望睡床</option><option>和同伴同住一张床</option></select></label>
+        <label>12/11 后在爱妮岛加住吗<select id="f-stay"><option>还没想好</option><option>直接回程</option><option>加住 1–2 晚</option></select></label>
+        <label class="full">饮食忌口、健康情况、会不会游泳<input id="f-health" placeholder="比如吃素、过敏；我们提前告诉岛上"></label>
+        <div class="full checks">
+          <label><input type="checkbox" id="f-c1">我知道这是岛不是酒店，可能睡地铺。</label>
+          <label><input type="checkbox" id="f-c2">我会购买含境外医疗、紧急救援转运和水上活动的旅游险。</label>
+          <label><input type="checkbox" id="f-c3">我同意岛上拍摄的照片和视频用于边玩边赚的分享和宣传。</label>
+        </div>
+        <div class="full actions"><button class="btn" type="submit">生成我的申请</button><span id="formMsg" style="font-size:.9rem;color:var(--muted)"></span></div>
+        <div class="result" id="result" hidden>
+          <span class="ok">你的申请已生成。</span>
+          <p style="font-size:.92rem;margin-top:6px">复制下面的内容，微信发给邀请你的人或千百合团队，我们会在 2 天内和你约电话。</p>
+          <pre id="resultText"></pre>
+          <button class="btn" type="button" id="copyBtn">复制申请内容</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap narrow">
+    <span class="eyebrow">常见问题</span>
+    <h2>你可能想问</h2>
+    <details><summary>怎么去岛上？</summary><p>中国出发的岛民从马尼拉入境（中国护照免签入境目前只认马尼拉和宿务，出发前以最新政策为准），我们包车去克拉克；美国出发的岛民飞到克拉克。12 月 5 日全员在克拉克集合住一晚，12 月 6 日一起飞爱妮岛。机票由合作旅行社统一代订。</p></details>
+    <details><summary>住宿是什么样的？</summary><p>24 人全部包住，房间有空调，有床也有厚地铺。夫妻和好友可以住在一起，床位安排开营前公布。</p></details>
+    <details><summary>吃什么？</summary><p>5 天一日三餐都包，由岛上厨房做健康餐，也有素食。吃素或有其他忌口，请在申请表里写清楚，我们提前告诉岛上。</p></details>
+    <details><summary>岛上有网络吗？</summary><p>有 Starlink 卫星网络，踩点时测过，日常使用和视频通话都可以，但比不上 5G。AI 工作坊需要的账号和工具会在出发前帮你准备好。</p></details>
+    <details><summary>生病或受伤怎么办？</summary><p>岛上有急救箱，两名员工受过红十字会急救培训。岛上没有诊所，最近的医院在 Taytay，坐船加坐车最快约 40 分钟，一般要 1 小时左右。所以旅游险必须包含紧急救援和医疗转运。</p></details>
+    <details><summary>可以带孩子吗？</summary><p>这一季只接待成人。</p></details>
+    <details><summary>不会用 AI 能来吗？</summary><p>能。出发前的线上共修会帮你开好账号、学会基本操作；岛上每组都有 AI 助教陪着做。</p></details>
+    <details><summary>退款规则是什么？</summary><p>11 月 15 日前可以退；11 月 15 日之后不退，因为整座岛的费用在那之后也不退。名额可以转让给经过申请的朋友。</p></details>
+  </div>
+</section>
+
+<section class="closing">
+  <img src="img/dock-night.jpg" alt="夜晚亮着灯的码头延伸到海里" loading="lazy" style="object-position:center 70%">
+  <div class="over"><div class="wrap">
+    <h2>整座岛，只有我们。</h2>
+    <p>24 个名额，剩 17 个。第一届只有一次。</p>
+    <a class="btn" href="#apply">申请成为首届岛民</a>
+  </div></div>
+</section>
+
+<footer><div class="wrap"><span>边玩边赚 Play and Prosper · 包下一座岛 · 首届</span><span class="mono">FLORAL ISLAND · PALAWAN · 2026.12</span></div></footer>
+
+<script>
+(function(){
+  // sticky header tint
+  var top=document.getElementById('top');
+  function onScroll(){ top.classList.toggle('solid', window.scrollY > window.innerHeight*0.6); }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  // hero video: keep poster if reduced motion
+  var v=document.getElementById('heroVideo');
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches && v){ v.removeAttribute('autoplay'); v.pause(); v.hidden=true; }
+
+  // moon phases 12/6–12/11 (waning crescent → new moon on 12/9 → young crescent)
+  var phases=[
+    {d:'12/06', lit:.10, side:'L', n:'残月 · 上岛'},
+    {d:'12/07', lit:.05, side:'L', n:''},
+    {d:'12/08', lit:.02, side:'L', n:'星空合影'},
+    {d:'12/09', lit:0,   side:'L', n:'新月 08:52 · 许愿夜', key:true},
+    {d:'12/10', lit:.03, side:'R', n:'结营照片夜'},
+    {d:'12/11', lit:.07, side:'R', n:'离岛'}
+  ];
+  var box=document.getElementById('phases');
+  phases.forEach(function(p){
+    var r=34, cx=40, cy=40;
+    // lit crescent: outer half circle + inner ellipse; rx shrinks the crescent
+    var rx = r*(1-2*p.lit); // terminator ellipse
+    var sweepOuter = p.side==='R' ? 1 : 0;
+    var path = p.lit>0 ? 'M'+cx+' '+(cy-r)+' A'+r+' '+r+' 0 0 '+sweepOuter+' '+cx+' '+(cy+r)+' A'+rx.toFixed(2)+' '+r+' 0 0 '+(1-sweepOuter)+' '+cx+' '+(cy-r)+'Z' : '';
+    var el=document.createElement('div'); el.className='phase'+(p.key?' key':'');
+    el.innerHTML='<svg viewBox="0 0 80 80" role="img" aria-label="'+p.d+(p.key?' 新月':'')+'">'+
+      '<circle cx="40" cy="40" r="34" fill="#132A2E" stroke="'+(p.key?'#D2B988':'rgba(230,238,234,.25)')+'" stroke-width="'+(p.key?1.6:1)+'"/>'+
+      (path?'<path d="'+path+'" fill="#EDE6D2"/>':'')+'</svg>'+
+      '<span class="d">'+p.d+'</span><span class="n">'+(p.n||'&nbsp;')+'</span>';
+    box.appendChild(el);
+  });
+
+  // seats
+  var seats=document.getElementById('seats');
+  for (var i=1;i<=24;i++){ var s=document.createElement('span'); s.className='seat'+(i<=7?' taken':''); s.textContent=(i<10?'0':'')+i; s.setAttribute('aria-label','No.'+(i<10?'0':'')+i+(i<=7?' 已入驻':' 空位')); seats.appendChild(s); }
+
+
+  // gallery tabs
+  var tabBtns=document.querySelectorAll('.tabs button');
+  tabBtns.forEach(function(btn){ btn.addEventListener('click', function(){
+    tabBtns.forEach(function(b){ var on=b===btn; b.setAttribute('aria-selected', String(on)); document.getElementById(b.getAttribute('aria-controls')).hidden=!on; });
+  }); });
+  // application
+  var form=document.getElementById('appForm'), msg=document.getElementById('formMsg');
+  function val(id){ var e=document.getElementById(id); return (e && e.value || '').trim(); }
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (!val('f-name') || !val('f-contact')){ msg.textContent='请填写名字和联系方式，我们才能联系你。'; return; }
+    if (!document.getElementById('f-c1').checked || !document.getElementById('f-c2').checked){ msg.textContent='请先勾选前两项：住宿说明和旅游险。'; return; }
+    msg.textContent='';
+    var lines=[
+      '【包下一座岛 · 首届岛民申请】',
+      '名字：'+val('f-name'),
+      '联系方式：'+val('f-contact'),
+      '现居城市：'+(val('f-city')||'—'),
+      '出发地：'+val('f-from'),
+      '推荐人：'+(val('f-ref')||'—'),
+      '现在在做：'+(val('f-now')||'—'),
+      '为什么想来：'+(val('f-why')||'—'),
+      '床位意向：'+val('f-bed'),
+      '12/11 后加住：'+val('f-stay'),
+      '饮食与健康：'+(val('f-health')||'—'),
+      '肖像授权：'+(document.getElementById('f-c3').checked?'同意':'不同意')
+    ];
+    document.getElementById('resultText').textContent=lines.join('\n');
+    var r=document.getElementById('result'); r.hidden=false; r.scrollIntoView({behavior:'smooth',block:'nearest'});
+  });
+  document.getElementById('copyBtn').addEventListener('click', function(){
+    var t=document.getElementById('resultText'), btn=this;
+    function selectIt(){ var rg=document.createRange(); rg.selectNodeContents(t); var s=window.getSelection(); s.removeAllRanges(); s.addRange(rg); btn.textContent='已选中，按复制键'; }
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(t.textContent).then(function(){ btn.textContent='已复制'; }, selectIt);
+    } else selectIt();
+  });
+})();
+</script>
+
+</body></html>
