@@ -147,6 +147,29 @@ section{padding-block:clamp(64px,10vw,120px)}
 .pillar p{color:var(--muted);font-size:.96rem}
 .pillar .take{margin-top:auto;padding-top:12px;border-top:1px dashed var(--line);font-size:.92rem}
 .pillar .take b{color:var(--hibiscus);font-weight:700}
+.teacher{padding:clamp(64px,9vw,120px) 0;background:var(--band,var(--card))}
+.teacher h2{font-size:var(--s2)}
+.t-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(24px,4vw,48px);margin-top:36px;align-items:start}
+.t-main{margin:0}
+.t-main img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:8px}
+.t-main figcaption{font-family:var(--f-mono);font-size:.76rem;color:var(--muted);margin-top:8px}
+.t-name{font-family:var(--f-mono);font-size:.82rem;letter-spacing:.08em;color:var(--lagoon)}
+.t-big{font-family:var(--f-display);font-size:clamp(1.3rem,2.4vw,1.65rem);font-weight:700;line-height:1.45;margin:6px 0 14px}
+.t-text p{color:var(--muted)}
+.t-text p.t-big{color:var(--ink)}
+.t-text p+p{margin-top:12px}
+.t-text blockquote{margin:22px 0 0;padding-left:16px;border-left:3px solid var(--hibiscus);font-family:var(--f-display);font-size:1.15rem}
+.t-text cite{display:block;font-style:normal;font-family:var(--f-body);font-size:.85rem;color:var(--muted);margin-top:4px}
+.t-row{display:grid;grid-template-columns:minmax(0,2fr) repeat(3,minmax(0,1fr));gap:14px;margin-top:28px}
+.t-row>img{width:100%;height:220px;object-fit:cover;border-radius:8px}
+.t-video{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:8px;overflow:hidden;height:220px}
+.t-video img{width:150px;height:220px;object-fit:cover}
+.t-video div{display:flex;flex-direction:column;gap:6px;padding-right:18px}
+.t-video .mono{font-size:.76rem;color:var(--hibiscus);letter-spacing:.06em}
+.t-video b{font-family:var(--f-display);font-size:1.2rem}
+.t-video span:last-child{font-size:.9rem;color:var(--muted)}
+@media (max-width:860px){.t-grid{grid-template-columns:1fr}.t-row{grid-template-columns:repeat(3,minmax(0,1fr))}.t-video{grid-column:1/-1}.t-row>img{height:170px}}
+@media (max-width:480px){.t-row>img{height:120px}.t-video{grid-template-columns:110px minmax(0,1fr);height:auto}.t-video img{width:110px;height:170px}}
 .pillars-sub{grid-column:1/-1;margin:22px 0 -4px;font-family:var(--f-mono);font-size:.82rem;letter-spacing:.08em;color:var(--lagoon)}
 @media (max-width:900px){.pillar,.pillar.wide{grid-column:span 3}}
 @media (max-width:620px){.pillar,.pillar.wide{grid-column:span 6}}
@@ -413,7 +436,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
         <div class="body">
           <span class="who">继红老师 · 两天半</span>
           <h3>活法</h3>
-          <p>近百位心上仁企业家付费 10 万+，只为跟她近距离学习。这一次没有教室，没有 PPT，沙滩上、树荫下围圈坐，她带你找到、活成真正的自己。</p>
+          <p>近百位心上仁企业家付费 10 万+，只为跟她近距离学习。这一次没有教室，没有 PPT，沙滩上、树荫下围圈坐，她带你找到、活成真正的自己。<a href="#jihong" style="color:var(--lagoon)">认识继红老师 →</a></p>
           <p class="take">带走：<b>一个新的自己</b></p>
         </div>
       </article>
@@ -481,6 +504,32 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
           <p class="take">带走：<b>24 个同路人，包括你自己</b></p>
         </div>
       </article>
+    </div>
+  </div>
+</section>
+
+<section class="teacher" id="jihong">
+  <div class="wrap">
+    <span class="eyebrow">带你找活法的人</span>
+    <h2>继红老师：<br>自己幸福，帮人幸福。</h2>
+    <div class="t-grid">
+      <figure class="t-main"><img src="img/jihong-stage.jpg" alt="继红老师身穿白衣，在心上仁「幸福动力」课堂上和大家牵手起舞" loading="lazy"><figcaption>心上仁「幸福动力」课堂</figcaption></figure>
+      <div class="t-text">
+        <p class="t-name">马继红 · 心上仁导师</p>
+        <p class="t-big">近百位心上仁企业家付费 10 万+，只为跟她近距离学习。</p>
+        <p>这些年，她一直在带人走进大自然：「大自然净化之旅」「活法健康营」，在云南的山野里，陪大家找回身心的自在。她的视频号叫「自然幸福法」，一句话说完她的主张：回归自然，自然幸福。</p>
+        <p>这一次，她把课堂搬到一座岛上。没有会场，没有大屏幕，沙滩上、树荫下围圈坐，两天半，带你找到、活成真正的自己。</p>
+        <blockquote>幸福，就是有意义的快乐。<cite>—— 继红老师</cite></blockquote>
+      </div>
+    </div>
+    <div class="t-row">
+      <div class="t-video">
+        <img src="img/jihong-mic.jpg" alt="继红老师手持话筒分享" loading="lazy">
+        <div><span class="mono">视频 · 5:32</span><b>《人生只有一件事》</b><span>先听她讲 5 分钟。微信里搜视频号「自然幸福法」就能看到。</span></div>
+      </div>
+      <img src="img/jihong-yellow.jpg" alt="继红老师在开花的树下" loading="lazy">
+      <img src="img/jihong-white.jpg" alt="继红老师白衣白帽在山间喝茶" loading="lazy">
+      <img src="img/jihong-forest.jpg" alt="继红老师走在林间步道上" loading="lazy">
     </div>
   </div>
 </section>
