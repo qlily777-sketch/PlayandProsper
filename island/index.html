@@ -3,6 +3,8 @@
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style>
 </head><body>
 <title>包下一座岛</title>
+<link rel="icon" type="image/png" href="img/logo-icon.png">
+<link rel="apple-touch-icon" href="img/logo-icon.png">
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="边玩边赚：包下一座岛。2026 年 12 月 6–11 日，巴拉望鲜花岛，整座私人岛只属于 24 位首届岛民。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,7 +63,9 @@ section{padding-block:clamp(64px,10vw,120px)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;color:#fff}
 .top.solid{background:var(--paper);box-shadow:0 1px 0 var(--line)}
 .top.solid .wrap{color:var(--ink)}
-.brand{font-family:var(--f-display);font-weight:700;letter-spacing:.04em;text-decoration:none}
+.brand{font-family:var(--f-display);font-weight:700;letter-spacing:.04em;text-decoration:none;display:inline-flex;align-items:center;gap:10px}
+.brand img{height:32px;width:auto;display:block}
+.foot-logo{height:40px;width:auto;display:block;margin-bottom:8px}
 .top nav{display:flex;gap:22px;font-size:.92rem}
 .top nav a{text-decoration:none;opacity:.85}
 .top nav a:hover{opacity:1}
@@ -143,6 +147,7 @@ section{padding-block:clamp(64px,10vw,120px)}
 .pillar p{color:var(--muted);font-size:.96rem}
 .pillar .take{margin-top:auto;padding-top:12px;border-top:1px dashed var(--line);font-size:.92rem}
 .pillar .take b{color:var(--hibiscus);font-weight:700}
+.pillars-sub{grid-column:1/-1;margin:22px 0 -4px;font-family:var(--f-mono);font-size:.82rem;letter-spacing:.08em;color:var(--lagoon)}
 @media (max-width:900px){.pillar,.pillar.wide{grid-column:span 3}}
 @media (max-width:620px){.pillar,.pillar.wide{grid-column:span 6}}
 
@@ -238,6 +243,15 @@ section{padding-block:clamp(64px,10vw,120px)}
 .costs th,.costs td{padding:12px 10px;border-bottom:1px solid color-mix(in srgb,var(--paper) 18%,transparent);text-align:left}
 .costs td.n{font-family:var(--f-mono);text-align:right;white-space:nowrap}
 .costs th{font-weight:500;opacity:.75;font-size:.82rem}
+.inout{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:20px}
+.inout>div{border:1px solid color-mix(in srgb,var(--paper) 25%,transparent);border-radius:8px;padding:22px 24px}
+.inout h3{font-size:1.15rem;margin-bottom:10px}
+.inout ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.inout li{font-size:.93rem;opacity:.88;padding-left:22px;position:relative}
+.inout li b{display:block;opacity:1}
+.inout .in li::before{content:"✓";position:absolute;left:0;color:var(--sand)}
+.inout .out li::before{content:"✕";position:absolute;left:0;opacity:.6}
+@media (max-width:700px){.inout{grid-template-columns:1fr}}
 .price .fine{margin-top:16px;font-size:.86rem;opacity:.7}
 @media (max-width:700px){.tiers{grid-template-columns:1fr}}
 
@@ -296,7 +310,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
 <header class="top" id="top">
   <div class="wrap">
-    <a class="brand" href="#hero">边玩边赚 · 包下一座岛</a>
+    <a class="brand" href="#hero"><img src="img/logo.png" alt="边玩边赚"><span>包下一座岛</span></a>
     <nav aria-label="页面导航">
       <a href="#island">这座岛</a><a href="#incl">包含什么</a><a href="#pillars">五天做什么</a><a href="#days">日程</a><a href="#price">费用</a><a href="#faq">常见问题</a>
     </nav>
@@ -382,7 +396,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     <div class="rituals">
       <div><h3>星空下许愿</h3><p>新月夜，每个人在星空下写下：接下来我要活成什么样。</p></div>
       <div><h3>一年后的信</h3><p>写给一年后的自己。我们收好，2027 年 12 月 9 日寄到你手里。</p></div>
-      <div><h3>首届岛民编号</h3><p>No.01 到 No.24，印在你的 T 恤和证书上。第一届只有一次。</p></div>
+      <div><h3>你的岛号</h3><p>从 001 到 999 自己挑一个，先到先得。生日、幸运数字、某个纪念日都行，开营夜说说它对你的意义。印在你的 T 恤上，以后每一届都是你的。</p></div>
     </div>
   </div>
 </section>
@@ -390,7 +404,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 <section id="pillars">
   <div class="wrap">
     <div class="pillars-head">
-      <div><span class="eyebrow">五天做什么</span><h2>带走三样东西：<br>一个新的自己、一份作品、一群人。</h2></div>
+      <div><span class="eyebrow">五天做什么</span><h2>带走：一个新的自己、<br>几样真作品、一群人。</h2></div>
       <a class="btn ghost" href="#days">看每天的安排</a>
     </div>
     <div class="pillars">
@@ -399,17 +413,54 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
         <div class="body">
           <span class="who">继红老师 · 两天半</span>
           <h3>活法</h3>
-          <p>没有教室，没有 PPT。沙滩上、树荫下围圈坐，继红老师带你找到、活成真正的自己。她平时一门课 ¥6,000–10,000。</p>
+          <p>近百位心上仁企业家付费 10 万+，只为跟她近距离学习。这一次没有教室，没有 PPT，沙滩上、树荫下围圈坐，她带你找到、活成真正的自己。</p>
           <p class="take">带走：<b>一个新的自己</b></p>
         </div>
       </article>
       <article class="pillar wide">
         <img src="img/resort-aerial.jpg" alt="鲜花岛上的度假村、泳池和沙滩航拍" loading="lazy">
         <div class="body">
-          <span class="who">AI 实战工作坊 · 大家一起做</span>
+          <span class="who">千百合 · AI 实战工作坊</span>
           <h3>如果这座岛是你的</h3>
           <p>分组用 AI 研究一件真事：买一座岛、经营一座岛要算哪些账。调研、算账、写路演稿、做一页网站，最后一晚上台路演。不会 AI 也没关系，模板和助教都备好了。</p>
           <p class="take">带走：<b>一份方案和一个网页</b></p>
+        </div>
+      </article>
+      <p class="pillars-sub">四位护航，各带你做一样作品</p>
+      <article class="pillar">
+        <img src="img/reflection.jpg" alt="海边倒影" loading="lazy">
+        <div class="body">
+          <span class="who">木晓 · 全程摄影</span>
+          <h3>一张理想的照片</h3>
+          <p>出发前，你先说说「理想中的自己」在照片里是什么样子。木晓照着它排拍摄单，在岛上把它拍出来。</p>
+          <p class="take">带走：<b>一张理想的照片</b></p>
+        </div>
+      </article>
+      <article class="pillar">
+        <img src="img/kayak-aerial.jpg" alt="航拍海上的皮划艇" loading="lazy">
+        <div class="body">
+          <span class="who">文亮 · 摄像</span>
+          <h3>小岛小电影</h3>
+          <p>5 天全程记录，12/9 再加一位专业摄像，每个人都是主角。结营夜先放预告，完整版离岛后两周内送到。</p>
+          <p class="take">带走：<b>一部我们的小电影</b></p>
+        </div>
+      </article>
+      <article class="pillar">
+        <img src="img/volleyball.jpg" alt="沙滩上一起打排球" loading="lazy">
+        <div class="body">
+          <span class="who">机器猫 · DISC</span>
+          <h3>读懂自己，也读懂身边的人</h3>
+          <p>出发前送你一份付费级 DISC 测评和正式的详细报告。岛上一个晚上，机器猫带大家看懂自己、家人，还有身边的岛民。</p>
+          <p class="take">带走：<b>一份 DISC 正式报告</b></p>
+        </div>
+      </article>
+      <article class="pillar">
+        <img src="img/coconut.jpg" alt="桌上插着扶桑花的椰子" loading="lazy">
+        <div class="body">
+          <span class="who">千百合 · 主编</span>
+          <h3>《包下一座岛》</h3>
+          <p>4 个早上，千百合每天带几位岛民沿沙滩走一圈，聊同一个问题：如果这座岛是你的？AI 把你的话写成书里的一章，配上你的理想照片和 DISC。离岛两周内送到。</p>
+          <p class="take">带走：<b>书里属于你的一章</b></p>
         </div>
       </article>
       <article class="pillar">
@@ -417,17 +468,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
         <div class="body">
           <span class="who">小组私董会 · 互相出主意</span>
           <h3>私董会</h3>
-          <p>出发前 AI 先帮你理一份自己的商业初诊。岛上 6 人一组，每人轮流讲讲自己在做的事，大家一起出主意。</p>
+          <p>出发前 AI 先帮你理一份自己的商业初诊。岛上 6 人一组，每人轮流讲自己在做的事，组员一起出主意，千百合在各组之间轮流点拨。</p>
           <p class="take">带走：<b>一份行动清单</b></p>
-        </div>
-      </article>
-      <article class="pillar">
-        <img src="img/coconut.jpg" alt="桌上插着扶桑花的椰子" loading="lazy">
-        <div class="body">
-          <span class="who">AI 电子书</span>
-          <h3>《包下一座岛》</h3>
-          <p>每人一次 15 分钟访谈，AI 把你的故事写成书里的一章，配上专业摄影师给你拍的照片。离岛两周内送到。</p>
-          <p class="take">带走：<b>书里属于你的一章</b></p>
         </div>
       </article>
       <article class="pillar">
@@ -449,11 +491,11 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     <h2>岛上 5 天</h2>
     <p class="lead">爱妮岛机场接机，坐 1 小时 20 分钟的 van 到码头，再坐 10 分钟的船上岛。离岛那天早上是全程最低潮，我们中午后才走。</p>
     <div class="timeline">
-      <div class="day"><div class="when"><b>12/6</b>周日 · 上岛</div><div class="slot"><small>白天</small>机场接机，van + 坐船上岛。环岛、浮潜、划皮划艇，先玩起来。</div><div class="slot"><small>晚上</small>开营仪式，领取岛民编号。</div></div>
-      <div class="day"><div class="when"><b>12/7</b>周一</div><div class="slot"><small>全天</small>继红老师：活法。沙滩围圈。</div><div class="slot"><small>晚上</small>资源对接夜。</div></div>
-      <div class="day"><div class="when"><b>12/8</b>周二</div><div class="slot"><small>全天</small>继红老师：活法。</div><div class="slot"><small>晚上</small>星空合影。</div></div>
-      <div class="day new"><div class="when"><b>12/9</b>周三 · 新月</div><div class="slot"><small>上午 / 下午</small>继红老师课程收尾；下午专业摄影摄像日、自由活动、电子书访谈。</div><div class="slot"><small>晚上</small>新月夜：星空下许愿，写一年后的信。</div></div>
-      <div class="day"><div class="when"><b>12/10</b>周四</div><div class="slot"><small>上午 / 下午</small>AI 工作坊「如果这座岛是你的」；小组私董会轮流进行。</div><div class="slot"><small>晚上</small>路演 + 结营照片夜。</div></div>
+      <div class="day"><div class="when"><b>12/6</b>周日 · 上岛</div><div class="slot"><small>白天</small>机场接机，van + 坐船上岛。环岛、浮潜、划皮划艇，先玩起来。</div><div class="slot"><small>晚上</small>开营仪式：每人说说自己挑的岛号，为什么是它。</div></div>
+      <div class="day"><div class="when"><b>12/7</b>周一</div><div class="slot"><small>早上 / 全天</small>岛主晨走；继红老师：活法，沙滩围圈。</div><div class="slot"><small>晚上</small>资源对接夜。</div></div>
+      <div class="day"><div class="when"><b>12/8</b>周二</div><div class="slot"><small>早上 / 全天</small>岛主晨走；继红老师：活法。</div><div class="slot"><small>晚上</small>DISC 夜，然后星空合影。</div></div>
+      <div class="day new"><div class="when"><b>12/9</b>周三 · 新月</div><div class="slot"><small>早上 / 白天</small>岛主晨走；上午继红老师课程收尾；下午专业摄影摄像日，拍你的理想照片，也可以自由活动。</div><div class="slot"><small>晚上</small>新月夜：星空下许愿，写一年后的信。</div></div>
+      <div class="day"><div class="when"><b>12/10</b>周四</div><div class="slot"><small>早上 / 白天</small>岛主晨走；上午 AI 工作坊「如果这座岛是你的」；下午小组私董会。</div><div class="slot"><small>晚上</small>路演 + 结营夜，小电影预告首映。</div></div>
       <div class="day"><div class="when"><b>12/11</b>周五 · 离岛</div><div class="slot"><small>上午</small>复盘，收拾行李。</div><div class="slot"><small>中午后</small>坐船 + van 送回爱妮岛机场，约下午 3 点到。</div></div>
     </div>
   </div>
@@ -539,7 +581,27 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     <h2>一个价格，全部包含。</h2>
     <p class="lead">驻岛费用从爱妮岛机场接机开始，到送回爱妮岛机场结束。</p>
     <div class="tiers one">
-      <div class="tier feat"><small>驻岛费用 · 每人</small><div class="amt mono">¥29,800</div><p>包含：爱妮岛机场接送、坐船上下岛、整座私人岛 5 晚、健康三餐、继红老师两天半课程、AI 工作坊与私董会、专业摄影摄像日、AI 电子书、T 恤帽子和伴手礼、浮潜装备与皮划艇。</p></div>
+      <div class="tier feat"><small>驻岛费用 · 每人</small><div class="amt mono">¥29,800</div><p>从 12 月 6 日爱妮岛机场接机开始，到 12 月 11 日送回爱妮岛机场结束。</p></div>
+    </div>
+    <div class="inout">
+      <div class="in"><h3>包含</h3><ul>
+        <li><b>接送</b>12/6 爱妮岛机场接机，van + 坐船上岛；12/11 送回爱妮岛机场</li>
+        <li><b>住</b>整座私人岛 5 晚，24 人全部包住</li>
+        <li><b>吃</b>5 天健康三餐（也有素食），咖啡、茶、饮用水全天供应</li>
+        <li><b>玩</b>浮潜装备、皮划艇、划桨船、泳池、海上浮台、登顶步道、沙滩篝火</li>
+        <li><b>学</b>继红老师两天半、AI 实战工作坊、小组私董会</li>
+        <li><b>带走</b>一张理想的照片、一部小岛小电影、付费级 DISC 测评和正式报告、电子书里你的一章、印着岛号的 T 恤、帽子和伴手礼</li>
+        <li><b>前后</b>行前线上共修，离岛后 21 天小群跟进</li>
+        <li><b>小费</b>岛上员工小费和环境费</li>
+      </ul></div>
+      <div class="out"><h3>不包含</h3><ul>
+        <li><b>前段交通</b>国际机票、马尼拉到克拉克的包车、克拉克住宿、克拉克往返爱妮岛的机票（合作旅行社统一代订，你直接付给旅行社）</li>
+        <li><b>旅游险</b>必须买，要含境外医疗、紧急救援转运和水上活动</li>
+        <li><b>证件</b>护照、签证（如需要）</li>
+        <li><b>岛上自费</b>按摩、酒水饮料、出岛游（日落游船、跳岛、瀑布）</li>
+        <li><b>加住</b>12/11 之后在爱妮岛多玩几天</li>
+        <li><b>个人消费</b>购物、纪念品等</li>
+      </ul></div>
     </div>
     <div class="tablebox">
       <table class="costs">
@@ -551,7 +613,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
         </tbody>
       </table>
     </div>
-    <p class="fine">前段机票和住宿由合作旅行社统一代订、统一出票，你直接付给旅行社，大家一起走。旅游险必须包含境外医疗、紧急救援转运和水上活动。12 月 11 日后想在爱妮岛多玩两天，可以加订，另算。</p>
+    <p class="fine">前段机票和住宿由合作旅行社统一代订、统一出票，大家一起走。12 月 11 日后想在爱妮岛多玩两天，可以加订，另算。</p>
   </div>
 </section>
 
@@ -564,12 +626,14 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       <div>
         <ol class="steps">
           <li><div><b>填写申请</b><span>右边这张表，3 分钟。</span></div></li>
+          <li><div><b>付诚意金 ¥1,000</b><span>先帮你留住名额。没通过申请，或 11 月 1 日前改主意，全额退。</span></div></li>
           <li><div><b>15 分钟电话</b><span>聊聊你为什么想来、现在在做什么。</span></div></li>
-          <li><div><b>收到入驻邀请</b><span>交定金后，名额才算锁定。</span></div></li>
+          <li><div><b>收到入驻邀请</b><span>11 月 1 日前付清余款，名额就是你的了。</span></div></li>
           <li><div><b>保险和安全须知</b><span>交保单截图，签安全须知，你就是首届岛民了。</span></div></li>
         </ol>
         <div class="dates">
-                    <div><span>11/05</span><span>申请截止</span></div>
+          <div><span>11/01</span><span>付清全款</span></div>
+          <div><span>11/05</span><span>申请截止（11/1 后还有空位的话，通过后 3 天内付清）</span></div>
           <div><span>11/15</span><span>退款截止，之后不退</span></div>
           <div><span>12/06</span><span>上岛</span></div>
         </div>
@@ -585,6 +649,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
         <label>现居城市<input id="f-city" autocomplete="address-level2"></label>
         <label>从哪里出发<select id="f-from"><option>中国大陆</option><option>美国</option><option>其他地区</option></select></label>
         <label class="full">推荐人（谁邀请你来的）<input id="f-ref" placeholder="没有可不填"></label>
+        <label class="full">想要的岛号（001–999）和它的意义<input id="f-num" placeholder="可以先空着，先到先得"></label>
         <label class="full">你现在在做什么？<textarea id="f-now" placeholder="工作、事业，或者正在过的一段人生"></textarea></label>
         <label class="full">为什么想来这 5 天？最想带走什么？<textarea id="f-why"></textarea></label>
         <label>床位意向<select id="f-bed"><option>睡床或地铺都可以</option><option>希望睡床</option><option>和同伴同住一张床</option></select></label>
@@ -617,8 +682,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     <details><summary>岛上有网络吗？</summary><p>有 Starlink 卫星网络，踩点时测过，日常使用和视频通话都可以，但比不上 5G。AI 工作坊需要的账号和工具会在出发前帮你准备好。</p></details>
     <details><summary>生病或受伤怎么办？</summary><p>岛上有急救箱，两名员工受过红十字会急救培训。岛上没有诊所，最近的医院在 Taytay，坐船加坐车最快约 40 分钟，一般要 1 小时左右。所以旅游险必须包含紧急救援和医疗转运。</p></details>
     <details><summary>多大年龄可以来？</summary><p>这一季接待 18 岁以上的成人。上下岛坐船只要 10 分钟左右，岛上有沙路和台阶，最近的医院约 1 小时路程，申请后的电话里我们会一起聊聊身体情况。</p></details>
+    <details><summary>岛号怎么选？</summary><p>从 001 到 999 自己挑一个三位数，先到先得。选一个对你有意义的：生日、幸运数字、和家人有关的日子都行。开营夜每人说说自己的号码为什么是它。这个号码会印在你的 T 恤上，以后每一届上岛都是你的。</p></details>
     <details><summary>不会用 AI 能来吗？</summary><p>能。出发前的线上共修会帮你开好账号、学会基本操作；岛上每组都有 AI 助教陪着做。</p></details>
-    <details><summary>退款规则是什么？</summary><p>11 月 15 日前可以退；11 月 15 日之后不退，因为整座岛的费用在那之后也不退。名额可以转让给经过申请的朋友。</p></details>
+    <details><summary>退款规则是什么？</summary><p>诚意金 ¥1,000：没通过申请，或 11 月 1 日前改主意，全额退。付清全款后，11 月 15 日前可以退；11 月 15 日之后不退，因为整座岛的费用在那之后也不退。名额可以转让给经过申请的朋友。</p></details>
   </div>
 </section>
 
@@ -631,7 +697,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   </div></div>
 </section>
 
-<footer><div class="wrap"><span>边玩边赚 Play and Prosper · 包下一座岛 · 首届</span><span class="mono">FLORAL ISLAND · PALAWAN · 2026.12</span></div></footer>
+<footer><div class="wrap"><span><img class="foot-logo" src="img/logo.png" alt="边玩边赚">边玩边赚 Play and Prosper · 包下一座岛 · 首届</span><span class="mono">FLORAL ISLAND · PALAWAN · 2026.12</span></div></footer>
 
 <script>
 (function(){
@@ -650,7 +716,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     {d:'12/07', lit:.05, side:'L', n:''},
     {d:'12/08', lit:.02, side:'L', n:'星空合影'},
     {d:'12/09', lit:0,   side:'L', n:'新月 08:52 · 许愿夜', key:true},
-    {d:'12/10', lit:.03, side:'R', n:'结营照片夜'},
+    {d:'12/10', lit:.03, side:'R', n:'结营夜'},
     {d:'12/11', lit:.07, side:'R', n:'离岛'}
   ];
   var box=document.getElementById('phases');
@@ -670,7 +736,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
   // seats
   var seats=document.getElementById('seats');
-  for (var i=1;i<=24;i++){ var s=document.createElement('span'); s.className='seat'+(i<=7?' taken':''); s.textContent=(i<10?'0':'')+i; s.setAttribute('aria-label','No.'+(i<10?'0':'')+i+(i<=7?' 已入驻':' 空位')); seats.appendChild(s); }
+  for (var i=1;i<=24;i++){ var s=document.createElement('span'); s.className='seat'+(i<=7?' taken':''); s.setAttribute('aria-label','第 '+i+' 席'+(i<=7?' 已入驻':' 空位')); seats.appendChild(s); }
 
 
   // gallery tabs
@@ -693,6 +759,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       '现居城市：'+(val('f-city')||'—'),
       '出发地：'+val('f-from'),
       '推荐人：'+(val('f-ref')||'—'),
+      '想要的岛号：'+(val('f-num')||'—'),
       '现在在做：'+(val('f-now')||'—'),
       '为什么想来：'+(val('f-why')||'—'),
       '床位意向：'+val('f-bed'),
@@ -712,5 +779,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   });
 })();
 </script>
+
 
 </body></html>
