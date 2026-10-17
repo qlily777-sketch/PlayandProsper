@@ -147,6 +147,18 @@ section{padding-block:clamp(64px,10vw,120px)}
 .pillar p{color:var(--muted);font-size:.96rem}
 .pillar .take{margin-top:auto;padding-top:12px;border-top:1px dashed var(--line);font-size:.92rem}
 .pillar .take b{color:var(--hibiscus);font-weight:700}
+.turtle{padding:clamp(64px,9vw,120px) 0}
+.turtle-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,64px);align-items:center}
+.turtle-img{margin:0}
+.turtle-img img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:8px}
+.turtle h2{font-size:var(--s2);margin-bottom:14px}
+.turtle-list{list-style:none;margin:26px 0 0;padding:0;counter-reset:t;border-top:1px solid var(--line)}
+.turtle-list li{counter-increment:t;display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:10px;padding:16px 0;border-bottom:1px solid var(--line)}
+.turtle-list li::before{content:"0" counter(t);font-family:var(--f-mono);color:var(--hibiscus);font-size:.9rem;padding-top:3px;grid-row:span 2}
+.turtle-list b{font-family:var(--f-display);font-size:1.12rem}
+.turtle-list span{color:var(--muted);font-size:.95rem}
+.turtle-fine{margin-top:16px;font-size:.86rem;color:var(--muted)}
+@media (max-width:820px){.turtle-grid{grid-template-columns:1fr}.turtle-img img{aspect-ratio:16/10}}
 .pillars-sub{grid-column:1/-1;margin:22px 0 -4px;font-family:var(--f-mono);font-size:.82rem;letter-spacing:.08em;color:var(--lagoon)}
 @media (max-width:900px){.pillar,.pillar.wide{grid-column:span 3}}
 @media (max-width:620px){.pillar,.pillar.wide{grid-column:span 6}}
@@ -568,7 +580,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       <div class="day"><div class="when"><b>12/7</b>周一</div><div class="slot"><small>早上 / 全天</small>岛主晨走；继红老师：活法，沙滩围圈。</div><div class="slot"><small>晚上</small>资源对接夜。</div></div>
       <div class="day"><div class="when"><b>12/8</b>周二</div><div class="slot"><small>早上 / 全天</small>岛主晨走；继红老师：活法。</div><div class="slot"><small>晚上</small>DISC 夜，然后星空合影。</div></div>
       <div class="day new"><div class="when"><b>12/9</b>周三 · 新月</div><div class="slot"><small>早上 / 白天</small>岛主晨走；上午继红老师课程收尾；下午专业摄影摄像日，也可以自由活动。</div><div class="slot"><small>晚上</small>新月夜：星空下许愿，写一年后的信。</div></div>
-      <div class="day"><div class="when"><b>12/10</b>周四</div><div class="slot"><small>早上 / 白天</small>岛主晨走；上午 AI 工作坊「如果这座岛是你的」；下午小组私董会。</div><div class="slot"><small>晚上</small>路演 + 结营夜，一起看大家的小岛短片。</div></div>
+      <div class="day"><div class="when"><b>12/10</b>周四</div><div class="slot"><small>早上 / 白天</small>岛主晨走；上午 AI 工作坊「如果这座岛是你的」；下午小组私董会。</div><div class="slot"><small>晚上</small>路演 + 结营夜，一起看大家的小岛短片，颁发海龟守护人证书。</div></div>
       <div class="day"><div class="when"><b>12/11</b>周五 · 离岛</div><div class="slot"><small>上午</small>复盘，收拾行李。</div><div class="slot"><small>中午后</small>坐船 + van 送回爱妮岛机场，约下午 3 点到。</div></div>
     </div>
   </div>
@@ -638,6 +650,25 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   </div>
 </section>
 
+<section class="turtle" id="turtle">
+  <div class="wrap">
+    <div class="turtle-grid">
+      <figure class="turtle-img"><img src="img/snorkel-turtle.jpg" alt="浮潜时在海里遇见的海龟" loading="lazy"></figure>
+      <div>
+        <span class="eyebrow">海龟守护计划</span>
+        <h2>你上岛，<br>就有一窝小海龟回到大海。</h2>
+        <p class="lead">离鲜花岛不远的爱妮岛，Sylvia 在 Nacpan 海滩守护海龟十年，野放了七万多只小海龟。这一次，每位首届岛民都会和她一起，守护一次海龟。</p>
+        <ol class="turtle-list">
+          <li><b>每个座位捐 ¥198</b><span>你的团费里有 ¥198 会捐给 Sylvia 创办的海龟保育中心，用你的岛号认养一窝海龟蛋。小海龟孵出、回到大海的那天，照片会放进你的岛民主页。</span></li>
+          <li><b>用我们会的，多帮一点</b><span>AI 工作坊里有一组会给海龟中心做一份中文介绍和一支短片，让更多华人认识这群海龟。</span></li>
+          <li><b>一张海龟守护人证书</b><span>结营夜，每人领一张印着自己岛号的「海龟守护人」证书，岛民主页里也有一份。</span></li>
+        </ol>
+        <p class="turtle-fine">12/11 之后在爱妮岛多留几天的朋友，可以一起去海龟中心看看。认养和参观的具体安排以海龟中心为准，捐款明细在结营夜公开。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="cloud" id="xiaoyu">
   <div class="wrap narrow">
     <span class="eyebrow">从云端到岛上</span>
@@ -666,6 +697,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
         <li><b>带走</b>一张自己满意的照片、一支你自己的小岛短片、付费级 DISC 测评和正式报告、一本你自己的电子书、你的岛民主页（专属链接）、印着岛号的 T 恤、帽子和伴手礼</li>
         <li><b>前后</b>行前线上共修，离岛后 21 天小群跟进</li>
         <li><b>小费</b>岛上员工小费和环境费</li>
+        <li><b>公益</b>每个座位 ¥198 捐给海龟保育中心，外加一张海龟守护人证书</li>
       </ul></div>
       <div class="out"><h3>不包含</h3><ul>
         <li><b>前段交通</b>国际机票、马尼拉到克拉克的包车、克拉克住宿、克拉克往返爱妮岛的机票（合作旅行社统一代订，你直接付给旅行社）</li>
