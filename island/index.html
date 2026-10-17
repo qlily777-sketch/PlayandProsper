@@ -91,6 +91,8 @@ section{padding-block:clamp(64px,10vw,120px)}
 .story{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(28px,5vw,72px);align-items:center}
 .story figure{margin:0;position:relative}
 .story figure img{border-radius:6px;aspect-ratio:3/4;object-fit:cover;width:100%}
+.sp-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.sp-grid img{aspect-ratio:3/4}
 .story figcaption{font-family:var(--f-mono);font-size:.75rem;color:var(--muted);margin-top:10px}
 .story h2{font-size:var(--s2);margin-bottom:22px}
 .story p+p{margin-top:16px}
@@ -384,9 +386,14 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
 <section id="story">
   <div class="wrap story">
-    <figure>
-      <img src="img/lily-boat.jpg" alt="千百合在去鲜花岛的船上张开双臂" loading="lazy">
-      <figcaption>2026.09.24 · 千百合上岛踩点</figcaption>
+    <figure class="story-pics">
+      <div class="sp-grid">
+        <img src="img/lily-2024.jpg" alt="2024 年千百合在巴拉望的林间" loading="lazy">
+        <img src="img/lily-coconut.jpg" alt="千百合在鲜花岛的餐厅里捧着椰子微笑" loading="lazy">
+        <img src="img/lily-beach.jpg" alt="千百合清晨走在爱妮岛的沙滩上" loading="lazy">
+        <img src="img/lily-sea.jpg" alt="千百合清晨走在爱妮岛的海水里" loading="lazy">
+      </div>
+      <figcaption>2024 巴拉望 · 2026.09 上岛踩点：鲜花岛 · 爱妮岛</figcaption>
     </figure>
     <div>
       <span class="eyebrow">写在前面</span>
