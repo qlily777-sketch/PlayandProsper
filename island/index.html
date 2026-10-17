@@ -99,10 +99,10 @@ section{padding-block:clamp(64px,10vw,120px)}
 
 
 .film{padding-block:0 clamp(64px,10vw,120px)}
-.film-box{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:28px;align-items:end}
-.film video{width:100%;max-width:100%;aspect-ratio:1296/1080;background:#071518;border-radius:6px;display:block}
+.film-box{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:end}
+.film video{height:min(78vh,760px);width:auto;max-width:100%;aspect-ratio:9/16;object-fit:cover;background:#071518;border-radius:6px;display:block}
 .film-cap p{font-family:var(--f-display);font-size:var(--s3);font-weight:700;line-height:1.5}
-@media (max-width:760px){.film-box{grid-template-columns:1fr}}
+@media (max-width:760px){.film-box{grid-template-columns:1fr}.film video{width:100%;height:auto;max-height:none}}
 
 /* numbers band */
 .island{position:relative;color:#fff;padding:0}
@@ -404,8 +404,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 <section class="film" id="film">
   <div class="wrap">
     <div class="film-box">
-      <video controls playsinline preload="none" poster="img/palawan-2024-poster.jpg">
-        <source src="img/palawan-2024.mp4" type="video/mp4">
+      <video controls playsinline preload="none" poster="img/palawan-2024-v-poster.jpg">
+        <source src="img/palawan-2024-v.mp4" type="video/mp4">
       </video>
       <div class="film-cap"><span class="eyebrow">2024 · 公主港</span><p>千百合第一次来巴拉望。那次回去，就说以后一定要再来。</p></div>
     </div>
