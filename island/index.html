@@ -299,6 +299,7 @@ section{padding-block:clamp(64px,10vw,120px)}
 .seat{aspect-ratio:1;border-radius:50%;border:1.5px dashed var(--lagoon);display:grid;place-items:center;font-family:var(--f-mono);font-size:.7rem;color:var(--lagoon)}
 .seat.taken{background:var(--lagoon);border-style:solid;color:var(--paper)}
 .seatmap p{font-size:.9rem;color:var(--muted);margin-top:10px}
+.apply-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:clamp(22px,3vw,34px);display:flex;flex-direction:column;align-items:flex-start;gap:14px;align-self:start}.apply-card h3{font-size:1.25rem}.apply-card p{color:var(--muted);line-height:1.75}.apply-card .qr{display:flex;align-items:center;gap:14px;margin-top:8px;font-size:.88rem;color:var(--muted)}.apply-card .qr img{width:120px;height:120px;border-radius:6px;border:1px solid var(--line);background:#fff}
 form.app{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:clamp(20px,3vw,32px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 18px}
 form.app .full{grid-column:1/-1}
 form.app label{display:flex;flex-direction:column;gap:6px;font-size:.88rem;font-weight:500}
@@ -773,7 +774,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     <div class="apply-grid">
       <div>
         <ol class="steps">
-          <li><div><b>填写申请</b><span>右边这张表，3 分钟。</span></div></li>
+          <li><div><b>填写申请</b><span>右边的飞书申请表，3 分钟。</span></div></li>
           <li><div><b>付诚意金 ¥1,000</b><span>先帮你留住名额。没通过申请，或 11 月 1 日前改主意，全额退。</span></div></li>
           <li><div><b>15 分钟电话</b><span>聊聊你为什么想来、现在在做什么。</span></div></li>
           <li><div><b>收到入驻邀请</b><span>11 月 1 日前付清余款，名额就是你的了。</span></div></li>
@@ -791,31 +792,12 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
           <p>实心 = 已入驻，空心 = 等你。满员即止。</p>
         </div>
       </div>
-      <form class="app" id="appForm" novalidate>
-        <label>你的名字<input id="f-name" required autocomplete="name"></label>
-        <label>微信号或手机<input id="f-contact" required></label>
-        <label>现居城市<input id="f-city" autocomplete="address-level2"></label>
-        <label>从哪里出发<select id="f-from"><option>中国大陆</option><option>美国</option><option>其他地区</option></select></label>
-        <label class="full">推荐人（谁邀请你来的）<input id="f-ref" placeholder="没有可不填"></label>
-        <label class="full">想要的岛号（001–999）和它的意义<input id="f-num" placeholder="可以先空着，先到先得"></label>
-        <label class="full">你现在在做什么？<textarea id="f-now" placeholder="工作、事业，或者正在过的一段人生"></textarea></label>
-        <label class="full">为什么想来这 5 天？最想带走什么？<textarea id="f-why"></textarea></label>
-        <label>床位意向<select id="f-bed"><option>睡床或地铺都可以</option><option>希望睡床</option><option>和同伴同住一张床</option></select></label>
-        <label>12/11 后在爱妮岛加住吗<select id="f-stay"><option>还没想好</option><option>直接回程</option><option>加住 1–2 晚</option></select></label>
-        <label class="full">饮食忌口、健康情况、会不会游泳<input id="f-health" placeholder="比如吃素、过敏；我们提前告诉岛上"></label>
-        <div class="full checks">
-          <label><input type="checkbox" id="f-c1">我知道这是岛不是酒店，可能睡地铺。</label>
-          <label><input type="checkbox" id="f-c2">我会购买含境外医疗、紧急救援转运和水上活动的旅游险。</label>
-          <label><input type="checkbox" id="f-c3">我同意岛上拍摄的照片和视频用于边玩边赚的分享和宣传。</label>
-        </div>
-        <div class="full actions"><button class="btn" type="submit">生成我的申请</button><span id="formMsg" style="font-size:.9rem;color:var(--muted)"></span></div>
-        <div class="result" id="result" hidden>
-          <span class="ok">你的申请已生成。</span>
-          <p style="font-size:.92rem;margin-top:6px">复制下面的内容，微信发给邀请你的人或千百合团队，我们会在 2 天内和你约电话。</p>
-          <pre id="resultText"></pre>
-          <button class="btn" type="button" id="copyBtn">复制申请内容</button>
-        </div>
-      </form>
+      <div class="apply-card">
+        <h3>首届岛民申请表</h3>
+        <p>7 个问题，3 分钟填完。提交后，我们会在 2 天内加你微信，约一个 15 分钟的电话。</p>
+        <a class="btn" href="https://ncnpdjciqnfm.feishu.cn/share/base/form/shrcnVJSU0ktL22N9UDcVBLbz8e" target="_blank" rel="noopener">打开申请表</a>
+        <div class="qr"><img src="img/apply-qr.png" alt="申请表二维码" width="150" height="150"><span>在电脑上看？用微信扫一扫，在手机上填。</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -892,39 +874,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   tabBtns.forEach(function(btn){ btn.addEventListener('click', function(){
     tabBtns.forEach(function(b){ var on=b===btn; b.setAttribute('aria-selected', String(on)); document.getElementById(b.getAttribute('aria-controls')).hidden=!on; });
   }); });
-  // application
-  var form=document.getElementById('appForm'), msg=document.getElementById('formMsg');
-  function val(id){ var e=document.getElementById(id); return (e && e.value || '').trim(); }
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    if (!val('f-name') || !val('f-contact')){ msg.textContent='请填写名字和联系方式，我们才能联系你。'; return; }
-    if (!document.getElementById('f-c1').checked || !document.getElementById('f-c2').checked){ msg.textContent='请先勾选前两项：住宿说明和旅游险。'; return; }
-    msg.textContent='';
-    var lines=[
-      '【包下一座岛 · 首届岛民申请】',
-      '名字：'+val('f-name'),
-      '联系方式：'+val('f-contact'),
-      '现居城市：'+(val('f-city')||'—'),
-      '出发地：'+val('f-from'),
-      '推荐人：'+(val('f-ref')||'—'),
-      '想要的岛号：'+(val('f-num')||'—'),
-      '现在在做：'+(val('f-now')||'—'),
-      '为什么想来：'+(val('f-why')||'—'),
-      '床位意向：'+val('f-bed'),
-      '12/11 后加住：'+val('f-stay'),
-      '饮食与健康：'+(val('f-health')||'—'),
-      '肖像授权：'+(document.getElementById('f-c3').checked?'同意':'不同意')
-    ];
-    document.getElementById('resultText').textContent=lines.join('\n');
-    var r=document.getElementById('result'); r.hidden=false; r.scrollIntoView({behavior:'smooth',block:'nearest'});
-  });
-  document.getElementById('copyBtn').addEventListener('click', function(){
-    var t=document.getElementById('resultText'), btn=this;
-    function selectIt(){ var rg=document.createRange(); rg.selectNodeContents(t); var s=window.getSelection(); s.removeAllRanges(); s.addRange(rg); btn.textContent='已选中，按复制键'; }
-    if (navigator.clipboard && navigator.clipboard.writeText){
-      navigator.clipboard.writeText(t.textContent).then(function(){ btn.textContent='已复制'; }, selectIt);
-    } else selectIt();
-  });
 })();
 </script>
 
