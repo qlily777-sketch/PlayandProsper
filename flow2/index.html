@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>心流 · 万点成流</title>
+<style>
+:root{--bg:#0F0D0B;--ivory:#EFE7D6;--ivory2:#B9AE9A;--mute:#6F6657;--red:#E04A2B;--gold:#E6B86A}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ivory);font-family:"Songti SC","STSong","Noto Serif CJK SC","Noto Serif SC",serif;-webkit-font-smoothing:antialiased;touch-action:none}
+.sans{font-family:"PingFang SC","Hiragino Sans GB","Noto Sans CJK SC","Noto Sans SC",sans-serif}
+.mono{font-family:"SF Mono",Menlo,monospace;letter-spacing:.08em}
+#c{position:absolute;left:0;top:0;width:100%;height:100%}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform:translate(-50%,-50%) scale(var(--s,1));pointer-events:none}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity .6s}
+.slide.on{opacity:1}
+.t{position:absolute;opacity:0;transform:translateY(22px);transition:opacity 1s,transform 1s cubic-bezier(.2,.7,.2,1)}
+.on .t{opacity:1;transform:none}
+.on .d1{transition-delay:.6s}.on .d2{transition-delay:1s}.on .d3{transition-delay:1.4s}.on .d4{transition-delay:1.9s}.on .d5{transition-delay:2.5s}.on .d6{transition-delay:3.2s}.on .d7{transition-delay:4s}
+.big{font-weight:700;line-height:1.08;letter-spacing:.02em;color:var(--ivory)}
+.num{color:var(--gold);font-weight:600;letter-spacing:.25em;font-size:28px}
+.sub{color:var(--ivory2);font-size:36px;line-height:1.6}
+.lab{color:var(--mute);font-size:20px}
+.foot{position:absolute;bottom:48px;font-size:17px;color:var(--mute)}
+.foot.l{left:120px}.foot.r{right:120px}
+.seal{position:absolute;width:150px;height:60px;border:3px solid var(--red);color:var(--red);display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:700;letter-spacing:.12em;border-radius:6px;opacity:0;transform:rotate(-6deg) scale(1.5);transition:opacity .4s,transform .4s cubic-bezier(.2,1.4,.4,1)}
+.on .seal{opacity:.95;transform:rotate(-6deg) scale(1);transition-delay:5.2s}
+.seal::after{content:"";position:absolute;inset:5px;border:1px solid var(--red);border-radius:3px;opacity:.6}
+.chip{position:absolute;background:rgba(239,231,214,.08);border:1px solid rgba(239,231,214,.25);color:var(--ivory);padding:10px 22px;border-radius:30px;font-size:26px;opacity:0;transform:translateY(16px) scale(.96);backdrop-filter:blur(4px)}
+.on .chip,.chip.live{animation:chip .6s cubic-bezier(.2,.9,.3,1.2) forwards}
+.chip.live{border-color:var(--red);color:#fff;background:rgba(224,74,43,.25)}
+@keyframes chip{to{opacity:1;transform:none}}
+video{border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.6);background:#000;pointer-events:auto;cursor:pointer}
+.card{box-shadow:0 30px 80px rgba(0,0,0,.6);border-radius:8px}
+#hint{position:fixed;left:20px;bottom:16px;font-size:12px;color:var(--mute);z-index:9}
+#timerpill{position:fixed;top:14px;right:18px;font:14px Menlo,monospace;color:var(--mute);z-index:9;display:none}
+#timerpill.warn{color:#f5a623}#timerpill.over{color:#ff5a3c}
+#black{position:fixed;inset:0;background:#000;opacity:0;pointer-events:none;transition:opacity .4s;z-index:50}
+#black.on{opacity:1;pointer-events:auto}
+#help{position:fixed;inset:0;background:rgba(15,13,11,.96);display:none;z-index:60;padding:8vh 10vw}
+#help.on{display:block}
+#help h2{font-size:26px;margin-bottom:22px}#help table{border-collapse:collapse;font-size:18px}#help td{padding:8px 24px 8px 0}#help td:first-child{font-family:Menlo,monospace;color:var(--gold)}
+#wordbox{position:fixed;left:50%;bottom:12vh;transform:translateX(-50%);display:none;z-index:70;background:#1c1916;border:2px solid var(--red);border-radius:40px;padding:10px 24px}
+#wordbox.on{display:flex;gap:12px;align-items:center}
+#wordbox input{border:0;outline:0;font-size:24px;width:320px;font-family:inherit;background:transparent;color:#fff}
+#wordbox span{color:var(--mute);font-size:13px}
+#dots{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:9}
+#dots i{width:6px;height:6px;border-radius:50%;background:rgba(239,231,214,.2);transition:.3s}#dots i.on{background:var(--gold);transform:scale(1.4)}
+/* presenter */
+body.presenter{overflow:auto;background:#111;touch-action:auto}
+#pres{display:none;padding:28px;font-family:"PingFang SC","Noto Sans CJK SC",sans-serif}
+body.presenter #pres{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;height:100vh}
+body.presenter #c,body.presenter #stage,body.presenter #hint,body.presenter #dots{display:none}
+#pres .box{background:#1b1b1b;border-radius:14px;padding:22px;overflow:auto}
+#pres .big{font-size:22px;font-weight:600;color:#fff;margin-bottom:8px}
+#pres .clock{font:600 64px Menlo,monospace;color:#fff}#pres .clock.warn{color:#f5a623}#pres .clock.over{color:#ff5a3c}
+#pres .target{font:14px Menlo,monospace;color:#999;margin-top:6px}
+#pres .notes{font-size:20px;line-height:1.75;color:#ddd;white-space:pre-wrap}
+#pres .next{color:#999;font-size:16px}
+#pres .ctl{display:flex;gap:10px;margin-top:14px}
+#pres button{background:#2a2a2a;color:#fff;border:0;padding:12px 18px;border-radius:10px;font-size:16px;cursor:pointer}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="stage">
+
+<section class="slide" data-i="0">
+  <img class="t d1" src="portrait.png" style="position:absolute;right:120px;bottom:-10px;height:960px;-webkit-mask-image:linear-gradient(#000 78%,transparent);mask-image:linear-gradient(#000 78%,transparent);opacity:.95">
+  <div class="t d2 big" style="left:110px;top:140px;font-size:250px">心流</div>
+  <div class="t d3" style="left:124px;top:430px;font-size:42px;color:var(--ivory2)">最优体验心理学 &nbsp;·&nbsp; <i>Flow</i></div>
+  <div class="t d4 sans" style="left:124px;top:500px;font-size:28px;color:var(--mute)">—— 让 AI 接过执行，人回到心流</div>
+  <div class="t d4" style="left:124px;top:596px;width:380px;height:2px;background:var(--gold);opacity:.7"></div>
+  <div class="t d5 big" style="left:122px;top:628px;font-size:62px">千百合</div>
+  <div class="t d6 sans" style="left:124px;top:724px;font-size:27px;line-height:1.7;color:var(--ivory2)">老板IP商业重构师<br>20+ 畅销书出品人 / 译者<br>边玩边赚联合创始人</div>
+  <div class="seal" style="left:860px;top:150px">千百合</div>
+</section>
+
+<section class="slide" data-i="1">
+  <div class="t d1 big" style="left:120px;top:300px;font-size:200px">过得快</div>
+  <div class="t d3 sub sans" style="left:130px;top:580px;font-size:38px">上一次你跟 AI 干活，干到忘了时间，是在干什么？</div>
+  <div id="chips">
+    <div class="chip sans" style="left:1180px;top:200px;animation-delay:1.8s">写方案</div>
+    <div class="chip sans" style="left:1640px;top:300px;animation-delay:2.3s">做海报</div>
+    <div class="chip sans" style="left:1240px;top:820px;animation-delay:2.8s">跟它吵架</div>
+  </div>
+  <div class="foot l mono">02 / 08</div><div class="foot r">千百合</div>
+</section>
+
+<section class="slide" data-i="2">
+  <div class="t d1 big" style="left:120px;top:110px;font-size:140px">心流</div>
+  <div class="t d2 lab mono" style="left:130px;top:300px;font-size:19px;color:var(--ivory2)">THE PSYCHOLOGY OF OPTIMAL EXPERIENCE · 1990</div>
+  <div class="t d2 sans" style="left:130px;top:345px;font-size:26px;color:var(--ivory2)">米哈里 · 契克森米哈赖 &nbsp;Mihaly Csikszentmihalyi</div>
+  <div class="t d3 big" style="left:120px;top:450px;font-size:116px">幸福，</div>
+  <div class="t d4 big" style="left:120px;top:590px;font-size:92px">可以被设计</div>
+  <div class="t d5 lab mono" style="left:1060px;top:900px;font-size:17px;color:var(--gold)">传呼机 · 每天随机响 8 次 · 几千人 · 几万条记录</div>
+  <div class="foot l mono">03 / 08</div><div class="foot r">千百合</div>
+</section>
+
+<section class="slide" data-i="3">
+  <div class="t d1 num sans" style="left:124px;top:170px">开关一</div>
+  <div class="t d2 big" style="left:120px;top:230px;font-size:124px">挑战<br>≈ 能力</div>
+  <div class="t d3 sub sans" style="left:128px;top:600px">太难焦虑，<br>太容易无聊，<br>刚好有点难才心流</div>
+  <div class="t d4 sans" style="left:840px;top:250px;font-size:26px;color:var(--red)">焦虑区</div>
+  <div class="t d4 sans" style="left:1620px;top:880px;font-size:26px;color:var(--mute)">无聊区</div>
+  <div class="t d5 sans" style="left:1300px;top:560px;font-size:24px;color:var(--gold);transform:rotate(-33deg)">心流通道</div>
+  <div class="t d5 mono" style="left:1760px;top:1000px;font-size:15px;color:var(--mute)">能力 →</div>
+  <div class="t d5 mono" style="left:760px;top:210px;font-size:15px;color:var(--mute)">↑ 挑战</div>
+  <div class="foot l mono">04 / 08</div><div class="foot r">千百合</div>
+</section>
+
+<section class="slide" data-i="4">
+  <div class="t d1 num sans" style="left:124px;top:170px">开关二</div>
+  <div class="t d2 big" style="left:120px;top:230px;font-size:150px">目标清晰</div>
+  <div class="t d3 sub sans" style="left:130px;top:640px">说得清「做完是什么样」</div>
+  <div class="t d5 sans" style="left:1420px;top:640px;width:300px;text-align:center;font-size:24px;color:var(--gold)">做完是什么样</div>
+  <div class="foot l mono">05 / 08</div><div class="foot r">千百合</div>
+</section>
+
+<section class="slide" data-i="5">
+  <div class="t d1 num sans" style="left:124px;top:170px">开关三</div>
+  <div class="t d2 big" style="left:120px;top:230px;font-size:150px">反馈及时</div>
+  <div class="t d3 sub sans" style="left:130px;top:640px">做一步，立刻看到</div>
+  <div class="t d5 mono" style="left:1300px;top:400px;width:300px;text-align:center;font-size:17px;color:var(--mute)">人 · 24 h</div>
+  <div class="t d6 mono" style="left:1300px;top:690px;width:300px;text-align:center;font-size:21px;color:var(--gold)">AI · 3 s</div>
+  <div class="foot l mono">06 / 08</div><div class="foot r">千百合</div>
+</section>
+
+<section class="slide" data-i="6">
+  <div class="t d2" style="left:110px;top:60px"><video id="qp" src="qiuping.mp4" poster="qiuping_poster.jpg" playsinline preload="metadata" style="height:960px"></video></div>
+  <div class="t d1 num sans" style="left:760px;top:150px">茶道就是倒茶</div>
+  <div class="t d2 big" style="left:756px;top:200px;font-size:96px">拿得起，<br>放得下</div>
+  <div class="t d3 sub sans" style="left:764px;top:470px;font-size:30px">访谈秋萍先生 · 36 分钟<br>AI 负责剪辑，我负责看见</div>
+  <div class="t d4 mono" style="left:764px;top:600px;font-size:15px;color:var(--mute)">点视频 / 按 V 播放</div>
+  <div class="foot l mono">07 / 08</div><div class="foot r">千百合</div>
+</section>
+
+<section class="slide" data-i="7">
+  <img class="card t d1" src="card.jpg" style="position:absolute;left:110px;top:110px;width:760px">
+  <div class="t d2 lab sans" style="left:960px;top:120px;font-size:24px">讲完发群 · 两样礼物</div>
+  <div class="t d3 sans" style="left:960px;top:170px;font-size:34px;font-weight:600"><span style="color:var(--gold)">01</span>&nbsp; 这套 PPT <span style="font-size:22px;color:var(--mute);font-weight:400">&nbsp; 今天这一套，拿去照着讲</span></div>
+  <div class="t d4 sans" style="left:960px;top:240px;font-size:34px;font-weight:600"><span style="color:var(--gold)">02</span>&nbsp; 心流自测卡 <span style="font-size:22px;color:var(--mute);font-weight:400">&nbsp; 三个问题，随时测手上的事</span></div>
+  <div class="t d4 sans" style="left:960px;top:310px;font-size:24px;color:var(--red)">有特别需要书的伙伴，私戳我</div>
+  <div class="t d7" style="left:960px;top:390px;font-size:26px;color:var(--ivory2)">—— 你若盛开，清风自来</div>
+  <div class="seal" style="left:1700px;top:120px">千百合</div>
+</section>
+
+</div>
+<div id="dots"></div>
+<div id="hint" class="mono">← → 翻页 · F 全屏 · P 演讲者视图 · ? 帮助</div>
+<div id="timerpill"></div>
+<div id="black"></div>
+<div id="wordbox"><input id="wordin" placeholder="敲一个聊天区的词，回车上屏"><span>Esc 关闭</span></div>
+<div id="help"><h2>快捷键</h2><table>
+<tr><td>→ 空格</td><td>下一页</td></tr><tr><td>←</td><td>上一页</td></tr><tr><td>1 – 8</td><td>直接跳页</td></tr><tr><td>F</td><td>全屏</td></tr>
+<tr><td>P</td><td>演讲者视图（第二窗口：逐字稿 + 计时）</td></tr><tr><td>T</td><td>第二页：敲聊天区的词上屏</td></tr><tr><td>V</td><td>秋萍页：播放 / 暂停</td></tr>
+<tr><td>B</td><td>黑屏</td></tr><tr><td>S</td><td>计时归零</td></tr></table></div>
+<div id="pres">
+  <div class="box"><div class="big" id="p-title"></div><div class="next" id="p-next"></div><div class="clock" id="p-clock">00:00</div><div class="target" id="p-target"></div>
+    <div class="ctl"><button onclick="cmd('prev')">← 上一页</button><button onclick="cmd('next')">下一页 →</button><button onclick="cmd('reset')">计时归零</button><button onclick="cmd('black')">黑屏</button></div></div>
+  <div class="box"><div class="big">本页逐字稿</div><div class="notes" id="p-notes"></div></div>
+</div>
+
+<script>
+// ---------- particles ----------
+const W=1920,H=1080;const cv=document.getElementById('c'),ctx=cv.getContext('2d');
+const isPres=location.search.includes('presenter');
+const mobile=Math.min(innerWidth,innerHeight)<700;
+const N=mobile?3500:9000;
+const P=new Float32Array(N*4); // x,y,vx,vy
+const T=new Float32Array(N*2); // targets
+const G=new Uint8Array(N);     // group
+for(let k=0;k<N;k++){P[k*4]=Math.random()*W;P[k*4+1]=Math.random()*H}
+let mode=0,S=1,ox=0,oy=0,t0=null,i=-1,tStart=performance.now();
+function fit(){const dpr=Math.min(devicePixelRatio||1,2);cv.width=innerWidth*dpr;cv.height=innerHeight*dpr;cv.style.width=innerWidth+'px';cv.style.height=innerHeight+'px';
+  S=Math.min(innerWidth/W,innerHeight/H);ox=(innerWidth-W*S)/2;oy=(innerHeight-H*S)/2;document.documentElement.style.setProperty('--s',S);ctx.setTransform(dpr,0,0,dpr,0,0)}
+addEventListener('resize',fit);fit();
+// text sampling for glyph modes
+function sampleText(lines,size,cx,cy,gap){const oc=document.createElement('canvas');oc.width=W;oc.height=H;const o=oc.getContext('2d');o.fillStyle='#fff';o.font=`700 ${size}px "Songti SC","STSong","Noto Serif CJK SC",serif`;o.textAlign='center';o.textBaseline='middle';
+  lines.forEach((l,k)=>o.fillText(l,cx,cy+(k-(lines.length-1)/2)*(size+gap)));const d=o.getImageData(0,0,W,H).data;const pts=[];
+  for(let y=0;y<H;y+=3)for(let x=0;x<W;x+=3){if(d[(y*W+x)*4+3]>128)pts.push(x,y)}return pts}
+let glyphFlow=null,glyphEnd=null;
+function setTargetsFrom(pts,group){const n=pts.length/2;for(let k=0;k<N;k++){const j=Math.floor(Math.random()*n);T[k*2]=pts[j*2]+(Math.random()-.5)*2;T[k*2+1]=pts[j*2+1]+(Math.random()-.5)*2;G[k]=group}}
+function rnd(a,b){return a+Math.random()*(b-a)}
+// channel curve (slide 1 & 4): y as function of x
+const chan=x=>1000-760*Math.pow(Math.max(0,(x-760))/1100,1.0);
+function setMode(m){mode=m;tStart=performance.now();
+  if(m===0){for(let k=0;k<N;k++){G[k]=0;P[k*4]=Math.random()*W;P[k*4+1]=Math.random()*H}}
+  if(m===1){ // ring
+    const pts=[];for(let a=0;a<Math.PI*2;a+=.004){const r=330+rnd(-6,6);pts.push(1380+Math.cos(a)*r,540+Math.sin(a)*r)}setTargetsFrom(pts,0)}
+  if(m===2){ // FLOW glyph + timeline
+    if(!glyphFlow)glyphFlow=sampleText(['Flow'],440,1300,440,0);const pts=glyphFlow.slice();
+    for(let x=1000;x<1800;x+=2)pts.push(x,860+rnd(-1.5,1.5));setTargetsFrom(pts,0)}
+  if(m===3){ // chart: 3 groups
+    for(let k=0;k<N;k++){const r=Math.random();
+      if(r<.3){G[k]=1;T[k*2]=rnd(800,1300);T[k*2+1]=rnd(250,520)} // anxiety
+      else if(r<.5){G[k]=2;T[k*2]=rnd(1350,1850);T[k*2+1]=rnd(820,990)} // boredom
+      else{G[k]=3;P[k*4]=rnd(760,1860);P[k*4+1]=chan(P[k*4])+rnd(-40,40)}}} // channel flow
+  if(m===4){for(let k=0;k<N;k++){G[k]=0;const a=rnd(0,6.283),r=Math.pow(Math.random(),2)*34;T[k*2]=1570+Math.cos(a)*r;T[k*2+1]=560+Math.sin(a)*r}}
+  if(m===5){const pts=[];for(let y=120;y<1000;y+=22)for(let x=900;x<1900;x+=22)pts.push(x,y);setTargetsFrom(pts,0);for(let k=0;k<N;k++){P[k*4]=T[k*2];P[k*4+1]=T[k*2+1]}}
+  if(m===6){for(let k=0;k<N;k++){G[k]=k%3===0?5:4;if(G[k]===4){P[k*4]=rnd(1240,1300);P[k*4+1]=rnd(-800,0)}
+      else{const a=rnd(0,Math.PI),r=Math.sqrt(Math.random())*210;T[k*2]=1420+Math.cos(a)*r;T[k*2+1]=740+Math.sin(a)*r*.55}}}
+  if(m===7){if(!glyphEnd)glyphEnd=sampleText(['进入心流','活成自己'],230,1400,720,70);setTargetsFrom(glyphEnd,0)}}
+function step(dt){const t=(performance.now()-tStart)/1000;
+  for(let k=0;k<N;k++){const o=k*4;let x=P[o],y=P[o+1],vx=P[o+2],vy=P[o+3];
+    if(mode===0){ // river along channel-like S curve across whole screen
+      const cy=560-380*Math.sin((x/W)*2.6-1.3)+Math.sin(x*.003+t*.5)*30;const d=y-cy;const band=k%7;
+      vx+=(1.4+band*.08-vx)*.05;vy+=(-d*.012-vy)*.08+(Math.random()-.5)*.5;x+=vx*dt*60;y+=vy*dt*60;if(x>W+20){x=-10;y=cy+rnd(-90,90)}}
+    else if(mode===3&&G[k]===3){const cy=chan(x);const d=y-cy;vx+=(2.2-vx)*.05;vy+=(-d*.03-vy)*.1+(Math.random()-.5)*.5;x+=vx*dt*60;y+=vy*dt*60;if(x>1860){x=760;y=chan(x)+rnd(-40,40)}}
+    else if(mode===3&&G[k]===1){vx+=(Math.random()-.5)*2.2;vy+=(Math.random()-.5)*2.2;vx*=.9;vy*=.9;x+=vx;y+=vy;const tx=T[k*2],ty=T[k*2+1];x+=(tx-x)*.02;y+=(ty-y)*.02}
+    else if(mode===3&&G[k]===2){const tx=T[k*2],ty=T[k*2+1];x+=(tx-x)*.03+(Math.random()-.5)*.15;y+=(ty-y)*.03+(Math.random()-.5)*.15}
+    else if(mode===6&&G[k]===4){vy+=.35;vx+=(Math.sin(y*.01+t)*.3-vx)*.05;x+=vx;y+=vy;if(y>740){G[k]=5;const a=rnd(0,Math.PI),r=Math.sqrt(Math.random())*210;T[k*2]=1420+Math.cos(a)*r;T[k*2+1]=740+Math.sin(a)*r*.55;vx=vy=0}}
+    else if(mode===5){const tx=T[k*2],ty=T[k*2+1];const ph=(t%2.4);const dx=tx-1400,dy=ty-560,dist=Math.hypot(dx,dy);const w=Math.exp(-Math.pow((dist-ph*320)/60,2))*18;x+=(tx+dx/dist*w-x)*.2;y+=(ty+dy/dist*w-y)*.2}
+    else{const tx=T[k*2],ty=T[k*2+1];vx+=(tx-x)*.012;vy+=(ty-y)*.012;vx*=.86;vy*=.86;x+=vx+(Math.random()-.5)*.4;y+=vy+(Math.random()-.5)*.4}
+    P[o]=x;P[o+1]=y;P[o+2]=vx;P[o+3]=vy}}
+function draw(){const t=(performance.now()-tStart)/1000;
+  ctx.fillStyle='rgba(15,13,11,.28)';ctx.fillRect(0,0,innerWidth,innerHeight);
+  for(let k=0;k<N;k++){const o=k*4;const x=P[o]*S+ox,y=P[o+1]*S+oy;let c='rgba(239,231,214,';let a=.55,r=1.1;
+    if(mode===0){a=.3+Math.min(.5,Math.abs(P[o+2])*.2);if(k%11===0)c='rgba(230,184,106,'}
+    if(mode===1){const ang=Math.atan2(P[o+1]-540,P[o]-1380);const d=((ang-t*2.2)%(Math.PI*2)+Math.PI*2)%(Math.PI*2);a=.15+Math.max(0,1-d/1.2)*.85;if(d<.3){c='rgba(230,184,106,';r=1.6}}
+    if(mode===3){if(G[k]===1){c='rgba(224,74,43,';a=.55}else if(G[k]===2){a=.18}else{c='rgba(230,184,106,';a=.7;r=1.3}}
+    if(mode===4){a=.5;r=1.2;c=k%7===0?'rgba(230,184,106,':c}
+    if(mode===5){const d=Math.hypot(P[o]-1400,P[o+1]-560);const ph=t%2.4;const g=Math.exp(-Math.pow((d-ph*320)/50,2));a=.18+g*.8;if(g>.5)c='rgba(230,184,106,'}
+    if(mode===6){c=G[k]===4?'rgba(230,184,106,':'rgba(239,231,214,';a=G[k]===4?.8:.5}
+    if(mode===7){a=.75;r=1.3;c=k%9===0?'rgba(230,184,106,':c}
+    ctx.fillStyle=c+a+')';ctx.fillRect(x,y,r*S+.3,r*S+.3)}
+  if(mode===3){ // "你" dot
+    const u=Math.min(1,Math.max(0,(t-1.5)/3.5)),e=u<.5?2*u*u:-1+(4-2*u)*u;const x=900+e*300,y=420+e*330;
+    ctx.beginPath();ctx.arc(x*S+ox,y*S+oy,8*S,0,7);ctx.fillStyle='#E04A2B';ctx.fill();ctx.fillStyle='#E04A2B';ctx.font=`${26*S}px "PingFang SC",sans-serif`;ctx.fillText('你',(x+18)*S+ox,(y+9)*S+oy)}
+  if(mode===4){ctx.beginPath();ctx.arc(1570*S+ox,560*S+oy,46*S,0,7);ctx.strokeStyle='rgba(230,184,106,.8)';ctx.lineWidth=1.5;ctx.stroke()}}
+let last=performance.now();function loop(now){const dt=Math.min(.05,(now-last)/1000);last=now;if(!isPres){step(dt);draw()}requestAnimationFrame(loop)}
+requestAnimationFrame(loop);
+
+// ---------- deck ----------
+const slides=[...document.querySelectorAll('.slide')];
+const TITLES=["封面","过得快","亮书 · 幸福，可以被设计","开关一 · 挑战 ≈ 能力","开关二 · 目标清晰","开关三 · 反馈及时","案例 · 拿得起，放得下","收尾 · 进入心流，活成自己"];
+const END=[60,60,160,220,270,320,460,540];
+const NOTES=[`超能班的伙伴们，大家现在好！我是 H 组的千百合。\n\n现在是北京时间早上六点，这么多伙伴齐聚线上。我本来想夸大家自律——（停一拍）一想，我自己也不自律。你们也不是。你们是知道，这一个小时会过得很快。\n\n→ 说到「过得快」翻页`,
+`过得快，不止在这儿。聊天区打一个词：上一次你跟 AI 干活，干到忘了时间，是在干什么？\n\n（停 20 秒，念三四个，带名字；按 T 把词敲上屏）都算。记住那个词，一会儿要用。\n\n这个状态，有一个名字。`,
+`它叫心流。这本书——《心流：最优体验心理学》，英文名 Flow: The Psychology of Optimal Experience，书名就一个词，Flow。\n\n作者米哈里·契克森米哈赖，Mihaly Csikszentmihalyi，名字难念，记一件事就行：「心流」这个词是他发明的。他给几千个人发传呼机，每天随机响八次，响了就记下你在干什么、感觉怎么样。几万条记录攒下来，他发现人最幸福的时刻，不是躺着，而是全情投入在一件事里的时候。\n\n这本书的第一章，开头是这样写的——（朗读 PDF 第 53 页开头两句，约 20 秒，念完停一拍）\n\n一句话：幸福不是运气，幸福，可以被设计。\n\n但大家对心流有个误会，以为心流就是「忘了时间」。忘了时间是结果，不是开关——就像发烧是结果，不是病因。开关只有三个，而且今天的 AI 刚好全都按得到。这就是我把它放在「让 AI 真正替你干活」第二期开篇的原因。`,
+`开关一：挑战约等于能力。\n\n书里有一张图：横轴能力，纵轴挑战。太难，焦虑区；太容易，无聊区；只有中间那条斜斜的通道，才是心流。（屏上：红点乱撞的是焦虑区，暗的是无聊区，金色的河是通道）\n\n书里有个流水线工人叫里科，一个动作每天重复几百次，他给自己加难度：这次比上次快零点几秒。干了五年，他说每天都像在比赛。他自己把自己从无聊区拉回了通道。\n\nAI 干的是反方向的事：把一大片「太难」拉回「刚好」。做视频，以前对我是太难；现在有了 AI，它变成了刚好有点难——我不用会剪，但我必须判断哪句话是魂。这个「必须判断」，就是心流的入口。连判断都不做，全交给它，你就滑进了无聊区：看着 AI 干活，三天就放下了。\n\n现在看一眼你手上那件事——你在焦虑区，还是无聊区？不用回答，心里有数就行。`,
+`开关二：目标清晰。\n\n跟 AI 干活，prompt 就是终点。刚才××说写方案——你说不清「做完是什么样」，它也写不出来。很多人以为 AI 用不好是技巧问题，其实是目标问题。没目标开聊，聊一下午很开心，关掉窗口什么都没剩下——那不是心流，那是陪聊。`,
+`开关三：反馈及时。\n\n这是 AI 最厉害的地方：人类协作反馈要等一天，AI 几秒钟。刚才××说做海报——为什么停不下来？不是 AI 多神奇，是反馈回路被压缩到了秒级：做一步，立刻看到，立刻改。游戏让人上瘾就是这个原理，现在它出现在干活里了。有没有人这样干到过后半夜的？聊天区打个 1。（停 5 秒，笑）我就知道不止我一个。`,
+`这三个开关不是我总结的，是我这个月亲身走了一遍。\n\n10 月 9 号，我访谈了秋萍茶宴的秋萍先生，录了 36 分钟素材。以前这种素材我是不碰的：没时间、没技能，交给别人剪出来又不是我要的。\n\n这次我让 AI 来剪：转录、挑金句、切段、上字幕，我在旁边看、改、再让它出一版。我记得最清楚的一刻，是它把秋萍先生讲「茶道就是倒茶，拿得起，放得下」那一段单独挑出来的时候——我自己访谈时都没意识到那句有多好。一位茶人讲茶道，就这九个字。（按 V 放视频片段）\n\n中间我也按错过。有一段我偷懒，它出什么我都点确认，看完才发现最好的一句被剪掉了——「第一会死在沙滩上，唯一才不会消亡」。我没在判断，只在按回车，那一段我自己滑进了无聊区。把它找回来，再往下剪，抬头一看，几个小时过去了，一条能发出去的片子出来了。\n\n复盘：挑战刚好——哪句是魂只有我知道；目标清晰——终点就是一条能发出去的片子；反馈秒回——改一句，立刻看到新的一版。三个开关全开，那几个小时就是心流。\n\n一句话：AI 负责剪辑，我负责看见。AI 接过执行，人回到心流。`,
+`这三个开关我做成了一张卡，今天发群里。不用现在填，回去挑一件你正跟 AI 干着的事——就是你开场打的那个词——三个问题过一遍，哪个开关没开，就调哪个。\n\n接下来六位分享官上场。听的时候请大家带一个问题：什么时候，你感觉到他真正进入了心流？\n\n讲完我把三样东西发群里：这套 PPT、自测卡、讲书手记。\n\n最后八个字（屏上一万个点正在排成这八个字）：进入心流，活成自己。\n\n把话筒交给主持人。`];
+const bc=('BroadcastChannel' in window)?new BroadcastChannel('flow2-deck'):null;
+const dots=document.getElementById('dots');slides.forEach((_,k)=>{const d=document.createElement('i');d.onclick=()=>go(k);dots.appendChild(d)});
+function go(n,silent){n=Math.max(0,Math.min(7,n));if(n===i)return;document.querySelectorAll('video').forEach(v=>v.pause());
+  if(i>=0)slides[i].classList.remove('on');i=n;const s=slides[i];s.querySelectorAll('.chip').forEach(e=>{e.style.animationName='none';e.getBoundingClientRect();e.style.animationName=''});
+  s.classList.add('on');if(!isPres)setMode(i);[...dots.children].forEach((d,k)=>d.classList.toggle('on',k===i));
+  if(t0===null&&i>0)t0=Date.now();history.replaceState(null,'','#p'+(i+1));if(!silent&&bc)bc.postMessage({type:'state',i,t0});renderPres()}
+function cmd(c){if(c==='next')go(i+1);else if(c==='prev')go(i-1);else if(c==='reset'){t0=Date.now();bc&&bc.postMessage({type:'state',i,t0})}else if(c==='black'){bc&&bc.postMessage({type:'black'})}}
+function renderPres(){if(!isPres)return;document.getElementById('p-title').textContent=`${i+1} / 8 · ${TITLES[i]}`;document.getElementById('p-next').textContent=i<7?`下一页：${TITLES[i+1]}`:'最后一页';document.getElementById('p-notes').textContent=NOTES[i];const m=Math.floor(END[i]/60),s=END[i]%60;document.getElementById('p-target').textContent=`本页应在 ${m}:${String(s).padStart(2,'0')} 前翻走 · 全程 9:00`}
+function tick(){const el=isPres?document.getElementById('p-clock'):document.getElementById('timerpill');if(t0===null){el.textContent='00:00';return}const e=Math.floor((Date.now()-t0)/1000);el.textContent=`${String(Math.floor(e/60)).padStart(2,'0')}:${String(e%60).padStart(2,'0')}`;el.classList.toggle('warn',e>END[i]-20&&e<=END[i]);el.classList.toggle('over',e>END[i]);if(!isPres)el.style.display='block'}
+setInterval(tick,500);
+if(bc)bc.onmessage=ev=>{const m=ev.data;if(m.type==='state'){t0=m.t0;go(m.i,true)}else if(m.type==='cmd')cmd(m.c);else if(m.type==='black'&&!isPres)document.getElementById('black').classList.toggle('on')};
+if(isPres){document.body.classList.add('presenter');window.cmd=c=>bc&&bc.postMessage({type:'cmd',c})}
+const wb=document.getElementById('wordbox'),wi=document.getElementById('wordin');
+function addWord(w){const chips=document.getElementById('chips');const n=chips.children.length;const el=document.createElement('div');el.className='chip sans live';const slots=[[1500,520],[1200,420],[1700,700],[1380,660],[1620,180],[1260,300],[1760,440],[1460,880]];const [x,y]=slots[n%slots.length];el.style.left=x+'px';el.style.top=y+'px';el.textContent=w;chips.appendChild(el)}
+wi.addEventListener('keydown',e=>{e.stopPropagation();if(e.key==='Enter'&&wi.value.trim()){addWord(wi.value.trim());wi.value=''}if(e.key==='Escape')wb.classList.remove('on')});
+addEventListener('keydown',e=>{if(e.target===wi)return;const k=e.key;
+  if(['ArrowRight','ArrowDown','PageDown',' ','Enter'].includes(k)){e.preventDefault();isPres?cmd('next'):go(i+1)}
+  else if(['ArrowLeft','ArrowUp','PageUp','Backspace'].includes(k)){e.preventDefault();isPres?cmd('prev'):go(i-1)}
+  else if(k>='1'&&k<='8')go(+k-1);
+  else if(k==='f'||k==='F'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}
+  else if(k==='p'||k==='P'){window.open(location.pathname+'?presenter=1#p'+(i+1),'flow2pres','width=1100,height=760')}
+  else if(k==='t'||k==='T'){if(i===1){e.preventDefault();wb.classList.add('on');wi.focus();setTimeout(()=>wi.value='',0)}}
+  else if(k==='v'||k==='V'){const v=document.getElementById('qp');v.paused?v.play():v.pause()}
+  else if(k==='b'||k==='B')document.getElementById('black').classList.toggle('on');
+  else if(k==='s'||k==='S')cmd('reset');
+  else if(k==='?'||k==='/')document.getElementById('help').classList.toggle('on');
+  else if(k==='Escape'){document.getElementById('help').classList.remove('on');wb.classList.remove('on')}});
+addEventListener('click',e=>{if(isPres)return;if(e.target.closest('#help')){document.getElementById('help').classList.remove('on');return}if(e.target.closest('#wordbox,#dots'))return;const v=e.target.closest('video');if(v){v.paused?v.play():v.pause();return}go(e.clientX>innerWidth/3?i+1:i-1)});
+let tx=null;addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});addEventListener('touchend',e=>{if(tx===null)return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)go(dx<0?i+1:i-1);tx=null});
+const m=location.hash.match(/p(\d+)/);go(m?+m[1]-1:0,isPres);
+</script>
+</body>
+</html>
