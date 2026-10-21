@@ -93,7 +93,8 @@ body.presenter #c,body.presenter #stage,body.presenter #hint,body.presenter #dot
   <div class="t d2 sans" style="left:130px;top:345px;font-size:26px;color:var(--ivory2)">米哈里 · 契克森米哈赖 &nbsp;Mihaly Csikszentmihalyi</div>
   <div class="t d3 big" style="left:120px;top:450px;font-size:116px">幸福，</div>
   <div class="t d4 big" style="left:120px;top:590px;font-size:92px">可以被设计</div>
-  <div class="t d5 lab mono" style="left:1060px;top:900px;font-size:17px;color:var(--gold)">传呼机 · 每天随机响 8 次 · 几千人 · 几万条记录</div>
+  <img class="t d3" src="book2.png" style="position:absolute;left:1500px;top:236px;height:620px;filter:drop-shadow(0 40px 50px rgba(0,0,0,.7))">
+  <div class="t d5 lab mono" style="left:1000px;top:900px;font-size:17px;color:var(--gold)">传呼机 · 每天随机响 8 次 · 几千人 · 几万条记录</div>
   <div class="foot l mono">03 / 08</div><div class="foot r">千百合</div>
 </section>
 
@@ -189,7 +190,7 @@ function setMode(m){mode=m;tStart=performance.now();
   if(m===1){ // ring
     const pts=[];for(let a=0;a<Math.PI*2;a+=.004){const r=330+rnd(-6,6);pts.push(1380+Math.cos(a)*r,540+Math.sin(a)*r)}setTargetsFrom(pts,0)}
   if(m===2){ // FLOW glyph + timeline
-    if(!glyphFlow)glyphFlow=sampleText(['Flow'],440,1300,440,0);const pts=glyphFlow.slice();
+    if(!glyphFlow)glyphFlow=sampleText(['Flow'],330,1150,560,0);const pts=glyphFlow.slice();
     for(let x=1000;x<1800;x+=2)pts.push(x,860+rnd(-1.5,1.5));setTargetsFrom(pts,0)}
   if(m===3){ // chart: 3 groups
     for(let k=0;k<N;k++){const r=Math.random();
