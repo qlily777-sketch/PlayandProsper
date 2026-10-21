@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>心流 · 头雁传书 · 千百合</title>
+<style>
+:root{--paper:#F3EEE4;--ink:#17140F;--ink2:#4A4238;--mute:#8C8172;--red:#C9361B;--red2:#E8B9AE;--grid:rgba(23,20,15,.07)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:var(--paper);color:var(--ink);font-family:"Songti SC","STSong","Noto Serif CJK SC","Noto Serif SC",serif;-webkit-font-smoothing:antialiased;touch-action:none}
+.sans{font-family:"PingFang SC","Hiragino Sans GB","Noto Sans CJK SC","Noto Sans SC",sans-serif}
+.mono{font-family:"SF Mono",Menlo,"JetBrains Mono",monospace;letter-spacing:.08em}
+/* world & camera */
+#view{position:absolute;inset:0;overflow:hidden}
+#world{position:absolute;left:0;top:0;width:7680px;height:2160px;transform-origin:0 0;will-change:transform;transition:transform 1.5s cubic-bezier(.65,0,.25,1)}
+#world.quick{transition-duration:.001s}
+.bg{position:absolute;inset:0;background:
+  linear-gradient(var(--grid) 1px,transparent 1px) 0 0/80px 80px,
+  linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/80px 80px,var(--paper)}
+.bg::after{content:"";position:absolute;inset:0;opacity:.45;mix-blend-mode:multiply;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .3 0 0 0 0 .25 0 0 0 0 .2 0 0 0 .07 0'/></filter><rect width='260' height='260' filter='url(%23n)'/></svg>")}
+.region{position:absolute;width:1920px;height:1080px}
+svg.line{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.ink{fill:none;stroke:var(--ink);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:7000;stroke-dashoffset:7000}
+.on .ink{animation:draw 2.4s cubic-bezier(.5,0,.15,1) forwards}
+.seen .ink{stroke-dashoffset:0}
+.ink.thin{stroke-width:2}
+@keyframes draw{to{stroke-dashoffset:0}}
+.t{position:absolute;opacity:0;transform:translateY(18px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1)}
+.on .t,.seen .t{opacity:1;transform:none}
+.on .d1{transition-delay:.5s}.on .d2{transition-delay:.8s}.on .d3{transition-delay:1.1s}.on .d4{transition-delay:1.4s}.on .d5{transition-delay:1.8s}.on .d6{transition-delay:2.3s}.on .d7{transition-delay:2.9s}
+.big{font-weight:700;line-height:1.08;letter-spacing:.01em}
+.num{color:var(--red);font-weight:700}
+.lab{color:var(--mute);font-size:20px}
+.sub{color:var(--ink2);font-size:36px;line-height:1.6}
+.foot{position:absolute;bottom:48px;font-size:18px;color:var(--mute)}
+.foot.l{left:120px}.foot.r{right:120px}
+.seal{position:absolute;width:150px;height:60px;border:3px solid var(--red);color:var(--red);display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:700;letter-spacing:.12em;border-radius:6px;opacity:0;transform:rotate(-6deg) scale(1.4);transition:opacity .4s,transform .4s cubic-bezier(.2,1.4,.4,1)}
+.on .seal,.seen .seal{opacity:.92;transform:rotate(-6deg) scale(1)}
+.on .seal{transition-delay:2.4s}
+.seal::after{content:"";position:absolute;inset:5px;border:1px solid var(--red);border-radius:3px;opacity:.6}
+.chip{position:absolute;background:#fff;border:1px solid rgba(23,20,15,.12);color:var(--ink2);padding:10px 22px;border-radius:30px;font-size:26px;box-shadow:0 6px 16px rgba(0,0,0,.06);opacity:0;transform:translateY(16px) scale(.96)}
+.on .chip,.seen .chip,.chip.live{animation:chip .6s cubic-bezier(.2,.9,.3,1.2) forwards}
+.chip.live{background:#fff8f6;border-color:var(--red2);color:var(--red)}
+@keyframes chip{to{opacity:1;transform:none}}
+.dot{fill:var(--red)}
+.you{transform:translate(0,0)}
+.on .you{animation:you 3.6s 1.8s cubic-bezier(.4,0,.2,1) forwards}
+.seen .you{transform:translate(300px,330px)}
+@keyframes you{to{transform:translate(300px,330px)}}
+.pulse{fill:none;stroke:var(--red);stroke-width:3;transform-box:fill-box;transform-origin:center;opacity:0}
+.on .pulse{animation:pulse 2.4s ease-out infinite}
+@keyframes pulse{0%{transform:scale(.1);opacity:.9}100%{transform:scale(1);opacity:0}}
+.beep{opacity:0}.on .beep,.seen .beep{animation:beep .3s forwards}
+@keyframes beep{to{opacity:1}}
+.zone{opacity:0}.on .zone{animation:zone 1.2s 1.4s forwards}.seen .zone{opacity:1}
+@keyframes zone{to{opacity:1}}
+.card{position:absolute;box-shadow:0 30px 60px rgba(40,30,10,.18),0 3px 8px rgba(40,30,10,.1);border-radius:8px}
+.gift{position:absolute;display:flex;gap:26px}
+.gift .k{font-size:38px;font-weight:700}.gift .v{color:var(--mute);font-size:24px;margin-top:6px}
+video{border-radius:14px;box-shadow:0 30px 60px rgba(40,30,10,.25);background:#000;cursor:pointer}
+/* chrome */
+#nav{position:fixed;right:22px;bottom:18px;width:120px;height:90px;z-index:9;opacity:.75}
+#nav line{stroke:var(--mute);stroke-width:1}
+#nav circle{fill:var(--red);transition:cx .9s,cy .9s}
+#hint{position:fixed;left:20px;bottom:16px;font-size:12px;color:var(--mute);z-index:9}
+#black{position:fixed;inset:0;background:#000;opacity:0;pointer-events:none;transition:opacity .4s;z-index:50}
+#black.on{opacity:1;pointer-events:auto}
+#help{position:fixed;inset:0;background:rgba(243,238,228,.96);display:none;z-index:60;padding:8vh 10vw;color:var(--ink)}
+#help.on{display:block}
+#help h2{font-size:28px;margin-bottom:24px}
+#help table{border-collapse:collapse;font-size:18px}
+#help td{padding:8px 24px 8px 0;vertical-align:top}
+#help td:first-child{font-family:Menlo,monospace;color:var(--red);white-space:nowrap}
+#wordbox{position:fixed;left:50%;bottom:12vh;transform:translateX(-50%);display:none;z-index:70;background:#fff;border:2px solid var(--red);border-radius:40px;padding:10px 24px;box-shadow:0 20px 50px rgba(0,0,0,.15)}
+#wordbox.on{display:flex;gap:12px;align-items:center}
+#wordbox input{border:0;outline:0;font-size:24px;width:320px;font-family:inherit}
+#wordbox span{color:var(--mute);font-size:13px}
+#timerpill{position:fixed;top:14px;right:18px;font:14px Menlo,monospace;color:var(--mute);z-index:9;opacity:.8;display:none}
+/* presenter */
+body.presenter{overflow:auto;background:#111;color:#eee;touch-action:auto}
+#pres{display:none;padding:28px;font-family:"PingFang SC","Noto Sans CJK SC",sans-serif}
+body.presenter #pres{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;height:100vh}
+body.presenter #view,body.presenter #nav,body.presenter #hint{display:none}
+#pres .box{background:#1b1b1b;border-radius:14px;padding:22px;overflow:auto}
+#pres .big{font-size:22px;font-weight:600;color:#fff;margin-bottom:8px}
+#pres .clock{font:600 64px Menlo,monospace;color:#fff}
+#pres .clock.warn{color:#f5a623}.clock.over{color:#ff5a3c}
+#pres .target{font:14px Menlo,monospace;color:#999;margin-top:6px}
+#pres .notes{font-size:20px;line-height:1.75;color:#ddd;white-space:pre-wrap}
+#pres .next{color:#999;font-size:16px}
+#pres .ctl{display:flex;gap:10px;margin-top:14px}
+#pres button{background:#2a2a2a;color:#fff;border:0;padding:12px 18px;border-radius:10px;font-size:16px;cursor:pointer}
+#pres button:hover{background:#3a3a3a}
+</style>
+</head>
+<body>
+<div id="view"><div id="world">
+
+<!-- R1 封面 (0,0) -->
+<section class="region" style="left:0;top:0" data-i="0">
+  <div class="bg"></div>
+  <svg class="line" viewBox="0 0 1920 1080">
+    <path class="ink" d="M-40 1000 C 300 980, 520 760, 760 620 S 1240 360, 1500 280 S 1860 150, 1960 120"/>
+    <path class="ink thin" style="stroke:var(--red);opacity:.5" d="M-40 1070 C 300 1050, 520 830, 760 690 S 1240 430, 1500 350 S 1860 220, 1960 190"/>
+    <path class="ink thin" style="opacity:.35" d="M-40 930 C 300 910, 520 690, 760 550 S 1240 290, 1500 210 S 1860 80, 1960 50"/>
+    <text class="mono t d5" x="1700" y="1040" font-size="18" fill="#8C8172">能力 →</text>
+    <text class="mono t d5" x="40" y="80" font-size="18" fill="#8C8172">↑ 挑战</text>
+  </svg>
+  <img class="t d1" src="portrait.png" style="position:absolute;right:90px;bottom:-10px;height:1000px;-webkit-mask-image:linear-gradient(#000 80%,transparent);mask-image:linear-gradient(#000 80%,transparent);filter:drop-shadow(0 20px 30px rgba(40,30,10,.15))">
+  <div class="t d2 big" style="left:108px;top:130px;font-size:260px">心流</div>
+  <div class="t d3" style="left:124px;top:430px;font-size:44px;color:var(--ink2)">最优体验心理学 &nbsp;·&nbsp; <i>Flow</i></div>
+  <div class="t d4 sans" style="left:124px;top:505px;font-size:30px;color:var(--mute)">—— 让 AI 接过执行，人回到心流</div>
+  <div class="t d4" style="left:124px;top:600px;width:420px;height:2px;background:var(--ink);opacity:.5"></div>
+  <div class="t d5 big" style="left:122px;top:630px;font-size:64px">千百合</div>
+  <div class="t d6 sans" style="left:124px;top:730px;font-size:28px;line-height:1.7;color:var(--ink2)">老板IP商业重构师<br>20+ 畅销书出品人 / 译者<br>边玩边赚联合创始人</div>
+  <div class="seal" style="left:900px;top:150px">千百合</div>
+</section>
+
+<!-- R2 过得快 (1,0) -->
+<section class="region" style="left:1920px;top:0" data-i="1">
+  <div class="bg"></div>
+  <svg class="line" viewBox="0 0 1920 1080">
+    <path class="ink" d="M-40 120 C 300 120, 700 140, 1000 300 C 1240 430, 1180 760, 1000 820 C 800 890, 760 640, 940 560 C 1080 500, 1160 620, 1130 740 C 1100 870, 1500 900, 1960 880"/>
+  </svg>
+  <div class="t d1 big" style="left:120px;top:300px;font-size:200px">过得快</div>
+  <div class="t d3 sub sans" style="left:130px;top:580px;font-size:38px">上一次你跟 AI 干活，干到忘了时间，是在干什么？</div>
+  <div id="chips">
+    <div class="chip sans" style="left:1240px;top:230px;animation-delay:1.8s">写方案</div>
+    <div class="chip sans" style="left:1500px;top:330px;animation-delay:2.3s">做海报</div>
+    <div class="chip sans" style="left:1340px;top:450px;animation-delay:2.8s">跟它吵架</div>
+  </div>
+  <div class="foot l mono">02 / 08</div><div class="foot r">千百合</div>
+</section>
+
+<!-- R3 亮书 (2,0) -->
+<section class="region" style="left:3840px;top:0" data-i="2">
+  <div class="bg"></div>
+  <svg class="line" viewBox="0 0 1920 1080">
+    <path class="ink" d="M-40 880 C 200 880, 300 800, 420 800 L 1500 800 C 1700 800, 1800 760, 1960 740"/>
+    <g font-size="16" fill="#8C8172" class="mono">
+      <text x="420" y="850" class="t d3">06:00</text><text x="1470" y="850" class="t d3">24:00</text>
+      <text x="880" y="715" class="t d4" fill="#C9361B">传呼机 · 每天随机响 8 次 · 几千人 · 几万条记录</text>
+    </g>
+    <g class="beeps"></g>
+  </svg>
+  <img class="t d2" src="book2.png" style="position:absolute;left:1160px;top:50px;height:700px;filter:drop-shadow(0 30px 30px rgba(40,30,10,.25))">
+  <div class="t d1 big" style="left:120px;top:90px;font-size:150px">心流 <i style="font-size:120px;font-weight:600">Flow</i></div>
+  <div class="t d2 lab mono" style="left:130px;top:290px;font-size:20px">最优体验心理学 · THE PSYCHOLOGY OF OPTIMAL EXPERIENCE · 1990</div>
+  <div class="t d2 sans" style="left:130px;top:340px;font-size:26px;color:var(--ink2)">米哈里 · 契克森米哈赖 &nbsp;Mihaly Csikszentmihalyi</div>
+  <div class="t d3 big" style="left:120px;top:440px;font-size:120px">幸福，</div>
+  <div class="t d4 big" style="left:120px;top:585px;font-size:96px">可以被设计</div>
+  <div class="foot l mono">03 / 08</div><div class="foot r">千百合</div>
+</section>
+
+<!-- R4 开关一 (3,0) -->
+<section class="region" style="left:5760px;top:0" data-i="3">
+  <div class="bg"></div>
+  <svg class="line" viewBox="0 0 1920 1080">
+    <polygon class="zone" points="760,1000 1860,240 1860,420 940,1000" fill="rgba(201,54,27,.08)"/>
+    <text class="zone sans" x="820" y="330" font-size="28" fill="#C9361B" opacity=".85">焦虑区</text>
+    <text class="zone sans" x="1560" y="900" font-size="28" fill="#8C8172">无聊区</text>
+    <text class="zone sans" x="1420" y="560" font-size="26" fill="#C9361B" transform="rotate(-35 1420 560)">心流通道</text>
+    <path class="ink thin" d="M760 240 L760 1000 L1860 1000"/>
+    <text class="mono" x="1780" y="1036" font-size="16" fill="#8C8172">能力 →</text>
+    <text class="mono" x="700" y="230" font-size="16" fill="#8C8172">↑ 挑战</text>
+    <path class="ink" d="M-40 740 C 300 740, 560 1000, 760 1000 C 1000 960, 1300 640, 1860 320 C 1900 300, 1900 700, 1880 1120"/>
+    <g class="you"><circle class="dot" cx="900" cy="420" r="14"/><text class="sans" x="925" y="430" font-size="26" fill="#C9361B">你</text></g>
+  </svg>
+  <div class="t d1" style="left:124px;top:180px;font-size:30px;letter-spacing:.2em"><span class="num">开关一</span></div>
+  <div class="t d2 big" style="left:120px;top:240px;font-size:128px">挑战<br>≈ 能力</div>
+  <div class="t d3 sub sans" style="left:128px;top:600px">太难焦虑，<br>太容易无聊，<br>刚好有点难才心流</div>
+  <div class="foot l mono">04 / 08</div><div class="foot r">千百合</div>
+</section>
+
+<!-- R5 开关二 (3,1) -->
+<section class="region" style="left:5760px;top:1080px" data-i="4">
+  <div class="bg"></div>
+  <svg class="line" viewBox="0 0 1920 1080">
+    <g opacity=".22">
+      <path class="ink thin" d="M1960 160 C 1700 200, 1600 500, 1500 540"/>
+      <path class="ink thin" d="M1400 -40 C 1420 200, 1480 450, 1500 540"/>
+      <path class="ink thin" d="M1960 900 C 1700 860, 1600 600, 1500 540"/>
+      <path class="ink thin" d="M900 -40 C 1100 200, 1400 450, 1500 540"/>
+    </g>
+    <path class="ink" d="M1880 -40 C 1880 200, 1700 540, 1500 540 C 1100 540, 600 560, -40 560"/>
+    <circle class="t d5 dot" cx="1500" cy="540" r="12"/>
+    <circle class="t d5" cx="1500" cy="540" r="48" fill="none" stroke="#C9361B" stroke-width="2"/>
+    <text class="t d6 sans" x="1500" y="640" text-anchor="middle" font-size="26" fill="#C9361B">做完是什么样</text>
+  </svg>
+  <div class="t d1" style="left:124px;top:180px;font-size:30px;letter-spacing:.2em"><span class="num">开关二</span></div>
+  <div class="t d2 big" style="left:120px;top:240px;font-size:150px">目标清晰</div>
+  <div class="t d3 sub sans" style="left:130px;top:640px">说得清「做完是什么样」</div>
+  <div class="foot l mono">05 / 08</div><div class="foot r">千百合</div>
+</section>
+
+<!-- R6 开关三 (2,1) -->
+<section class="region" style="left:3840px;top:1080px" data-i="5">
+  <div class="bg"></div>
+  <svg class="line" viewBox="0 0 1920 1080">
+    <path class="ink" d="M1960 560 C 1500 560, 1000 560, 620 560 C 400 560, 200 560, -40 560"/>
+    <circle class="pulse" cx="620" cy="560" r="90"/>
+    <circle class="pulse" cx="620" cy="560" r="180" style="animation-delay:.8s"/>
+    <circle class="pulse" cx="620" cy="560" r="300" style="animation-delay:1.6s"/>
+    <circle class="t d4 dot" cx="620" cy="560" r="12"/>
+    <text class="t d5 mono" x="620" y="470" text-anchor="middle" font-size="18" fill="#8C8172">人 · 24 h</text>
+    <text class="t d6 mono" x="620" y="660" text-anchor="middle" font-size="22" fill="#C9361B">AI · 3 s</text>
+  </svg>
+  <div class="t d1" style="left:1004px;top:180px;font-size:30px;letter-spacing:.2em"><span class="num">开关三</span></div>
+  <div class="t d2 big" style="left:1000px;top:240px;font-size:150px">反馈及时</div>
+  <div class="t d3 sub sans" style="left:1010px;top:640px">做一步，立刻看到</div>
+  <div class="foot l mono">06 / 08</div><div class="foot r">千百合</div>
+</section>
+
+<!-- R7 案例 (1,1) -->
+<section class="region" style="left:1920px;top:1080px" data-i="6">
+  <div class="bg"></div>
+  <svg class="line" viewBox="0 0 1920 1080">
+    <path class="ink" d="M1960 560 C 1800 560, 1720 300, 1560 300 C 1440 300, 1420 420, 1420 560"/>
+    <path class="ink" style="animation-delay:1.2s" d="M1220 620 L 1620 620 C 1620 760, 1220 760, 1220 620"/>
+    <path class="ink thin" style="animation-delay:2s;opacity:.5" d="M1420 756 C 1400 900, 900 980, -40 980"/>
+    <text class="t d4 mono" x="1420" y="820" text-anchor="middle" font-size="16" fill="#8C8172">2026 · 10 · 09 &nbsp; 36:00</text>
+  </svg>
+  <div class="t d2" style="left:110px;top:60px"><video id="qp" src="qiuping.mp4" poster="qiuping_poster.jpg" playsinline preload="metadata" style="height:960px"></video></div>
+  <div class="t d1" style="left:760px;top:150px;font-size:28px;letter-spacing:.2em"><span class="num">茶道就是倒茶</span></div>
+  <div class="t d2 big" style="left:756px;top:200px;font-size:96px">拿得起，<br>放得下</div>
+  <div class="t d3 sub sans" style="left:764px;top:470px;font-size:30px">访谈秋萍先生 · 36 分钟<br>AI 负责剪辑，我负责看见</div>
+  <div class="t d4 mono" style="left:764px;top:600px;font-size:15px;color:var(--mute)">点视频 / 按 V 播放</div>
+  <div class="foot l mono">07 / 08</div><div class="foot r">千百合</div>
+</section>
+
+<!-- R8 收尾 (0,1) -->
+<section class="region" style="left:0;top:1080px" data-i="7">
+  <div class="bg"></div>
+  <svg class="line" viewBox="0 0 1920 1080">
+    <path class="ink" d="M1960 980 C 1760 985, 1790 940, 1760 940 L 1090 940"/>
+  </svg>
+  <img class="card t d1" src="card.jpg" style="left:110px;top:120px;width:880px">
+  <div class="t d2 lab sans" style="left:1090px;top:130px;font-size:26px">讲完发群 · 两样礼物</div>
+  <div class="gift t d3 sans" style="left:1090px;top:200px"><div class="num" style="font-size:38px;width:64px">01</div><div><div class="k">这套 PPT</div><div class="v">今天这一套，拿去照着讲</div></div></div>
+  <div class="gift t d4 sans" style="left:1090px;top:330px"><div class="num" style="font-size:38px;width:64px">02</div><div><div class="k">心流自测卡</div><div class="v">三个问题，随时测手上的事</div></div></div>
+  <div class="t d4 sans" style="left:1090px;top:470px;font-size:26px;color:var(--red)">有特别需要书的伙伴，私戳我</div>
+  <div class="t d5 big" style="left:1090px;top:600px;font-size:84px">进入心流，<br>活成自己</div>
+  <div class="t d6" style="left:1094px;top:840px;font-size:30px;color:var(--ink2)">—— 你若盛开，清风自来</div>
+  <div class="seal" style="left:1620px;top:760px">千百合</div>
+</section>
+
+</div></div>
+
+<svg id="nav" viewBox="0 0 120 90"><line x1="10" y1="80" x2="110" y2="80"/><line x1="10" y1="80" x2="10" y2="10"/><line x1="10" y1="80" x2="110" y2="10" stroke-dasharray="3 3"/><circle id="navdot" cx="10" cy="80" r="4"/></svg>
+<div id="hint" class="mono">← → 翻页 · F 全屏 · P 演讲者视图 · ? 帮助</div>
+<div id="timerpill"></div>
+<div id="black"></div>
+<div id="wordbox"><input id="wordin" placeholder="敲一个聊天区的词，回车上屏"><span>Esc 关闭</span></div>
+<div id="help"><h2>快捷键</h2><table>
+<tr><td>→ 空格 ↓</td><td>下一页</td></tr><tr><td>← ↑</td><td>上一页</td></tr><tr><td>1 – 8</td><td>直接跳到第几页</td></tr>
+<tr><td>F</td><td>全屏</td></tr><tr><td>P</td><td>打开演讲者视图（第二个窗口：当前页 / 下一页 / 逐字稿 / 计时）</td></tr>
+<tr><td>T</td><td>第二页：把聊天区的词敲上屏</td></tr><tr><td>V</td><td>秋萍页：播放 / 暂停视频</td></tr>
+<tr><td>B</td><td>黑屏（再按恢复）</td></tr><tr><td>S</td><td>计时器归零重新开始</td></tr><tr><td>?</td><td>这个帮助</td></tr>
+</table><p style="margin-top:28px;color:#8C8172">手机上：左右滑动翻页。</p></div>
+
+<div id="pres">
+  <div class="box"><div class="big" id="p-title"></div><div class="next" id="p-next"></div>
+    <div class="clock" id="p-clock">00:00</div><div class="target" id="p-target"></div>
+    <div class="ctl"><button onclick="cmd('prev')">← 上一页</button><button onclick="cmd('next')">下一页 →</button><button onclick="cmd('reset')">计时归零</button><button onclick="cmd('black')">黑屏</button></div>
+  </div>
+  <div class="box"><div class="big">本页逐字稿</div><div class="notes" id="p-notes"></div></div>
+</div>
+
+<script>
+const POS=[[0,0],[1,0],[2,0],[3,0],[3,1],[2,1],[1,1],[0,1]];
+const TITLES=["封面","过得快","亮书 · 幸福，可以被设计","开关一 · 挑战 ≈ 能力","开关二 · 目标清晰","开关三 · 反馈及时","案例 · 拿得起，放得下","收尾 · 进入心流，活成自己"];
+const END=[60,60,160,220,270,320,460,540]; // seconds by which this page should be left
+const NOTES=[
+`超能班的伙伴们，大家现在好！我是 H 组的千百合。
+
+现在是北京时间早上六点，这么多伙伴齐聚线上。我本来想夸大家自律——（停一拍）一想，我自己也不自律。你们也不是。你们是知道，这一个小时会过得很快。
+
+→ 说到「过得快」翻页`,
+`过得快，不止在这儿。聊天区打一个词：上一次你跟 AI 干活，干到忘了时间，是在干什么？
+
+（停 20 秒，念三四个，带名字；按 T 把词敲上屏）都算。记住那个词，一会儿要用。
+
+这个状态，有一个名字。`,
+`它叫心流。这本书——《心流：最优体验心理学》，英文名 Flow: The Psychology of Optimal Experience，书名就一个词，Flow。
+
+作者米哈里·契克森米哈赖，Mihaly Csikszentmihalyi，名字难念，记一件事就行：「心流」这个词是他发明的。他给几千个人发传呼机，每天随机响八次，响了就记下你在干什么、感觉怎么样。几万条记录攒下来，他发现人最幸福的时刻，不是躺着，而是全情投入在一件事里的时候。
+
+这本书的第一章，开头是这样写的——（朗读 PDF 第 53 页开头两句，约 20 秒，念完停一拍）
+
+一句话：幸福不是运气，幸福，可以被设计。
+
+但大家对心流有个误会，以为心流就是「忘了时间」。忘了时间是结果，不是开关——就像发烧是结果，不是病因。开关只有三个，而且今天的 AI 刚好全都按得到。这就是我把它放在「让 AI 真正替你干活」第二期开篇的原因。`,
+`开关一：挑战约等于能力。
+
+书里有一张图：横轴能力，纵轴挑战。太难，焦虑区；太容易，无聊区；只有中间那条斜斜的通道，才是心流。
+
+书里有个流水线工人叫里科，一个动作每天重复几百次，他给自己加难度：这次比上次快零点几秒。干了五年，他说每天都像在比赛。他自己把自己从无聊区拉回了通道。
+
+AI 干的是反方向的事：把一大片「太难」拉回「刚好」。做视频，以前对我是太难；现在有了 AI，它变成了刚好有点难——我不用会剪，但我必须判断哪句话是魂。这个「必须判断」，就是心流的入口。连判断都不做，全交给它，你就滑进了无聊区：看着 AI 干活，三天就放下了。
+
+现在看一眼你手上那件事——你在焦虑区，还是无聊区？不用回答，心里有数就行。`,
+`开关二：目标清晰。
+
+跟 AI 干活，prompt 就是终点。刚才××说写方案——你说不清「做完是什么样」，它也写不出来。很多人以为 AI 用不好是技巧问题，其实是目标问题。没目标开聊，聊一下午很开心，关掉窗口什么都没剩下——那不是心流，那是陪聊。`,
+`开关三：反馈及时。
+
+这是 AI 最厉害的地方：人类协作反馈要等一天，AI 几秒钟。刚才××说做海报——为什么停不下来？不是 AI 多神奇，是反馈回路被压缩到了秒级：做一步，立刻看到，立刻改。游戏让人上瘾就是这个原理，现在它出现在干活里了。有没有人这样干到过后半夜的？聊天区打个 1。（停 5 秒，笑）我就知道不止我一个。`,
+`这三个开关不是我总结的，是我这个月亲身走了一遍。
+
+10 月 9 号，我访谈了秋萍茶宴的秋萍先生，录了 36 分钟素材。以前这种素材我是不碰的：没时间、没技能，交给别人剪出来又不是我要的。
+
+这次我让 AI 来剪：转录、挑金句、切段、上字幕，我在旁边看、改、再让它出一版。我记得最清楚的一刻，是它把秋萍先生讲「茶道就是倒茶，拿得起，放得下」那一段单独挑出来的时候——我自己访谈时都没意识到那句有多好。一位茶人讲茶道，就这九个字。（按 V 放视频片段）
+
+中间我也按错过。有一段我偷懒，它出什么我都点确认，看完才发现最好的一句被剪掉了——「第一会死在沙滩上，唯一才不会消亡」。我没在判断，只在按回车，那一段我自己滑进了无聊区。把它找回来，再往下剪，抬头一看，几个小时过去了，一条能发出去的片子出来了。
+
+复盘：挑战刚好——哪句是魂只有我知道；目标清晰——终点就是一条能发出去的片子；反馈秒回——改一句，立刻看到新的一版。三个开关全开，那几个小时就是心流。
+
+一句话：AI 负责剪辑，我负责看见。AI 接过执行，人回到心流。`,
+`这三个开关我做成了一张卡，今天发群里。不用现在填，回去挑一件你正跟 AI 干着的事——就是你开场打的那个词——三个问题过一遍，哪个开关没开，就调哪个。
+
+接下来六位分享官上场。听的时候请大家带一个问题：什么时候，你感觉到他真正进入了心流？
+
+讲完我把三样东西发群里：这套 PPT、自测卡、讲书手记。
+
+最后八个字：进入心流，活成自己。
+
+把话筒交给主持人。`];
+
+const isPres=location.search.includes('presenter');
+const regions=[...document.querySelectorAll('.region')];
+const world=document.getElementById('world');
+let i=-1,t0=null,S=1;
+const bc=('BroadcastChannel' in window)?new BroadcastChannel('flow-deck'):null;
+
+// beeps
+document.querySelectorAll('.beeps').forEach(bg=>{[470,610,690,880,990,1130,1260,1420].forEach((x,k)=>{const d=(1.6+k*.35)+'s';
+ const l=document.createElementNS('http://www.w3.org/2000/svg','line');l.setAttribute('x1',x);l.setAttribute('x2',x);l.setAttribute('y1',800);l.setAttribute('y2',770-(k%3)*12);l.setAttribute('stroke','#C9361B');l.setAttribute('stroke-width',3);l.setAttribute('class','beep');l.style.animationDelay=d;bg.appendChild(l);
+ const c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('cx',x);c.setAttribute('cy',766-(k%3)*12);c.setAttribute('r',4);c.setAttribute('fill','#C9361B');c.setAttribute('class','beep');c.style.animationDelay=d;bg.appendChild(c)})});
+
+function fit(){S=Math.min(innerWidth/1920,innerHeight/1080);camera(true)}
+function camera(quick){if(i<0)return;const [c,r]=POS[i];const ox=(innerWidth-1920*S)/2,oy=(innerHeight-1080*S)/2;
+  world.classList.toggle('quick',!!quick);world.style.transform=`translate(${ox-c*1920*S}px,${oy-r*1080*S}px) scale(${S})`}
+function go(n,silent){n=Math.max(0,Math.min(7,n));if(n===i)return;
+  document.querySelectorAll('video').forEach(v=>v.pause());
+  if(i>=0){regions[i].classList.remove('on');regions[i].classList.add('seen')}
+  i=n;const s=regions[i];s.classList.remove('seen');
+  s.querySelectorAll('.ink,.chip,.you,.pulse,.beep,.zone').forEach(e=>{e.style.animationName='none';e.getBoundingClientRect();e.style.animationName=''});
+  s.classList.add('on');camera(false);
+  const t=i/7,d=document.getElementById('navdot');d.setAttribute('cx',10+100*t);d.setAttribute('cy',80-70*t);
+  if(t0===null&&i>0)t0=Date.now();
+  history.replaceState(null,'','#p'+(i+1));
+  if(!silent&&bc)bc.postMessage({type:'state',i,t0});
+  renderPres()}
+function cmd(c){if(c==='next')go(i+1);else if(c==='prev')go(i-1);else if(c==='reset'){t0=Date.now();if(bc)bc.postMessage({type:'state',i,t0})}else if(c==='black'){if(bc)bc.postMessage({type:'black'})}}
+// presenter
+function renderPres(){if(!isPres)return;document.getElementById('p-title').textContent=`${i+1} / 8 · ${TITLES[i]||''}`;
+  document.getElementById('p-next').textContent=i<7?`下一页：${TITLES[i+1]}`:'最后一页';
+  document.getElementById('p-notes').textContent=NOTES[i]||'';
+  const m=Math.floor(END[i]/60),s=END[i]%60;document.getElementById('p-target').textContent=`本页应在 ${m}:${String(s).padStart(2,'0')} 前翻走 · 全程 9:00`}
+function tick(){const el=isPres?document.getElementById('p-clock'):document.getElementById('timerpill');if(!el)return;
+  if(t0===null){el.textContent='00:00';return}const e=Math.floor((Date.now()-t0)/1000);el.textContent=`${String(Math.floor(e/60)).padStart(2,'0')}:${String(e%60).padStart(2,'0')}`;
+  el.classList.toggle('warn',e>END[i]-20&&e<=END[i]);el.classList.toggle('over',e>END[i]);
+  if(!isPres)el.style.display=t0?'block':'none'}
+setInterval(tick,500);
+if(bc)bc.onmessage=ev=>{const m=ev.data;if(m.type==='state'){t0=m.t0;go(m.i,true)}else if(m.type==='cmd')cmd(m.c);else if(m.type==='black'&&!isPres)document.getElementById('black').classList.toggle('on')};
+if(isPres){document.body.classList.add('presenter');window.cmd=c=>bc&&bc.postMessage({type:'cmd',c});
+  // ask main for state
+  const m=location.hash.match(/p(\d+)/);go(m?+m[1]-1:0,true)}
+// live words
+const wb=document.getElementById('wordbox'),wi=document.getElementById('wordin');
+function addWord(w){const chips=document.getElementById('chips');const n=chips.children.length;const el=document.createElement('div');el.className='chip sans live';
+  const slots=[[1600,560],[1420,680],[1660,790],[1260,860],[1560,230],[1700,420],[1300,330],[1500,900]];const [x,y]=slots[n%slots.length];
+  el.style.left=(x+(n>=slots.length?30:0))+'px';el.style.top=y+'px';el.textContent=w;chips.appendChild(el)}
+wi.addEventListener('keydown',e=>{e.stopPropagation();if(e.key==='Enter'&&wi.value.trim()){addWord(wi.value.trim());wi.value=''}if(e.key==='Escape'){wb.classList.remove('on')}});
+// keys
+addEventListener('keydown',e=>{if(e.target===wi)return;const k=e.key;
+  if(['ArrowRight','ArrowDown','PageDown',' ','Enter'].includes(k)){e.preventDefault();isPres?cmd('next'):go(i+1)}
+  else if(['ArrowLeft','ArrowUp','PageUp','Backspace'].includes(k)){e.preventDefault();isPres?cmd('prev'):go(i-1)}
+  else if(k>='1'&&k<='8')go(+k-1);
+  else if(k==='f'||k==='F'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}
+  else if(k==='p'||k==='P'){window.open(location.pathname+'?presenter=1#p'+(i+1),'flowpres','width=1100,height=760')}
+  else if(k==='t'||k==='T'){if(i===1){e.preventDefault();wb.classList.add('on');wi.focus();setTimeout(()=>wi.value='',0)}}
+  else if(k==='v'||k==='V'){const v=document.getElementById('qp');v.paused?v.play():v.pause()}
+  else if(k==='b'||k==='B'){document.getElementById('black').classList.toggle('on')}
+  else if(k==='s'||k==='S'){cmd('reset')}
+  else if(k==='?'||k==='/'){document.getElementById('help').classList.toggle('on')}
+  else if(k==='Escape'){document.getElementById('help').classList.remove('on');wb.classList.remove('on')}});
+addEventListener('click',e=>{if(isPres)return;if(e.target.closest('#help')){document.getElementById('help').classList.remove('on');return}
+  if(e.target.closest('#wordbox'))return;const v=e.target.closest('video');if(v){v.paused?v.play():v.pause();return}
+  if(e.target.closest('#nav'))return;go(e.clientX>innerWidth/3?i+1:i-1)});
+// touch swipe
+let tx=null;addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
+addEventListener('touchend',e=>{if(tx===null)return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)go(dx<0?i+1:i-1);tx=null});
+addEventListener('resize',fit);
+if(!isPres){fit();const m=location.hash.match(/p(\d+)/);go(m?+m[1]-1:0);setTimeout(()=>world.classList.remove('quick'),50)}
+</script>
+</body>
+</html>
