@@ -3,10 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>心流 · 万点成流 II</title>
+<title>心流 · 万点成流 IV</title>
 <style>
 :root{--bg:#0F0D0B;--ivory:#EFE7D6;--ivory2:#B9AE9A;--mute:#6F6657;--red:#E04A2B;--gold:#E6B86A}
 *{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+#view{position:fixed;inset:0;overflow:hidden}
+#rot{position:fixed;left:0;right:0;top:calc(50% - 30vw - 70px);text-align:center;font:14px "PingFang SC",sans-serif;letter-spacing:.2em;color:var(--gold);opacity:.8;z-index:9;display:none;pointer-events:none}
+@media (orientation:portrait) and (max-width:820px){#rot{display:block}}
+@media (max-width:820px),(max-height:500px){#hint{display:none}}
 html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ivory);font-family:"Songti SC","STSong","Noto Serif CJK SC","Noto Serif SC",serif;-webkit-font-smoothing:antialiased;touch-action:none}
 .sans{font-family:"PingFang SC","Hiragino Sans GB","Noto Sans CJK SC","Noto Sans SC",sans-serif}
 .mono{font-family:"SF Mono",Menlo,monospace;letter-spacing:.08em}
@@ -51,11 +56,10 @@ video{border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.6);background:#000;p
 @keyframes intro{0%{opacity:0;transform:translateY(10px)}25%{opacity:1;transform:none}80%{opacity:1}100%{opacity:0}}
 #dots{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:9}
 #dots i{width:6px;height:6px;border-radius:50%;background:rgba(239,231,214,.2);transition:.3s}#dots i.on{background:var(--gold);transform:scale(1.4)}
-/* presenter */
 body.presenter{overflow:auto;background:#111;touch-action:auto}
 #pres{display:none;padding:28px;font-family:"PingFang SC","Noto Sans CJK SC",sans-serif}
 body.presenter #pres{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;height:100vh}
-body.presenter #c,body.presenter #stage,body.presenter #hint,body.presenter #dots{display:none}
+body.presenter #view,body.presenter #rot,body.presenter #c,body.presenter #stage,body.presenter #hint,body.presenter #dots{display:none}
 #pres .box{background:#1b1b1b;border-radius:14px;padding:22px;overflow:auto}
 #pres .big{font-size:22px;font-weight:600;color:#fff;margin-bottom:8px}
 #pres .clock{font:600 64px Menlo,monospace;color:#fff}#pres .clock.warn{color:#f5a623}#pres .clock.over{color:#ff5a3c}
@@ -67,10 +71,10 @@ body.presenter #c,body.presenter #stage,body.presenter #hint,body.presenter #dot
 </style>
 </head>
 <body>
+<div id="view">
 <canvas id="c"></canvas>
 <div id="stage">
-
-<section class="slide" data-i="0">
+<section class="slide">
   <img class="t d1" src="portrait.png" style="position:absolute;right:120px;bottom:-10px;height:960px;-webkit-mask-image:linear-gradient(#000 78%,transparent);mask-image:linear-gradient(#000 78%,transparent);opacity:.95">
   <div class="t d2 big" style="left:110px;top:140px;font-size:250px">心流</div>
   <div class="t d3" style="left:124px;top:430px;font-size:42px;color:var(--ivory2)">最优体验心理学 &nbsp;·&nbsp; <i>Flow</i></div>
@@ -81,7 +85,7 @@ body.presenter #c,body.presenter #stage,body.presenter #hint,body.presenter #dot
   <div class="seal" style="left:860px;top:150px">千百合</div>
 </section>
 
-<section class="slide" data-i="1">
+<section class="slide">
   <div class="t d1 big" style="left:120px;top:300px;font-size:200px">过得快</div>
   <div class="t d3 sub sans" style="left:130px;top:580px;font-size:38px">上一次你跟 AI 干活，干到忘了时间，是在干什么？</div>
   <div id="chips">
@@ -92,7 +96,7 @@ body.presenter #c,body.presenter #stage,body.presenter #hint,body.presenter #dot
   <div class="foot l mono">02 / 08</div><div class="foot r">千百合</div>
 </section>
 
-<section class="slide" data-i="2">
+<section class="slide">
   <div class="t d1 big" style="left:120px;top:110px;font-size:140px">心流</div>
   <div class="t d2 lab mono" style="left:130px;top:300px;font-size:19px;color:var(--ivory2)">THE PSYCHOLOGY OF OPTIMAL EXPERIENCE · 1990</div>
   <div class="t d2 sans" style="left:130px;top:345px;font-size:26px;color:var(--ivory2)">米哈里 · 契克森米哈赖 &nbsp;Mihaly Csikszentmihalyi</div>
@@ -103,7 +107,7 @@ body.presenter #c,body.presenter #stage,body.presenter #hint,body.presenter #dot
   <div class="foot l mono">03 / 08</div><div class="foot r">千百合</div>
 </section>
 
-<section class="slide" data-i="3">
+<section class="slide">
   <div class="t d1 num sans" style="left:124px;top:170px">开关一</div>
   <div class="t d2 big" style="left:120px;top:230px;font-size:124px">挑战<br>≈ 能力</div>
   <div class="t d3 sub sans" style="left:128px;top:600px">太难焦虑，<br>太容易无聊，<br>刚好有点难才心流</div>
@@ -115,7 +119,7 @@ body.presenter #c,body.presenter #stage,body.presenter #hint,body.presenter #dot
   <div class="foot l mono">04 / 08</div><div class="foot r">千百合</div>
 </section>
 
-<section class="slide" data-i="4">
+<section class="slide">
   <div class="t d1 num sans" style="left:124px;top:170px">开关二</div>
   <div class="t d2 big" style="left:120px;top:230px;font-size:150px">目标清晰</div>
   <div class="t d3 sub sans" style="left:130px;top:640px">说得清「做完是什么样」</div>
@@ -123,7 +127,7 @@ body.presenter #c,body.presenter #stage,body.presenter #hint,body.presenter #dot
   <div class="foot l mono">05 / 08</div><div class="foot r">千百合</div>
 </section>
 
-<section class="slide" data-i="5">
+<section class="slide">
   <div class="t d1 num sans" style="left:124px;top:170px">开关三</div>
   <div class="t d2 big" style="left:120px;top:230px;font-size:150px">反馈及时</div>
   <div class="t d3 sub sans" style="left:130px;top:640px">做一步，立刻看到</div>
@@ -132,7 +136,7 @@ body.presenter #c,body.presenter #stage,body.presenter #hint,body.presenter #dot
   <div class="foot l mono">06 / 08</div><div class="foot r">千百合</div>
 </section>
 
-<section class="slide" data-i="6">
+<section class="slide">
   <div class="t d2" style="left:110px;top:60px"><video id="qp" src="qiuping.mp4" poster="qiuping_poster.jpg" playsinline preload="metadata" style="height:960px"></video></div>
   <div class="t d1 num sans" style="left:760px;top:150px">茶道就是倒茶</div>
   <div class="t d2 big" style="left:756px;top:200px;font-size:96px">拿得起，<br>放得下</div>
@@ -141,7 +145,7 @@ body.presenter #c,body.presenter #stage,body.presenter #hint,body.presenter #dot
   <div class="foot l mono">07 / 08</div><div class="foot r">千百合</div>
 </section>
 
-<section class="slide" data-i="7">
+<section class="slide">
   <img class="card t d1" src="card.jpg" style="position:absolute;left:110px;top:110px;width:760px">
   <div class="t d2 lab sans" style="left:960px;top:120px;font-size:24px">讲完发群 · 两样礼物</div>
   <div class="t d3 sans" style="left:960px;top:170px;font-size:34px;font-weight:600"><span style="color:var(--gold)">01</span>&nbsp; 这套 PPT <span style="font-size:22px;color:var(--mute);font-weight:400">&nbsp; 今天这一套，拿去照着讲</span></div>
@@ -152,15 +156,17 @@ body.presenter #c,body.presenter #stage,body.presenter #hint,body.presenter #dot
 </section>
 
 </div>
-<div id="intro" class="mono"><span>一粒点，是一个念头</span><span>一万粒点，是一个早晨</span><span>它们流起来的时候，叫心流</span></div>
+</div>
+<div id="rot">手机横过来看，更有流 ↻</div>
+<div id="intro" class="mono"></div>
 <div id="dots"></div>
 <div id="hint" class="mono">← → 翻页 · F 全屏 · P 演讲者视图 · ? 帮助</div>
 <div id="timerpill"></div>
 <div id="black"></div>
 <div id="wordbox"><input id="wordin" placeholder="敲一个聊天区的词，回车上屏"><span>Esc 关闭</span></div>
 <div id="help"><h2>快捷键</h2><table>
-<tr><td>→ 空格</td><td>下一页</td></tr><tr><td>←</td><td>上一页</td></tr><tr><td>1 – 8</td><td>直接跳页</td></tr><tr><td>F</td><td>全屏</td></tr>
-<tr><td>P</td><td>演讲者视图（第二窗口：逐字稿 + 计时）</td></tr><tr><td>T</td><td>第二页：敲聊天区的词上屏</td></tr><tr><td>V</td><td>秋萍页：播放 / 暂停</td></tr>
+<tr><td>→ 空格</td><td>下一页</td></tr><tr><td>←</td><td>上一页</td></tr><tr><td>1 – 9</td><td>直接跳页</td></tr><tr><td>F</td><td>全屏</td></tr>
+<tr><td>P</td><td>演讲者视图（第二窗口：逐字稿 + 计时）</td></tr><tr><td>T</td><td>互动页：敲聊天区的词上屏</td></tr><tr><td>V</td><td>视频页：播放 / 暂停</td></tr>
 <tr><td>B</td><td>黑屏</td></tr><tr><td>S</td><td>计时归零</td></tr></table></div>
 <div id="pres">
   <div class="box"><div class="big" id="p-title"></div><div class="next" id="p-next"></div><div class="clock" id="p-clock">00:00</div><div class="target" id="p-target"></div>
@@ -169,140 +175,154 @@ body.presenter #c,body.presenter #stage,body.presenter #hint,body.presenter #dot
 </div>
 
 <script>
-// ---------- particles (3D) ----------
+// ================= 只改这里：每页的标题 / 翻走时间(秒) / 粒子场景 / 逐字稿 =================
+const DECK = {
+  id: 'flow4-deck',
+  total: '全程 9:00',
+  intro: ['一粒点，是一个念头', '一万粒点，是一个早晨', '它们流起来的时候，叫心流'],
+  pages: [
+    {title:'封面', end:60,
+     // 封面流线：左高右低，从标题上方起，经过标题与人物之间的空隙下落，在人物身后、腰胯以下穿过，不碰头颈
+     scene:{type:'river', band:46, path:[[-120,40],[400,48],[700,92],[830,230],[960,470],[1090,710],[1260,880],[1520,950],[2040,990]]},
+     notes:`超能班的伙伴们，大家现在好！我是 H 组的千百合。\n\n现在是北京时间早上六点，这么多伙伴齐聚线上。我本来想夸大家自律——（停一拍）一想，我自己也不自律。你们也不是。你们是知道，这一个小时会过得很快。\n\n→ 说到「过得快」翻页`},
+    {title:'过得快', end:60, scene:{type:'ring', cx:1380, cy:540, r:330},
+     notes:`过得快，不止在这儿。聊天区打一个词：上一次你跟 AI 干活，干到忘了时间，是在干什么？\n\n（停 20 秒，念三四个，带名字；按 T 把词敲上屏）都算。记住那个词，一会儿要用。\n\n这个状态，有一个名字。`},
+    {title:'亮书 · 幸福，可以被设计', end:160, scene:{type:'text', lines:['Flow'], size:270, cx:1090, cy:560, underline:[860,1400,800]},
+     notes:`它叫心流。这本书——《心流：最优体验心理学》，英文名 Flow: The Psychology of Optimal Experience，书名就一个词，Flow。\n\n作者米哈里·契克森米哈赖，Mihaly Csikszentmihalyi，名字难念，记一件事就行：「心流」这个词是他发明的。他给几千个人发传呼机，每天随机响八次，响了就记下你在干什么、感觉怎么样。几万条记录攒下来，他发现人最幸福的时刻，不是躺着，而是全情投入在一件事里的时候。\n\n这本书的第一章，开头是这样写的——（朗读 PDF 第 53 页开头两句，约 20 秒，念完停一拍）\n\n一句话：幸福不是运气，幸福，可以被设计。\n\n但大家对心流有个误会，以为心流就是「忘了时间」。忘了时间是结果，不是开关——就像发烧是结果，不是病因。开关只有三个，而且今天的 AI 刚好全都按得到。这就是我把它放在「让 AI 真正替你干活」第二期开篇的原因。`},
+    {title:'开关一 · 挑战 ≈ 能力', end:220, scene:{type:'channel'},
+     notes:`开关一：挑战约等于能力。\n\n书里有一张图：横轴能力，纵轴挑战。太难，焦虑区；太容易，无聊区；只有中间那条斜斜的通道，才是心流。（屏上：红点乱撞的是焦虑区，暗的是无聊区，金色的河是通道）\n\n书里有个流水线工人叫里科，一个动作每天重复几百次，他给自己加难度：这次比上次快零点几秒。干了五年，他说每天都像在比赛。他自己把自己从无聊区拉回了通道。\n\nAI 干的是反方向的事：把一大片「太难」拉回「刚好」。做视频，以前对我是太难；现在有了 AI，它变成了刚好有点难——我不用会剪，但我必须判断哪句话是魂。这个「必须判断」，就是心流的入口。连判断都不做，全交给它，你就滑进了无聊区：看着 AI 干活，三天就放下了。\n\n现在看一眼你手上那件事——你在焦虑区，还是无聊区？不用回答，心里有数就行。`},
+    {title:'开关二 · 目标清晰', end:270, scene:{type:'focus', cx:1570, cy:560},
+     notes:`开关二：目标清晰。\n\n跟 AI 干活，prompt 就是终点。刚才××说写方案——你说不清「做完是什么样」，它也写不出来。很多人以为 AI 用不好是技巧问题，其实是目标问题。没目标开聊，聊一下午很开心，关掉窗口什么都没剩下——那不是心流，那是陪聊。`},
+    {title:'开关三 · 反馈及时', end:320, scene:{type:'ripple', cx:1400, cy:560},
+     notes:`开关三：反馈及时。\n\n这是 AI 最厉害的地方：人类协作反馈要等一天，AI 几秒钟。刚才××说做海报——为什么停不下来？不是 AI 多神奇，是反馈回路被压缩到了秒级：做一步，立刻看到，立刻改。游戏让人上瘾就是这个原理，现在它出现在干活里了。有没有人这样干到过后半夜的？聊天区打个 1。（停 5 秒，笑）我就知道不止我一个。`},
+    {title:'案例 · 拿得起，放得下', end:460, scene:{type:'pour', x:1270, cx:1420, cy:740},
+     notes:`这三个开关不是我总结的，是我这个月亲身走了一遍。\n\n10 月 9 号，我访谈了秋萍茶宴的秋萍先生，录了 36 分钟素材。以前这种素材我是不碰的：没时间、没技能，交给别人剪出来又不是我要的。\n\n这次我让 AI 来剪：转录、挑金句、切段、上字幕，我在旁边看、改、再让它出一版。我记得最清楚的一刻，是它把秋萍先生讲「茶道就是倒茶，拿得起，放得下」那一段单独挑出来的时候——我自己访谈时都没意识到那句有多好。一位茶人讲茶道，就这九个字。（按 V 放视频片段）\n\n中间我也按错过。有一段我偷懒，它出什么我都点确认，看完才发现最好的一句被剪掉了——「第一会死在沙滩上，唯一才不会消亡」。我没在判断，只在按回车，那一段我自己滑进了无聊区。把它找回来，再往下剪，抬头一看，几个小时过去了，一条能发出去的片子出来了。\n\n复盘：挑战刚好——哪句是魂只有我知道；目标清晰——终点就是一条能发出去的片子；反馈秒回——改一句，立刻看到新的一版。三个开关全开，那几个小时就是心流。\n\n一句话：AI 负责剪辑，我负责看见。AI 接过执行，人回到心流。`},
+    {title:'收尾 · 进入心流，活成自己', end:540, scene:{type:'text', lines:['进入心流','活成自己'], size:230, cx:1400, cy:720, gap:70, hero:[1548,520], you:true},
+     notes:`这三个开关我做成了一张卡，今天发群里。不用现在填，回去挑一件你正跟 AI 干着的事——就是你开场打的那个词——三个问题过一遍，哪个开关没开，就调哪个。\n\n接下来六位分享官上场。听的时候请大家带一个问题：什么时候，你感觉到他真正进入了心流？\n\n讲完我把三样东西发群里：这套 PPT、自测卡、讲书手记。\n\n最后八个字（屏上一万个点正在排成这八个字）：进入心流，活成自己。\n\n把话筒交给主持人。`},
+  ]
+};
+// ================= 以下是引擎，一般不用改 =================
 const W=1920,H=1080;const cv=document.getElementById('c'),ctx=cv.getContext('2d');
 const isPres=location.search.includes('presenter');
 const mobile=Math.min(innerWidth,innerHeight)<700;
 const N=mobile?3000:9000;
-const P=new Float32Array(N*6); // x,y,z,vx,vy,vz
-const T=new Float32Array(N*3); // target x,y,z
-const G=new Uint8Array(N);
+const P=new Float32Array(N*6),T=new Float32Array(N*3),G=new Uint8Array(N);
 for(let k=0;k<N;k++){P[k*6]=Math.random()*W;P[k*6+1]=Math.random()*H;P[k*6+2]=(Math.random()-.5)*400}
-let mode=-1,S=1,ox=0,oy=0,t0=null,i=-1,tStart=performance.now(),visible=0,burst=0;
-const F=1500; // focal length
-let camA=0; // camera yaw
+let mode=-1,sc={type:'river'},S=1,ox=0,oy=0,t0=null,i=-1,tStart=performance.now(),visible=0,burst=0;
+const F=1500;let camA=0;
 function fit(){const dpr=Math.min(devicePixelRatio||1,2);cv.width=innerWidth*dpr;cv.height=innerHeight*dpr;cv.style.width=innerWidth+'px';cv.style.height=innerHeight+'px';
   S=Math.min(innerWidth/W,innerHeight/H);ox=(innerWidth-W*S)/2;oy=(innerHeight-H*S)/2;document.documentElement.style.setProperty('--s',S);ctx.setTransform(dpr,0,0,dpr,0,0)}
 addEventListener('resize',fit);fit();
 let mx=0,my=0;addEventListener('mousemove',e=>{mx=(e.clientX/innerWidth-.5);my=(e.clientY/innerHeight-.5)});
-function proj(x,y,z){ // rotate around vertical axis through screen centre, then perspective
-  const dx=x-960,dz=z;const ca=Math.cos(camA),sa=Math.sin(camA);const rx=dx*ca-dz*sa,rz=dx*sa+dz*ca;
-  const k=F/(F+rz);return [(960+rx*k)*S+ox,(540+(y-540)*k)*S+oy,k]}
-function sampleText(lines,size,cx,cy,gap){const oc=document.createElement('canvas');oc.width=W;oc.height=H;const o=oc.getContext('2d');o.fillStyle='#fff';o.font=`700 ${size}px "Songti SC","STSong","Noto Serif CJK SC",serif`;o.textAlign='center';o.textBaseline='middle';
+function proj(x,y,z){const dx=x-960,dz=z;const ca=Math.cos(camA),sa=Math.sin(camA);const rx=dx*ca-dz*sa,rz=dx*sa+dz*ca;const k=F/(F+rz);return [(960+rx*k)*S+ox,(540+(y-540)*k)*S+oy,k]}
+const glyphCache={};
+function sampleText(lines,size,cx,cy,gap){const key=lines.join('|')+size+cx+cy+gap;if(glyphCache[key])return glyphCache[key];const oc=document.createElement('canvas');oc.width=W;oc.height=H;const o=oc.getContext('2d');o.fillStyle='#fff';o.font=`700 ${size}px "Songti SC","STSong","Noto Serif CJK SC",serif`;o.textAlign='center';o.textBaseline='middle';
   lines.forEach((l,k)=>o.fillText(l,cx,cy+(k-(lines.length-1)/2)*(size+gap)));const d=o.getImageData(0,0,W,H).data;const pts=[];
-  for(let y=0;y<H;y+=3)for(let x=0;x<W;x+=3){if(d[(y*W+x)*4+3]>128)pts.push(x,y)}return pts}
-let glyphFlow=null,glyphEnd=null;
+  for(let y=0;y<H;y+=3)for(let x=0;x<W;x+=3){if(d[(y*W+x)*4+3]>128)pts.push(x,y)}return glyphCache[key]=pts}
 function setTargetsFrom(pts,group,zs){const n=pts.length/2;for(let k=0;k<N;k++){const j=Math.floor(Math.random()*n);T[k*3]=pts[j*2]+(Math.random()-.5)*2;T[k*3+1]=pts[j*2+1]+(Math.random()-.5)*2;T[k*3+2]=(Math.random()-.5)*(zs||80);G[k]=group}}
 function rnd(a,b){return a+Math.random()*(b-a)}
 const chan=x=>1000-760*Math.max(0,(x-760))/1100;
-const riverY=(x,t)=>560-380*Math.sin((x/W)*2.6-1.3)+Math.sin(x*.003+t*.5)*30;
-function doBurst(){burst=1;for(let k=0;k<N;k++){const o=k*6;const dx=P[o]-960,dy=P[o+1]-540,d=Math.hypot(dx,dy)+1;const s=rnd(6,16);P[o+3]+=dx/d*s;P[o+4]+=dy/d*s;P[o+5]+=rnd(-8,8)}}
-function setMode(m){const prev=mode;mode=m;tStart=performance.now();if(prev>=0&&m>=0)doBurst();
-  if(m===-1){visible=1}
-  if(m===0){visible=N;for(let k=0;k<N;k++){G[k]=0;if(prev!==-1){P[k*6]=Math.random()*W;P[k*6+1]=riverY(P[k*6],0)+rnd(-90,90)}P[k*6+2]=rnd(-220,220)}}
-  if(m===1){const pts=[];for(let a=0;a<Math.PI*2;a+=.004){const r=330+rnd(-6,6);pts.push(1380+Math.cos(a)*r,540+Math.sin(a)*r)}setTargetsFrom(pts,0,120)}
-  if(m===2){if(!glyphFlow)glyphFlow=sampleText(['Flow'],330,1150,560,0);const pts=glyphFlow.slice();for(let x=1000;x<1800;x+=2)pts.push(x,860+rnd(-1.5,1.5));setTargetsFrom(pts,0,30)}
-  if(m===3){for(let k=0;k<N;k++){const r=Math.random();
+let curPath=null,curBand=90,tau=0;
+function pathY(p,x){if(x<=p[0][0])return p[0][1];for(let j=0;j<p.length-1;j++){const a=p[j],b=p[j+1];if(x<=b[0]){const p0=p[Math.max(0,j-1)],p3=p[Math.min(p.length-1,j+2)];const h=b[0]-a[0],u=(x-a[0])/h;const m1=(b[1]-p0[1])/(b[0]-p0[0])*h,m2=(p3[1]-a[1])/(p3[0]-a[0])*h;const u2=u*u,u3=u2*u;return (2*u3-3*u2+1)*a[1]+(u3-2*u2+u)*m1+(-2*u3+3*u2)*b[1]+(u3-u2)*m2}}return p[p.length-1][1]}
+const riverY=(x,t)=>curPath?pathY(curPath,x)+Math.sin(x*.004+t*.3)*8:560-380*Math.sin((x/W)*2.6-1.3)+Math.sin(x*.003+t*.3)*20;
+function doBurst(){burst=1;for(let k=0;k<N;k++){const o=k*6;const dx=P[o]-960,dy=P[o+1]-540,d=Math.hypot(dx,dy)+1;const s=rnd(3,8);P[o+3]+=dx/d*s;P[o+4]+=dy/d*s;P[o+5]+=rnd(-8,8)}}
+function setMode(m){const prev=mode;mode=m;sc=m<0?{type:'intro'}:(DECK.pages[m].scene||{type:'river'});tStart=performance.now();tau=0;if(prev>=0&&m>=0)doBurst();
+  const ty=sc.type;const src=ty==='intro'?(DECK.pages[0].scene||{}):sc;curPath=src.path||null;curBand=src.band||90;
+  if(ty==='intro'){visible=1}
+  if(ty==='river'){visible=N;for(let k=0;k<N;k++){G[k]=0;if(prev!==-1){P[k*6]=Math.random()*W;P[k*6+1]=riverY(P[k*6],0)+rnd(-curBand,curBand)}P[k*6+2]=rnd(-220,220)}}
+  if(ty==='ring'){const {cx=1380,cy=540,r=330}=sc;const pts=[];for(let a=0;a<Math.PI*2;a+=.004){const rr=r+rnd(-6,6);pts.push(cx+Math.cos(a)*rr,cy+Math.sin(a)*rr)}setTargetsFrom(pts,0,120)}
+  if(ty==='text'){const pts=sampleText(sc.lines,sc.size||230,sc.cx||1150,sc.cy||560,sc.gap||0).slice();if(sc.underline){const [x0,x1,y]=sc.underline;for(let x=x0;x<x1;x+=2)pts.push(x,y+rnd(-1.5,1.5))}setTargetsFrom(pts,0,sc.underline?30:24)}
+  if(ty==='channel'){for(let k=0;k<N;k++){const r=Math.random();
       if(r<.3){G[k]=1;T[k*3]=rnd(800,1300);T[k*3+1]=rnd(250,520);T[k*3+2]=rnd(-120,120)}
       else if(r<.5){G[k]=2;T[k*3]=rnd(1350,1850);T[k*3+1]=rnd(820,990);T[k*3+2]=rnd(-60,60)}
       else{G[k]=3;P[k*6]=rnd(760,1860);P[k*6+1]=chan(P[k*6])+rnd(-40,40);P[k*6+2]=rnd(-80,80)}}}
-  if(m===4){for(let k=0;k<N;k++){G[k]=0;const a=rnd(0,6.283),b=rnd(-1.57,1.57),r=Math.pow(Math.random(),2)*40;T[k*3]=1570+Math.cos(a)*Math.cos(b)*r;T[k*3+1]=560+Math.sin(b)*r;T[k*3+2]=Math.sin(a)*Math.cos(b)*r}}
-  if(m===5){const pts=[];for(let y=120;y<1000;y+=22)for(let x=900;x<1900;x+=22)pts.push(x,y);setTargetsFrom(pts,0,10);for(let k=0;k<N;k++){P[k*6]=T[k*3];P[k*6+1]=T[k*3+1]}}
-  if(m===6){for(let k=0;k<N;k++){G[k]=k%3===0?5:4;if(G[k]===4){P[k*6]=rnd(1240,1300);P[k*6+1]=rnd(-800,0);P[k*6+2]=rnd(-30,30)}
-      else{const a=rnd(0,Math.PI),r=Math.sqrt(Math.random())*210;T[k*3]=1420+Math.cos(a)*r;T[k*3+1]=740+Math.sin(a)*r*.55;T[k*3+2]=rnd(-120,120)}}}
-  if(m===7){if(!glyphEnd)glyphEnd=sampleText(['进入心流','活成自己'],230,1400,720,70);setTargetsFrom(glyphEnd,0,24)}}
-// protagonist
+  if(ty==='focus'){const {cx=1570,cy=560}=sc;for(let k=0;k<N;k++){G[k]=0;const a=rnd(0,6.283),b=rnd(-1.57,1.57),r=Math.pow(Math.random(),2)*40;T[k*3]=cx+Math.cos(a)*Math.cos(b)*r;T[k*3+1]=cy+Math.sin(b)*r;T[k*3+2]=Math.sin(a)*Math.cos(b)*r}}
+  if(ty==='ripple'){const pts=[];for(let y=120;y<1000;y+=22)for(let x=900;x<1900;x+=22)pts.push(x,y);setTargetsFrom(pts,0,10);for(let k=0;k<N;k++){P[k*6]=T[k*3];P[k*6+1]=T[k*3+1]}}
+  if(ty==='pour'){const {x=1270,cx=1420,cy=740}=sc;for(let k=0;k<N;k++){G[k]=k%3===0?5:4;if(G[k]===4){P[k*6]=rnd(x-30,x+30);P[k*6+1]=rnd(-800,0);P[k*6+2]=rnd(-30,30)}
+      else{const a=rnd(0,Math.PI),r=Math.sqrt(Math.random())*210;T[k*3]=cx+Math.cos(a)*r;T[k*3+1]=cy+Math.sin(a)*r*.55;T[k*3+2]=rnd(-120,120)}}}}
+// 主角光点「你」
 const hero={x:960,y:540,z:0,trail:[]};
-function heroTarget(t){
-  if(mode===-1){const u=Math.min(1,t/5);const x=-40+u*700;return [x,riverY(x,t),0]}
-  if(mode===0){const x=((t*140)%(W+200))-100;return [x,riverY(x,t),0]}
-  if(mode===1){const a=t*2.2;return [1380+Math.cos(a)*330,540+Math.sin(a)*330,0]}
-  if(mode===2){const u=Math.min(1,t/4);return [1000+u*800,860,0]}
-  if(mode===3){if(t<1.5)return [900+Math.sin(t*9)*18,420+Math.cos(t*7)*18,0];const u=Math.min(1,(t-1.5)/3.5),e=u<.5?2*u*u:-1+(4-2*u)*u;if(u<1)return [900+e*300,420+e*330,0];const x=1200+((t-5)*160)%660;return [x,chan(x),0]}
-  if(mode===4){return [1570,560,0]}
-  if(mode===5){return [1400,560,0]}
-  if(mode===6){const u=Math.min(1,t/3);if(u<1)return [1270,-200+u*940,0];return [1420+Math.sin(t)*60,735+Math.cos(t*1.3)*18,0]}
-  if(mode===7){return [1548,520,0]}
+function heroTarget(t){const ty=sc.type;
+  if(ty==='intro'){const u=Math.min(1,t/5);const x=-40+u*700;return [x,riverY(x,t),0]}
+  if(ty==='river'){const x=((tau*80)%(W+240))-120;return [x,riverY(x,t),0]}
+  if(ty==='ring'){const {cx=1380,cy=540,r=330}=sc;const a=tau*1.1;return [cx+Math.cos(a)*r,cy+Math.sin(a)*r,0]}
+  if(ty==='text'){if(sc.underline){const [x0,x1,y]=sc.underline;const u=Math.min(1,t/4);return [x0+u*(x1-x0),y,0]}const h=sc.hero||[sc.cx||960,(sc.cy||540)-200];return [h[0],h[1],0]}
+  if(ty==='channel'){if(t<1.5)return [900+Math.sin(t*9)*18,420+Math.cos(t*7)*18,0];const u=Math.min(1,(t-1.5)/3.5),e=u<.5?2*u*u:-1+(4-2*u)*u;if(u<1)return [900+e*300,420+e*330,0];const x=1200+((t-5)*70)%660;return [x,chan(x),0]}
+  if(ty==='focus')return [sc.cx||1570,sc.cy||560,0];
+  if(ty==='ripple')return [sc.cx||1400,sc.cy||560,0];
+  if(ty==='pour'){const {x=1270,cx=1420,cy=740}=sc;const u=Math.min(1,t/3);if(u<1)return [x,-200+u*(cy+200),0];return [cx+Math.sin(tau*.6)*40,cy-5+Math.cos(tau*.8)*10,0]}
   return [960,540,0]}
-function step(dt){const t=(performance.now()-tStart)/1000;
-  if(mode===-1){visible=Math.min(N,Math.floor(Math.pow(Math.min(1,Math.max(0,(t-1.2)/4)),2.2)*N)+1)}
-  const amp=(mode===2||mode===7)?.4:1;camA+=((mx*.18+Math.sin(t*.15)*.06)*amp-camA)*.03;
-  const ht=heroTarget(t);hero.x+=(ht[0]-hero.x)*.12;hero.y+=(ht[1]-hero.y)*.12;hero.z+=(ht[2]-hero.z)*.12;hero.trail.push(hero.x,hero.y,hero.z);if(hero.trail.length>90)hero.trail.splice(0,3);
+function step(dt){const t=(performance.now()-tStart)/1000;const ty=sc.type;const q=.3+.7*Math.exp(-t/5);tau+=dt*q;
+  if(ty==='intro'){visible=Math.min(N,Math.floor(Math.pow(Math.min(1,Math.max(0,(t-1.2)/4)),2.2)*N)+1)}
+  const amp=ty==='text'?.4:1;camA+=((mx*.07+Math.sin(t*.1)*.03)*amp-camA)*.03;
+  const ht=heroTarget(t);hero.x+=(ht[0]-hero.x)*.12;hero.y+=(ht[1]-hero.y)*.12;hero.z+=(ht[2]-hero.z)*.12;hero.trail.push(hero.x,hero.y,hero.z);if(hero.trail.length>60)hero.trail.splice(0,3);
   if(burst>0)burst=Math.max(0,burst-dt*2.2);
-  const lim=mode===-1?visible:N;
+  const lim=ty==='intro'?visible:N;const rc=sc.cx||1400,rcy=sc.cy||560,pcy=sc.cy||740,pcx=sc.cx||1420;
   for(let k=0;k<lim;k++){const o=k*6;let x=P[o],y=P[o+1],z=P[o+2],vx=P[o+3],vy=P[o+4],vz=P[o+5];
-    if(mode===0||mode===-1){const cy=riverY(x,t);const d=y-cy;const band=k%7;vx+=(1.4+band*.08-vx)*.05;vy+=(-d*.012-vy)*.08+(Math.random()-.5)*.5;vz*=.9;x+=vx*dt*60;y+=vy*dt*60;z+=vz;if(x>W+20){x=-10;y=cy+rnd(-90,90)}}
-    else if(mode===3&&G[k]===3){const cy=chan(x);const d=y-cy;vx+=(2.2-vx)*.05;vy+=(-d*.03-vy)*.1+(Math.random()-.5)*.5;vz*=.9;x+=vx*dt*60;y+=vy*dt*60;z+=vz;if(x>1860){x=760;y=chan(x)+rnd(-40,40)}}
-    else if(mode===3&&G[k]===1){vx+=(Math.random()-.5)*2.2;vy+=(Math.random()-.5)*2.2;vx*=.9;vy*=.9;x+=vx;y+=vy;x+=(T[k*3]-x)*.02;y+=(T[k*3+1]-y)*.02;z+=(T[k*3+2]-z)*.05}
-    else if(mode===3&&G[k]===2){x+=(T[k*3]-x)*.03+(Math.random()-.5)*.15;y+=(T[k*3+1]-y)*.03+(Math.random()-.5)*.15;z+=(T[k*3+2]-z)*.05}
-    else if(mode===6&&G[k]===4){vy+=.35;vx+=(Math.sin(y*.01+t)*.3-vx)*.05;x+=vx;y+=vy;if(y>740){G[k]=5;const a=rnd(0,Math.PI),r=Math.sqrt(Math.random())*210;T[k*3]=1420+Math.cos(a)*r;T[k*3+1]=740+Math.sin(a)*r*.55;T[k*3+2]=rnd(-120,120);vx=vy=0}}
-    else if(mode===5){const tx=T[k*3],ty=T[k*3+1];const ph=(t%2.4);const dx=tx-1400,dy=ty-560,dist=Math.hypot(dx,dy)+.1;const w=Math.exp(-Math.pow((dist-ph*320)/60,2))*18;x+=(tx+dx/dist*w-x)*.2;y+=(ty+dy/dist*w-y)*.2;z+=(w*3-z)*.2}
-    else{const tx=T[k*3],ty=T[k*3+1],tz=T[k*3+2];vx+=(tx-x)*.012;vy+=(ty-y)*.012;vz+=(tz-z)*.012;vx*=.86;vy*=.86;vz*=.86;x+=vx+(Math.random()-.5)*.4;y+=vy+(Math.random()-.5)*.4;z+=vz}
+    if(ty==='river'||ty==='intro'){const cy=riverY(x,t);const d=y-cy;const band=k%7;vx+=((.5+.9*q)*(1+band*.06)-vx)*.05;vy+=(-d*(curPath?.06:.012)-vy)*(curPath?.25:.08)+(Math.random()-.5)*.3;vz*=.9;x+=vx*dt*60;y+=vy*dt*60;z+=vz;if(x>W+20){x=-10;y=riverY(x,t)+rnd(-curBand,curBand)}}
+    else if(ty==='channel'&&G[k]===3){const cy=chan(x);const d=y-cy;vx+=((1+1.2*q)-vx)*.05;vy+=(-d*.03-vy)*.1+(Math.random()-.5)*.5;vz*=.9;x+=vx*dt*60;y+=vy*dt*60;z+=vz;if(x>1860){x=760;y=chan(x)+rnd(-40,40)}}
+    else if(ty==='channel'&&G[k]===1){vx+=(Math.random()-.5)*1.4;vy+=(Math.random()-.5)*1.4;vx*=.9;vy*=.9;x+=vx;y+=vy;x+=(T[k*3]-x)*.02;y+=(T[k*3+1]-y)*.02;z+=(T[k*3+2]-z)*.05}
+    else if(ty==='channel'&&G[k]===2){x+=(T[k*3]-x)*.03+(Math.random()-.5)*.15;y+=(T[k*3+1]-y)*.03+(Math.random()-.5)*.15;z+=(T[k*3+2]-z)*.05}
+    else if(ty==='pour'&&G[k]===4){vy+=.35;vx+=(Math.sin(y*.01+t)*.3-vx)*.05;x+=vx;y+=vy;if(y>pcy){G[k]=5;const a=rnd(0,Math.PI),r=Math.sqrt(Math.random())*210;T[k*3]=pcx+Math.cos(a)*r;T[k*3+1]=pcy+Math.sin(a)*r*.55;T[k*3+2]=rnd(-120,120);vx=vy=0}}
+    else if(ty==='ripple'){const tx=T[k*3],ty2=T[k*3+1];const ph=(tau%3.6);const dx=tx-rc,dy=ty2-rcy,dist=Math.hypot(dx,dy)+.1;const w=Math.exp(-Math.pow((dist-ph*230)/60,2))*12;x+=(tx+dx/dist*w-x)*.2;y+=(ty2+dy/dist*w-y)*.2;z+=(w*3-z)*.2}
+    else{const tx=T[k*3],ty2=T[k*3+1],tz=T[k*3+2];vx+=(tx-x)*.012;vy+=(ty2-y)*.012;vz+=(tz-z)*.012;vx*=.86;vy*=.86;vz*=.86;x+=vx+(Math.random()-.5)*.4;y+=vy+(Math.random()-.5)*.4;z+=vz}
     P[o]=x;P[o+1]=y;P[o+2]=z;P[o+3]=vx;P[o+4]=vy;P[o+5]=vz}}
-function draw(){const t=(performance.now()-tStart)/1000;
+function draw(){const t=(performance.now()-tStart)/1000;const ty=sc.type;
   ctx.fillStyle='rgba(15,13,11,.3)';ctx.fillRect(0,0,innerWidth,innerHeight);
-  const lim=mode===-1?visible:N;
-  for(let k=0;k<lim;k++){const o=k*6;const [x,y,kk]=proj(P[o],P[o+1],P[o+2]);let c='rgba(239,231,214,';let a=.55,r=1.1;
-    if(mode===0||mode===-1){a=.3+Math.min(.5,Math.abs(P[o+3])*.2);if(k%11===0)c='rgba(230,184,106,'}
-    if(mode===1){const ang=Math.atan2(P[o+1]-540,P[o]-1380);const d=((ang-t*2.2)%(Math.PI*2)+Math.PI*2)%(Math.PI*2);a=.15+Math.max(0,1-d/1.2)*.85;if(d<.3){c='rgba(230,184,106,';r=1.6}}
-    if(mode===3){if(G[k]===1){c='rgba(224,74,43,';a=.55}else if(G[k]===2){a=.18}else{c='rgba(230,184,106,';a=.7;r=1.3}}
-    if(mode===4){a=.5;r=1.2;if(k%7===0)c='rgba(230,184,106,'}
-    if(mode===5){const d=Math.hypot(P[o]-1400,P[o+1]-560);const ph=t%2.4;const g=Math.exp(-Math.pow((d-ph*320)/50,2));a=.18+g*.8;if(g>.5)c='rgba(230,184,106,'}
-    if(mode===6){c=G[k]===4?'rgba(230,184,106,':'rgba(239,231,214,';a=G[k]===4?.8:.5}
-    if(mode===7){a=.75;r=1.3;if(k%9===0)c='rgba(230,184,106,'}
-    a*=Math.min(1,.4+kk*.6);const sz=(r*kk)*S+.3;ctx.fillStyle=c+a+')';ctx.fillRect(x,y,sz,sz)}
-  // hero trail + glow
-  const tr=hero.trail;ctx.lineWidth=1.2*S;for(let j=3;j<tr.length;j+=3){const [ax,ay]=proj(tr[j-3],tr[j-2],tr[j-1]),[bx,by]=proj(tr[j],tr[j+1],tr[j+2]);ctx.strokeStyle=`rgba(230,184,106,${(j/tr.length)*.6})`;ctx.beginPath();ctx.moveTo(ax,ay);ctx.lineTo(bx,by);ctx.stroke()}
-  const [hx,hy,hk]=proj(hero.x,hero.y,hero.z);const R=7*S*hk;const g=ctx.createRadialGradient(hx,hy,0,hx,hy,R*5);g.addColorStop(0,'rgba(255,220,150,.9)');g.addColorStop(.3,'rgba(230,184,106,.35)');g.addColorStop(1,'rgba(230,184,106,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(hx,hy,R*5,0,7);ctx.fill();
+  const lim=ty==='intro'?visible:N;const IV='rgba(239,231,214,',GD='rgba(230,184,106,',RD='rgba(224,74,43,';
+  for(let k=0;k<lim;k++){const o=k*6;const [x,y,kk]=proj(P[o],P[o+1],P[o+2]);let c=IV;let a=.55,r=1.1;
+    if(ty==='river'||ty==='intro'){a=.3+Math.min(.5,Math.abs(P[o+3])*.2);if(k%11===0)c=GD}
+    else if(ty==='ring'){const ang=Math.atan2(P[o+1]-(sc.cy||540),P[o]-(sc.cx||1380));const d=((ang-tau*1.1)%(Math.PI*2)+Math.PI*2)%(Math.PI*2);a=.15+Math.max(0,1-d/1.2)*.85;if(d<.3){c=GD;r=1.6}}
+    else if(ty==='channel'){if(G[k]===1){c=RD;a=.55}else if(G[k]===2){a=.18}else{c=GD;a=.7;r=1.3}}
+    else if(ty==='focus'){a=.5;r=1.2;if(k%7===0)c=GD}
+    else if(ty==='ripple'){const d=Math.hypot(P[o]-(sc.cx||1400),P[o+1]-(sc.cy||560));const ph=tau%3.6;const g=Math.exp(-Math.pow((d-ph*230)/50,2));a=.18+g*.8;if(g>.5)c=GD}
+    else if(ty==='pour'){c=G[k]===4?GD:IV;a=G[k]===4?.8:.5}
+    else if(ty==='text'&&!sc.underline){a=.75;r=1.3;if(k%9===0)c=GD}
+    a*=Math.min(1,.4+kk*.6)*(ty==='intro'?1:.78);const sz=(r*kk)*S+.3;ctx.fillStyle=c+a+')';ctx.fillRect(x,y,sz,sz)}
+  const tr=hero.trail;ctx.lineWidth=1.2*S;for(let j=3;j<tr.length;j+=3){const [ax,ay]=proj(tr[j-3],tr[j-2],tr[j-1]),[bx,by]=proj(tr[j],tr[j+1],tr[j+2]);ctx.strokeStyle=`rgba(230,184,106,${(j/tr.length)*.4})`;ctx.beginPath();ctx.moveTo(ax,ay);ctx.lineTo(bx,by);ctx.stroke()}
+  const [hx,hy,hk]=proj(hero.x,hero.y,hero.z);const R=6*S*hk;const g=ctx.createRadialGradient(hx,hy,0,hx,hy,R*5);g.addColorStop(0,'rgba(255,220,150,.75)');g.addColorStop(.3,'rgba(230,184,106,.35)');g.addColorStop(1,'rgba(230,184,106,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(hx,hy,R*5,0,7);ctx.fill();
   ctx.fillStyle='#FFE2A8';ctx.beginPath();ctx.arc(hx,hy,R,0,7);ctx.fill();
-  if(mode===3||mode===0||mode===-1||mode===7){ctx.fillStyle='rgba(230,184,106,.9)';ctx.font=`${22*S}px "PingFang SC",sans-serif`;ctx.fillText('你',hx+12*S,hy+8*S)}
-  if(mode===4){ctx.beginPath();ctx.arc(1570*S+ox,560*S+oy,46*S,0,7);ctx.strokeStyle='rgba(230,184,106,.8)';ctx.lineWidth=1.5;ctx.stroke()}}
+  if(ty==='channel'||ty==='river'||ty==='intro'||sc.you){ctx.fillStyle='rgba(230,184,106,.9)';ctx.font=`${22*S}px "PingFang SC",sans-serif`;ctx.fillText('你',hx+12*S,hy+8*S)}
+  if(ty==='focus'){ctx.beginPath();ctx.arc((sc.cx||1570)*S+ox,(sc.cy||560)*S+oy,46*S,0,7);ctx.strokeStyle='rgba(230,184,106,.8)';ctx.lineWidth=1.5;ctx.stroke()}}
 let last=performance.now();function loop(now){const dt=Math.min(.05,(now-last)/1000);last=now;if(!isPres){step(dt);draw()}requestAnimationFrame(loop)}
 requestAnimationFrame(loop);
 
 // ---------- deck ----------
-const slides=[...document.querySelectorAll('.slide')];
-const TITLES=["封面","过得快","亮书 · 幸福，可以被设计","开关一 · 挑战 ≈ 能力","开关二 · 目标清晰","开关三 · 反馈及时","案例 · 拿得起，放得下","收尾 · 进入心流，活成自己"];
-const END=[60,60,160,220,270,320,460,540];
-const NOTES=[`超能班的伙伴们，大家现在好！我是 H 组的千百合。\n\n现在是北京时间早上六点，这么多伙伴齐聚线上。我本来想夸大家自律——（停一拍）一想，我自己也不自律。你们也不是。你们是知道，这一个小时会过得很快。\n\n→ 说到「过得快」翻页`,
-`过得快，不止在这儿。聊天区打一个词：上一次你跟 AI 干活，干到忘了时间，是在干什么？\n\n（停 20 秒，念三四个，带名字；按 T 把词敲上屏）都算。记住那个词，一会儿要用。\n\n这个状态，有一个名字。`,
-`它叫心流。这本书——《心流：最优体验心理学》，英文名 Flow: The Psychology of Optimal Experience，书名就一个词，Flow。\n\n作者米哈里·契克森米哈赖，Mihaly Csikszentmihalyi，名字难念，记一件事就行：「心流」这个词是他发明的。他给几千个人发传呼机，每天随机响八次，响了就记下你在干什么、感觉怎么样。几万条记录攒下来，他发现人最幸福的时刻，不是躺着，而是全情投入在一件事里的时候。\n\n这本书的第一章，开头是这样写的——（朗读 PDF 第 53 页开头两句，约 20 秒，念完停一拍）\n\n一句话：幸福不是运气，幸福，可以被设计。\n\n但大家对心流有个误会，以为心流就是「忘了时间」。忘了时间是结果，不是开关——就像发烧是结果，不是病因。开关只有三个，而且今天的 AI 刚好全都按得到。这就是我把它放在「让 AI 真正替你干活」第二期开篇的原因。`,
-`开关一：挑战约等于能力。\n\n书里有一张图：横轴能力，纵轴挑战。太难，焦虑区；太容易，无聊区；只有中间那条斜斜的通道，才是心流。（屏上：红点乱撞的是焦虑区，暗的是无聊区，金色的河是通道）\n\n书里有个流水线工人叫里科，一个动作每天重复几百次，他给自己加难度：这次比上次快零点几秒。干了五年，他说每天都像在比赛。他自己把自己从无聊区拉回了通道。\n\nAI 干的是反方向的事：把一大片「太难」拉回「刚好」。做视频，以前对我是太难；现在有了 AI，它变成了刚好有点难——我不用会剪，但我必须判断哪句话是魂。这个「必须判断」，就是心流的入口。连判断都不做，全交给它，你就滑进了无聊区：看着 AI 干活，三天就放下了。\n\n现在看一眼你手上那件事——你在焦虑区，还是无聊区？不用回答，心里有数就行。`,
-`开关二：目标清晰。\n\n跟 AI 干活，prompt 就是终点。刚才××说写方案——你说不清「做完是什么样」，它也写不出来。很多人以为 AI 用不好是技巧问题，其实是目标问题。没目标开聊，聊一下午很开心，关掉窗口什么都没剩下——那不是心流，那是陪聊。`,
-`开关三：反馈及时。\n\n这是 AI 最厉害的地方：人类协作反馈要等一天，AI 几秒钟。刚才××说做海报——为什么停不下来？不是 AI 多神奇，是反馈回路被压缩到了秒级：做一步，立刻看到，立刻改。游戏让人上瘾就是这个原理，现在它出现在干活里了。有没有人这样干到过后半夜的？聊天区打个 1。（停 5 秒，笑）我就知道不止我一个。`,
-`这三个开关不是我总结的，是我这个月亲身走了一遍。\n\n10 月 9 号，我访谈了秋萍茶宴的秋萍先生，录了 36 分钟素材。以前这种素材我是不碰的：没时间、没技能，交给别人剪出来又不是我要的。\n\n这次我让 AI 来剪：转录、挑金句、切段、上字幕，我在旁边看、改、再让它出一版。我记得最清楚的一刻，是它把秋萍先生讲「茶道就是倒茶，拿得起，放得下」那一段单独挑出来的时候——我自己访谈时都没意识到那句有多好。一位茶人讲茶道，就这九个字。（按 V 放视频片段）\n\n中间我也按错过。有一段我偷懒，它出什么我都点确认，看完才发现最好的一句被剪掉了——「第一会死在沙滩上，唯一才不会消亡」。我没在判断，只在按回车，那一段我自己滑进了无聊区。把它找回来，再往下剪，抬头一看，几个小时过去了，一条能发出去的片子出来了。\n\n复盘：挑战刚好——哪句是魂只有我知道；目标清晰——终点就是一条能发出去的片子；反馈秒回——改一句，立刻看到新的一版。三个开关全开，那几个小时就是心流。\n\n一句话：AI 负责剪辑，我负责看见。AI 接过执行，人回到心流。`,
-`这三个开关我做成了一张卡，今天发群里。不用现在填，回去挑一件你正跟 AI 干着的事——就是你开场打的那个词——三个问题过一遍，哪个开关没开，就调哪个。\n\n接下来六位分享官上场。听的时候请大家带一个问题：什么时候，你感觉到他真正进入了心流？\n\n讲完我把三样东西发群里：这套 PPT、自测卡、讲书手记。\n\n最后八个字（屏上一万个点正在排成这八个字）：进入心流，活成自己。\n\n把话筒交给主持人。`];
-const bc=('BroadcastChannel' in window)?new BroadcastChannel('flow4-deck'):null;
+const slides=[...document.querySelectorAll('.slide')];const NS=slides.length;
+slides.forEach((s,k)=>s.querySelectorAll('.foot.l').forEach(f=>{if(!f.textContent.trim())f.textContent=`${String(k+1).padStart(2,'0')} / ${String(NS).padStart(2,'0')}`}));
+document.getElementById('intro').innerHTML=DECK.intro.map(s=>`<span>${s}</span>`).join('');
+const pg=k=>DECK.pages[k]||{title:'第'+(k+1)+'页',end:60*(k+1),notes:''};
+const bc=('BroadcastChannel' in window)?new BroadcastChannel(DECK.id):null;
 const dots=document.getElementById('dots');slides.forEach((_,k)=>{const d=document.createElement('i');d.onclick=()=>go(k);dots.appendChild(d)});
-function go(n,silent){n=Math.max(0,Math.min(7,n));if(n===i)return;document.querySelectorAll('video').forEach(v=>v.pause());
+function go(n,silent){n=Math.max(0,Math.min(NS-1,n));if(n===i)return;document.querySelectorAll('video').forEach(v=>v.pause());
   if(i>=0)slides[i].classList.remove('on');i=n;const s=slides[i];s.querySelectorAll('.chip').forEach(e=>{e.style.animationName='none';e.getBoundingClientRect();e.style.animationName=''});
   s.classList.add('on');if(!isPres)setMode(i);[...dots.children].forEach((d,k)=>d.classList.toggle('on',k===i));
-  if(t0===null&&i>0)t0=Date.now();history.replaceState(null,'','#p'+(i+1));if(!silent&&bc)bc.postMessage({type:'state',i,t0});renderPres()}
+  if(t0===null&&i>0)t0=Date.now();try{history.replaceState(null,'',location.href.split('#')[0]+'#p'+(i+1))}catch(e){}if(!silent&&bc)bc.postMessage({type:'state',i,t0});renderPres()}
 function cmd(c){if(c==='next')go(i+1);else if(c==='prev')go(i-1);else if(c==='reset'){t0=Date.now();bc&&bc.postMessage({type:'state',i,t0})}else if(c==='black'){bc&&bc.postMessage({type:'black'})}}
-function renderPres(){if(!isPres)return;document.getElementById('p-title').textContent=`${i+1} / 8 · ${TITLES[i]}`;document.getElementById('p-next').textContent=i<7?`下一页：${TITLES[i+1]}`:'最后一页';document.getElementById('p-notes').textContent=NOTES[i];const m=Math.floor(END[i]/60),s=END[i]%60;document.getElementById('p-target').textContent=`本页应在 ${m}:${String(s).padStart(2,'0')} 前翻走 · 全程 9:00`}
-function tick(){const el=isPres?document.getElementById('p-clock'):document.getElementById('timerpill');if(t0===null){el.textContent='00:00';return}const e=Math.floor((Date.now()-t0)/1000);el.textContent=`${String(Math.floor(e/60)).padStart(2,'0')}:${String(e%60).padStart(2,'0')}`;el.classList.toggle('warn',e>END[i]-20&&e<=END[i]);el.classList.toggle('over',e>END[i]);if(!isPres)el.style.display='block'}
+function renderPres(){if(!isPres)return;document.getElementById('p-title').textContent=`${i+1} / ${NS} · ${pg(i).title}`;document.getElementById('p-next').textContent=i<NS-1?`下一页：${pg(i+1).title}`:'最后一页';document.getElementById('p-notes').textContent=pg(i).notes;const E=pg(i).end,m=Math.floor(E/60),s=E%60;document.getElementById('p-target').textContent=`本页应在 ${m}:${String(s).padStart(2,'0')} 前翻走 · ${DECK.total}`}
+function tick(){const el=isPres?document.getElementById('p-clock'):document.getElementById('timerpill');if(t0===null){el.textContent='00:00';return}const e=Math.floor((Date.now()-t0)/1000);const E=pg(i).end;el.textContent=`${String(Math.floor(e/60)).padStart(2,'0')}:${String(e%60).padStart(2,'0')}`;el.classList.toggle('warn',e>E-20&&e<=E);el.classList.toggle('over',e>E);if(!isPres)el.style.display='block'}
 setInterval(tick,500);
 if(bc)bc.onmessage=ev=>{const m=ev.data;if(m.type==='state'){t0=m.t0;go(m.i,true)}else if(m.type==='cmd')cmd(m.c);else if(m.type==='black'&&!isPres)document.getElementById('black').classList.toggle('on')};
 if(isPres){document.body.classList.add('presenter');window.cmd=c=>bc&&bc.postMessage({type:'cmd',c})}
 const wb=document.getElementById('wordbox'),wi=document.getElementById('wordin');
-function addWord(w){const chips=document.getElementById('chips');const n=chips.children.length;const el=document.createElement('div');el.className='chip sans live';const slots=[[1500,520],[1200,420],[1700,700],[1380,660],[1620,180],[1260,300],[1760,440],[1460,880]];const [x,y]=slots[n%slots.length];el.style.left=x+'px';el.style.top=y+'px';el.textContent=w;chips.appendChild(el)}
+function addWord(w){const chips=slides[i].querySelector('#chips');if(!chips)return;const n=chips.children.length;const el=document.createElement('div');el.className='chip sans live';const slots=[[1500,520],[1200,420],[1700,700],[1380,660],[1620,180],[1260,300],[1760,440],[1460,880]];const [x,y]=slots[n%slots.length];el.style.left=x+'px';el.style.top=y+'px';el.textContent=w;chips.appendChild(el)}
 wi.addEventListener('keydown',e=>{e.stopPropagation();if(e.key==='Enter'&&wi.value.trim()){addWord(wi.value.trim());wi.value=''}if(e.key==='Escape')wb.classList.remove('on')});
-addEventListener('keydown',e=>{if(e.target===wi)return;const k=e.key;if(mode===-1){document.getElementById('intro').classList.remove('on');go(0);return}
+addEventListener('keydown',e=>{if(e.target===wi)return;const k=e.key;if(mode===-1&&!isPres){document.getElementById('intro').classList.remove('on');go(0);return}
   if(['ArrowRight','ArrowDown','PageDown',' ','Enter'].includes(k)){e.preventDefault();isPres?cmd('next'):go(i+1)}
   else if(['ArrowLeft','ArrowUp','PageUp','Backspace'].includes(k)){e.preventDefault();isPres?cmd('prev'):go(i-1)}
-  else if(k>='1'&&k<='8')go(+k-1);
+  else if(k>='1'&&k<='9')go(+k-1);
   else if(k==='f'||k==='F'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}
-  else if(k==='p'||k==='P'){window.open(location.pathname+'?presenter=1#p'+(i+1),'flow4pres','width=1100,height=760')}
-  else if(k==='t'||k==='T'){if(i===1){e.preventDefault();wb.classList.add('on');wi.focus();setTimeout(()=>wi.value='',0)}}
-  else if(k==='v'||k==='V'){const v=document.getElementById('qp');v.paused?v.play():v.pause()}
+  else if(k==='p'||k==='P'){window.open(location.pathname+'?presenter=1#p'+(i+1),DECK.id+'-pres','width=1100,height=760')}
+  else if(k==='t'||k==='T'){if(slides[i].querySelector('#chips')){e.preventDefault();wb.classList.add('on');wi.focus();setTimeout(()=>wi.value='',0)}}
+  else if(k==='v'||k==='V'){const v=slides[i].querySelector('video');if(v)v.paused?v.play():v.pause()}
   else if(k==='b'||k==='B')document.getElementById('black').classList.toggle('on');
   else if(k==='s'||k==='S')cmd('reset');
   else if(k==='?'||k==='/')document.getElementById('help').classList.toggle('on');
   else if(k==='Escape'){document.getElementById('help').classList.remove('on');wb.classList.remove('on')}});
 addEventListener('click',e=>{if(isPres)return;if(e.target.closest('#help')){document.getElementById('help').classList.remove('on');return}if(e.target.closest('#wordbox,#dots'))return;const v=e.target.closest('video');if(v){v.paused?v.play():v.pause();return}go(e.clientX>innerWidth/3?i+1:i-1)});
 let tx=null;addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});addEventListener('touchend',e=>{if(tx===null)return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)go(dx<0?i+1:i-1);tx=null});
-const m=location.hash.match(/p(\d+)/);
-if(isPres||m){go(m?+m[1]-1:0,isPres)}else{setMode(-1);document.getElementById('intro').classList.add('on');setTimeout(()=>{document.getElementById('intro').classList.remove('on');go(0)},6500)}
+const hm=location.hash.match(/p(\d+)/);
+if(isPres||hm){go(hm?+hm[1]-1:0,isPres)}else{setMode(-1);document.getElementById('intro').classList.add('on');setTimeout(()=>{document.getElementById('intro').classList.remove('on');if(mode===-1)go(0)},6500)}
 </script>
 </body>
 </html>
