@@ -69,6 +69,24 @@ table.lg td:last-child{text-align:right;font-family:"JetBrains Mono",monospace}
 #help{display:none;position:fixed;left:14px;top:8px;color:#6b655c;font:12px Menlo,monospace;z-index:2}
 .fade{animation:fd .55s ease}
 @keyframes fd{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+#portrait{position:absolute;left:455px;bottom:46px;height:760px;opacity:0;transition:opacity .8s .3s;pointer-events:none;filter:drop-shadow(0 18px 30px rgba(20,18,16,.18));z-index:1}
+#stage.cover #portrait{opacity:1}
+#stage.cover #main{width:600px;z-index:2}
+#stage.cover #log{width:450px;z-index:2}
+.seal{position:absolute;left:850px;top:120px;border:3px solid var(--red);color:var(--red);font-family:"Noto Serif SC",serif;font-weight:900;font-size:26px;letter-spacing:.12em;padding:6px 16px;border-radius:6px;transform:rotate(-6deg);opacity:0;transition:opacity .4s 1.2s;z-index:2}
+#stage.cover .seal{opacity:.92}
+#stage:not(.cover) .seal,#stage:not(.cover) #portrait{transition:none}
+.kh{margin-top:20px;display:table !important;font-size:17px;color:var(--ink2);cursor:pointer;display:inline-block;border-bottom:1px dashed var(--ink2);pointer-events:auto}
+#keys{position:absolute;inset:0;background:rgba(20,18,16,.94);color:var(--ivory);z-index:25;display:none;padding:70px 110px}
+#keys.on{display:block}
+#keys h3{font-family:"Noto Serif SC",serif;font-weight:900;font-size:44px;margin-bottom:8px}
+#keys .s{color:#b9ae9a;font-size:20px;margin-bottom:30px}
+#keys table{border-collapse:collapse;font-size:24px}
+#keys td{padding:11px 34px 11px 0;border-bottom:1px solid #ffffff1a;vertical-align:top}
+#keys td:first-child{font-family:"JetBrains Mono",Menlo,monospace;color:#E6B86A;white-space:nowrap}
+#keys td:last-child{color:#b9ae9a;font-size:19px}
+#keys .x{position:absolute;right:60px;top:50px;font-size:18px;color:#b9ae9a;cursor:pointer}
 </style>
 </head>
 <body>
@@ -83,6 +101,20 @@ table.lg td:last-child{text-align:right;font-family:"JetBrains Mono",monospace}
   <div id="main"></div>
   <div id="log"><div class="hd"><span>云机 · 决策日志</span><i id="pg">00 / 15</i></div><div id="lines"></div></div>
   <div id="bar"><div class="fill" id="fill"></div><span class="who" id="who">翻页权：千百合</span><span class="tm" id="tm">等待交权</span></div>
+  <img id="portrait" src="../flow/portrait.png" alt="千百合" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://raw.githubusercontent.com/qlily777-sketch/PlayandProsper/main/flow/portrait.png'}">
+  <div class="seal">千百合</div>
+  <div id="keys"><div class="x" onclick="toggleKeys()">关闭 · Esc</div>
+   <h3>按键说明</h3><div class="s">这场分享的翻页权在云机手里。人能做的，只有下面这些。</div>
+   <table>
+    <tr><td>Enter</td><td>交权：把翻页权交给云机，开场时按一次</td><td>之后云机按时间自动翻页</td></tr>
+    <tr><td>空格</td><td>干预：暂停 / 继续</td><td>事先约定，用于互动、问答，不罚</td></tr>
+    <tr><td>→</td><td>人类夺权：提前翻到下一页</td><td>公开记一笔，认罚 ¥50</td></tr>
+    <tr><td>←</td><td>人类夺权：退回上一页</td><td>同样记一笔，认罚 ¥50</td></tr>
+    <tr><td>P</td><td>演讲者视图</td><td>另开窗口，逐字稿跟着翻页自动滚动</td></tr>
+    <tr><td>F</td><td>全屏</td><td></td></tr>
+    <tr><td>R</td><td>重来</td><td>回到封面，账本清零</td></tr>
+    <tr><td>?</td><td>打开 / 关闭这页说明</td><td></td></tr>
+   </table></div>
   <div id="grab"><div class="big">人类夺权</div><div class="sm" id="grabsm"></div></div>
   <div id="toast"></div>
 </div></div>
@@ -95,10 +127,13 @@ const FINE=50;
 const SL=[
 {name:'交权',dur:0,
  html:`<div class="kick">边玩边赚 · 第六本 · 超能班分享</div>
- <div class="h" style="font-size:150px">这次，<br>我说了不算</div>
- <div class="p">接下来 30 分钟，这场分享的<b style="color:var(--ink)">翻页权</b>交给云机。<br>我想快进，就得当着大家<span class="red">公开认罚</span>。</div>
- <div class="p" style="margin-top:22px;font-size:26px;color:var(--ink)">今天只记三个词：<span style="color:#E0402A;font-weight:900">不得不</span> · <span style="color:#2F6FDB;font-weight:900">交出去</span> · <span style="color:#C8860F;font-weight:900">我愿意</span></div>
- <div class="enter" style="margin-top:28px">按 <kbd>Enter</kbd> 交出去</div>`,
+ <div class="h" style="font-size:108px">这次，<br>我说了不算</div>
+ <div style="width:300px;height:2px;background:var(--gold);margin:30px 0 22px"></div>
+ <div class="h" style="font-size:46px">千百合</div>
+ <div style="font-size:21px;line-height:1.75;color:var(--ink2);margin-top:8px">老板IP商业重构师<br>20+ 畅销书出品人 / 译者<br>边玩边赚联合创始人</div>
+ <div style="margin-top:26px;font-size:24px;color:var(--ink)">今天只记三个词：<span style="color:#E0402A;font-weight:900">不得不</span> · <span style="color:#2F6FDB;font-weight:900">交出去</span> · <span style="color:#C8860F;font-weight:900">我愿意</span></div>
+ <div class="enter" style="margin-top:26px">按 <kbd>Enter</kbd> 交出去</div>
+ <div class="kh" onclick="toggleKeys()">? 看按键说明</div>`,
  log:['> 云机已就位。','> 规则写在这里，先给大家看：','每一页讲多久、什么时候翻，我来定。','她可以按 → 提前翻页——那叫「人类夺权」，每次公开记一笔，认罚 ¥50。','遇到互动、问答，她可以按空格暂停——那是事先约定的「干预」，不罚。','~等待交权……'],
  notes:`（站定，先别按）
 大家好。今天我想先做一件事，再开始讲。
@@ -295,7 +330,9 @@ function ddi(){const c=cnt();const tot=c.ai+c.grab;return tot?Math.round(c.ai/to
 function refreshLedger(){const c=cnt();$('cAi').textContent=c.ai;$('cPause').textContent=c.pause;$('cGrab').textContent=c.grab;$('cFine').textContent='¥'+c.grab*FINE;
   document.querySelectorAll('[data-live]').forEach(el=>{const k=el.dataset.live;el.textContent=k==='ddi'?ddi():c[k]})}
 function fmt(ms){const s=Math.max(0,Math.ceil(ms/1000));return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')}
-function render(){const s=SL[cur];
+function toggleKeys(){$('keys').classList.toggle('on')}
+window.toggleKeys=toggleKeys;
+function render(){const s=SL[cur];stage.classList.toggle('cover',cur===0);
   $('main').innerHTML='<div class="fade">'+s.html+'</div>';
   $('pg').textContent=String(cur).padStart(2,'0')+' / '+String(SL.length-1).padStart(2,'0');
   $('notes').textContent='【'+s.name+'】\n'+s.notes;
@@ -331,6 +368,8 @@ function handleKey(k,e){e=e||{preventDefault(){}};
   else if(k===' '){e.preventDefault();if(!started||SL[cur].final)return;paused=!paused;if(paused){ev.push({i:cur,type:'pause'});refreshLedger()}$('bar').classList.toggle('paused',paused)}
   else if(k==='n'||k==='N')$('notes').classList.toggle('on');
   else if(k==='f'||k==='F'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}
+  else if(k==='?'||k==='/')toggleKeys();
+  else if(k==='Escape')$('keys').classList.remove('on');
   else if(k==='p'||k==='P')openPres();
   else if(k==='r'||k==='R'){started=false;ev.length=0;go(0)}}
 window.handleKey=handleKey;
