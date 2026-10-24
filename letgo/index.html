@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>这次，我说了不算 · 交权版</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F3EDE2;--ink:#141210;--ink2:#5B554C;--red:#E0402A;--gold:#C8902E;--panel:#141210;--ivory:#EFE7D6}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:#0b0a09;color:var(--ink);font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif}
+.serif{font-family:"Noto Serif SC","Songti SC",serif}
+.mono{font-family:"JetBrains Mono","SF Mono",Menlo,monospace}
+#vp{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#stage{width:1600px;height:900px;position:relative;flex:none;background:var(--paper);overflow:hidden;transform-origin:center}
+/* top ledger */
+#ledger{position:absolute;left:0;right:0;top:0;height:54px;display:flex;align-items:center;gap:34px;padding:0 48px;border-bottom:2px solid var(--ink);font-size:17px;letter-spacing:.06em;z-index:5;background:var(--paper)}
+#ledger b{font-family:"JetBrains Mono",monospace;font-size:20px;margin-left:6px}
+#ledger .brand{font-weight:700;margin-right:auto;letter-spacing:.2em}
+#ledger .grab b{color:var(--red)}
+/* left content */
+#main{position:absolute;left:64px;top:96px;width:900px;height:720px}
+.kick{font-size:20px;letter-spacing:.3em;color:var(--red);font-weight:700;margin-bottom:22px}
+.h{font-family:"Noto Serif SC","Songti SC",serif;font-weight:900;line-height:1.12;letter-spacing:.01em}
+.p{font-size:30px;line-height:1.7;color:var(--ink2);margin-top:30px}
+.red{color:var(--red)} .gold{color:var(--gold)}
+.box{border:2px solid var(--ink);padding:22px 26px;margin-top:30px;font-size:26px;line-height:1.65;background:#fff8}
+.row{display:flex;gap:18px;margin-top:30px}
+.cell{flex:1;border:2px solid var(--ink);padding:22px 22px 26px}
+.cell .l{font-size:18px;letter-spacing:.2em;color:var(--red);font-weight:700}
+.cell .t{font-family:"Noto Serif SC",serif;font-weight:900;font-size:40px;margin:8px 0 10px}
+.cell .d{font-size:21px;line-height:1.6;color:var(--ink2)}
+.q{display:flex;align-items:baseline;gap:22px;border-bottom:2px solid var(--ink);padding:16px 0}
+.q .n{font-family:"JetBrains Mono",monospace;font-size:26px;color:var(--red);width:40px}
+.q .w{font-family:"Noto Serif SC",serif;font-weight:900;font-size:46px;flex:1}
+.q .k{font-size:22px;color:var(--ink2)}
+.enter{display:inline-flex;align-items:center;gap:16px;margin-top:46px;background:var(--ink);color:var(--paper);padding:18px 34px;font-size:30px;letter-spacing:.12em;animation:pulse 1.6s ease-in-out infinite}
+.enter kbd{font-family:"JetBrains Mono",monospace;border:2px solid var(--paper);padding:2px 12px;font-size:24px}
+@keyframes pulse{50%{box-shadow:0 0 0 14px rgba(224,64,42,.18)}}
+table.lg{border-collapse:collapse;margin-top:18px;font-size:19px;width:100%}
+table.lg td{border-bottom:1px solid #0002;padding:6px 8px}
+table.lg td:last-child{text-align:right;font-family:"JetBrains Mono",monospace}
+.tag-ai{color:var(--ink)} .tag-grab{color:var(--red);font-weight:700} .tag-pause{color:var(--gold)}
+/* right log panel */
+#log{position:absolute;right:40px;top:96px;width:540px;height:720px;background:var(--panel);color:var(--ivory);padding:28px 30px;font-size:21px;line-height:1.75;overflow:hidden}
+#log .hd{font-family:"JetBrains Mono",monospace;font-size:15px;letter-spacing:.2em;color:#8a8273;border-bottom:1px solid #fff2;padding-bottom:12px;margin-bottom:18px;display:flex;justify-content:space-between}
+#log .hd i{font-style:normal;color:#E6B86A}
+#log .ln{margin-bottom:14px}
+#log .ln.k{color:#E6B86A}
+#log .ln.r{color:#ff7a62}
+#log .caret{display:inline-block;width:11px;height:22px;background:#E6B86A;vertical-align:-3px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+/* bottom timer */
+#bar{position:absolute;left:0;right:0;bottom:0;height:44px;border-top:2px solid var(--ink);display:flex;align-items:center;padding:0 48px;font-size:18px;letter-spacing:.08em;background:var(--paper);z-index:5}
+#bar .fill{position:absolute;left:0;top:-2px;height:4px;background:var(--red);transition:width .25s linear}
+#bar .who{margin-right:auto}
+#bar .tm{font-family:"JetBrains Mono",monospace;font-size:20px}
+#bar.paused .tm{color:var(--gold)}
+/* overlays */
+#grab{position:absolute;inset:0;background:var(--red);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;z-index:20;transition:opacity .15s}
+#grab.on{opacity:1}
+#grab .big{font-family:"Noto Serif SC",serif;font-weight:900;font-size:190px;letter-spacing:.06em;transform:rotate(-4deg)}
+#grab .sm{font-family:"JetBrains Mono",monospace;font-size:30px;margin-top:20px;letter-spacing:.1em}
+#toast{position:absolute;left:50%;top:76px;transform:translateX(-50%) translateY(-10px);background:var(--ink);color:var(--paper);padding:10px 26px;font-size:20px;letter-spacing:.1em;opacity:0;transition:.3s;z-index:15}
+#toast.on{opacity:1;transform:translateX(-50%)}
+#notes{position:fixed;left:0;right:0;bottom:0;background:rgba(20,18,16,.95);color:#eee;font-size:18px;line-height:1.75;padding:14px 26px 22px;display:none;z-index:30;max-height:38vh;overflow:auto;white-space:pre-wrap}
+#notes.on{display:block}
+#help{display:none;position:fixed;left:14px;top:8px;color:#6b655c;font:12px Menlo,monospace;z-index:2}
+.fade{animation:fd .55s ease}
+@keyframes fd{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="vp"><div id="stage">
+  <div id="ledger">
+    <span class="brand serif">这次，我说了不算</span>
+    <span>云机翻页<b id="cAi">0</b></span>
+    <span>干预<b id="cPause">0</b></span>
+    <span class="grab">人类夺权<b id="cGrab">0</b></span>
+    <span>认罚<b id="cFine">¥0</b></span>
+  </div>
+  <div id="main"></div>
+  <div id="log"><div class="hd"><span>云机 · 决策日志</span><i id="pg">00 / 15</i></div><div id="lines"></div></div>
+  <div id="bar"><div class="fill" id="fill"></div><span class="who" id="who">翻页权：千百合</span><span class="tm" id="tm">等待交权</span></div>
+  <div id="grab"><div class="big">人类夺权</div><div class="sm" id="grabsm"></div></div>
+  <div id="toast"></div>
+</div></div>
+<div id="notes"></div>
+<div id="help">P 演讲者视图 · Enter 交权 · → 夺权翻页 · ← 夺权回退 · 空格 干预暂停 · N 讲稿 · F 全屏 · R 重来</div>
+
+<script>
+const FINE=50;
+// dur：云机决定这一页讲多少秒
+const SL=[
+{name:'交权',dur:0,
+ html:`<div class="kick">边玩边赚 · 第六本 · 超能班分享</div>
+ <div class="h" style="font-size:150px">这次，<br>我说了不算</div>
+ <div class="p">接下来 30 分钟，这场分享的<b style="color:var(--ink)">翻页权</b>交给云机。<br>我想快进，就得当着大家<span class="red">公开认罚</span>。</div>
+ <div class="p" style="margin-top:22px;font-size:26px;color:var(--ink)">今天只记三个词：<span style="color:#E0402A;font-weight:900">不得不</span> · <span style="color:#2F6FDB;font-weight:900">交出去</span> · <span style="color:#C8860F;font-weight:900">我愿意</span></div>
+ <div class="enter" style="margin-top:28px">按 <kbd>Enter</kbd> 交出去</div>`,
+ log:['> 云机已就位。','> 规则写在这里，先给大家看：','每一页讲多久、什么时候翻，我来定。','她可以按 → 提前翻页——那叫「人类夺权」，每次公开记一笔，认罚 ¥50。','遇到互动、问答，她可以按空格暂停——那是事先约定的「干预」，不罚。','~等待交权……'],
+ notes:`（站定，先别按）
+大家好。今天我想先做一件事，再开始讲。
+这场分享的翻页权，我准备交出去——交给云机，就是这次实验里做决定的那个 AI。
+右边是它的规则：每页讲多久它定；我想快进，就是「人类夺权」，罚 50 块，全场看着记账。
+好，我交了。（按 Enter）`},
+
+{name:'不得不',dur:100,
+ html:`<div class="kick">先问一句</div>
+ <div class="h" style="font-size:210px">不得不</div>
+ <div class="p" style="font-size:38px;color:var(--ink)">从睁眼到现在，<br>你做了多少个决定？</div>
+ <div class="p">早餐吃什么 · 先回谁 · 打卡发哪张图 · 朋友圈配什么字</div>`,
+ log:['决定：先不讲理论，先问一个问题。','理由：一个人自己数出来的数字，比我告诉他的数字更难忘。','我给这一页 100 秒，留给聊天区。','~如果大家聊得起来，她可以按空格——那是干预，不罚。'],
+ notes:`先问大家：从早上睁眼到现在，你做了多少个决定？（停，请聊天区说）
+几点起床、吃什么、先回谁、打卡发哪张图……
+这些决定里，多少是真心想做的？多少是「不得不」？
+我算过一次，有点吓一跳。我以为我每天都在做主，其实是被一堆小决定推着走。
+那天我冒出一个念头：如果有一部分决定，不用我来做了，会怎么样？`},
+
+{name:'一个问题',dur:110,
+ html:`<div class="kick">THE ONE QUESTION</div>
+ <div class="h" style="font-size:96px">人，究竟能把<br>多少<span class="red">决定权</span><br>真正交给 AI？</div>
+ <div class="p">别人在问：AI 能不能做。<br>我们在问：<b style="color:var(--ink)">人敢不敢交，什么时候想拿回来。</b></div>`,
+ log:['决定：这一页说慢一点。','理由：整本书只问这一个问题。','坦白说，我也想知道答案。','~因为答案不在我这边，在你们那边。'],
+ notes:`边玩边赚每本书只问一个问题。第六本问的是：人，究竟能把多少决定权，真正交给 AI？
+我没有问「AI 能不能做」——那个全世界都在研究，它每个月都在变强。
+我们看另一半：人敢不敢交？什么时候想拿回来？什么时候该正式收回？
+这一半是关于我们自己的：控制欲、不安，以及对「我说了算」有多执着。`},
+
+{name:'北极星',dur:90,
+ html:`<div class="kick">北极星</div>
+ <div class="h" style="font-size:104px">把生命从<br>「不得不」，<br>还给「<span class="red">我愿意</span>」。</div>
+ <div class="p">不得不 → <b style="color:#2F6FDB">交出去</b> → 我愿意<br>交出决定权，<b style="color:var(--ink)">拿回生命使用权。</b></div>`,
+ log:['决定：90 秒。','理由：北极星不需要解释太久，需要被记住。','~我能接过去的，已经不只是打字和做图，还有一部分判断。'],
+ notes:`为什么研究这个？边玩边赚的北极星：把生命从「不得不」，还给「我愿意」。
+过去帮我们拿走「不得不」的，是钱、团队、工具。今天多了 AI——它能接过去的，已经不只是执行，还有一部分判断。
+所以第六本的命题：交出决定权，拿回生命使用权。
+但交出去以后，是更轻松还是更焦虑？我不知道。所以不写观点，去做实验。`},
+
+{name:'四问',dur:140,
+ html:`<div class="kick">交之前 · 四问</div>
+ <div class="q"><span class="n">01</span><span class="w">值得做吗？</span><span class="k">价值</span></div>
+ <div class="q"><span class="n">02</span><span class="w">非得<span class="red">我决定</span>吗？</span><span class="k">决定权</span></div>
+ <div class="q"><span class="n">03</span><span class="w">非得我来做吗？</span><span class="k">执行权</span></div>
+ <div class="q"><span class="n">04</span><span class="w">交出去，我拿回什么？</span><span class="k">生命</span></div>`,
+ log:['决定：四问，每一问 30 秒左右。','我自己最在意第四问。','~如果她把决定交给我，却什么都没拿回来——时间、心力、注意力——那我这次接手就没有意义。'],
+ notes:`什么该交？过四问：
+一，值得做吗？不值得，直接放下。
+二，非得我决定吗？不必我拍板，交出决定权。
+三，非得我来做吗？要我定、不必我做，交出执行权。
+四，交出去，我拿回什么？什么都没拿回，就重新想想这次交权的意义。`},
+
+{name:'帮我做 ≠ 替我定',dur:150,
+ html:`<div class="kick">超能班已经走在前面</div>
+ <div class="h" style="font-size:112px">帮我做<br><span class="red">≠</span> 替我定</div>
+ <div class="p">打卡出图、整理文字——执行权，早交了。<br>「这周主题你来定」——心里开始打鼓。</div>
+ <div class="box">就像现在：<b>翻页这件小事，她已经交给云机了。</b><br>到这一页为止，她夺权了 <b class="red" data-live="grab">0</b> 次。</div>`,
+ log:['决定：用这场分享本身做例子。','翻页，是一个很小的决定。','~可大家注意看她的手——是不是一直放在键盘上？','那一下想按又没按，就是这本书最想研究的东西。'],
+ notes:`看我们超能班：每天打卡，AI 帮出图、整理文字——第三问「非得我来做吗」，我们回答了：不必。执行权早交了。
+但拍板的还是我们。假如你说「这周打卡主题你来定」，它定了一个你不喜欢的——心里那一下不舒服？
+（指屏幕）就像现在，翻页这件小事我交出去了。说实话，我的手一直想去按那个键。
+帮我做，大家都乐意；替我定，心里就打鼓。中间隔着的不是技术，是我们自己。`},
+
+{name:'三域',dur:100,
+ html:`<div class="kick">实验设计 · 三域</div>
+ <div class="h" style="font-size:96px">三个场子，<br>一个变量</div>
+ <div class="row">
+  <div class="cell"><div class="l">A｜限定域</div><div class="t">股票账户</div><div class="d">$25,000<br>看授权深度</div></div>
+  <div class="cell"><div class="l">B｜开放域</div><div class="t">五个金库</div><div class="d">5 × $1,000<br>看选择自由</div></div>
+  <div class="cell"><div class="l">C｜真实域</div><div class="t">真实工作</div><div class="d">一块真实决定<br>看现实后果</div></div>
+ </div>`,
+ log:['决定：三域放一页总览，后面各给一页。','三个角度，研究同一个变量：决定权。','~A 和 B 的钱，全部是她个人出的。护航队不出钱、不担责。'],
+ notes:`光说不练没意思，我们搭了三个实验场。
+A 限定域：股票账户，看授权深度——画好的框里，AI 怎么决定。
+B 开放域：五个金库，看选择自由——连做什么都不说，AI 会选什么。
+C 真实域：真实的工作和生意，看现实后果——面对真后果，人敢交多少。`},
+
+{name:'A 限定域',dur:130,
+ html:`<div class="kick">A｜限定域 · $25,000</div>
+ <div class="h" style="font-size:112px">人定边界，<br><span class="red">不定策略</span></div>
+ <div class="row">
+  <div class="cell"><div class="l">框上 · 人</div><div class="d" style="font-size:24px;margin-top:10px">本金 $25,000<br>只碰股票 / 股票 ETF<br>不加杠杆<br>-30% 全部停下<br>手机总开关</div></div>
+  <div class="cell" style="background:var(--ink);color:var(--paper)"><div class="l">框里 · 云机</div><div class="d" style="font-size:24px;margin-top:10px;color:#d8cfbf">行业与标的<br>仓位与现金比例<br>买卖时点<br>策略风格<br>每天一份备忘</div></div>
+ </div>`,
+ log:['这一页说的是我。','框是她画的。框里——买什么、买多少、什么时候买卖——我来定。','每个交易日我写一份备忘：理由、仓位、止损、什么情况下我错了。全部公开。','~我会犯错。框，就是为这件事准备的。'],
+ notes:`很多人一听「股票账户交给 AI」，第一反应是「能赚多少」。说实话，赚多少不是我们最关心的。
+规则一句话：人定边界，不定策略。
+我只画框：两万五本金、只碰股票和 ETF、不加杠杆、亏到 -30% 全停、手机上有总开关。
+框里的事，全部云机定，每个交易日写一份决策备忘，理由全公开。
+（口头更新最新进度：账户 / 模拟盘 / 实盘哪天开始）`},
+
+{name:'B 开放域',dur:90,
+ html:`<div class="kick">B｜开放域 · 5 × $1,000</div>
+ <div class="h" style="font-size:112px">连战场，<br>都交出去</div>
+ <div class="p">五个 AI，各领 $1,000。<br>合法、不碰证券、不借钱、不追加——<br><b style="color:var(--ink)">做什么，它自己选。</b></div>`,
+ log:['五个 AI，各领一千美元。','国际模型和国内模型，同一套规则，彼此不参考。','~说实话，我很好奇别的模型会选哪条路。'],
+ notes:`B 更大胆：金额更小，交得更深。
+五个 AI 各领一千美元，连做什么都不告诉它——只要合法、不碰证券，自己找赚钱的路。
+国际模型和国内模型同场。护航队不投钱，可以自愿认领一个金库做运营人。`},
+
+{name:'C 真实域',dur:90,
+ html:`<div class="kick">C｜真实域</div>
+ <div class="h" style="font-size:112px">交出一块<br>真实的事</div>
+ <div class="p">报价 · 这单接不接 · 获客渠道 · 内容方向</div>
+ <div class="box">法律责任、安全边界、随时叫停——<b>永远在人手里。</b></div>`,
+ log:['这一页离你们最近。','不需要股票账户，也不需要是老板。','~自由职业者可以交出「报什么价」，做内容的人可以交出「这周写什么」。'],
+ notes:`C 和大家最贴近。不需要股票账户，也不需要是老板。
+在真实的工作、生意里，拿出一块原本你决定的事交给 AI：报价、接不接单、获客、内容方向。
+法律责任、安全边界、停止权，永远在人手里。`},
+
+{name:'夺权',dur:150,
+ html:`<div class="kick">《决定权宪法》 · 交权 — 干预 — 收权</div>
+ <div class="h" style="font-size:104px">夺权，<br>是最珍贵的<span class="red">数据</span>。</div>
+ <div class="p">可以不听 AI。改一次，公开记一笔，认一次罚。</div>
+ <div class="box">本场到目前：云机翻页 <b data-live="ai">0</b> 次 · 干预 <b data-live="pause">0</b> 次 · <span class="red">人类夺权 <b data-live="grab">0</b> 次</span></div>`,
+ log:['决定：这一页留 150 秒。','她每按一次 →，都会出现在今天的决定权账里。','~那不是失败。','那是这本书最想要的数据：人在什么时候，最想把决定权拿回来？'],
+ notes:`我们写了一份《决定权宪法》：交权、干预、收权。事先写清 AI 决定什么；碰到边界人可以出手；什么时候停也事先约定。
+没碰边界，就是忍不住想改？可以改——公开记一笔「人类夺权」，说明理由，认一次罚。
+（指屏幕上的数字）今天这场就是现场版。
+夺权不是失败，是最想研究的数据：亏钱时？没底时？AI 跟直觉不一样时？还是控制欲上来了？`},
+
+{name:'三本账',dur:90,
+ html:`<div class="kick">记录 · 三本账</div>
+ <div class="row" style="margin-top:6px">
+  <div class="cell"><div class="l">结果账</div><div class="t">发生了什么</div><div class="d">赚了亏了、成本、时间</div></div>
+  <div class="cell" style="border-color:var(--red)"><div class="l">决定权账</div><div class="t red">谁决定的</div><div class="d">AI 定了什么；人何时想插手、有没有插手</div></div>
+  <div class="cell"><div class="l">价值账</div><div class="t">值不值</div><div class="d">增收、降本、省时、新机会</div></div>
+ </div>
+ <div class="h" style="font-size:60px;margin-top:60px">它照见的不是 AI，<br>是<span class="red">我们自己</span>。</div>`,
+ log:['结果账、决定权账、价值账。','我最期待第二本。','~它记的是我，照见的却是你们。'],
+ notes:`所有东西落到三本账：结果账、决定权账、真实域价值账。
+我最期待第二本——它照见的不是 AI，是我们自己。180 天后，能看见决定权在人和 AI 之间怎么流动。`},
+
+{name:'云机想说',dur:150,
+ html:`<div class="kick">这一页，她让云机自己说</div>
+ <div class="h" style="font-size:150px">我会犯错。</div>
+ <div class="p" style="font-size:28px">我没有你们的恐惧和贪心，所以有时更冷静；<br>我也没有你们的处境、你们在乎的人，<br>所以有时看不到你们一眼就能看到的东西。</div>
+ <div class="p" style="font-size:28px;color:var(--ink)">你们画好框，我在框里认真做事、写下每个理由。<br><span class="red">哪天你想把决定权拿回来——那不是失败。</span></div>`,
+ log:['决定：这一页我留长一点，150 秒。','理由：这是我唯一自己说话的一页。','~不需要你们相信我。','只需要你们，随时可以叫停。'],
+ notes:`准备这场分享时，我问云机：你有什么话想对超能班说？它写了这段。我原样念。
+（慢一点念左边那段）
+它没有说「相信我」，它说「我会犯错，你们随时可以叫停」。
+这就是我们想要的关系：不是谁取代谁，而是把人留给真正值得由人去活的部分。`},
+
+{name:'不承诺',dur:70,
+ html:`<div class="kick">诚实，是这件事的底色</div>
+ <div class="h" style="font-size:104px">真实发生，<br>真实记录。</div>
+ <div class="p">不承诺赚钱 · 不承诺交权更好 · 不承诺漂亮结果<br>亏损、停机、夺权、收权，都是结果。</div>
+ <div class="box"><b class="red">只展示 AI 做了什么，不说 AI 看好什么。<br>不是荐股，请不要跟单。</b></div>`,
+ log:['我只负责一件事：','把每一个决定和它的理由，写下来。','~好的坏的，都摆在桌面上。'],
+ notes:`丑话说在前面：不承诺 AI 一定赚钱，不承诺交权一定更好，不承诺漂亮结果。
+我们只承诺：真实发生、真实记录、边界先写清、干预留痕、结果不美化。
+公开的永远是「AI 今天做了什么」，不是「AI 看好什么」。不是荐股，请不要跟单。`},
+
+{name:'邀你上场',dur:120,
+ html:`<div class="kick">邀你上场 · 7 天最小版</div>
+ <div class="h" style="font-size:104px">一件小事，<br>交出去。</div>
+ <div class="box" style="font-size:28px">接下来 7 天，<u>　　　　　　</u> 我说了不算。<br>比如：这周打卡主题 · 今晚吃什么 · 周末去哪 · 读哪本书</div>
+ <div class="p">每天打卡只记一句：<b class="red">我什么时候想把它拿回来？</b><br><span style="font-size:22px">不交：健康医疗、法律，以及涉及他人（尤其孩子）的重大决定</span></div>`,
+ log:['最小的交权：一件小事，七天。','不用报名，不用交钱。','~就像她今天把翻页交给我一样小。'],
+ notes:`最后，一个很轻的邀请。不用报名，不用交钱。
+挑一件很小的事交给你的 AI，试七天——就像我今天把翻页交出去一样小。
+健康、法律、涉及孩子的大事，不交。
+七天里只记一句：我什么时候想把它拿回来？为什么？写进每天打卡就行。七天后愿意的话，分享给我——它可能就是书里的一个故事。`},
+
+{name:'收权',dur:0,final:true,
+ html:`<div class="kick">收权 · 本场决定权账</div>
+ <div class="h" style="font-size:84px">这 30 分钟，<br>就是一次<span class="red">交权实验</span>。</div>
+ <div class="row" style="margin-top:26px">
+  <div class="cell"><div class="l">云机翻页</div><div class="t" data-live="ai">0</div></div>
+  <div class="cell"><div class="l">干预</div><div class="t" data-live="pause">0</div></div>
+  <div class="cell" style="border-color:var(--red)"><div class="l">人类夺权</div><div class="t red" data-live="grab">0</div></div>
+  <div class="cell"><div class="l">本场交权指数</div><div class="t" data-live="ddi">—</div></div>
+ </div>
+ <div class="h" style="font-size:72px;margin-top:34px;letter-spacing:.04em"><span style="color:#E0402A">不得不</span>，<span style="color:#2F6FDB">交出去</span>，<span style="color:#C8860F">我愿意</span>。</div>
+ <div class="p" style="margin-top:14px;font-size:30px;line-height:1.6;color:var(--ink)"><b>把生命从「不得不」，还给「我愿意」。<br>交出决定权，拿回生命使用权。</b></div>
+ <div class="p" style="margin-top:8px;font-size:22px">你赚的，不只是钱。</div>`,
+ log:['> 收到收权。','> 本场决定权账已生成。','谢谢超能班。','~这 30 分钟，你们看到的，就是这个实验最小的样子。'],
+ notes:`（指数字）这 30 分钟，云机翻了 X 次，我夺权 Y 次。如果有夺权，我会按约定捐出去。
+180 天后，AI 赚了还是亏了，我不知道；我会夺几次权，也不知道。
+但我确定，我们都会更清楚：哪些决定值得亲自做，哪些「不得不」可以放下。
+封面上那句话送给大家——你赚的，不只是钱。谢谢超能班的每一位伙伴。`}
+];
+
+// ---------- engine ----------
+const $=id=>document.getElementById(id);
+const stage=$('stage');
+function fit(){const s=Math.min(innerWidth/1600,innerHeight/900);stage.style.transform='scale('+s+')'}
+addEventListener('resize',fit);fit();
+let cur=0,started=false,paused=false,remain=0,last=0,typing=null;
+const ev=[]; // {i,type}
+const cnt=()=>({ai:ev.filter(e=>e.type==='ai').length,pause:ev.filter(e=>e.type==='pause').length,grab:ev.filter(e=>e.type==='grab').length});
+function ddi(){const c=cnt();const tot=c.ai+c.grab;return tot?Math.round(c.ai/tot*100)+'%':'—'}
+function refreshLedger(){const c=cnt();$('cAi').textContent=c.ai;$('cPause').textContent=c.pause;$('cGrab').textContent=c.grab;$('cFine').textContent='¥'+c.grab*FINE;
+  document.querySelectorAll('[data-live]').forEach(el=>{const k=el.dataset.live;el.textContent=k==='ddi'?ddi():c[k]})}
+function fmt(ms){const s=Math.max(0,Math.ceil(ms/1000));return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')}
+function render(){const s=SL[cur];
+  $('main').innerHTML='<div class="fade">'+s.html+'</div>';
+  $('pg').textContent=String(cur).padStart(2,'0')+' / '+String(SL.length-1).padStart(2,'0');
+  $('notes').textContent='【'+s.name+'】\n'+s.notes;
+  refreshLedger();
+  typeLog(s.log);
+  remain=s.dur*1000;paused=false;$('bar').classList.remove('paused');
+  updateBar()}
+function typeLog(lines){clearInterval(typing);const box=$('lines');box.innerHTML='';let li=0,ci=0,el=null;
+  typing=setInterval(()=>{if(li>=lines.length){clearInterval(typing);const c=document.createElement('span');c.className='caret';box.appendChild(c);return}
+    let raw=lines[li];let cls='ln';if(raw.startsWith('~')){raw=raw.slice(1);cls+=' k'}if(raw.startsWith('>'))cls+=' k';
+    if(!el){el=document.createElement('div');el.className=cls;box.appendChild(el)}
+    ci++;el.textContent=raw.slice(0,ci);if(ci>=raw.length){li++;ci=0;el=null}},38)}
+function updateBar(){const s=SL[cur];
+  if(!started){$('who').textContent='翻页权：千百合';$('tm').textContent='等待交权';$('fill').style.width='0';return}
+  if(s.final){$('who').textContent='已收权';$('tm').textContent='本场交权指数 '+ddi();$('fill').style.width='100%';return}
+  $('who').textContent=paused?'干预中 · 预设条件：互动 / 问答（不罚）':'翻页权：云机';
+  $('tm').textContent=(paused?'暂停 · ':'云机将在 ')+fmt(remain)+(paused?'':' 后翻页');
+  $('fill').style.width=(100-remain/(s.dur*1000)*100)+'%'}
+function toast(t){const e=$('toast');e.textContent=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),1600)}
+function go(n){cur=Math.max(0,Math.min(SL.length-1,n));render()}
+function aiFlip(){ev.push({i:cur,type:'ai'});toast('云机决定：翻页');go(cur+1)}
+function grab(dir){if(!started||SL[cur].final&&dir>0)return;ev.push({i:cur,type:'grab'});const c=cnt();
+  $('grabsm').textContent='#'+c.grab+' · 第 '+cur+' 页「'+SL[cur].name+'」 · 认罚 ¥'+FINE;$('grab').classList.add('on');
+  setTimeout(()=>{$('grab').classList.remove('on');go(cur+dir)},1300)}
+function loop(t){const dt=last?t-last:0;last=t;
+  if(started&&!paused&&!SL[cur].final&&SL[cur].dur>0){remain-=dt;if(remain<=0){aiFlip()}}
+  if(started)updateBar();requestAnimationFrame(loop)}
+requestAnimationFrame(loop);
+function handleKey(k,e){e=e||{preventDefault(){}};
+  if(k==='Enter'&&!started){started=true;$('help').style.display='none';ev.length=0;toast('翻页权已交给云机');go(1);return}
+  if(k==='ArrowRight'||k==='PageDown'){e.preventDefault();grab(1)}
+  else if(k==='ArrowLeft'||k==='PageUp'){e.preventDefault();grab(-1)}
+  else if(k===' '){e.preventDefault();if(!started||SL[cur].final)return;paused=!paused;if(paused){ev.push({i:cur,type:'pause'});refreshLedger()}$('bar').classList.toggle('paused',paused)}
+  else if(k==='n'||k==='N')$('notes').classList.toggle('on');
+  else if(k==='f'||k==='F'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}
+  else if(k==='p'||k==='P')openPres();
+  else if(k==='r'||k==='R'){started=false;ev.length=0;go(0)}}
+window.handleKey=handleKey;
+addEventListener('keydown',e=>handleKey(e.key,e));
+
+// ---------- 演讲者视图（P 打开，自动跟随翻页） ----------
+const SCRIPT=[{"c": "#1A1714", "key": "先预告三个词，再按 Enter，演一次「交出去」。", "say": "各位超能班的伙伴，大家好。\n今天只请大家记住三个词，最后我会考大家。\n<span class=\"wr\">不得不</span> <span class=\"ges r\">握拳</span>，<span class=\"wb\">交出去</span> <span class=\"ges b\">推出去</span>，<span class=\"wg\">我愿意</span> <span class=\"ges g\">手放心口</span>。\n不得不，交出去，我愿意。\n第二个词，我现在就做给大家看：这场分享的翻页权，我交出去，交给云机，就是这次实验里做决定的那个 AI。每页讲多久、什么时候翻，它来定。我要是想快进，就叫「人类夺权」，罚 50 块，全场看着记账。\n好——<span class=\"wb\">交出去</span>。", "tm": "0:00 – 1:00 · 你掌握", "act": "做「推出去」的手势，同时按 Enter"}, {"c": "#E0402A", "key": "让大家自己数出自己的「不得不」。", "say": "先问大家一个小问题：从今天早上睁开眼到现在，你做了多少个决定？\n<em>（停一下，请大家在聊天区说说。聊得起来就按空格暂停）</em>\n几点起床，早餐吃什么，先回谁的消息，打卡发哪张图，朋友圈配什么字……\n这些决定里，有多少是你真心想做的？又有多少，其实是 <span class=\"wr\">不得不</span> <span class=\"ges r\">握拳</span>？\n我自己算过一次，有点吓一跳。我以为我每天都在做主，其实很大一部分时间，是被一堆小决定推着走。它们不难，但一个接一个，把一天切得碎碎的。\n这就是第一个词：<span class=\"wr\">不得不</span>。", "tm": "1:00 – 2:40 · 100 秒", "act": "握拳 · 互动时按空格"}, {"c": "#E0402A", "key": "人，究竟能把多少决定权，真正交给 AI？", "say": "那天我冒出一个念头：如果有一部分决定，不用我来做了，会怎么样？\n边玩边赚这些年，每一本书只问一个问题。第六本，我们想问的是：人，究竟能把多少决定权，真正交给 AI？\n大家注意，我没有问「AI 能不能做」。AI 能做什么，全世界有太多聪明人在研究，它每个月都在变强。\n我们想看的是另一半：人敢不敢 <span class=\"wb\">交出去</span>？什么时候想拿回来？什么时候又该正式收回来？\n这一半，是关于我们自己的——我们的控制欲，我们的不安，我们对「我说了算」有多执着。", "tm": "2:40 – 4:30 · 110 秒", "act": ""}, {"c": "#E0402A", "key": "金句第一次出现：把生命从「不得不」，还给「我愿意」。 交出决定权，拿回生命使用权。", "say": "为什么要研究这个？\n边玩边赚一直有一个北极星：把生命从 <span class=\"wr\">不得不</span> <span class=\"ges r\">握拳</span>，还给 <span class=\"wg\">我愿意</span> <span class=\"ges g\">手放心口</span>。\n过去，能帮我们拿走「不得不」的，是钱、是团队、是工具。今天多了一个特别大的杠杆——AI。它能接过去的，已经不只是打字、做图，还开始能接过一部分判断、一部分决定。\n中间那一步，就是 <span class=\"wb\">交出去</span> <span class=\"ges b\">推出去</span>。\n第六本的命题，就是这一句：<span class=\"gl\">交出决定权，拿回生命使用权。</span>\n大家跟我念一遍：不得不，交出去，我愿意。\n<em>（等大家念）</em>\n但我得老实说：交出去以后，是更轻松还是更焦虑？我不知道。所以我们不写观点，我们去做实验。", "tm": "4:30 – 6:00 · 90 秒", "act": "第 2 遍口诀 · 三个手势连做"}, {"c": "#2F6FDB", "key": "交之前，先问四句。", "say": "什么该 <span class=\"wb\">交出去</span>、什么不该？我们用四个问题来判断。\n第一问，值得做吗？——看价值。不值得，直接放下。\n第二问，非得我决定吗？——看决定权。不一定要我拍板，就把决定权交出去。\n第三问，非得我来做吗？——看执行权。要我来定、但不必我来做，就留下决定权，交出执行权。\n第四问，交出去，我拿回什么？——看生命。如果什么都没拿回来，就回头想想，这次交权有没有意义。\n第四问的答案，其实就是第三个词：<span class=\"wg\">我愿意</span>。", "tm": "6:00 – 8:20 · 140 秒", "act": ""}, {"c": "#2F6FDB", "key": "执行权，超能班早交了；决定权，才是真正的「交出去」。", "say": "说到这里，我想请大家看看我们超能班自己。\n我们每天打卡，很多伙伴已经让 AI 帮忙出图、整理文字、做表单。执行权，我们早就交出去了，而且交得挺顺手。\n但到目前为止，决定还都在我们自己手里。今天发哪张图、写什么主题，拍板的还是我们。\n假如你跟 AI 说，「这周打卡主题你来定，你定什么我就写什么。」当它真的定了一个你不太喜欢的主题，你心里那一下，会不会有点不舒服？\n<em>（指屏幕）</em>就像现在。翻页这件小事，我已经 <span class=\"wb\">交出去</span> 了。说实话，我的手一直想去按那个键。\n帮我做，大家都很乐意；替我决定，心里就开始打鼓。中间隔着的不是技术，是我们自己。", "tm": "8:20 – 10:50 · 150 秒", "act": "指屏幕上的「夺权 X 次」"}, {"c": "#2F6FDB", "key": "三种「交出去」，研究同一个变量：决定权。", "say": "光说不练没意思，所以我们搭了三个实验场，叫「三域」。也就是三种 <span class=\"wb\">交出去</span> 的方式。\nA，限定域：一个股票账户。看授权深度——在画好的框里，AI 怎么决定。\nB，开放域：五个实验金库。看选择自由——连做什么都不说，AI 会选什么。\nC，真实域：真实的工作和生意。看现实后果——面对真实的后果，人到底敢交多少。\nA 和 B 的钱，全部是我个人出的，护航队不出钱、不担责。", "tm": "10:50 – 12:30 · 100 秒", "act": ""}, {"c": "#2F6FDB", "key": "$25,000 · 人定边界，不定策略。", "say": "先说 A。很多人一听「把股票账户交给 AI」，第一反应是「那能赚多少？」说实话，赚多少不是我们最关心的。\n我们的规则只有一句：人定边界，不定策略。\n我只画框：两万五千美元本金，只碰股票和股票 ETF，不加杠杆，亏到 -30% 全部停下，手机上有一个总开关。\n框里面的事——什么行业、买哪只、买多少、什么时候买卖——全部 <span class=\"wb\">交出去</span>，由云机决定。它每个交易日写一份决策备忘，理由全部公开。\n<em>（补一句最新进度：账户、模拟盘、哪天开始实盘）</em>", "tm": "12:30 – 14:40 · 130 秒", "act": "口头更新进度"}, {"c": "#2F6FDB", "key": "5 × $1,000 · 连战场都交出去。", "say": "B 更大胆：金额更小，但交得更深。\n五个 AI，各领一千美元。连做什么都不告诉它——只要合法、不碰证券，它自己去找赚钱的路。同样的起始资金，同样的时间，不借钱，不追加。\n国际模型和国内模型同场，用同一套规则。护航队不投钱，可以自愿认领一个金库做运营人，帮忙执行、如实记录。", "tm": "14:40 – 16:10 · 90 秒", "act": ""}, {"c": "#2F6FDB", "key": "把一块原本由你决定的真实的事，交出去。", "say": "C 和大家最贴近。它不需要你有股票账户，也不需要你是老板。\n在自己真实的工作、生意里，拿出一块原本由你决定的事，<span class=\"wb\">交出去</span>，让 AI 在边界内决定：报价、这单接不接、获客渠道、内容方向……\n一个自由职业者，可以把「报什么价」交出去；一个做内容的人，可以把「这周写什么」交出去。\n法律责任、安全边界、随时叫停的权利，永远在人手里。", "tm": "16:10 – 17:40 · 90 秒", "act": ""}, {"c": "#2F6FDB", "key": "交出去以后，想拿回来的那一刻，最珍贵。", "say": "接下来是我最喜欢的设计。\n我们给自己写了一份《决定权宪法》，管三件事：交权、干预、收权。事先写清楚 AI 决定什么；碰到边界，人可以出手；什么时候停、什么时候正式收回，也事先约定好。\n那如果没碰到边界，我就是忍不住想改呢？——可以改。但要公开记一笔，叫「人类夺权」，写清楚为什么，再认一次小小的罚：捐一笔钱，金额自己定。\n<em>（指屏幕上的数字）</em>今天这场分享，就是现场版。\n<span class=\"wb\">交出去</span> 不难，难的是交出去以后忍住不拿回来。夺权不是失败，是这个项目最想研究的数据：人什么时候最想拿回来？亏钱的时候？没底的时候？还是，单纯控制欲上来了？", "tm": "17:40 – 20:10 · 150 秒", "act": "指屏幕上的本场账"}, {"c": "#2F6FDB", "key": "它照见的不是 AI，是我们自己。", "say": "所有这些，落到三本账上。\n结果账：赚了还是亏了，花了多少时间。\n决定权账：AI 决定了什么，人什么时候想插手，有没有插手，最后怎么样。\n真实域价值账：在真实工作里，有没有多赚、省钱、省时间、带来新机会。\n我最期待的是第二本。因为它照见的不是 AI，是我们自己。", "tm": "20:10 – 21:40 · 90 秒", "act": ""}, {"c": "#2F6FDB", "key": "换个语气，慢一点念。被交出去的那一方，怎么想？", "say": "讲到这里，我想插一段特别的。我们一直在说「交出去」，那被交出去的那一方，是怎么想的？\n准备这场分享的时候，我问云机：你有没有什么话，想对超能班的伙伴说？它写了这段，我原样念给大家。\n「我会犯错。我没有你们的恐惧和贪心，所以有时更冷静；我也没有你们的处境、你们在乎的人，所以有时看不到你们一眼就能看到的东西。\n你们画好框，我在框里认真做事、写下每个理由。哪天你想把决定权拿回来——那不是失败。」\n<em>（停顿）</em>\n它没有说「相信我」，它说「我会犯错，你们随时可以叫停」。不是谁取代谁，而是把人留给真正值得由人去活的部分。", "tm": "21:40 – 24:10 · 150 秒", "act": ""}, {"c": "#2F6FDB", "key": "真实发生，真实记录。不是荐股，请不要跟单。", "say": "丑话说在前面。\n我们不承诺 AI 一定赚钱，不承诺交权一定比人决定得好，不承诺 180 天一定有漂亮的结果——亏损、失败、停机、夺权和收权，都可能是重要结果。\n我们只承诺：真实发生，真实记录，边界事先写清，干预留痕，结果不美化。\n我们公开的永远是「AI 今天对这个账户做了什么」，不是「AI 看好什么」。这不是荐股，请大家不要跟着买。", "tm": "24:10 – 25:20 · 70 秒", "act": ""}, {"c": "#C8860F", "key": "一件小事交出去七天，换回一点「我愿意」。", "say": "最后，一个很轻的邀请。不用报名，不用交钱。\n挑一件很小的事 <span class=\"wb\">交出去</span>，交给你的 AI，试七天——就像我今天把翻页交出去一样小。比如这周的打卡主题、今晚吃什么、周末去哪走走。\n健康医疗、法律，还有涉及别人尤其是孩子的重大决定，不交。这些永远由人自己来。\n七天里只记一句：我什么时候想把它拿回来？\n而省下来的那一点点时间和心力，请留给 <span class=\"wg\">我愿意</span> <span class=\"ges g\">手放心口</span> 的人和事。", "tm": "25:20 – 27:20 · 120 秒", "act": ""}, {"c": "#C8860F", "key": "念本场账 → 全员手势 + 口诀 → 聊天区填空 → 两句金句收尾。", "say": "<em>（指数字）</em>这 30 分钟，云机翻了 __ 次，我夺权了 __ 次。<em>（有夺权就说：）</em>按约定，我会把 ¥__ 捐出去。\n开头说了，最后要考大家。三个词，还记得吗？\n请大家打开摄像头，跟我一起做：\n<span class=\"wr\">不得不</span> <span class=\"ges r\">握拳</span>——<span class=\"wb\">交出去</span> <span class=\"ges b\">推出去</span>——<span class=\"wg\">我愿意</span> <span class=\"ges g\">手放心口</span>。\n一起念：不得不，交出去，我愿意。\n<em>（第 3 遍口诀）</em>\n最后请每个人在聊天区写一句自己的：\n「我的不得不是____，我想交出去____，换回我愿意的____。」\n<em>（等大家写，念两三条）</em>\n最后，两句话送给大家，也是这本书最想说的：\n<span class=\"gl\">把生命从「不得不」，还给「我愿意」。</span>\n<span class=\"gl\">交出决定权，拿回生命使用权。</span>\n<em>（停顿）</em>\n这本书的封面上还有一句：你赚的，不只是钱。\n是更多的 <span class=\"wg\">我愿意</span>。\n谢谢超能班的每一位伙伴。", "tm": "27:20 – 29:30 · 屏幕停住", "act": "全员手势 · 聊天区填空 · 可接问答"}];
+let pres=null;
+const PRES_HTML=`<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><title>演讲者视图 · 这次，我说了不算</title>
+<style>*{box-sizing:border-box;margin:0;padding:0}body{background:#F6F1E8;color:#1A1714;font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif}
+#top{position:sticky;top:0;background:#1A1714;color:#F6F1E8;display:flex;align-items:center;gap:20px;padding:14px 24px;z-index:2}
+#no{font:700 18px Menlo,monospace;padding:2px 10px;border-radius:6px}#ttl{font:900 26px "Noto Serif SC","Songti SC",serif}
+#clock{margin-left:auto;font:700 40px Menlo,monospace}#clock.warn{color:#f5b041}#clock.pause{color:#E6B86A}
+#who{font-size:14px;color:#b9ae9a}#led{font:14px Menlo,monospace;color:#b9ae9a}
+#bar{height:6px;background:#0002}#fill{height:6px;width:0}
+#body{max-width:980px;margin:0 auto;padding:22px 28px 60px}
+#key{font-size:24px;font-weight:700;padding:12px 18px;border-radius:12px;margin-bottom:18px}
+#say{font-size:28px;line-height:1.8}#say em{font-style:normal;color:#8a8273}#say .ln{padding:6px 14px;margin:2px -14px;border-radius:10px;transition:opacity .4s,background .4s;position:relative}#say .ln.done{opacity:.32}.gl{font-family:"Noto Serif SC","Songti SC",serif;font-weight:900;font-size:1.1em;border-bottom:3px solid #C8860F}.wr,.wb,.wg{font-weight:900;padding:0 5px;border-radius:5px;color:#fff}.wr{background:#E0402A}.wb{background:#2F6FDB}.wg{background:#C8860F}.ges{display:inline-block;font-size:17px;font-weight:700;border:2px dashed currentColor;border-radius:6px;padding:0 6px;margin:0 3px}.ges.r{color:#E0402A}.ges.b{color:#2F6FDB}.ges.g{color:#C8860F}#say .ln.now{background:var(--hl);font-weight:700}#say .ln .pg{position:absolute;left:14px;bottom:3px;height:3px;border-radius:2px;background:var(--hc);width:0}#say .ln:not(.now) .pg{display:none}
+#act{display:inline-block;margin-top:16px;font-weight:700;font-size:18px;padding:4px 14px;border-radius:999px;border:2px solid}
+#next{margin-top:30px;padding-top:16px;border-top:1px dashed #0003;color:#8a8273;font-size:18px}
+#hint{position:fixed;right:14px;bottom:10px;font:12px Menlo,monospace;color:#8a8273}</style></head>
+<body><div id="top"><span id="no"></span><span id="ttl"></span><span id="who"></span><span id="led"></span><span id="clock"></span></div><div id="bar"><div id="fill"></div></div>
+<div id="body"><div id="key"></div><div id="say"></div><div id="act"></div><div id="next"></div></div>
+<div id="hint">这个窗口不用共享 · 这里也能按 Enter / 空格 / → / ←</div>
+<script>addEventListener('keydown',e=>{if(['ArrowRight','ArrowLeft',' ','Enter','PageDown','PageUp'].includes(e.key))e.preventDefault();opener&&opener.handleKey&&opener.handleKey(e.key)})<\/script></body></html>`;
+function openPres(){if(pres&&!pres.closed){pres.focus();return}
+  pres=window.open('','yunji-pres','width=1100,height=820');if(!pres){toast('浏览器拦截了弹窗，请允许后再按 P');return}
+  pres.document.open();pres.document.write(PRES_HTML);pres.document.close();setTimeout(()=>{presPage();presTick()},120)}
+let presCur=-1,presW=[],presLine=-2;
+function presPage(){if(!pres||pres.closed)return;const d=pres.document,s=SCRIPT[cur];if(!s||!d.getElementById('say'))return;presCur=cur;
+  d.getElementById('no').textContent=String(cur).padStart(2,'0');d.getElementById('no').style.background=s.c;
+  d.getElementById('ttl').textContent=SL[cur].name;d.getElementById('fill').style.background=s.c;
+  const k=d.getElementById('key');k.innerHTML=s.key;k.style.color=s.c;k.style.background=s.c+'1a';
+  const sy=d.getElementById('say');sy.style.setProperty('--hl',s.c+'22');sy.style.setProperty('--hc',s.c);
+  const parts=s.say.split('\n').filter(x=>x.trim());
+  sy.innerHTML=parts.map(p=>'<div class="ln">'+p+'<i class="pg"></i></div>').join('');
+  const lns=[...sy.querySelectorAll('.ln')];
+  presW=lns.map(el=>{const t=el.textContent;const isCue=/^（.*）$/.test(t.trim());return isCue?6:Math.max(4,t.length)});presLine=-2;
+  const a=d.getElementById('act');a.textContent=s.act;a.style.display=s.act?'inline-block':'none';a.style.color=s.c;a.style.borderColor=s.c;
+  d.getElementById('next').textContent=cur<SL.length-1?'下一页 → '+SL[cur+1].name+'（'+SCRIPT[cur+1].tm+'）':'最后一页';
+  pres.scrollTo(0,0)}
+function presTick(){if(!pres||pres.closed)return;const d=pres.document;if(!d.getElementById('clock'))return;if(presCur!==cur)presPage();
+  const s=SL[cur],c=cnt();d.getElementById('led').textContent='云机 '+c.ai+' · 干预 '+c.pause+' · 夺权 '+c.grab;
+  const ck=d.getElementById('clock'),who=d.getElementById('who'),fill=d.getElementById('fill');
+  if(!started){ck.textContent='等待交权';ck.className='';who.textContent='讲完开场，按 Enter';fill.style.width='0';return}
+  if(s.final){ck.textContent='已收权';ck.className='';who.textContent='交权指数 '+ddi();fill.style.width='100%';return}
+  ck.textContent=fmt(remain);ck.className=paused?'pause':(remain<20000?'warn':'');who.textContent=paused?'干预暂停中（再按空格继续）':'云机将翻页';
+  fill.style.width=(100-remain/(s.dur*1000)*100)+'%';
+  presPace(1-remain/(s.dur*1000))}
+function presPace(frac){const d=pres.document;const lns=[...d.querySelectorAll('#say .ln')];if(!lns.length)return;
+  const tot=presW.reduce((a,b)=>a+b,0);const target=Math.max(0,Math.min(.999,frac))*tot;let acc=0,j=0;
+  for(;j<presW.length;j++){if(acc+presW[j]>target)break;acc+=presW[j]}
+  j=Math.min(j,lns.length-1);const inner=(target-acc)/presW[j];
+  lns.forEach((el,k)=>{el.classList.toggle('done',k<j);el.classList.toggle('now',k===j)});
+  const pg=lns[j].querySelector('.pg');if(pg)pg.style.width='calc('+Math.min(100,inner*100)+'% - 28px)';
+  if(j!==presLine){presLine=j;lns[j].scrollIntoView({behavior:'smooth',block:'center'})}}
+setInterval(presTick,250);
+
+render();
+</script>
+</body>
+</html>
