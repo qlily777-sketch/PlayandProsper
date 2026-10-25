@@ -379,6 +379,12 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 .m-qs{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,4vw,48px);align-items:center;margin-top:48px}
 .m-qs .xsr{margin-top:0}
 .xsr .xsr-more{margin-top:16px;font-size:.86rem;opacity:.7}
+.m-photos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:clamp(150px,20vw,260px);gap:10px;margin-top:40px}
+.m-photos figure{margin:0;position:relative;overflow:hidden;border-radius:6px}
+.m-photos .w2{grid-column:span 2;grid-row:span 2}
+.m-photos img{width:100%;height:100%;object-fit:cover}
+.m-photos figcaption{position:absolute;left:0;right:0;bottom:0;padding:24px 12px 8px;color:#fff;font-size:.8rem;background:linear-gradient(0deg,rgba(4,20,24,.7),transparent)}
+@media (max-width:560px){.m-photos{grid-template-columns:repeat(2,minmax(0,1fr))}.m-photos .w2{grid-row:span 1}}
 @media (max-width:860px){.m-top,.m-qs{grid-template-columns:1fr}.m-qs .xsr{margin-top:28px}}
 @media (max-width:860px){.mentor-grid{grid-template-columns:1fr}}
 @media (max-width:560px){.portraits{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -495,11 +501,19 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
         <p>先花 6 分钟认识她 · 继红老师宣传片</p>
       </div>
       <div class="m-pitch">
-        <p class="m-name"><b>马继红 · 继红老师</b><span>心上仁导师 · 住在云南普洱</span></p>
-        <p>在心上仁，近百位企业家付费 10 万+，只为跟她近距离学习。千百合自己上过她的《关系之道》和《大自然净化之旅》，所以这一次，我们把她请上了岛。</p>
-        <p>没有会场，没有大屏，没有 PPT。24 个人，一个圈，两天半，只围绕一个问题：<b>怎么活，才是活成了自己。</b></p>
+        <p class="m-name"><b>马继红 · 幸福导师</b><span>心上仁 · 住在云南普洱</span></p>
+        <p>近百位心上仁企业家付费 10 万+ 跟她学。千百合上过她的《关系之道》和《大自然净化之旅》，这次请她上岛。</p>
+        <p>没有会场，没有 PPT。两天半，只聊一件事：<b>怎么活，才是活成了自己。</b></p>
         <div class="m-incl"><span class="mono">已包含</span><p>继红老师两天半的课，包含在驻岛费用里，<b>不另收费</b>。<a href="#price">看费用</a></p></div>
       </div>
+    </div>
+
+    <div class="m-photos">
+      <figure class="w2"><img src="img/jihong-stage.jpg" alt="继红老师身穿白衣，在心上仁「幸福动力」课堂上牵手起舞" loading="lazy"><figcaption>心上仁「幸福动力」课堂</figcaption></figure>
+      <figure><img src="img/jihong-white.jpg" alt="继红老师白衣白帽，坐在山间喝茶" loading="lazy"></figure>
+      <figure><img src="img/jihong-yellow.jpg" alt="继红老师身穿淡黄衣裙站在花树下" loading="lazy"></figure>
+      <figure><img src="img/jihong-mic.jpg" alt="继红老师手持话筒分享" loading="lazy"><figcaption>《人生只有一件事》</figcaption></figure>
+      <figure><img src="img/jihong-forest.jpg" alt="继红老师在阳光下的林间步道，身旁一只大狗" loading="lazy"></figure>
     </div>
 
     <div class="m-qs">
