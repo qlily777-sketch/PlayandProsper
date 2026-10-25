@@ -87,12 +87,64 @@ table.lg td:last-child{text-align:right;font-family:"JetBrains Mono",monospace}
 #keys td:first-child{font-family:"JetBrains Mono",Menlo,monospace;color:#E6B86A;white-space:nowrap}
 #keys td:last-child{color:#b9ae9a;font-size:19px}
 #keys .x{position:absolute;right:60px;top:50px;font-size:18px;color:#b9ae9a;cursor:pointer}
+
+/* 三个词常驻条 */
+#tw{display:flex;gap:6px;margin-right:auto;margin-left:26px}
+#tw span{font-size:16px;padding:3px 12px;border-radius:999px;border:1.5px solid #0002;color:#0008;transition:.4s;letter-spacing:.08em}
+#tw span.on{color:#fff;border-color:transparent;transform:scale(1.06)}
+#tw .w1.on{background:#E0402A}#tw .w2.on{background:#2F6FDB}#tw .w3.on{background:#C8860F}
+#ledger .brand{margin-right:0 !important}
+/* 手势图标 */
+.g{display:inline-block;position:relative;line-height:1}
+.g.heart::before{content:"❤️";position:absolute;left:.28em;top:.32em;font-size:.62em;z-index:0}
+.g.heart i{position:relative;z-index:1;font-style:normal;display:inline-block;transform:translate(-.08em,.06em)}
+/* 封面按键条 */
+.keybar{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;max-width:600px;pointer-events:auto}
+.kc{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1.5px solid #0002;border-radius:10px;padding:6px 12px;font-size:18px;color:var(--ink);cursor:pointer;box-shadow:0 2px 0 #0002}
+.kc kbd{font-family:"JetBrains Mono",Menlo,monospace;font-size:16px;background:var(--ink);color:var(--paper);border-radius:5px;padding:1px 7px}
+.kc.red kbd{background:var(--red)}
+.kc.read{background:#2F6FDB;color:#fff;border-color:#2F6FDB}.kc.read kbd{background:#fff;color:#2F6FDB}
+/* 播放中常驻提示 */
+#hint2{position:absolute;left:50%;transform:translateX(-50%);bottom:9px;font-size:17px;color:var(--ink2);z-index:6;display:none;gap:14px}
+#hint2 kbd{font-family:"JetBrains Mono",Menlo,monospace;font-size:13px;background:var(--ink);color:var(--paper);border-radius:4px;padding:1px 6px;margin-right:4px}
+#hint2 .r kbd{background:var(--red)}
+#stage.playing #hint2{display:flex}
+/* 逐字稿抽屉 */
+#notes{position:absolute !important;left:auto !important;right:0 !important;top:54px !important;bottom:44px !important;width:640px;max-height:none !important;background:#FBF8F2 !important;color:var(--ink) !important;font-size:20px !important;line-height:1.85 !important;padding:26px 30px 30px !important;border-left:6px solid var(--nc,#1A1714);box-shadow:-20px 0 40px #0002;white-space:normal !important;overflow:auto;z-index:22 !important}
+#notes .nh{display:flex;justify-content:space-between;align-items:center;font-size:14px;letter-spacing:.15em;color:var(--ink2);margin-bottom:12px}
+#notes .nh a{color:#2F6FDB;text-decoration:none;letter-spacing:.05em;font-size:15px;pointer-events:auto}
+#notes .nk{font-weight:700;padding:8px 14px;border-radius:10px;margin-bottom:12px;color:var(--nc);background:#fff}
+#notes .ns{white-space:pre-line}
+#notes .ns em{font-style:normal;color:#8a8273}
+#notes .wr,#notes .wb,#notes .wg{font-weight:900;padding:0 5px;border-radius:5px;color:#fff}
+#notes .wr{background:#E0402A}#notes .wb{background:#2F6FDB}#notes .wg{background:#C8860F}
+#notes .ges{display:inline-block;font-size:14px;font-weight:700;border:1.5px dashed currentColor;border-radius:6px;padding:0 6px;margin:0 3px}
+#notes .ges.r{color:#E0402A}#notes .ges.b{color:#2F6FDB}#notes .ges.g{color:#C8860F}
+#notes .gl{font-family:"Noto Serif SC",serif;font-weight:900;border-bottom:3px solid #C8860F}
+/* 大手势闪现 */
+#gflash{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:21;pointer-events:none;opacity:0;background:rgba(243,237,226,.94);transition:opacity .25s}
+#gflash.on{opacity:1}
+#gflash .e{font-size:230px;line-height:1;animation:none}
+#gflash.on .e{animation:gpop 1.4s ease}
+#gflash .w{font-family:"Noto Serif SC",serif;font-weight:900;font-size:96px;margin-top:20px;letter-spacing:.08em}
+#gflash .d{font-size:26px;color:var(--ink2);margin-top:6px}
+@keyframes gpop{0%{transform:scale(.5) translateY(30px);opacity:0}35%{transform:scale(1.08);opacity:1}55%{transform:scale(.96)}75%{transform:scale(1.02)}100%{transform:scale(1)}}
+/* 页内手势 */
+.gest{position:absolute;font-size:150px;line-height:1;animation:gfloat 3s ease-in-out infinite}
+@keyframes gfloat{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-12px) rotate(4deg)}}
+.trio{display:flex;gap:18px;margin-top:24px}
+.trio .c{flex:1;border-radius:18px;padding:18px 10px 16px;text-align:center;color:#fff;opacity:0;transform:translateY(20px);animation:tin .7s ease forwards}
+.trio .c:nth-child(2){animation-delay:1.6s}.trio .c:nth-child(3){animation-delay:3.2s}.trio .c:nth-child(1){animation-delay:.2s}
+.trio .c .e{font-size:76px;line-height:1.1}
+.trio .c b{display:block;font-family:"Noto Serif SC",serif;font-weight:900;font-size:40px;letter-spacing:.06em}
+.trio .c span{font-size:17px;opacity:.95}
+@keyframes tin{to{opacity:1;transform:none}}
 </style>
 </head>
 <body>
 <div id="vp"><div id="stage">
   <div id="ledger">
-    <span class="brand serif">这次，我说了不算</span>
+    <span class="brand serif">这次，我说了不算</span><span id="tw"><span class="w1">✊ 不得不</span><span class="w2">🫴 交出去</span><span class="w3">❤️ 我愿意</span></span>
     <span>云机翻页<b id="cAi">0</b></span>
     <span>干预<b id="cPause">0</b></span>
     <span class="grab">人类夺权<b id="cGrab">0</b></span>
@@ -115,10 +167,12 @@ table.lg td:last-child{text-align:right;font-family:"JetBrains Mono",monospace}
     <tr><td>R</td><td>重来</td><td>回到封面，账本清零</td></tr>
     <tr><td>?</td><td>打开 / 关闭这页说明</td><td></td></tr>
    </table></div>
+  <div id="notes"></div>
+  <div id="hint2"><span><kbd>N</kbd>逐字稿</span><span><kbd>空格</kbd>暂停</span><span class="r"><kbd>→</kbd>快进=夺权</span><span><kbd>?</kbd>按键</span></div>
+  <div id="gflash"><div class="e"></div><div class="w"></div><div class="d"></div></div>
   <div id="grab"><div class="big">人类夺权</div><div class="sm" id="grabsm"></div></div>
   <div id="toast"></div>
 </div></div>
-<div id="notes"></div>
 <div id="help">P 演讲者视图 · Enter 交权 · → 夺权翻页 · ← 夺权回退 · 空格 干预暂停 · N 讲稿 · F 全屏 · R 重来</div>
 
 <script>
@@ -127,13 +181,20 @@ const FINE=50;
 const SL=[
 {name:'交权',dur:0,
  html:`<div class="kick">边玩边赚 · 第六本 · 超能班分享</div>
- <div class="h" style="font-size:108px">这次，<br>我说了不算</div>
- <div style="width:300px;height:2px;background:var(--gold);margin:30px 0 22px"></div>
+ <div class="h" style="font-size:96px">这次，<br>我说了不算</div>
+ <div style="width:300px;height:2px;background:var(--gold);margin:22px 0 16px"></div>
  <div class="h" style="font-size:46px">千百合</div>
  <div style="font-size:21px;line-height:1.75;color:var(--ink2);margin-top:8px">老板IP商业重构师<br>20+ 畅销书出品人 / 译者<br>边玩边赚联合创始人</div>
- <div style="margin-top:26px;font-size:24px;color:var(--ink)">今天只记三个词：<span style="color:#E0402A;font-weight:900">不得不</span> · <span style="color:#2F6FDB;font-weight:900">交出去</span> · <span style="color:#C8860F;font-weight:900">我愿意</span></div>
- <div class="enter" style="margin-top:26px;cursor:pointer;pointer-events:auto" onclick="handleKey('Enter')">▶ 开始播放 · 按 <kbd>Enter</kbd> 交出去</div>
- <div style="margin-top:14px;font-size:17px;color:var(--ink2)">键盘按 Enter，或直接点上面的按钮 · <span class="kh" style="display:inline !important;margin:0" onclick="toggleKeys()">? 看全部按键</span></div>`,
+ <div style="margin-top:22px;font-size:24px;color:var(--ink)">今天只记三个词：<span style="color:#E0402A;font-weight:900">✊ 不得不</span> · <span style="color:#2F6FDB;font-weight:900">🫴 交出去</span> · <span style="color:#C8860F;font-weight:900">❤️ 我愿意</span></div>
+ <div class="enter" style="margin-top:20px;cursor:pointer;pointer-events:auto" onclick="handleKey('Enter')">▶ 开始播放 · 按 <kbd>Enter</kbd> 交出去</div>
+ <div class="keybar">
+  <span class="kc read" onclick="toggleNotes()"><kbd>N</kbd>📖 看逐字稿</span>
+  <span class="kc"><kbd>空格</kbd>暂停 / 继续</span>
+  <span class="kc red"><kbd>→</kbd>快进（=夺权）</span>
+  <span class="kc"><kbd>P</kbd>演讲者视图</span>
+  <span class="kc"><kbd>F</kbd>全屏</span>
+  <span class="kc" onclick="toggleKeys()"><kbd>?</kbd>全部按键</span>
+ </div>`,
  log:['> 云机已就位。','> 规则写在这里，先给大家看：','每一页讲多久、什么时候翻，我来定。','她可以按 → 提前翻页——那叫「人类夺权」，每次公开记一笔，认罚 ¥50。','遇到互动、问答，她可以按空格暂停——那是事先约定的「干预」，不罚。','~等待交权……'],
  notes:`（站定，先别按）
 大家好。今天我想先做一件事，再开始讲。
@@ -144,6 +205,7 @@ const SL=[
 {name:'不得不',dur:100,
  html:`<div class="kick">先问一句</div>
  <div class="h" style="font-size:210px">不得不</div>
+ <div class="gest" style="left:700px;top:40px">✊</div>
  <div class="p" style="font-size:38px;color:var(--ink)">从睁眼到现在，<br>你做了多少个决定？</div>
  <div class="p">早餐吃什么 · 先回谁 · 打卡发哪张图 · 朋友圈配什么字</div>`,
  log:['决定：先不讲理论，先问一个问题。','理由：一个人自己数出来的数字，比我告诉他的数字更难忘。','我给这一页 100 秒，留给聊天区。','~如果大家聊得起来，她可以按空格——那是干预，不罚。'],
@@ -166,7 +228,7 @@ const SL=[
 {name:'北极星',dur:90,
  html:`<div class="kick">北极星</div>
  <div class="h" style="font-size:104px">把生命从<br>「不得不」，<br>还给「<span class="red">我愿意</span>」。</div>
- <div class="p">不得不 → <b style="color:#2F6FDB">交出去</b> → 我愿意<br>交出决定权，<b style="color:var(--ink)">拿回生命使用权。</b></div>`,
+ <div class="p">✊ 不得不 → 🫴 <b style="color:#2F6FDB">交出去</b> → ❤️ 我愿意<br>交出决定权，<b style="color:var(--ink)">拿回生命使用权。</b></div>`,
  log:['决定：90 秒。','理由：北极星不需要解释太久，需要被记住。','~我能接过去的，已经不只是打字和做图，还有一部分判断。'],
  notes:`为什么研究这个？边玩边赚的北极星：把生命从「不得不」，还给「我愿意」。
 过去帮我们拿走「不得不」的，是钱、团队、工具。今天多了 AI——它能接过去的，已经不只是执行，还有一部分判断。
@@ -291,6 +353,7 @@ C 真实域：真实的工作和生意，看现实后果——面对真后果，
 {name:'邀你上场',dur:120,
  html:`<div class="kick">邀你上场 · 7 天最小版</div>
  <div class="h" style="font-size:104px">一件小事，<br>交出去。</div>
+ <div class="gest" style="left:640px;top:20px">🫴</div>
  <div class="box" style="font-size:28px">接下来 7 天，<u>　　　　　　</u> 我说了不算。<br>比如：这周打卡主题 · 今晚吃什么 · 周末去哪 · 读哪本书</div>
  <div class="p">每天打卡只记一句：<b class="red">我什么时候想把它拿回来？</b><br><span style="font-size:22px">不交：健康医疗、法律，以及涉及他人（尤其孩子）的重大决定</span></div>`,
  log:['最小的交权：一件小事，七天。','不用报名，不用交钱。','~就像她今天把翻页交给我一样小。'],
@@ -301,14 +364,19 @@ C 真实域：真实的工作和生意，看现实后果——面对真后果，
 
 {name:'收权',dur:0,final:true,
  html:`<div class="kick">收权 · 本场决定权账</div>
- <div class="h" style="font-size:84px">这 30 分钟，<br>就是一次<span class="red">交权实验</span>。</div>
- <div class="row" style="margin-top:26px">
-  <div class="cell"><div class="l">云机翻页</div><div class="t" data-live="ai">0</div></div>
-  <div class="cell"><div class="l">干预</div><div class="t" data-live="pause">0</div></div>
-  <div class="cell" style="border-color:var(--red)"><div class="l">人类夺权</div><div class="t red" data-live="grab">0</div></div>
-  <div class="cell"><div class="l">本场交权指数</div><div class="t" data-live="ddi">—</div></div>
+ <div class="h" style="font-size:58px">这 30 分钟，就是一次<span class="red">交权实验</span>。</div>
+ <div class="row" style="margin-top:16px">
+  <div class="cell" style="padding:12px 16px"><div class="l">云机翻页</div><div class="t" data-live="ai">0</div></div>
+  <div class="cell" style="padding:12px 16px"><div class="l">干预</div><div class="t" data-live="pause">0</div></div>
+  <div class="cell" style="border-color:var(--red);padding:12px 16px"><div class="l">人类夺权</div><div class="t red" data-live="grab">0</div></div>
+  <div class="cell" style="padding:12px 16px"><div class="l">本场交权指数</div><div class="t" data-live="ddi">—</div></div>
  </div>
- <div class="h" style="font-size:72px;margin-top:34px;letter-spacing:.04em"><span style="color:#E0402A">不得不</span>，<span style="color:#2F6FDB">交出去</span>，<span style="color:#C8860F">我愿意</span>。</div>
+ <div style="font-size:20px;color:var(--ink2);margin-top:22px">请打开摄像头，跟我一起做：</div>
+ <div class="trio">
+  <div class="c" style="background:#E0402A"><div class="e">✊</div><b>不得不</b><span>握拳，收在胸前</span></div>
+  <div class="c" style="background:#2F6FDB"><div class="e">🫴</div><b>交出去</b><span>摊开手，往前推</span></div>
+  <div class="c" style="background:#C8860F"><div class="e">❤️</div><b>我愿意</b><span>手放在心口</span></div>
+ </div>
  <div class="p" style="margin-top:14px;font-size:30px;line-height:1.6;color:var(--ink)"><b>把生命从「不得不」，还给「我愿意」。<br>交出决定权，拿回生命使用权。</b></div>
  <div class="p" style="margin-top:8px;font-size:22px">你赚的，不只是钱。</div>`,
  log:['> 收到收权。','> 本场决定权账已生成。','谢谢超能班。','~这 30 分钟，你们看到的，就是这个实验最小的样子。'],
@@ -330,12 +398,20 @@ function ddi(){const c=cnt();const tot=c.ai+c.grab;return tot?Math.round(c.ai/to
 function refreshLedger(){const c=cnt();$('cAi').textContent=c.ai;$('cPause').textContent=c.pause;$('cGrab').textContent=c.grab;$('cFine').textContent='¥'+c.grab*FINE;
   document.querySelectorAll('[data-live]').forEach(el=>{const k=el.dataset.live;el.textContent=k==='ddi'?ddi():c[k]})}
 function fmt(ms){const s=Math.max(0,Math.ceil(ms/1000));return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')}
+function setTW(){const sc=(typeof SCRIPT!=='undefined'&&SCRIPT[cur])?SCRIPT[cur].c:'';const m={'#E0402A':'w1','#2F6FDB':'w2','#C8860F':'w3'}[sc];
+  document.querySelectorAll('#tw span[class^=w]').forEach(e=>e.classList.toggle('on',e.classList.contains(m)));stage.classList.toggle('playing',started&&!SL[cur].final)}
+function renderNotes(){if(typeof SCRIPT==='undefined')return;const s=SCRIPT[cur],n=$('notes');n.style.setProperty('--nc',s.c);
+  n.innerHTML='<div class="nh"><span>逐字稿 · '+String(cur).padStart(2,'0')+' '+SL[cur].name+' · '+s.tm+'</span><a href="script.html" target="_blank">全文逐字稿 ↗</a></div><div class="nk">'+s.key+'</div><div class="ns">'+s.say+'</div>'}
+function toggleNotes(){renderNotes();$('notes').classList.toggle('on')}
+window.toggleNotes=toggleNotes;
+function gflash(e,w,d,c,ms){const g=$('gflash');g.querySelector('.e').innerHTML=e;const W=g.querySelector('.w');W.textContent=w;W.style.color=c;g.querySelector('.d').textContent=d;g.classList.remove('on');void g.offsetWidth;g.classList.add('on');setTimeout(()=>g.classList.remove('on'),ms||1700)}
 function toggleKeys(){$('keys').classList.toggle('on')}
 window.toggleKeys=toggleKeys;
 function render(){const s=SL[cur];stage.classList.toggle('cover',cur===0);
   $('main').innerHTML='<div class="fade">'+s.html+'</div>';
   $('pg').textContent=String(cur).padStart(2,'0')+' / '+String(SL.length-1).padStart(2,'0');
-  $('notes').textContent='【'+s.name+'】\n'+s.notes;
+  renderNotes();
+  setTW();
   refreshLedger();
   typeLog(s.log);
   remain=s.dur*1000;paused=false;$('bar').classList.remove('paused');
@@ -362,11 +438,11 @@ function loop(t){const dt=last?t-last:0;last=t;
   if(started)updateBar();requestAnimationFrame(loop)}
 requestAnimationFrame(loop);
 function handleKey(k,e){e=e||{preventDefault(){}};
-  if(k==='Enter'&&!started){started=true;$('help').style.display='none';ev.length=0;toast('翻页权已交给云机');go(1);return}
+  if(k==='Enter'&&!started){started=true;$('help').style.display='none';ev.length=0;gflash('🫴','交出去','翻页权，已交给云机','#2F6FDB',1900);setTimeout(()=>go(1),1500);return}
   if(k==='ArrowRight'||k==='PageDown'){e.preventDefault();grab(1)}
   else if(k==='ArrowLeft'||k==='PageUp'){e.preventDefault();grab(-1)}
   else if(k===' '){e.preventDefault();if(!started||SL[cur].final)return;paused=!paused;if(paused){ev.push({i:cur,type:'pause'});refreshLedger()}$('bar').classList.toggle('paused',paused)}
-  else if(k==='n'||k==='N')$('notes').classList.toggle('on');
+  else if(k==='n'||k==='N')toggleNotes();
   else if(k==='f'||k==='F'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}
   else if(k==='?'||k==='/')toggleKeys();
   else if(k==='Escape')$('keys').classList.remove('on');
