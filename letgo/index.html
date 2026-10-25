@@ -412,7 +412,8 @@ C 真实域：真实的工作和生意，看现实后果——面对真后果，
  <div class="box" style="font-size:30px;margin-top:22px">接下来 7 天，<span class="pick" id="pick" contenteditable="true" spellcheck="false">　　　　</span> 我说了不算。
   <div><span class="pc" onclick="pickIt(this)">这周的打卡主题</span><span class="pc" onclick="pickIt(this)">今晚吃什么</span><span class="pc" onclick="pickIt(this)">周末去哪走走</span><span class="pc" onclick="pickIt(this)">这周读哪本书</span><span class="pc" onclick="pickIt(this)">明天先做哪件事</span></div></div>
  <div class="copy" onclick="copyPrompt()">🫴 复制这句话，现在就发给你的 AI</div>
- <div class="p" style="font-size:22px;margin-top:20px">每天打卡只记一句：<b class="red">我什么时候想把它拿回来？</b><br>不交：健康医疗、法律，以及涉及他人（尤其孩子）的重大决定</div>`,
+ <div class="p" style="font-size:24px;margin-top:18px;color:var(--ink)">挑战：<b class="red">7 天零夺权</b>，你能做到吗？　只记三个词：「今天？」「我夺权」「收账」</div>
+ <div class="p" style="font-size:19px;margin-top:6px">不交：健康医疗、法律，以及涉及他人（尤其孩子）的重大决定</div>`,
  log:['最小的交权：一件小事，七天。','不用报名，不用交钱。','点一个选项，或者自己写。','~然后点蓝色按钮，把那句话发给你的 AI。','~这一次，你说了不算。'],
  notes:`最后，一个很轻的邀请。不用报名，不用交钱。
 挑一件很小的事交给你的 AI，试七天——就像我今天把翻页交出去一样小。
@@ -496,7 +497,7 @@ function loop(t){const dt=last?t-last:0;last=t;
 requestAnimationFrame(loop);
 function pickIt(el){document.querySelectorAll('.pc').forEach(x=>x.classList.remove('on'));el.classList.add('on');$('pick').textContent=el.textContent}
 function copyPrompt(){const p=($('pick')?$('pick').textContent:'').trim()||'一件小事';
-  const t='接下来 7 天，「'+p+'」由你来决定。每天早上直接告诉我你的决定和一句理由，不用问我的意见。如果我想拿回来，我会说「我夺权」，请你记下时间和原因。7 天后，帮我数一数：我夺权了几次，我把省下来的时间，留给了什么「我愿意」。';
+  const t='接下来 7 天，「'+p+'」你说了算。\n我每天问你「今天？」，你只给一个决定和一句理由，别给选项。\n我想改就说「我夺权」，你记下来。\n第 7 天我说「收账」，告诉我：我夺权了几次，省下的时间去哪了。';
   (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>toast('已复制 · 去粘贴给你的 AI'),()=>{const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');toast('已复制 · 去粘贴给你的 AI')}catch(e){};ta.remove()})}
 window.pickIt=pickIt;window.copyPrompt=copyPrompt;
 function handleKey(k,e){e=e||{preventDefault(){}};if(e.target&&(e.target.isContentEditable||/INPUT|TEXTAREA/.test(e.target.tagName||'')))return;
