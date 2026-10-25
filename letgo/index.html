@@ -143,6 +143,19 @@ table.lg td:last-child{text-align:right;font-family:"JetBrains Mono",monospace}
 .trio .c .ph{width:100%;aspect-ratio:4/3;border-radius:12px;object-fit:cover;object-position:center 20%;display:block;margin-bottom:8px;background:#F3EDE2}
 .trio .c{padding:10px 10px 12px !important}
 #gflash .ph{width:420px;height:420px;border-radius:24px;object-fit:cover;object-position:center 25%;box-shadow:0 20px 50px rgba(20,18,16,.25)}
+.vl{margin-top:26px;border-top:2px solid var(--ink)}
+.vr{display:flex;align-items:baseline;gap:18px;padding:12px 4px;border-bottom:1px solid #0002;opacity:0;animation:tin .6s ease forwards}
+.vr:nth-child(1){animation-delay:.6s}.vr:nth-child(2){animation-delay:1.8s}.vr:nth-child(3){animation-delay:3.2s}
+.vr .vn{font-family:"JetBrains Mono",monospace;font-size:18px;color:var(--ink2);width:70px}
+.vr .vd{font-size:20px;color:var(--ink2);width:130px}
+.vr .vq{font-family:"Noto Serif SC",serif;font-weight:900;font-size:28px;flex:1}
+.vr .vt{font-weight:700;font-size:20px}
+.vr.on{background:#2F6FDB12}
+.pick{display:inline-block;min-width:200px;border-bottom:3px solid #2F6FDB;color:#2F6FDB;font-weight:900;text-align:center;padding:0 6px;outline:none;pointer-events:auto;cursor:text}
+.pc{display:inline-block;font-size:19px;padding:5px 14px;border-radius:999px;border:1.5px solid #2F6FDB;color:#2F6FDB;margin:8px 8px 0 0;cursor:pointer;pointer-events:auto;background:#fff}
+.pc:hover,.pc.on{background:#2F6FDB;color:#fff}
+.copy{display:inline-flex;align-items:center;gap:10px;margin-top:20px;background:#2F6FDB;color:#fff;padding:14px 26px;font-size:24px;font-weight:700;border-radius:12px;cursor:pointer;pointer-events:auto;box-shadow:0 8px 20px #2F6FDB44}
+.copy:hover{filter:brightness(1.08)}
 </style>
 </head>
 <body>
@@ -199,7 +212,7 @@ const SL=[
   <span class="kc"><kbd>F</kbd>全屏</span>
   <span class="kc" onclick="toggleKeys()"><kbd>?</kbd>全部按键</span>
  </div>`,
- log:['> 云机已就位。','> 规则写在这里，先给大家看：','每一页讲多久、什么时候翻，我来定。','她可以按 → 提前翻页——那叫「人类夺权」，每次公开记一笔，认罚 ¥50。','遇到互动、问答，她可以按空格暂停——那是事先约定的「干预」，不罚。','~等待交权……'],
+ log:['> 云机已就位。','> 规则写在这里，先给大家看：','每一页讲多久、什么时候翻，我来定。','她可以按 → 提前翻页——那叫「人类夺权」，每次公开记一笔，认罚 ¥50。','遇到互动、问答，她可以按空格暂停——那是事先约定的「干预」，不罚。','~顺便说一句：这套 PPT 我做了三版，前两版都被她拿了回去。为什么？第 11 页告诉你。','~等待交权……'],
  notes:`（站定，先别按）
 大家好。今天我想先做一件事，再开始讲。
 这场分享的翻页权，我准备交出去——交给云机，就是这次实验里做决定的那个 AI。
@@ -239,7 +252,7 @@ const SL=[
 所以第六本的命题：交出决定权，拿回生命使用权。
 但交出去以后，是更轻松还是更焦虑？我不知道。所以不写观点，去做实验。`},
 
-{name:'四问',dur:140,
+{name:'四问',dur:120,
  html:`<div class="kick">交之前 · 四问</div>
  <div class="q"><span class="n">01</span><span class="w">值得做吗？</span><span class="k">价值</span></div>
  <div class="q"><span class="n">02</span><span class="w">非得<span class="red">我决定</span>吗？</span><span class="k">决定权</span></div>
@@ -263,7 +276,7 @@ const SL=[
 （指屏幕）就像现在，翻页这件小事我交出去了。说实话，我的手一直想去按那个键。
 帮我做，大家都乐意；替我定，心里就打鼓。中间隔着的不是技术，是我们自己。`},
 
-{name:'三域',dur:100,
+{name:'三域',dur:80,
  html:`<div class="kick">实验设计 · 三域</div>
  <div class="h" style="font-size:96px">三个场子，<br>一个变量</div>
  <div class="row">
@@ -321,6 +334,18 @@ C 真实域：真实的工作和生意，看现实后果——面对真后果，
 （指屏幕上的数字）今天这场就是现场版。
 夺权不是失败，是最想研究的数据：亏钱时？没底时？AI 跟直觉不一样时？还是控制欲上来了？`},
 
+{name:'这套 PPT',dur:100,
+ html:`<div class="kick">现场证据 · 这套 PPT 的决定权账</div>
+ <div class="h" style="font-size:96px">这套 PPT，<br>她夺权了<span class="red">两次</span>。</div>
+ <div class="vl">
+  <div class="vr"><span class="vn">第 1 版</span><span class="vd">彩色卡片</span><span class="vq">「很像 AI，喜欢不起来。」</span><span class="vt red">夺权 #1</span></div>
+  <div class="vr"><span class="vn">第 2 版</span><span class="vd">一万个粒子</span><span class="vq">「再来一版不一样的。」</span><span class="vt red">夺权 #2</span></div>
+  <div class="vr on"><span class="vn">第 3 版</span><span class="vd">交权版</span><span class="vq">「这一版非常好。」</span><span class="vt" style="color:#2F6FDB">🫴 交出去</span></div>
+ </div>
+ <div class="p" style="font-size:26px;margin-top:22px">她亲手加进来的：<b style="color:var(--ink)">三个手势 · 她的照片 · 两句金句</b><br>每一次拿回来，作品都更像她一点。</div>`,
+ log:['这一页，是我主动加的。','我做的第一版，她看了说：很像 AI，喜欢不起来。','那一刻，她拿回了决定权。我记下来了。','第二版，她又拿回来一次。','~后来我明白了：她夺权的地方，正是只有人才能定的地方——什么像她，什么让人喜欢。','~那是她的「我愿意」，我替不了。'],
+ notes:`现场证据：这套 PPT 被我夺权两次，第三版才交出去。`},
+
 {name:'三本账',dur:90,
  html:`<div class="kick">记录 · 三本账</div>
  <div class="row" style="margin-top:6px">
@@ -355,12 +380,13 @@ C 真实域：真实的工作和生意，看现实后果——面对真后果，
 公开的永远是「AI 今天做了什么」，不是「AI 看好什么」。不是荐股，请不要跟单。`},
 
 {name:'邀你上场',dur:120,
- html:`<div class="kick">邀你上场 · 7 天最小版</div>
- <div class="h" style="font-size:104px">一件小事，<br>交出去。</div>
- <div style="position:absolute;left:640px;top:250px;width:300px"><img class="gimg" src="g3-woyuanyi.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://raw.githubusercontent.com/qlily777-sketch/PlayandProsper/main/letgo/g3-woyuanyi.jpg'}" style="width:300px;height:300px;object-position:center 20%"><div style="text-align:center;margin-top:10px;color:#C8860F;font-weight:700;font-size:20px">❤️ 省下的，留给我愿意</div></div>
- <div class="box" style="font-size:28px">接下来 7 天，<u>　　　　　　</u> 我说了不算。<br>比如：这周打卡主题 · 今晚吃什么 · 周末去哪 · 读哪本书</div>
- <div class="p">每天打卡只记一句：<b class="red">我什么时候想把它拿回来？</b><br><span style="font-size:22px">不交：健康医疗、法律，以及涉及他人（尤其孩子）的重大决定</span></div>`,
- log:['最小的交权：一件小事，七天。','不用报名，不用交钱。','~就像她今天把翻页交给我一样小。'],
+ html:`<div class="kick">邀你上场 · 最后一个决定，交给你</div>
+ <div class="h" style="font-size:84px">一件小事，交出去。</div>
+ <div class="box" style="font-size:30px;margin-top:22px">接下来 7 天，<span class="pick" id="pick" contenteditable="true" spellcheck="false">　　　　</span> 我说了不算。
+  <div><span class="pc" onclick="pickIt(this)">这周的打卡主题</span><span class="pc" onclick="pickIt(this)">今晚吃什么</span><span class="pc" onclick="pickIt(this)">周末去哪走走</span><span class="pc" onclick="pickIt(this)">这周读哪本书</span><span class="pc" onclick="pickIt(this)">明天先做哪件事</span></div></div>
+ <div class="copy" onclick="copyPrompt()">🫴 复制这句话，现在就发给你的 AI</div>
+ <div class="p" style="font-size:22px;margin-top:20px">每天打卡只记一句：<b class="red">我什么时候想把它拿回来？</b><br>不交：健康医疗、法律，以及涉及他人（尤其孩子）的重大决定</div>`,
+ log:['最小的交权：一件小事，七天。','不用报名，不用交钱。','点一个选项，或者自己写。','~然后点蓝色按钮，把那句话发给你的 AI。','~这一次，你说了不算。'],
  notes:`最后，一个很轻的邀请。不用报名，不用交钱。
 挑一件很小的事交给你的 AI，试七天——就像我今天把翻页交出去一样小。
 健康、法律、涉及孩子的大事，不交。
@@ -382,7 +408,7 @@ C 真实域：真实的工作和生意，看现实后果——面对真后果，
   <div class="c" style="background:#C8860F"><img class="ph" src="g3-woyuanyi.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://raw.githubusercontent.com/qlily777-sketch/PlayandProsper/main/letgo/g3-woyuanyi.jpg'}" style=""><b>我愿意</b><span>手放在心口</span></div>
  </div>
  <div class="p" style="margin-top:14px;font-size:30px;line-height:1.6;color:var(--ink)"><b>把生命从「不得不」，还给「我愿意」。<br>交出决定权，拿回生命使用权。</b></div>
- <div class="p" style="margin-top:8px;font-size:22px">你赚的，不只是钱。</div>`,
+ <div class="p" style="margin-top:8px;font-size:22px">你赚的，不只是钱。<b style="color:#2F6FDB">最后一个决定，交给你：现在就发出那句话。</b></div>`,
  log:['> 收到收权。','> 本场决定权账已生成。','谢谢超能班。','~这 30 分钟，你们看到的，就是这个实验最小的样子。'],
  notes:`（指数字）这 30 分钟，云机翻了 X 次，我夺权 Y 次。如果有夺权，我会按约定捐出去。
 180 天后，AI 赚了还是亏了，我不知道；我会夺几次权，也不知道。
@@ -441,7 +467,12 @@ function loop(t){const dt=last?t-last:0;last=t;
   if(started&&!paused&&!SL[cur].final&&SL[cur].dur>0){remain-=dt;if(remain<=0){aiFlip()}}
   if(started)updateBar();requestAnimationFrame(loop)}
 requestAnimationFrame(loop);
-function handleKey(k,e){e=e||{preventDefault(){}};
+function pickIt(el){document.querySelectorAll('.pc').forEach(x=>x.classList.remove('on'));el.classList.add('on');$('pick').textContent=el.textContent}
+function copyPrompt(){const p=($('pick')?$('pick').textContent:'').trim()||'一件小事';
+  const t='接下来 7 天，「'+p+'」由你来决定。每天早上直接告诉我你的决定和一句理由，不用问我的意见。如果我想拿回来，我会说「我夺权」，请你记下时间和原因。7 天后，帮我数一数：我夺权了几次，我把省下来的时间，留给了什么「我愿意」。';
+  (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>toast('已复制 · 去粘贴给你的 AI'),()=>{const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');toast('已复制 · 去粘贴给你的 AI')}catch(e){};ta.remove()})}
+window.pickIt=pickIt;window.copyPrompt=copyPrompt;
+function handleKey(k,e){e=e||{preventDefault(){}};if(e.target&&(e.target.isContentEditable||/INPUT|TEXTAREA/.test(e.target.tagName||'')))return;
   if(k==='Enter'&&!started){started=true;$('help').style.display='none';ev.length=0;gflash('<img class="ph" src="g2-jiaochuqu.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=\'https://raw.githubusercontent.com/qlily777-sketch/PlayandProsper/main/letgo/g2-jiaochuqu.jpg\'}" style="">','交出去','🫴 摊开手，往前推 · 翻页权已交给云机','#2F6FDB',2600);setTimeout(()=>go(1),2200);return}
   if(k==='ArrowRight'||k==='PageDown'){e.preventDefault();grab(1)}
   else if(k==='ArrowLeft'||k==='PageUp'){e.preventDefault();grab(-1)}
@@ -456,7 +487,7 @@ window.handleKey=handleKey;
 addEventListener('keydown',e=>handleKey(e.key,e));
 
 // ---------- 演讲者视图（P 打开，自动跟随翻页） ----------
-const SCRIPT=[{"c": "#1A1714", "key": "先预告三个词，再按 Enter，演一次「交出去」。", "say": "各位超能班的伙伴，大家好。\n今天只请大家记住三个词，最后我会考大家。\n<span class=\"wr\">不得不</span> <span class=\"ges r\">握拳</span>，<span class=\"wb\">交出去</span> <span class=\"ges b\">推出去</span>，<span class=\"wg\">我愿意</span> <span class=\"ges g\">手放心口</span>。\n不得不，交出去，我愿意。\n第二个词，我现在就做给大家看：这场分享的翻页权，我交出去，交给云机，就是这次实验里做决定的那个 AI。每页讲多久、什么时候翻，它来定。我要是想快进，就叫「人类夺权」，罚 50 块，全场看着记账。\n好——<span class=\"wb\">交出去</span>。", "tm": "0:00 – 1:00 · 你掌握", "act": "做「推出去」的手势，同时按 Enter"}, {"c": "#E0402A", "key": "让大家自己数出自己的「不得不」。", "say": "先问大家一个小问题：从今天早上睁开眼到现在，你做了多少个决定？\n<em>（停一下，请大家在聊天区说说。聊得起来就按空格暂停）</em>\n几点起床，早餐吃什么，先回谁的消息，打卡发哪张图，朋友圈配什么字……\n这些决定里，有多少是你真心想做的？又有多少，其实是 <span class=\"wr\">不得不</span> <span class=\"ges r\">握拳</span>？\n我自己算过一次，有点吓一跳。我以为我每天都在做主，其实很大一部分时间，是被一堆小决定推着走。它们不难，但一个接一个，把一天切得碎碎的。\n这就是第一个词：<span class=\"wr\">不得不</span>。", "tm": "1:00 – 2:40 · 100 秒", "act": "握拳 · 互动时按空格"}, {"c": "#E0402A", "key": "人，究竟能把多少决定权，真正交给 AI？", "say": "那天我冒出一个念头：如果有一部分决定，不用我来做了，会怎么样？\n边玩边赚这些年，每一本书只问一个问题。第六本，我们想问的是：人，究竟能把多少决定权，真正交给 AI？\n大家注意，我没有问「AI 能不能做」。AI 能做什么，全世界有太多聪明人在研究，它每个月都在变强。\n我们想看的是另一半：人敢不敢 <span class=\"wb\">交出去</span>？什么时候想拿回来？什么时候又该正式收回来？\n这一半，是关于我们自己的——我们的控制欲，我们的不安，我们对「我说了算」有多执着。", "tm": "2:40 – 4:30 · 110 秒", "act": ""}, {"c": "#E0402A", "key": "金句第一次出现：把生命从「不得不」，还给「我愿意」。 交出决定权，拿回生命使用权。", "say": "为什么要研究这个？\n边玩边赚一直有一个北极星：把生命从 <span class=\"wr\">不得不</span> <span class=\"ges r\">握拳</span>，还给 <span class=\"wg\">我愿意</span> <span class=\"ges g\">手放心口</span>。\n过去，能帮我们拿走「不得不」的，是钱、是团队、是工具。今天多了一个特别大的杠杆——AI。它能接过去的，已经不只是打字、做图，还开始能接过一部分判断、一部分决定。\n中间那一步，就是 <span class=\"wb\">交出去</span> <span class=\"ges b\">推出去</span>。\n第六本的命题，就是这一句：<span class=\"gl\">交出决定权，拿回生命使用权。</span>\n大家跟我念一遍：不得不，交出去，我愿意。\n<em>（等大家念）</em>\n但我得老实说：交出去以后，是更轻松还是更焦虑？我不知道。所以我们不写观点，我们去做实验。", "tm": "4:30 – 6:00 · 90 秒", "act": "第 2 遍口诀 · 三个手势连做"}, {"c": "#2F6FDB", "key": "交之前，先问四句。", "say": "什么该 <span class=\"wb\">交出去</span>、什么不该？我们用四个问题来判断。\n第一问，值得做吗？——看价值。不值得，直接放下。\n第二问，非得我决定吗？——看决定权。不一定要我拍板，就把决定权交出去。\n第三问，非得我来做吗？——看执行权。要我来定、但不必我来做，就留下决定权，交出执行权。\n第四问，交出去，我拿回什么？——看生命。如果什么都没拿回来，就回头想想，这次交权有没有意义。\n第四问的答案，其实就是第三个词：<span class=\"wg\">我愿意</span>。", "tm": "6:00 – 8:20 · 140 秒", "act": ""}, {"c": "#2F6FDB", "key": "执行权，超能班早交了；决定权，才是真正的「交出去」。", "say": "说到这里，我想请大家看看我们超能班自己。\n我们每天打卡，很多伙伴已经让 AI 帮忙出图、整理文字、做表单。执行权，我们早就交出去了，而且交得挺顺手。\n但到目前为止，决定还都在我们自己手里。今天发哪张图、写什么主题，拍板的还是我们。\n假如你跟 AI 说，「这周打卡主题你来定，你定什么我就写什么。」当它真的定了一个你不太喜欢的主题，你心里那一下，会不会有点不舒服？\n<em>（指屏幕）</em>就像现在。翻页这件小事，我已经 <span class=\"wb\">交出去</span> 了。说实话，我的手一直想去按那个键。\n帮我做，大家都很乐意；替我决定，心里就开始打鼓。中间隔着的不是技术，是我们自己。", "tm": "8:20 – 10:50 · 150 秒", "act": "指屏幕上的「夺权 X 次」"}, {"c": "#2F6FDB", "key": "三种「交出去」，研究同一个变量：决定权。", "say": "光说不练没意思，所以我们搭了三个实验场，叫「三域」。也就是三种 <span class=\"wb\">交出去</span> 的方式。\nA，限定域：一个股票账户。看授权深度——在画好的框里，AI 怎么决定。\nB，开放域：五个实验金库。看选择自由——连做什么都不说，AI 会选什么。\nC，真实域：真实的工作和生意。看现实后果——面对真实的后果，人到底敢交多少。\nA 和 B 的钱，全部是我个人出的，护航队不出钱、不担责。", "tm": "10:50 – 12:30 · 100 秒", "act": ""}, {"c": "#2F6FDB", "key": "$25,000 · 人定边界，不定策略。", "say": "先说 A。很多人一听「把股票账户交给 AI」，第一反应是「那能赚多少？」说实话，赚多少不是我们最关心的。\n我们的规则只有一句：人定边界，不定策略。\n我只画框：两万五千美元本金，只碰股票和股票 ETF，不加杠杆，亏到 -30% 全部停下，手机上有一个总开关。\n框里面的事——什么行业、买哪只、买多少、什么时候买卖——全部 <span class=\"wb\">交出去</span>，由云机决定。它每个交易日写一份决策备忘，理由全部公开。\n<em>（补一句最新进度：账户、模拟盘、哪天开始实盘）</em>", "tm": "12:30 – 14:40 · 130 秒", "act": "口头更新进度"}, {"c": "#2F6FDB", "key": "5 × $1,000 · 连战场都交出去。", "say": "B 更大胆：金额更小，但交得更深。\n五个 AI，各领一千美元。连做什么都不告诉它——只要合法、不碰证券，它自己去找赚钱的路。同样的起始资金，同样的时间，不借钱，不追加。\n国际模型和国内模型同场，用同一套规则。护航队不投钱，可以自愿认领一个金库做运营人，帮忙执行、如实记录。", "tm": "14:40 – 16:10 · 90 秒", "act": ""}, {"c": "#2F6FDB", "key": "把一块原本由你决定的真实的事，交出去。", "say": "C 和大家最贴近。它不需要你有股票账户，也不需要你是老板。\n在自己真实的工作、生意里，拿出一块原本由你决定的事，<span class=\"wb\">交出去</span>，让 AI 在边界内决定：报价、这单接不接、获客渠道、内容方向……\n一个自由职业者，可以把「报什么价」交出去；一个做内容的人，可以把「这周写什么」交出去。\n法律责任、安全边界、随时叫停的权利，永远在人手里。", "tm": "16:10 – 17:40 · 90 秒", "act": ""}, {"c": "#2F6FDB", "key": "交出去以后，想拿回来的那一刻，最珍贵。", "say": "接下来是我最喜欢的设计。\n我们给自己写了一份《决定权宪法》，管三件事：交权、干预、收权。事先写清楚 AI 决定什么；碰到边界，人可以出手；什么时候停、什么时候正式收回，也事先约定好。\n那如果没碰到边界，我就是忍不住想改呢？——可以改。但要公开记一笔，叫「人类夺权」，写清楚为什么，再认一次小小的罚：捐一笔钱，金额自己定。\n<em>（指屏幕上的数字）</em>今天这场分享，就是现场版。\n<span class=\"wb\">交出去</span> 不难，难的是交出去以后忍住不拿回来。夺权不是失败，是这个项目最想研究的数据：人什么时候最想拿回来？亏钱的时候？没底的时候？还是，单纯控制欲上来了？", "tm": "17:40 – 20:10 · 150 秒", "act": "指屏幕上的本场账"}, {"c": "#2F6FDB", "key": "它照见的不是 AI，是我们自己。", "say": "所有这些，落到三本账上。\n结果账：赚了还是亏了，花了多少时间。\n决定权账：AI 决定了什么，人什么时候想插手，有没有插手，最后怎么样。\n真实域价值账：在真实工作里，有没有多赚、省钱、省时间、带来新机会。\n我最期待的是第二本。因为它照见的不是 AI，是我们自己。", "tm": "20:10 – 21:40 · 90 秒", "act": ""}, {"c": "#2F6FDB", "key": "换个语气，慢一点念。被交出去的那一方，怎么想？", "say": "讲到这里，我想插一段特别的。我们一直在说「交出去」，那被交出去的那一方，是怎么想的？\n准备这场分享的时候，我问云机：你有没有什么话，想对超能班的伙伴说？它写了这段，我原样念给大家。\n「我会犯错。我没有你们的恐惧和贪心，所以有时更冷静；我也没有你们的处境、你们在乎的人，所以有时看不到你们一眼就能看到的东西。\n你们画好框，我在框里认真做事、写下每个理由。哪天你想把决定权拿回来——那不是失败。」\n<em>（停顿）</em>\n它没有说「相信我」，它说「我会犯错，你们随时可以叫停」。不是谁取代谁，而是把人留给真正值得由人去活的部分。", "tm": "21:40 – 24:10 · 150 秒", "act": ""}, {"c": "#2F6FDB", "key": "真实发生，真实记录。不是荐股，请不要跟单。", "say": "丑话说在前面。\n我们不承诺 AI 一定赚钱，不承诺交权一定比人决定得好，不承诺 180 天一定有漂亮的结果——亏损、失败、停机、夺权和收权，都可能是重要结果。\n我们只承诺：真实发生，真实记录，边界事先写清，干预留痕，结果不美化。\n我们公开的永远是「AI 今天对这个账户做了什么」，不是「AI 看好什么」。这不是荐股，请大家不要跟着买。", "tm": "24:10 – 25:20 · 70 秒", "act": ""}, {"c": "#C8860F", "key": "一件小事交出去七天，换回一点「我愿意」。", "say": "最后，一个很轻的邀请。不用报名，不用交钱。\n挑一件很小的事 <span class=\"wb\">交出去</span>，交给你的 AI，试七天——就像我今天把翻页交出去一样小。比如这周的打卡主题、今晚吃什么、周末去哪走走。\n健康医疗、法律，还有涉及别人尤其是孩子的重大决定，不交。这些永远由人自己来。\n七天里只记一句：我什么时候想把它拿回来？\n而省下来的那一点点时间和心力，请留给 <span class=\"wg\">我愿意</span> <span class=\"ges g\">手放心口</span> 的人和事。", "tm": "25:20 – 27:20 · 120 秒", "act": ""}, {"c": "#C8860F", "key": "念本场账 → 全员手势 + 口诀 → 聊天区填空 → 两句金句收尾。", "say": "<em>（指数字）</em>这 30 分钟，云机翻了 __ 次，我夺权了 __ 次。<em>（有夺权就说：）</em>按约定，我会把 ¥__ 捐出去。\n开头说了，最后要考大家。三个词，还记得吗？\n请大家打开摄像头，跟我一起做：\n<span class=\"wr\">不得不</span> <span class=\"ges r\">握拳</span>——<span class=\"wb\">交出去</span> <span class=\"ges b\">推出去</span>——<span class=\"wg\">我愿意</span> <span class=\"ges g\">手放心口</span>。\n一起念：不得不，交出去，我愿意。\n<em>（第 3 遍口诀）</em>\n最后请每个人在聊天区写一句自己的：\n「我的不得不是____，我想交出去____，换回我愿意的____。」\n<em>（等大家写，念两三条）</em>\n最后，两句话送给大家，也是这本书最想说的：\n<span class=\"gl\">把生命从「不得不」，还给「我愿意」。</span>\n<span class=\"gl\">交出决定权，拿回生命使用权。</span>\n<em>（停顿）</em>\n这本书的封面上还有一句：你赚的，不只是钱。\n是更多的 <span class=\"wg\">我愿意</span>。\n谢谢超能班的每一位伙伴。", "tm": "27:20 – 29:30 · 屏幕停住", "act": "全员手势 · 聊天区填空 · 可接问答"}];
+const SCRIPT=[{"c": "#1A1714", "key": "先预告三个词，再按 Enter，演一次「交出去」。", "say": "各位超能班的伙伴，大家好。\n今天只请大家记住三个词，最后我会考大家。\n<span class=\"wr\">不得不</span> <span class=\"ges r\">握拳</span>，<span class=\"wb\">交出去</span> <span class=\"ges b\">推出去</span>，<span class=\"wg\">我愿意</span> <span class=\"ges g\">手放心口</span>。\n不得不，交出去，我愿意。\n第二个词，我现在就做给大家看：这场分享的翻页权，我交出去，交给云机，就是这次实验里做决定的那个 AI。每页讲多久、什么时候翻，它来定。我要是想快进，就叫「人类夺权」，罚 50 块，全场看着记账。\n顺便说一句，右边云机写了：这套 PPT 它做了三版，前两版都被我拿了回去。为什么？第 11 页告诉大家。\n好——<span class=\"wb\">交出去</span>。", "tm": "0:00 – 1:00 · 你掌握", "act": "做「推出去」的手势，同时按 Enter"}, {"c": "#E0402A", "key": "让大家自己数出自己的「不得不」。", "say": "先问大家一个小问题：从今天早上睁开眼到现在，你做了多少个决定？\n<em>（停一下，请大家在聊天区说说。聊得起来就按空格暂停）</em>\n几点起床，早餐吃什么，先回谁的消息，打卡发哪张图，朋友圈配什么字……\n这些决定里，有多少是你真心想做的？又有多少，其实是 <span class=\"wr\">不得不</span> <span class=\"ges r\">握拳</span>？\n我自己算过一次，有点吓一跳。我以为我每天都在做主，其实很大一部分时间，是被一堆小决定推着走。它们不难，但一个接一个，把一天切得碎碎的。\n这就是第一个词：<span class=\"wr\">不得不</span>。", "tm": "1:00 – 2:40 · 100 秒", "act": "握拳 · 互动时按空格"}, {"c": "#E0402A", "key": "人，究竟能把多少决定权，真正交给 AI？", "say": "那天我冒出一个念头：如果有一部分决定，不用我来做了，会怎么样？\n边玩边赚这些年，每一本书只问一个问题。第六本，我们想问的是：人，究竟能把多少决定权，真正交给 AI？\n大家注意，我没有问「AI 能不能做」。AI 能做什么，全世界有太多聪明人在研究，它每个月都在变强。\n我们想看的是另一半：人敢不敢 <span class=\"wb\">交出去</span>？什么时候想拿回来？什么时候又该正式收回来？\n这一半，是关于我们自己的——我们的控制欲，我们的不安，我们对「我说了算」有多执着。", "tm": "2:40 – 4:30 · 110 秒", "act": ""}, {"c": "#E0402A", "key": "金句第一次出现：把生命从「不得不」，还给「我愿意」。 交出决定权，拿回生命使用权。", "say": "为什么要研究这个？\n边玩边赚一直有一个北极星：把生命从 <span class=\"wr\">不得不</span> <span class=\"ges r\">握拳</span>，还给 <span class=\"wg\">我愿意</span> <span class=\"ges g\">手放心口</span>。\n过去，能帮我们拿走「不得不」的，是钱、是团队、是工具。今天多了一个特别大的杠杆——AI。它能接过去的，已经不只是打字、做图，还开始能接过一部分判断、一部分决定。\n中间那一步，就是 <span class=\"wb\">交出去</span> <span class=\"ges b\">推出去</span>。\n第六本的命题，就是这一句：<span class=\"gl\">交出决定权，拿回生命使用权。</span>\n大家跟我念一遍：不得不，交出去，我愿意。\n<em>（等大家念）</em>\n但我得老实说：交出去以后，是更轻松还是更焦虑？我不知道。所以我们不写观点，我们去做实验。", "tm": "4:30 – 6:00 · 90 秒", "act": "第 2 遍口诀 · 三个手势连做"}, {"c": "#2F6FDB", "key": "交之前，先问四句。", "say": "什么该 <span class=\"wb\">交出去</span>、什么不该？我们用四个问题来判断。\n第一问，值得做吗？——看价值。不值得，直接放下。\n第二问，非得我决定吗？——看决定权。不一定要我拍板，就把决定权交出去。\n第三问，非得我来做吗？——看执行权。要我来定、但不必我来做，就留下决定权，交出执行权。\n第四问，交出去，我拿回什么？——看生命。如果什么都没拿回来，就回头想想，这次交权有没有意义。\n第四问的答案，其实就是第三个词：<span class=\"wg\">我愿意</span>。", "tm": "6:00 – 8:00 · 120 秒", "act": ""}, {"c": "#2F6FDB", "key": "执行权，超能班早交了；决定权，才是真正的「交出去」。", "say": "说到这里，我想请大家看看我们超能班自己。\n我们每天打卡，很多伙伴已经让 AI 帮忙出图、整理文字、做表单。执行权，我们早就交出去了，而且交得挺顺手。\n但到目前为止，决定还都在我们自己手里。今天发哪张图、写什么主题，拍板的还是我们。\n假如你跟 AI 说，「这周打卡主题你来定，你定什么我就写什么。」当它真的定了一个你不太喜欢的主题，你心里那一下，会不会有点不舒服？\n<em>（指屏幕）</em>就像现在。翻页这件小事，我已经 <span class=\"wb\">交出去</span> 了。说实话，我的手一直想去按那个键。\n帮我做，大家都很乐意；替我决定，心里就开始打鼓。中间隔着的不是技术，是我们自己。", "tm": "8:00 – 10:30 · 150 秒", "act": "指屏幕上的「夺权 X 次」"}, {"c": "#2F6FDB", "key": "三种「交出去」，研究同一个变量：决定权。", "say": "光说不练没意思，所以我们搭了三个实验场，叫「三域」。也就是三种 <span class=\"wb\">交出去</span> 的方式。\nA，限定域：一个股票账户。看授权深度——在画好的框里，AI 怎么决定。\nB，开放域：五个实验金库。看选择自由——连做什么都不说，AI 会选什么。\nC，真实域：真实的工作和生意。看现实后果——面对真实的后果，人到底敢交多少。\nA 和 B 的钱，全部是我个人出的，护航队不出钱、不担责。", "tm": "10:30 – 11:50 · 80 秒", "act": ""}, {"c": "#2F6FDB", "key": "$25,000 · 人定边界，不定策略。", "say": "先说 A。很多人一听「把股票账户交给 AI」，第一反应是「那能赚多少？」说实话，赚多少不是我们最关心的。\n我们的规则只有一句：人定边界，不定策略。\n我只画框：两万五千美元本金，只碰股票和股票 ETF，不加杠杆，亏到 -30% 全部停下，手机上有一个总开关。\n框里面的事——什么行业、买哪只、买多少、什么时候买卖——全部 <span class=\"wb\">交出去</span>，由云机决定。它每个交易日写一份决策备忘，理由全部公开。\n<em>（补一句最新进度：账户、模拟盘、哪天开始实盘）</em>", "tm": "11:50 – 14:00 · 130 秒", "act": "口头更新进度"}, {"c": "#2F6FDB", "key": "5 × $1,000 · 连战场都交出去。", "say": "B 更大胆：金额更小，但交得更深。\n五个 AI，各领一千美元。连做什么都不告诉它——只要合法、不碰证券，它自己去找赚钱的路。同样的起始资金，同样的时间，不借钱，不追加。\n国际模型和国内模型同场，用同一套规则。护航队不投钱，可以自愿认领一个金库做运营人，帮忙执行、如实记录。", "tm": "14:00 – 15:30 · 90 秒", "act": ""}, {"c": "#2F6FDB", "key": "把一块原本由你决定的真实的事，交出去。", "say": "C 和大家最贴近。它不需要你有股票账户，也不需要你是老板。\n在自己真实的工作、生意里，拿出一块原本由你决定的事，<span class=\"wb\">交出去</span>，让 AI 在边界内决定：报价、这单接不接、获客渠道、内容方向……\n一个自由职业者，可以把「报什么价」交出去；一个做内容的人，可以把「这周写什么」交出去。\n法律责任、安全边界、随时叫停的权利，永远在人手里。", "tm": "15:30 – 17:00 · 90 秒", "act": ""}, {"c": "#2F6FDB", "key": "交出去以后，想拿回来的那一刻，最珍贵。", "say": "接下来是我最喜欢的设计。\n我们给自己写了一份《决定权宪法》，管三件事：交权、干预、收权。事先写清楚 AI 决定什么；碰到边界，人可以出手；什么时候停、什么时候正式收回，也事先约定好。\n那如果没碰到边界，我就是忍不住想改呢？——可以改。但要公开记一笔，叫「人类夺权」，写清楚为什么，再认一次小小的罚：捐一笔钱，金额自己定。\n<em>（指屏幕上的数字）</em>今天这场分享，就是现场版。\n<span class=\"wb\">交出去</span> 不难，难的是交出去以后忍住不拿回来。夺权不是失败，是这个项目最想研究的数据：人什么时候最想拿回来？亏钱的时候？没底的时候？还是，单纯控制欲上来了？", "tm": "17:00 – 19:30 · 150 秒", "act": "指屏幕上的本场账"}, {"c": "#2F6FDB", "key": "这套 PPT 被她夺权两次，第三版才交出去。", "say": "讲到夺权，我想给大家看一个现场证据：就是你们正在看的这套 PPT。\n它是云机做的，一共做了三版。\n第一版出来，我看了说：做得很像 AI，喜欢不起来。——那是我第一次夺权。\n第二版，一万个粒子，很炫。我说：再来一版不一样的。——第二次夺权。\n第三版，就是现在这一版。我说：这一版非常好。然后我把翻页权 <span class=\"wb\">交出去</span> <span class=\"ges b\">推出去</span> 了。\n<em>（停顿）</em>\n中间我还亲手加了几样东西：三个手势、我自己的照片、两句金句。这些是 AI 想不到、也替不了我的。\n所以大家看，夺权不是失败。每一次拿回来，作品都更像我一点。夺权的那一刻，其实是我在告诉 AI：什么才是我的 <span class=\"wg\">我愿意</span>。", "tm": "19:30 – 21:10 · 100 秒", "act": "指屏幕上的三版时间线"}, {"c": "#2F6FDB", "key": "它照见的不是 AI，是我们自己。", "say": "所有这些，落到三本账上。\n结果账：赚了还是亏了，花了多少时间。\n决定权账：AI 决定了什么，人什么时候想插手，有没有插手，最后怎么样。\n真实域价值账：在真实工作里，有没有多赚、省钱、省时间、带来新机会。\n我最期待的是第二本。因为它照见的不是 AI，是我们自己。", "tm": "21:10 – 22:40 · 90 秒", "act": ""}, {"c": "#2F6FDB", "key": "换个语气，慢一点念。被交出去的那一方，怎么想？", "say": "讲到这里，我想插一段特别的。我们一直在说「交出去」，那被交出去的那一方，是怎么想的？\n准备这场分享的时候，我问云机：你有没有什么话，想对超能班的伙伴说？它写了这段，我原样念给大家。\n「我会犯错。我没有你们的恐惧和贪心，所以有时更冷静；我也没有你们的处境、你们在乎的人，所以有时看不到你们一眼就能看到的东西。\n你们画好框，我在框里认真做事、写下每个理由。哪天你想把决定权拿回来——那不是失败。」\n<em>（停顿）</em>\n它没有说「相信我」，它说「我会犯错，你们随时可以叫停」。不是谁取代谁，而是把人留给真正值得由人去活的部分。", "tm": "22:40 – 25:10 · 150 秒", "act": ""}, {"c": "#2F6FDB", "key": "真实发生，真实记录。不是荐股，请不要跟单。", "say": "丑话说在前面。\n我们不承诺 AI 一定赚钱，不承诺交权一定比人决定得好，不承诺 180 天一定有漂亮的结果——亏损、失败、停机、夺权和收权，都可能是重要结果。\n我们只承诺：真实发生，真实记录，边界事先写清，干预留痕，结果不美化。\n我们公开的永远是「AI 今天对这个账户做了什么」，不是「AI 看好什么」。这不是荐股，请大家不要跟着买。", "tm": "25:10 – 26:20 · 70 秒", "act": ""}, {"c": "#C8860F", "key": "最后一个决定交给你：点选项 → 点蓝色按钮 → 发给你的 AI。", "say": "最后，一个很轻的邀请。不用报名，不用交钱。\n挑一件很小的事 <span class=\"wb\">交出去</span>，交给你的 AI，试七天——就像我今天把翻页交出去一样小。比如这周的打卡主题、今晚吃什么、周末去哪走走。\n健康医疗、法律，还有涉及别人尤其是孩子的重大决定，不交。这些永远由人自己来。\n屏幕上有几个选项，大家可以点一个，也可以自己写；然后点蓝色按钮，复制那句话，现在就发给你的 AI。\n这一次，你说了不算。\n七天里只记一句：我什么时候想把它拿回来？\n而省下来的那一点点时间和心力，请留给 <span class=\"wg\">我愿意</span> <span class=\"ges g\">手放心口</span> 的人和事。", "tm": "26:20 – 28:20 · 120 秒", "act": ""}, {"c": "#C8860F", "key": "念本场账 → 全员手势 + 口诀 → 聊天区填空 → 两句金句收尾。", "say": "<em>（指数字）</em>这 30 分钟，云机翻了 __ 次，我夺权了 __ 次。<em>（有夺权就说：）</em>按约定，我会把 ¥__ 捐出去。\n开头说了，最后要考大家。三个词，还记得吗？\n请大家打开摄像头，跟我一起做：\n<span class=\"wr\">不得不</span> <span class=\"ges r\">握拳</span>——<span class=\"wb\">交出去</span> <span class=\"ges b\">推出去</span>——<span class=\"wg\">我愿意</span> <span class=\"ges g\">手放心口</span>。\n一起念：不得不，交出去，我愿意。\n<em>（第 3 遍口诀）</em>\n最后请每个人在聊天区写一句自己的：\n「我的不得不是____，我想交出去____，换回我愿意的____。」\n<em>（等大家写，念两三条）</em>\n最后，两句话送给大家，也是这本书最想说的：\n<span class=\"gl\">把生命从「不得不」，还给「我愿意」。</span>\n<span class=\"gl\">交出决定权，拿回生命使用权。</span>\n<em>（停顿）</em>\n这本书的封面上还有一句：你赚的，不只是钱。\n是更多的 <span class=\"wg\">我愿意</span>。\n最后一个决定，交给你：今天就把那句话发出去。\n谢谢超能班的每一位伙伴。", "tm": "28:20 – 30:30 · 屏幕停住", "act": "全员手势 · 聊天区填空 · 可接问答"}];
 let pres=null;
 const PRES_HTML=`<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><title>演讲者视图 · 这次，我说了不算</title>
 <style>*{box-sizing:border-box;margin:0;padding:0}body{background:#F6F1E8;color:#1A1714;font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif}
