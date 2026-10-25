@@ -132,15 +132,15 @@ table.lg td:last-child{text-align:right;font-family:"JetBrains Mono",monospace}
 /* 页内手势 */
 .gest{position:absolute;font-size:150px;line-height:1;animation:gfloat 3s ease-in-out infinite}
 @keyframes gfloat{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-12px) rotate(4deg)}}
-.trio{display:flex;gap:18px;margin-top:24px}
+.trio{display:flex;gap:18px;margin-top:10px}
 .trio .c{flex:1;border-radius:18px;padding:18px 10px 16px;text-align:center;color:#fff;opacity:0;transform:translateY(20px);animation:tin .7s ease forwards}
 .trio .c:nth-child(2){animation-delay:1.6s}.trio .c:nth-child(3){animation-delay:3.2s}.trio .c:nth-child(1){animation-delay:.2s}
 .trio .c .e{font-size:76px;line-height:1.1}
-.trio .c b{display:block;font-family:"Noto Serif SC",serif;font-weight:900;font-size:30px;letter-spacing:.06em}
+.trio .c b{display:block;font-family:"Noto Serif SC",serif;font-weight:900;font-size:26px;letter-spacing:.06em}
 .trio .c span{font-size:17px;opacity:.95}
 @keyframes tin{to{opacity:1;transform:none}}
 .gimg{border-radius:18px;object-fit:cover;box-shadow:0 16px 36px rgba(20,18,16,.18)}
-.trio .c .ph{width:100%;aspect-ratio:1/1;border-radius:12px;object-fit:cover;object-position:center 20%;display:block;margin-bottom:8px;background:#F3EDE2}
+.trio .c .ph{width:100%;aspect-ratio:4/3;border-radius:12px;object-fit:cover;object-position:center 20%;display:block;margin-bottom:8px;background:#F3EDE2}
 .trio .c{padding:10px 10px 12px !important}
 #gflash .ph{width:420px;height:420px;border-radius:24px;object-fit:cover;object-position:center 25%;box-shadow:0 20px 50px rgba(20,18,16,.25)}
 </style>
@@ -209,7 +209,7 @@ const SL=[
 {name:'不得不',dur:100,
  html:`<div class="kick">先问一句</div>
  <div class="h" style="font-size:210px">不得不</div>
- <div style="position:absolute;left:640px;top:250px;width:300px"><img class="gimg" src="g1-budebu.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://raw.githubusercontent.com/qlily777-sketch/PlayandProsper/main/letgo/g1-budebu.jpg'}" style="width:300px;height:300px;object-position:center 20%"><div style="text-align:center;margin-top:10px;color:#E0402A;font-weight:700;font-size:20px">✊ 握拳，收在胸前</div></div>
+ <div style="position:absolute;left:690px;top:-10px;width:260px"><img class="gimg" src="g1-budebu.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://raw.githubusercontent.com/qlily777-sketch/PlayandProsper/main/letgo/g1-budebu.jpg'}" style="width:260px;height:260px;object-position:center 20%"><div style="text-align:center;margin-top:10px;color:#E0402A;font-weight:700;font-size:20px">✊ 握拳，收在胸前</div></div>
  <div class="p" style="font-size:38px;color:var(--ink)">从睁眼到现在，<br>你做了多少个决定？</div>
  <div class="p">早餐吃什么 · 先回谁 · 打卡发哪张图 · 朋友圈配什么字</div>`,
  log:['决定：先不讲理论，先问一个问题。','理由：一个人自己数出来的数字，比我告诉他的数字更难忘。','我给这一页 100 秒，留给聊天区。','~如果大家聊得起来，她可以按空格——那是干预，不罚。'],
@@ -375,7 +375,7 @@ C 真实域：真实的工作和生意，看现实后果——面对真后果，
   <div class="cell" style="border-color:var(--red);padding:12px 16px"><div class="l">人类夺权</div><div class="t red" data-live="grab">0</div></div>
   <div class="cell" style="padding:12px 16px"><div class="l">本场交权指数</div><div class="t" data-live="ddi">—</div></div>
  </div>
- <div style="font-size:20px;color:var(--ink2);margin-top:22px">请打开摄像头，跟我一起做：</div>
+ <div style="font-size:20px;color:var(--ink2);margin-top:12px">请打开摄像头，跟我一起做：</div>
  <div class="trio">
   <div class="c" style="background:#E0402A"><img class="ph" src="g1-budebu.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://raw.githubusercontent.com/qlily777-sketch/PlayandProsper/main/letgo/g1-budebu.jpg'}" style=""><b>不得不</b><span>握拳，收在胸前</span></div>
   <div class="c" style="background:#2F6FDB"><img class="ph" src="g2-jiaochuqu.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://raw.githubusercontent.com/qlily777-sketch/PlayandProsper/main/letgo/g2-jiaochuqu.jpg'}" style=""><b>交出去</b><span>摊开手，往前推</span></div>
