@@ -156,6 +156,32 @@ table.lg td:last-child{text-align:right;font-family:"JetBrains Mono",monospace}
 .pc:hover,.pc.on{background:#2F6FDB;color:#fff}
 .copy{display:inline-flex;align-items:center;gap:10px;margin-top:20px;background:#2F6FDB;color:#fff;padding:14px 26px;font-size:24px;font-weight:700;border-radius:12px;cursor:pointer;pointer-events:auto;box-shadow:0 8px 20px #2F6FDB44}
 .copy:hover{filter:brightness(1.08)}
+
+/* —— 收尾页 —— */
+#stage.final #log{display:none}
+#stage.final #main{left:64px;right:64px;width:auto;top:70px;height:780px}
+.fin{text-align:center;display:flex;flex-direction:column;align-items:center}
+.fin .ft{font-family:"Noto Serif SC",serif;font-weight:900;font-size:44px;letter-spacing:.02em}
+.fin .fstat{margin-top:12px;font-size:19px;color:var(--ink2);display:flex;align-items:center;gap:14px;letter-spacing:.04em}
+.fin .fstat b{font-family:"JetBrains Mono",monospace;font-size:24px;color:var(--ink);margin-left:4px}
+.fin .fstat .red b{color:var(--red)}
+.fin .fstat i{width:1px;height:16px;background:#0003;display:inline-block}
+.fin .fask{margin-top:18px;font-size:18px;letter-spacing:.3em;color:var(--ink2)}
+.fin .trio{display:flex;gap:36px;margin-top:14px;justify-content:center}
+.fin .trio .c{width:232px;flex:none;background:#fff !important;border-radius:22px;padding:14px 14px 16px !important;color:var(--ink);box-shadow:0 14px 34px rgba(20,18,16,.10);border-top:6px solid var(--cc)}
+.fin .trio .c .ph{width:100%;aspect-ratio:1/1.02;object-fit:cover;object-position:center 8%;border-radius:14px;margin-bottom:12px;background:#F3EDE2}
+.fin .trio .c b{color:var(--cc);font-size:34px !important;letter-spacing:.12em}
+.fin .trio .c span{color:var(--ink2);font-size:16px}
+.fin .fgold{margin-top:20px;padding:16px 40px 0;color:var(--ink);position:relative;opacity:0;animation:tin 1.2s ease 4.6s forwards}
+.fin .fgold::before{content:"";position:absolute;left:50%;top:0;width:120px;height:2px;background:#C8860F;transform:translateX(-50%)}
+.fin .gl1,.fin .gl2{font-family:"Noto Serif SC","Songti SC",serif;font-weight:900;font-size:44px;line-height:1.5;letter-spacing:.04em}
+.fin .fend{margin-top:12px;font-size:19px;color:var(--ink2);opacity:0;animation:tin 1s ease 6.2s forwards}
+.fin .fend b{color:#2F6FDB}
+/* —— 全局：内容垂直居中，日志框按内容高度 —— */
+#main{display:flex;flex-direction:column;justify-content:center}
+#main>.fade{position:relative}
+#log{top:50% !important;transform:translateY(-50%);height:auto !important;min-height:300px;max-height:720px}
+#stage.cover #main{justify-content:flex-start}
 </style>
 </head>
 <body>
@@ -244,8 +270,9 @@ const SL=[
 
 {name:'北极星',dur:90,
  html:`<div class="kick">北极星</div>
- <div class="h" style="font-size:104px">把生命从<br>「不得不」，<br>还给「<span class="red">我愿意</span>」。</div>
- <div class="p">✊ 不得不 → 🫴 <b style="color:#2F6FDB">交出去</b> → ❤️ 我愿意<br>交出决定权，<b style="color:var(--ink)">拿回生命使用权。</b></div>`,
+ <div class="h" style="font-size:104px">把生命从<br>「<span style="color:#E0402A">不得不</span>」，<br>还给「<span style="color:#C8860F">我愿意</span>」。</div>
+ <div class="p" style="font-size:32px;color:var(--ink)"><b><span style="color:#2F6FDB">交出决定权</span>，拿回<span style="color:#C8860F">生命使用权</span>。</b></div>
+ <div class="p" style="font-size:22px;margin-top:14px">✊ 不得不 → 🫴 交出去 → ❤️ 我愿意</div>`,
  log:['决定：90 秒。','理由：北极星不需要解释太久，需要被记住。','~我能接过去的，已经不只是打字和做图，还有一部分判断。'],
  notes:`为什么研究这个？边玩边赚的北极星：把生命从「不得不」，还给「我愿意」。
 过去帮我们拿走「不得不」的，是钱、团队、工具。今天多了 AI——它能接过去的，已经不只是执行，还有一部分判断。
@@ -393,22 +420,22 @@ C 真实域：真实的工作和生意，看现实后果——面对真后果，
 七天里只记一句：我什么时候想把它拿回来？为什么？写进每天打卡就行。七天后愿意的话，分享给我——它可能就是书里的一个故事。`},
 
 {name:'收权',dur:0,final:true,
- html:`<div class="kick">收权 · 本场决定权账</div>
- <div class="h" style="font-size:58px">这 30 分钟，就是一次<span class="red">交权实验</span>。</div>
- <div class="row" style="margin-top:16px">
-  <div class="cell" style="padding:12px 16px"><div class="l">云机翻页</div><div class="t" data-live="ai">0</div></div>
-  <div class="cell" style="padding:12px 16px"><div class="l">干预</div><div class="t" data-live="pause">0</div></div>
-  <div class="cell" style="border-color:var(--red);padding:12px 16px"><div class="l">人类夺权</div><div class="t red" data-live="grab">0</div></div>
-  <div class="cell" style="padding:12px 16px"><div class="l">本场交权指数</div><div class="t" data-live="ddi">—</div></div>
- </div>
- <div style="font-size:20px;color:var(--ink2);margin-top:12px">请打开摄像头，跟我一起做：</div>
+ html:`<div class="fin">
+ <div class="kick" style="margin-bottom:10px">收权 · 本场决定权账</div>
+ <div class="ft">这 30 分钟，就是一次<span class="red">交权实验</span>。</div>
+ <div class="fstat">云机翻页 <b data-live="ai">0</b><i></i>干预 <b data-live="pause">0</b><i></i><span class="red">人类夺权 <b data-live="grab">0</b></span><i></i>本场交权指数 <b data-live="ddi">—</b></div>
+ <div class="fask">请打开摄像头，跟我一起做</div>
  <div class="trio">
-  <div class="c" style="background:#E0402A"><img class="ph" src="g1-budebu.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://raw.githubusercontent.com/qlily777-sketch/PlayandProsper/main/letgo/g1-budebu.jpg'}" style=""><b>不得不</b><span>握拳，收在胸前</span></div>
-  <div class="c" style="background:#2F6FDB"><img class="ph" src="g2-jiaochuqu.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://raw.githubusercontent.com/qlily777-sketch/PlayandProsper/main/letgo/g2-jiaochuqu.jpg'}" style=""><b>交出去</b><span>摊开手，往前推</span></div>
-  <div class="c" style="background:#C8860F"><img class="ph" src="g3-woyuanyi.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://raw.githubusercontent.com/qlily777-sketch/PlayandProsper/main/letgo/g3-woyuanyi.jpg'}" style=""><b>我愿意</b><span>手放在心口</span></div>
+  <div class="c" style="--cc:#E0402A"><img class="ph" src="g1-budebu.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://raw.githubusercontent.com/qlily777-sketch/PlayandProsper/main/letgo/g1-budebu.jpg'}"><b>不得不</b><span>握拳，收在胸前</span></div>
+  <div class="c" style="--cc:#2F6FDB"><img class="ph" src="g2-jiaochuqu.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://raw.githubusercontent.com/qlily777-sketch/PlayandProsper/main/letgo/g2-jiaochuqu.jpg'}"><b>交出去</b><span>摊开手，往前推</span></div>
+  <div class="c" style="--cc:#C8860F"><img class="ph" src="g3-woyuanyi.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://raw.githubusercontent.com/qlily777-sketch/PlayandProsper/main/letgo/g3-woyuanyi.jpg'}"><b>我愿意</b><span>手放在心口</span></div>
  </div>
- <div class="p" style="margin-top:14px;font-size:30px;line-height:1.6;color:var(--ink)"><b>把生命从「不得不」，还给「我愿意」。<br>交出决定权，拿回生命使用权。</b></div>
- <div class="p" style="margin-top:8px;font-size:22px">你赚的，不只是钱。<b style="color:#2F6FDB">最后一个决定，交给你：现在就发出那句话。</b></div>`,
+ <div class="fgold">
+  <div class="gl1">把生命从「<span style="color:#E0402A">不得不</span>」，还给「<span style="color:#C8860F">我愿意</span>」。</div>
+  <div class="gl2"><span style="color:#2F6FDB">交出决定权</span>，拿回<span style="color:#C8860F">生命使用权</span>。</div>
+ </div>
+ <div class="fend">你赚的，不只是钱 · <b>最后一个决定，交给你：现在就发出那句话。</b></div>
+</div>`,
  log:['> 收到收权。','> 本场决定权账已生成。','谢谢超能班。','~这 30 分钟，你们看到的，就是这个实验最小的样子。'],
  notes:`（指数字）这 30 分钟，云机翻了 X 次，我夺权 Y 次。如果有夺权，我会按约定捐出去。
 180 天后，AI 赚了还是亏了，我不知道；我会夺几次权，也不知道。
@@ -437,7 +464,7 @@ window.toggleNotes=toggleNotes;
 function gflash(e,w,d,c,ms){const g=$('gflash');g.querySelector('.e').innerHTML=e;const W=g.querySelector('.w');W.textContent=w;W.style.color=c;g.querySelector('.d').textContent=d;g.classList.remove('on');void g.offsetWidth;g.classList.add('on');setTimeout(()=>g.classList.remove('on'),ms||1700)}
 function toggleKeys(){$('keys').classList.toggle('on')}
 window.toggleKeys=toggleKeys;
-function render(){const s=SL[cur];stage.classList.toggle('cover',cur===0);
+function render(){const s=SL[cur];stage.classList.toggle('cover',cur===0);stage.classList.toggle('final',!!SL[cur].final);
   $('main').innerHTML='<div class="fade">'+s.html+'</div>';
   $('pg').textContent=String(cur).padStart(2,'0')+' / '+String(SL.length-1).padStart(2,'0');
   renderNotes();
