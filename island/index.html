@@ -420,7 +420,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     </div>
     <div class="row">
       <a class="btn" href="https://ncnpdjciqnfm.feishu.cn/share/base/form/shrcnVJSU0ktL22N9UDcVBLbz8e" target="_blank" rel="noopener">申请成为首届岛主</a>
-      <span class="seats-left">剩余 <b>17</b> / 24 席 · 申请截止 11 月 6 日</span>
+      <span class="seats-left">限 24 席 · 申请截止 11 月 6 日</span>
     </div>
   </div>
 </section>
@@ -800,11 +800,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
           <div><span>11/15</span><span>退款截止，之后不退</span></div>
           <div><span>12/06</span><span>上岛</span></div>
         </div>
-        <div class="seatmap">
-          <b>岛主座位</b>
-          <div class="grid" id="seats" aria-label="24 个座位，已入驻 7 位"></div>
-          <p>实心 = 已入驻，空心 = 等你。满员即止。</p>
-        </div>
       </div>
       <div class="apply-card">
         <h3>首届岛主申请表</h3>
@@ -878,9 +873,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     box.appendChild(el);
   });
 
-  // seats
-  var seats=document.getElementById('seats');
-  for (var i=1;i<=24;i++){ var s=document.createElement('span'); s.className='seat'+(i<=7?' taken':''); s.setAttribute('aria-label','第 '+i+' 席'+(i<=7?' 已入驻':' 空位')); seats.appendChild(s); }
 
 
   // gallery tabs
