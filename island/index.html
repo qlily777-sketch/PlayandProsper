@@ -221,18 +221,23 @@ section{padding-block:clamp(64px,10vw,120px)}
 /* guests */
 .tw{background:var(--band)}
 .tw .m-head{font-size:var(--s2);margin-bottom:32px}
-.tw-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,4vw,48px);align-items:start}
-.tw-portrait{margin:0}.tw-portrait img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;border-radius:8px;display:block}
+.tw-top{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,4vw,48px);align-items:center}
+.tw-portrait{margin:0}.tw-portrait img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 20%;border-radius:8px;display:block}
 .tw-body>p+p{margin-top:14px}
-.tw-tags{list-style:none;padding:0;margin:22px 0 0;border-top:1px solid var(--line)}
-.tw-tags li{padding:12px 0;border-bottom:1px solid var(--line)}
-.tw-tags b{display:block;font-family:var(--f-display);font-size:1.06rem}
-.tw-tags span{color:var(--muted);font-size:.9rem}
-.tw-case{margin-top:20px;display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 16px;font-size:.94rem}
-.tw-case .mono{color:var(--hibiscus);white-space:nowrap}
-.tw-host{margin:36px 0 0}.tw-host img{width:100%;aspect-ratio:21/9;object-fit:cover;object-position:center 35%;border-radius:8px;display:block}
-.tw-host figcaption{font-family:var(--f-mono);font-size:.78rem;color:var(--muted);margin-top:8px}
-@media (max-width:860px){.tw-grid{grid-template-columns:1fr}.tw-portrait img{aspect-ratio:4/5}.tw-host img{aspect-ratio:16/9}}
+.tw-hl{font-size:1.12rem;border-left:3px solid var(--hibiscus);padding-left:14px}
+.tw-hl b{color:var(--hibiscus)}
+.tw-tags{list-style:none;padding:0;margin:48px 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.tw-tags li{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px 18px}
+.tw-tags b{display:block;font-family:var(--f-mono);font-size:.82rem;letter-spacing:.08em;color:var(--hibiscus);margin-bottom:6px}
+.tw-tags span{font-size:.92rem;line-height:1.7}
+.tw-photos .w2h{grid-column:span 2}
+.tw-cases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.tw-cases article{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:18px 20px}
+.tw-cases .mono{color:var(--hibiscus);font-size:.78rem;letter-spacing:.08em}
+.tw-cases h4{font-family:var(--f-display);font-size:1.12rem;margin:6px 0}
+.tw-cases p{color:var(--muted);font-size:.92rem}
+@media (max-width:860px){.tw-top{grid-template-columns:1fr}.tw-tags{grid-template-columns:1fr 1fr}.tw-cases{grid-template-columns:1fr}}
+@media (max-width:520px){.tw-tags{grid-template-columns:1fr}.tw-photos .w2h{grid-column:span 2}}
 .guests{background:var(--band)}
 .guests h2{font-size:var(--s2);margin-bottom:12px}
 .guest-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:40px}
@@ -400,6 +405,12 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 .m-photos img{width:100%;height:100%;object-fit:cover}
 .m-photos figcaption{position:absolute;left:0;right:0;bottom:0;padding:24px 12px 8px;color:#fff;font-size:.8rem;background:linear-gradient(0deg,rgba(4,20,24,.7),transparent)}
 @media (max-width:560px){.m-photos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.tw-photos{grid-template-columns:repeat(4,minmax(0,1fr))}
+.tw-photos .w2{grid-column:span 2;grid-row:span 2}.tw-photos .w2 img{object-position:center 30%}
+.tw .sig{font-family:var(--f-display);font-size:clamp(1.3rem,2.6vw,1.75rem);font-weight:700;color:var(--lagoon);line-height:1.5;margin:0;padding-top:20px;border-top:1px solid var(--line)}
+.tw .sig cite{display:block;margin-top:6px;font-family:var(--f-body);font-style:normal;font-size:.88rem;font-weight:400;color:var(--muted)}
+@media (max-width:560px){.tw-photos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
 @media (max-width:860px){.m-top,.m-qs{grid-template-columns:1fr}.m-qs .xsr{margin-top:28px}}
 @media (max-width:860px){.mentor-grid{grid-template-columns:1fr}}
 @media (max-width:560px){.portraits{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -547,22 +558,53 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 <section class="tw" id="tianwang">
   <div class="wrap">
     <span class="eyebrow">岛上的造势顾问 · 主持人 · 黎天王</span>
-    <h2 class="m-head">怎么让更多人看见你？<br>这一次，岛上有人陪你练。</h2>
-    <div class="tw-grid">
-      <figure class="tw-portrait"><img src="img/tianwang.jpg" alt="黎天王身穿棕色西装的肖像" loading="lazy"></figure>
+    <h2 class="m-head">13 年广电主持人，帮老板和超级个体造势出圈。<br>这一次，他上岛为我们主持。</h2>
+    <div class="tw-top">
+      <figure class="tw-portrait"><img src="img/tw-hero.jpg" alt="黎天王身穿黑色亮片西装，在品牌盛典上担任主持" loading="lazy"></figure>
       <div class="tw-body">
-        <p class="m-name"><b>黎天王</b><span>品牌 / IP 造势顾问 · 广电级商业主持人</span></p>
-        <p>这 5 天，黎天王以边玩边赚造势顾问的身份上岛，开营夜和最后一晚的路演结营夜，由他来主持。</p>
-        <p>不管你是做生意，还是做自己，岛上都可以找他聊：怎么提升自己的影响力、背书和势能；镜头前怎么说，声音怎么用，视频怎么拍。用他的话说，这些「都可以一起交流、一起玩」。</p>
-        <ul class="tw-tags">
-          <li><b>13 年广电主持</b><span>原湖南经济广播电台、湖北生活广播资深主持人，参与过浙江卫视、湖北卫视等电视栏目</span></li>
-          <li><b>百亿上市集团品牌高管</b><span>良品铺子集团内容营销负责人、天猫直播电商共创人；公众号从 600 万粉做到 1100 万+</span></li>
-          <li><b>20 多年品牌营销实战</b><span>国宝桥米品牌战略升级、奶茶先生 CMO（400+ 门店）、醉得意品牌总监（360+ 门店）</span></li>
-        </ul>
-        <div class="tw-case"><span class="mono">代表案例</span><p>「中国裂变女王」金雨麒：地标直播 + 三级火箭式造势，付费裂变 8000 人进群，直播间最高场观 13 万，总 GMV 200 万+。</p></div>
+        <p class="m-name"><b>黎天王 · 品牌 / IP 造势顾问</b><span>老板 IP 造势 · 小成本，大出圈</span></p>
+        <p>他做的事，是帮品牌和超级个体，用小成本增强背书、提升影响力、造势出圈。从省级电台、电视台的主持台，到百亿上市集团的品牌部，再到一场场发布会、启幕盛典和直播间，他在台前、在幕后都站了二十多年。</p>
+        <p class="tw-hl">12 月在岛上，<b>开营夜</b>和最后一晚的<b>路演结营夜</b>，都由他来主持。</p>
+        <p>岛上 5 天，他也是我们的造势顾问：怎么让更多人看见你、怎么在镜头前说话、声音怎么用、视频怎么拍，都可以找他聊。</p>
+        <div class="m-incl"><span class="mono">已包含</span><p>黎天王上岛主持、和大家交流造势，都包含在驻岛费用里，<b>不另收费</b>。<a href="#price">看费用</a></p></div>
       </div>
     </div>
-    <figure class="tw-host"><img src="img/tianwang-host.jpg" alt="黎天王在品牌活动舞台上手持话筒主持" loading="lazy"><figcaption>主持现场</figcaption></figure>
+
+    <ul class="tw-tags">
+      <li><b>广电</b><span>原湖南、湖北电台资深主持人，13 年省级广电专业主持，参与过浙江卫视、湖北卫视等电视栏目</span></li>
+      <li><b>品牌</b><span>原百亿上市集团品牌高管：良品铺子集团内容营销负责人、天猫直播电商共创人，公众号从 600 万粉做到 1100 万+</span></li>
+      <li><b>自媒体</b><span>美食生活博主，合作品牌 300+，武汉首批抖音本地生活博主，助力实体门店造势变现千万</span></li>
+      <li><b>实战</b><span>20 多年品牌营销：国宝桥米品牌战略升级，奶茶先生 CMO（400+ 门店），醉得意品牌总监（360+ 门店）</span></li>
+    </ul>
+
+    <div class="m-photos tw-photos">
+      <figure class="w2"><img src="img/tw-stage.jpg" alt="黎天王手持话筒主持品牌旗舰展厅启幕盛典" loading="lazy"><figcaption>主持现场 · 品牌旗舰展厅启幕盛典</figcaption></figure>
+      <figure><img src="img/tw-tv.jpg" alt="黎天王在电视栏目中手持话筒主持" loading="lazy"><figcaption>电视栏目主持</figcaption></figure>
+      <figure><img src="img/tw-tv2.jpg" alt="黎天王与搭档在节目现场主持" loading="lazy"><figcaption>节目现场</figcaption></figure>
+      <figure><img src="img/tianwang-host.jpg" alt="黎天王在品牌周年活动舞台上主持" loading="lazy"><figcaption>品牌周年活动</figcaption></figure>
+      <figure><img src="img/tw-brand.jpg" alt="黎天王在连锁品牌活动现场讲话" loading="lazy"><figcaption>连锁品牌活动</figcaption></figure>
+      <figure class="w2h"><img src="img/tw-book.jpg" alt="黎天王主持新书发布会" loading="lazy"><figcaption>「重启家书」新书发布会</figcaption></figure>
+      <figure><img src="img/tw-launch.jpg" alt="黎天王在品牌启动仪式上接受媒体采访" loading="lazy"><figcaption>品牌启动仪式</figcaption></figure>
+      <figure><img src="img/tw-face.jpg" alt="黎天王近照" loading="lazy" style="object-position:center 20%"></figure>
+    </div>
+
+    <h3 class="m-sub">他造过的势</h3>
+    <div class="tw-cases">
+      <article><span class="mono">案例一</span><h4>「中国裂变女王」金雨麒</h4><p>地标直播 + 三级火箭式造势：付费裂变 8000 人进群，直播间最高 13 万人观看，总 GMV 200 万+。</p></article>
+      <article><span class="mono">案例二</span><h4>「重启家书」新书发布会</h4><p>上海书城发布会，120+ 家媒体报道。</p></article>
+      <article><span class="mono">案例三</span><h4>亚太旗舰展厅启幕盛典</h4><p>一场启幕盛典，《时尚芭莎》等 12 家媒体报道。</p></article>
+    </div>
+
+    <div class="m-qs">
+      <div>
+        <p class="sig">怎么拍视频、镜头表达、声音训练，<br>这些都是可以一起交流、一起玩的。<cite>—— 黎天王</cite></p>
+      </div>
+      <div class="xsr">
+        <h3>想让更多人看见你？</h3>
+        <p>做生意的，做自己的，都需要被看见。这 5 天，造势天王就在身边，可以随时请教，也可以一起玩。</p>
+        <a class="btn" href="https://ncnpdjciqnfm.feishu.cn/share/base/form/shrcnVJSU0ktL22N9UDcVBLbz8e" target="_blank" rel="noopener">申请和天王上岛</a>
+      </div>
+    </div>
   </div>
 </section>
 
