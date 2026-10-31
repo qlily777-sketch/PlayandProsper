@@ -219,6 +219,20 @@ section{padding-block:clamp(64px,10vw,120px)}
 .incl .extra b{color:var(--ink)}
 
 /* guests */
+.tw{background:var(--band)}
+.tw .m-head{font-size:var(--s2);margin-bottom:32px}
+.tw-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,4vw,48px);align-items:start}
+.tw-portrait{margin:0}.tw-portrait img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;border-radius:8px;display:block}
+.tw-body>p+p{margin-top:14px}
+.tw-tags{list-style:none;padding:0;margin:22px 0 0;border-top:1px solid var(--line)}
+.tw-tags li{padding:12px 0;border-bottom:1px solid var(--line)}
+.tw-tags b{display:block;font-family:var(--f-display);font-size:1.06rem}
+.tw-tags span{color:var(--muted);font-size:.9rem}
+.tw-case{margin-top:20px;display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 16px;font-size:.94rem}
+.tw-case .mono{color:var(--hibiscus);white-space:nowrap}
+.tw-host{margin:36px 0 0}.tw-host img{width:100%;aspect-ratio:21/9;object-fit:cover;object-position:center 35%;border-radius:8px;display:block}
+.tw-host figcaption{font-family:var(--f-mono);font-size:.78rem;color:var(--muted);margin-top:8px}
+@media (max-width:860px){.tw-grid{grid-template-columns:1fr}.tw-portrait img{aspect-ratio:4/5}.tw-host img{aspect-ratio:16/9}}
 .guests{background:var(--band)}
 .guests h2{font-size:var(--s2);margin-bottom:12px}
 .guest-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:40px}
@@ -397,7 +411,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   <div class="wrap">
     <a class="brand" href="#hero"><img src="img/logo.png" alt="边玩边赚"><span>包下一座岛</span></a>
     <nav aria-label="页面导航">
-      <a href="#island">这座岛</a><a href="#mentor">继红老师</a><a href="#incl">包含什么</a><a href="#pillars">五天做什么</a><a href="#days">日程</a><a href="#price">费用</a><a href="#faq">常见问题</a>
+      <a href="#island">这座岛</a><a href="#mentor">继红老师</a><a href="#tianwang">黎天王</a><a href="#incl">包含什么</a><a href="#pillars">五天做什么</a><a href="#days">日程</a><a href="#price">费用</a><a href="#faq">常见问题</a>
     </nav>
     <a class="btn apply-mini" href="https://ncnpdjciqnfm.feishu.cn/share/base/form/shrcnVJSU0ktL22N9UDcVBLbz8e" target="_blank" rel="noopener">申请入驻</a>
   </div>
@@ -530,6 +544,28 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   </div>
 </section>
 
+<section class="tw" id="tianwang">
+  <div class="wrap">
+    <span class="eyebrow">岛上的造势顾问 · 主持人 · 黎天王</span>
+    <h2 class="m-head">怎么让更多人看见你？<br>这一次，岛上有人陪你练。</h2>
+    <div class="tw-grid">
+      <figure class="tw-portrait"><img src="img/tianwang.jpg" alt="黎天王身穿棕色西装的肖像" loading="lazy"></figure>
+      <div class="tw-body">
+        <p class="m-name"><b>黎天王</b><span>品牌 / IP 造势顾问 · 广电级商业主持人</span></p>
+        <p>这 5 天，黎天王以边玩边赚造势顾问的身份上岛，开营夜和最后一晚的路演结营夜，由他来主持。</p>
+        <p>不管你是做生意，还是做自己，岛上都可以找他聊：怎么提升自己的影响力、背书和势能；镜头前怎么说，声音怎么用，视频怎么拍。用他的话说，这些「都可以一起交流、一起玩」。</p>
+        <ul class="tw-tags">
+          <li><b>13 年广电主持</b><span>原湖南经济广播电台、湖北生活广播资深主持人，参与过浙江卫视、湖北卫视等电视栏目</span></li>
+          <li><b>百亿上市集团品牌高管</b><span>良品铺子集团内容营销负责人、天猫直播电商共创人；公众号从 600 万粉做到 1100 万+</span></li>
+          <li><b>20 多年品牌营销实战</b><span>国宝桥米品牌战略升级、奶茶先生 CMO（400+ 门店）、醉得意品牌总监（360+ 门店）</span></li>
+        </ul>
+        <div class="tw-case"><span class="mono">代表案例</span><p>「中国裂变女王」金雨麒：地标直播 + 三级火箭式造势，付费裂变 8000 人进群，直播间最高场观 13 万，总 GMV 200 万+。</p></div>
+      </div>
+    </div>
+    <figure class="tw-host"><img src="img/tianwang-host.jpg" alt="黎天王在品牌活动舞台上手持话筒主持" loading="lazy"><figcaption>主持现场</figcaption></figure>
+  </div>
+</section>
+
 <section id="pillars">
   <div class="wrap">
     <div class="pillars-head">
@@ -620,11 +656,11 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     <h2>岛上 5 天</h2>
     <p class="lead">爱妮岛机场接机，坐 1 小时 20 分钟的 van 到码头，再坐 10 分钟的船上岛。离岛那天早上是全程最低潮，我们中午后才走。</p>
     <div class="timeline">
-      <div class="day"><div class="when"><b>12/6</b>周日 · 上岛</div><div class="slot"><small>白天</small>机场接机，van + 坐船上岛。环岛、浮潜、划皮划艇，先玩起来。</div><div class="slot"><small>晚上</small>开营仪式：每人说说自己挑的岛号，为什么是它。</div></div>
+      <div class="day"><div class="when"><b>12/6</b>周日 · 上岛</div><div class="slot"><small>白天</small>机场接机，van + 坐船上岛。环岛、浮潜、划皮划艇，先玩起来。</div><div class="slot"><small>晚上</small>开营仪式（黎天王主持）：每人说说自己挑的岛号，为什么是它。</div></div>
       <div class="day"><div class="when"><b>12/7</b>周一</div><div class="slot"><small>早上 / 全天</small>岛主晨走；继红老师：活法。</div><div class="slot"><small>晚上</small>资源对接夜。</div></div>
       <div class="day"><div class="when"><b>12/8</b>周二</div><div class="slot"><small>早上 / 全天</small>岛主晨走；继红老师：活法。</div><div class="slot"><small>晚上</small>DISC 夜，然后星空合影。</div></div>
       <div class="day new"><div class="when"><b>12/9</b>周三 · 新月</div><div class="slot"><small>早上 / 白天</small>岛主晨走；上午继红老师课程收尾；下午 Henry 和 Sylvia 上岛，分享他们怎么从零做起、活成自己；之后拍照拍片或自由活动。</div><div class="slot"><small>晚上</small>新月夜：星空下许愿，写一年后的信。</div></div>
-      <div class="day"><div class="when"><b>12/10</b>周四</div><div class="slot"><small>早上 / 白天</small>岛主晨走；上午 AI 工作坊「如果这座岛是你的」；下午小组私董会。</div><div class="slot"><small>晚上</small>路演 + 结营夜，一起看大家的小岛短片，颁发海龟守护人证书。</div></div>
+      <div class="day"><div class="when"><b>12/10</b>周四</div><div class="slot"><small>早上 / 白天</small>岛主晨走；上午 AI 工作坊「如果这座岛是你的」；下午小组私董会。</div><div class="slot"><small>晚上</small>路演 + 结营夜（黎天王主持），一起看大家的小岛短片，颁发海龟守护人证书。</div></div>
       <div class="day"><div class="when"><b>12/11</b>周五 · 离岛</div><div class="slot"><small>上午</small>复盘，收拾行李。</div><div class="slot"><small>中午后</small>坐船 + van 送回爱妮岛机场，约下午 3 点到。</div></div>
     </div>
   </div>
