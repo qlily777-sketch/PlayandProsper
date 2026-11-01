@@ -42,6 +42,12 @@
   .meet{margin-top:18px;background:rgba(255,255,255,.08);border:1px dashed rgba(255,255,255,.45);border-radius:14px;padding:14px;text-align:center;font-size:14px;line-height:1.8}
   .meet b{font-size:21px;letter-spacing:.06em}
   .meet a{color:#ffcf8a}
+  .steps{margin-top:6px}
+  .step{display:flex;gap:12px;background:rgba(255,255,255,.08);border-radius:14px;padding:13px 14px;margin-top:10px;font-size:14px;line-height:1.65}
+  .step>b{flex:0 0 26px;height:26px;border-radius:50%;background:#ff7a59;text-align:center;line-height:26px;font-size:15px}
+  .step strong{font-size:15px}
+  .btn{display:block;margin-top:9px;border:0;border-radius:999px;padding:9px 18px;font-size:14px;font-weight:700;background:#ffcf8a;color:#13212b;font-family:inherit}
+  .toast{position:fixed;left:50%;bottom:40px;transform:translateX(-50%);background:rgba(0,0,0,.8);color:#fff;padding:10px 18px;border-radius:999px;font-size:14px;display:none;z-index:9}
   .again{display:block;margin:16px auto 0;background:none;border:1px solid rgba(255,255,255,.55);color:#fff;border-radius:999px;padding:9px 20px;font-size:14px;font-family:inherit}
   .foot{text-align:center;font-size:12px;opacity:.55;margin-top:30px;line-height:1.8}
 </style>
@@ -74,8 +80,12 @@
 
   <div id="result">
     <img id="card" alt="我的鲜花岛登船牌">
-    <p class="tip">👆 长按图片，保存 / 发给朋友</p>
-    <p class="tip2">晒到群里，看看今晚大家从哪里上船 🌏<br>也邀请一位最需要停下来的朋友，来领一张。</p>
+    <p class="tip">🎉 出票成功！接下来三步：</p>
+    <div class="steps">
+      <div class="step"><b>1</b><div><strong>长按上面的登船牌 → 保存</strong><br>发到群里晒一晒，也可以发朋友圈。图上有二维码，朋友扫一下就能领自己的那张。</div></div>
+      <div class="step"><b>2</b><div><strong>预约今晚的会</strong><br>打开腾讯会议，输入会议号，点「预约」，开会前会自动提醒你。<button class="btn" id="cpMeet">复制会议号</button></div></div>
+      <div class="step"><b>3</b><div><strong>邀请一位最需要停下来的朋友</strong><br>把这句话发给 ta，今晚一起听听。<button class="btn" id="cpInvite">复制邀请语</button></div></div>
+    </div>
     <div class="meet" id="meet"></div>
     <button class="again" id="again">换一张场景，再生成</button>
   </div>
@@ -85,7 +95,7 @@
 
 <script>
 /* ====== 只需要改这里 ====== */
-var MEETING_ID = "";     // 腾讯会议号，例如 "123 456 789"；也可以在网址后加 ?m=会议号
+var MEETING_ID = "998-299-169";     // 腾讯会议号，例如 "123 456 789"；也可以在网址后加 ?m=会议号
 var MEETING_LINK = "";   // 腾讯会议链接（可留空）；也可以在网址后加 &l=链接
 /* ========================= */
 (function(){
@@ -104,6 +114,7 @@ var MEETING_LINK = "";   // 腾讯会议链接（可留空）；也可以在网�
     {k:"drink-coconut",t:"捧一颗椰子晒太阳"},
     {k:"hut-sunset",t:"茅草屋檐下听海"}
   ];
+  var qrImg=null;(function(){var q=new Image();q.onload=function(){qrImg=q};q.src="data:image/png;base64,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";})();
   var pick=0, imgs={};
   function load(k){ if(!imgs[k]){ imgs[k]=new Promise(function(ok,no){var i=new Image();i.onload=function(){ok(i)};i.onerror=no;i.src=IMG+k+".jpg"}) } return imgs[k]; }
 
@@ -137,7 +148,7 @@ var MEETING_LINK = "";   // 腾讯会议链接（可留空）；也可以在网�
     var W=1080,H=1920,c=document.createElement("canvas");c.width=W;c.height=H;
     var x=c.getContext("2d"),F='-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif';
     x.fillStyle="#041c29";x.fillRect(0,0,W,H);
-    var PH=1240; cover(x,img,0,0,W,PH);
+    var PH=1160; x.save();x.beginPath();x.rect(0,0,W,PH);x.clip();cover(x,img,0,0,W,PH);x.restore();
     var g=x.createLinearGradient(0,0,0,PH);
     g.addColorStop(0,"rgba(4,28,41,.62)");g.addColorStop(.22,"rgba(4,28,41,0)");g.addColorStop(.62,"rgba(4,28,41,0)");g.addColorStop(.86,"rgba(4,28,41,.72)");g.addColorStop(1,"#041c29");
     x.fillStyle=g;x.fillRect(0,0,W,PH);
@@ -153,7 +164,7 @@ var MEETING_LINK = "";   // 腾讯会议链接（可留空）；也可以在网�
     x.shadowBlur=0;x.shadowColor="transparent";
 
     // ticket
-    var tx=48,ty=PH-90,tw=W-96,th=600;
+    var tx=48,ty=PH-90,tw=W-96,th=720;
     x.save();x.shadowColor="rgba(0,0,0,.45)";x.shadowBlur=40;x.shadowOffsetY=14;x.fillStyle="#fffaf0";rr(x,tx,ty,tw,th,34);x.fill();x.restore();
     var L=tx+52,R=tx+tw-52;
     x.fillStyle="#7a8b94";x.font="600 24px "+F;x.textAlign="left";x.fillText("FROM 出发",L,ty+70);x.textAlign="right";x.fillText("TO 目的地",R,ty+70);
@@ -170,14 +181,17 @@ var MEETING_LINK = "";   // 腾讯会议链接（可留空）；也可以在网�
     function cell(lbl,val,cx){x.textAlign="left";x.fillStyle="#7a8b94";x.font="600 22px "+F;x.fillText(lbl,cx,ty+428);x.fillStyle="#13212b";x.font="800 36px "+F;x.fillText(val,cx,ty+478)}
     var cw=(tw-104)/4;
     cell("登船 BOARDING","20:31",L);cell("日期 DATE","11/1 周日",L+cw);cell("舱位 CLASS","体验舱",L+cw*2+20);cell("登船口 GATE","腾讯会议",L+cw*3+10);
-    // barcode strip
-    var bx=L,seed=hash(name+wish)+3;
-    while(bx<R){seed=(seed*9301+49297)%233280;var bw=2+Math.floor(seed/233280*5);x.fillStyle="#13212b";x.fillRect(bx,ty+516,bw,48);bx+=bw+3+(seed%3)}
+    // stub: dashed tear line + QR
+    x.strokeStyle="#d6c9ae";x.setLineDash([14,12]);x.lineWidth=3;x.beginPath();x.moveTo(L-10,ty+530);x.lineTo(R+10,ty+530);x.stroke();x.setLineDash([]);
+    if(qrImg){x.drawImage(qrImg,R-158,ty+552,158,158);}
+    x.textAlign="left";x.fillStyle="#ff6f61";x.font="800 32px "+F;x.fillText("扫码，领你自己的登船牌 →",L,ty+600);
+    x.fillStyle="#13212b";x.font="800 30px "+F;x.fillText("今晚 20:31 · 腾讯会议",L,ty+650);
+    x.font="800 34px "+F;x.fillText(MEETING_ID?MEETING_ID:"会议号见群内",L,ty+698);
     // notches
-    x.fillStyle="#041c29";x.beginPath();x.arc(tx,ty+380,22,0,7);x.fill();x.beginPath();x.arc(tx+tw,ty+380,22,0,7);x.fill();
+    x.fillStyle="#041c29";[380,530].forEach(function(yy){x.beginPath();x.arc(tx,ty+yy,22,0,7);x.fill();x.beginPath();x.arc(tx+tw,ty+yy,22,0,7);x.fill();});
 
-    x.textAlign="center";x.fillStyle="#fff";x.font="800 38px "+F;x.fillText("安放身心 · 活成自己",W/2,ty+th+86);
-    x.globalAlpha=.7;x.font="500 24px "+F;x.fillText("边玩边赚 · 岛主集结大会 · 12/6–12/11 · 实景摄于鲜花岛",W/2,ty+th+132);x.globalAlpha=1;
+    x.textAlign="center";x.fillStyle="#fff";x.font="800 38px "+F;x.fillText("安放身心 · 活成自己",W/2,ty+th+66);
+    x.globalAlpha=.7;x.font="500 24px "+F;x.fillText("边玩边赚 · 岛主集结大会 · 12/6–12/11 · 实景摄于鲜花岛",W/2,ty+th+108);x.globalAlpha=1;
     return c;
   }
 
@@ -200,6 +214,20 @@ var MEETING_LINK = "";   // 腾讯会议链接（可留空）；也可以在网�
     .then(function(){go.disabled=false;go.textContent="领取我的登船牌 →"});
   };
   document.getElementById("again").onclick=function(){document.getElementById("result").style.display="none";document.getElementById("form").style.display="block";document.getElementById("form").scrollIntoView()};
+})();
+</script>
+<div class="toast" id="toast"></div>
+<script>
+(function(){
+  function toast(t){var e=document.getElementById("toast");e.textContent=t;e.style.display="block";clearTimeout(e._t);e._t=setTimeout(function(){e.style.display="none"},2200)}
+  function copy(text,ok){
+    function fb(){var ta=document.createElement("textarea");ta.value=text;ta.style.position="fixed";ta.style.top="-1000px";document.body.appendChild(ta);ta.select();ta.setSelectionRange(0,99999);var r=false;try{r=document.execCommand("copy")}catch(e){}document.body.removeChild(ta);if(r)toast(ok);else window.prompt("长按复制下面这段：",text)}
+    if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text).then(function(){toast(ok)},fb)}else fb();
+  }
+  var q=new URLSearchParams(location.search),m=q.get("m")||"998-299-169";
+  var link="https://www.playandprosper.com/boarding/?m="+m;
+  document.getElementById("cpMeet").onclick=function(){copy(m,"会议号已复制，去腾讯会议点「预约」吧")};
+  document.getElementById("cpInvite").onclick=function(){copy("我刚领了一张「鲜花岛登船牌」🎫 今晚 8:31，千百合老师讲她包下的那座岛，一起来听听吧。你也领一张 👉 "+link+"\n腾讯会议："+m,"邀请语已复制，发给你想邀请的朋友吧")};
 })();
 </script>
 </body>
