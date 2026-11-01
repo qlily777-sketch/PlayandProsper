@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>领取你的鲜花岛登船牌 · 今晚 20:31 一起登船</title>
+<meta name="description" content="菲律宾巴拉望·鲜花岛。领一张写着你名字的登船牌，今晚 20:31 一起登船。">
+<link rel="preload" as="image" href="../island/img/aerial-reef.jpg">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html,body{background:#041c29;color:#fff;font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+  .hero{position:relative;min-height:560px;background:#0b4f6c url(../island/img/aerial-reef.jpg) 30% center/cover no-repeat}
+  .hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,28,41,.55) 0%,rgba(4,28,41,.05) 35%,rgba(4,28,41,.15) 60%,#041c29 100%)}
+  .hero-in{position:relative;z-index:1;max-width:460px;margin:0 auto;padding:34px 22px 0;text-align:center}
+  .eyebrow{letter-spacing:.32em;font-size:11px;opacity:.9}
+  h1{font-size:34px;line-height:1.22;margin:12px 0 10px;font-weight:800;text-shadow:0 2px 18px rgba(0,0,0,.45)}
+  .sub{font-size:15px;line-height:1.7;text-shadow:0 1px 10px rgba(0,0,0,.6)}
+  .count{margin:150px auto 6px;display:flex;justify-content:center;gap:8px}
+  .count div{background:rgba(4,28,41,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:10px 0;width:66px}
+  .count b{display:block;font-size:26px;font-variant-numeric:tabular-nums}
+  .count span{font-size:11px;opacity:.7}
+  .countlabel{font-size:12px;opacity:.85}
+  .wrap{max-width:460px;margin:0 auto;padding:18px 18px 48px}
+  .panel{background:#fff;color:#13212b;border-radius:22px;padding:22px 18px;box-shadow:0 18px 50px rgba(0,0,0,.35)}
+  label{display:block;font-size:13px;font-weight:700;margin:16px 0 8px;color:#38515f}
+  label:first-child{margin-top:0}
+  input{width:100%;font-size:17px;padding:13px 14px;border:1.5px solid #d6e2e8;border-radius:12px;outline:none;font-family:inherit;color:#13212b;-webkit-appearance:none}
+  input:focus{border-color:#127a8f}
+  .tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+  .tile{position:relative;height:96px;border-radius:12px;overflow:hidden;background:#cfdde3 center/cover no-repeat;cursor:pointer;border:3px solid transparent}
+  .tile:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 35%,rgba(0,0,0,.65))}
+  .tile span{position:absolute;left:9px;bottom:7px;z-index:1;color:#fff;font-size:14px;font-weight:700;text-shadow:0 1px 4px rgba(0,0,0,.5)}
+  .tile.on{border-color:#ff7a59;box-shadow:0 0 0 2px #fff inset}
+  .tile.on:before{content:"✓";position:absolute;right:7px;top:6px;z-index:2;width:24px;height:24px;border-radius:50%;background:#ff7a59;color:#fff;font-size:15px;line-height:24px;text-align:center;font-weight:800}
+  .go{margin-top:20px;width:100%;border:0;border-radius:14px;padding:16px;font-size:18px;font-weight:800;color:#fff;background:linear-gradient(90deg,#ff6f61,#ffb347);box-shadow:0 8px 22px rgba(255,111,97,.45);cursor:pointer;font-family:inherit}
+  .go:active{transform:scale(.98)}
+  .go[disabled]{opacity:.6}
+  #result{display:none}
+  #result img{width:100%;border-radius:18px;box-shadow:0 18px 50px rgba(0,0,0,.5);display:block}
+  .tip{text-align:center;font-size:16px;margin:16px 0 6px;font-weight:800}
+  .tip2{text-align:center;font-size:13px;opacity:.85;line-height:1.75}
+  .meet{margin-top:18px;background:rgba(255,255,255,.08);border:1px dashed rgba(255,255,255,.45);border-radius:14px;padding:14px;text-align:center;font-size:14px;line-height:1.8}
+  .meet b{font-size:21px;letter-spacing:.06em}
+  .meet a{color:#ffcf8a}
+  .again{display:block;margin:16px auto 0;background:none;border:1px solid rgba(255,255,255,.55);color:#fff;border-radius:999px;padding:9px 20px;font-size:14px;font-family:inherit}
+  .foot{text-align:center;font-size:12px;opacity:.55;margin-top:30px;line-height:1.8}
+</style>
+</head>
+<body>
+<section class="hero">
+  <div class="hero-in">
+    <div class="eyebrow">FLORAL ISLAND · PALAWAN</div>
+    <h1>今晚 20:31<br>一起登上鲜花岛</h1>
+    <p class="sub">千百合包下一座岛，邀你安放身心、活成自己。<br>先领一张写着你名字的登船牌 🌊</p>
+    <div class="count" id="count">
+      <div><b id="h">--</b><span>小时</span></div>
+      <div><b id="m">--</b><span>分</span></div>
+      <div><b id="s">--</b><span>秒</span></div>
+    </div>
+    <div class="countlabel" id="countlabel">距离登船 · 北京时间 11/1 周日 20:31</div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="panel" id="form">
+    <label>你的名字 / 昵称</label>
+    <input id="name" maxlength="10" placeholder="例：千百合">
+    <label>你从哪座城市出发</label>
+    <input id="city" maxlength="8" placeholder="例：杭州">
+    <label>上岛后，你最想做的一件事（选一张）</label>
+    <div class="tiles" id="tiles"></div>
+    <button class="go" id="go">领取我的登船牌 →</button>
+  </div>
+
+  <div id="result">
+    <img id="card" alt="我的鲜花岛登船牌">
+    <p class="tip">👆 长按图片，保存 / 发给朋友</p>
+    <p class="tip2">晒到群里，看看今晚大家从哪里上船 🌏<br>也邀请一位最需要停下来的朋友，来领一张。</p>
+    <div class="meet" id="meet"></div>
+    <button class="again" id="again">换一张场景，再生成</button>
+  </div>
+
+  <p class="foot">照片均为鲜花岛实景<br>边玩边赚 · 岛主集结大会 · 12/6–12/11 菲律宾巴拉望</p>
+</div>
+
+<script>
+/* ====== 只需要改这里 ====== */
+var MEETING_ID = "";     // 腾讯会议号，例如 "123 456 789"；也可以在网址后加 ?m=会议号
+var MEETING_LINK = "";   // 腾讯会议链接（可留空）；也可以在网址后加 &l=链接
+/* ========================= */
+(function(){
+  var q=new URLSearchParams(location.search);
+  if(q.get("m"))MEETING_ID=q.get("m");
+  if(q.get("l"))MEETING_LINK=q.get("l");
+  var IMG="../island/img/";
+  var START=new Date("2026-11-01T20:31:00+08:00").getTime();
+  var SCENES=[
+    {k:"sunset",t:"看一场海上日落"},
+    {k:"visit-dock",t:"栈桥边发呆一下午"},
+    {k:"longtable",t:"灯串下的长桌晚餐"},
+    {k:"bonfire",t:"围着篝火聊到深夜"},
+    {k:"clownfish",t:"浮潜，去找小丑鱼"},
+    {k:"circle",t:"在白沙滩上冥想"},
+    {k:"drink-coconut",t:"捧一颗椰子晒太阳"},
+    {k:"hut-sunset",t:"茅草屋檐下听海"}
+  ];
+  var pick=0, imgs={};
+  function load(k){ if(!imgs[k]){ imgs[k]=new Promise(function(ok,no){var i=new Image();i.onload=function(){ok(i)};i.onerror=no;i.src=IMG+k+".jpg"}) } return imgs[k]; }
+
+  var tiles=document.getElementById("tiles");
+  SCENES.forEach(function(s,i){
+    var d=document.createElement("div");d.className="tile"+(i===0?" on":"");
+    d.style.backgroundImage="url("+IMG+s.k+".jpg)";
+    d.innerHTML="<span>"+s.t+"</span>";
+    d.onclick=function(){[].forEach.call(tiles.children,function(c){c.classList.remove("on")});d.classList.add("on");pick=i;load(s.k)};
+    tiles.appendChild(d);
+  });
+  load(SCENES[0].k);
+
+  function pad(n){return (n<10?"0":"")+n}
+  (function tick(){
+    var d=START-Date.now();
+    if(d<=0){document.getElementById("count").innerHTML='<div style="width:auto;padding:12px 20px"><b style="font-size:20px">🚤 已经开船啦，快上船</b></div>';document.getElementById("countlabel").textContent="岛主集结大会正在进行";return}
+    var t=Math.floor(d/1000);
+    document.getElementById("h").textContent=pad(Math.floor(t/3600));
+    document.getElementById("m").textContent=pad(Math.floor(t%3600/60));
+    document.getElementById("s").textContent=pad(t%60);
+    setTimeout(tick,1000);
+  })();
+
+  function hash(s){var h=7;for(var i=0;i<s.length;i++){h=(h*31+s.charCodeAt(i))%100000}return h}
+  function rr(x,X,Y,w,h,r){x.beginPath();x.moveTo(X+r,Y);x.arcTo(X+w,Y,X+w,Y+h,r);x.arcTo(X+w,Y+h,X,Y+h,r);x.arcTo(X,Y+h,X,Y,r);x.arcTo(X,Y,X+w,Y,r);x.closePath()}
+  function cover(x,img,X,Y,W,H){var r=Math.max(W/img.width,H/img.height),w=img.width*r,h=img.height*r;x.drawImage(img,X+(W-w)/2,Y+(H-h)/2,w,h)}
+  function fit(x,text,max,size,weight,F){var s=size;do{x.font=weight+" "+s+"px "+F;s-=2}while(x.measureText(text).width>max&&s>20)}
+
+  function draw(img,name,city,wish){
+    var W=1080,H=1920,c=document.createElement("canvas");c.width=W;c.height=H;
+    var x=c.getContext("2d"),F='-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif';
+    x.fillStyle="#041c29";x.fillRect(0,0,W,H);
+    var PH=1240; cover(x,img,0,0,W,PH);
+    var g=x.createLinearGradient(0,0,0,PH);
+    g.addColorStop(0,"rgba(4,28,41,.62)");g.addColorStop(.22,"rgba(4,28,41,0)");g.addColorStop(.62,"rgba(4,28,41,0)");g.addColorStop(.86,"rgba(4,28,41,.72)");g.addColorStop(1,"#041c29");
+    x.fillStyle=g;x.fillRect(0,0,W,PH);
+
+    x.shadowColor="rgba(0,0,0,.45)";x.shadowBlur=18;
+    x.fillStyle="#fff";x.textAlign="left";
+    x.font="600 26px "+F;x.globalAlpha=.92;x.fillText("FLORAL ISLAND · PALAWAN · PHILIPPINES",64,96);x.globalAlpha=1;
+    x.font="800 84px "+F;x.fillText("鲜花岛登船牌",60,196);
+    x.textAlign="right";x.font="700 30px "+F;x.fillText("No."+String(hash(name+city)%1000).padStart(3,"0"),W-64,96);
+    x.textAlign="left";
+    x.fillStyle="#ffcf8a";x.font="700 34px "+F;x.fillText("上岛后，我最想 ——",64,PH-250);
+    x.fillStyle="#fff";fit(x,wish,W-128,88,"800",F);x.fillText(wish,62,PH-150);
+    x.shadowBlur=0;x.shadowColor="transparent";
+
+    // ticket
+    var tx=48,ty=PH-90,tw=W-96,th=600;
+    x.save();x.shadowColor="rgba(0,0,0,.45)";x.shadowBlur=40;x.shadowOffsetY=14;x.fillStyle="#fffaf0";rr(x,tx,ty,tw,th,34);x.fill();x.restore();
+    var L=tx+52,R=tx+tw-52;
+    x.fillStyle="#7a8b94";x.font="600 24px "+F;x.textAlign="left";x.fillText("FROM 出发",L,ty+70);x.textAlign="right";x.fillText("TO 目的地",R,ty+70);
+    x.fillStyle="#13212b";x.textAlign="left";fit(x,city,330,76,"800",F);x.fillText(city,L,ty+156);
+    x.textAlign="right";x.font="800 76px "+F;x.fillText("鲜花岛",R,ty+156);
+    x.fillStyle="#7a8b94";x.font="500 22px "+F;x.fillText("FLORAL ISLAND · 巴拉望",R,ty+196);
+    x.textAlign="center";x.font="54px "+F;x.fillText("🚤",tx+tw/2,ty+140);
+    x.strokeStyle="#c9d6dc";x.setLineDash([10,10]);x.lineWidth=3;x.beginPath();x.moveTo(tx+tw/2-130,ty+124);x.lineTo(tx+tw/2-50,ty+124);x.moveTo(tx+tw/2+50,ty+124);x.lineTo(tx+tw/2+130,ty+124);x.stroke();x.setLineDash([]);
+
+    x.textAlign="left";x.fillStyle="#7a8b94";x.font="600 24px "+F;x.fillText("乘客 PASSENGER",L,ty+262);
+    x.fillStyle="#13212b";fit(x,name,tw-104,72,"800",F);x.fillText(name,L,ty+340);
+
+    x.strokeStyle="#e6dcc6";x.lineWidth=2;x.beginPath();x.moveTo(L,ty+380);x.lineTo(R,ty+380);x.stroke();
+    function cell(lbl,val,cx){x.textAlign="left";x.fillStyle="#7a8b94";x.font="600 22px "+F;x.fillText(lbl,cx,ty+428);x.fillStyle="#13212b";x.font="800 36px "+F;x.fillText(val,cx,ty+478)}
+    var cw=(tw-104)/4;
+    cell("登船 BOARDING","20:31",L);cell("日期 DATE","11/1 周日",L+cw);cell("舱位 CLASS","体验舱",L+cw*2+20);cell("登船口 GATE","腾讯会议",L+cw*3+10);
+    // barcode strip
+    var bx=L,seed=hash(name+wish)+3;
+    while(bx<R){seed=(seed*9301+49297)%233280;var bw=2+Math.floor(seed/233280*5);x.fillStyle="#13212b";x.fillRect(bx,ty+516,bw,48);bx+=bw+3+(seed%3)}
+    // notches
+    x.fillStyle="#041c29";x.beginPath();x.arc(tx,ty+380,22,0,7);x.fill();x.beginPath();x.arc(tx+tw,ty+380,22,0,7);x.fill();
+
+    x.textAlign="center";x.fillStyle="#fff";x.font="800 38px "+F;x.fillText("安放身心 · 活成自己",W/2,ty+th+86);
+    x.globalAlpha=.7;x.font="500 24px "+F;x.fillText("边玩边赚 · 岛主集结大会 · 12/6–12/11 · 实景摄于鲜花岛",W/2,ty+th+132);x.globalAlpha=1;
+    return c;
+  }
+
+  var go=document.getElementById("go");
+  go.onclick=function(){
+    var name=document.getElementById("name").value.trim()||"远方来客";
+    var city=document.getElementById("city").value.trim()||"远方";
+    var s=SCENES[pick];go.disabled=true;go.textContent="正在出票…";
+    load(s.k).then(function(img){
+      var cv=draw(img,name,city,s.t);
+      document.getElementById("card").src=cv.toDataURL("image/jpeg",.9);
+      document.getElementById("form").style.display="none";
+      document.getElementById("result").style.display="block";
+      var m=document.getElementById("meet");
+      m.innerHTML=MEETING_ID
+        ?'今晚 20:31 · 腾讯会议<br><b>'+MEETING_ID+'</b><br>打开腾讯会议点「预约」，开会前会自动提醒你'+(MEETING_LINK?'<br><a href="'+MEETING_LINK+'">👉 点这里预约 / 入会</a>':'')
+        :'今晚 20:31 · 腾讯会议<br>会议号在群里，记得点「预约」<br>开会前会自动提醒你';
+      document.getElementById("result").scrollIntoView({behavior:"smooth"});
+    }).catch(function(){alert("照片加载慢了一点，请再点一次")})
+    .then(function(){go.disabled=false;go.textContent="领取我的登船牌 →"});
+  };
+  document.getElementById("again").onclick=function(){document.getElementById("result").style.display="none";document.getElementById("form").style.display="block";document.getElementById("form").scrollIntoView()};
+})();
+</script>
+</body>
+</html>
