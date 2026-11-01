@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>领取你的鲜花岛登船牌 · 今晚 20:31 一起登船</title>
-<meta name="description" content="菲律宾巴拉望·鲜花岛。领一张写着你名字的登船牌，今晚 20:31 一起登船。">
+<title>领取你的鲜花岛登船牌 · 北京时间 11月1日 20:31 岛主集结大会</title>
+<meta name="description" content="菲律宾巴拉望·鲜花岛。领一张写着你名字的登船牌，北京时间 11月1日（周日）20:31 一起登船。">
 <link rel="preload" as="image" href="../island/img/aerial-reef.jpg">
 <style>
   *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
@@ -48,6 +48,15 @@
   .step strong{font-size:15px}
   .btn{display:block;margin-top:9px;border:0;border-radius:999px;padding:9px 18px;font-size:14px;font-weight:700;background:#ffcf8a;color:#13212b;font-family:inherit}
   .toast{position:fixed;left:50%;bottom:40px;transform:translateX(-50%);background:rgba(0,0,0,.8);color:#fff;padding:10px 18px;border-radius:999px;font-size:14px;display:none;z-index:9}
+  .guests{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:16px 16px 12px;margin-bottom:16px}
+  .gt{font-size:13px;letter-spacing:.12em;opacity:.8;margin-bottom:6px;text-align:center}
+  .g{display:flex;gap:12px;align-items:center;padding:9px 0;border-top:1px solid rgba(255,255,255,.08)}
+  .g:first-of-type{border-top:0}
+  .g img{width:54px;height:54px;border-radius:50%;object-fit:cover;object-position:center 25%;flex:0 0 54px;background:#0b4f6c}
+  .g b{display:block;font-size:16px}
+  .g span{display:block;font-size:12px;opacity:.75;margin-top:2px}
+  .g em{display:inline-block;font-style:normal;font-size:12px;color:#13212b;background:#ffcf8a;border-radius:999px;padding:1px 9px;margin-top:5px;font-weight:700}
+  .gn{text-align:center;font-size:13px;opacity:.85;margin-top:6px}
   .again{display:block;margin:16px auto 0;background:none;border:1px solid rgba(255,255,255,.55);color:#fff;border-radius:999px;padding:9px 20px;font-size:14px;font-family:inherit}
   .foot{text-align:center;font-size:12px;opacity:.55;margin-top:30px;line-height:1.8}
 </style>
@@ -56,8 +65,8 @@
 <section class="hero">
   <div class="hero-in">
     <div class="eyebrow">FLORAL ISLAND · PALAWAN</div>
-    <h1>今晚 20:31<br>一起登上鲜花岛</h1>
-    <p class="sub">千百合包下一座岛，邀你安放身心、活成自己。<br>先领一张写着你名字的登船牌 🌊</p>
+    <h1>11月1日 20:31<br>一起登上鲜花岛</h1>
+    <p class="sub">北京时间 11月1日（周日）20:31 · 岛主集结大会<br>千百合包下一座岛，邀你安放身心、活成自己。<br>先领一张写着你名字的登船牌 🌊</p>
     <div class="count" id="count">
       <div><b id="h">--</b><span>小时</span></div>
       <div><b id="m">--</b><span>分</span></div>
@@ -68,6 +77,13 @@
 </section>
 
 <div class="wrap">
+  <div class="guests">
+    <div class="gt">岛主集结大会 · 三位主讲</div>
+    <div class="g"><img src="../island/img/lily-boat.jpg" alt=""><div><b>千百合</b><span>边玩边赚联合创始人 · 走过 50+ 个国家</span><em>包下一座岛</em></div></div>
+    <div class="g"><img src="../island/img/jihong-mic.jpg" alt=""><div><b>马继红老师</b><span>幸福导师</span><em>安放身心</em></div></div>
+    <div class="g"><img src="../island/img/tw-hero3.jpg" alt=""><div><b>黎天王</b><span>造势顾问 · 原湖南湖北电台主持人</span><em>活成自己</em></div></div>
+    <div class="gn">还有边玩边赚护航队，全程陪伴上岛 🚤</div>
+  </div>
   <div class="panel" id="form">
     <label>你的名字 / 昵称</label>
     <input id="name" maxlength="10" placeholder="例：千百合">
@@ -83,8 +99,8 @@
     <p class="tip">🎉 出票成功！接下来三步：</p>
     <div class="steps">
       <div class="step"><b>1</b><div><strong>长按上面的登船牌 → 保存</strong><br>发到群里晒一晒，也可以发朋友圈。图上有二维码，朋友扫一下就能领自己的那张。</div></div>
-      <div class="step"><b>2</b><div><strong>预约今晚的会</strong><br>打开腾讯会议，输入会议号，点「预约」，开会前会自动提醒你。<button class="btn" id="cpMeet">复制会议号</button></div></div>
-      <div class="step"><b>3</b><div><strong>邀请一位最需要停下来的朋友</strong><br>把这句话发给 ta，今晚一起听听。<button class="btn" id="cpInvite">复制邀请语</button></div></div>
+      <div class="step"><b>2</b><div><strong>预约岛主集结大会</strong><br>打开腾讯会议，输入会议号，点「预约」，开会前会自动提醒你。<button class="btn" id="cpMeet">复制会议号</button></div></div>
+      <div class="step"><b>3</b><div><strong>邀请一位最需要停下来的朋友</strong><br>把这句话发给 ta，一起来听听。<button class="btn" id="cpInvite">复制邀请语</button></div></div>
     </div>
     <div class="meet" id="meet"></div>
     <button class="again" id="again">换一张场景，再生成</button>
@@ -180,18 +196,18 @@ var MEETING_LINK = "";   // 腾讯会议链接（可留空）；也可以在网�
     x.strokeStyle="#e6dcc6";x.lineWidth=2;x.beginPath();x.moveTo(L,ty+380);x.lineTo(R,ty+380);x.stroke();
     function cell(lbl,val,cx){x.textAlign="left";x.fillStyle="#7a8b94";x.font="600 22px "+F;x.fillText(lbl,cx,ty+428);x.fillStyle="#13212b";x.font="800 36px "+F;x.fillText(val,cx,ty+478)}
     var cw=(tw-104)/4;
-    cell("登船 BOARDING","20:31",L);cell("日期 DATE","11/1 周日",L+cw);cell("舱位 CLASS","体验舱",L+cw*2+20);cell("登船口 GATE","腾讯会议",L+cw*3+10);
+    cell("北京时间 BJT","20:31",L);cell("日期 DATE","11/1 周日",L+cw);cell("舱位 CLASS","体验舱",L+cw*2+20);cell("登船口 GATE","腾讯会议",L+cw*3+10);
     // stub: dashed tear line + QR
     x.strokeStyle="#d6c9ae";x.setLineDash([14,12]);x.lineWidth=3;x.beginPath();x.moveTo(L-10,ty+530);x.lineTo(R+10,ty+530);x.stroke();x.setLineDash([]);
     if(qrImg){x.drawImage(qrImg,R-158,ty+552,158,158);}
     x.textAlign="left";x.fillStyle="#ff6f61";x.font="800 32px "+F;x.fillText("扫码，领你自己的登船牌 →",L,ty+600);
-    x.fillStyle="#13212b";x.font="800 30px "+F;x.fillText("今晚 20:31 · 腾讯会议",L,ty+650);
+    x.fillStyle="#13212b";x.font="800 30px "+F;x.fillText("北京时间 11/1 20:31 · 腾讯会议",L,ty+650);
     x.font="800 34px "+F;x.fillText(MEETING_ID?MEETING_ID:"会议号见群内",L,ty+698);
     // notches
     x.fillStyle="#041c29";[380,530].forEach(function(yy){x.beginPath();x.arc(tx,ty+yy,22,0,7);x.fill();x.beginPath();x.arc(tx+tw,ty+yy,22,0,7);x.fill();});
 
     x.textAlign="center";x.fillStyle="#fff";x.font="800 38px "+F;x.fillText("安放身心 · 活成自己",W/2,ty+th+66);
-    x.globalAlpha=.7;x.font="500 24px "+F;x.fillText("边玩边赚 · 岛主集结大会 · 12/6–12/11 · 实景摄于鲜花岛",W/2,ty+th+108);x.globalAlpha=1;
+    x.globalAlpha=.7;x.font="500 24px "+F;x.fillText("千百合 × 马继红老师 × 黎天王 · 岛主集结大会",W/2,ty+th+108);x.globalAlpha=1;
     return c;
   }
 
@@ -207,8 +223,8 @@ var MEETING_LINK = "";   // 腾讯会议链接（可留空）；也可以在网�
       document.getElementById("result").style.display="block";
       var m=document.getElementById("meet");
       m.innerHTML=MEETING_ID
-        ?'今晚 20:31 · 腾讯会议<br><b>'+MEETING_ID+'</b><br>打开腾讯会议点「预约」，开会前会自动提醒你'+(MEETING_LINK?'<br><a href="'+MEETING_LINK+'">👉 点这里预约 / 入会</a>':'')
-        :'今晚 20:31 · 腾讯会议<br>会议号在群里，记得点「预约」<br>开会前会自动提醒你';
+        ?'北京时间 11月1日（周日）20:31 · 腾讯会议<br><b>'+MEETING_ID+'</b><br>打开腾讯会议点「预约」，开会前会自动提醒你'+(MEETING_LINK?'<br><a href="'+MEETING_LINK+'">👉 点这里预约 / 入会</a>':'')
+        :'北京时间 11月1日（周日）20:31 · 腾讯会议<br>会议号在群里，记得点「预约」<br>开会前会自动提醒你';
       document.getElementById("result").scrollIntoView({behavior:"smooth"});
     }).catch(function(){alert("照片加载慢了一点，请再点一次")})
     .then(function(){go.disabled=false;go.textContent="领取我的登船牌 →"});
@@ -227,7 +243,7 @@ var MEETING_LINK = "";   // 腾讯会议链接（可留空）；也可以在网�
   var q=new URLSearchParams(location.search),m=q.get("m")||"998-299-169";
   var link="https://www.playandprosper.com/boarding/?m="+m;
   document.getElementById("cpMeet").onclick=function(){copy(m,"会议号已复制，去腾讯会议点「预约」吧")};
-  document.getElementById("cpInvite").onclick=function(){copy("我刚领了一张「鲜花岛登船牌」🎫 今晚 8:31，千百合老师讲她包下的那座岛，一起来听听吧。你也领一张 👉 "+link+"\n腾讯会议："+m,"邀请语已复制，发给你想邀请的朋友吧")};
+  document.getElementById("cpInvite").onclick=function(){copy("我刚领了一张「鲜花岛登船牌」🎫 北京时间 11月1日（周日）20:31，千百合老师、马继红老师、黎天王一起讲鲜花岛，来听听吧。你也领一张 👉 "+link+"\n腾讯会议："+m,"邀请语已复制，发给你想邀请的朋友吧")};
 })();
 </script>
 </body>
