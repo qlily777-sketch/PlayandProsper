@@ -5,6 +5,7 @@
 <title>包下一座岛</title>
 <link rel="icon" type="image/png" href="img/logo-icon.png">
 <link rel="apple-touch-icon" href="img/logo-icon.png">
+<link rel="alternate" hreflang="en" href="en.html">
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="边玩边赚：包下一座岛。2026 年 12 月 6–11 日，巴拉望鲜花岛，一座私人小岛，这 5 天我们做主。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -416,6 +417,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 @media (max-width:560px){.portraits{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+.top-r{display:flex;align-items:center;gap:12px}
+.lang-sw{font-size:.85rem;line-height:1;text-decoration:none;border:1px solid currentColor;border-radius:999px;padding:7px 12px;opacity:.9;white-space:nowrap}
+.lang-sw:hover{opacity:1}
 </style>
 
 <header class="top" id="top">
@@ -424,7 +428,10 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     <nav aria-label="页面导航">
       <a href="#island">这座岛</a><a href="#mentor">继红老师</a><a href="#tianwang">黎天王</a><a href="#incl">包含什么</a><a href="#pillars">五天做什么</a><a href="#days">日程</a><a href="#price">费用</a><a href="#faq">常见问题</a>
     </nav>
-    <a class="btn apply-mini" href="https://ncnpdjciqnfm.feishu.cn/share/base/form/shrcnVJSU0ktL22N9UDcVBLbz8e" target="_blank" rel="noopener">申请入驻</a>
+    <div class="top-r">
+      <a class="lang-sw" href="en.html" hreflang="en" lang="en" title="Switch to English">EN</a>
+      <a class="btn apply-mini" href="https://ncnpdjciqnfm.feishu.cn/share/base/form/shrcnVJSU0ktL22N9UDcVBLbz8e" target="_blank" rel="noopener">申请入驻</a>
+    </div>
   </div>
 </header>
 
@@ -951,6 +958,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   });
 
 
+
+  // keep section when switching language
+  var sw=document.querySelector('.lang-sw'); if(sw){ sw.addEventListener('click', function(){ if(location.hash){ sw.href=sw.getAttribute('href').split('#')[0]+location.hash; } }); }
 
   // gallery tabs
   var tabBtns=document.querySelectorAll('.tabs button');

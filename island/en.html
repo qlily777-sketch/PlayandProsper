@@ -1,0 +1,982 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style>
+</head><body>
+<title>An Island of Our Own</title>
+<link rel="icon" type="image/png" href="img/logo-icon.png">
+<link rel="apple-touch-icon" href="img/logo-icon.png">
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Play and Prosper: An Island of Our Own. December 6–11, 2026, Floral Island, Palawan — a private island that is ours for 5 days.">
+<link rel="alternate" hreflang="zh-CN" href="./">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
+<style>
+/* Layout: a tide chart — full-bleed photo bands alternate with narrow text columns; one signature moment per band (moon strip, seat map). */
+:root{
+  --paper:#F2F4F0;      /* limestone */
+  --band:#E4E9E3;
+  --card:#FBFCFA;
+  --ink:#10282C;        /* deep lagoon ink */
+  --muted:#506668;
+  --line:rgba(16,40,44,.14);
+  --lagoon:#0E7378;
+  --hibiscus:#D2402F;
+  --sand:#B89D68;
+  --on-photo:#FFFFFF;
+  --shade:rgba(6,22,26,.55);
+  --f-display:"Noto Serif SC","Songti SC","STSong",serif;
+  --f-body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --s1:clamp(2.6rem,7.5vw,5.6rem);
+  --s2:clamp(1.8rem,4.2vw,2.9rem);
+  --s3:clamp(1.25rem,2.4vw,1.6rem);
+  --gut:max(16px,env(safe-area-inset-left,0px));
+  --gutr:max(16px,env(safe-area-inset-right,0px));
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#091A1D;--band:#0E2428;--card:#122C31;--ink:#E6EEEA;--muted:#97AEAB;--line:rgba(230,238,234,.14);
+  --lagoon:#4CBDBB;--hibiscus:#F06A58;--sand:#D2B988;--shade:rgba(0,10,12,.62);color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#091A1D;--band:#0E2428;--card:#122C31;--ink:#E6EEEA;--muted:#97AEAB;--line:rgba(230,238,234,.14);
+  --lagoon:#4CBDBB;--hibiscus:#F06A58;--sand:#D2B988;--shade:rgba(0,10,12,.62);color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.25}
+p{margin:0}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding-left:var(--gut);padding-right:var(--gutr)}
+.narrow{max-width:720px}
+section{padding-block:clamp(64px,10vw,120px)}
+#story{padding-bottom:clamp(36px,5vw,56px)}
+.eyebrow{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--lagoon);margin-bottom:14px;display:block}
+.lead{font-size:clamp(1.05rem,1.6vw,1.2rem);color:var(--muted);max-width:38em}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;gap:10px;font:inherit;font-weight:700;background:var(--hibiscus);color:#fff;border:0;border-radius:999px;padding:14px 26px;text-decoration:none;cursor:pointer;transition:transform .2s ease, box-shadow .2s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -10px var(--hibiscus)}
+.btn:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid var(--lagoon);outline-offset:3px}
+.btn.ghost{background:transparent;color:inherit;border:1.5px solid currentColor}
+
+/* top bar */
+.top{position:fixed;inset:0 0 auto 0;z-index:20;padding-top:env(safe-area-inset-top,0px);transition:background .3s}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;color:#fff}
+.top.solid{background:var(--paper);box-shadow:0 1px 0 var(--line)}
+.top.solid .wrap{color:var(--ink)}
+.brand{font-family:var(--f-display);font-weight:700;letter-spacing:.04em;text-decoration:none;display:inline-flex;align-items:center;gap:10px}
+.brand img{height:32px;width:auto;display:block}
+.foot-logo{height:40px;width:auto;display:block;margin-bottom:8px}
+.top nav{display:flex;gap:22px;font-size:.92rem}
+.top nav a{text-decoration:none;opacity:.85;text-wrap:balance}
+.top nav a:hover{opacity:1}
+.top .apply-mini{padding:8px 16px;font-size:.88rem}
+@media (max-width:760px){.top nav{display:none}}
+
+/* hero */
+.hero{position:relative;min-height:min(92vh,860px);display:flex;align-items:flex-end;color:var(--on-photo);overflow:hidden;padding:0}
+.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,20,24,.35) 0%,rgba(4,20,24,.05) 35%,rgba(4,20,24,.75) 100%)}
+.hero .wrap{position:relative;z-index:1;width:100%;padding-block:120px 64px}
+.hero .kicker{font-family:var(--f-mono);font-size:.82rem;letter-spacing:.18em;opacity:.9}
+.hero h1{font-size:var(--s1);font-weight:900;margin:18px 0 8px;letter-spacing:.02em}
+.hero h1 .colon{color:var(--sand)}
+.hero .tag{font-family:var(--f-display);font-size:clamp(1.3rem,3vw,2rem);font-weight:500;opacity:.95}
+.hero .view{margin-top:14px;font-size:clamp(1rem,1.7vw,1.15rem);max-width:34em;opacity:.92;line-height:1.7}
+.hero .meta{display:flex;flex-wrap:wrap;gap:10px 26px;margin:28px 0 34px;font-size:.95rem}
+.hero .meta span{display:flex;align-items:center;gap:8px}
+.hero .meta b{font-family:var(--f-mono);font-weight:500}
+.hero .row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.hero .seats-left{font-family:var(--f-mono);font-size:.9rem;opacity:.9}
+
+/* story */
+.story{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(28px,5vw,72px);align-items:center}
+.story figure{margin:0;position:relative}
+.story figure img{border-radius:6px;aspect-ratio:3/4;object-fit:cover;width:100%}
+.sp-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.sp-grid img{aspect-ratio:3/4}
+.story figcaption{font-family:var(--f-mono);font-size:.75rem;color:var(--muted);margin-top:10px}
+.story h2{font-size:var(--s2);margin-bottom:22px}
+.story p+p{margin-top:16px}
+.story .sign{font-family:var(--f-display);font-weight:700;margin-top:22px;color:var(--lagoon)}
+@media (max-width:820px){.story{grid-template-columns:1fr}.story figure img{aspect-ratio:4/3}}
+
+
+.film{padding-block:0 clamp(64px,10vw,120px)}
+.film-box{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:end}
+.film video{height:min(78vh,760px);width:auto;max-width:100%;aspect-ratio:9/16;object-fit:cover;background:#071518;border-radius:6px;display:block}
+.film-cap p{font-family:var(--f-display);font-size:var(--s3);font-weight:700;line-height:1.5}
+@media (max-width:760px){.film-box{grid-template-columns:1fr}.film video{width:100%;height:auto;max-height:none}}
+
+/* numbers band */
+.island{position:relative;color:#fff;padding:0}
+.island img.bg{width:100%;height:clamp(420px,62vw,680px);object-fit:cover}
+.island .over{position:absolute;inset:0;background:linear-gradient(0deg,rgba(4,20,24,.78),rgba(4,20,24,.1) 60%);display:flex;align-items:flex-end}
+.island .over .wrap{width:100%;padding-block:48px}
+.island h2{font-size:var(--s2);margin-bottom:28px;max-width:16em}
+.nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;border-top:1px solid rgba(255,255,255,.35);padding-top:22px}
+.nums div{display:flex;flex-direction:column;gap:4px}
+.nums b{font-family:var(--f-display);font-size:clamp(2rem,5vw,3.4rem);font-weight:900;line-height:1}
+.nums span{font-size:.92rem;opacity:.9}
+@media (max-width:640px){.nums{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* moon */
+.moon{background:#071518;color:#E6EEEA}
+.moon .eyebrow{color:#D2B988}
+.moon .lead{color:#A9BDBA}
+.moon h2{font-size:var(--s2);margin-bottom:18px}
+.phases{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin:48px 0 22px}
+.phase{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.phase svg{width:min(78px,100%);height:auto}
+.phase .d{font-family:var(--f-mono);font-size:.82rem}
+.phase .n{font-size:.78rem;color:#A9BDBA;min-height:2.6em;line-height:1.4}
+.phase.key .d{color:#D2B988}
+.phase.key .n{color:#E6EEEA}
+.moon .rituals{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;margin-top:48px;border-top:1px solid rgba(230,238,234,.15);padding-top:30px}
+.moon .rituals.reasons{margin-top:28px;border-top:0;padding-top:0}
+.moon .rituals h3{font-size:1.15rem;margin-bottom:8px;color:#fff}
+.moon .rituals p{color:#A9BDBA;font-size:.95rem}
+@media (max-width:700px){.phases{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:28px}.moon .rituals{grid-template-columns:1fr}}
+
+/* pillars */
+.pillars-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.pillars-head h2{font-size:var(--s2)}
+.pillars{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px}
+.pillar{grid-column:span 2;background:var(--card);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;border:1px solid var(--line)}
+.pillar.wide{grid-column:span 3}
+.pillar img{aspect-ratio:16/10;object-fit:cover;width:100%}
+.pillar .body{padding:22px 22px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.pillar h3{font-size:1.35rem}
+.pillar .who{font-family:var(--f-mono);font-size:.76rem;color:var(--lagoon);letter-spacing:.06em}
+.pillar p{color:var(--muted);font-size:.96rem}
+.pillar .take{margin-top:auto;padding-top:12px;border-top:1px dashed var(--line);font-size:.92rem}
+.pillar .take b{color:var(--hibiscus);font-weight:700}
+.turtle{padding:clamp(64px,9vw,120px) 0}
+.turtle-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,64px);align-items:center}
+.turtle-img{margin:0}
+.turtle-img img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:8px}
+.turtle h2{font-size:var(--s2);margin-bottom:14px}
+.turtle-list{list-style:none;margin:26px 0 0;padding:0;counter-reset:t;border-top:1px solid var(--line)}
+.turtle-list li{counter-increment:t;display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:10px;padding:16px 0;border-bottom:1px solid var(--line)}
+.turtle-list li::before{content:"0" counter(t);font-family:var(--f-mono);color:var(--hibiscus);font-size:.9rem;padding-top:3px;grid-row:span 2}
+.turtle-list b{font-family:var(--f-display);font-size:1.12rem}
+.turtle-list span{color:var(--muted);font-size:.95rem}
+.turtle-fine{margin-top:16px;font-size:.86rem;color:var(--muted)}
+@media (max-width:820px){.turtle-grid{grid-template-columns:1fr}.turtle-img img{aspect-ratio:16/10}}
+.fit{padding:clamp(64px,9vw,112px) 0}
+.fit h2{font-size:var(--s2)}
+.fit-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:32px}
+.fit-grid>div{border-radius:8px;padding:24px 26px;border:1px solid var(--line);background:var(--card)}
+.fit-grid h3{font-size:1.2rem;margin-bottom:12px}
+.fit-grid ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.fit-grid li{position:relative;padding-left:24px;color:var(--muted);font-size:.97rem}
+.fit-yes li::before{content:"✓";position:absolute;left:0;color:var(--lagoon);font-weight:700}
+.fit-no li::before{content:"·";position:absolute;left:4px;color:var(--muted);font-weight:700}
+.fit-yes{border-color:color-mix(in srgb,var(--lagoon) 45%,var(--line))}
+.fit-end{margin-top:22px;font-family:var(--f-display);font-size:1.12rem;font-weight:700}
+@media (max-width:760px){.fit-grid{grid-template-columns:1fr}}
+.fit-lead{margin:14px 0 0;font-size:1.08rem;line-height:1.8;max-width:46em;opacity:.85;text-wrap:balance}
+.pillars-sub{grid-column:1/-1;margin:22px 0 -4px;font-family:var(--f-mono);font-size:.82rem;letter-spacing:.08em;color:var(--lagoon)}
+@media (max-width:900px){.pillar,.pillar.wide{grid-column:span 3}}
+@media (max-width:620px){.pillar,.pillar.wide{grid-column:span 6}}
+
+/* days */
+.days{background:var(--band)}
+.days h2{font-size:var(--s2);margin-bottom:12px}
+.timeline{margin-top:44px;display:flex;flex-direction:column}
+.day{display:grid;grid-template-columns:120px minmax(0,1fr) minmax(0,1fr);gap:24px;padding:22px 0;border-top:1px solid var(--line)}
+.day:last-child{border-bottom:1px solid var(--line)}
+.day .when{font-family:var(--f-mono);font-size:.9rem}
+.day .when b{display:block;font-family:var(--f-display);font-size:1.3rem;font-weight:700}
+.day .slot small{display:block;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;margin-bottom:4px}
+.day.new .when b{color:var(--hibiscus)}
+@media (max-width:720px){.day{grid-template-columns:1fr;gap:10px}}
+
+/* gallery */
+.life h2{font-size:var(--s2);margin-bottom:12px}
+.mosaic{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:clamp(150px,18vw,230px);gap:10px;margin-top:40px}
+.mosaic figure{margin:0;position:relative;overflow:hidden;border-radius:6px}
+.mosaic img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.mosaic figure:hover img{transform:scale(1.04)}
+.mosaic figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 12px 10px;color:#fff;font-size:.86rem;background:linear-gradient(0deg,rgba(4,20,24,.72),transparent)}
+.m-tall{grid-row:span 2}.m-wide{grid-column:span 2}
+@media (max-width:700px){.mosaic{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.honest{margin-top:26px;display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:18px 20px;font-size:.95rem;color:var(--muted)}
+.honest b{color:var(--ink)}
+
+
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.tabs button{font:inherit;font-family:var(--f-display);font-weight:700;font-size:1.05rem;border:1.5px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:8px 22px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.tabs + .mosaic,.mosaic{grid-auto-flow:dense}
+.life .mosaic{margin-top:18px}
+.incl h2{font-size:var(--s2);margin-bottom:8px}
+.incl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0;margin-top:32px;border-top:1px solid var(--line)}
+.incl-grid div{display:flex;flex-direction:column;gap:2px;padding:16px 16px 16px 0;border-bottom:1px solid var(--line)}
+.incl-grid b{font-family:var(--f-display);font-size:1.05rem}
+.incl-grid b::before{content:"✓ ";color:var(--lagoon);font-family:var(--f-mono)}
+.incl-grid span{font-size:.9rem;color:var(--muted)}
+.incl .extra{margin-top:22px;font-size:.92rem;color:var(--muted);max-width:52em}
+.incl .extra b{color:var(--ink)}
+
+/* guests */
+.tw{background:var(--band)}
+.tw .m-head{font-size:var(--s2);margin-bottom:32px}
+.tw-top{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,4vw,48px);align-items:center}
+.tw-portrait{margin:0}.tw-portrait img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 20%;border-radius:8px;display:block}
+.tw-body>p+p{margin-top:14px}
+.tw-hl{font-size:1.12rem;border-left:3px solid var(--hibiscus);padding-left:14px}
+.tw-hl b{color:var(--hibiscus)}
+.tw-tags{list-style:none;padding:0;margin:48px 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.tw-tags li{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px 18px}
+.tw-tags b{display:block;font-family:var(--f-mono);font-size:.82rem;letter-spacing:.08em;color:var(--hibiscus);margin-bottom:6px}
+.tw-tags span{font-size:.92rem;line-height:1.7}
+.tw-photos .w2h{grid-column:span 2}
+.tw-cases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.tw-cases article{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:18px 20px}
+.tw-cases .mono{color:var(--hibiscus);font-size:.78rem;letter-spacing:.08em}
+.tw-cases h4{font-family:var(--f-display);font-size:1.12rem;margin:6px 0}
+.tw-cases p{color:var(--muted);font-size:.92rem}
+@media (max-width:860px){.tw-top{grid-template-columns:1fr}.tw-tags{grid-template-columns:1fr 1fr}.tw-cases{grid-template-columns:1fr}}
+@media (max-width:520px){.tw-tags{grid-template-columns:1fr}.tw-photos .w2h{grid-column:span 2}}
+.guests{background:var(--band)}
+.guests h2{font-size:var(--s2);margin-bottom:12px}
+.guest-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:40px}
+.guest{background:var(--card);border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+.guest img{aspect-ratio:16/9;object-fit:cover;width:100%}
+.guest .body{padding:22px 24px 26px}
+.guest h3{font-size:1.4rem;margin-bottom:4px}
+.guest .role{font-family:var(--f-mono);font-size:.78rem;color:var(--lagoon);margin-bottom:12px;display:block}
+.guest p{color:var(--muted);font-size:.96rem}
+.guest q{display:block;margin-top:14px;font-family:var(--f-display);font-size:1.08rem;color:var(--ink);quotes:"「" "」"}
+@media (max-width:760px){.guest-grid{grid-template-columns:1fr}}
+
+
+.cloud h2{font-size:var(--s2);margin-bottom:18px}
+.cloud blockquote{margin:34px 0 0;padding:22px 0 0;border-top:1px solid var(--line);font-family:var(--f-display);font-size:clamp(1.3rem,2.6vw,1.75rem);font-weight:700;color:var(--lagoon);line-height:1.5}
+.cloud cite{display:block;margin-top:10px;font-family:var(--f-body);font-style:normal;font-size:.9rem;font-weight:400;color:var(--muted)}
+
+/* value */
+.value h2{font-size:var(--s2);margin-bottom:12px}
+.vtable{width:100%;border-collapse:collapse;margin-top:36px;font-size:.98rem}
+.vtable th,.vtable td{text-align:left;padding:14px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.vtable th{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.1em;color:var(--muted);font-weight:500;text-transform:uppercase}
+.vtable td.v{font-family:var(--f-mono);white-space:nowrap;text-align:right}
+.vtable td small{display:block;color:var(--muted);font-size:.84rem}
+.tablebox{overflow-x:auto}
+.vtotal td{font-weight:700;border-bottom:0;padding-top:20px}
+.vtotal td.v{color:var(--hibiscus);font-size:1.15rem}
+
+/* price */
+.price{background:var(--ink);color:var(--paper)}
+.price .eyebrow{color:var(--sand)}
+.price h2{font-size:var(--s2);margin-bottom:12px}
+.price .lead{color:color-mix(in srgb,var(--paper) 70%,transparent)}
+.tiers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:40px}
+.tiers.one{grid-template-columns:minmax(0,1fr);max-width:760px}
+.tier{border:1px solid color-mix(in srgb,var(--paper) 25%,transparent);border-radius:8px;padding:26px}
+.tier.feat{border-color:var(--sand)}
+.tier small{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.1em;opacity:.8}
+.tier .amt{font-family:var(--f-display);font-size:clamp(2.2rem,5vw,3.2rem);font-weight:900;margin:8px 0 6px;line-height:1.1}
+.tier p{opacity:.85;font-size:.95rem}
+.calc{margin-top:28px;border-radius:8px;background:color-mix(in srgb,var(--paper) 7%,transparent);padding:26px}
+.calc h3{font-size:1.3rem;margin-bottom:6px}
+.calc .opts{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.calc .opts button{font:inherit;border-radius:999px;border:1.5px solid color-mix(in srgb,var(--paper) 40%,transparent);background:transparent;color:inherit;padding:8px 18px;cursor:pointer}
+.calc .opts button[aria-pressed="true"]{background:var(--sand);border-color:var(--sand);color:#10282C;font-weight:700}
+.calc .out{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 18px}
+.calc .out b{font-family:var(--f-display);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900}
+.calc .out span{opacity:.85;text-wrap:balance}
+.costs{width:100%;border-collapse:collapse;margin-top:28px;font-size:.94rem}
+.costs th,.costs td{padding:12px 10px;border-bottom:1px solid color-mix(in srgb,var(--paper) 18%,transparent);text-align:left}
+.costs td.n{font-family:var(--f-mono);text-align:right;white-space:nowrap}
+.costs th{font-weight:500;opacity:.75;font-size:.82rem}
+.inout{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:20px}
+.inout>div{border:1px solid color-mix(in srgb,var(--paper) 25%,transparent);border-radius:8px;padding:22px 24px}
+.inout h3{font-size:1.15rem;margin-bottom:10px}
+.inout ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.inout li{font-size:.93rem;opacity:.88;padding-left:22px;position:relative}
+.inout li b{display:block;opacity:1}
+.inout .in li::before{content:"✓";position:absolute;left:0;color:var(--sand)}
+.inout .out li::before{content:"✕";position:absolute;left:0;opacity:.6}
+@media (max-width:700px){.inout{grid-template-columns:1fr}}
+.price .fine{margin-top:16px;font-size:.86rem;opacity:.7}
+@media (max-width:700px){.tiers{grid-template-columns:1fr}}
+
+/* apply */
+.apply h2{font-size:var(--s2);margin-bottom:12px}
+.apply-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,64px);margin-top:44px;align-items:start}
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:18px;counter-reset:s}
+.steps li{display:grid;grid-template-columns:36px minmax(0,1fr);gap:12px;counter-increment:s}
+.steps li::before{content:counter(s);width:32px;height:32px;border-radius:50%;border:1.5px solid var(--lagoon);color:var(--lagoon);display:grid;place-items:center;font-family:var(--f-mono);font-size:.9rem}
+.steps b{display:block}
+.steps span{color:var(--muted);font-size:.94rem}
+.dates{margin-top:30px;border-top:1px solid var(--line)}
+.dates div{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--line);font-size:.94rem}
+.dates div span:first-child{font-family:var(--f-mono)}
+.seatmap{margin-top:30px}
+.seatmap .grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px;margin-top:12px}
+.seat{aspect-ratio:1;border-radius:50%;border:1.5px dashed var(--lagoon);display:grid;place-items:center;font-family:var(--f-mono);font-size:.7rem;color:var(--lagoon)}
+.seat.taken{background:var(--lagoon);border-style:solid;color:var(--paper)}
+.seatmap p{font-size:.9rem;color:var(--muted);margin-top:10px}
+.apply-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:clamp(22px,3vw,34px);display:flex;flex-direction:column;align-items:flex-start;gap:14px;align-self:start}.apply-card h3{font-size:1.25rem}.apply-card p{color:var(--muted);line-height:1.75}.apply-card .qr{display:flex;align-items:center;gap:14px;margin-top:8px;font-size:.88rem;color:var(--muted)}.apply-card .qr img{width:120px;height:120px;border-radius:6px;border:1px solid var(--line);background:#fff}
+form.app{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:clamp(20px,3vw,32px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 18px}
+form.app .full{grid-column:1/-1}
+form.app label{display:flex;flex-direction:column;gap:6px;font-size:.88rem;font-weight:500}
+form.app input,form.app select,form.app textarea{font:inherit;font-size:.96rem;border:1px solid var(--line);border-radius:6px;padding:11px 12px;background:var(--paper);color:var(--ink);width:100%}
+form.app textarea{min-height:96px;resize:vertical}
+form.app .checks{display:flex;flex-direction:column;gap:8px;font-weight:400;font-size:.9rem}
+form.app .checks label{flex-direction:row;align-items:flex-start;gap:10px;font-weight:400}
+form.app .checks input{width:auto;margin-top:5px}
+form.app .actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.result{grid-column:1/-1;background:var(--band);border-radius:8px;padding:18px}
+.result pre{white-space:pre-wrap;font-family:var(--f-body);font-size:.9rem;margin:10px 0 14px;max-height:260px;overflow:auto}
+.result .ok{color:var(--lagoon);font-weight:700}
+@media (max-width:860px){.apply-grid{grid-template-columns:1fr}}
+@media (max-width:520px){form.app{grid-template-columns:1fr}.seatmap .grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
+
+/* faq */
+.faq{background:var(--band)}
+.faq h2{font-size:var(--s2);margin-bottom:28px}
+.faq details{border-top:1px solid var(--line);padding:18px 0}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;font-weight:700;font-size:1.04rem;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::after{content:"+";font-family:var(--f-mono);color:var(--lagoon)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{color:var(--muted);margin-top:10px;max-width:46em}
+
+/* closing */
+.closing{position:relative;color:#fff;padding:0}
+.closing img{width:100%;height:clamp(380px,48vw,560px);object-fit:cover}
+.closing .over{position:absolute;inset:0;background:rgba(4,20,24,.5);display:grid;place-items:center;text-align:center}
+.closing h2{font-size:var(--s2);margin-bottom:16px}
+.closing p{opacity:.9;margin-bottom:28px}
+footer{padding-block:36px;font-size:.86rem;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+
+/* mentor */
+.mentor{background:var(--band)}
+.mentor-hero{margin:0;position:relative;border-radius:8px;overflow:hidden}
+.mentor-hero img{width:100%;aspect-ratio:16/9;object-fit:cover;object-position:center 30%}
+.mentor-hero figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 20px 14px;color:#fff;font-size:.86rem;background:linear-gradient(0deg,rgba(4,20,24,.75),transparent)}
+.mentor-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(28px,5vw,64px);margin-top:40px;align-items:start}
+.mentor h2{font-size:var(--s2);margin-bottom:6px}
+.mentor .role{font-family:var(--f-mono);font-size:.8rem;color:var(--lagoon);letter-spacing:.06em;display:block;margin-bottom:22px}
+.mentor p+p{margin-top:14px}
+.mentor .sig{font-family:var(--f-display);font-size:clamp(1.3rem,2.6vw,1.75rem);font-weight:700;color:var(--lagoon);line-height:1.5;margin:28px 0 0;padding-top:20px;border-top:1px solid var(--line)}
+.mentor .sig cite{display:block;margin-top:6px;font-family:var(--f-body);font-style:normal;font-size:.88rem;font-weight:400;color:var(--muted)}
+.facts{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.facts li{padding:14px 0;border-bottom:1px solid var(--line);font-size:.95rem}
+.facts li b{display:block;font-family:var(--f-display);font-size:1.05rem}
+.facts li span{color:var(--muted)}
+.portraits{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:28px}
+.portraits figure{margin:0}
+.portraits img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:6px}
+.portraits figcaption{font-size:.78rem;color:var(--muted);margin-top:6px;line-height:1.4}
+.jh-film{margin-top:28px}.jh-film video{width:100%;max-width:880px;aspect-ratio:16/9;display:block;border-radius:8px;background:#000}.jh-film p{font-family:var(--f-mono);font-size:.78rem;color:var(--muted);margin-top:8px}
+.watch{margin-top:26px;display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:18px 20px;font-size:.95rem}
+.watch .mono{color:var(--hibiscus);white-space:nowrap}
+.watch b{color:var(--ink)}
+.watch p{color:var(--muted)}
+.xsr{margin-top:28px;background:var(--ink);color:var(--paper);border-radius:8px;padding:24px 26px}
+.xsr h3{font-size:1.25rem;margin-bottom:8px}
+.xsr p{opacity:.85;font-size:.96rem}
+.xsr .btn{margin-top:16px}
+
+.mentor .m-head{font-size:var(--s2);margin-bottom:32px}
+.m-top{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,4vw,48px);align-items:center}
+.m-film video{width:100%;aspect-ratio:16/9;display:block;border-radius:8px;background:#000}
+.m-film p{font-family:var(--f-mono);font-size:.78rem;color:var(--muted);margin-top:8px}
+.m-name{display:flex;flex-direction:column;gap:2px;margin-bottom:16px}
+.m-name b{font-family:var(--f-display);font-size:1.4rem}
+.m-name span{font-family:var(--f-mono);font-size:.8rem;color:var(--lagoon);letter-spacing:.04em}
+.m-pitch>p+p{margin-top:14px}
+.m-incl{margin-top:20px;display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 16px;font-size:.94rem}
+.m-incl .mono{color:var(--hibiscus);white-space:nowrap}
+.m-incl a{color:var(--lagoon);margin-left:6px}
+.m-sub{font-size:var(--s3);margin:56px 0 20px}
+.m-qs{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,4vw,48px);align-items:center;margin-top:48px}
+.m-qs .xsr{margin-top:0}
+.xsr .xsr-more{margin-top:16px;font-size:.86rem;opacity:.7}
+.m-photos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:clamp(150px,20vw,260px);gap:10px;margin-top:40px}
+.m-photos figure{margin:0;position:relative;overflow:hidden;border-radius:6px}
+.m-photos .w2{grid-row:span 2}
+.m-photos .w2 img{object-position:100% 40%}
+.m-photos img{width:100%;height:100%;object-fit:cover}
+.m-photos figcaption{position:absolute;left:0;right:0;bottom:0;padding:24px 12px 8px;color:#fff;font-size:.8rem;background:linear-gradient(0deg,rgba(4,20,24,.7),transparent)}
+@media (max-width:560px){.m-photos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.tw-photos{grid-template-columns:repeat(4,minmax(0,1fr))}
+.tw-photos .w2{grid-column:span 2;grid-row:span 2}.tw-photos .w2 img{object-position:center 30%}
+.tw .sig{font-family:var(--f-display);font-size:clamp(1.3rem,2.6vw,1.75rem);font-weight:700;color:var(--lagoon);line-height:1.5;margin:0;padding-top:20px;border-top:1px solid var(--line)}
+.tw .sig cite{display:block;margin-top:6px;font-family:var(--f-body);font-style:normal;font-size:.88rem;font-weight:400;color:var(--muted)}
+@media (max-width:560px){.tw-photos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+@media (max-width:860px){.m-top,.m-qs{grid-template-columns:1fr}.m-qs .xsr{margin-top:28px}}
+@media (max-width:860px){.mentor-grid{grid-template-columns:1fr}}
+@media (max-width:560px){.portraits{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+.top-r{display:flex;align-items:center;gap:12px}
+.lang-sw{font-size:.85rem;line-height:1;text-decoration:none;border:1px solid currentColor;border-radius:999px;padding:7px 12px;opacity:.9;white-space:nowrap}
+.lang-sw:hover{opacity:1}
+.top nav{gap:18px}
+@media (max-width:1180px){.top nav{display:none}}
+.brand span{white-space:nowrap}
+.hero h1{font-size:clamp(2.2rem,6.4vw,5rem)}
+@media (max-width:420px){.brand span{font-size:.9rem}.top-r{gap:8px}}
+.guest q{quotes:"\201C" "\201D" "\2018" "\2019"}
+.form-note{font-size:.88rem;color:var(--muted)}
+</style>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#hero"><img src="img/logo.png" alt="Play and Prosper"><span>An Island of Our Own</span></a>
+    <nav aria-label="Page navigation">
+      <a href="#island">The Island</a><a href="#mentor">Jihong</a><a href="#tianwang">Tianwang</a><a href="#incl">Included</a><a href="#pillars">The 5 Days</a><a href="#days">Schedule</a><a href="#price">Price</a><a href="#faq">FAQ</a>
+    </nav>
+    <div class="top-r">
+      <a class="lang-sw" href="./" hreflang="zh-CN" lang="zh-CN" title="切换到中文">中文</a>
+      <a class="btn apply-mini" href="https://ncnpdjciqnfm.feishu.cn/share/base/form/shrcnVJSU0ktL22N9UDcVBLbz8e" target="_blank" rel="noopener">Apply</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="hero">
+  <img class="poster" src="img/hero-poster.jpg" alt="Aerial view of Floral Island, Palawan: a limestone islet, white sand and a long wooden pier">
+  <video id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="img/hero-poster.jpg" aria-hidden="true">
+    <source src="img/hero.mp4" type="video/mp4">
+  </video>
+  <div class="wrap">
+    <span class="kicker">PLAY AND PROSPER · FOUNDING SEASON · NEW MOON</span>
+    <h1>Play and Prosper<span class="colon">:</span><br>An Island of Our Own</h1>
+    <p class="tag">For these 5 days, the island is ours.</p>
+    <p class="view">You don't have to choose between playing and earning. Becoming yourself and making a living can be the same thing.</p>
+    <div class="meta">
+      <span>Dates <b>Dec 6 – 11, 2026</b></span>
+      <span>Where <b>Floral Island · Palawan · Philippines</b></span>
+      <span>Group <b>24 people max</b></span>
+    </div>
+    <div class="row">
+      <a class="btn" href="https://ncnpdjciqnfm.feishu.cn/share/base/form/shrcnVJSU0ktL22N9UDcVBLbz8e" target="_blank" rel="noopener">Apply to be a founding island owner</a>
+      <span class="seats-left">Limited places · Applications close Nov 6</span>
+    </div>
+  </div>
+</section>
+
+<section id="story">
+  <div class="wrap story">
+    <figure class="story-pics">
+      <div class="sp-grid">
+        <img src="img/lily-2024.jpg" alt="Lily in the forest in Palawan, 2024" loading="lazy">
+        <img src="img/lily-boat.jpg" alt="Lily on the boat to Floral Island" loading="lazy">
+        <img src="img/lily-beach.jpg" alt="Lily walking on an El Nido beach in the early morning" loading="lazy">
+        <img src="img/lily-sea.jpg" alt="Lily wading into the sea at El Nido in the early morning" loading="lazy">
+      </div>
+      <figcaption>Palawan 2024 · Scouting trip Sept 2026: Floral Island · El Nido</figcaption>
+    </figure>
+    <div>
+      <span class="eyebrow">A note before we begin</span>
+      <h2>Borrow an island,<br>come home a new you.</h2>
+      <p>We're writing a book called <i>Play and Prosper: Travel the World, Become Yourself</i>. Somewhere along the way I started thinking: I've spent years traveling the world and becoming myself on my own. Why not do it together with more people, playing and prospering side by side?</p>
+      <p>I first came to Palawan in 2024, to Puerto Princesa, and fell completely in love. I said right then that I'd come back one day with my family. So many people around me have dreams. Wouldn't it be wonderful to have a small island to ourselves, gather together, and each write our own story?</p>
+      <p>On September 24 this year, I took a boat to Floral Island and walked from the pier to the dining room, then into every single room. The whole way I kept thinking: imagine having all of this to ourselves and spending a few days here with friends!</p>
+      <p>Among our friends, some have dreamed of going abroad this year, and some have made wishes of their own. So this time I'm coming with my big family, the Play and Prosper community: the authors of our books, their families and friends, all bringing those wishes along. We'll play together, and along the way think about how we want to live next, and whether the things we love can support us.</p>
+      <p>I'm not here to lead anyone. I'm here to play with you. Just bring yourself.</p>
+      <p class="sign">— Lily (千百合)</p>
+    </div>
+  </div>
+</section>
+
+<section class="film" id="film">
+  <div class="wrap">
+    <div class="film-box">
+      <video controls playsinline preload="none" poster="img/palawan-2024-v-poster.jpg">
+        <source src="img/palawan-2024-v.mp4" type="video/mp4">
+      </video>
+      <div class="film-cap"><span class="eyebrow">2024 · Puerto Princesa</span><p>Lily's first trip to Palawan. When she got home, she said she'd definitely be back.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="island" id="island">
+  <img class="bg" src="img/island-blue.jpg" alt="Floral Island seen from afar on a calm blue sea" loading="lazy">
+  <div class="over"><div class="wrap">
+    <span class="eyebrow" style="color:#D2B988">The island</span>
+    <h2>For 5 days the island is closed to everyone else, and its 12 staff are there just for us.</h2>
+    <div class="nums">
+      <div><b class="mono">1</b><span>private island, ours for 5 days</span></div>
+      <div><b class="mono">5</b><span>nights, three healthy meals a day included</span></div>
+      <div><b class="mono">12</b><span>island staff, there just for us</span></div>
+    </div>
+  </div></div>
+</section>
+
+<section class="moon" id="moon">
+  <div class="wrap">
+    <span class="eyebrow">Why these dates</span>
+    <h2>Why these 5 days?</h2>
+    <div class="rituals reasons">
+      <div><h3>We're bringing wishes</h3><p>Some of our friends dreamed of traveling abroad this year, and some have made wishes of their own. We're setting off with those wishes and making them come true together before the year is out. December is just in time.</p></div>
+      <div><h3>The island at its best</h3><p>December is high season in Palawan: the clearest water, the best weather, and the most comfortable time of year to be on the island.</p></div>
+      <div><h3>A night without a moon</h3><p>December 9 is the new moon, at 8:52 a.m. Manila time. For a few nights on either side there's no moonlight, and with no city lights on the island, the Milky Way will leave you speechless. A new moon is also a new beginning.</p></div>
+    </div>
+    <div class="phases" id="phases" aria-label="Moon phases from December 6 to 11"></div>
+    <div class="rituals">
+      <div><h3>Wishes under the stars</h3><p>On the new-moon night, everyone writes beneath the stars: who I want to become next.</p></div>
+      <div><h3>A letter a year from now</h3><p>Write to yourself one year from now. We'll keep it safe and mail it to you on December 9, 2027.</p></div>
+      <div><h3>Your island number</h3><p>Pick any number from 001 to 999, first come, first served. A birthday, a lucky number, an anniversary — anything works. On opening night, tell us what it means to you. It stays yours for every season to come.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="mentor" id="mentor">
+  <div class="wrap">
+    <span class="eyebrow">Your guide to a way of living · Jihong</span>
+    <h2 class="m-head">Entrepreneurs pay ¥100,000+ to learn from her in a classroom.<br>This time, on an island, she's an arm's length away.</h2>
+    <div class="m-top">
+      <div class="m-film">
+        <video controls preload="none" playsinline poster="img/jihong-film-poster.jpg"><source src="img/jihong-film.mp4" type="video/mp4"></video>
+        <p>Meet her in 6 minutes · Jihong's introduction film (in Chinese)</p>
+      </div>
+      <div class="m-pitch">
+        <p class="m-name"><b>Ma Jihong · Happiness Mentor</b><span>Xinshangren · lives in Pu'er, Yunnan</span></p>
+        <p>Nearly a hundred Xinshangren entrepreneurs have each paid ¥100,000+ to study with her. Lily has taken her courses <i>The Way of Relationships</i> and <i>A Journey of Nature's Cleansing</i>, and invited her to the island this time.</p>
+        <p>No slides. The classroom faces the sea, and sometimes moves onto the beach. Two and a half days, one question: <b>how do you live so that you've truly become yourself?</b></p>
+        <div class="m-incl"><span class="mono">Included</span><p>Jihong's two and a half days of sessions are included in the residency fee, <b>at no extra cost</b>. <a href="#price">See price</a></p></div>
+      </div>
+    </div>
+
+    <div class="m-photos">
+      <figure class="w2"><img src="img/jihong-stage.jpg" alt="Jihong in white, dancing hand in hand at a Xinshangren 'Power of Happiness' session" loading="lazy"><figcaption>Xinshangren "Power of Happiness" session</figcaption></figure>
+      <figure><img src="img/jihong-white.jpg" alt="Jihong in a white outfit and hat, having tea in the mountains" loading="lazy"></figure>
+      <figure><img src="img/jihong-yellow.jpg" alt="Jihong in a pale yellow dress beneath a flowering tree" loading="lazy"></figure>
+      <figure><img src="img/jihong-mic.jpg" alt="Jihong speaking with a microphone" loading="lazy"><figcaption><i>Life Is About One Thing</i></figcaption></figure>
+      <figure><img src="img/jihong-forest.jpg" alt="Jihong on a sunlit forest path with a large dog beside her" loading="lazy"></figure>
+    </div>
+
+    <div class="m-qs">
+      <div>
+        <p class="sig">Happiness is joy with meaning.<br>Be happy, help others be happy, and pass it on.<cite>— Jihong</cite></p>
+      </div>
+      <div class="xsr">
+        <h3>Xinshangren friends, see you on the island.</h3>
+        <p>If you've learned from Jihong and want to be a little closer, this time you'll share an island with her. You're welcome to bring family and friends so they can get to know her too.</p>
+        <a class="btn" href="https://ncnpdjciqnfm.feishu.cn/share/base/form/shrcnVJSU0ktL22N9UDcVBLbz8e" target="_blank" rel="noopener">Apply to join Jihong on the island</a>
+        <p class="xsr-more">Haven't heard her speak yet? Watch the 6-minute film above, or search the WeChat Channels account 「自然幸福法」 — we recommend <i>Life Is About One Thing</i>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tw" id="tianwang">
+  <div class="wrap">
+    <span class="eyebrow">This season's momentum advisor · Island host · Li Tianwang</span>
+    <h2 class="m-head">For twenty-plus years, he's helped brands and people get seen.<br>This time, he's bringing the stage to the island.</h2>
+    <div class="tw-top">
+      <figure class="tw-portrait"><img src="img/tw-hero3.jpg" alt="Li Tianwang in an orange suit, hosting on stage with a microphone" loading="lazy"></figure>
+      <div class="tw-body">
+        <p class="m-name"><b>Li Tianwang (黎天王)</b><span>Brand &amp; IP momentum advisor · Former senior host, Hubei Radio</span></p>
+        <p>Thirteen years as a provincial broadcast host, a brand executive at a ¥10-billion listed group, and more than twenty years in hands-on brand marketing. Brands and founders bring him in for a launch, a gala or a livestream — whatever it takes for a brand, or a person, to be seen by many more people. He calls it "building momentum": <b>small budget, big buzz.</b></p>
+        <p class="tw-hl">This time he's the Island Owner Program's <b>momentum advisor</b> and our <b>island host</b>: on opening night he raises the curtain for our founding island owners, and on the final pitch-and-closing night he stands with each island owner as they take the stage.</p>
+        <p>For all 5 days, he's right there with us. How to get more people to see you, what to say on camera, how to use your voice, how to shoot video — pull him aside and talk it through, or just have fun with him.</p>
+        <div class="m-incl"><span class="mono">Included</span><p>Tianwang's hosting on the island and his momentum-building sessions are included in the residency fee, <b>at no extra cost</b>. <a href="#price">See price</a></p></div>
+      </div>
+    </div>
+
+    <ul class="tw-tags">
+      <li><b>Broadcasting</b><span>Former senior host at Hunan and Hubei radio, 13 years as a professional provincial broadcast host; worked on programs for Zhejiang TV, Hubei TV and more</span></li>
+      <li><b>Brand</b><span>Former brand executive at a ¥10-billion listed group: head of content marketing at BESTORE (良品铺子), co-creator of Tmall live commerce; grew an official account from 6 million to 11 million+ followers</span></li>
+      <li><b>Creator</b><span>Food and lifestyle creator with 300+ brand partners; one of Wuhan's first Douyin local-life creators, helping brick-and-mortar stores generate tens of millions of yuan</span></li>
+      <li><b>Track record</b><span>20+ years in brand marketing: brand strategy upgrade for Guobao Qiaomi; CMO of Mr. Milk Tea (400+ stores); brand director of Zuideyi, Hubei (360+ stores)</span></li>
+    </ul>
+
+    <div class="m-photos tw-photos">
+      <figure class="w2"><img src="img/tw-tv.jpg" alt="Li Tianwang hosting a TV program with a microphone" loading="lazy"><figcaption>Hosting on TV</figcaption></figure>
+      <figure><img src="img/tw-radio.jpg" alt="Li Tianwang in a radio studio early in his career" loading="lazy"><figcaption>In the radio studio</figcaption></figure>
+      <figure><img src="img/tw-field.jpg" alt="Li Tianwang planting rice in a paddy at a brand event" loading="lazy"><figcaption>Brand campaign · planting rice</figcaption></figure>
+      <figure><img src="img/tw-zde.jpg" alt="Li Tianwang speaking at the Zuideyi brand conference" loading="lazy" style="object-position:center 60%"><figcaption>Zuideyi brand conference</figcaption></figure>
+      <figure><img src="img/tw-brand.jpg" alt="Li Tianwang speaking at a chain-brand event" loading="lazy"><figcaption>Chain-brand event</figcaption></figure>
+      <figure class="w2h"><img src="img/tw-live.jpg" alt="Li Tianwang hosting a brand livestream" loading="lazy" style="object-position:center 30%"><figcaption>Brand livestream</figcaption></figure>
+      <figure><img src="img/tw-launch.jpg" alt="Li Tianwang interviewed by the media at a brand launch" loading="lazy"><figcaption>Brand launch ceremony</figcaption></figure>
+      <figure><img src="img/tw-pyramid.jpg" alt="Li Tianwang hosting an Asia-Pacific flagship showroom opening gala" loading="lazy" style="object-position:center 25%"><figcaption>Flagship showroom opening gala</figcaption></figure>
+    </div>
+
+    <h3 class="m-sub">Momentum he's built</h3>
+    <div class="tw-cases">
+      <article><span class="mono">Case 01</span><h4>Jin Yuqi, "China's Queen of Viral Growth"</h4><p>Landmark livestream plus a three-stage-rocket campaign: 8,000 paying members joined, a peak of 130,000 live viewers, ¥2 million+ in total GMV.</p></article>
+      <article><span class="mono">Case 02</span><h4>Book launch for 「重启家书」</h4><p>A launch event at Shanghai Book City, covered by 120+ media outlets.</p></article>
+      <article><span class="mono">Case 03</span><h4>Asia-Pacific flagship showroom opening gala</h4><p>One opening gala, covered by 12 media outlets including <i>Harper's BAZAAR</i>.</p></article>
+    </div>
+
+    <div class="m-qs">
+      <div>
+        <p class="sig">Shooting video, presence on camera, voice training:<br>these are all things we can explore and play with together.<cite>— Li Tianwang</cite></p>
+      </div>
+      <div class="xsr">
+        <h3>Want more people to see you?</h3>
+        <p>A business needs to be seen, and so do you. For these 5 days, the "King of Momentum" is right beside you.</p>
+        <a class="btn" href="https://ncnpdjciqnfm.feishu.cn/share/base/form/shrcnVJSU0ktL22N9UDcVBLbz8e" target="_blank" rel="noopener">Apply to join Tianwang on the island</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pillars">
+  <div class="wrap">
+    <div class="pillars-head">
+      <div><span class="eyebrow">What we'll do in 5 days</span><h2>Take home: a new you,<br>a few real creations, and a circle of people.</h2></div>
+      <a class="btn ghost" href="#days">See the daily schedule</a>
+    </div>
+    <div class="pillars">
+      <article class="pillar wide">
+        <img src="img/circle.jpg" alt="A group sitting in a circle on the beach in quiet reflection" loading="lazy">
+        <div class="body">
+          <span class="who"><a href="#mentor">Jihong</a> · 2.5 days</span>
+          <h3>A way of living</h3>
+          <p>The classroom faces the sea, with the wind and the waves right in front of you, and sometimes it moves to the beach. Over two and a half days, she helps you find, and live as, your true self.</p>
+          <p class="take">Take home: <b>a new you</b></p>
+        </div>
+      </article>
+      <article class="pillar wide">
+        <img src="img/resort-aerial.jpg" alt="Aerial view of the resort, pool and beach on Floral Island" loading="lazy">
+        <div class="body">
+          <span class="who">Lily · Hands-on AI workshop</span>
+          <h3>If this island were yours</h3>
+          <p>In small groups, we use AI to work through a real question: what are the numbers behind buying and running an island? Research it, run the numbers, write a pitch, build a one-page website, then pitch it on stage on the final night. New to AI? No problem — templates and assistants are ready.</p>
+          <p class="take">Take home: <b>a plan and a web page</b></p>
+        </div>
+      </article>
+      <p class="pillars-sub">Four guides, each helping you make one piece of work</p>
+      <article class="pillar">
+        <img src="img/reflection.jpg" alt="Reflections on the sea" loading="lazy">
+        <div class="body">
+          <span class="who">Mu Xiao · Photography</span>
+          <h3>Your ideal photo</h3>
+          <p>For all 5 days, Mu Xiao is on the island shooting alongside you. You take the photos yourself, with Mu Xiao beside you giving feedback, and at the end you choose your "ideal photo" together from your own shots.</p>
+          <p class="take">Take home: <b>an ideal photo you took yourself</b></p>
+        </div>
+      </article>
+      <article class="pillar">
+        <img src="img/kayak-aerial.jpg" alt="Aerial view of a kayak on the sea" loading="lazy">
+        <div class="body">
+          <span class="who">Wenliang · Short film</span>
+          <h3>Your island short film</h3>
+          <p>Wenliang shows you how to capture yourself on the island with the phone or camera you already have. When you leave, you take home a short island film that's all your own.</p>
+          <p class="take">Take home: <b>your own island short film</b></p>
+        </div>
+      </article>
+      <article class="pillar">
+        <img src="img/volleyball.jpg" alt="Playing volleyball together on the beach" loading="lazy">
+        <div class="body">
+          <span class="who">Zou Na · DISC</span>
+          <h3>Understand yourself, and the people around you</h3>
+          <p>Before we leave, you'll get a professional-grade DISC assessment and a full, detailed report. One evening on the island, Zou Na helps everyone make sense of themselves, their families, and their fellow island owners.</p>
+          <p class="take">Take home: <b>an official DISC report</b></p>
+        </div>
+      </article>
+      <article class="pillar">
+        <img src="img/coconut.jpg" alt="A coconut with a hibiscus flower on a table" loading="lazy">
+        <div class="body">
+          <span class="who">Lily · Jack of all trades</span>
+          <h3>Your e-book and your island page</h3>
+          <p>On four mornings, Lily leads a walk along the beach where we talk through your life story. After the island, it becomes a vivid, heartfelt e-book that's yours alone. Everyone also gets a personal web page holding your photos, your story, your island film and your e-book.</p>
+          <p class="take">Take home: <b>your own e-book and your island page</b></p>
+        </div>
+      </article>
+      <article class="pillar">
+        <img src="img/longtable.jpg" alt="A long table by the sea at night" loading="lazy">
+        <div class="body">
+          <span class="who">Small-group advisory circle · ideas from your peers</span>
+          <h3>Peer advisory circle</h3>
+          <p>Before the trip, AI helps you put together a first check-up of your business. On the island, in groups of six, each person takes a turn sharing what they're working on while the group offers ideas, and Lily rotates between groups to weigh in.</p>
+          <p class="take">Take home: <b>an action list</b></p>
+        </div>
+      </article>
+      <article class="pillar">
+        <img src="img/night-circle.jpg" alt="People sitting together under string lights at night" loading="lazy">
+        <div class="body">
+          <span class="who">The founding island owners</span>
+          <h3>A circle of people</h3>
+          <p>Resource-matching night: each person shares one need and one resource they can offer, and we match them on the spot. After the island, a small group keeps going together for 21 days.</p>
+          <p class="take">Take home: <b>fellow travelers, including yourself</b></p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="days" id="days">
+  <div class="wrap">
+    <span class="eyebrow">Schedule · Draft</span>
+    <h2>5 days on the island</h2>
+    <p class="lead">We meet you at El Nido airport, then it's a 1 hour 20 minute van ride to the pier and a 10-minute boat ride to the island. The morning we leave is the lowest tide of the trip, so we depart after midday.</p>
+    <div class="timeline">
+      <div class="day"><div class="when"><b>12/6</b>Sun · Arrival</div><div class="slot"><small>Day</small>Airport pickup, van and boat to the island. Explore the island, snorkel, kayak — start playing right away.</div><div class="slot"><small>Evening</small>Opening ceremony (hosted by Li Tianwang): everyone shares the island number they picked, and why.</div></div>
+      <div class="day"><div class="when"><b>12/7</b>Mon</div><div class="slot"><small>Morning / all day</small>Island owners' morning walk; Jihong: a way of living.</div><div class="slot"><small>Evening</small>Resource-matching night.</div></div>
+      <div class="day"><div class="when"><b>12/8</b>Tue</div><div class="slot"><small>Morning / all day</small>Island owners' morning walk; Jihong: a way of living.</div><div class="slot"><small>Evening</small>DISC night, then a group photo under the stars.</div></div>
+      <div class="day new"><div class="when"><b>12/9</b>Wed · New moon</div><div class="slot"><small>Morning / day</small>Island owners' morning walk; Jihong's sessions wrap up in the morning. In the afternoon Henry and Sylvia come to the island to share how they started from zero and became themselves; then photos and filming, or free time.</div><div class="slot"><small>Evening</small>New-moon night: wishes under the stars, and a letter to yourself a year from now.</div></div>
+      <div class="day"><div class="when"><b>12/10</b>Thu</div><div class="slot"><small>Morning / day</small>Island owners' morning walk; AI workshop in the morning, "If this island were yours"; peer advisory circles in the afternoon.</div><div class="slot"><small>Evening</small>Pitches + closing night (hosted by Li Tianwang): we watch everyone's island films and hand out Sea Turtle Guardian certificates.</div></div>
+      <div class="day"><div class="when"><b>12/11</b>Fri · Departure</div><div class="slot"><small>Morning</small>Look back together, pack up.</div><div class="slot"><small>After midday</small>Boat and van back to El Nido airport, arriving around 3 p.m.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="life" id="life">
+  <div class="wrap">
+    <span class="eyebrow">Days on the island</span>
+    <h2>Outside the sessions, the island is yours.</h2>
+    <p class="lead">11 hectares, 6 beaches, closed to everyone else for 5 days. Tap below to see the sea, the food, the rooms and the nights.</p>
+    <div class="tabs" role="tablist" aria-label="Photo categories"><button type="button" role="tab" id="tab-sea" aria-controls="panel-sea" aria-selected="true">Sea</button><button type="button" role="tab" id="tab-eat" aria-controls="panel-eat" aria-selected="false">Eat</button><button type="button" role="tab" id="tab-stay" aria-controls="panel-stay" aria-selected="false">Stay</button><button type="button" role="tab" id="tab-night" aria-controls="panel-night" aria-selected="false">Night</button></div>
+    <div class="mosaic" role="tabpanel" id="panel-sea" aria-labelledby="tab-sea"><figure class="m-tall m-wide"><img src="img/kayak-aerial.jpg" alt="Aerial view: a kayak in the bay" loading="lazy"><figcaption>Kayak around the island</figcaption></figure><figure class="m-tall"><img src="img/snorkel-turtle.jpg" alt="Meeting a sea turtle while snorkeling" loading="lazy"><figcaption>Snorkeling</figcaption></figure><figure><img src="img/aerial-reef.jpg" alt="Aerial view: beach and coral reef" loading="lazy"><figcaption>The reef by the island</figcaption></figure><figure><img src="img/clownfish.jpg" alt="Clownfish in coral" loading="lazy"><figcaption>Underwater</figcaption></figure><figure class="m-wide"><img src="img/dock-aerial.jpg" alt="Aerial view: the thatched hut at the end of the pier" loading="lazy"><figcaption>End of the pier</figcaption></figure><figure><img src="img/jump.jpg" alt="Jumping off the pier into the sea" loading="lazy"><figcaption>Jump off the pier</figcaption></figure><figure><img src="img/hut.jpg" alt="A thatched hut and boardwalk over the sea" loading="lazy"><figcaption>Thatched hut over the sea</figcaption></figure><figure class="m-wide"><img src="img/reflection.jpg" alt="A limestone islet reflected in a calm sea" loading="lazy"><figcaption>A windless morning</figcaption></figure><figure><img src="img/volleyball.jpg" alt="Beach volleyball" loading="lazy"><figcaption>Beach volleyball</figcaption></figure><figure><img src="img/sunset.jpg" alt="Sunset from the pier" loading="lazy"><figcaption>Sunset on the pier</figcaption></figure></div><div class="mosaic" role="tabpanel" id="panel-eat" aria-labelledby="tab-eat" hidden><figure class="m-tall m-wide"><img src="img/food-table.jpg" alt="A table full of dishes" loading="lazy"><figcaption>Three meals a day, all included</figcaption></figure><figure class="m-tall"><img src="img/food-fruit.jpg" alt="Fruit and dishes laid out on banana leaves" loading="lazy"><figcaption>Banana-leaf feast</figcaption></figure><figure><img src="img/drink-coconut.jpg" alt="A coconut with a flower" loading="lazy"><figcaption>Fresh-cut coconut</figcaption></figure><figure><img src="img/food-fish.jpg" alt="Grilled fish with lemon" loading="lazy"><figcaption>The island kitchen</figcaption></figure><figure class="m-wide"><img src="img/night-table.jpg" alt="A long table on the beach at night" loading="lazy"><figcaption>Dinner on the beach</figcaption></figure><figure><img src="img/coconut.jpg" alt="A coconut with a hibiscus flower on a table" loading="lazy"><figcaption>From our scouting trip: welcome coconut</figcaption></figure><figure><img src="img/clubhouse.jpg" alt="The open-air dining room" loading="lazy"><figcaption>Clubhouse dining room</figcaption></figure></div><div class="mosaic" role="tabpanel" id="panel-stay" aria-labelledby="tab-stay" hidden><figure class="m-tall"><img src="img/walkway.jpg" alt="The bamboo boardwalk onto the island" loading="lazy"><figcaption>From our scouting trip: the way in</figcaption></figure><figure class="m-wide"><img src="img/room.jpg" alt="A bedroom with white mosquito nets" loading="lazy"><figcaption>Beach room</figcaption></figure><figure><img src="img/room-net.jpg" alt="A large bed with a mosquito net" loading="lazy"><figcaption>A quiet room</figcaption></figure><figure><img src="img/cliff-cottage.jpg" alt="A thatched cottage on the cliff" loading="lazy"><figcaption>Cliffside cottage</figcaption></figure><figure><img src="img/bighouse.jpg" alt="A wooden house in the jungle" loading="lazy"><figcaption>Big House</figcaption></figure><figure><img src="img/clubhouse-stairs.jpg" alt="The Clubhouse stairs and bar" loading="lazy"><figcaption>Clubhouse</figcaption></figure><figure class="m-wide"><img src="img/visit-dock.jpg" alt="Floral Island pier and limestone hills" loading="lazy"><figcaption>From our scouting trip: the pier</figcaption></figure><figure><img src="img/massage-hut.jpg" alt="A massage hut by the sea" loading="lazy"><figcaption>Massage hut (at your own cost)</figcaption></figure><figure><img src="img/massage.jpg" alt="Massage" loading="lazy"><figcaption>Massage (at your own cost)</figcaption></figure></div><div class="mosaic" role="tabpanel" id="panel-night" aria-labelledby="tab-night" hidden><figure class="m-tall m-wide"><img src="img/pool-night.jpg" alt="The pool and cottages lit up at night" loading="lazy"><figcaption>The pool at night</figcaption></figure><figure class="m-tall"><img src="img/dock-night.jpg" alt="The pier lit up at night" loading="lazy"><figcaption>The pier at night</figcaption></figure><figure><img src="img/hut-sunset.jpg" alt="Watching the sunset from a thatched hut" loading="lazy"><figcaption>Sunset from the hut</figcaption></figure><figure><img src="img/bonfire.jpg" alt="A bonfire on the beach" loading="lazy"><figcaption>Beach bonfire</figcaption></figure><figure class="m-wide"><img src="img/dock-dawn.jpg" alt="The pier at dawn with islands in the distance" loading="lazy"><figcaption>Just after dawn</figcaption></figure><figure><img src="img/night-dinner.jpg" alt="Dinner under string lights at night" loading="lazy"><figcaption>Dinner under string lights</figcaption></figure><figure><img src="img/longtable.jpg" alt="A long table by the sea at night" loading="lazy"><figcaption>Late talks at the long table</figcaption></figure></div>
+    <div class="honest"><span class="mono" style="color:var(--hibiscus)">Heads-up</span><p><b>It's an island, not a hotel.</b> Everyone stays on the island, in beds or on thick floor mattresses. We're not coming for the beds — we're coming for the island and for each other. The island runs on solar power and Starlink, so please help save water and electricity; the signal is good enough, but it's not 5G.</p></div>
+  </div>
+</section>
+
+<section class="incl" id="incl">
+  <div class="wrap">
+    <span class="eyebrow">All included</span>
+    <h2>Once you're on the island, you won't need your wallet for any of this.</h2>
+    <div class="incl-grid">
+      <div><b>The island</b><span>11 hectares, 6 beaches, closed to everyone else for 5 days</span></div>
+      <div><b>Stay</b><span>Everyone stays on the island; rooms have air conditioning</span></div>
+      <div><b>Three meals a day</b><span>Healthy food from the island kitchen, vegetarian options too</span></div>
+      <div><b>Coffee, tea, drinking water</b><span>Available all day</span></div>
+      <div><b>Snorkeling and paddling</b><span>Snorkel gear, kayaks, paddleboats</span></div>
+      <div><b>Pool and sea platform</b><span>With a diving board, too</span></div>
+      <div><b>Summit trail</b><span>300+ steps to a 360° view from the top</span></div>
+      <div><b>Clubhouse</b><span>Dining room, bar, and a games room upstairs</span></div>
+      <div><b>Beach bonfire</b><span>Evening talks around the fire</span></div>
+      <div><b>Transfers</b><span>Van to and from El Nido airport, plus the boat to and from the island</span></div>
+      <div><b>Starlink internet</b><span>Satellite Wi-Fi, fine for everyday use and video calls</span></div>
+      <div><b>Lifeguard and first aid</b><span>Lifeguard on the island; staff trained in first aid</span></div>
+      <div><b>Housekeeping</b><span>Whenever you need it</span></div>
+      <div><b>Coral reef restoration</b><span>The island takes part in a coral reef restoration project</span></div>
+    </div>
+    <p class="extra"><b>At your own cost:</b> massages, alcohol and other drinks, off-island trips (sunset cruise, island hopping, waterfalls). Everyone settles their own bill before leaving; card payments carry a 3.5% surcharge, so we suggest bringing some Philippine pesos in cash. Some beaches have sand flies; citronella oil is sold at the Clubhouse.</p>
+  </div>
+</section>
+
+<section class="guests" id="guests">
+  <div class="wrap">
+    <span class="eyebrow">Role models next door</span>
+    <h2>In El Nido, two people who became themselves.</h2>
+    <p class="lead">They've lived in El Nido for more than ten years. On the afternoon of December 9, Henry will come to the island to share his story, and Sylvia will come to share hers.</p>
+    <div class="guest-grid">
+      <article class="guest">
+        <img src="img/henry-dive.jpg" alt="Henry freediving in the sea" loading="lazy">
+        <div class="body">
+          <h3>Henry Hsu (许明顺)</h3>
+          <span class="role">Founder, H Hospitality Group</span>
+          <p>Started his first business at 14 and retired at 31. After three years of backpacking, his love of freediving led him to El Nido, where he started again from zero. Today he spends 180 days a year running his business on the island and 180 days traveling.</p>
+          <q>Financial freedom is simple. Once you have freedom of time, what follows is freedom of the heart.</q>
+        </div>
+      </article>
+      <article class="guest">
+        <img src="img/sylvia-turtle.jpg" alt="Sylvia releasing baby sea turtles on the beach" loading="lazy">
+        <div class="body">
+          <h3>Sylvia Wu (吴晏芸), the "Sea Turtle Goddess"</h3>
+          <span class="role">Founder of Palawan's largest sea turtle hatchery · co-author of <i>Play and Prosper: Travel the World, Become Yourself</i></span>
+          <p>She once worked on the 39th floor of Taipei 101, then quit to go backpacking and ended up settling on a beach in El Nido. It began with a bucket of 47 turtle eggs, not one of which hatched. Ten years on, she has released more than 70,000 baby turtles back into the sea. Today she protects turtles, DJs, travels and writes.</p>
+          <q>As a child I cried over a caterpillar. As an adult, I stayed for 70,000 sea turtles.</q>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="turtle" id="turtle">
+  <div class="wrap">
+    <div class="turtle-grid">
+      <figure class="turtle-img"><img src="img/snorkel-turtle.jpg" alt="A sea turtle met while snorkeling" loading="lazy"></figure>
+      <div>
+        <span class="eyebrow">Sea Turtle Guardian Program</span>
+        <h2>When you come to the island,<br>a nest of baby turtles makes it to the sea.</h2>
+        <p class="lead">In El Nido, not far from Floral Island, Sylvia has protected sea turtles on Nacpan Beach for ten years and released more than 70,000 hatchlings. This time, every founding island owner will join her in protecting the turtles.</p>
+        <ol class="turtle-list">
+          <li><b>Every 4 island owners adopt one nest of turtle eggs</b><span>Each place includes ¥298 donated to the sea turtle conservation center Sylvia founded, and every 4 island owners together adopt a whole nest (50–100 eggs). When the hatchlings emerge and reach the sea, Sylvia records it, and the photos go onto each person's island page, along with an adoption certificate from the center.</span></li>
+          <li><b>Using what we know to help a little more</b><span>One AI workshop group will make a Chinese-language introduction and a short film for the turtle center, so more Chinese speakers get to know these turtles.</span></li>
+          <li><b>A Sea Turtle Guardian certificate</b><span>On closing night, everyone receives a "Sea Turtle Guardian" certificate printed with their island number, with a copy on their island page.</span></li>
+        </ol>
+        <p class="turtle-fine">In the wild, only about one in a thousand baby turtles grows to adulthood. Friends who stay on in El Nido after 12/11 can visit the turtle center and see its new turtle classroom, opening in early December. Anything beyond the adoptions goes in as a donation, with the details shared on closing night.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cloud" id="xiaoyu">
+  <div class="wrap narrow">
+    <span class="eyebrow">From the cloud to the island</span>
+    <h2>Her island has always lived in the cloud.<br>This time, she's bringing it to a real one.</h2>
+    <p class="lead">Xiaoyu runs "Play-and-Heal Island" (玩愈岛) and is part of the Play and Prosper community. Play-and-Heal Island grew out of the mountains: each week she takes a family up a mountain, finding awareness in play and healing in being together, then uses AI to write and film those stories.</p>
+    <p class="lead" style="margin-top:14px">That island has always lived in the cloud. In December, she'll bring it to Floral Island and be its owner for a few days. Really, for these 5 days, every one of us is an island owner.</p>
+    <blockquote>The mountains healed me, and I turned them into an island.<cite>— Xiaoyu | Play-and-Heal Island</cite></blockquote>
+  </div>
+</section>
+
+<section class="price" id="price">
+  <div class="wrap">
+    <span class="eyebrow">Price</span>
+    <h2>Airport to airport, one price.</h2>
+    <p class="lead">The residency fee starts with pickup at El Nido airport and ends with drop-off back at El Nido airport.</p>
+    <div class="tiers one">
+      <div class="tier feat"><small>Residency fee · per person</small><div class="amt mono">¥29,800</div><p>Chinese yuan (CNY). From pickup at El Nido airport on December 6 to drop-off at El Nido airport on December 11.</p></div>
+    </div>
+    <div class="inout">
+      <div class="in"><h3>Included</h3><ul>
+        <li><b>Transfers</b>12/6 pickup at El Nido airport, van and boat to the island; 12/11 back to El Nido airport</li>
+        <li><b>Stay</b>5 nights on a private island, everyone staying on the island</li>
+        <li><b>Food</b>Three healthy meals a day for 5 days (vegetarian options too), coffee, tea and drinking water all day</li>
+        <li><b>Play</b>Snorkel gear, kayaks, paddleboats, pool, sea platform, summit trail, beach bonfire</li>
+        <li><b>Learn</b>Two and a half days with Jihong, the hands-on AI workshop, small-group peer advisory circles</li>
+        <li><b>Take home</b>A photo you're proud of, your own island short film, a professional-grade DISC assessment and official report, your own e-book, your island page (personal link), a hat and a keepsake gift</li>
+        <li><b>Before &amp; after</b>Online prep sessions before the trip, and a small group for 21 days after</li>
+        <li><b>Tips</b>Tips for island staff and environmental fees</li>
+        <li><b>Giving back</b>¥298 per place donated to the sea turtle conservation center (every 4 island owners adopt one nest), plus a Sea Turtle Guardian certificate</li>
+      </ul></div>
+      <div class="out"><h3>Not included</h3><ul>
+        <li><b>Getting to El Nido</b>Flights, transfers and hotels before you reach El Nido airport and after you leave it. Roughly ¥6,000–9,000 from China, or ¥10,000–14,000 from North America</li>
+        <li><b>Extras on the island</b>Massages, alcohol and other drinks, off-island trips (sunset cruise, island hopping, waterfalls)</li>
+        <li><b>Personal spending</b>Shopping, souvenirs and so on</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="fit" id="fit">
+  <div class="wrap">
+    <span class="eyebrow">Who it's for</span>
+    <h2>This island is waiting for someone like you.</h2>
+    <p class="fit-lead">Our founding island owners include Play and Prosper authors, their families and friends, and… you, if something stirred in you as you read this far.</p>
+    <div class="fit-grid">
+      <div class="fit-yes">
+        <h3>It's for you if…</h3>
+        <ul>
+          <li>You're at a turning point: you want a different way of living, or want the things you love to support you.</li>
+          <li>You're tired of treating "play" and "earning" as two separate things and want to see if they can come together.</li>
+          <li>You're willing to put your phone down, sit in a circle with people you've just met, and say something true.</li>
+          <li>You're curious about AI, even if you barely use it yet.</li>
+          <li>You love nature and don't mind sandy paths, stairs, or the occasional floor mattress.</li>
+        </ul>
+      </div>
+      <div class="fit-no">
+        <h3>It may not be for you if…</h3>
+        <ul>
+          <li>You're looking for a comfortable resort hotel. This is an island, not a hotel.</li>
+          <li>You want someone to plan everything for you and guarantee how much you'll earn afterward.</li>
+          <li>You just want to sit and listen. For these 5 days, everyone shoots, makes and speaks for themselves.</li>
+          <li>Your health or emotions mean you need to be able to leave at any moment. The island is remote, and there's no leaving midway.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="fit-end">See yourself in the "It's for you" column? You're welcome to apply — we'll have a call and take our time getting to know each other.</p>
+  </div>
+</section>
+
+<section class="apply" id="apply">
+  <div class="wrap">
+    <span class="eyebrow">Apply</span>
+    <h2>This isn't a sign-up. It's an application.</h2>
+    <p class="lead">The island is remote, and once you're there you can't leave midway. So we have a call with every applicant to make sure these 5 days are right for you.</p>
+    <div class="apply-grid">
+      <div>
+        <ol class="steps">
+          <li><div><b>Fill in the application</b><span>The Feishu form on the right, about 3 minutes.</span></div></li>
+          <li><div><b>Pay a ¥1,000 deposit</b><span>This holds your place. If your application isn't accepted, it's fully refunded.</span></div></li>
+          <li><div><b>A 15-minute call</b><span>We'll talk about why you want to come and what you're doing now.</span></div></li>
+          <li><div><b>Receive your invitation</b><span>Pay the balance within 3 days of acceptance, and the place is yours.</span></div></li>
+        </ol>
+        <div class="dates">
+          <div><span>11/06</span><span>Applications close (or when full)</span></div>
+          <div><span>11/15</span><span>Refund deadline; no refunds after this date</span></div>
+          <div><span>12/06</span><span>Arrive on the island</span></div>
+        </div>
+      </div>
+      <div class="apply-card">
+        <h3>Founding island owner application</h3>
+        <p>7 questions, about 3 minutes. Once you submit, we'll add you on WeChat within 2 days to set up a 15-minute call.</p>
+        <p class="form-note">The form is in Chinese, but you're welcome to answer in English. If anything is unclear, just ask the friend who shared this page with you.</p>
+        <a class="btn" href="https://ncnpdjciqnfm.feishu.cn/share/base/form/shrcnVJSU0ktL22N9UDcVBLbz8e" target="_blank" rel="noopener">Open the application form</a>
+        <div class="qr"><img src="img/apply-qr.png" alt="QR code for the application form" width="150" height="150"><span>On a computer? Scan with your phone to fill it in there.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap narrow">
+    <span class="eyebrow">FAQ</span>
+    <h2>Questions you might have</h2>
+    <details><summary>How do I get to the island?</summary><p>If you're flying from China, you'll enter the Philippines through Manila (visa-free entry for Chinese passports currently applies only via Manila and Cebu — please check the latest policy before you travel), and we'll take a chartered bus to Clark. If you're flying from North America or elsewhere, fly into Clark. On December 5 everyone meets and stays one night in Clark, and on December 6 we fly to El Nido together. Flights are booked for everyone through our partner travel agency.</p></details>
+    <details><summary>What are the rooms like?</summary><p>Everyone stays on the island. Rooms have air conditioning, with beds and thick floor mattresses. Couples and close friends can room together; room assignments are shared before opening night.</p></details>
+    <details><summary>What will we eat?</summary><p>Three meals a day for all 5 days are included, healthy food made by the island kitchen, with vegetarian options. If you're vegetarian or have other dietary needs, please note them in your application and we'll let the island know in advance.</p></details>
+    <details><summary>Is there internet on the island?</summary><p>Yes, Starlink satellite internet. We tested it on our scouting trip: it's fine for everyday use and video calls, though it's not 5G. Any accounts and tools you need for the AI workshop will be set up for you before the trip.</p></details>
+    <details><summary>What if someone gets sick or injured?</summary><p>There's a first-aid kit on the island, and two staff members are trained in Red Cross first aid. There's no clinic on the island; the nearest hospital is in Taytay, about 40 minutes at the fastest by boat and car, usually around an hour.</p></details>
+    <details><summary>Is there an age requirement?</summary><p>This season is for adults 18 and over. The boat ride to and from the island is only about 10 minutes, the island has sandy paths and stairs, and the nearest hospital is about an hour away. On the call after you apply, we'll talk through your health together.</p></details>
+    <details><summary>How do I choose my island number?</summary><p>Pick any three-digit number from 001 to 999, first come, first served. Choose one that means something to you: a birthday, a lucky number, a date that matters to your family. On opening night, everyone shares why they chose their number. It stays yours every time you come back to the island.</p></details>
+    <details><summary>Can I come if I don't know how to use AI?</summary><p>Yes. The online prep sessions before the trip will help you set up your accounts and learn the basics, and every group on the island has an AI assistant working alongside you.</p></details>
+    <details><summary>What's the refund policy?</summary><p>¥1,000 deposit: fully refunded if your application isn't accepted. After paying in full, refund requests made before November 15 are refunded in full; after November 15 there are no refunds, because the island's costs are also non-refundable after that date. You can transfer your place to a friend who has gone through the application.</p></details>
+  </div>
+</section>
+
+<section class="closing">
+  <img src="img/dock-night.jpg" alt="The pier, lit up at night, stretching out into the sea" loading="lazy" style="object-position:center 70%">
+  <div class="over"><div class="wrap">
+    <h2>For these 5 days, the island is ours.</h2>
+    <p>There's only ever one first season.</p>
+    <a class="btn" href="https://ncnpdjciqnfm.feishu.cn/share/base/form/shrcnVJSU0ktL22N9UDcVBLbz8e" target="_blank" rel="noopener">Apply to be a founding island owner</a>
+  </div></div>
+</section>
+
+<footer><div class="wrap"><span><img class="foot-logo" src="img/logo.png" alt="Play and Prosper">Play and Prosper · An Island of Our Own · Founding Season</span><span class="mono">FLORAL ISLAND · PALAWAN · 2026.12</span></div></footer>
+
+<script>
+(function(){
+  // sticky header tint
+  var top=document.getElementById('top');
+  function onScroll(){ top.classList.toggle('solid', window.scrollY > window.innerHeight*0.6); }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  // hero video: keep poster if reduced motion
+  var v=document.getElementById('heroVideo');
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches && v){ v.removeAttribute('autoplay'); v.pause(); v.hidden=true; }
+
+  // moon phases 12/6–12/11 (waning crescent → new moon on 12/9 → young crescent)
+  var phases=[
+    {d:'12/06', lit:.10, side:'L', n:'Waning crescent · Arrival'},
+    {d:'12/07', lit:.05, side:'L', n:''},
+    {d:'12/08', lit:.02, side:'L', n:'Stargazing photo'},
+    {d:'12/09', lit:0,   side:'L', n:'New moon 08:52 · Wish night', key:true},
+    {d:'12/10', lit:.03, side:'R', n:'Closing night'},
+    {d:'12/11', lit:.07, side:'R', n:'Departure'}
+  ];
+  var box=document.getElementById('phases');
+  phases.forEach(function(p){
+    var r=34, cx=40, cy=40;
+    // lit crescent: outer half circle + inner ellipse; rx shrinks the crescent
+    var rx = r*(1-2*p.lit); // terminator ellipse
+    var sweepOuter = p.side==='R' ? 1 : 0;
+    var path = p.lit>0 ? 'M'+cx+' '+(cy-r)+' A'+r+' '+r+' 0 0 '+sweepOuter+' '+cx+' '+(cy+r)+' A'+rx.toFixed(2)+' '+r+' 0 0 '+(1-sweepOuter)+' '+cx+' '+(cy-r)+'Z' : '';
+    var el=document.createElement('div'); el.className='phase'+(p.key?' key':'');
+    el.innerHTML='<svg viewBox="0 0 80 80" role="img" aria-label="'+p.d+(p.key?' new moon':'')+'">'+
+      '<circle cx="40" cy="40" r="34" fill="#132A2E" stroke="'+(p.key?'#D2B988':'rgba(230,238,234,.25)')+'" stroke-width="'+(p.key?1.6:1)+'"/>'+
+      (path?'<path d="'+path+'" fill="#EDE6D2"/>':'')+'</svg>'+
+      '<span class="d">'+p.d+'</span><span class="n">'+(p.n||'&nbsp;')+'</span>';
+    box.appendChild(el);
+  });
+
+
+
+  // keep section when switching language
+  var sw=document.querySelector('.lang-sw'); if(sw){ sw.addEventListener('click', function(){ if(location.hash){ sw.href=sw.getAttribute('href').split('#')[0]+location.hash; } }); }
+
+  // gallery tabs
+  var tabBtns=document.querySelectorAll('.tabs button');
+  tabBtns.forEach(function(btn){ btn.addEventListener('click', function(){
+    tabBtns.forEach(function(b){ var on=b===btn; b.setAttribute('aria-selected', String(on)); document.getElementById(b.getAttribute('aria-controls')).hidden=!on; });
+  }); });
+})();
+</script>
+
+
+</body></html>
