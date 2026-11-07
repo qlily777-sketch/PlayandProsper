@@ -161,6 +161,20 @@ h2{font-family:var(--kai);font-weight:900;font-size:clamp(40px,5.4vw,66px);line-
   color:color-mix(in srgb,var(--c) 85%,#000);background:color-mix(in srgb,var(--c) 12%,#fff)}
 .cards.one{grid-template-columns:1fr}
 .cards.three{grid-template-columns:repeat(3,1fr)}
+.cards.two{grid-template-columns:repeat(2,1fr)}
+.cards.five{grid-template-columns:repeat(6,1fr)}.cards.five>*{grid-column:span 2}.cards.five>*:nth-child(n+4){grid-column:span 3}
+.kit{position:relative;max-width:980px;margin:0 auto;background:#fff;border-radius:30px;padding:48px 52px 40px;border:2px solid #FFD9B8;box-shadow:0 40px 70px -40px rgba(178,42,8,.45)}
+.kit::before{content:"";position:absolute;left:52px;right:52px;top:-2px;height:6px;border-radius:0 0 6px 6px;background:linear-gradient(90deg,var(--c-wz),var(--c-tp),var(--c-yp),var(--c-sp))}
+.kit h2{margin:14px 0 6px}
+.kit .motto{font-family:var(--kai);font-size:clamp(20px,2.4vw,26px);color:var(--brand);margin:0 0 28px}
+.kit ol{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.kit li{display:grid;grid-template-columns:56px 150px 1fr;gap:18px;align-items:center;padding:14px 18px;border-radius:18px;background:color-mix(in srgb,var(--c) 7%,#fff);border:1.5px solid color-mix(in srgb,var(--c) 22%,#fff)}
+.kit li .n{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--c);color:#fff;font-family:var(--song);font-weight:900;font-size:22px;font-style:normal}
+.kit li b{font-size:19px;font-weight:800}
+.kit li span{color:var(--ink2);font-size:15.5px}
+.kit .gift{margin-top:26px;display:flex;gap:14px;align-items:center;padding:18px 22px;border-radius:16px;background:linear-gradient(90deg,#FFF1E2,#FFF8EF);font-weight:700;font-size:16.5px}
+.kit .gift .dot{flex:none;width:12px;height:12px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 6px rgba(240,80,28,.18)}
+.kit .alt{margin-top:14px;color:var(--mute);font-size:14.5px;text-align:center}
 .card.wide{min-height:auto;flex-direction:row;align-items:center;gap:30px;padding:30px 34px}
 .card.wide .top{flex-direction:column;gap:14px}
 .card.wide .body{flex:1}
@@ -215,7 +229,8 @@ footer .ft b{font-family:var(--kai);font-size:26px;color:var(--ink);letter-spaci
 .cards .rv:nth-child(2){transition-delay:.08s}.cards .rv:nth-child(3){transition-delay:.16s}.cards .rv:nth-child(4){transition-delay:.24s}
 
 @media (max-width:980px){
-  .cards.three{grid-template-columns:repeat(2,1fr)}
+  .cards.three,.cards.two{grid-template-columns:repeat(2,1fr)}
+  .cards.five{grid-template-columns:repeat(2,1fr)}.cards.five>*,.cards.five>*:nth-child(n+4){grid-column:auto}
   .hero .wrap{grid-template-columns:1fr;text-align:center;padding-top:96px}
   .mods{justify-content:center}
   .ringbox{margin:20px auto 0;width:min(520px,100%)}
@@ -225,7 +240,9 @@ footer .ft b{font-family:var(--kai);font-size:26px;color:var(--ink);letter-spaci
 }
 @media (max-width:560px){
   .wrap{padding:0 18px}
-  .cards,.cards.three{grid-template-columns:1fr}
+  .cards,.cards.three,.cards.two,.cards.five{grid-template-columns:1fr}
+  .kit{padding:36px 22px 28px}.kit::before{left:22px;right:22px}
+  .kit li{grid-template-columns:44px 1fr;gap:4px 14px;padding:12px 14px}.kit li .n{width:40px;height:40px;font-size:18px;grid-row:span 2}.kit li span{font-size:14.5px}
   .card{min-height:auto}
   .tok .b{--s:40px}.tok.big .b{--s:52px}
   .tok .b .lb{display:none}
@@ -326,6 +343,26 @@ footer .ft b{font-family:var(--kai);font-size:26px;color:var(--ink);letter-spaci
   </div>
 </section>
 
+<!-- 五件套 -->
+<section class="sec" style="padding-top:30px">
+  <div class="wrap">
+    <div class="kit rv">
+      <div class="kicker">不想挑？直接选这一套</div>
+      <h2>个人品牌五件套</h2>
+      <p class="motto">放上去，就一直替你说话。</p>
+      <ol>
+        <li style="--c:var(--c-wz)"><i class="n">2</i><b>电子书</b><span>中英双版 PDF，主页可下载，公众号回复即领</span></li>
+        <li style="--c:var(--c-tp)"><i class="n">4</i><b>自我介绍海报</b><span>竖版一张，置顶、加好友、进新群都用它</span></li>
+        <li style="--c:var(--c-tp)"><i class="n">8</i><b>朋友圈封面</b><span>别人点开你头像的第一眼</span></li>
+        <li style="--c:var(--c-yp)"><i class="n">10</i><b>有声书</b><span>10 分钟，用你的声音讲完你的故事</span></li>
+        <li style="--c:var(--c-sp)"><i class="n">15</i><b>故事短片</b><span>30 秒，视频号置顶、活动开场</span></li>
+      </ol>
+      <div class="gift"><span class="dot"></span>五件套交齐，我们为你做好 ① 人生卡 和 ⑱ 个人主页，送给你。</div>
+      <p class="alt">也可以从第二到第十七样里，自己挑五样。</p>
+    </div>
+  </div>
+</section>
+
 <!-- ⑱ 个人主页 -->
 <section class="sec home">
   <div class="wrap feat">
@@ -333,7 +370,7 @@ footer .ft b{font-family:var(--kai);font-size:26px;color:var(--ink);letter-spaci
       <div class="bignum">⑱</div>
       <div class="kicker" style="margin-top:22px">第十八样</div>
       <h2>个人主页</h2>
-      <p class="sub">搭在 <a class="site" href="https://playandprosper.com" target="_blank" rel="noopener">playandprosper.com</a> 上，把你做好的那几样全装进去。一个链接发出去，就介绍了你全部；人生卡上的二维码，也指向这里。</p>
+      <p class="sub">搭在 <a class="site" href="https://playandprosper.com" target="_blank" rel="noopener">playandprosper.com</a> 上，把你做好的那几样全装进去，五件套交齐就送。一个链接发出去，就介绍了你全部；人生卡上的二维码，也指向这里。</p>
       <div class="tags">
         <span><b>一</b> 个链接</span>
         <span><b>全</b> 部装下</span>
@@ -350,11 +387,11 @@ footer .ft b{font-family:var(--kai);font-size:26px;color:var(--ink);letter-spaci
             <div class="tl">边玩边赚联合创始人 · 达拉斯</div>
             <div class="minis">
               <div class="mini" style="--c:var(--c-wz)">② 电子书</div>
-              <div class="mini" style="--c:var(--c-tp)">⑦ 金句海报</div>
+              <div class="mini" style="--c:var(--c-tp)">④ 自我介绍</div>
+              <div class="mini" style="--c:var(--c-tp)">⑧ 朋友圈封面</div>
               <div class="mini" style="--c:var(--c-yp)">⑩ 有声书</div>
               <div class="mini" style="--c:var(--c-sp)">⑮ 故事短片</div>
-              <div class="mini" style="--c:var(--c-zn)">⑰ 智能体</div>
-              <div class="mini ghost">＋ 你挑的</div>
+              <div class="mini ghost">＋ 你加的</div>
             </div>
           </div>
           <div class="btn"><span>预约一本亲笔签名书</span><span>→</span></div>
@@ -377,12 +414,12 @@ document.querySelectorAll(".js-card").forEach(i=>i.src=document.getElementById("
 document.querySelectorAll(".js-logo").forEach(i=>i.src=document.getElementById("logoA").src);
 
 const G=[
- {k:'wz',t:'文字',r:'②–⑤',c:'var(--c-wz)',items:[
+ {k:'wz',t:'文字',r:'②–③',c:'var(--c-wz)',items:[
   ['②','电子书','你的故事做成一本 PDF，中英文各一版。英文版由 AI 翻译重写，可以直接发给人看。','中英双版 PDF','book'],
-  ['③','自我介绍','长中短三个版本。名片用 30 字，主持人念 100 字，演讲开场 300 字。','30 / 100 / 300 字','id'],
-  ['④','故事配图','按你故事里的情节画 5 张图，电子书、公众号、短视频都能用。','5 张情节图','img'],
-  ['⑤','演讲 PPT + 讲稿','一套 12 页左右的网页版 PPT（HTML），浏览器打开就能讲，配一篇 3 分钟的讲稿，上台直接用。需要 PowerPoint 也可以。','12 页 · 3 分钟','ppt']]},
- {k:'tp',t:'图片',r:'⑥–⑧',c:'var(--c-tp)',items:[
+  ['③','演讲 PPT + 讲稿','一套 12 页左右的网页版 PPT（HTML），浏览器打开就能讲，配一篇 3 分钟的讲稿，上台直接用。需要 PowerPoint 也可以。','12 页 · 3 分钟','ppt']]},
+ {k:'tp',t:'图片',r:'④–⑧',c:'var(--c-tp)',items:[
+  ['④','自我介绍海报','竖版一张：你的照片、一句话定位、一段自我介绍。置顶、加好友、进新群都用它。','竖版一张','id'],
+  ['⑤','故事配图','按你故事里的情节画 5 张图，电子书、公众号、短视频都能用。','5 张情节图','img'],
   ['⑥','个人写真照','拿你的照片生成一组 3 张电影质感的照片，配上你的金句。','3 张电影质感','cam'],
   ['⑦','金句海报','从你故事里挑 5 句话，做成 5 张方形图，直接发朋友圈、小红书。','5 张方图','quote'],
   ['⑧','朋友圈封面','你微信朋友圈顶上那张背景图。别人点开你头像，第一眼看到的就是它。','第一眼','cover']]},
@@ -422,7 +459,7 @@ const svg=k=>`<svg viewBox="0 0 24 24">${IC[k]}</svg>`;
 document.getElementById('groups').innerHTML=G.map(g=>`
  <div class="grp" style="--c:${g.c}">
   <div class="ghead rv"><span class="gt">${g.t}</span><span class="gr">${g.r}</span><span class="gl"></span></div>
-  <div class="cards${g.wide?' one':''}${g.items.length==3?' three':''}">${g.items.map(i=>g.wide?`
+  <div class="cards${g.wide?' one':''}${g.items.length==3?' three':g.items.length==2?' two':g.items.length==5?' five':''}">${g.items.map(i=>g.wide?`
    <div class="card wide rv"><div class="top"><span class="num">${i[0]}</span><span class="ic">${svg(i[4])}</span></div>
     <div class="body"><h3>${i[1]}</h3><p>${i[2]}</p><span class="spec">${i[3]}</span></div>
     <div class="chatdemo"><div class="bub q">你书里写的那一年，最难的是什么？</div><div class="bub a">这一段我在书里写过，讲给你听——</div><div class="bub q">后来呢？</div></div>
