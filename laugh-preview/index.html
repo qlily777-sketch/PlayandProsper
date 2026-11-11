@@ -610,6 +610,14 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
   .strip::-webkit-scrollbar{display:none}
   .strip .ph{scroll-snap-align:center}
 }
+/* v22 高级感：收色、统一 */
+.orbit .of{width:13%}
+.orbit .of svg{filter:drop-shadow(0 6px 10px rgba(43,27,61,.18))}
+.wave span{font-family:var(--serif);font-weight:900}
+.wave{border-top:0;height:132px}
+.facts li{background:transparent;border:1px solid rgba(43,27,61,.35);font-weight:700;letter-spacing:.02em}
+.hero-pol{box-shadow:0 22px 44px -18px rgba(43,27,61,.45)}
+.topbar a{letter-spacing:.04em}
 </style>
 </head>
 <body>
@@ -951,7 +959,7 @@ document.querySelectorAll('[data-k]').forEach(el=>el.innerHTML=face(el.dataset.k
     const a=i/12*Math.PI*2-Math.PI/2, r=46;
     const d=document.createElement('div');d.className='of';
     d.style.left=(50+r*Math.cos(a))+'%';d.style.top=(50+r*Math.sin(a))+'%';
-    d.innerHTML=face(kinds[i%3]);d.firstChild.style.setProperty('--r',(i%2?-1:1)*10+'deg');
+    d.innerHTML=face(kinds[i%3],'#FFFBEA');d.firstChild.style.setProperty('--r',(i%2?-1:1)*10+'deg');
     d.firstChild.style.animationDelay=(i*0.04)+'s';
     orbit.appendChild(d);
   }
@@ -1104,7 +1112,7 @@ btn.addEventListener('click',()=>{if(RM)return;document.querySelectorAll('.wall 
 
 // 笑声波形：字就是声波，按"笑"时波形会炸开
 (function(){
-  const w=document.getElementById('wave'),chars=['哈','嘻','呵','嘿','哈','噗','哈','嘿'],cols=[C.big,C.lead,C.smile,'#fff',C.heart,C.lead];
+  const w=document.getElementById('wave'),chars=['哈','嘻','呵','嘿','哈','噗','哈','嘿'],cols=['#FFD23F','rgba(255,251,234,.92)','#FFD23F','rgba(255,251,234,.5)','#FFD23F','rgba(255,210,63,.55)'];
   const n=Math.max(12,Math.min(40,Math.floor(innerWidth/38)));let h='';
   for(let i=0;i<n;i++){
     const x=i/(n-1),env=Math.sin(Math.PI*x)*.75+.25,amp=env*(.55+.45*Math.abs(Math.sin(i*1.7)));
