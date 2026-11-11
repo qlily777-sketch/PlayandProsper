@@ -514,7 +514,7 @@ footer .tiny{margin-top:18px;font-size:13px;opacity:.6}
 .ed .badge{display:inline-block;font-style:normal;font-size:12px;font-weight:900;letter-spacing:.08em;background:var(--yellow);color:var(--plum);padding:3px 10px;border-radius:999px;margin-bottom:8px}
 .qr.pulse{box-shadow:0 0 0 6px var(--yellow),0 0 40px rgba(255,210,63,.8);transition:box-shadow .3s}
 .mbar{position:fixed;left:10px;right:10px;bottom:10px;z-index:8;display:none;gap:8px;padding:8px;border-radius:999px;background:var(--plum);box-shadow:0 10px 30px rgba(0,0,0,.3);transform:translateY(140%);transition:transform .35s}
-.mbar a{flex:1;text-align:center;padding:12px 6px;border-radius:999px;font-weight:900;font-size:16px;text-decoration:none}
+.mbar a{flex:1;min-width:0;white-space:nowrap;text-align:center;padding:12px 6px;border-radius:999px;font-weight:900;font-size:15px;text-decoration:none}
 .mbar .m1{background:var(--yellow);color:var(--plum)}.mbar .m2{color:var(--yellow);border:1.5px solid rgba(255,210,63,.6)}
 .mbar.show{transform:none}
 @media(max-width:860px){.mbar{display:flex}.toast{bottom:84px}}
@@ -528,6 +528,88 @@ footer .tiny{margin-top:18px;font-size:13px;opacity:.6}
 .spread figcaption{text-align:center;margin-top:18px;font-weight:700;line-height:1.7}
 .spread figcaption small{display:block;font-weight:500;font-size:13px;opacity:.6}
 .wxid{appearance:none;border:0;background:var(--plum);color:var(--yellow);font:inherit;font-weight:800;font-size:14px;padding:8px 14px;border-radius:999px;cursor:pointer}
+
+/* ════ v21 设计打磨：字体 · 节奏 · 质感 ════ */
+@font-face{font-family:"XiaoSerif";src:url(assets/serif-900.woff2) format("woff2");font-weight:900;font-display:swap}
+@font-face{font-family:"XiaoSerif";src:url(assets/serif-600.woff2) format("woff2");font-weight:600;font-display:swap}
+:root{--serif:"XiaoSerif","Songti SC","Noto Serif SC","STSong",serif;--ink:#2B1B3D;--ink-soft:rgba(43,27,61,.78)}
+body{font-size:17px;line-height:1.85;letter-spacing:.01em;text-rendering:optimizeLegibility}
+/* 纸感：奶油底上极淡的颗粒 */
+body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .17 0 0 0 0 .1 0 0 0 0 .24 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* 标题统一用宋体：像一本书 */
+.hero-copy h1,.sec h2,.join h2,.buts .lead,.turn-b,.door .key,.afterglow p:not(.small),.zone h3,.card h3,.ed b,.roll-count,.what-is,.seat-title,.shelf-title,.letter-body .sign{font-family:var(--serif);font-weight:900}
+.hero-copy h1{font-size:clamp(46px,8.4vw,108px);line-height:1.06;letter-spacing:-.015em;margin:10px 0 18px}
+.hero-copy .slogan{font-family:var(--serif);font-weight:600;font-size:clamp(20px,2.6vw,30px);letter-spacing:.06em}
+.hero-copy .series{letter-spacing:.04em}
+.sec h2{font-size:clamp(32px,4.4vw,54px);line-height:1.18;letter-spacing:.01em;margin-bottom:18px}
+.join h2{font-size:clamp(36px,6vw,72px);line-height:1.15}
+.buts .lead{font-size:clamp(32px,5.6vw,60px);line-height:1.25}
+.turn-b{font-size:clamp(34px,7vw,84px);letter-spacing:.02em}
+.door .key{font-size:clamp(24px,3.6vw,44px);line-height:1.55;letter-spacing:.02em}
+.what-is{font-weight:600;line-height:1.65}
+.seat-title,.shelf-title{font-size:clamp(22px,2.4vw,28px);letter-spacing:.02em}
+.zone h3{font-size:32px}
+.card h3{font-size:30px}
+.ed b{font-size:24px}
+.card .price{font-family:var(--serif);font-weight:900;font-size:40px;letter-spacing:0}
+.card .price small{font-size:.5em;margin-right:2px}
+.vision p{font-family:var(--serif);font-weight:600;letter-spacing:.02em}
+.letter-body .sign{font-size:22px}
+/* 正文：行长与层次 */
+.sec p,.calm,.sub,.what-more,.letter-body p{max-width:34em}
+.join p,.join .tribe{margin-left:auto;margin-right:auto}
+.calm,.what-more{color:var(--ink-soft)}
+.tribe p{font-weight:600}
+.tribe:not(.shut) p{font-weight:700}
+/* 区块节奏 */
+.sec{padding:120px 0}
+@media(max-width:700px){.sec{padding:84px 0}}
+.sec h2+.sub{margin-top:-4px}
+/* 按钮：同一种手感 */
+.cta{letter-spacing:.06em;transition:transform .15s,box-shadow .15s}
+.cta:hover{transform:translateY(-2px);box-shadow:0 10px 0 var(--yellow-deep)}
+.cta:active{transform:translateY(4px);box-shadow:0 4px 0 var(--yellow-deep)}
+.card-go,.tbd-go{letter-spacing:.04em}
+/* 卡片：温暖的阴影，不用灰 */
+.card{box-shadow:0 24px 50px -24px rgba(43,27,61,.35)}
+.ed{box-shadow:0 18px 40px -22px rgba(43,27,61,.3)}
+@media(max-width:700px){.hero-copy h1{font-size:clamp(44px,13vw,64px)}}
+.hero-copy h1{white-space:nowrap;font-size:clamp(44px,6.4vw,96px)}
+@media(max-width:700px){.hero-copy h1{font-size:clamp(42px,12.4vw,60px)}}
+.laugh-btn .char{font-family:var(--serif);font-weight:900}
+.editors{align-items:start}
+.ed{padding:26px 24px}
+.ed-av{width:76px;height:76px;border-radius:50%;object-fit:cover;border:3px solid var(--yellow);box-shadow:0 0 0 2px var(--plum);margin-bottom:14px}
+.ed span{display:block;margin-top:2px}
+.ed p{line-height:1.8}
+/* 报名区：给文字留出呼吸 */
+.join h2{margin-bottom:28px}
+.join .tribe{max-width:34em}
+.join .tribe p{font-size:clamp(18px,2.2vw,21px);line-height:1.9;font-weight:700}
+.join .tribe.shut{margin-top:36px;opacity:1}
+.join .tribe.shut p{font-size:16px;font-weight:500;line-height:1.95;color:var(--ink-soft)}
+.join .tribe.shut p:first-child{font-family:var(--serif);font-weight:600;font-size:19px;color:var(--ink);margin-bottom:6px}
+.join .q{margin-top:44px;font-family:var(--serif);font-weight:600;line-height:1.7}
+.join .q b{font-weight:900}
+/* FAQ 更好读 */
+.faq summary{font-size:18.5px;font-weight:700;padding:6px 0}
+.faq details{padding:18px 0;border-bottom-width:1px}
+.faq{border-top-width:1px}
+.faq p{font-size:16.5px;line-height:1.9;max-width:38em}
+.steps li{box-shadow:0 14px 34px -24px rgba(43,27,61,.35)}
+.steps li::before{font-family:var(--serif)}
+@media(max-width:700px){
+  .join h2{font-size:34px;line-height:1.25}
+  .join .tribe{text-align:left}
+  .join .tribe p{font-size:17px;line-height:1.85}
+  .join .tribe.shut p{font-size:15.5px}
+  .join .q{font-size:20px}
+}
+@media(max-width:759px){
+  .strip{grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:78%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .strip::-webkit-scrollbar{display:none}
+  .strip .ph{scroll-snap-align:center}
+}
 </style>
 </head>
 <body>
@@ -726,8 +808,8 @@ footer .tiny{margin-top:18px;font-size:13px;opacity:.6}
   <div class="wrap">
     <h2 class="rv">谁陪你走这一程</h2>
     <div class="editors">
-      <div class="ed"><b>李海峰</b><span>出品人 · 主编 · 笑董会主席</span><p>这十年，他托举了几千个普通人，把一个个"原本以为不可能出书"的人生，写成书、送上当当榜、被世界看见。每一本《边玩边赚》，他都亲自作序。</p></div>
-      <div class="ed"><b>千百合</b><span>出品人 · 主编 · 第一任笑长</span><p>边玩边赚联合创始人。用脚，也用 AI 和事业，走遍世界；出品过二十多本书。</p></div>
+      <div class="ed"><img class="ed-av" src="img/av-haifeng.jpg" alt="李海峰"><b>李海峰</b><span>出品人 · 主编 · 笑董会主席</span><p>这十年，他托举了几千个普通人，把一个个"原本以为不可能出书"的人生，写成书、送上当当榜、被世界看见。每一本《边玩边赚》，他都亲自作序。</p></div>
+      <div class="ed"><img class="ed-av" src="img/av-lily.jpg" alt="千百合"><b>千百合</b><span>出品人 · 主编 · 第一任笑长</span><p>边玩边赚联合创始人。用脚，也用 AI 和事业，走遍世界；出品过二十多本书。</p></div>
       <div class="ed tbd"><div class="tbd-q" aria-hidden="true">?</div><em class="badge">特别邀请</em><b>第三位主编</b><span>副笑长 · 也许是你</span><p>这个位置，留给一个爱笑、也愿意把笑带给更多人的人。<br>你一笑，身边的人就亮了 —— 这就够了。</p><p>和海峰老师、千百合并肩，一起做这本书。</p><p class="tbd-k">读到这里，心里动了一下？<br>那就来聊聊，说不定就是你。</p><a class="tbd-go" href="#join">来聊聊这个位置</a></div>
     </div>
 
