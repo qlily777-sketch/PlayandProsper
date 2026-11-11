@@ -800,7 +800,7 @@ footer .tiny{margin-top:18px;font-size:13px;opacity:.6}
       <p>如果你期待一本书立刻带来生意，我们不做这样的承诺。这本书会在 2027 年 5 月与你见面 —— 半年不算久，但这半年里，你得先把自己，讲一遍。</p>
     </div>
     <p class="q">无论你在北京、达拉斯，还是世界任何一个角落。<br><b>本届笑园，请 30 位作者。</b>我们一个一个聊，把同频的人请进来。</p>
-    <a class="cta" href="#" id="signup">走进笑园</a>
+    <a class="cta" href="https://ncnpdjciqnfm.feishu.cn/share/base/form/shrcn1wPWqgGtGUslQwoQ2zov9d" id="signup" target="_blank" rel="noopener">走进笑园</a>
     <p class="cta-note">填几个小问题，我们会来约你聊一次。先聊，不付款。</p>
     <div><div class="qr"><img src="assets/lily-wechat.png" alt="千百合微信二维码"><span>或者，加笑长千百合聊一聊</span><button class="wxid" type="button" data-id="iamsohappy8">微信号 iamsohappy8 · 点一下复制</button></div></div>
   </div>
@@ -1035,9 +1035,9 @@ btn.addEventListener('click',()=>{if(RM)return;document.querySelectorAll('.wall 
 })();
 
 // 报名链接（飞书表单建好后替换）
-const SIGNUP_URL='';
+const SIGNUP_URL='https://ncnpdjciqnfm.feishu.cn/share/base/form/shrcn1wPWqgGtGUslQwoQ2zov9d';
 document.getElementById('signup').addEventListener('click',e=>{
-  if(SIGNUP_URL){return location.href=SIGNUP_URL}
+  if(SIGNUP_URL){return}
   e.preventDefault();const q=document.querySelector('#join .qr');q.scrollIntoView({behavior:'smooth',block:'center'});q.classList.add('pulse');setTimeout(()=>q.classList.remove('pulse'),2400);say('报名表马上开通 —— 先扫码，和笑长聊一聊');
 });
 </script>
