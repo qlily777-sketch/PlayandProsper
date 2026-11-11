@@ -498,6 +498,36 @@ footer .tiny{margin-top:18px;font-size:13px;opacity:.6}
   .afterglow .small{max-width:22em}
 }
 @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.see-stack img{transition:none}}
+
+/* —— 评委轮 v20：转化结构 —— */
+.facts{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0}
+.facts li{font-size:14px;font-weight:800;padding:6px 12px;border-radius:999px;background:rgba(43,27,61,.08);border:1.5px solid rgba(43,27,61,.18)}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;margin-top:22px}
+.cta.sm{font-size:18px;padding:13px 28px;box-shadow:0 6px 0 var(--yellow-deep)}
+.ghost{font-weight:800;color:var(--plum);text-decoration:none;border-bottom:2px solid currentColor;padding-bottom:2px}
+.hero-copy .cta-note{margin-top:10px}
+.card-go{display:inline-block;margin-top:12px;padding:10px 18px;border-radius:999px;background:var(--plum);color:var(--yellow);font-weight:900;font-size:15px;text-decoration:none}
+.card.vip .card-go{background:var(--yellow);color:var(--plum)}
+.mid-cta{margin:22px 0 0}
+.mid-cta a{font-weight:900;color:var(--plum);text-decoration:none;border-bottom:2px solid var(--yellow);padding-bottom:2px}
+.mid-cta.on-dark{text-align:center;margin-top:34px}.mid-cta.on-dark a{color:var(--yellow)}
+.ed .badge{display:inline-block;font-style:normal;font-size:12px;font-weight:900;letter-spacing:.08em;background:var(--yellow);color:var(--plum);padding:3px 10px;border-radius:999px;margin-bottom:8px}
+.qr.pulse{box-shadow:0 0 0 6px var(--yellow),0 0 40px rgba(255,210,63,.8);transition:box-shadow .3s}
+.mbar{position:fixed;left:10px;right:10px;bottom:10px;z-index:8;display:none;gap:8px;padding:8px;border-radius:999px;background:var(--plum);box-shadow:0 10px 30px rgba(0,0,0,.3);transform:translateY(140%);transition:transform .35s}
+.mbar a{flex:1;text-align:center;padding:12px 6px;border-radius:999px;font-weight:900;font-size:16px;text-decoration:none}
+.mbar .m1{background:var(--yellow);color:var(--plum)}.mbar .m2{color:var(--yellow);border:1.5px solid rgba(255,210,63,.6)}
+.mbar.show{transform:none}
+@media(max-width:860px){.mbar{display:flex}.toast{bottom:84px}}
+/* 动效收一收：拍立得不再一直漂，胶片放慢 */
+.hero-pol.p1,.hero-pol.p2,.hero-pol.p3{animation:none}
+.wall-row{animation-duration:120s}.film.f2 .wall-row{animation-duration:140s}
+@media(max-width:700px){.wall-row{animation:none}.film{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}.wall .fr{scroll-snap-align:center}}
+.realpage{margin-top:44px}
+.spread{margin:0;max-width:880px;margin-inline:auto}
+.spread img{width:100%;display:block;border-radius:4px;box-shadow:0 30px 60px rgba(43,27,61,.28),0 0 0 1px rgba(43,27,61,.08);transform:perspective(1600px) rotateX(6deg);transform-origin:50% 100%}
+.spread figcaption{text-align:center;margin-top:18px;font-weight:700;line-height:1.7}
+.spread figcaption small{display:block;font-weight:500;font-size:13px;opacity:.6}
+.wxid{appearance:none;border:0;background:var(--plum);color:var(--yellow);font:inherit;font-weight:800;font-size:14px;padding:8px 14px;border-radius:999px;cursor:pointer}
 </style>
 </head>
 <body>
@@ -515,6 +545,11 @@ footer .tiny{margin-top:18px;font-size:13px;opacity:.6}
       <h1>穿过悲欢，<br>笑答人生</h1>
       <div class="slogan">微笑是日常，大笑是本事</div>
       <div class="meta">一群会笑的人，各自写下一段跟笑有关的真实人生，各自留下一声真实的笑。<br>2027 年 5 月 2 日，世界大笑日，与你见面。</div>
+      <ul class="facts">
+        <li>北京日报出版社正式出版</li><li>本届请 30 位作者</li><li>不会写也能来 · 访谈成书</li><li>2027 世界大笑日首发</li>
+      </ul>
+      <div class="hero-ctas"><a class="cta sm" href="#join">走进笑园</a><a class="ghost" href="#price">看看两种席位 ↓</a></div>
+      <p class="cta-note">先聊一次，不付款。</p>
     </div>
     <div class="stage">
       <div class="orbit" id="orbit" aria-hidden="true"></div>
@@ -616,6 +651,9 @@ footer .tiny{margin-top:18px;font-size:13px;opacity:.6}
       <figure class="book now rv d4" role="listitem"><div class="cv"><div class="next"><b>笑</b><span>穿过悲欢，<br>笑答人生</span><em>2027.5.2</em></div></div></figure>
     </div>
     <p class="shelf-note">每一本，都是一群普通人写下自己真实的人生。前四本已印成书，第五本正在出版中。这一次，轮到"笑"。</p>
+    <div class="realpage rv">
+      <figure class="spread"><img src="img/spread-lily.jpg" alt="千百合一章的正式排版内页样书：左页是章首照片与标题，右页是正文" loading="lazy"><figcaption>翻开来，是这样的：一章一个人，章首放你的照片和名字，后面是你的故事。<small>图为千百合一章的排版样书</small></figcaption></figure>
+    </div>
 
   </div>
 </section>
@@ -679,6 +717,7 @@ footer .tiny{margin-top:18px;font-size:13px;opacity:.6}
       <p>所有作者站在一起，同一时刻，大笑一分钟。</p>
       <p>那一声笑，会和你的故事一起，留在书里，留在笑声馆。</p>
     </div>
+    <p class="mid-cta on-dark"><a href="#join">下一张笑脸，可以是你 →</a></p>
   </div>
 </section>
 
@@ -689,11 +728,12 @@ footer .tiny{margin-top:18px;font-size:13px;opacity:.6}
     <div class="editors">
       <div class="ed"><b>李海峰</b><span>出品人 · 主编 · 笑董会主席</span><p>这十年，他托举了几千个普通人，把一个个"原本以为不可能出书"的人生，写成书、送上当当榜、被世界看见。每一本《边玩边赚》，他都亲自作序。</p></div>
       <div class="ed"><b>千百合</b><span>出品人 · 主编 · 第一任笑长</span><p>边玩边赚联合创始人。用脚，也用 AI 和事业，走遍世界；出品过二十多本书。</p></div>
-      <div class="ed tbd"><div class="tbd-q" aria-hidden="true">?</div><b>第三位主编</b><span>副笑长 · 也许是你</span><p>这个位置，留给一个爱笑、也愿意把笑带给更多人的人。<br>你一笑，身边的人就亮了 —— 这就够了。</p><p>和海峰老师、千百合并肩，一起做这本书。</p><p class="tbd-k">读到这里，心里动了一下？<br>那就来聊聊，说不定就是你。</p><a class="tbd-go" href="#join">来聊聊这个位置</a></div>
+      <div class="ed tbd"><div class="tbd-q" aria-hidden="true">?</div><em class="badge">特别邀请</em><b>第三位主编</b><span>副笑长 · 也许是你</span><p>这个位置，留给一个爱笑、也愿意把笑带给更多人的人。<br>你一笑，身边的人就亮了 —— 这就够了。</p><p>和海峰老师、千百合并肩，一起做这本书。</p><p class="tbd-k">读到这里，心里动了一下？<br>那就来聊聊，说不定就是你。</p><a class="tbd-go" href="#join">来聊聊这个位置</a></div>
     </div>
 
     <h3 class="seat-title">你不用会写，你只要活过</h3>
     <p class="calm">不用一个人写 ——【访谈成书】坐下来跟你聊，把故事聊出来、写成文。<br>不用会讲段子 —— 我们要的是真实的笑，不是表演的笑。<br>不用大起大落 —— 一次终于放下、一个破涕为笑的下午，都是故事。</p>
+    <p class="mid-cta"><a href="#join">心里有个故事了？先聊一次，不付款 →</a></p>
     <h3 class="seat-title">要花多少时间？</h3>
     <p class="calm">最少，一次 90 分钟的访谈，两次改稿，每人大约 2000 字。<br>忙的人，少花一点；不忙的人，笑着慢慢写。<br>从现在到 2027 年 5 月 2 日，每周，大家在边玩边赚俱乐部里笑着相会。</p>
     <h3 class="seat-title">三步，走进笑园</h3>
@@ -717,7 +757,7 @@ footer .tiny{margin-top:18px;font-size:13px;opacity:.6}
           <li><b>一张人生卡 · 一个个人主页</b><br>人生卡，就是你的一页名片：你的照片、书里的一句话、一段一分钟的小故事，和一个二维码 —— 一扫，就到你的个人主页。想让谁认识你，发给他就好。</li>
           <li><b>笑园专属</b><br>一个笑号，你的笑声收录在笑声馆。</li>
         </ul>
-        <div class="price-end"><div class="price"><small>¥</small>18,888</div></div>
+        <div class="price-end"><div class="price"><small>¥</small>18,888</div><a class="card-go" href="#join">先聊聊共创席 →</a></div>
       </div>
       <div class="card vip">
         <div class="who">笑园编委</div>
@@ -730,7 +770,7 @@ footer .tiny{margin-top:18px;font-size:13px;opacity:.6}
           <li><b>与千百合 1 对 1 × 2 次 · 每次 60 分钟</b><br>第一次深度访谈由我们发起，第二次不设议题，你来约。</li>
         </ul>
         <p style="margin-top:16px;font-size:17px;font-weight:800">东西，多五样。人，多一个。</p>
-        <div class="price-end"><div class="price"><small>¥</small>28,888</div></div>
+        <div class="price-end"><div class="price"><small>¥</small>28,888</div><a class="card-go" href="#join">先聊聊私塾席 →</a></div>
         <p style="margin-top:14px;font-size:14px;opacity:.75">这些都不是任务。访谈一次，故事就有了；其余的，按你的节奏来用。</p>
         <p style="margin-top:10px;font-weight:800;color:var(--yellow)">边玩边赚，我们同船。</p>
       </div>
@@ -762,7 +802,7 @@ footer .tiny{margin-top:18px;font-size:13px;opacity:.6}
     <p class="q">无论你在北京、达拉斯，还是世界任何一个角落。<br><b>本届笑园，请 30 位作者。</b>我们一个一个聊，把同频的人请进来。</p>
     <a class="cta" href="#" id="signup">走进笑园</a>
     <p class="cta-note">填几个小问题，我们会来约你聊一次。先聊，不付款。</p>
-    <div><div class="qr"><img src="assets/lily-wechat.png" alt="千百合微信二维码"><span>或者，加笑长千百合聊一聊</span></div></div>
+    <div><div class="qr"><img src="assets/lily-wechat.png" alt="千百合微信二维码"><span>或者，加笑长千百合聊一聊</span><button class="wxid" type="button" data-id="iamsohappy8">微信号 iamsohappy8 · 点一下复制</button></div></div>
   </div>
 </section>
 
@@ -777,6 +817,7 @@ footer .tiny{margin-top:18px;font-size:13px;opacity:.6}
       <details><summary>要花多少时间？</summary><p>最少一次 90 分钟访谈、两次改稿。想多花点时间整理人生的，也欢迎。忙的人少花一点，不忙的人笑着慢慢写。</p></details>
       <details><summary>书由谁出版？什么时候拿到？</summary><p>由北京日报出版社正式出版，2027 年 5 月 2 日世界大笑日首发；纸质书寄到你手上的时间，看印制和发货的进度。《边玩边赚》书系前四本已印成纸质书，第五本正在出版流程中。</p></details>
       <details><summary>海外的朋友可以参加吗？</summary><p>可以。笑园面向全球华人，访谈和分笑仪式都在线上进行。</p></details>
+      <details><summary>什么时候付款？怎么付？</summary><p>先聊，不付款。聊过之后，彼此确认同频、你也决定一起写这本书，再付款。微信、支付宝、银行转账、信用卡、Zelle 都可以，国内海外都方便。</p></details>
       <details><summary>共创席和私塾席有什么区别？</summary><p>私塾席包含共创席的全部内容；同一年里（从你成为作者那天算起），多一份私塾陪跑：编委会留名、个人品牌七件套、专属 AI 助手、与千百合 1 对 1 两次。</p></details>
     </div>
   
@@ -839,7 +880,7 @@ document.querySelectorAll('[data-k]').forEach(el=>el.innerHTML=face(el.dataset.k
 const TAKEN=[
   {name:'李海峰',title:'笑董会主席',k:'big',img:'img/av-haifeng.jpg'},
   {name:'千百合',title:'笑长',k:'big',img:'img/av-lily.jpg'},
-  {name:'第三主编',title:'也许是你',reserved:true},
+  {name:'第三主编',title:'特别邀请',reserved:true},
   {name:'文亮',k:'smile'},
   {name:'邹娜',k:'big'},
   {name:'木晓',k:'heart'},
@@ -997,8 +1038,19 @@ btn.addEventListener('click',()=>{if(RM)return;document.querySelectorAll('.wall 
 const SIGNUP_URL='';
 document.getElementById('signup').addEventListener('click',e=>{
   if(SIGNUP_URL){return location.href=SIGNUP_URL}
-  e.preventDefault();say('报名表马上开通，先扫码和笑长聊一聊');
+  e.preventDefault();const q=document.querySelector('#join .qr');q.scrollIntoView({behavior:'smooth',block:'center'});q.classList.add('pulse');setTimeout(()=>q.classList.remove('pulse'),2400);say('报名表马上开通 —— 先扫码，和笑长聊一聊');
 });
+</script>
+<nav class="mbar" id="mbar" aria-label="快速入口"><a class="m1" href="#join">走进笑园</a><a class="m2" href="#join" data-qr>和笑长聊聊</a></nav>
+<script>
+(()=>{const b=document.getElementById('mbar'),hero=document.querySelector('.hero'),join=document.getElementById('join');
+let hv=true,jv=false;const upd=()=>b.classList.toggle('show',!hv&&!jv);
+new IntersectionObserver(e=>{hv=e[0].isIntersecting;upd()}).observe(hero);
+new IntersectionObserver(e=>{jv=e[0].isIntersecting;upd()},{threshold:.15}).observe(join);
+b.querySelector('[data-qr]').addEventListener('click',e=>{e.preventDefault();document.querySelector('#join .qr').scrollIntoView({behavior:'smooth',block:'center'})});})();
+</script>
+<script>
+document.querySelectorAll('.wxid').forEach(b=>b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(b.dataset.id);say('已复制微信号 iamsohappy8，去微信里添加吧')}catch(e){say('微信号：iamsohappy8')}}));
 </script>
 </body>
 </html>
