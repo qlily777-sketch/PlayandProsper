@@ -881,14 +881,14 @@ const TAKEN=[
   {name:'李海峰',title:'笑董会主席',k:'big',img:'img/av-haifeng.jpg'},
   {name:'千百合',title:'笑长',k:'big',img:'img/av-lily.jpg'},
   {name:'第三主编',title:'特别邀请',reserved:true},
-  {name:'文亮',k:'smile'},
-  {name:'邹娜',k:'big'},
-  {name:'木晓',k:'heart'},
-  {name:'杰森',k:'smile'},
-  {name:'刘小玲',k:'big'},
-  {name:'志铮',k:'heart'},
-  {name:'小麦姐',k:'smile'},
-  {name:'唐笑长',k:'big'}
+  {name:'文亮',k:'smile',img:'img/av-wenliang.jpg'},
+  {name:'邹娜',k:'big',img:'img/av-zouna.jpg'},
+  {name:'木晓',k:'heart',img:'img/av-muxiao.jpg'},
+  {name:'杰森',k:'smile',img:'img/av-jason.jpg'},
+  {name:'刘小玲',k:'big',img:'img/av-xiaoling.jpg'},
+  {name:'志铮',k:'heart',img:'img/av-huang.jpg'},
+  {name:'小麦姐',k:'smile',img:'img/av-xiaomai.jpg'},
+  {name:'唐笑长',k:'big',img:'img/av-tang.jpg'}
 ];
 (function(){
   const seats=document.getElementById('seats');
@@ -976,8 +976,8 @@ const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 // 笑脸墙：两条电影胶片——笑园里的人（作者 + 笑长 + 几张 AI 绘）
 (function(){
   const AI=['f01','g02','g03','g04'];
-  const a=['a-haifeng','f-pink','g04','f-bookhead','g02','f-henan','f-books'],
-        b=['f01','f-gull','g03','f-pink','g04','f-henan','g02','f-bookhead'];
+  const a=['a-haifeng','a-wenliang','a-zouna','a-muxiao','a-jason','a-xiaoling','a-huang','a-xiaomai','a-tang'],
+        b=['f01','f-gull','g04','f-bookhead','f-henan','g03','f-pink','g02','f-books'];
   const fr=n=>'<figure class="fr"><img src="img/'+n+'.jpg" alt="" loading="lazy">'+(AI.includes(n)?'<span class="ai-tag">AI 绘</span>':'')+'</figure>';
   const fill=(el,list)=>{el.innerHTML=list.concat(list).map(fr).join('')};
   fill(document.getElementById('wall1'),a);fill(document.getElementById('wall2'),b);
