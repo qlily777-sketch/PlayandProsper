@@ -658,6 +658,14 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
   .strip.trio .ph,.strip.trio .ph.big,.strip.trio .ph.smile,.strip.trio .ph.heart{aspect-ratio:3/4;grid-column:auto;scroll-snap-align:center}
   .strip.trio .big figcaption b,.strip.trio figcaption b{font-size:32px}
 }
+/* v28 评委轮：付款前说清楚、安静的人、第三主编说明 */
+.see-quiet{max-width:30em;margin:26px auto 0;text-align:center;font-size:17px;line-height:1.9;color:var(--ink-soft)}
+.tbd-n{font-size:13.5px!important;opacity:.7;margin-top:10px!important}
+.before-pay{max-width:760px;margin:64px auto 0}
+.before-pay ul{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:0;border-top:1px solid rgba(43,27,61,.15)}
+.before-pay li{display:grid;grid-template-columns:8em 1fr;gap:18px;padding:18px 4px;border-bottom:1px solid rgba(43,27,61,.15);font-size:16px;line-height:1.85;color:var(--ink-soft)}
+.before-pay li b{font-family:var(--serif);font-weight:900;color:var(--ink);font-size:17px}
+@media(max-width:700px){.before-pay li{grid-template-columns:1fr;gap:4px}}
 </style>
 </head>
 <body>
@@ -678,8 +686,8 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
       <ul class="facts">
         <li>北京日报出版社正式出版</li><li>本届请 30 位作者</li><li>不会写也能来 · 访谈成书</li>
       </ul>
-      <div class="hero-ctas"><a class="cta sm" href="#join">走进笑园</a><a class="ghost" href="#price">看看两种席位 ↓</a></div>
-      <p class="cta-note">先聊一次，不付款。</p>
+      <div class="hero-ctas"><a class="cta sm" href="https://ncnpdjciqnfm.feishu.cn/share/base/form/shrcnFW9hmgNCu3P5LcZVpaxqpd" target="_blank" rel="noopener">走进笑园</a><a class="ghost" href="#price">看看两种席位 ↓</a></div>
+      <p class="cta-note">先聊一次，不付款。两种席位，¥18,888 起。</p>
     </div>
     <div class="stage">
       <div class="orbit" id="orbit" aria-hidden="true"></div>
@@ -720,6 +728,7 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
         <li data-img="img/m4-tea.jpg">你把笑带进了家里、团队里、生意里</li>
         <li data-img="img/m5-iceheart.jpg">穿过一些悲欢，回头看，你笑得比从前更深</li>
       </ul>
+      <p class="see-quiet rv">也许你不是能带动全场的人，只是走过一段不容易的路，又笑出来了 —— 这样的故事，我们也想听。</p>
       <p class="see-end rv">如果你在里面，看见了自己 ——<br>你大概，会喜欢这里。</p>
     </div>
     <div class="see-stack" id="seeStack" aria-hidden="true"></div>
@@ -778,7 +787,7 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
       <figure class="book rv d3" role="listitem"><div class="cv"><img src="img/cover3.webp" alt="《边玩边赚》书系第3本：AI 时代的财富思维" loading="lazy"></div></figure>
       <figure class="book rv d4" role="listitem"><div class="cv"><img src="img/cover4.webp" alt="《边玩边赚》书系第4本：AI 时代的个人品牌" loading="lazy"></div></figure>
       <figure class="book rv d4" role="listitem"><div class="cv"><img src="img/cover5.webp" alt="《边玩边赚》书系第5本：走遍世界，活成自己" loading="lazy"></div></figure>
-      <figure class="book now rv d4" role="listitem"><div class="cv"><div class="next"><b>笑</b><span>穿过悲欢，<br>笑答人生</span><em>2027</em></div></div></figure>
+      <figure class="book now rv d4" role="listitem"><div class="cv"><div class="next"><b>笑</b><span>穿过悲欢，<br>笑答人生</span><em>第六本</em></div></div></figure>
     </div>
     <p class="shelf-note">每一本，都是一群普通人写下自己真实的人生。前四本已印成书，第五本正在出版中。这一次，轮到"笑"。</p>
     <div class="realpage rv">
@@ -847,7 +856,7 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
       <p>所有作者，不管在世界哪个角落，在空中相聚，同一时刻，大笑一分钟。</p>
       <p>那一声笑，会和你的故事一起，留在书里，留在笑声馆。</p>
     </div>
-    <p class="mid-cta on-dark"><a href="#join">下一张笑脸，可以是你 →</a></p>
+    <p class="mid-cta on-dark"><a href="https://ncnpdjciqnfm.feishu.cn/share/base/form/shrcnFW9hmgNCu3P5LcZVpaxqpd" target="_blank" rel="noopener">下一张笑脸，可以是你 →</a></p>
   </div>
 </section>
 
@@ -858,19 +867,19 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
     <div class="editors">
       <div class="ed"><img class="ed-av" src="img/av-haifeng.jpg" alt="李海峰"><b>李海峰</b><span>出品人 · 主编 · 笑董会主席</span><p>这十年，他托举了几千个普通人，把一个个"原本以为不可能出书"的人生，写成书、送上当当榜、被世界看见。每一本《边玩边赚》，他都亲自作序。</p></div>
       <div class="ed"><img class="ed-av" src="img/av-lily.jpg" alt="千百合"><b>千百合</b><span>出品人 · 主编 · 第一任笑长</span><p>边玩边赚联合创始人。用脚，也用 AI 和事业，走遍世界；出品过二十多本书。</p></div>
-      <div class="ed tbd"><div class="tbd-q" aria-hidden="true">?</div><em class="badge">特别邀请</em><b>第三位主编</b><span>副笑长 · 也许是你</span><p>这个位置，留给一个爱笑、也愿意把笑带给更多人的人。<br>你一笑，身边的人就亮了 —— 这就够了。</p><p>和海峰老师、千百合并肩，一起做这本书。</p><p class="tbd-k">读到这里，心里动了一下？<br>那就来聊聊，说不定就是你。</p><a class="tbd-go" href="#join">来聊聊这个位置</a></div>
+      <div class="ed tbd"><div class="tbd-q" aria-hidden="true">?</div><em class="badge">特别邀请</em><b>第三位主编</b><span>副笑长 · 也许是你</span><p>这个位置，留给一个爱笑、也愿意把笑带给更多人的人。<br>你一笑，身边的人就亮了 —— 这就够了。</p><p>和海峰老师、千百合并肩，一起做这本书。</p><p class="tbd-k">读到这里，心里动了一下？<br>那就来聊聊，说不定就是你。</p><p class="tbd-n">这是另外遴选的位置，不在两种作者席位里，聊过之后再定。</p><a class="tbd-go" href="https://ncnpdjciqnfm.feishu.cn/share/base/form/shrcnFW9hmgNCu3P5LcZVpaxqpd" target="_blank" rel="noopener">来聊聊这个位置</a></div>
     </div>
 
     <h3 class="seat-title">你不用会写，你只要活过</h3>
     <p class="calm">不用一个人写 ——【访谈成书】坐下来跟你聊，把故事聊出来、写成文。<br>不用会讲段子 —— 我们要的是真实的笑，不是表演的笑。<br>不用大起大落 —— 一次终于放下、一个破涕为笑的下午，都是故事。</p>
-    <p class="mid-cta"><a href="#join">心里有个故事了？先聊一次，不付款 →</a></p>
+    <p class="mid-cta"><a href="https://ncnpdjciqnfm.feishu.cn/share/base/form/shrcnFW9hmgNCu3P5LcZVpaxqpd" target="_blank" rel="noopener">心里有个故事了？先聊一次，不付款 →</a></p>
     <h3 class="seat-title">要花多少时间？</h3>
     <p class="calm">最少，一次 90 分钟的访谈，两次改稿，每人大约 2000 字。<br>忙的人，少花一点；不忙的人，笑着慢慢写。<br>从现在到书出版，每周，大家在边玩边赚俱乐部里笑着相会。</p>
     <h3 class="seat-title">三步，走进笑园</h3>
     <ol class="steps">
-      <li><div><b>回答一个问题</b><p>你的笑，更像哪一种？</p><div class="opts"><span>笑出声</span><span>笑在脸上</span><span>笑在心里</span><span>我也不知道，聊了再说</span></div></div></li>
-      <li><div><b>聊一次</b><p>讲讲这一生，是什么让你笑出来。也是彼此看一看：是不是同频的人。</p></div></li>
-      <li><div><b>分笑仪式</b><p>领到你的笑区和笑号，走进笑园。</p></div></li>
+      <li><div><b>填几个小问题</b><p>一分钟。第一个就是：你的笑，更像哪一种？</p><div class="opts"><span>笑出声</span><span>笑在脸上</span><span>笑在心里</span><span>我也不知道，聊了再说</span></div></div></li>
+      <li><div><b>加笑长微信，聊一次</b><p>讲讲这一生，是什么让你笑出来。也是彼此看一看：是不是同频的人。先聊，不付款。</p></div></li>
+      <li><div><b>彼此合适，再走进来</b><p>选好席位、付款，在分笑仪式上领到你的笑区和笑号。</p></div></li>
     </ol>
     <h3 class="seat-title">两种席位</h3>
     <p class="calm">每人 2000 字，三十个人合起来，就是一本书。<br>你的那一章，印在一本正式出版的书里，署着你的名字。</p>
@@ -887,7 +896,7 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
           <li><b>一张人生卡 · 一个个人主页</b><br>人生卡，就是你的一页名片：你的照片、书里的一句话、一段一分钟的小故事，和一个二维码 —— 一扫，就到你的个人主页。想让谁认识你，发给他就好。</li>
           <li><b>笑园专属</b><br>一个笑号，你的笑声收录在笑声馆。</li>
         </ul>
-        <div class="price-end"><div class="price"><small>¥</small>18,888</div><a class="card-go" href="#join">先聊聊共创席 →</a></div>
+        <div class="price-end"><div class="price"><small>¥</small>18,888</div><a class="card-go" href="https://ncnpdjciqnfm.feishu.cn/share/base/form/shrcnFW9hmgNCu3P5LcZVpaxqpd" target="_blank" rel="noopener">先聊聊共创席 →</a></div>
       </div>
       <div class="card vip">
         <div class="who">笑园编委</div>
@@ -900,11 +909,20 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
           <li><b>与千百合 1 对 1 × 2 次 · 每次 60 分钟</b><br>第一次深度访谈由我们发起，第二次不设议题，你来约。</li>
         </ul>
         <p style="margin-top:16px;font-size:17px;font-weight:800">东西，多五样。人，多一个。</p>
-        <div class="price-end"><div class="price"><small>¥</small>28,888</div><a class="card-go" href="#join">先聊聊私塾席 →</a></div>
+        <div class="price-end"><div class="price"><small>¥</small>28,888</div><a class="card-go" href="https://ncnpdjciqnfm.feishu.cn/share/base/form/shrcnFW9hmgNCu3P5LcZVpaxqpd" target="_blank" rel="noopener">先聊聊私塾席 →</a></div>
         <p style="margin-top:14px;font-size:14px;opacity:.75">这些都不是任务。访谈一次，故事就有了；其余的，按你的节奏来用。</p>
         <p style="margin-top:10px;font-weight:800;color:var(--yellow)">边玩边赚，我们同船。</p>
       </div>
     
+    </div>
+    <div class="before-pay rv">
+      <h3 class="seat-title">付款之前，先说清楚</h3>
+      <ul>
+        <li><b>什么时候付</b>先聊，不付款。聊过之后，彼此确认、你也决定一起写，再选席位付款。微信、支付宝、银行转账、信用卡都可以。</li>
+        <li><b>约定是什么</b>共创席，就是上面写的「一书 · 一课 · 一生态」；私塾席，另有一页私塾约定。需要合同或发票，聊的时候说一声。</li>
+        <li><b>稿子怎么来</b>成为作者，我们就陪你把故事写成、印进书里。初稿先给你看，你可以改两次，满意了再定稿。</li>
+        <li><b>什么时候出版</b>30 位作者到齐，就进入出版流程。时间定下来，第一时间告诉大家。</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -924,7 +942,6 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
     </div>
     <div class="tribe shut">
       <p>这扇门，也轻轻关着 ——</p>
-      <p>如果你在等一个人来说服你，这里没有人会劝你；</p>
       <p>如果你想把笑当成技巧来学，这里不教技巧，只收真话；</p>
       <p>如果你只想让人看见你在笑，不愿让人看见真实的你，这里会有点难；</p>
       <p>如果你期待一本书立刻带来生意，我们不做这样的承诺。书从写到出版，要走一段路 —— 不算久，但这一路上，你得先把自己，讲一遍。</p>
@@ -1170,7 +1187,7 @@ document.getElementById('signup').addEventListener('click',e=>{
   e.preventDefault();const q=document.querySelector('#join .qr');q.scrollIntoView({behavior:'smooth',block:'center'});q.classList.add('pulse');setTimeout(()=>q.classList.remove('pulse'),2400);say('报名表马上开通 —— 先扫码，和笑长聊一聊');
 });
 </script>
-<nav class="mbar" id="mbar" aria-label="快速入口"><a class="m1" href="#join">走进笑园</a><a class="m2" href="#join" data-qr>和笑长聊聊</a></nav>
+<nav class="mbar" id="mbar" aria-label="快速入口"><a class="m1" href="https://ncnpdjciqnfm.feishu.cn/share/base/form/shrcnFW9hmgNCu3P5LcZVpaxqpd" target="_blank" rel="noopener">走进笑园</a><a class="m2" href="#join" data-qr>和笑长聊聊</a></nav>
 <script>
 (()=>{const b=document.getElementById('mbar'),hero=document.querySelector('.hero'),join=document.getElementById('join');
 let hv=true,jv=false;const upd=()=>b.classList.toggle('show',!hv&&!jv);
