@@ -643,6 +643,21 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
   .strip.trio figcaption span{font-size:12.5px;letter-spacing:.02em}
   .strip.trio .big figcaption span{font-size:15px}
 }
+/* v27 三笑：回到三张竖排，人小一点 */
+.strip.trio{grid-template-columns:repeat(3,1fr);grid-template-rows:auto;height:auto;gap:22px;max-width:1080px}
+.strip.trio .ph,.strip.trio .ph.big{grid-row:auto;grid-column:auto;aspect-ratio:3/4}
+.strip.trio .ph img{object-position:50% 30%!important}
+.strip.trio .ph.big img{object-position:50% 8%!important}
+.strip.trio .big figcaption b,.strip.trio figcaption b{font-size:38px;padding-left:14px}
+.strip.trio .big figcaption b::before{width:4px}
+.strip.trio figcaption{left:24px;bottom:22px;flex-direction:column;align-items:flex-start;gap:8px}
+.strip.trio figcaption span,.strip.trio .big figcaption span{font-size:14px}
+@media(max-width:759px){
+  .strip.trio{grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:76%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;scrollbar-width:none;gap:12px}
+  .strip.trio::-webkit-scrollbar{display:none}
+  .strip.trio .ph,.strip.trio .ph.big,.strip.trio .ph.smile,.strip.trio .ph.heart{aspect-ratio:3/4;grid-column:auto;scroll-snap-align:center}
+  .strip.trio .big figcaption b,.strip.trio figcaption b{font-size:32px}
+}
 </style>
 </head>
 <body>
