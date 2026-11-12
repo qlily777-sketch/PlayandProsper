@@ -617,6 +617,32 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
 .facts li{background:transparent;border:1px solid rgba(43,27,61,.35);font-weight:700;letter-spacing:.02em}
 .hero-pol{box-shadow:0 22px 44px -18px rgba(43,27,61,.45)}
 .topbar a{letter-spacing:.04em}
+/* v23 三笑：杂志式三联 */
+.strip.trio{display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:1fr 1fr;grid-auto-flow:row;grid-auto-columns:auto;gap:18px;height:min(82vh,780px);overflow:visible;margin-top:72px;padding:0}
+.strip.trio .ph{aspect-ratio:auto;border-radius:30px;box-shadow:0 30px 60px -30px rgba(43,27,61,.55);isolation:isolate}
+.strip.trio .ph.big{grid-row:1/3}
+.strip.trio .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(43,27,61,0) 48%,rgba(43,27,61,.72) 100%);pointer-events:none;z-index:1}
+.strip.trio .ph img{transition:transform 1.6s cubic-bezier(.2,.7,.2,1)}
+.strip.trio .ph:hover img{transform:scale(1.05)}
+.strip.trio figcaption{all:unset;position:absolute;left:30px;right:24px;bottom:26px;z-index:2;color:#FFFBEA;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+.strip.trio figcaption b{font-family:var(--serif);font-weight:900;font-size:44px;line-height:1;letter-spacing:.04em;padding-left:16px;position:relative}
+.strip.trio figcaption b::before{content:"";position:absolute;left:0;top:.12em;bottom:.12em;width:4px;border-radius:2px;background:var(--zc2)}
+.strip.trio .big figcaption b{font-size:76px;padding-left:22px}
+.strip.trio .big figcaption b::before{width:6px}
+.strip.trio figcaption span{font-size:15px;font-weight:600;opacity:.9;letter-spacing:.06em}
+.strip.trio .big figcaption span{font-size:17px}
+.strip.trio .big{--zc2:var(--yellow)}.strip.trio .smile{--zc2:#5EEAD4}.strip.trio .heart{--zc2:#B4A7FF}
+@media(max-width:759px){
+  .strip.trio{grid-template-columns:1fr 1fr;grid-template-rows:auto auto;height:auto;gap:12px;margin-top:48px}
+  .strip.trio .ph.big{grid-row:auto;grid-column:1/3;aspect-ratio:4/5}
+  .strip.trio .ph.smile,.strip.trio .ph.heart{aspect-ratio:3/4}
+  .strip.trio .ph{border-radius:22px}
+  .strip.trio figcaption{left:16px;bottom:16px;gap:6px;flex-direction:column;align-items:flex-start}
+  .strip.trio figcaption b{font-size:30px;padding-left:12px}
+  .strip.trio .big figcaption b{font-size:54px;padding-left:16px}
+  .strip.trio figcaption span{font-size:12.5px;letter-spacing:.02em}
+  .strip.trio .big figcaption span{font-size:15px}
+}
 </style>
 </head>
 <body>
@@ -704,10 +730,10 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
       <p class="sign">—— 笑长 千百合</p>
     </div>
   </div>
-  <div class="wrap strip">
-    <figure class="ph big rv"><img src="img/s-big-athens.jpg" alt="千百合在雅典卫城下大笑" loading="lazy" style="object-position:50% 12%"><figcaption>大笑 · 雅典卫城，笑到停不下来</figcaption></figure>
-    <figure class="ph smile rv d1"><img src="img/s-smile-athens.jpg" alt="千百合靠着卫城的石头微笑" loading="lazy" style="object-position:50% 22%"><figcaption>微笑 · 靠着两千年的石头</figcaption></figure>
-    <figure class="ph heart rv d2"><img src="img/s-heart-athens.jpg" alt="千百合倚着石柱，笑在心里" loading="lazy" style="object-position:50% 30%"><figcaption>心笑 · 不出声，笑在心里</figcaption></figure>
+  <div class="wrap strip trio">
+    <figure class="ph big rv"><img src="img/s-big-athens-hd.jpg" alt="千百合在雅典卫城下仰头大笑" loading="lazy" style="object-position:50% 14%"><figcaption><b>大笑</b><span>雅典卫城，笑到停不下来</span></figcaption></figure>
+    <figure class="ph smile rv d1"><img src="img/s-smile-sea.jpg" alt="千百合围着格子围巾，在海边微笑" loading="lazy" style="object-position:50% 26%"><figcaption><b>微笑</b><span>海风里，日常的笑</span></figcaption></figure>
+    <figure class="ph heart rv d2"><img src="img/s-heart-ginger.jpg" alt="千百合双手合十，手里一枝姜花，笑在心里" loading="lazy" style="object-position:40% 40%"><figcaption><b>心笑</b><span>双手合十，笑在心里</span></figcaption></figure>
   </div>
 </section>
 
