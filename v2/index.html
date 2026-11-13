@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>边玩边赚 · AI 时代，活成自己 | Play and Prosper</title>
+<meta name="description" content="边玩边赚（Play and Prosper）由千百合发起：一套由普通人共同写成的书系，一门让人人都能用好 AI 的课，一群在世界各地边玩边赚的作者。玩和赚，不用二选一。">
+<link rel="icon" href="img/logo-icon.png">
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@graph":[
+  {"@type":"Organization","@id":"https://www.playandprosper.com/#org","name":"边玩边赚","alternateName":["Play and Prosper","边玩边赚 Play and Prosper"],"url":"https://www.playandprosper.com/","logo":"https://www.playandprosper.com/img/logo.png","slogan":"一书一课一生态。AI 时代，边玩边赚，活成自己。","founder":{"@id":"https://www.playandprosper.com/#lily"}},
+  {"@type":"Person","@id":"https://www.playandprosper.com/#lily","name":"千百合","alternateName":["Lily Li","李静敏"],"jobTitle":"边玩边赚发起人、书系出品人、AI 教育者","alumniOf":"The University of Texas at Dallas","award":"当当影响力作家（两届）","homeLocation":"Dallas, Texas"},
+  {"@type":"BookSeries","name":"边玩边赚书系","hasPart":[
+   {"@type":"Book","name":"边玩边赚：AI时代的自由人生","publisher":"华中科技大学出版社"},
+   {"@type":"Book","name":"边玩边赚：人人都能做AI智能体","publisher":"北京日报出版社"},
+   {"@type":"Book","name":"边玩边赚：AI时代的财富思维","publisher":"北京日报出版社"},
+   {"@type":"Book","name":"边玩边赚：AI时代的个人品牌","publisher":"台海出版社"},
+   {"@type":"Book","name":"边玩边赚：走遍世界，活成自己","publisher":"北京日报出版社"},
+   {"@type":"Book","name":"边玩边赚：穿过悲欢，笑答人生","publisher":"北京日报出版社"}
+  ]}
+ ]
+}
+</script>
+<style>
+:root{
+  --paper:#F7F2EA; --paper2:#EFE6D8; --ink:#1E1A16; --mute:#6F6457; --line:#E2D7C6;
+  --orange:#EE8A1E; --red:#E0552B; --teal:#0E4D4B; --teal2:#14706B; --gold:#C8901E;
+  --serif:"Songti SC","STSong","Noto Serif SC","Source Han Serif SC","SimSun",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;
+  --r:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.75}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+.serif{font-family:var(--serif)}
+.kicker{font-size:13px;letter-spacing:.18em;color:var(--red);font-weight:600}
+h2{font-family:var(--serif);font-weight:900;font-size:clamp(28px,6.4vw,46px);line-height:1.25;margin:10px 0 14px}
+.lead{color:var(--mute);font-size:17px;max-width:40em}
+section{padding:76px 0}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;font-weight:700;font-size:16px;transition:transform .15s,box-shadow .15s}
+.btn:active{transform:scale(.97)}
+.btn-main{background:var(--ink);color:#fff;box-shadow:0 6px 18px #1e1a1630}
+.btn-line{border:2px solid var(--ink)}
+.btn-orange{background:var(--orange);color:#fff}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.reveal.on{opacity:1;transform:none}
+
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:#F7F2EAe8;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .3s}
+nav.scrolled{border-color:var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-in img{height:34px;width:auto}
+.nav-links{display:none;gap:26px;font-size:15px}
+.nav-links a:hover{color:var(--red)}
+.nav-cta{font-size:14px;padding:8px 16px;border-radius:999px;background:var(--orange);color:#fff;font-weight:700}
+@media(min-width:860px){.nav-links{display:flex}}
+
+/* hero */
+.hero{padding:34px 0 60px}
+.hero-grid{display:grid;gap:30px;align-items:center}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:clamp(40px,11vw,76px);line-height:1.12;letter-spacing:.01em}
+.hero h1 em{font-style:normal;color:var(--orange)}
+.hero .sub{font-family:var(--serif);font-size:clamp(20px,5vw,28px);margin:18px 0 6px}
+.hero .desc{color:var(--mute);font-size:16px;max-width:30em}
+.hero .btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.hero-photo{position:relative}
+.hero-photo img{border-radius:28px;width:100%;aspect-ratio:4/3;object-fit:cover;box-shadow:0 20px 50px #1e1a1625}
+.hero-badge{position:absolute;left:-6px;bottom:-18px;background:#fff;border-radius:16px;padding:12px 16px;box-shadow:0 10px 30px #1e1a161f;font-size:13px;line-height:1.5}
+.hero-badge b{font-family:var(--serif);font-size:24px;color:var(--red);display:block;line-height:1.1}
+@media(min-width:860px){.hero{padding:60px 0 90px}.hero-grid{grid-template-columns:1.1fr 1fr;gap:56px}}
+
+/* what */
+.what{background:var(--teal);color:#F3EEE4;border-radius:32px;margin:0 12px;padding:64px 0}
+.what .kicker{color:#F6B24E}
+.what .lead{color:#cfd9d5}
+.motto{font-family:var(--serif);font-weight:900;font-size:clamp(30px,8vw,56px);line-height:1.3;margin:6px 0 18px}
+.motto span{color:#F6B24E}
+.pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:30px}
+.pillar{background:#ffffff12;border:1px solid #ffffff22;border-radius:var(--r);padding:18px}
+.pillar b{font-family:var(--serif);font-size:22px;display:block;color:#fff}
+.pillar span{font-size:14px;color:#cfd9d5}
+@media(min-width:860px){.what{margin:0 24px}.pillars{grid-template-columns:repeat(4,1fr)}}
+
+/* want */
+.want-grid{display:grid;gap:14px;margin-top:28px}
+.want{display:flex;flex-direction:column;justify-content:space-between;min-height:190px;border-radius:24px;padding:24px;position:relative;overflow:hidden;transition:transform .2s}
+.want:hover{transform:translateY(-4px)}
+.want .q{font-size:14px;opacity:.85}
+.want h3{font-family:var(--serif);font-size:28px;font-weight:900;line-height:1.3;margin:6px 0}
+.want p{font-size:14px;opacity:.9;max-width:22em}
+.want .go{margin-top:16px;font-weight:700;font-size:15px}
+.w1{background:#F6C445}.w2{background:#1E1A16;color:#fff}.w3{background:#2E8C86;color:#fff}.w4{background:#E0552B;color:#fff}
+.want .num{position:absolute;right:18px;top:10px;font-family:var(--serif);font-size:84px;font-weight:900;opacity:.12;line-height:1}
+@media(min-width:700px){.want-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* now */
+.faq-sub{font-family:var(--serif);font-size:22px;margin-top:34px}
+.faq .tools{margin-top:14px}
+.faq .qas{margin-top:22px;display:grid;gap:10px}
+.qa{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 18px}
+.qa summary{font-weight:700;cursor:pointer;list-style:none}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary:after{content:"＋";float:right;color:var(--orange)}
+.qa[open] summary:after{content:"－"}
+.qa p{margin-top:8px;color:var(--mute);font-size:15px;line-height:1.75}
+.board{margin-top:26px;background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px}
+.board h3{font-family:var(--serif);font-size:22px}
+.board>p{color:var(--mute);font-size:14px;margin-top:4px}
+.board-av{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:14px 8px;margin-top:16px;padding:0}
+.board-av li{text-align:center;font-size:12px}
+.board-av a{color:inherit}
+.board-av .next-seat i{width:56px;height:56px;border-radius:50%;border:2px dashed #F6B24E;display:flex;align-items:center;justify-content:center;margin:0 auto 5px;font-style:normal;font-family:var(--serif);font-size:20px;color:#E58A1F}.board-av .next-seat span{color:#E58A1F}
+.board-av img{width:56px;height:56px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 5px;border:2px solid #F6B24E}
+.doer-list{list-style:none;display:grid;grid-template-columns:1fr;gap:10px;margin-top:16px;padding:0}
+.doer-list li{display:flex;gap:12px;align-items:center;background:var(--paper2);border-radius:16px;padding:10px 12px}
+.board .doer-list img,.board .doer-list .ini{width:60px;height:60px;min-width:60px;border-radius:50%;object-fit:cover;flex:none;display:block;border:2px solid #F6B24E}
+.board .doer-list .ini{display:flex;align-items:center;justify-content:center;background:#EFE6D8;font-family:var(--serif);font-size:20px;padding:0}
+.doer-list .ini{display:flex;align-items:center;justify-content:center;background:#EFE6D8;font-family:var(--serif);font-size:20px}
+.doer-list b{display:block;font-size:16px}
+.doer-list small{color:var(--mute);font-size:13px}
+@media(min-width:860px){.doer-list{grid-template-columns:repeat(4,1fr)}.doer-list li{flex-direction:column;text-align:center}}
+.now-strip{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;margin-top:16px;padding:16px 20px;border-radius:18px;border:1px dashed var(--line);background:#fff}
+.now-strip b{font-family:var(--serif);font-size:18px}
+.now-strip span{color:var(--mute);font-size:14px;flex:1;min-width:220px}
+.now-strip em{font-style:normal;font-weight:700;color:var(--red);font-size:14px}
+.now-list{display:grid;gap:16px;margin-top:28px}
+.now{display:grid;grid-template-columns:96px 1fr;gap:16px;background:#fff;border-radius:22px;padding:16px;align-items:center;border:1px solid var(--line)}
+.now img{width:96px;height:96px;object-fit:cover;border-radius:14px}
+.now .tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 10px;border-radius:999px;background:#E0552B18;color:var(--red)}
+.now .tag.t2{background:#0E4D4B18;color:var(--teal)}
+.now h3{font-family:var(--serif);font-size:20px;margin:4px 0 2px;line-height:1.35}
+.now p{font-size:14px;color:var(--mute);line-height:1.6}
+.now .more{font-size:14px;font-weight:700;color:var(--red)}
+.cover6{width:96px;height:96px;border-radius:14px;background:linear-gradient(150deg,#F6C445,#EE8A1E);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:40px;font-weight:900;color:#2A1F12}
+@media(min-width:860px){.now-list{grid-template-columns:repeat(3,1fr)}.now{grid-template-columns:1fr}.now img,.now .cover6{width:100%;height:180px}}
+
+/* books */
+.books{background:var(--paper2)}
+.shelf{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 22px 20px;margin:24px -22px 0;-webkit-overflow-scrolling:touch}
+.shelf::-webkit-scrollbar{display:none}
+.book{flex:0 0 62%;scroll-snap-align:start;max-width:230px}
+.book .cv{aspect-ratio:0.72;border-radius:6px 12px 12px 6px;overflow:hidden;box-shadow:-6px 10px 24px #1e1a1630,inset 6px 0 10px #0002}
+.book .cv img{width:100%;height:100%;object-fit:cover}
+.book .no{font-size:12px;color:var(--mute);margin-top:12px;letter-spacing:.1em}
+.book h3{font-family:var(--serif);font-size:18px;line-height:1.4;margin:2px 0}
+.book .sl{font-size:14px;color:var(--red);font-family:var(--serif)}
+.book .pub{font-size:12px;color:var(--mute)}
+.cv6{background:linear-gradient(160deg,#FFD84D,#F39A1E 60%,#E0552B);display:flex;flex-direction:column;justify-content:space-between;padding:20px;color:#2A1F12}
+.cv6 .t{font-family:var(--serif);font-weight:900;font-size:26px;line-height:1.25}
+.cv6 .s{font-size:12px;font-weight:700;background:#ffffffaa;padding:4px 10px;border-radius:999px;align-self:flex-start}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:24px}
+.stat{background:#fff;border-radius:16px;padding:16px 12px;text-align:center}
+.stat b{font-family:var(--serif);font-size:30px;display:block;line-height:1.1;color:var(--ink)}
+.stat span{font-size:13px;color:var(--mute)}
+.stat small{display:block;font-size:11px;color:var(--mute);margin-top:4px;line-height:1.4}
+
+@media(min-width:860px){.book{flex:0 0 200px}.shelf{margin:24px 0 0;padding:8px 0 20px}}
+
+.cred{margin-top:16px;font-size:14px;color:var(--mute);text-align:center}
+.cred:before{content:"🏅 "}
+.cred a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--orange)}
+/* paths */
+.paths{display:grid;gap:16px;margin-top:28px}
+.path{border-radius:26px;padding:26px;background:#fff;border:1px solid var(--line);position:relative}
+.path.vip{background:var(--ink);color:#F3EEE4;border:none}
+.path .pt{font-size:13px;letter-spacing:.14em;color:var(--red);font-weight:700}
+.path.vip .pt{color:#F6B24E}
+.path h3{font-family:var(--serif);font-size:30px;font-weight:900;margin:4px 0}
+.path .price{font-family:var(--serif);font-size:26px;margin:6px 0 14px}
+.path .price small{font-size:14px;color:var(--mute)}
+.path.vip .price small{color:#b9ae9a}
+.path ul{list-style:none;display:grid;gap:8px;font-size:15px}
+.path li{padding-left:24px;position:relative}
+.path li:before{content:"";position:absolute;left:4px;top:.65em;width:9px;height:9px;border-radius:50%;background:var(--orange)}
+.path .btn{margin-top:22px}
+.path.vip .btn-line{border-color:#F3EEE4;color:#F3EEE4}
+.compare{margin-top:22px;background:#fff;border-radius:20px;overflow:hidden;border:1px solid var(--line);font-size:14px}
+.compare div{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid var(--line)}
+.compare div:first-child{border-top:none;background:var(--paper2);font-weight:700}
+.compare span{padding:12px 12px}
+.compare span:last-child{color:var(--teal);font-weight:600}
+@media(min-width:860px){.paths{grid-template-columns:1fr 1fr}}
+
+/* stars */
+.stars{background:var(--teal);color:#F3EEE4}
+.stars .kicker{color:#F6B24E}.stars .lead{color:#cfd9d5}
+.avatars{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+.av{width:76px;text-align:center;font-size:12px;color:#cfd9d5}
+.av img{width:76px;height:76px;border-radius:50%;object-fit:cover;border:3px solid #F6B24E;margin-bottom:6px}
+.av.more div{width:76px;height:76px;border-radius:50%;background:#F6B24E;color:var(--ink);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:900;font-size:22px;margin-bottom:6px}
+.stars .card18{margin-top:30px;background:#ffffff12;border:1px solid #ffffff22;border-radius:22px;padding:22px;display:grid;gap:10px}
+.stars .card18 h3{font-family:var(--serif);font-size:22px;color:#fff}
+.stars .card18 p{font-size:14px;color:#cfd9d5}
+
+
+.rain-q{font-family:var(--serif);font-size:clamp(20px,4.6vw,26px);color:#fff;margin-top:6px}
+.rain-a{font-family:var(--serif);font-size:clamp(20px,4.6vw,26px);color:#F6B24E;margin:4px 0 16px}
+.rain-c{font-family:var(--serif);font-size:18px;color:#F6B24E;margin-top:14px}
+.forest-head{margin-top:26px;font-family:var(--serif);font-size:18px;color:#cfd9d5}
+.forest-head b{font-size:40px;color:#F6B24E;margin-right:4px}
+.forest{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:14px 8px;margin-top:16px}
+.forest li a{color:inherit;display:block}
+.forest li.has-page img{border-color:#F6B24E}
+.lily-home{margin-top:22px}
+.forest li{text-align:center;font-size:11px;color:#cfd9d5;line-height:1.3}
+.forest img,.forest i{width:56px;height:56px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 5px;border:2px solid #ffffff30;background:#EFE6D8}
+.forest i{font-style:normal;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:20px;font-weight:900;color:var(--teal)}
+.forest span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.forest.folded li:nth-child(n+31){display:none}
+.forest-more{margin-top:18px;background:transparent;border:1px solid #F6B24E;color:#F6B24E;border-radius:999px;padding:9px 18px;font-size:14px;font-weight:700;cursor:pointer}
+@media(min-width:860px){.forest{grid-template-columns:repeat(auto-fill,minmax(76px,1fr))}.forest img,.forest i{width:64px;height:64px}.forest.folded li:nth-child(n+43){display:none}}
+
+/* footprint */
+.fp-main{margin-top:28px;border-radius:26px;overflow:hidden;background:#fff;border:1px solid var(--line)}
+.fp-main img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.fp-main .tx{padding:20px 22px}
+.fp-main h3{font-family:var(--serif);font-size:24px;line-height:1.35}
+.fp-main p{color:var(--mute);font-size:14px;margin-top:6px}
+.fp-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.fp-row img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:16px}
+.fp-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+.fp-grid figure{margin:0;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.fp-grid img{width:100%;aspect-ratio:3/2;object-fit:cover;display:block}
+.fp-grid figcaption{padding:10px 12px;font-size:14px;font-weight:700}
+.fp-grid time{display:block;font-size:12px;font-weight:700;color:var(--orange);margin-bottom:2px}
+@media(min-width:860px){.fp-grid{grid-template-columns:repeat(4,1fr)}}
+.fp-list{display:grid;gap:10px;margin-top:16px}
+.fp-item{display:flex;gap:14px;align-items:baseline;padding:14px 4px;border-bottom:1px solid var(--line)}
+@media(min-width:860px){.fp-main{display:grid;grid-template-columns:1.5fr 1fr}.fp-main img{height:100%;aspect-ratio:auto;min-height:320px}.fp-main .tx{display:flex;flex-direction:column;justify-content:flex-end;padding:30px}.fp-row{grid-template-columns:1fr 1fr 1fr}}
+.fp-item time{font-size:13px;color:var(--red);font-weight:700;min-width:84px}
+.fp-item b{font-family:var(--serif);font-size:17px}
+.fp-item span{font-size:13px;color:var(--mute);display:block}
+
+/* story */
+.story-grid{display:grid;gap:28px;align-items:center}
+.story-grid img{border-radius:26px;width:100%;aspect-ratio:4/3;object-fit:cover}
+.story p{font-family:var(--serif);font-size:18px;line-height:1.95;margin-bottom:14px}
+.story .sign{font-family:var(--serif);font-size:22px;font-weight:900;margin-top:10px}
+.story .facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.story .facts span{font-size:13px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 12px}
+@media(min-width:860px){.story-grid{grid-template-columns:1fr 1.1fr;gap:56px}}
+
+/* free */
+.free{background:var(--paper2)}
+.tools{display:grid;gap:12px;margin-top:24px}
+.tool{display:flex;align-items:center;gap:14px;background:#fff;border-radius:18px;padding:18px;border:1px solid var(--line)}
+.tool .ic{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;background:var(--paper2);flex-shrink:0}
+.tool b{font-family:var(--serif);font-size:17px;display:block}
+.tool span{font-size:13px;color:var(--mute)}
+@media(min-width:860px){.tools{grid-template-columns:repeat(3,1fr)}}
+
+
+.defs{display:grid;gap:12px;margin-top:8px}
+.def{background:#ffffff14;border-radius:var(--r);padding:18px 20px;display:flex;gap:16px;align-items:flex-start}
+.def b{font-family:var(--serif);font-size:40px;line-height:1;color:#F6B24E}
+.def p{font-family:var(--serif);font-size:18px;color:#fff;line-height:1.7}
+.linecircle{display:grid;gap:12px;margin-top:26px}
+.linecircle>div{border:1px solid #ffffff2a;border-radius:var(--r);padding:18px 20px;position:relative;padding-left:76px}
+.linecircle i{position:absolute;left:20px;top:22px;width:40px;height:40px}
+.linecircle i.ln{border-top:3px dashed #9fb3ae;top:40px;height:0}
+.linecircle i.cc{border:3px solid #F6B24E;border-radius:50%}
+.linecircle b{font-family:var(--serif);font-size:20px;color:#fff;display:block}
+.linecircle span{font-size:14px;color:#cfd9d5}
+.whisper{font-family:var(--serif);font-size:20px;color:#F6B24E;margin-top:24px}
+@media(min-width:860px){.defs,.linecircle{grid-template-columns:1fr 1fr}}
+.people{padding-top:40px}
+.ppl{display:grid;gap:14px;margin-top:26px}
+.pp{display:flex;gap:16px;background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px}
+.pp img,.pp .ini{width:64px;height:64px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.pp .ini{background:var(--paper2);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:26px;font-weight:900;color:var(--teal)}
+.pp b{font-family:var(--serif);font-size:20px}
+.pp small{display:block;font-size:13px;color:var(--red);margin-bottom:4px}
+.pp p{font-size:15px;color:var(--mute)}
+.whisper2{font-family:var(--serif);font-size:18px;margin-top:20px;color:var(--teal)}
+@media(min-width:700px){.ppl{grid-template-columns:repeat(2,1fr)}}
+.door{background:var(--ink);color:#F3EEE4}
+.door .kicker{color:#F6B24E}
+.door-grid{display:grid;gap:14px;margin-top:22px}
+.door-grid>div{border-radius:22px;padding:22px}
+.door .open{background:#F6B24E;color:var(--ink)}
+.door .shut{border:1px solid #ffffff33}
+.door-grid b{font-family:var(--serif);font-size:24px;display:block;margin-bottom:8px}
+.door-grid p{font-size:15px;margin-bottom:6px}
+.door .key{font-family:var(--serif);font-size:clamp(22px,5vw,30px);margin-top:28px;color:#F6B24E}
+@media(min-width:860px){.door-grid{grid-template-columns:1fr 1fr}}
+
+.pp-next{border-style:dashed;background:transparent}
+.pp-next .ini{background:var(--orange);color:#fff}
+/* footer */
+footer{background:var(--ink);color:#cfc6b8;padding:56px 0 40px;font-size:14px}
+.foot-grid{display:grid;gap:28px}
+footer h3{font-family:var(--serif);color:#fff;font-size:26px;line-height:1.35}
+.qr{display:flex;gap:16px;align-items:center}
+.qr img{width:110px;height:110px;border-radius:12px;background:#fff;padding:6px}
+footer .links{display:flex;flex-wrap:wrap;gap:10px 22px}
+footer .links a:hover{color:#fff}
+footer .copy{margin-top:34px;font-size:12px;color:#8a8273}
+@media(min-width:860px){.foot-grid{grid-template-columns:1.2fr 1fr 1fr}}
+@media(max-width:859px){
+.ppl{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:6px;-webkit-overflow-scrolling:touch}
+.ppl>*{flex:0 0 84%;scroll-snap-align:start}
+.board .doer-list{display:flex;overflow-x:auto;gap:10px;scroll-snap-type:x mandatory}
+.board .doer-list li{flex:0 0 42%;flex-direction:column;text-align:center;scroll-snap-align:start}
+.board-av{grid-template-columns:repeat(5,1fr)}
+.board-av img{width:48px;height:48px}
+#lily .story-grid>img{aspect-ratio:16/10;object-fit:cover;width:100%}
+}
+.wan{background:var(--paper2)}
+.wan-form{display:grid;gap:14px;margin-top:22px;max-width:640px}
+.wan-form label{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px 18px}
+.wan-form label span{grid-row:span 2;font-family:var(--serif);font-size:22px;color:var(--orange);line-height:1.2}
+.wan-form label b{font-size:16px}
+.wan-form input{border:none;border-bottom:1.5px solid var(--line);background:transparent;font:inherit;font-size:16px;padding:8px 0;outline:none;color:var(--ink);width:100%}
+.wan-form input:focus{border-color:var(--orange)}
+.wan-form .btn{justify-self:start;border:none;cursor:pointer;margin-top:4px}
+.wan-out{display:grid;gap:22px;margin-top:24px;align-items:start}
+.wan-out[hidden],.wan-form[hidden]{display:none}
+.wan-out img{width:100%;max-width:420px;border-radius:20px;box-shadow:0 12px 30px #1e1a1622}
+.wan-next .tip{font-size:13px;color:var(--mute);margin-bottom:10px}
+.wan-story{margin-top:22px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px}
+.wan-story h3{font-family:var(--serif);font-size:22px}
+.wan-story p{color:var(--mute);font-size:15px;line-height:1.75;margin:6px 0 14px}
+.wan-again{margin-top:16px;background:none;border:none;color:var(--mute);text-decoration:underline;cursor:pointer;font:inherit;font-size:14px}
+@media(min-width:860px){.wan-out{grid-template-columns:420px 1fr;gap:40px}}
+.book-extra{display:inline-block;margin-top:6px;font-size:12px;font-weight:700;color:var(--red)}
+.what-def{font-family:var(--serif);font-size:clamp(22px,4.6vw,32px);font-weight:900;color:#F6B24E;margin:8px 0 6px;line-height:1.4}
+.napkin{max-width:880px;margin:26px auto 0;background:#FDFAF3;border-radius:22px;padding:14px;overflow:hidden}
+.napkin img{width:100%;border-radius:14px}
+.napkin figcaption{color:#3b3a33;font-size:14px;text-align:center;margin-top:10px;line-height:1.6}
+.forest li.next-tree i{border:2px dashed #F6B24E;background:transparent;color:#F6B24E;display:flex;align-items:center;justify-content:center;font-style:normal;font-family:var(--serif);font-size:20px}
+.forest li.next-tree span{color:#F6B24E}
+.forest.folded li.next-tree{display:block}
+.said{background:var(--paper2)}
+.said .lead{color:var(--mute);margin-top:8px}
+.said-row{list-style:none;padding:4px 2px 14px;margin:22px 0 0;display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.said-row li{flex:0 0 78%;max-width:330px;scroll-snap-align:start;background:#fff;border-radius:20px;padding:22px 20px 18px;display:flex;flex-direction:column;justify-content:space-between;gap:18px;box-shadow:0 6px 18px rgba(30,26,22,.06)}
+.said-row p{font-family:var(--serif);font-size:19px;line-height:1.6;color:var(--ink)}
+.said-row p::before{content:"“";display:block;font-size:44px;line-height:.6;color:#F6B24E;margin-bottom:8px}
+.said-row .by{display:flex;align-items:center;gap:10px}
+.said-row .by img,.said-row .by i{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid #F6B24E;flex:none}
+.said-row .by b{font-size:15px}
+.said-row .by small{color:var(--mute);font-size:12px;margin-left:auto}
+.said-row .q-next{background:transparent;border:2px dashed #F6B24E;box-shadow:none}
+.said-row .q-next a{color:inherit;display:flex;flex-direction:column;justify-content:space-between;height:100%;gap:18px}
+.said-row .q-next p{color:#E58A1F}
+.said-row .q-next i{display:flex;align-items:center;justify-content:center;font-style:normal;font-family:var(--serif);color:#E58A1F;border-style:dashed}
+.said-row .q-next small{margin-left:0;color:#E58A1F}
+@media(min-width:860px){.said-row li{flex-basis:300px}}
+.said-row:not(.open) .more-q{display:none}
+.steps{list-style:none;counter-reset:st;display:grid;gap:10px;margin:22px 0 0;padding:0}
+.steps li{counter-increment:st;display:flex;gap:12px;align-items:baseline;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 16px;font-size:14px;color:var(--mute)}
+.steps li:before{content:counter(st);font-family:var(--serif);font-size:20px;color:var(--orange);font-weight:900}
+.steps b{color:var(--ink);white-space:nowrap;margin-right:6px}
+@media(min-width:860px){.steps{grid-template-columns:repeat(3,1fr)}}
+.path li b{color:var(--ink)}
+.path.vip li b{color:#fff}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "边玩边赚是什么？", "acceptedAnswer": {"@type": "Answer", "text": "边玩边赚，就是活成自己，也创造价值。具体说，它是一个由普通人一起写书、一起用好 AI、一起把\"玩\"活成事业的生态，由千百合（Lily Li）发起，李海峰老师任出品人和主编。边玩边赚书系共 6 本：4 本已出版，1 本出版中，1 本招募中；115 位作者来自 9 个国家和地区。"}}, {"@type": "Question", "name": "不会写作，也能出书吗？", "acceptedAnswer": {"@type": "Answer", "text": "能。访谈 90 分钟起，AI 帮忙整理成稿，改稿两次，每人约 2000 字，署名正式出版。"}}, {"@type": "Question", "name": "怎么收费？", "acceptedAnswer": {"@type": "Answer", "text": "以书 6《穿过悲欢，笑答人生》为例：共创席 ¥18,888 / 一年期，私塾席 ¥28,888 / 一年期。先聊一次，不付款，聊过彼此确认同频再说。"}}, {"@type": "Question", "name": "书在哪里出版？", "acceptedAnswer": {"@type": "Answer", "text": "书 1 由华中科技大学出版社出版；书 2、书 3 由北京日报出版社出版；书 4 由台海出版社出版。书 5《走遍世界，活成自己》由北京日报出版社出版中；书 6《穿过悲欢，笑答人生》计划由北京日报出版社出版，正在招募作者。"}}, {"@type": "Question", "name": "\"包下一座岛\"是什么？", "acceptedAnswer": {"@type": "Answer", "text": "首届岛主计划，2026 年 12 月 6 日启航，地点是菲律宾巴拉望鲜花岛：5 天，岛上只有我们，一起学习、创作、交朋友。"}}, {"@type": "Question", "name": "作者的个人主页是什么？", "acceptedAnswer": {"@type": "Answer", "text": "每位作者都有一个自己的网页，地址是 playandprosper.com/名字，收好这个人的故事和作品，是十八般武艺的第 18 样，陆续上线中。"}}]}</script>
+</head>
+<body>
+
+<nav id="nav"><div class="wrap nav-in">
+  <a href="#top"><img src="img/logo.png" alt="边玩边赚 Play and Prosper"></a>
+  <div class="nav-links">
+    <a href="#what">什么是边玩边赚</a><a href="#wan">找到你的玩</a><a href="#books">书系</a><a href="#stars">作者雨林</a><a href="#footprint">足迹</a><a href="#paths">一起出书</a><a href="#faq">常见问题</a>
+  </div>
+  <a class="nav-cta" href="#now">正在发生</a>
+</div></nav>
+
+<header class="hero" id="top"><div class="wrap hero-grid">
+  <div>
+    <div class="kicker">一书 · 一课 · 一生态</div>
+    <h1>AI 时代，<br>边玩边赚，<br><em>活成自己</em></h1>
+    <p class="sub">玩和赚，不用二选一。</p>
+    <p class="desc"><b>115 位普通人，一起写边玩边赚书系：4 本已正式出版，1 本出版中，1 本正在招募。</b>我们一起出书、一起用好 AI，把那件一做就忘了时间的事，活成自己的事业。</p>
+    <div class="btns">
+      <a class="btn btn-main" href="#what">第一次来？从这里开始 →</a>
+      <a class="btn btn-line" href="#wan">先玩一下 · 30 秒</a>
+    </div>
+  </div>
+  <div class="hero-photo reveal">
+    <img src="img/hero-lily.jpg" alt="千百合捧着边玩边赚书系">
+    <div class="hero-badge"><b>6 本书</b>4 本已出版 · 115 位作者</div>
+  </div>
+</div></header>
+
+<section class="what" id="what"><div class="wrap">
+  <div class="kicker">什么是边玩边赚</div>
+  <p class="what-def reveal">边玩边赚，就是活成自己，也创造价值。</p>
+  <p class="motto reveal">玩是<span>心法</span>，<br>赚是<span>结果</span>。</p>
+  <div class="defs">
+    <div class="def reveal"><b>玩</b><p>做那件你不费力、一做就忘了时间、只有你能做的事。</p></div>
+    <div class="def reveal"><b>赚</b><p>那件事自己长出来的果。你站着接住，不跪着去追。</p></div>
+  </div>
+  <p class="lead" style="margin-top:22px">不是先玩够了再去赚，也不是先赚够了才敢玩：你正玩着的那件事，本身就在长钱。</p>
+  <figure class="napkin reveal"><img src="img/line-circle.jpg" alt="一条线与一个圆：左边是延迟自由的一条线，工作、工作、工作，先熬、攒够了才能玩，熬到头才自由；右边是边玩边赚的一个圆，玩，经过 AI 加速器，到赚，再凭底气回到玩，今天就可以。" loading="lazy"></figure>
+  <p class="whisper">别活成一条线，活成一个圆。你越松，它越长。</p>
+</div></section>
+
+<section id="want"><div class="wrap">
+  <div class="kicker">一起做点什么</div>
+  <h2>你要的，是哪一种？</h2>
+  <p class="lead">三条路，选一条最像你的。</p>
+  <div class="want-grid">
+    <a class="want w1 reveal" href="https://www.playandprosper.com/laugh/"><div class="num">01</div><div><div class="q">我要……</div><h3>出一本属于自己的书</h3><p>不需要会写。聊一次、访谈成书，你的名字印在正式出版的书上。想走得更深，还有私塾席。</p></div><div class="go">看正在招募的书 →</div></a>
+    <a class="want w2 reveal" href="https://www.playandprosper.com/agent.html"><div class="num">02</div><div><div class="q">我要……</div><h3>用好 AI，让它替我干活</h3><p>不用会编程。从你自己的工作出发，亲手搭一个 7×24 小时替你干活的 AI 智能体。</p></div><div class="go">看《人人都能做 AI 智能体》→</div></a>
+    <a class="want w3 reveal" href="https://www.playandprosper.com/island/"><div class="num">03</div><div><div class="q">我要……</div><h3>换一种活法，边玩边赚</h3><p>包下一座岛，5 天学习、创作、交朋友。玩和赚，可以是同一件事。</p></div><div class="go">看包下一座岛 →</div></a>
+  </div>
+</div></section>
+
+<section class="said" id="said"><div class="wrap">
+  <div class="kicker">他们写下的</div>
+  <h2>书里的一句话</h2>
+  <p class="lead">不是我们替他们说，是他们自己写进书里的。先放 3 句，最后一句留给你。</p>
+  <ul class="said-row" id="saidRow"><li><p>赚钱，不该成为牺牲生活的代价，应该是好好生活的结果。</p><div class="by"><img src="img/authors/a077.jpg?v=3" alt="吴晓音" loading="lazy"><b>吴晓音</b><small>书 3 · 私塾</small></div></li><li><p>人两条腿，钱四条腿，追是追不上的；可人一旦对了，钱自己会找上门。</p><div class="by"><img src="img/authors/a061.jpg?v=3" alt="张一一" loading="lazy"><b>张一一</b><small>书 3 · 私塾</small></div></li><li><p>写书之后，才发现这不是终点，而是一扇门。</p><div class="by"><img src="img/authors/a031.jpg?v=3" alt="木晓" loading="lazy"><b>木晓</b><small>书 3 · 主编</small></div></li><li class="more-q"><p>那些花在自己身上的钱和时间，终于长成了一棵可以帮别人的树。</p><div class="by"><img src="img/authors/a081.jpg?v=3" alt="万可" loading="lazy"><b>万可</b><small>书 3</small></div></li><li class="more-q"><p>我是玩着玩着，就玩到今天了。</p><div class="by"><img src="img/authors/a078.jpg?v=3" alt="钟智勋" loading="lazy"><b>钟智勋</b><small>书 3</small></div></li><li class="more-q"><p>先活出来，才有标签——不是先立一个人设，再上去演。</p><div class="by"><img src="img/authors/a003.jpg?v=5" alt="金闰迪" loading="lazy"><b>金闰迪</b><small>书 4 · 私塾</small></div></li><li class="more-q"><p>我一直引以为傲的“忙”，也许不是能力，而是一种逃避。</p><div class="by"><img src="img/authors/a046.jpg?v=3" alt="闻千予" loading="lazy"><b>闻千予</b><small>书 2</small></div></li><li class="more-q"><p>每一次真正改变我的，都是花出去的钱，不是省下来的钱。</p><div class="by"><img src="img/authors/a025.jpg?v=3" alt="邹娜" loading="lazy"><b>邹娜</b><small>书 3 · 主编</small></div></li><li class="more-q"><p>个人品牌不是你说自己是谁，而是当你不在场的时候，别人怎么描述你。</p><div class="by"><img src="img/authors/a013.jpg?v=3" alt="荣辉" loading="lazy"><b>荣辉</b><small>书 4 · 私塾</small></div></li><li class="more-q"><p>原来我这二十年踩的那些坑，倒成了最有用的东西。</p><div class="by"><img src="img/authors/a048.jpg?v=3" alt="赵宝华" loading="lazy"><b>赵宝华</b><small>书 2</small></div></li><li class="more-q"><p>它改变的不是我能做什么，而是我如何看待‘做事’这件事。</p><div class="by"><img src="img/authors/a044.jpg?v=3" alt="易辰" loading="lazy"><b>易辰</b><small>书 2</small></div></li><li class="more-q"><p>自由不是未来的某一天，而是从今天开始。</p><div class="by"><img src="img/authors/a008.jpg?v=3" alt="王伊迪" loading="lazy"><b>王伊迪</b><small>书 1</small></div></li><li class="more-q"><p>相信活出自己，就是给时代最好的礼物。</p><div class="by"><img src="img/authors/a086.jpg?v=3" alt="小屿" loading="lazy"><b>小屿</b><small>书 4</small></div></li><li class="more-q"><p>你怎么活，世界就怎么记住你。</p><div class="by"><img src="img/authors/a007.jpg?v=3" alt="杰森" loading="lazy"><b>杰森</b><small>书 4 · 私塾</small></div></li><li class="more-q"><p>一个人的品牌，最终不是你告诉别人「我是谁」，而是别人从你的生命故事里，看见你的活法。</p><div class="by"><img src="img/authors/a087.jpg?v=3" alt="韩玉娟" loading="lazy"><b>韩玉娟</b><small>书 4 · 私塾</small></div></li><li class="q-next"><a href="#wan"><p>下一句，是你写的。</p><div class="by"><i>你</i><b style="color:#E58A1F">先玩一下 →</b></div></a></li></ul>
+  <button class="forest-more" id="saidMore" type="button" style="color:var(--ink);border-color:var(--line)">看全部 15 句</button>
+</div></section>
+
+<section class="wan" id="wan"><div class="wrap">
+  <div class="kicker">先玩一下</div>
+  <h2>三个问题，找到你的「玩」</h2>
+  <p class="lead">不用想太久，写下第一个冒出来的念头。答完会生成一张你的卡片，可以保存、发朋友圈。你的回答只留在你自己的手机上。</p>
+  <form class="wan-form" id="wanForm" autocomplete="off">
+    <label><span>01</span><b>你做什么事的时候，会忘了时间？</b><input id="w1" maxlength="40" placeholder="比如：做饭、拍照、陪人聊天" required></label>
+    <label><span>02</span><b>别人常来找你帮什么忙？</b><input id="w2" maxlength="40" placeholder="比如：帮忙出主意、整理东西" required></label>
+    <label><span>03</span><b>如果钱不是问题，你最想把时间花在哪？</b><input id="w3" maxlength="40" placeholder="比如：带着家人走遍世界" required></label>
+    <button class="btn btn-main" type="submit">生成我的卡片 →</button>
+  </form>
+  <div class="wan-out" id="wanOut" hidden>
+    <img id="wanImg" alt="我的边玩边赚卡片">
+    <div class="wan-next">
+      <p class="tip">手机上长按图片可以保存；电脑上点下面的按钮下载。</p>
+      <a class="btn btn-line" id="wanDl" download="我的边玩边赚卡片.png">下载卡片</a>
+      <div class="wan-story">
+        <h3>把它讲成一个故事</h3>
+        <p>你的「玩」，也许就是下一本《边玩边赚》里的一章。用 100–300 字讲一个跟它有关的小故事，每个故事我们都会认真读，合适的会主动联系你。</p>
+        <a class="btn btn-orange" id="wanStory" href="https://ncnpdjciqnfm.feishu.cn/share/base/form/shrcnOhePPJpQ0FIk3U2c8R8hcb" target="_blank" rel="noopener">讲一个我的故事 →</a>
+        <p class="tip" style="margin-top:10px">不方便填表，也可以<a href="#contact" style="color:var(--orange)">直接加微信</a>，发一句「我的故事」。</p>
+      </div>
+      <button class="wan-again" type="button" id="wanAgain">重新答一次</button>
+    </div>
+  </div>
+</div></section>
+
+<section id="lily"><div class="wrap story-grid">
+  <img class="reveal" src="img/lily-beach.jpg" alt="千百合在海边" loading="lazy">
+  <div class="story">
+    <div class="kicker">欢迎你来</div>
+    <h2>这里，来的人都欢迎</h2>
+    <p>发起人千百合，也在那条线上赶过很多年，精算到小数点后两位，以为攒够了才能开始活。后来有个下午，她写了一篇没人约、不换钱的小文章，写她外婆的一双手。它传得比她任何一篇"爆款"都远，还把后来的第一位客户、最重要的合伙人带到了她面前。</p>
+    <p>原来"追"是最笨的追法，一松手，它反而跟上来了。后来就有了边玩边赚：一群普通人，把自己"一做就忘了时间"的那件事写出来、活出来。AI 来了，这条路更短了，我们一起走。</p>
+    <div class="facts"><span>边玩边赚发起人</span><span>书系出品人</span><span>两届当当影响力作家</span><span>出品 20+ 本书</span></div>
+    <a class="btn btn-line lily-home" href="lily/">看千百合的个人主页：十八般武艺全展示 →</a>
+  </div>
+</div></section>
+
+<section class="books" id="books"><div class="wrap">
+  <div class="kicker">边玩边赚书系</div>
+  <h2>六本书，六种活法</h2>
+  <p class="lead">每本书由一群普通人共同写成，陆续正式出版。封面上那句话，是这本书想送给你的。</p>
+  <div class="shelf">
+    <div class="book"><div class="cv"><img src="img/cover1.webp" alt="边玩边赚：AI时代的自由人生" loading="lazy"></div><div class="no">第一本</div><h3>AI 时代的自由人生</h3><div class="sl">边玩边赚，活出你想要的样子</div><div class="pub">华中科技大学出版社</div></div>
+    <div class="book"><div class="cv"><img src="img/cover2.webp" alt="边玩边赚：人人都能做AI智能体" loading="lazy"></div><div class="no">第二本</div><h3>人人都能做 AI 智能体</h3><div class="sl">世界换了新玩法，这次轮到你上场</div><div class="pub">北京日报出版社</div></div>
+    <div class="book"><div class="cv"><img src="img/cover3.webp" alt="边玩边赚：AI时代的财富思维" loading="lazy"></div><div class="no">第三本</div><h3>AI 时代的财富思维</h3><div class="sl">玩是心法，赚是结果</div><div class="pub">北京日报出版社</div><a class="book-extra" href="https://www.playandprosper.com/W2_%E8%B4%A2%E5%AF%8C%E4%BA%BA%E6%A0%BC%E6%B5%8B%E8%AF%84.html">配套：财富人格测评 →</a></div>
+    <div class="book"><div class="cv"><img src="img/cover4.webp" alt="边玩边赚：AI时代的个人品牌" loading="lazy"></div><div class="no">第四本</div><h3>AI 时代的个人品牌</h3><div class="sl">你的活法，就是你的品牌</div><div class="pub">台海出版社</div></div>
+    <a class="book" href="https://www.playandprosper.com/Book5.html"><div class="cv"><img src="img/cover5.webp" alt="边玩边赚：走遍世界，活成自己" loading="lazy"></div><div class="no">第五本</div><h3>走遍世界，活成自己</h3><div class="sl">世界是一本书，这次你来写</div><div class="pub">北京日报出版社 · 出版中</div></a>
+    <a class="book" href="https://www.playandprosper.com/laugh/"><div class="cv cv6"><span class="s">招募中 · 2027</span><div class="t">穿过悲欢，<br>笑答人生</div><span style="font-size:12px">边玩边赚 · 第六本</span></div><div class="no">第六本</div><h3>穿过悲欢，笑答人生</h3><div class="sl">微笑是日常，大笑是本事</div><div class="pub">北京日报出版社 · 招募中</div></a>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>6</b><span>本书</span><small>4 已出版 · 1 出版中<br>1 招募中</small></div>
+    <div class="stat"><b>115</b><span>位作者</span></div>
+    <div class="stat"><b>9</b><span>个国家和地区</span></div>
+  </div>
+  <p class="cred">当当影响力作家 <a href="https://www.playandprosper.com/haifeng/">李海峰</a>、<a href="lily/">千百合</a>、邹娜、金雨麒。下一位，可能就是你。</p>
+</div></section>
+
+<section class="stars" id="stars"><div class="wrap">
+  <div class="kicker">作者雨林</div>
+  <h2>像一片热带雨林</h2>
+  <p class="rain-q">你知道热带雨林的树，为什么能长到三十层楼高吗？</p>
+  <p class="rain-a">因为每一棵树，都在为整片森林输送养分。</p>
+  <p class="lead">边玩边赚也是这样长出来的。写第一本书的时候，有人策划开营，有人剪视频，有人发起写作挑战，有人提议成立工作组，有人组成护航队。一本一本走下来，有人推荐新作者进来，有人在自己的城市办读书会，有人张罗新书发布会。每一位作者都是这片雨林的主人，每个人都会有自己的个人主页，陆续上线中。</p>
+  <p class="rain-c">当我们彼此成就，世界便回以丰盛。</p>
+  <div class="forest-head"><b>115</b> 位作者，还在长</div>
+  <ul class="forest" id="forest">
+    <li class="has-page" title="李海峰 · 出品人、主编"><a href="https://www.playandprosper.com/haifeng/"><img src="img/av-haifeng.jpg?v=3" alt="李海峰" loading="lazy"><span>李海峰</span></a></li>
+    <li title="文亮 · 书1、书2、书3、书4、书5 · 一名感性的理工男"><img src="img/authors/a014.jpg?v=3" alt="文亮" loading="lazy"><span>文亮</span></li>
+    <li title="木晓 · 书1、书2、书3、书4、书5 · 正念摄影艺术家"><img src="img/authors/a031.jpg?v=3" alt="木晓" loading="lazy"><span>木晓</span></li>
+    <li title="邹娜 · 书1、书2、书3、书4、书5 · AI智能体私域营销顾问"><img src="img/authors/a025.jpg?v=3" alt="邹娜" loading="lazy"><span>邹娜</span></li>
+    <li title="窈窕姐姐（邓琇文） · 书3、书5 · 国家一级礼仪师"><img src="img/authors/a069.jpg?v=3" alt="窈窕姐姐" loading="lazy"><span>窈窕姐姐</span></li>
+    <li title="荣辉 · 书1、书2、书3、书4、书5 · 多资产经营者"><img src="img/authors/a013.jpg?v=3" alt="荣辉" loading="lazy"><span>荣辉</span></li>
+    <li title="金闰迪 · 书1、书2、书3、书4、书5 · 国家认证营养师"><img src="img/authors/a003.jpg?v=5" alt="金闰迪" loading="lazy"><span>金闰迪</span></li>
+    <li title="德州康姐 · 书1、书2、书3、书4、书5 · 全球事业开拓者"><img src="img/authors/a006.jpg?v=3" alt="德州康姐" loading="lazy"><span>德州康姐</span></li>
+    <li title="杰森 · 书1、书2、书3、书4、书5 · 第二曲线开拓者"><img src="img/authors/a007.jpg?v=3" alt="杰森" loading="lazy"><span>杰森</span></li>
+    <li title="馨怡 · 书2、书3、书4、书5 · 从一张折叠桌起步的加拿大CPA"><img src="img/authors/a047.jpg?v=3" alt="馨怡" loading="lazy"><span>馨怡</span></li>
+    <li title="焱风 · 书4、书5 · 终身学习者"><img src="img/authors/a084.jpg?v=3" alt="焱风" loading="lazy"><span>焱风</span></li>
+    <li title="刘小玲 · 书4、书5 · 16年翻译创业者"><img src="img/authors/a092.jpg?v=3" alt="刘小玲" loading="lazy"><span>刘小玲</span></li>
+    <li title="张一一 · 书3 · 生生国际创始人｜让世界爱上中华文化"><img src="img/authors/a061.jpg?v=3" alt="张一一" loading="lazy"><span>张一一</span></li>
+    <li title="小麦姐 · 书3 · Always last minute lady"><img src="img/authors/xiaomai.jpg?v=3" alt="小麦姐" loading="lazy"><span>小麦姐</span></li>
+    <li title="吴晓音 · 书3 · 非遗数字出海出品人"><img src="img/authors/a077.jpg?v=3" alt="吴晓音" loading="lazy"><span>吴晓音</span></li>
+    <li title="王珏 · 书4 · 终身学习践行者"><img src="img/authors/a083.jpg?v=3" alt="王珏" loading="lazy"><span>王珏</span></li>
+    <li title="韩玉娟 · 书4 · 美国移动房屋公园投资专家"><img src="img/authors/a087.jpg?v=3" alt="韩玉娟" loading="lazy"><span>韩玉娟</span></li>
+    <li title="马继红 · 书4 · 助你醒来，活成自己"><img src="img/authors/a082.jpg?v=3" alt="马继红" loading="lazy"><span>马继红</span></li>
+    <li title="金雨麒 · 书5 · 英国剑桥大学交换学者"><img src="img/authors/a098.jpg?v=3" alt="金雨麒" loading="lazy"><span>金雨麒</span></li>
+    <li title="闻千予 · 书2、书5 · 千予教育创始人"><img src="img/authors/a046.jpg?v=3" alt="闻千予" loading="lazy"><span>闻千予</span></li>
+    <li title="洪梓萱 · 书4 · 诗人"><img src="img/authors/a090.jpg?v=3" alt="洪梓萱" loading="lazy"><span>洪梓萱</span></li>
+    <li title="小屿 · 书4 · 玩愈岛 IP 主理人"><img src="img/authors/a086.jpg?v=3" alt="小屿" loading="lazy"><span>小屿</span></li>
+    <li title="易辰 · 书2、书4"><img src="img/authors/a044.jpg?v=3" alt="易辰" loading="lazy"><span>易辰</span></li>
+    <li title="万可 · 书3、书4 · 帮35+女性用真实活法，重建身心秩序"><img src="img/authors/a081.jpg?v=3" alt="万可" loading="lazy"><span>万可</span></li>
+    <li title="魏宏翰 · 书1、书2、书3、书4 · 极客玩家"><img src="img/authors/a019.jpg?v=3" alt="魏宏翰" loading="lazy"><span>魏宏翰</span></li>
+    <li title="卢蔚青 · 书1、书3、书4、书5 · 房地产规划与投资管理者"><img src="img/authors/a028.jpg?v=3" alt="卢蔚青" loading="lazy"><span>卢蔚青</span></li>
+    <li title="贺丽轩 · 书1、书2、书3 · 以色列华人跨文化连接者"><img src="img/authors/a022.jpg?v=3" alt="贺丽轩" loading="lazy"><span>贺丽轩</span></li>
+    <li title="袁星光 · 书1、书5 · 幸福导师"><img src="img/authors/a002.jpg?v=4" alt="袁星光" loading="lazy"><span>袁星光</span></li>
+    <li title="王伊迪 · 书1、书3 · 金融风控实战派"><img src="img/authors/a008.jpg?v=3" alt="王伊迪" loading="lazy"><span>王伊迪</span></li>
+    <li title="无为（上海） · 书3、书5 · 自学日/韩/英三语的跨境创业者"><img src="img/authors/a012.jpg?v=4" alt="无为（上海）" loading="lazy"><span>无为（上海）</span></li>
+    <li title="无为（伦敦） · 书1、书2 · 伦敦AWA自然医学学院创始人"><img src="img/authors/a012b.jpg?v=4" alt="无为（伦敦）" loading="lazy"><span>无为（伦敦）</span></li>
+    <li title="玄音徵阳 · 书1、书2 · 文旅部中华文促会乐道文化首席导师"><img src="img/authors/a034.jpg?v=4" alt="玄音徵阳" loading="lazy"><span>玄音徵阳</span></li>
+    <li title="田华瀚 · 书1、书4 · 走遍全球193国的旅行者"><img src="img/authors/a035.jpg?v=3" alt="田华瀚" loading="lazy"><span>田华瀚</span></li>
+    <li title="明月常在 · 书2、书4 · 五序生命花园园丁"><img src="img/authors/a043.jpg?v=3" alt="明月常在" loading="lazy"><span>明月常在</span></li>
+    <li title="赵宝华 · 书2、书4 · AI架构师"><img src="img/authors/a048.jpg?v=3" alt="赵宝华" loading="lazy"><span>赵宝华</span></li>
+    <li title="灵水行云 · 书2、书3 · AI 与财富思维探索者"><img src="img/authors/a050.jpg?v=3" alt="灵水行云" loading="lazy"><span>灵水行云</span></li>
+    <li title="瑞秋 · 书2、书4 · 短租管理专家"><img src="img/authors/a056.jpg?v=3" alt="瑞秋" loading="lazy"><span>瑞秋</span></li>
+    <li title="官荣堃 · 书3、书4 · 生命唤醒师"><img src="img/authors/a063.jpg?v=3" alt="官荣堃" loading="lazy"><span>官荣堃</span></li>
+    <li title="唐笑长 · 书3、书4 · 硬笔国赛金奖"><img src="img/authors/a070.jpg?v=3" alt="唐笑长" loading="lazy"><span>唐笑长</span></li>
+    <li title="张翠玲 · 书3、书4 · 理性而有温度的导师"><img src="img/authors/a075.jpg?v=3" alt="张翠玲" loading="lazy"><span>张翠玲</span></li>
+    <li title="彭惠林（书1署名林子） · 书1、书4 · 中高考学业规划师"><img src="img/authors/a096.jpg?v=3" alt="彭惠林" loading="lazy"><span>彭惠林</span></li>
+    <li title="金凤凰 · 书2、书5 · 斯坦福双胞胎妈妈"><img src="img/authors/a100.jpg?v=3" alt="金凤凰" loading="lazy"><span>金凤凰</span></li>
+    <li title="凯人 · 书1 · 企业管理者"><img src="img/authors/a004.jpg?v=3" alt="凯人" loading="lazy"><span>凯人</span></li>
+    <li title="焱姐 · 书1 · 领导多元文化团队的四大注册会计师"><img src="img/authors/a005.jpg?v=3" alt="焱姐" loading="lazy"><span>焱姐</span></li>
+    <li title="张立夫 · 书1"><img src="img/authors/a009.jpg?v=3" alt="张立夫" loading="lazy"><span>张立夫</span></li>
+    <li title="李禹婵 · 书1 · 作曲家｜用音符讲述故事"><img src="img/authors/a010.jpg?v=3" alt="李禹婵" loading="lazy"><span>李禹婵</span></li>
+    <li title="书辰 · 书1 · 边玩边学，精通中英日韩四国语的旅日70后"><img src="img/authors/a011.jpg?v=3" alt="书辰" loading="lazy"><span>书辰</span></li>
+    <li title="阿狼 · 书1 · 艺人摄影师"><img src="img/authors/a015.jpg?v=3" alt="阿狼" loading="lazy"><span>阿狼</span></li>
+    <li title="许玲玲 · 书1 · 云南白药天颐茶品战略合作伙伴"><img src="img/authors/a016.jpg?v=3" alt="许玲玲" loading="lazy"><span>许玲玲</span></li>
+    <li title="陈志芹 · 书1 · 职业经理人｜驱动企业成长，助力行业突破"><img src="img/authors/a017.jpg?v=3" alt="陈志芹" loading="lazy"><span>陈志芹</span></li>
+    <li title="瑶幸福 · 书1 · 畅销书出品人"><img src="img/authors/a018.jpg?v=3" alt="瑶幸福" loading="lazy"><span>瑶幸福</span></li>
+    <li title="大卫飞思 · 书1 · 人社部认证心理咨询师"><img src="img/authors/a023.jpg?v=3" alt="大卫飞思" loading="lazy"><span>大卫飞思</span></li>
+    <li title="陈月娟 · 书1 · 以美为生，与爱同行"><img src="img/authors/a024.jpg?v=3" alt="陈月娟" loading="lazy"><span>陈月娟</span></li>
+    <li title="韵清 · 书1 · 教育身心灵定位出书操盘手"><img src="img/authors/a026.jpg?v=3" alt="韵清" loading="lazy"><span>韵清</span></li>
+    <li title="江桂媛 · 书1 · 25年财务经验，专注家庭资产规划与增长"><img src="img/authors/a027.jpg?v=3" alt="江桂媛" loading="lazy"><span>江桂媛</span></li>
+    <li title="何方 · 书1 · 八零后留美化学博士"><img src="img/authors/a029.jpg?v=3" alt="何方" loading="lazy"><span>何方</span></li>
+    <li title="张静 · 书1 · 健康生活达人"><img src="img/authors/a030.jpg?v=3" alt="张静" loading="lazy"><span>张静</span></li>
+    <li title="冯在融 · 书1 · TOUCAN 地板品牌创始人"><img src="img/authors/a032.jpg?v=3" alt="冯在融" loading="lazy"><span>冯在融</span></li>
+    <li title="燕子 · 书1 · 理工背景的理财规划师"><img src="img/authors/a033.jpg?v=3" alt="燕子" loading="lazy"><span>燕子</span></li>
+    <li title="娜荷雅 · 书1"><img src="img/authors/a036.jpg?v=3" alt="娜荷雅" loading="lazy"><span>娜荷雅</span></li>
+    <li title="心和 · 书2 · AI智能体商用顾问"><img src="img/authors/a038.jpg?v=3" alt="心和" loading="lazy"><span>心和</span></li>
+    <li title="张顺芳 · 书2 · 俩娃妈妈+幸福家庭缔造者"><img src="img/authors/a039.jpg?v=3" alt="张顺芳" loading="lazy"><span>张顺芳</span></li>
+    <li title="宋涛 · 书2 · 摸爬滚打的创业者"><img src="img/authors/a040.jpg?v=4" alt="宋涛" loading="lazy"><span>宋涛</span></li>
+    <li title="老顾 · 书2"><img src="img/authors/a041.jpg?v=3" alt="老顾" loading="lazy"><span>老顾</span></li>
+    <li title="姚紫瑜 · 书2"><img src="img/authors/a042.jpg?v=3" alt="姚紫瑜" loading="lazy"><span>姚紫瑜</span></li>
+    <li title="棉花糖 · 书2 · ENFP型的法学硕士"><img src="img/authors/a045.jpg?v=3" alt="棉花糖" loading="lazy"><span>棉花糖</span></li>
+    <li title="耿国芳 · 书2 · 爱保保险联合创办人"><img src="img/authors/a051.jpg?v=3" alt="耿国芳" loading="lazy"><span>耿国芳</span></li>
+    <li title="珊珊 · 书2"><img src="img/authors/a052.jpg?v=3" alt="珊珊" loading="lazy"><span>珊珊</span></li>
+    <li title="兔不知道 · 书2 · 网络安全从业者"><img src="img/authors/a053.jpg?v=3" alt="兔不知道" loading="lazy"><span>兔不知道</span></li>
+    <li title="观馫 · 书2 · 国家二级心理咨询师"><img src="img/authors/a054.jpg?v=3" alt="观馫" loading="lazy"><span>观馫</span></li>
+    <li title="焕泓 · 书2 · 履险裁真"><img src="img/authors/a055.jpg?v=3" alt="焕泓" loading="lazy"><span>焕泓</span></li>
+    <li title="涂海燕 · 书2 · AI赋能的跨界实践者"><img src="img/authors/a057.jpg?v=3" alt="涂海燕" loading="lazy"><span>涂海燕</span></li>
+    <li title="来振华 · 书2 · 传统文化传播者"><img src="img/authors/a058.jpg?v=3" alt="来振华" loading="lazy"><span>来振华</span></li>
+    <li title="王慧 · 书2 · 33年国际金融从业者"><img src="img/authors/a059.jpg?v=4" alt="王慧" loading="lazy"><span>王慧</span></li>
+    <li title="志铮 · 书3 · 20年商业地产资深运营者"><img src="img/authors/a062.jpg?v=3" alt="志铮" loading="lazy"><span>志铮</span></li>
+    <li title="杜慧贞 · 书3 · 高校教师"><img src="img/authors/a064.jpg?v=3" alt="杜慧贞" loading="lazy"><span>杜慧贞</span></li>
+    <li title="杨永松 · 书3 · 解忧哥"><img src="img/authors/a065.jpg?v=3" alt="杨永松" loading="lazy"><span>杨永松</span></li>
+    <li title="半亩方塘 · 书3 · 成长教练"><img src="img/authors/a066.jpg?v=3" alt="半亩方塘" loading="lazy"><span>半亩方塘</span></li>
+    <li title="安琪 · 书3 · 前房地产从业者"><img src="img/authors/a067.jpg?v=3" alt="安琪" loading="lazy"><span>安琪</span></li>
+    <li title="胡大利 · 书3 · 企业家私人顾问"><img src="img/authors/a068.jpg?v=3" alt="胡大利" loading="lazy"><span>胡大利</span></li>
+    <li title="杨历 · 书3 · 美穗科技创始人"><img src="img/authors/a071.jpg?v=4" alt="杨历" loading="lazy"><span>杨历</span></li>
+    <li title="曹玲瑜 · 书3 · 家居建材行业深耕实战经营者"><img src="img/authors/a072.jpg?v=3" alt="曹玲瑜" loading="lazy"><span>曹玲瑜</span></li>
+    <li title="张海清 · 书3 · 新媒体运营"><img src="img/authors/a074.jpg?v=3" alt="张海清" loading="lazy"><span>张海清</span></li>
+    <li title="时光叙事 · 书3 · 哲学博士"><img src="img/authors/a076.jpg?v=3" alt="时光叙事" loading="lazy"><span>时光叙事</span></li>
+    <li title="钟智勋 · 书3 · AI智能体运营工程师(高级)"><img src="img/authors/a078.jpg?v=3" alt="钟智勋" loading="lazy"><span>钟智勋</span></li>
+    <li title="温张敏 · 书3 · 知识IP操盘手"><img src="img/authors/a080.jpg?v=3" alt="温张敏" loading="lazy"><span>温张敏</span></li>
+    <li title="吴一雁 · 书4"><img src="img/authors/a085.jpg?v=3" alt="吴一雁" loading="lazy"><span>吴一雁</span></li>
+    <li title="南灵儿 · 书4 · 中医针灸传承者"><img src="img/authors/a088.jpg?v=3" alt="南灵儿" loading="lazy"><span>南灵儿</span></li>
+    <li title="墨池莫迟 · 书4 · 书法美育老师"><img src="img/authors/a089.jpg?v=3" alt="墨池莫迟" loading="lazy"><span>墨池莫迟</span></li>
+    <li title="孙兆亮 · 书4 · 信托制物业践行者"><img src="img/authors/a091.jpg?v=3" alt="孙兆亮" loading="lazy"><span>孙兆亮</span></li>
+    <li title="膳桥 · 书4 · ・美国注册护士・营养健康顾问"><img src="img/authors/a093.jpg?v=3" alt="膳桥" loading="lazy"><span>膳桥</span></li>
+    <li title="也红 · 书4 · 情绪翻译官"><img src="img/authors/a094.jpg?v=3" alt="也红" loading="lazy"><span>也红</span></li>
+    <li title="黄庆 · 书4 · 一人公司创业者"><img src="img/authors/a095.jpg?v=3" alt="黄庆" loading="lazy"><span>黄庆</span></li>
+    <li title="杨淇 · 书4 · 五行经络瑜伽创始人"><img src="img/authors/a097.jpg?v=3" alt="杨淇" loading="lazy"><span>杨淇</span></li>
+    <li title="肖萍 · 书5 · 学校里第一任计算机老师"><img src="img/authors/a099.jpg?v=3" alt="肖萍" loading="lazy"><span>肖萍</span></li>
+    <li title="陈敏飞 · 书5 · 美国联邦医疗保险资深代理人"><img src="img/authors/a101.jpg?v=3" alt="陈敏飞" loading="lazy"><span>陈敏飞</span></li>
+    <li title="曹例雄 · 书5 · 皮肤与健康管理导师"><img src="img/authors/a102.jpg?v=3" alt="曹例雄" loading="lazy"><span>曹例雄</span></li>
+    <li title="王洁 · 书5 · 纽约州、新泽西州执照中医师并创办诊所"><img src="img/authors/a103.jpg?v=4" alt="王洁" loading="lazy"><span>王洁</span></li>
+    <li title="高志锋 · 书5 · 豫东农村到东方之珠"><img src="img/authors/a104.jpg?v=3" alt="高志锋" loading="lazy"><span>高志锋</span></li>
+    <li title="谭绍佳 · 书5 · 从零到一的创道者"><img src="img/authors/a105.jpg?v=3" alt="谭绍佳" loading="lazy"><span>谭绍佳</span></li>
+    <li title="子杨 · 书5 · 从留学生到新能源行业中的高管"><img src="img/authors/a106.jpg?v=3" alt="子杨" loading="lazy"><span>子杨</span></li>
+    <li title="王海铝 · 书5 · 从语言文化走向家庭财富规划的跨界者"><img src="img/authors/a107.jpg?v=3" alt="王海铝" loading="lazy"><span>王海铝</span></li>
+    <li title="九掌柜 · 书5 · 十年建筑老兵"><img src="img/authors/a108.jpg?v=3" alt="九掌柜" loading="lazy"><span>九掌柜</span></li>
+    <li title="王昭 · 书5 · 创始人教练 &amp; 商业顾问"><img src="img/authors/a109.jpg?v=3" alt="王昭" loading="lazy"><span>王昭</span></li>
+    <li title="海龟女神 · 书5 · 巴拉望最大海龟孵育中心创办人"><img src="img/authors/a110.jpg?v=3" alt="海龟女神" loading="lazy"><span>海龟女神</span></li>
+    <li title="郑丽黎 · 书5 · 木兰书院研学人"><img src="img/authors/a111.jpg?v=3" alt="郑丽黎" loading="lazy"><span>郑丽黎</span></li>
+    <li title="温爵 · 书5 · 2016年在美国创立保健养生Baojian Fitness"><img src="img/authors/a112.jpg?v=3" alt="温爵" loading="lazy"><span>温爵</span></li>
+    <li title="飞姐 · 书5 · 四十五年的编织手艺人"><img src="img/authors/a113.jpg?v=3" alt="飞姐" loading="lazy"><span>飞姐</span></li>
+    <li title="冲姐 · 书5 · 中医美容与养生技术顾问"><img src="img/authors/a114.jpg?v=3" alt="冲姐" loading="lazy"><span>冲姐</span></li>
+    <li title="罗博士 · 书5 · 资深全时域营销架构师"><img src="img/authors/a115.jpg?v=3" alt="罗博士" loading="lazy"><span>罗博士</span></li>
+    <li title="一心 · 书5 · 第三届“首都慈善奖”个人奖获得者"><img src="img/authors/a116.jpg?v=4" alt="一心" loading="lazy"><span>一心</span></li>
+    <li title="彭文华 · 书5 · 物流创业者"><img src="img/authors/a117.jpg?v=3" alt="彭文华" loading="lazy"><span>彭文华</span></li>
+    <li title="贾洪涛 · 书2"><img src="img/authors/jia.jpg?v=4" alt="贾洪涛" loading="lazy"><span>贾洪涛</span></li>
+    <li title="神仙姐姐 · 书2"><img src="img/authors/shenxian.jpg?v=3" alt="神仙姐姐" loading="lazy"><span>神仙姐姐</span></li>
+    <li title="Ai浩叔 · 书3 · 全国省市各级新闻奖获得者"><i>A</i><span>Ai浩叔</span></li>
+    <li class="has-page" title="千百合 · 出品人 · 书1、书2、书3、书4、书5 · 老板IP商业重构师"><a href="lily/"><img src="img/authors/a001.jpg?v=3" alt="千百合" loading="lazy"><span>千百合</span></a></li>
+    <li class="next-tree"><a href="#wan"><i>你</i><span>下一棵，是你</span></a></li>
+  </ul>
+  <button class="forest-more" id="forestMore" type="button">展开整片雨林</button>
+  <div class="card18">
+    <h3>playandprosper.com/你的名字</h3>
+    <p>十八般武艺的第 18 样：一个属于你的网页，书里的你、人生卡、有声书、短片，一个链接全收好。想让谁认识你，发给他就好。</p>
+    <a class="btn btn-orange" href="https://www.playandprosper.com/18/" style="justify-self:start">了解十八般武艺 →</a>
+  </div>
+</div></section>
+
+<section class="people" id="people"><div class="wrap">
+  <div class="kicker">真人，真活法</div>
+  <h2>从作者，长成主编</h2>
+  <p class="lead">他们的"玩"，一开始都土得不好意思。越是让你觉得"这也算？"的事，越可能是真的你。在边玩边赚，每一位作者都可能长成主编，再去点亮下一个人。</p>
+  <div class="ppl">
+    <div class="pp reveal"><img src="img/av-wenliang.jpg" alt="文亮" loading="lazy"><div><b>文亮</b><small>书 3 主编 · 边玩边赚联合创始人 · 外号"乔布斯"</small><p>从小就爱用玩的心态琢磨电脑。后来班里谁的软件卡住了，第一反应不是找老师，是"找文亮"；他做的 PPT，大家一眼就认得出来。</p></div></div>
+    <div class="pp reveal"><img src="img/av-muxiao.jpg" alt="木晓" loading="lazy"><div><b>木晓</b><small>书 4 主编 · 学土木，转建筑，又拿起相机</small><p>端起相机，安安静静等一束光，快门按下去那一刻，他忘了时间。他不是想清楚才转的弯，是玩着玩着，把自己玩明白的。</p></div></div>
+    <div class="pp reveal"><img src="img/av-zouna.jpg" alt="邹娜" loading="lazy"><div><b>邹娜</b><small>书 2 主编 · 当当影响力作家</small><p>"这算啥本事啊"——她特别喜欢把一团乱，理成清清爽爽的秩序。活动一结束，没人要求，她也要把流程整理成文档，看着才踏实。</p></div></div>
+    <div class="pp reveal"><img src="img/authors/a069.jpg?v=3" alt="窈窕姐姐" loading="lazy"><div><b>窈窕姐姐</b><small>书 5 主编 · 国学私塾主理人</small><p>她的"玩"是舍得。从妈妈当年包出去的那个红包里，她懂了：钱花出去，有时是存进了别人心里。问她为什么做书 5，她说："因为这本书的名字，写的就是我。"</p></div></div>
+  </div>
+  <div class="board reveal">
+    <h3>编委会 · 私塾</h3>
+    <p>私塾的每一位同学都是边玩边赚书系的编委，一起定选题、带新作者、托住每一本书。</p>
+    <ul class="board-av"><li><a href="lily/"><img src="img/authors/a001.jpg?v=3" alt="千百合" loading="lazy"><span>千百合</span></a></li><li><img src="img/authors/a014.jpg?v=3" alt="文亮" loading="lazy"><span>文亮</span></li><li><img src="img/authors/a031.jpg?v=3" alt="木晓" loading="lazy"><span>木晓</span></li><li><img src="img/authors/a025.jpg?v=3" alt="邹娜" loading="lazy"><span>邹娜</span></li><li><img src="img/authors/a069.jpg?v=3" alt="窈窕姐姐" loading="lazy"><span>窈窕姐姐</span></li><li><img src="img/authors/a013.jpg?v=3" alt="荣辉" loading="lazy"><span>荣辉</span></li><li><img src="img/authors/a003.jpg?v=5" alt="金闰迪" loading="lazy"><span>金闰迪</span></li><li><img src="img/authors/a006.jpg?v=3" alt="德州康姐" loading="lazy"><span>德州康姐</span></li><li><img src="img/authors/a007.jpg?v=3" alt="杰森" loading="lazy"><span>杰森</span></li><li><img src="img/authors/a047.jpg?v=3" alt="馨怡" loading="lazy"><span>馨怡</span></li><li><img src="img/authors/a084.jpg?v=3" alt="焱风" loading="lazy"><span>焱风</span></li><li><img src="img/authors/a092.jpg?v=3" alt="刘小玲" loading="lazy"><span>刘小玲</span></li><li><img src="img/authors/a061.jpg?v=3" alt="张一一" loading="lazy"><span>张一一</span></li><li><img src="img/authors/xiaomai.jpg?v=3" alt="小麦姐" loading="lazy"><span>小麦姐</span></li><li><img src="img/authors/a077.jpg?v=3" alt="吴晓音" loading="lazy"><span>吴晓音</span></li><li><img src="img/authors/a083.jpg?v=3" alt="王珏" loading="lazy"><span>王珏</span></li><li><img src="img/authors/a087.jpg?v=3" alt="韩玉娟" loading="lazy"><span>韩玉娟</span></li></ul>
+  </div>
+  <div class="board doers reveal">
+    <h3>把边玩边赚办到身边的人</h3>
+    <p>有人在自己的城市办读书会，有人张罗新书发布会，有人把新作者带进来。最近在做事的人，就站在这里。</p>
+    <ul class="doer-list"><li><img src="img/authors/a082.jpg?v=3" alt="马继红" loading="lazy"><div><b>马继红</b><small>书 4 · 每次开营、结营都来赋能</small></div></li><li><img src="img/authors/a098.jpg?v=3" alt="金雨麒" loading="lazy"><div><b>金雨麒</b><small>书 5 作者 · 连麦嘉宾</small></div></li><li><img src="img/authors/a046.jpg?v=3" alt="闻千予" loading="lazy"><div><b>闻千予</b><small>书 2、书 5 作者 · 连麦嘉宾</small></div></li><li><img src="img/authors/a090.jpg?v=3" alt="梓萱" loading="lazy"><div><b>梓萱</b><small>书 4 · 办了上海新书发布会</small></div></li><li><img src="img/authors/a086.jpg?v=3" alt="小屿" loading="lazy"><div><b>小屿</b><small>书 4 · 加入护航队</small></div></li><li><img src="img/authors/a044.jpg?v=3" alt="易辰" loading="lazy"><div><b>易辰</b><small>书 2、书 4 · 广州读书会</small></div></li><li><img src="img/authors/a081.jpg?v=3" alt="万可" loading="lazy"><div><b>万可</b><small>书 3、书 4 · 正在办读书会</small></div></li></ul>
+  </div>
+  <p class="whisper2">标签谁都有，不值钱；那个让你忘了时间的动作，是你的，别人抢不走。一个圆，生出下一个圆。</p>
+</div></section>
+
+<section id="footprint"><div class="wrap">
+  <div class="kicker">足迹</div>
+  <h2>我们一起走过的地方</h2>
+  <div class="fp-main reveal">
+    <img src="img/sh-group.jpg" alt="边玩边赚全球新书发布会·上海站 全体合影" loading="lazy">
+    <div class="tx"><h3>边玩边赚全球新书发布会 · 上海站</h3><p>2026 年 10 月 · 四本新书和一桌茶宴，一屋子作者，从一本书走到一个系列。</p></div>
+  </div>
+  <div class="fp-main reveal" style="margin-top:22px">
+    <img src="img/gz-group.jpg" alt="边玩边赚全球新书发布会·广州站 全体合影" loading="lazy">
+    <div class="tx"><h3>边玩边赚全球新书发布会 · 广州站</h3><p>2026 年 10 月 · 穿上汉服，写字、读书、上台分享，作者和读者坐满一屋子。</p></div>
+  </div>
+  <div class="fp-grid">
+    <figure class="reveal"><img src="img/fp-sz.jpg" alt="深圳站全体合影" loading="lazy"><figcaption><time>2026.05</time>深圳梧桐山 · 新书发布会</figcaption></figure>
+    <figure class="reveal"><img src="img/fp-bj.jpg" alt="北京作者面对面合影" loading="lazy"><figcaption><time>2026.07</time>北京 · 北大纵横 作者面对面</figcaption></figure>
+    <figure class="reveal"><img src="img/fp-pe.jpg" alt="云南普洱大自然净化，作者们穿边玩边赚T恤合影" loading="lazy"><figcaption><time>2026.08</time>云南普洱 · 大自然净化</figcaption></figure>
+    <figure class="reveal"><img src="img/fp-xd.jpg?v=2" alt="浙江仙都，共创者们在大树下的合影" loading="lazy"><figcaption><time>2025.05</time>浙江仙都 · 共创者的相聚</figcaption></figure>
+  </div>
+</div></section>
+
+
+
+<section id="now" style="padding-top:0"><div class="wrap">
+  <div class="kicker">正在发生</div>
+  <h2>此刻，圆里正在发生的事</h2>
+  <div class="now-list">
+    <a class="now reveal" href="https://www.playandprosper.com/laugh/">
+      <div class="cover6">笑</div>
+      <div><span class="tag">招募中</span><h3>书 6《穿过悲欢，笑答人生》</h3><p>这本书请 30 位作者，每人一段和"笑"有关的人生故事。先聊一次，不付款。</p><span class="more">进笑园看看 →</span></div>
+    </a>
+    <a class="now reveal" href="https://www.playandprosper.com/18/">
+      <img src="img/sh-series.jpg" alt="从一本书到一个系列">
+      <div><span class="tag t2">陆续交付</span><h3>十八般武艺 · 个人主页上线</h3><p>每位作者一个自己的网页：playandprosper.com/你的名字，一个链接收好你的所有作品。</p><span class="more">看十八样是什么 →</span></div>
+    </a>
+    <a class="now reveal" href="https://www.playandprosper.com/island/">
+      <img src="img/island.jpg" alt="菲律宾巴拉望鲜花岛">
+      <div><span class="tag t2">12 月 6 日启航</span><h3>包下一座岛 · 首届岛主计划</h3><p>菲律宾巴拉望鲜花岛，5 天不对外开放，只属于我们。</p><span class="more">看这座岛 →</span></div>
+    </a>
+  </div>
+  <a class="now-strip reveal" href="#contact"><b>老板 IP · 商业重构</b><span>我们一直在重构自己的商业模式，也陪一些老板把个人 IP 重新理一遍。一对一进行，先聊再定。</span><em>预约聊聊 →</em></a>
+</div></section>
+
+<section class="door"><div class="wrap">
+  <div class="kicker">这扇门</div>
+  <h2>不用谁来说服你</h2>
+  <div class="door-grid">
+    <div class="open reveal"><b>开给</b>
+      <p>不想再"等我攒够了"、心里有一件一做就忘了时间的事，想把它活出来的人。</p>
+    </div>
+    <div class="shut reveal"><b>也轻轻关着</b>
+      <p>想找轻松躺赚、等人来劝、只想学套路的，这里帮不了你。</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="paths"><div class="wrap">
+  <div class="kicker">一起出书</div>
+  <h2>两条路，选一条上场</h2>
+  <p class="lead">以书 6《穿过悲欢，笑答人生》为例。都不需要会写作：访谈 90 分钟起，改稿两次，每人约 2000 字。写完之后，也不是一个人推：一群作者一起发布、一起办读书会。</p>
+  <ol class="steps"><li><b>回答一个问题</b><span>你的笑，更像哪一种？</span></li><li><b>聊一次</b><span>聊聊这一生什么让你笑出来，看看彼此是否同频。不付款。</span></li><li><b>确认一起写，再付款</b><span>领取笑号，走进笑园。</span></li></ol>
+  <div class="paths">
+    <div class="path reveal">
+      <div class="pt">路线一</div><h3>共创席</h3>
+      <div class="price">¥18,888 <small>/ 一年期</small></div>
+      <ul><li><b>一书</b>：你的故事正式出版，名字印在书上</li><li><b>一课</b>：《人人都能做 AI 智能体》课程，亲手做出属于自己的智能体</li><li><b>一生态</b>：加入边玩边赚空中俱乐部，每周线上相聚，书出版了也一直在</li><li><b>人生卡 + 个人主页</b>：你的一页名片，照片、书里的一句话、一分钟的小故事和一个二维码，一扫就到你的主页</li><li><b>笑园专属</b>：一个笑号，你的笑声收录在笑声馆</li></ul>
+      <a class="btn btn-line" href="https://www.playandprosper.com/laugh/#price">先聊聊共创席</a>
+    </div>
+    <div class="path vip reveal">
+      <div class="pt">路线二</div><h3>私塾席</h3>
+      <div class="price">¥28,888 <small>/ 一年期</small></div>
+      <ul><li>共创席的全部内容，再加：</li><li><b>编委会留名</b>：名字印在本册编委会名单上</li><li><b>个人品牌七件套</b>：人生卡、个人主页之外，再加电子书、自我介绍海报、朋友圈封面、有声书、故事短片（也可从十八般武艺里换）</li><li><b>专属 AI 助手</b>：装在你自己的机器上，数据留在你手里</li><li><b>与千百合一对一两次</b>：每次 60 分钟</li></ul>
+      <a class="btn btn-orange" href="https://www.playandprosper.com/laugh/#price">先聊聊私塾席</a>
+    </div>
+  </div>
+</div></section>
+
+<section class="faq" id="faq"><div class="wrap">
+  <div class="kicker">常见问题</div>
+  <h2>第一次来，常被问到的</h2>
+  <div class="qas">
+    <details class="qa"><summary>边玩边赚是什么？</summary><p>边玩边赚，就是活成自己，也创造价值。具体说，它是一个由普通人一起写书、一起用好 AI、一起把"玩"活成事业的生态，由千百合（Lily Li）发起，李海峰老师任出品人和主编。边玩边赚书系共 6 本：4 本已出版，1 本出版中，1 本招募中；115 位作者来自 9 个国家和地区。</p></details>
+    <details class="qa"><summary>不会写作，也能出书吗？</summary><p>能。访谈 90 分钟起，AI 帮忙整理成稿，改稿两次，每人约 2000 字，署名正式出版。</p></details>
+    <details class="qa"><summary>怎么收费？</summary><p>以书 6《穿过悲欢，笑答人生》为例：共创席 ¥18,888 / 一年期，私塾席 ¥28,888 / 一年期。先聊一次，不付款，聊过彼此确认同频再说。</p></details>
+    <details class="qa"><summary>书在哪里出版？</summary><p>书 1 由华中科技大学出版社出版；书 2、书 3 由北京日报出版社出版；书 4 由台海出版社出版。书 5《走遍世界，活成自己》由北京日报出版社出版中；书 6《穿过悲欢，笑答人生》计划由北京日报出版社出版，正在招募作者。</p></details>
+    <details class="qa"><summary>"包下一座岛"是什么？</summary><p>首届岛主计划，2026 年 12 月 6 日启航，地点是菲律宾巴拉望鲜花岛：5 天，岛上只有我们，一起学习、创作、交朋友。</p></details>
+    <details class="qa"><summary>作者的个人主页是什么？</summary><p>每位作者都有一个自己的网页，地址是 playandprosper.com/名字，收好这个人的故事和作品，是十八般武艺的第 18 样，陆续上线中。</p></details>
+  </div>
+</div></section>
+
+<footer id="contact"><div class="wrap">
+  <div class="foot-grid">
+    <div><h3>AI 时代，<br>边玩边赚，活成自己。</h3><p style="margin-top:12px">Play and Prosper</p></div>
+    <div class="qr"><img src="img/lily-wechat.png" alt="千百合微信二维码"><div>加千百合微信<br><b style="color:#fff">iamsohappy8</b><br>备注"官网"</div></div>
+    <div class="links">
+      <a href="#what">什么是边玩边赚</a><a href="#books">书系</a><a href="#paths">一起出书</a><a href="#stars">作者雨林</a><a href="#faq">常见问题</a><a href="#footprint">足迹</a><a href="#lily">欢迎你来</a>
+      <a href="https://www.playandprosper.com/laugh/">笑园</a><a href="https://www.playandprosper.com/island/">包下一座岛</a><a href="https://www.playandprosper.com/18/">十八般武艺</a>
+    </div>
+  </div>
+  <div class="copy">© 2026 Play and Prosper · 边玩边赚</div>
+</div></footer>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>8)},{passive:true});
+
+  var f=document.getElementById('forest'),b=document.getElementById('forestMore');
+  if(f&&b){f.classList.add('folded');b.addEventListener('click',function(){var o=f.classList.toggle('folded');b.textContent=o?'展开整片雨林':'收起';});}
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('on')});return}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.12});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+<script>(function(){
+var f=document.getElementById('wanForm'); if(!f) return;
+var out=document.getElementById('wanOut'), img=document.getElementById('wanImg'), dl=document.getElementById('wanDl'), story=document.getElementById('wanStory');
+var FORM='https://ncnpdjciqnfm.feishu.cn/share/base/form/shrcnOhePPJpQ0FIk3U2c8R8hcb';
+var SERIF='"Songti SC","STSong","Noto Serif SC","Source Han Serif SC",serif', SANS='-apple-system,"PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif';
+function wrap(c,t,x,y,maxW,lh,maxLines){var line='',lines=[];for(var i=0;i<t.length;i++){var tt=line+t[i];if(c.measureText(tt).width>maxW&&line){lines.push(line);line=t[i];}else line=tt;}lines.push(line);lines=lines.slice(0,maxLines);lines.forEach(function(l,k){c.fillText(l,x,y+k*lh)});return y+lines.length*lh;}
+function draw(a){
+  var W=1080,H=1440,cv=document.createElement('canvas');cv.width=W;cv.height=H;var c=cv.getContext('2d');
+  c.fillStyle='#F7F2EA';c.fillRect(0,0,W,H);
+  c.fillStyle='#0E4D4B';c.fillRect(0,0,W,300);
+  c.fillStyle='#F6B24E';c.font='700 34px '+SANS;c.fillText('边玩边赚 · 我的卡片',80,110);
+  c.fillStyle='#fff';c.font='900 84px '+SERIF;c.fillText('我的「玩」',80,220);
+  var qs=['让我忘了时间的事','别人常来找我帮的忙','钱不是问题时，我想'],y=400;
+  for(var i=0;i<3;i++){
+    c.fillStyle='#EE8A1E';c.font='700 30px '+SANS;c.fillText('0'+(i+1)+'  '+qs[i],80,y);
+    c.fillStyle='#1E1A16';c.font='900 56px '+SERIF;y=wrap(c,a[i],80,y+84,W-160,72,2)+40;
+    c.strokeStyle='#E2D7C6';c.lineWidth=2;c.beginPath();c.moveTo(80,y-10);c.lineTo(W-80,y-10);c.stroke();y+=60;
+  }
+  c.fillStyle='#0E4D4B';c.font='900 52px '+SERIF;c.fillText('玩是心法，赚是结果。',80,H-200);
+  c.fillStyle='#6F6457';c.font='400 30px '+SANS;c.fillText('把你的「玩」讲成故事 · playandprosper.com',80,H-120);
+  return cv.toDataURL('image/png');
+}
+f.addEventListener('submit',function(e){e.preventDefault();
+  var a=['w1','w2','w3'].map(function(id){return document.getElementById(id).value.trim()});
+  if(a.some(function(v){return !v}))return;
+  var u=draw(a);img.src=u;dl.href=u;
+  story.href=FORM+'?prefill_'+encodeURIComponent('你一做就忘了时间的那件事是什么？')+'='+encodeURIComponent(a[0]);
+  f.hidden=true;out.hidden=false;out.scrollIntoView({behavior:'smooth',block:'start'});
+});
+document.getElementById('wanAgain').addEventListener('click',function(){out.hidden=true;f.hidden=false;f.scrollIntoView({behavior:'smooth',block:'start'})});
+})();
+</script>
+<script>(function(){var r=document.getElementById("saidRow"),b=document.getElementById("saidMore");if(r&&b)b.addEventListener("click",function(){var o=r.classList.toggle("open");b.textContent=o?"收起":"看全部 15 句";});})();</script>
+</body>
+</html>
