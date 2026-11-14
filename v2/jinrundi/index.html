@@ -177,6 +177,68 @@ footer a{color:#DCE7E1;text-decoration:none}
 .dock a.main{background:#E9EFEA;color:var(--ink)}
 .dock.hide{transform:translateY(140%);opacity:0}
 @media(max-width:820px){.dock{display:flex}}
+
+/* 事实条 */
+.facts{background:var(--paper);border-bottom:1px solid var(--line)}
+.facts .w{display:grid;grid-template-columns:repeat(4,1fr)}
+.facts div{padding:22px 10px;text-align:center;border-left:1px solid var(--line)}
+.facts div:first-child{border-left:0}
+.facts b{display:block;font:700 26px/1.2 var(--serif);color:var(--jade)}
+.facts span{font-size:13px;color:var(--ink2)}
+@media(max-width:820px){.facts .w{grid-template-columns:1fr 1fr;padding:0}.facts div:nth-child(3){border-left:0}.facts div:nth-child(n+3){border-top:1px solid var(--line)}}
+/* 山路里的照片 */
+.stop figure{margin-top:14px}.stop figure img{border-radius:4px;max-width:340px}
+.stop figure figcaption{font-size:12px;color:var(--ink2);margin-top:6px}
+.road .more{margin:6px 0 0;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.road .more span{font-size:14px;color:var(--ink2)}
+/* 森林金句 */
+.say{position:relative;padding:0;background:#24352d;color:#fff;min-height:min(78vh,640px);display:grid;place-items:center;overflow:hidden}
+.say:before{content:"";position:absolute;inset:0;background:url('p-forest.jpg') 70% center/cover;opacity:.55}
+.say:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(25,40,33,.85),rgba(25,40,33,.15) 70%)}
+.say .w{position:relative;z-index:1;width:100%;text-align:left}
+.say p{font:700 clamp(26px,4.6vw,44px)/1.65 var(--serif);letter-spacing:.08em;text-shadow:0 2px 20px rgba(0,0,0,.35)}
+.say small{color:#D6E3DB}
+/* 三句话 */
+.lines{padding:80px 0;background:var(--paper)}
+.lines ul{list-style:none;margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.lines li{padding:28px 24px 22px;background:var(--mist);border-radius:6px;position:relative}
+.lines li:before{content:"「";position:absolute;top:6px;left:12px;font:700 34px var(--serif);color:var(--seal);opacity:.75}
+.lines li p{font:700 19px/1.75 var(--serif);margin-top:10px}
+.lines li span{display:block;margin-top:12px;font-size:13px;color:var(--ink2)}
+@media(max-width:820px){.lines ul{grid-template-columns:repeat(3,82%);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}.lines li{scroll-snap-align:start}}
+/* 有声书预约 */
+.listen a{margin-left:auto;flex:none;font-size:14px;font-weight:700;color:var(--jade);text-decoration:none;border-bottom:1.5px solid var(--jade)}
+@media(max-width:600px){.listen{flex-wrap:wrap}.listen a{margin-left:60px}}
+/* 山脊分隔 */
+.ridge{display:block;width:100%;height:70px;margin-bottom:-1px}
+/* 挑一样先照顾 */
+.pick{margin-top:56px;padding:30px;border:1px solid #3B4F46;border-radius:8px;background:#2A3D35}
+.pick h3{font:700 22px var(--serif);color:#fff}
+.pick .q{color:#9FB4AA;font-size:14px;margin-top:4px}
+.opts{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.opts button{font:700 15px var(--sans);padding:12px 18px;border-radius:999px;border:1.5px solid #5D7A6D;background:transparent;color:#E9EFEA;cursor:pointer}
+.opts button[aria-pressed=true]{background:#E9EFEA;color:var(--ink);border-color:#E9EFEA}
+.ans{margin-top:18px;min-height:0}
+.ans[hidden]{display:none}
+.ans p{font-family:var(--serif);font-size:17px;line-height:1.95;color:#DCE7E1}
+.ans b{color:#fff}
+.ans .btn{margin-top:14px}
+.ways div.hit{border-color:#9FC1B2;background:#2F453B}
+/* 第一次找她 */
+.steps{list-style:none;margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;counter-reset:s}
+.steps li{counter-increment:s;padding:20px;border-top:2px solid #5D7A6D}
+.steps li:before{content:counter(s);display:block;font:700 28px var(--serif);color:#9FC1B2}
+.steps b{display:block;color:#fff;font:700 17px var(--serif);margin-top:4px}
+.steps span{font-size:14px;color:#9FB4AA}
+@media(max-width:820px){.steps{grid-template-columns:1fr}.pick{padding:22px}}
+/* 签名书小流程 */
+.how{margin-top:14px;font-size:14px;color:var(--ink2)}
+/* 转发 */
+.share{margin-top:22px;background:none;border:1.5px solid var(--ink);color:var(--ink);font:700 14px var(--sans);padding:11px 18px;border-radius:999px;cursor:pointer}
+.share:hover{background:var(--ink);color:#fff}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;border-radius:999px;font-size:14px;z-index:30;opacity:0;transition:opacity .3s;pointer-events:none}
+.toast.on{opacity:1}
+.cards .dl{display:inline-block;margin-left:auto;color:var(--jade);font-weight:700;text-decoration:none}
 </style>
 </head>
 <body>
@@ -196,6 +258,15 @@ footer a{color:#DCE7E1;text-decoration:none}
     <p class="sub">你的身体养回来，你的日子活出来</p>
     <div class="who"><span>国家认证营养师</span><span>深圳梧桐山 · 云谷精舍主人</span><span>《边玩边赚》系列作者，五本书里都有我</span></div>
     <div class="go"><a class="btn" href="#road">读我的故事</a><a class="btn ghost" href="#yungu">来云谷喝杯茶</a></div>
+  </div>
+</section>
+
+<section class="facts" aria-label="关于金闰迪">
+  <div class="w">
+    <div><b>5 本书</b><span>边玩边赚书系，每本都有她</span></div>
+    <div><b>20 元</b><span>十七岁，揣着它走出大山</span></div>
+    <div><b>营养师</b><span>国家认证，做身体的事</span></div>
+    <div><b>梧桐山</b><span>深圳，云谷精舍</span></div>
   </div>
 </section>
 
@@ -224,8 +295,9 @@ footer a{color:#DCE7E1;text-decoration:none}
       <div class="stop"><div class="when">五台山</div><h3>上山静一静</h3><p>前后两次，在山上住了些不见日月的日子，找到了自己真正的力量。</p></div>
       <div class="stop"><div class="when">江西三僚</div><h3>黄酒倒进豆浆里</h3><p>我妈磨了一辈子豆腐。走了几千里，我在人家的村子里，撞见她那件事的另一种做法。</p></div>
       <div class="stop"><div class="when">这几年</div><h3>做减法</h3><p>凡是让我觉得累的，我都停下来。有事先跟 AI 把话理一遍，再开口。</p></div>
-      <div class="stop"><div class="when">深圳梧桐山</div><h3>老家河沟里也长这个</h3><p>住上来的第一个早上，我去河边走。石头缝里那一丛鱼腥草，薄荷、水竹草、三棱草——全是我们老家河沟边上长的东西。</p></div>
+      <div class="stop"><div class="when">深圳梧桐山</div><h3>老家河沟里也长这个</h3><p>住上来的第一个早上，我去河边走。石头缝里那一丛鱼腥草，薄荷、水竹草、三棱草——全是我们老家河沟边上长的东西。</p><figure><img src="p-hill.jpg" alt="金闰迪在梧桐山上" loading="lazy"><figcaption>梧桐山上</figcaption></figure></div>
     </div>
+    <div class="more"><a class="btn" href="#book">读完整篇故事</a><span>十分钟读完，免费下载</span></div>
   </div>
 </section>
 
@@ -233,6 +305,17 @@ footer a{color:#DCE7E1;text-decoration:none}
   <div class="w">
     <p>那座山，是生我的地方。<br>这座山，是我自己挑的<br>养我的地方。</p>
     <small>金闰迪 于深圳梧桐山</small>
+  </div>
+</section>
+
+<section class="lines">
+  <div class="w">
+    <h2>书里，有人记下的三句话</h2>
+    <ul>
+      <li><p>你有善良，没有智慧。</p><span>老师点醒她的一句话</span></li>
+      <li><p>你的好心，人家不一定接得住。</p><span>她这几年学会的事</span></li>
+      <li><p>凡是让我觉得累的，我都停下来。</p><span>她给日子做的减法</span></li>
+    </ul>
   </div>
 </section>
 
@@ -253,10 +336,11 @@ footer a{color:#DCE7E1;text-decoration:none}
     <span class="tag"><b>⑮</b>故事短片</span>
     <h2>二十秒，看一看这座山</h2>
     <div class="film"><video src="15.mp4" poster="15.jpg" controls playsinline preload="none"></video></div>
-    <div class="listen"><i>⑩</i><div><b>听我讲这座山</b>有声书，用我自己的声音录，即将上线</div></div>
+    <div class="listen"><i>⑩</i><div><b>听我讲这座山</b>有声书，用我自己的声音录，正在录</div><a href="#meet">录好了告诉我</a></div>
   </div>
 </section>
 
+<svg class="ridge" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true" style="background:var(--mist)"><path d="M0 70 L0 52 C 120 30, 200 44, 300 34 S 470 6, 560 22 S 720 46, 820 30 S 1010 2, 1110 18 S 1300 44, 1440 26 L1440 70 Z" fill="#23332C"/><path d="M0 70 L0 60 C 160 48, 260 58, 380 50 S 600 36, 720 48 S 960 62, 1080 52 S 1320 40, 1440 50 L1440 70 Z" fill="#23332C" opacity=".6" transform="translate(0,-10)"/></svg>
 <section class="yungu" id="yungu">
   <div class="w">
     <div class="lead">
@@ -273,13 +357,29 @@ footer a{color:#DCE7E1;text-decoration:none}
       <li><span class="you">忙了半辈子，想松口气的人</span><span class="arw">我们可以聊</span><span class="we">怎么给日子做减法</span></li>
     </ul>
     <div class="ways">
-      <div><h3>云谷山居</h3><p>上山住几天，喝茶、走河、种草</p></div>
-      <div><h3>身体调理营</h3><p>跟着营养师，一起把身体养回来</p></div>
-      <div><h3>营养师一对一</h3><p>看你的身体和日子，慢慢调</p></div>
+      <div id="w1"><h3>云谷山居</h3><p>上山住几天，喝茶、走河、种草</p></div>
+      <div id="w2"><h3>身体调理营</h3><p>跟着营养师，一起把身体养回来</p></div>
+      <div id="w3"><h3>营养师一对一</h3><p>看你的身体和日子，慢慢调</p></div>
     </div>
-    <p class="hint">不用先付款。加微信聊一次，看看合不合适，再说。</p>
-    <a class="btn" href="#meet">加微信，先聊聊</a>
-    <p class="chat">我们可能聊得来：爱喝茶、爱读书、种花草，还有湖北老乡。</p>
+    <div class="pick">
+      <h3>你现在，最想先照顾哪一样？</h3>
+      <p class="q">点一下，看看从哪儿开始。</p>
+      <div class="opts" role="group" aria-label="选一样">
+        <button type="button" data-k="a" aria-pressed="false">身体，总觉得亏着</button>
+        <button type="button" data-k="b" aria-pressed="false">日子，太满太累了</button>
+        <button type="button" data-k="c" aria-pressed="false">想离开城市几天</button>
+      </div>
+      <div class="ans" id="ans" hidden aria-live="polite">
+        <p id="ans-t"></p>
+        <a class="btn" href="#meet" id="ans-b">加微信，先聊聊</a>
+      </div>
+    </div>
+    <ol class="steps">
+      <li><b>加微信</b><span>备注「官网」，说说你最近的情况</span></li>
+      <li><b>聊一次，不付款</b><span>她先听，看看合不合适</span></li>
+      <li><b>合适了，再开始</b><span>上山、调理、一对一，按你的节奏来</span></li>
+    </ol>
+        <p class="chat">我们可能聊得来：爱喝茶、爱读书、种花草，还有湖北老乡。</p>
   </div>
 </section>
 
@@ -290,7 +390,7 @@ footer a{color:#DCE7E1;text-decoration:none}
       <div>
         <h2>向我预约一本<br>亲笔签名书</h2>
         <p>边玩边赚书系，五本书里都有我的一篇。从健康，到智能体，到财富，到个人品牌，再到这座山。</p>
-        <a class="btn" href="#meet" style="margin-top:20px">加微信，预约签名书</a>
+        <p class="how">加微信，告诉她你要哪一本、写给谁，她亲笔签好寄给你。</p><a class="btn" href="#meet" style="margin-top:16px">加微信，预约签名书</a>
       </div>
     </div>
     <div class="shelf">
@@ -312,6 +412,7 @@ footer a{color:#DCE7E1;text-decoration:none}
       <a href="poster.jpg" target="_blank"><img src="poster.jpg" alt="金闰迪的自我介绍海报" loading="lazy"><span><span class="tag"><b>④</b></span>自我介绍海报</span></a>
       <a href="moments.jpg" target="_blank"><img src="moments.jpg" alt="金闰迪的朋友圈封面" loading="lazy"><span><span class="tag"><b>⑧</b></span>朋友圈封面</span></a>
     </div>
+    <button class="share" type="button" id="share">把这一页转给一位朋友</button>
   </div>
 </section>
 
@@ -341,6 +442,29 @@ footer a{color:#DCE7E1;text-decoration:none}
     dock.classList.toggle('hide',scrollY<window.innerHeight*.6||r.top<window.innerHeight);
   }
   addEventListener('scroll',f,{passive:true});f();
+
+  var T={
+    a:['身体总亏着，先别急着补。<b>营养师一对一</b>，先看看你每天怎么吃、怎么睡，再一点点调。人多一起走，也可以来<b>身体调理营</b>。','加微信，说「我想先照顾身体」','w3'],
+    b:['日子太满，先做减法。上山来，<b>云谷山居</b>住几天，喝茶、走河，把节奏慢下来。','加微信，说「我想先松口气」','w1'],
+    c:['那就来梧桐山。<b>云谷山居</b>，早晨沿着河往下走，看看石头缝里的鱼腥草。','加微信，说「我想上山住几天」','w1']
+  };
+  var ans=document.getElementById('ans'),at=document.getElementById('ans-t'),ab=document.getElementById('ans-b');
+  document.querySelectorAll('.opts button').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('.opts button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+      var t=T[b.dataset.k]; at.innerHTML=t[0]; ab.textContent=t[1]; ans.hidden=false;
+      document.querySelectorAll('.ways div').forEach(function(d){d.classList.toggle('hit',d.id===t[2])});
+    });
+  });
+
+  var toast=document.createElement('div');toast.className='toast';document.body.appendChild(toast);
+  function say(s){toast.textContent=s;toast.classList.add('on');setTimeout(function(){toast.classList.remove('on')},2200)}
+  document.getElementById('share').addEventListener('click',function(){
+    var u=location.href.split('#')[0], d={title:'金闰迪 · 这座山，是我自己挑的',text:'推荐你认识金闰迪：国家认证营养师，深圳梧桐山云谷精舍主人。',url:u};
+    if(navigator.share){navigator.share(d).catch(function(){});return}
+    if(navigator.clipboard){navigator.clipboard.writeText(d.text+' '+u).then(function(){say('链接已复制，去微信粘贴给朋友')},function(){say('长按地址栏复制链接')})}
+    else say('点右上角「…」，转发给朋友');
+  });
 })();
 </script>
 </body>
