@@ -302,6 +302,18 @@ footer .links{display:flex;flex-wrap:wrap;gap:10px 22px}
 footer .links a:hover{color:#fff}
 footer .copy{margin-top:34px;font-size:12px;color:#8a8273}
 @media(min-width:860px){.foot-grid{grid-template-columns:1.2fr 1fr 1fr}}
+footer .say{margin-top:6px;font-size:13px;color:#a99f90}
+footer .say i{font-style:normal;display:inline-block;margin:4px 4px 0 0;padding:1px 9px;border:1px solid #4a4339;border-radius:999px;color:#e9e1d4}
+.elsewhere{margin-top:34px;padding-top:26px;border-top:1px solid #3a342c}
+.elsewhere h4{font-size:13px;letter-spacing:.18em;color:#a99f90;font-weight:600;margin-bottom:14px}
+.elsewhere .qr img{width:92px;height:92px}
+.daily{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;margin-top:26px;padding:18px 20px;border-radius:18px;background:var(--teal);color:#e6f0ee}
+.daily b{font-family:var(--serif);font-size:19px;color:#fff}
+.daily span{font-size:14px;flex:1;min-width:220px;color:#cfe2de}
+.daily em{font-style:normal;font-weight:700;color:#FFC46B;font-size:14px}
+.wx-bar{position:fixed;left:12px;right:12px;bottom:12px;z-index:30;display:flex;align-items:center;justify-content:center;gap:8px;padding:13px 18px;border-radius:999px;background:var(--orange);color:#fff;font-weight:700;box-shadow:0 8px 24px #1e1a1640;transform:translateY(120%);transition:transform .3s}
+.wx-bar.on{transform:none}
+@media(min-width:860px){.wx-bar{display:none}}
 @media(max-width:859px){
 .ppl{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:6px;-webkit-overflow-scrolling:touch}
 .ppl>*{flex:0 0 84%;scroll-snap-align:start}
@@ -361,16 +373,16 @@ footer .copy{margin-top:34px;font-size:12px;color:#8a8273}
 .path li b{color:var(--ink)}
 .path.vip li b{color:#fff}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "边玩边赚是什么？", "acceptedAnswer": {"@type": "Answer", "text": "边玩边赚，就是活成自己，也创造价值。具体说，它是一个由普通人一起写书、一起用好 AI、一起把\"玩\"活成事业的生态，由千百合（Lily Li）发起，李海峰老师任出品人和主编。边玩边赚书系共 6 本：4 本已出版，1 本出版中，1 本招募中；115 位作者来自 9 个国家和地区。"}}, {"@type": "Question", "name": "不会写作，也能出书吗？", "acceptedAnswer": {"@type": "Answer", "text": "能。访谈 90 分钟起，AI 帮忙整理成稿，改稿两次，每人约 2000 字，署名正式出版。"}}, {"@type": "Question", "name": "怎么收费？", "acceptedAnswer": {"@type": "Answer", "text": "以书 6《穿过悲欢，笑答人生》为例：共创席 ¥18,888 / 一年期，私塾席 ¥28,888 / 一年期。先聊一次，不付款，聊过彼此确认同频再说。"}}, {"@type": "Question", "name": "书在哪里出版？", "acceptedAnswer": {"@type": "Answer", "text": "书 1 由华中科技大学出版社出版；书 2、书 3 由北京日报出版社出版；书 4 由台海出版社出版。书 5《走遍世界，活成自己》由北京日报出版社出版中；书 6《穿过悲欢，笑答人生》计划由北京日报出版社出版，正在招募作者。"}}, {"@type": "Question", "name": "\"包下一座岛\"是什么？", "acceptedAnswer": {"@type": "Answer", "text": "首届岛主计划，2026 年 12 月 6 日启航，地点是菲律宾巴拉望鲜花岛：5 天，岛上只有我们，一起学习、创作、交朋友。"}}, {"@type": "Question", "name": "作者的个人主页是什么？", "acceptedAnswer": {"@type": "Answer", "text": "每位作者都有一个自己的网页，地址是 playandprosper.com/名字，收好这个人的故事和作品，是十八般武艺的第 18 样，陆续上线中。"}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "边玩边赚是什么？", "acceptedAnswer": {"@type": "Answer", "text": "边玩边赚，就是活成自己，也创造价值。具体说，它是一个由普通人一起写书、一起用好 AI、一起把\"玩\"活成事业的生态，由千百合（Lily Li）发起，李海峰老师任出品人和主编。边玩边赚书系共 6 本：4 本已出版，1 本出版中，1 本招募中；115 位作者来自 9 个国家和地区。"}}, {"@type": "Question", "name": "不会写作，也能出书吗？", "acceptedAnswer": {"@type": "Answer", "text": "能。访谈 90 分钟起，AI 帮忙整理成稿，改稿两次，每人约 2000 字，署名正式出版。"}}, {"@type": "Question", "name": "怎么收费？", "acceptedAnswer": {"@type": "Answer", "text": "以书 6《穿过悲欢，笑答人生》为例：共创席 ¥18,888 / 一年期，私塾席 ¥28,888 / 一年期。先聊一次，不付款，聊过彼此确认同频再说。"}}, {"@type": "Question", "name": "书在哪里出版？", "acceptedAnswer": {"@type": "Answer", "text": "书 1 由华中科技大学出版社出版；书 2、书 3 由北京日报出版社出版；书 4 由台海出版社出版。书 5《走遍世界，活成自己》由北京日报出版社出版中；书 6《穿过悲欢，笑答人生》计划由北京日报出版社出版，正在招募作者。"}}, {"@type": "Question", "name": "\"包下一座岛\"是什么？", "acceptedAnswer": {"@type": "Answer", "text": "首届岛主计划，2026 年 12 月 6 日启航，地点是菲律宾巴拉望鲜花岛：5 天，岛上只有我们，一起学习、创作、交朋友。"}}, {"@type": "Question", "name": "作者的个人主页是什么？", "acceptedAnswer": {"@type": "Answer", "text": "每位作者都有一个自己的网页，地址是 playandprosper.com/名字，收好这个人的故事和作品，是十八般武艺的第 18 样，陆续上线中。"}}, {"@type": "Question", "name": "怎么联系边玩边赚？", "acceptedAnswer": {"@type": "Answer", "text": "直接加千百合的微信 iamsohappy8，备注「官网」，再加一个词说说你想聊什么：出书、AI、上岛，或者随便聊聊。日常动态看公众号「AI边玩边赚」，每天都有一篇全球打卡。"}}]}</script>
 </head>
 <body>
 
 <nav id="nav"><div class="wrap nav-in">
   <a href="#top"><img src="img/logo.png" alt="边玩边赚 Play and Prosper"></a>
   <div class="nav-links">
-    <a href="#what">什么是边玩边赚</a><a href="#wan">找到你的玩</a><a href="#books">书系</a><a href="#stars">作者雨林</a><a href="#footprint">足迹</a><a href="#paths">一起出书</a><a href="#faq">常见问题</a>
+    <a href="#what">什么是边玩边赚</a><a href="#wan">找到你的玩</a><a href="#books">书系</a><a href="#stars">作者雨林</a><a href="#footprint">足迹</a><a href="#now">正在发生</a><a href="#paths">一起出书</a><a href="#faq">常见问题</a>
   </div>
-  <a class="nav-cta" href="#now">正在发生</a>
+  <a class="nav-cta" href="#contact">加微信</a>
 </div></nav>
 
 <header class="hero" id="top"><div class="wrap hero-grid">
@@ -655,6 +667,7 @@ footer .copy{margin-top:34px;font-size:12px;color:#8a8273}
     <figure class="reveal"><img src="img/fp-pe.jpg" alt="云南普洱大自然净化，作者们穿边玩边赚T恤合影" loading="lazy"><figcaption><time>2026.08</time>云南普洱 · 大自然净化</figcaption></figure>
     <figure class="reveal"><img src="img/fp-xd.jpg?v=2" alt="浙江仙都，共创者们在大树下的合影" loading="lazy"><figcaption><time>2025.05</time>浙江仙都 · 共创者的相聚</figcaption></figure>
   </div>
+  <a class="daily reveal" href="#elsewhere"><b>每日全球打卡</b><span>大事之外，还有每一天：公众号「AI边玩边赚」每天一篇全球打卡，作者们在世界各地，今天在玩什么、做成了什么。</span><em>去公众号看 →</em></a>
 </div></section>
 
 
@@ -723,17 +736,26 @@ footer .copy{margin-top:34px;font-size:12px;color:#8a8273}
     <details class="qa"><summary>书在哪里出版？</summary><p>书 1 由华中科技大学出版社出版；书 2、书 3 由北京日报出版社出版；书 4 由台海出版社出版。书 5《走遍世界，活成自己》由北京日报出版社出版中；书 6《穿过悲欢，笑答人生》计划由北京日报出版社出版，正在招募作者。</p></details>
     <details class="qa"><summary>"包下一座岛"是什么？</summary><p>首届岛主计划，2026 年 12 月 6 日启航，地点是菲律宾巴拉望鲜花岛：5 天，岛上只有我们，一起学习、创作、交朋友。</p></details>
     <details class="qa"><summary>作者的个人主页是什么？</summary><p>每位作者都有一个自己的网页，地址是 playandprosper.com/名字，收好这个人的故事和作品，是十八般武艺的第 18 样，陆续上线中。</p></details>
+    <details class="qa"><summary>怎么联系边玩边赚？</summary><p>直接加千百合的微信 iamsohappy8，备注「官网」，再加一个词说说你想聊什么：出书、AI、上岛，或者随便聊聊。日常动态看公众号「AI边玩边赚」，每天都有一篇全球打卡。</p></details>
   </div>
 </div></section>
 
+<a class="wx-bar" id="wxBar" href="#contact">加千百合微信，先聊聊</a>
 <footer id="contact"><div class="wrap">
   <div class="foot-grid">
     <div><h3>AI 时代，<br>边玩边赚，活成自己。</h3><p style="margin-top:12px">Play and Prosper</p></div>
-    <div class="qr"><img src="img/lily-wechat.png" alt="千百合微信二维码"><div>加千百合微信<br><b style="color:#fff">iamsohappy8</b><br>备注"官网"</div></div>
+    <div>
+      <div class="qr"><img src="img/lily-wechat.png" alt="千百合微信二维码"><div>加千百合微信<br><b style="color:#fff">iamsohappy8</b><br><small>在微信里长按二维码识别</small></div></div>
+      <p class="say">备注「官网」，再加一个词：<i>出书</i><i>AI</i><i>上岛</i><i>聊聊</i></p>
+    </div>
     <div class="links">
       <a href="#what">什么是边玩边赚</a><a href="#books">书系</a><a href="#paths">一起出书</a><a href="#stars">作者雨林</a><a href="#faq">常见问题</a><a href="#footprint">足迹</a><a href="#lily">欢迎你来</a>
       <a href="https://www.playandprosper.com/laugh/">笑园</a><a href="https://www.playandprosper.com/island/">包下一座岛</a><a href="https://www.playandprosper.com/18/">十八般武艺</a>
     </div>
+  </div>
+  <div class="elsewhere" id="elsewhere">
+    <h4>在别处找到我们</h4>
+    <div class="qr"><img src="img/gzh-qr.jpg" alt="公众号「AI边玩边赚」二维码" loading="lazy"><div>微信公众号<br><b style="color:#fff">AI边玩边赚</b><br><small>每日全球打卡 · 新书与活动</small></div></div>
   </div>
   <div class="copy">© 2026 Play and Prosper · 边玩边赚</div>
 </div></footer>
@@ -741,7 +763,8 @@ footer .copy{margin-top:34px;font-size:12px;color:#8a8273}
 <script>
 (function(){
   var nav=document.getElementById('nav');
-  addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>8)},{passive:true});
+  var wx=document.getElementById('wxBar'),ft=document.getElementById('contact');
+  addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>8);if(wx){var r=ft.getBoundingClientRect().top;wx.classList.toggle('on',scrollY>innerHeight*.9&&r>innerHeight)}},{passive:true});
 
   var f=document.getElementById('forest'),b=document.getElementById('forestMore');
   if(f&&b){f.classList.add('folded');b.addEventListener('click',function(){var o=f.classList.toggle('folded');b.textContent=o?'展开整片雨林':'收起';});}

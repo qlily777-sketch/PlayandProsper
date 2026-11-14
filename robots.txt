@@ -1,0 +1,29 @@
+# playandprosper.com — 边玩边赚 Play and Prosper
+# 欢迎搜索引擎和 AI 读取本站公开内容。
+
+User-agent: *
+Allow: /
+
+# 搜索引擎
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: Baiduspider
+User-agent: Sogou web spider
+User-agent: 360Spider
+User-agent: YisouSpider
+User-agent: Applebot
+Allow: /
+
+# AI（豆包 / 字节、ChatGPT、Claude、Perplexity、Gemini 等）
+User-agent: Bytespider
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://www.playandprosper.com/sitemap.xml
