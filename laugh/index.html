@@ -666,6 +666,32 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
 .before-pay li{display:grid;grid-template-columns:8em 1fr;gap:18px;padding:18px 4px;border-bottom:1px solid rgba(43,27,61,.15);font-size:16px;line-height:1.85;color:var(--ink-soft)}
 .before-pay li b{font-family:var(--serif);font-weight:900;color:var(--ink);font-size:17px}
 @media(max-width:700px){.before-pay li{grid-template-columns:1fr;gap:4px}}
+
+/* 萌脸 */
+.face-btn .face{position:relative;width:90%;height:90%;overflow:visible;animation:bob 3.2s ease-in-out infinite}
+.face .skin{fill:var(--yellow)}
+.face .cheeks ellipse{fill:#FF8FA3;opacity:.5;transition:opacity .2s}
+.face .pupils ellipse{fill:var(--plum)}
+.face .shine{fill:#fff}
+.face .pupils{transition:transform .12s ease-out}
+.face .eyes-open{transform-origin:100px 86px;animation:blink 4.6s infinite}
+.face .eyes-happy path,.face .smile{fill:none;stroke:var(--plum);stroke-width:7;stroke-linecap:round}
+.face .eyes-happy,.face .mouth{opacity:0}
+.face .mouth path{fill:var(--plum)}
+.face .tongue{fill:#FF6B81}
+.face .mouth{transform-origin:100px 112px;transform:scaleY(var(--open,.7))}
+.face-btn:hover .face .smile{d:path("M80 118 Q100 140 120 118")}
+.face-btn.laughing .face{animation:shake .14s ease-in-out infinite alternate}
+.face-btn.laughing .eyes-open,.face-btn.laughing .smile{opacity:0;animation:none}
+.face-btn.laughing .eyes-happy,.face-btn.laughing .mouth{opacity:1}
+.face-btn.laughing .cheeks ellipse{opacity:.85}
+.face-btn .poke{position:absolute;right:-4%;top:6%;background:#fff;color:var(--plum);font-weight:900;font-size:clamp(15px,3.8vw,21px);padding:7px 14px;border-radius:999px 999px 999px 4px;border:3px solid var(--plum);transform:rotate(8deg);animation:pokeme 1.6s ease-in-out infinite;transition:opacity .3s}
+.face-btn.laughing .poke,.face-btn.poked .poke{opacity:0}
+@keyframes bob{50%{transform:translateY(-3%) rotate(-2deg)}}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.08)}}
+@keyframes shake{from{transform:rotate(-5deg) scale(1.03)}to{transform:rotate(5deg) scale(.98)}}
+@keyframes pokeme{50%{transform:rotate(8deg) translateY(-8px) scale(1.06)}}
+@media (prefers-reduced-motion: reduce){.face-btn .face,.face .eyes-open,.face-btn .poke,.face-btn.laughing .face{animation:none}}
 </style>
 </head>
 <body>
@@ -691,19 +717,32 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
     </div>
     <div class="stage">
       <div class="orbit" id="orbit" aria-hidden="true"></div>
-      <button class="laugh-btn" id="laugh" aria-label="按一下，让全园一起笑">
+      <button class="laugh-btn face-btn" id="laugh" aria-label="戳一下这张脸，听它笑">
         <span class="disc"></span>
         <span class="ring"></span><span class="ring r2"></span>
-        <span class="char">笑</span>
+        <svg class="face" viewBox="0 0 200 200" aria-hidden="true">
+          <circle class="skin" cx="100" cy="100" r="88"/>
+          <g class="cheeks"><ellipse cx="50" cy="118" rx="17" ry="11"/><ellipse cx="150" cy="118" rx="17" ry="11"/></g>
+          <g class="eyes-open"><g class="pupils">
+            <ellipse cx="70" cy="86" rx="10" ry="14"/><ellipse cx="130" cy="86" rx="10" ry="14"/>
+            <circle class="shine" cx="74" cy="80" r="3.6"/><circle class="shine" cx="134" cy="80" r="3.6"/>
+          </g></g>
+          <g class="eyes-happy"><path d="M56 92 Q70 72 84 92"/><path d="M116 92 Q130 72 144 92"/></g>
+          <path class="smile" d="M84 120 Q100 136 116 120"/>
+          <g class="mouth"><path d="M70 114 Q100 108 130 114 Q126 160 100 162 Q74 160 70 114Z"/><ellipse class="tongue" cx="100" cy="148" rx="16" ry="9"/></g>
+        </svg>
+        <span class="poke" aria-hidden="true">戳我</span>
       </button>
-      <div class="hint">按一下，先听一声笑<small id="laughs"></small></div>
+      <div class="hint">戳戳这张脸，听它笑<small id="laughs"></small></div>
     </div>
   </div>
   <figure class="hero-pol p1" aria-hidden="true"><img src="img/hero-lamb.jpg" alt=""></figure>
   <figure class="hero-pol p2" aria-hidden="true"><img src="img/baby-laugh.jpg" alt=""><span class="ai-tag">AI 绘</span></figure>
   <figure class="hero-pol p3" aria-hidden="true"><img src="img/hero-teal.jpg" alt=""></figure>
-  <audio id="first-laugh" src="assets/laugh-baby.mp3" preload="none"></audio>
-  <!-- 笑声素材：BigSoundBank《Laughing Boy of 16 Months》(#0980)，CC0 公有领域，可商用、免署名 -->
+  <audio id="first-laugh" preload="none"></audio>
+  <!-- 笑声素材来自 BigSoundBank，CC0 公有领域，可商用、免署名：
+       #0980《Laughing Boy of 16 Months》、#1660《Laughter of Children》；
+       laugh-crowd / laugh-long 是用这两段混出来的长版本 -->
   <canvas id="burst" aria-hidden="true"></canvas>
 </header>
 
@@ -1094,19 +1133,45 @@ function tick(){
 const btn=document.getElementById('laugh'),stage=btn.closest('.stage'),au=document.getElementById('first-laugh'),toast=document.getElementById('toast');
 function say(t){toast.textContent=t;toast.classList.add('show');clearTimeout(say.t);say.t=setTimeout(()=>toast.classList.remove('show'),2600)}
 // 笑声列表：每按一次随机放一段；以后作者的真笑声录好，加到这里就行
-const LAUGHS=['assets/laugh-baby.mp3'];
+const LAUGHS=['assets/laugh-baby.mp3','assets/laugh-kids.mp3','assets/laugh-crowd.mp3','assets/laugh-long.mp3'];
+let lastPick=-1;
 let n=0;try{n=+localStorage.getItem('xiaoyuan-laughs')||0}catch(e){}
 const lc=document.getElementById('laughs');
 const tease=['','嘴角上扬了吧','再来一声','笑园听见了','你一笑，大家都笑了'];
 function showN(){if(!n){lc.textContent='';return}lc.textContent='你让笑园笑了 '+n+' 声'+(n<5?' · '+tease[n]:'')}showN();
 
+// 眼睛跟着鼠标/手指看
+const pupils=btn.querySelector('.pupils'),faceEl=btn.querySelector('.face');
+addEventListener('pointermove',e=>{
+  const r=faceEl.getBoundingClientRect(),dx=e.clientX-(r.left+r.width/2),dy=e.clientY-(r.top+r.height/2),d=Math.hypot(dx,dy)||1,k=Math.min(7,d/40);
+  pupils.style.transform='translate('+(dx/d*k)+'px,'+(dy/d*k)+'px)';
+},{passive:true});
+// 嘴巴跟着笑声一张一合
+let an,abuf,raf2;
+function mouthOn(){
+  try{
+    actx=actx||new (window.AudioContext||window.webkitAudioContext)();actx.resume&&actx.resume();
+    if(!an){const src=actx.createMediaElementSource(au);an=actx.createAnalyser();an.fftSize=512;src.connect(an);an.connect(actx.destination);abuf=new Uint8Array(an.fftSize)}
+  }catch(e){}
+  cancelAnimationFrame(raf2);
+  (function loop(){
+    let v=.75;
+    if(an){an.getByteTimeDomainData(abuf);let m=0;for(const x of abuf)m=Math.max(m,Math.abs(x-128));v=.35+Math.min(1,m/70)*.85}
+    else v=.55+.45*Math.abs(Math.sin(performance.now()/90));
+    faceEl.style.setProperty('--open',v.toFixed(2));
+    if(btn.classList.contains('laughing'))raf2=requestAnimationFrame(loop);
+  })();
+}
+function stopLaugh(){btn.classList.remove('laughing');cancelAnimationFrame(raf2)}
+au.addEventListener('ended',stopLaugh);
+
 btn.addEventListener('click',()=>{
   [btn,stage].forEach(el=>{el.classList.remove('laughing','go');void el.offsetWidth});
-  btn.classList.add('laughing');stage.classList.add('go');
+  btn.classList.add('laughing','poked');stage.classList.add('go');
   const r=btn.getBoundingClientRect();burst(r.left+r.width/2,r.top+r.height/2);
-  const pick=LAUGHS[Math.floor(Math.random()*LAUGHS.length)];
-  if(!au.src.endsWith(pick))au.src=pick;
-  au.currentTime=0;au.play().catch(()=>giggle());
+  let i;do{i=Math.floor(Math.random()*LAUGHS.length)}while(LAUGHS.length>1&&i===lastPick);lastPick=i;
+  au.src=LAUGHS[i];mouthOn();
+  au.play().catch(()=>{giggle();setTimeout(stopLaugh,1400)});
   n++;try{localStorage.setItem('xiaoyuan-laughs',n)}catch(e){}showN();
 });
 
