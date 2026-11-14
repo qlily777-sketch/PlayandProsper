@@ -239,6 +239,12 @@ footer a{color:#DCE7E1;text-decoration:none}
 .toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;border-radius:999px;font-size:14px;z-index:30;opacity:0;transition:opacity .3s;pointer-events:none}
 .toast.on{opacity:1}
 .cards .dl{display:inline-block;margin-left:auto;color:var(--jade);font-weight:700;text-decoration:none}
+.elsewhere{margin-top:34px;display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:left}
+.elsewhere div{background:var(--paper);border-radius:8px;padding:16px 18px}
+.elsewhere b{display:block;font:700 17px var(--serif)}
+.elsewhere span{font-size:13px;color:var(--ink2)}
+.elsewhere .k{font-size:12px;color:var(--jade)}
+@media(max-width:600px){.elsewhere{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -348,6 +354,7 @@ footer a{color:#DCE7E1;text-decoration:none}
         <span class="tag">云谷精舍 · 深圳梧桐山</span>
         <h2>上梧桐山，<br>来云谷喝杯茶</h2>
         <p>我做的是一件跟身体有关的事。不急，不卷，先坐下来喝杯茶，聊聊你最近过得怎么样。</p>
+        <p>云谷精舍的素食体验，已经办到第 36 期。</p>
       </div>
       <img src="p-tea.jpg" alt="金闰迪在云谷精舍的茶室里" loading="lazy">
     </div>
@@ -357,7 +364,7 @@ footer a{color:#DCE7E1;text-decoration:none}
       <li><span class="you">忙了半辈子，想松口气的人</span><span class="arw">我们可以聊</span><span class="we">怎么给日子做减法</span></li>
     </ul>
     <div class="ways">
-      <div id="w1"><h3>云谷山居</h3><p>上山住几天，喝茶、走河、种草</p></div>
+      <div id="w1"><h3>云谷精舍</h3><p>上山住几天，喝茶、走河、种草</p></div>
       <div id="w2"><h3>身体调理营</h3><p>跟着营养师，一起把身体养回来</p></div>
       <div id="w3"><h3>营养师一对一</h3><p>看你的身体和日子，慢慢调</p></div>
     </div>
@@ -422,6 +429,10 @@ footer a{color:#DCE7E1;text-decoration:none}
     <img class="qr" src="wechat.png" alt="金闰迪的微信二维码">
     <p>预约签名书、问问身体、约上山喝茶，都可以。</p>
     <p class="note">在微信里打开，长按二维码识别。加的时候请备注「官网」。</p>
+    <div class="elsewhere">
+      <div><span class="k">微信视频号</span><b>闰迪老师</b><span>云谷精舍的素食体验、梧桐山的日常、读书会。在微信「发现 → 视频号」里搜这个名字。</span></div>
+      <div><span class="k">微信服务号</span><b>丽姿蓝</b><span>在微信里搜这个名字，点关注。</span></div>
+    </div>
   </div>
 </section>
 
@@ -445,8 +456,8 @@ footer a{color:#DCE7E1;text-decoration:none}
 
   var T={
     a:['身体总亏着，先别急着补。<b>营养师一对一</b>，先看看你每天怎么吃、怎么睡，再一点点调。人多一起走，也可以来<b>身体调理营</b>。','加微信，说「我想先照顾身体」','w3'],
-    b:['日子太满，先做减法。上山来，<b>云谷山居</b>住几天，喝茶、走河，把节奏慢下来。','加微信，说「我想先松口气」','w1'],
-    c:['那就来梧桐山。<b>云谷山居</b>，早晨沿着河往下走，看看石头缝里的鱼腥草。','加微信，说「我想上山住几天」','w1']
+    b:['日子太满，先做减法。上山来，<b>云谷精舍</b>住几天，喝茶、走河，把节奏慢下来。','加微信，说「我想先松口气」','w1'],
+    c:['那就来梧桐山。<b>云谷精舍</b>，早晨沿着河往下走，看看石头缝里的鱼腥草。','加微信，说「我想上山住几天」','w1']
   };
   var ans=document.getElementById('ans'),at=document.getElementById('ans-t'),ab=document.getElementById('ans-b');
   document.querySelectorAll('.opts button').forEach(function(b){
