@@ -1,95 +1,548 @@
-<!DOCTYPE html><html lang="zh-CN"><head>
-<meta name="robots" content="noindex, nofollow"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>千百合 · 走得开 | 边玩边赚</title>
-<meta name="description" content="千百合，老板IP商业重构师、20+畅销书出品人/译者、边玩边赚联合创始人。留美AI硕士，20+畅销书出品人/译者，100+AI智能体创作者。专注AI时代商业结构重构，帮助个人IP、成熟创业者与企">
-<meta property="og:title" content="千百合 · 边玩边赚"><meta property="og:image" content="card.jpg">
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>千百合 · 放得下，走得开 | 边玩边赚</title>
+<meta name="description" content="千百合（Lily），边玩边赚联合创始人，老板 IP 商业重构师，20+ 畅销书出品人/译者。从守着一间办公室，到人生百国。这件事，没有我，行不行？">
+<meta property="og:title" content="千百合 · 放得下，走得开">
+<meta property="og:description" content="从守着一间办公室，到人生百国。边玩边赚联合创始人，老板 IP 商业重构师。">
+<meta property="og:image" content="https://www.playandprosper.com/v2/lily/card.jpg">
+<meta name="theme-color" content="#16263A">
 <link rel="icon" href="../img/logo-icon.png">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "千百合", "alternateName": "LILY", "description": "留美AI硕士，20+畅销书出品人/译者，100+AI智能体创作者。专注AI时代商业结构重构，帮助个人IP、成熟创业者与企业主把能力变资产，把经验变产品。带领百位作者跨8个时区协作出书，以结构化系统推动事业升级——不卷不累，边玩边赚。", "jobTitle": "老板IP商业重构师", "url": "https://www.playandprosper.com/lily/", "memberOf": {"@type": "Organization", "name": "边玩边赚 Play and Prosper", "url": "https://www.playandprosper.com/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"千百合","alternateName":["Lily Li","Lily"],"jobTitle":"老板 IP 商业重构师","description":"边玩边赚联合创始人，20+ 畅销书出品人/译者，100+ AI 智能体创作者。","homeLocation":{"@type":"Place","name":"达拉斯"},"url":"https://www.playandprosper.com/lily/","memberOf":{"@type":"Organization","name":"边玩边赚 Play and Prosper","url":"https://www.playandprosper.com/"}}</script>
 <style>
+:root{
+  --navy:#16263A;   /* 夜航 */
+  --navy2:#2A3D55;
+  --ice:#DCEAF0;    /* 冰川蓝，爸爸刷的那只箱子 */
+  --ice2:#A9CBD8;
+  --paper:#FBFAF6;
+  --red:#C8302A;    /* 卡萨布兰卡那件红衣 */
+  --ink:#1D2733;
+  --mute:#5D6B78;
+  --line:#D7E3E8;
+  --serif:"Songti SC","STSong","Noto Serif SC","Noto Serif CJK SC","Source Han Serif SC",serif;
+  --sans:-apple-system,"PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;
+}
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--paper:#F6EFE3;--paper2:#EFE4D2;--ink:#2B2118;--mute:#7A6A58;--gold:#B0853A;--gold2:#D9B26B;--teal:#0F4C4A;--orange:#E58A1F;
---serif:"Songti SC","Noto Serif SC","Noto Serif CJK SC",serif;--sans:-apple-system,"PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif}
-html{scroll-behavior:smooth}body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.7}
-a{color:inherit}img{display:block;max-width:100%}
-.wrap{max-width:1080px;margin:0 auto;padding:0 22px}.narrow{max-width:720px}
-section{padding:64px 0}
-.kicker{color:var(--gold);letter-spacing:.2em;font-size:13px;margin-bottom:8px}
-h2{font-family:var(--serif);font-size:clamp(26px,4vw,38px);line-height:1.3;color:#7d4f17}
-.sub{color:var(--mute);margin-top:8px}
-.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;border-radius:999px;padding:12px 22px;font-weight:700;font-size:15px}
-.btn.line{background:transparent;color:var(--teal);border:2px solid var(--teal)}
-.top{position:sticky;top:0;z-index:9;display:flex;justify-content:space-between;align-items:center;padding:10px 18px;background:rgba(246,239,227,.92);backdrop-filter:blur(8px);border-bottom:1px solid #e6d8c0}
-.logo{display:flex;align-items:center;gap:8px;text-decoration:none;font-family:var(--serif);font-weight:700;color:#7d4f17}.logo img{width:28px;height:28px}
-.btn-s{background:var(--orange);color:#fff;text-decoration:none;border-radius:999px;padding:7px 16px;font-size:14px;font-weight:700}
-.hero{position:relative;height:min(88vh,820px);background-size:cover;display:flex;align-items:flex-end}
-.hero .shade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(25,18,10,.75) 0%,rgba(25,18,10,.1) 55%,rgba(25,18,10,.15) 100%)}
-.motto{position:absolute;right:6%;top:9%;display:flex;flex-direction:row-reverse;gap:10px}
-.motto i{font-style:normal;writing-mode:vertical-rl;font-family:var(--serif);font-weight:700;font-size:clamp(26px,4vw,44px);letter-spacing:.2em;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.45)}
-.ht{position:relative;padding:0 22px 44px;max-width:1080px;margin:0 auto;width:100%;color:#fff}
-.ht .kick{color:#f3dfb4;letter-spacing:.15em;font-size:14px}
-.ht h1{font-family:var(--serif);font-size:clamp(54px,9vw,96px);letter-spacing:.12em;line-height:1.15}
-.ht .en{letter-spacing:.2em;font-size:13px;color:#f3e8d4}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.tags span{border:1px solid rgba(243,223,180,.8);border-radius:999px;padding:4px 12px;font-size:13px;background:rgba(0,0,0,.18)}
-.intro{padding:44px 0}.intro .lead{font-size:17px;max-width:760px}.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
-.cardsec{background:var(--paper2)}
-.cardwrap{display:grid;grid-template-columns:minmax(0,360px) 1fr;gap:40px;align-items:center}
-.cardwrap img{border-radius:16px;box-shadow:0 16px 40px rgba(60,40,20,.18)}
-.cardwrap p{margin-top:12px;color:#4a3d30}
-@media(max-width:700px){.cardwrap{grid-template-columns:1fr}.cardwrap img{max-width:340px;margin:0 auto}}
-.excerpt{margin-top:24px;font-family:var(--serif);font-size:17px;line-height:2}.excerpt p{margin-bottom:10px}
-.excerpt:after{content:"……";color:var(--gold)}
-.dl{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
-#quotes{background:#fff}
-.qs{list-style:none;display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:18px 2px 8px;margin-top:10px}
-.qs li{flex:0 0 min(78%,320px);scroll-snap-align:start}.qs img{border-radius:14px;box-shadow:0 6px 20px rgba(60,40,20,.12)}
-.arts{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-top:24px}
-.arts li{display:flex;gap:12px;background:#fff;border-radius:16px;padding:16px;border:1px solid #eadcc6}
-.arts li.wip{background:transparent;border-style:dashed;opacity:.85}
-@media(max-width:700px){.arts{grid-template-columns:1fr 1fr}.arts li{flex-direction:column;gap:4px;padding:12px}.arts li.done{grid-column:span 2;flex-direction:row}.arts li.wip p{display:none}.arts li.wip h4{font-size:15px}}
-.arts b{font-family:var(--serif);font-size:26px;color:var(--gold);line-height:1}
-.arts h4{font-family:var(--serif);font-size:17px}.arts p{font-size:13px;color:var(--mute);line-height:1.5;margin-top:2px}
-.act{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;font-size:13px}
-.act a{color:var(--teal);font-weight:700;text-decoration:none;border-bottom:1.5px solid var(--gold2)}
-.todo{color:#b9a68c}.here{color:var(--orange);font-weight:700}
-.more{margin-top:22px;color:var(--mute)}.more a{color:var(--teal);font-weight:700}
-#books{background:var(--paper2)}
-.vs{list-style:none;display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:18px 2px 8px;margin-top:10px}
-.vs li{flex:0 0 min(62%,260px);scroll-snap-align:start}.vs video{width:100%;aspect-ratio:9/16;background:#000;border-radius:14px}.vs span{display:block;text-align:center;font-size:13px;color:var(--mute);margin-top:6px}
-.bk{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-top:22px}
-.bk li{display:flex;gap:14px;align-items:center;background:#fff;border-radius:14px;padding:12px}
-.bk img{width:64px;border-radius:6px;box-shadow:0 4px 12px rgba(0,0,0,.15)}
-.bk small{display:block;color:var(--mute);font-size:12px}.bk b{font-family:var(--serif);font-size:15px}
-.ct{display:flex;gap:32px;align-items:center;flex-wrap:wrap}
-.ct img{width:200px;background:#fff;padding:10px;border-radius:16px;box-shadow:0 8px 24px rgba(60,40,20,.12)}
-.ct p{margin-top:10px}.ct .small{color:var(--mute);font-size:13px}
-footer{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;padding:28px 18px 40px;color:var(--mute);font-size:14px;border-top:1px solid #e6d8c0}
-footer a{color:var(--teal);text-decoration:none}
-.film{margin-top:18px;max-width:760px}.film video{width:100%;aspect-ratio:16/9;background:#000;border-radius:14px;box-shadow:0 10px 30px rgba(60,40,20,.18)}.film span{display:block;font-size:13px;color:var(--mute);margin-top:6px}
-.s2{background:#fff}.s2wrap{display:grid;grid-template-columns:200px 1fr;gap:32px;align-items:start}.s2wrap img{border-radius:10px;box-shadow:0 10px 28px rgba(60,40,20,.18)}
-@media(max-width:700px){.s2wrap{grid-template-columns:1fr}.s2wrap img{max-width:180px}}
-.listen{background:var(--teal);color:#fff}.listen h2{color:#f3dfb4}.listen .kicker{color:var(--gold2)}.listen .sub{color:#d6e6e3}.listen audio{width:100%;max-width:640px;margin-top:20px}
-</style></head><body>
-<header class="top"><a href="../" class="logo"><img src="../img/logo-icon.png" alt="">边玩边赚</a><a href="#contact" class="btn-s">加微信</a></header>
-<section class="hero" style="background-image:url('hero.jpg');background-position:50% 30%">
-  <div class="shade"></div><div class="motto"><i>放得下，</i><i>走得开。</i></div>
-  <div class="ht"><div class="kick">— 你好，我是</div><h1>千百合</h1><div class="en">LILY · 达拉斯</div><div class="tags"><span>老板IP商业重构师</span><span>20+畅销书出品人/译者</span><span>边玩边赚联合创始人</span></div></div>
-</section>
-<section class="intro"><div class="wrap"><p class="lead">留美AI硕士，20+畅销书出品人/译者，100+AI智能体创作者。专注AI时代商业结构重构，帮助个人IP、成熟创业者与企业主把能力变资产，把经验变产品。带领百位作者跨8个时区协作出书，以结构化系统推动事业升级——不卷不累，边玩边赚。</p>
-  <div class="cta"><a class="btn" href="#story">读我的故事</a><a class="btn line" href="#contact">加我微信</a></div></div></section>
-<section class="cardsec"><div class="wrap cardwrap"><img src="card.jpg" alt="千百合 的人生卡"><div><div class="kicker">① 人生卡</div><h2>今天遇见谁 · 入场券 №01</h2><p>画里的我、书里的金句、一分钟读完的三段故事，全在这一张里。卡上的二维码，就通到这一页。</p></div></div></section>
-<section id="story"><div class="wrap narrow"><div class="kicker">我的故事 · 书5《走遍世界，活成自己》</div><h2>走得开</h2><p class="sub">从守着一间办公室，到人生百国</p>
-  <div class="excerpt"><p>宝贝女儿在外地上学。那年她放假回来看我。</p><p>我到机场把她接上，没直接回家，先带她去了办公室——那儿还有一堆事等着。她手脚麻利，我就给她安排了点公司里的活儿，她跟着我一块儿上班。</p><p>晚上回到家，我还是坐在电脑前，还有没做完的事。她在我旁边，跟我讲她的朋友、学校里的事。我一边听，一边干我的活。</p><p>她也打开电脑，忙她的事去了。</p><p>接下来几天，不光我忙，我把她的日子也安排得满满的。</p><p>终于有一天，她忍不住了：</p><p>「妈咪，你帮我安排这安排那，也没问问我的感受。你啥时候能陪陪我呀？」</p><p>我抬头看她，她两眼泪汪汪。</p><p>我的眼泪也下来了。</p><p>那天晚上我问自己：我这么忙，为的是啥？</p></div>
-  <div class="dl"><a class="btn" href="ebook-zh.pdf" download>下载电子书 · 中文版</a><a class="btn line" href="ebook-en.pdf" download>English edition</a></div></div></section>
-<section id="story2" class="s2"><div class="wrap s2wrap"><a href="book4-zh.pdf" target="_blank"><img src="book4.jpg" alt="《活成你》封面" loading="lazy"></a><div><div class="kicker">另一篇故事 · 书4《AI 时代的个人品牌》· No.01</div><h2>活成你</h2><p class="sub">说出「我是」，再活成它</p>
-  <div class="excerpt"><p>落地窗外，绿草坪上支着一张蹦极床，再往下是树林，远处一汪大湖。蓝天落进湖里，光反上来，整个客厅都亮了。</p><p>我坐在一个陌生人家里——第一次去，开了快四个小时的车。</p><p>她让我把一句话说出声。</p><p>我说了。那一刻，我觉得自己——好轻松，好欣喜，好像，长高了。</p><p>那一年，我正落魄。</p></div>
-  <div class="dl"><a class="btn" href="book4-zh.pdf" download>下载这一篇 · 中文版</a><a class="btn line" href="book4-en.pdf" download>English edition</a></div></div></div></section>
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.75}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+.w{max-width:1080px;margin:0 auto;padding:0 24px}
+.n{max-width:660px}
+h2{font:700 clamp(26px,4.4vw,38px)/1.35 var(--serif);letter-spacing:.03em}
+.lead{color:var(--mute);margin-top:10px;max-width:36em}
+.no{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 5px;border:1.5px solid currentColor;border-radius:999px;font-size:12px;line-height:1;font-weight:700}
+.tag{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--red);margin-bottom:8px}
+.btn{display:inline-block;font:700 15px/1 var(--sans);text-decoration:none;padding:14px 22px;border-radius:999px;background:var(--navy);color:#fff;border:1.5px solid var(--navy);cursor:pointer}
+.btn:hover{background:var(--red);border-color:var(--red)}
+.btn.line{background:transparent;color:var(--navy)}
+.btn.line:hover{background:var(--navy);color:#fff}
+.btn.red{background:var(--red);border-color:var(--red)}
+.btn.red:hover{background:var(--navy);border-color:var(--navy)}
+.row{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
 
-<section id="listen" class="listen"><div class="wrap"><div class="kicker">⑩ 有声书</div><h2>听我讲《走得开》</h2><p class="sub">16 分钟，整篇故事，路上、睡前都能听。</p><audio src="audiobook.mp3" controls preload="none"></audio></div></section>
-<section id="quotes"><div class="wrap"><div class="kicker">⑦ 金句海报</div><h2>书里的几句话</h2><ul class="qs"><li><img src="q1.jpg" loading="lazy" alt="金句海报 1"></li><li><img src="q2.jpg" loading="lazy" alt="金句海报 2"></li><li><img src="q3.jpg" loading="lazy" alt="金句海报 3"></li><li><img src="q4.jpg" loading="lazy" alt="金句海报 4"></li><li><img src="q5.jpg" loading="lazy" alt="金句海报 5"></li></ul></div></section>
-<section id="videos"><div class="wrap"><div class="kicker">视频</div><h2>看一看这个故事</h2><div class="film"><video src="15.mp4" poster="15.jpg" controls playsinline preload="none"></video><span>⑮ 故事短片 · 20 秒</span></div><ul class="vs"><li><video src="16.mp4" poster="16.jpg" controls playsinline preload="none"></video><span>⑯ 人生动画</span></li><li><video src="14-1.mp4" poster="14-1.jpg" controls playsinline preload="none"></video><span>⑭ 金句短视频 1</span></li><li><video src="14-2.mp4" poster="14-2.jpg" controls playsinline preload="none"></video><span>⑭ 金句短视频 2</span></li><li><video src="14-3.mp4" poster="14-3.jpg" controls playsinline preload="none"></video><span>⑭ 金句短视频 3</span></li><li><video src="14-4.mp4" poster="14-4.jpg" controls playsinline preload="none"></video><span>⑭ 金句短视频 4</span></li><li><video src="14-5.mp4" poster="14-5.jpg" controls playsinline preload="none"></video><span>⑭ 金句短视频 5</span></li></ul></div></section>
-<section id="arts"><div class="wrap"><div class="kicker">十八般武艺</div><h2>十八般武艺 · 全展示</h2><p class="sub">一篇故事，变成十八样东西。这一页就是第 18 样。</p><ul class="arts"><li class="done"><b>①</b><div><h4>人生卡</h4><p>画里的你、书里的金句、一分钟故事，一张卡</p><div class="act"><a href="card.jpg" target="_blank">看大图</a></div></div></li><li class="done"><b>②</b><div><h4>电子书</h4><p>中英双版 PDF，书5 一篇、书4 一篇</p><div class="act"><a href="ebook-zh.pdf" download>书5 中文</a><a href="ebook-en.pdf" download>English</a><a href="book4-zh.pdf" download>书4 中文</a><a href="book4-en.pdf" download>English</a></div></div></li><li class="done"><b>③</b><div><h4>演讲 PPT + 讲稿</h4><p>网页版，浏览器打开就能讲</p><div class="act"><a href="talk.html" target="_blank">打开 PPT</a></div></div></li><li class="done"><b>④</b><div><h4>自我介绍海报</h4><p>置顶、加好友、进新群都用它</p><div class="act"><a href="poster.jpg" target="_blank">看海报</a></div></div></li><li class="wip"><b>⑤</b><div><h4>故事配图</h4><p>按故事情节画 5 张图</p><div class="act"><span class="todo">制作中</span></div></div></li><li class="wip"><b>⑥</b><div><h4>个人写真照</h4><p>3 张电影质感照片</p><div class="act"><span class="todo">制作中</span></div></div></li><li class="done"><b>⑦</b><div><h4>金句海报</h4><p>故事里最打动人的几句</p><div class="act"><a href="#quotes">看金句</a></div></div></li><li class="done"><b>⑧</b><div><h4>朋友圈封面</h4><p>点开头像的第一眼</p><div class="act"><a href="moments.jpg" target="_blank">看封面</a></div></div></li><li class="wip"><b>⑨</b><div><h4>声音名片</h4><p>用 AI 声音讲一分钟故事</p><div class="act"><span class="todo">制作中</span></div></div></li><li class="done"><b>⑩</b><div><h4>有声书</h4><p>16 分钟，整篇故事</p><div class="act"><a href="#listen">去听</a></div></div></li><li class="wip"><b>⑪</b><div><h4>双人播客</h4><p>两位主持人聊你的故事</p><div class="act"><span class="todo">制作中</span></div></div></li><li class="wip"><b>⑫</b><div><h4>个人主题曲</h4><p>一首属于你的歌</p><div class="act"><span class="todo">制作中</span></div></div></li><li class="wip"><b>⑬</b><div><h4>数字人</h4><p>会说话的你，替你出镜</p><div class="act"><span class="todo">制作中</span></div></div></li><li class="done"><b>⑭</b><div><h4>金句短视频</h4><p>一条一句金句，竖版</p><div class="act"><a href="#videos">看视频</a></div></div></li><li class="done"><b>⑮</b><div><h4>故事短片</h4><p>20 秒，像电影预告片</p><div class="act"><a href="#videos">看视频</a></div></div></li><li class="done"><b>⑯</b><div><h4>人生动画</h4><p>时间线、转折、金句</p><div class="act"><a href="#videos">看视频</a></div></div></li><li class="wip"><b>⑰</b><div><h4>故事智能体</h4><p>和这个故事聊天</p><div class="act"><span class="todo">制作中</span></div></div></li><li class="done"><b>⑱</b><div><h4>个人主页</h4><p>就是这一页</p><div class="act"><span class="here">就是这一页</span></div></div></li></ul>
-  <p class="more">想把你的故事也做成这些？<a href="https://www.playandprosper.com/18/">看看十八般武艺 →</a></p></div></section>
-<section id="books"><div class="wrap"><div class="kicker">我写过的书</div><h2>边玩边赚书系，五本都有我</h2><ul class="bk"><li><img src="../img/cover1.webp" alt="AI 时代的自由人生" loading="lazy"><div><small>第一本 · AI 时代的自由人生</small><b>01《边玩边赚，不是梦想，而是现实》</b></div></li><li><img src="../img/cover2.webp" alt="人人都能做 AI 智能体" loading="lazy"><div><small>第二本 · 人人都能做 AI 智能体</small><b>01《先上场》</b></div></li><li><img src="../img/cover3.webp" alt="AI 时代的财富思维" loading="lazy"><div><small>第三本 · AI 时代的财富思维</small><b>01《钱顺了》</b></div></li><li><img src="../img/cover4.webp" alt="AI 时代的个人品牌" loading="lazy"><div><small>第四本 · AI 时代的个人品牌</small><b>01《活成你》</b></div></li><li><img src="../img/cover5.webp" alt="走遍世界，活成自己" loading="lazy"><div><small>第五本 · 走遍世界，活成自己</small><b>01《走得开》</b></div></li></ul></div></section>
-<section id="contact"><div class="wrap ct"><img src="../img/lily-wechat.png" alt="千百合 的微信二维码"><div><div class="kicker">找到我</div><h2>扫码，走近千百合</h2><p>向我预约一本亲笔签名书，或者聊聊老板 IP、商业重构。</p><p class="small">加微信时请备注「官网」</p></div></div></section>
-<footer><a href="../">← 回到边玩边赚</a><a href="../#stars">作者雨林</a><span>playandprosper.com/lily</span></footer>
-</body></html>
+/* 顶栏 */
+.bar{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:12px 20px;transition:background .3s,color .3s;color:#fff}
+.bar.on{background:rgba(251,250,246,.95);backdrop-filter:blur(8px);box-shadow:0 1px 0 var(--line);color:var(--ink)}
+.bar a.home{display:flex;align-items:center;gap:8px;text-decoration:none;font:700 15px var(--serif)}
+.bar a.home img{width:24px;height:24px}
+.bar .btn{padding:9px 16px;font-size:14px;background:var(--red);border-color:var(--red)}
+
+/* 第一屏 */
+.hero{position:relative;min-height:100svh;display:grid;grid-template-columns:1fr 1fr;background:var(--navy);color:#fff;overflow:hidden}
+.hero .pic{background:url('hero.jpg') center 35%/cover}
+.hero .txt{display:flex;flex-direction:column;justify-content:center;padding:110px 56px 64px max(24px,calc((100vw - 1080px)/2 + 24px))}
+.hero .hi{font-size:14px;color:var(--ice2);letter-spacing:.1em}
+.hero h1{font:700 clamp(46px,7vw,84px)/1.15 var(--serif);letter-spacing:.06em;margin-top:14px}
+.hero h1 span{display:block}
+.hero .me{margin-top:26px;font:700 22px var(--serif)}
+.hero .me small{font:400 14px var(--sans);color:var(--ice2);margin-left:8px;letter-spacing:.08em}
+.hero .roles{margin-top:8px;color:#C9D7E0;font-size:15px}
+.hero .btn{background:var(--red);border-color:var(--red)}
+.hero .btn.line{background:transparent;border-color:#fff;color:#fff}
+.hero .btn.line:hover{background:#fff;color:var(--navy)}
+@media(max-width:860px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero .pic{height:68svh;min-height:440px}
+  .hero .txt{padding:0 24px 52px;margin-top:-170px;position:relative;background:linear-gradient(transparent,var(--navy) 150px)}
+}
+@media(prefers-reduced-motion:no-preference){.hero h1 span{animation:up .9s both}.hero h1 span+span{animation-delay:.35s}@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}}
+
+/* 登机牌 */
+.pass-wrap{background:var(--ice);padding:56px 0}
+.pass{display:grid;grid-template-columns:1fr 210px;background:#fff;border-radius:14px;box-shadow:0 20px 50px -24px rgba(22,38,58,.45);position:relative;overflow:hidden}
+.pass:before{content:"";position:absolute;left:0;right:0;top:0;height:8px;background:repeating-linear-gradient(-45deg,var(--red) 0 14px,#fff 14px 22px,var(--navy) 22px 36px,#fff 36px 44px)}
+.pass .main{padding:34px 34px 28px}
+.pass .head{display:flex;justify-content:space-between;align-items:baseline;font-size:12px;color:var(--mute);letter-spacing:.12em}
+.pass .head b{color:var(--navy);font:700 15px var(--serif);letter-spacing:.06em}
+.route{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:18px;margin-top:22px}
+.route .k{font-size:12px;color:var(--mute)}
+.route .v{font:700 clamp(20px,3vw,28px)/1.3 var(--serif);color:var(--navy)}
+.route .plane{color:var(--red);font-size:22px}
+.route .to{text-align:right}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px;padding-top:20px;border-top:1px dashed var(--line)}
+.stats b{display:block;font:700 26px/1.1 var(--serif);color:var(--navy)}
+.stats span{font-size:12px;color:var(--mute)}
+.pass .stub{border-left:2px dashed var(--line);padding:34px 24px;display:flex;flex-direction:column;justify-content:space-between;gap:12px;background:var(--paper)}
+.pass .stub .k{font-size:12px;color:var(--mute)}
+.pass .stub .v{font:700 17px/1.5 var(--serif);color:var(--navy)}
+.pass .stub .seat{font:700 40px/1 var(--serif);color:var(--red)}
+@media(max-width:760px){
+  .pass{grid-template-columns:1fr}.pass .main{padding:28px 22px 22px}
+  .pass .stub{border-left:0;border-top:2px dashed var(--line);flex-direction:row;align-items:center;padding:18px 22px}
+  .stats{grid-template-columns:1fr 1fr;row-gap:16px}
+  .route{grid-template-columns:1fr;gap:4px}.route .to{text-align:left}.route .plane{transform:rotate(90deg);width:max-content}
+}
+
+/* 卡 */
+.card{padding:96px 0}
+.card .w{display:grid;grid-template-columns:330px 1fr;gap:60px;align-items:center}
+.card img{border-radius:10px;box-shadow:0 24px 50px -24px rgba(22,38,58,.5)}
+.card p{margin-top:16px;font:18px/2 var(--serif)}
+.card .small{font:14px var(--sans);color:var(--mute)}
+@media(max-width:860px){.card .w{grid-template-columns:1fr;gap:32px}.card img{max-width:280px}}
+
+/* 故事 */
+.story{background:#fff;padding:96px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.story .grid{display:grid;grid-template-columns:1fr 300px;gap:64px;align-items:start}
+.story .read p{font:18px/2.05 var(--serif);margin-top:16px}
+.story .read p.lead{font:16px var(--sans);margin-top:6px}
+.story .read p.q{font-weight:700;color:var(--navy);padding-left:16px;border-left:3px solid var(--red)}
+.story .read p.big{font:700 24px/1.7 var(--serif);color:var(--red)}
+.story aside{position:sticky;top:90px}
+.story aside img{border-radius:6px;box-shadow:0 20px 44px -20px rgba(22,38,58,.5)}
+.story aside .row{margin-top:12px}
+.story aside p{font-size:14px;color:var(--mute);margin-top:14px}
+.player{margin-top:40px;padding:22px 24px;border-radius:12px;background:var(--navy);color:#fff;display:grid;grid-template-columns:auto 1fr;gap:6px 16px;align-items:center}
+.player .no{color:var(--ice2)}
+.player b{font:700 18px var(--serif)}
+.player span.s{display:block;font-size:13px;color:#B9C8D4}
+.player audio{grid-column:1/-1;width:100%;margin-top:10px}
+.method{margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.method div{padding:18px;border:1.5px solid var(--line);border-radius:10px}
+.method b{display:block;font:700 20px var(--serif);color:var(--red)}
+.method span{font-size:14px;color:var(--mute)}
+@media(max-width:860px){.story .grid{grid-template-columns:1fr;gap:40px}.story aside{position:static;display:grid;grid-template-columns:130px 1fr;gap:18px;align-items:start}.method{grid-template-columns:1fr}}
+
+/* 问一问 */
+.ask{background:var(--navy);color:#fff;padding:96px 0}
+.ask .lead{color:#B9C8D4}
+.ask form{margin-top:30px;display:flex;gap:10px;flex-wrap:wrap}
+.ask input{flex:1 1 240px;font:16px var(--sans);padding:14px 18px;border-radius:999px;border:1.5px solid #4A5E78;background:#1E3149;color:#fff}
+.ask input::placeholder{color:#8EA2B5}
+.ask .btn{background:var(--red);border-color:var(--red)}
+.q2{margin-top:22px;padding:22px;border-radius:12px;background:#1E3149}
+.q2[hidden]{display:none}
+.q2 p{font:700 19px var(--serif)}
+.q2 p em{font-style:normal;color:var(--ice2)}
+.opts{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.opts button{padding:11px 16px;border-radius:999px;border:1.5px solid #5E7590;background:transparent;color:#fff;font-weight:700;font-size:14px;cursor:pointer}
+.opts button:hover{border-color:#fff}
+.list{list-style:none;margin-top:22px}
+.list li{display:grid;grid-template-columns:1fr auto;gap:12px;padding:12px 0;border-bottom:1px solid #2F4560;font-size:15px}
+.list li span{color:var(--ice2);font-size:14px}
+.list li.keep span{color:#F2B5B0}
+.sum{margin-top:18px;font:700 18px/1.8 var(--serif)}
+.sum[hidden]{display:none}
+.sum a{color:var(--ice2)}
+
+/* 金句 */
+.lines{padding:96px 0 80px}
+.strip{margin-top:30px;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(220px,1fr);gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px}
+.strip figure{scroll-snap-align:start}
+.strip img,.strip video{width:100%;border-radius:8px;background:#000;display:block}
+.strip img{aspect-ratio:1;object-fit:cover}
+.strip video{aspect-ratio:1;object-fit:cover}
+.strip figcaption{font-size:12px;color:var(--mute);margin-top:8px;display:flex;gap:6px;align-items:center}
+.strip figcaption .no{color:var(--red)}
+@media(max-width:700px){.strip{grid-auto-columns:72%}}
+
+/* 看 */
+.watch{background:var(--ice);padding:96px 0}
+.watch .grid{display:grid;grid-template-columns:1fr 250px;gap:22px;margin-top:30px;align-items:start}
+.watch video{width:100%;border-radius:10px;background:#000;box-shadow:0 24px 50px -26px rgba(22,38,58,.6);display:block}
+.watch .wide video{aspect-ratio:16/9}
+.watch .tall video{aspect-ratio:9/16;object-fit:cover}
+.watch figcaption{margin-top:10px;font-size:13px;color:var(--mute);display:flex;gap:6px;align-items:center}
+.watch figcaption .no{color:var(--red)}
+.talk{margin-top:26px;display:grid;grid-template-columns:320px 1fr;gap:26px;align-items:center;background:#fff;border-radius:12px;padding:16px}
+.talk img{border-radius:8px}
+.talk b{display:block;font:700 20px var(--serif)}
+.talk p{color:var(--mute);font-size:15px;margin-top:4px}
+.talk .row{margin-top:14px}
+@media(max-width:860px){.watch .grid{grid-template-columns:1fr}.watch .tall{max-width:260px}.talk{grid-template-columns:1fr}}
+
+/* 十八个章 */
+.stamps{padding:100px 0}
+.sgrid{list-style:none;margin-top:34px;display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.sgrid li a,.sgrid li div{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;aspect-ratio:1;border-radius:50%;text-decoration:none;padding:10px;transition:transform .2s}
+.sgrid li a{border:2.5px solid var(--red);color:var(--red);transform:rotate(-6deg);background:radial-gradient(circle,#fff 58%,#FCEDEC)}
+.sgrid li:nth-child(3n) a{transform:rotate(5deg)}
+.sgrid li:nth-child(4n) a{border-color:var(--navy);color:var(--navy);background:radial-gradient(circle,#fff 58%,#EAF1F5)}
+.sgrid li a:hover{transform:rotate(0) scale(1.05)}
+.sgrid li div{border:2px dashed #C3D0D8;color:#97A6B2}
+.sgrid b{font:700 13px/1 var(--sans)}
+.sgrid strong{display:block;font:700 15px/1.3 var(--serif);margin-top:6px}
+.sgrid small{font-size:11px;margin-top:3px}
+.legend{display:flex;gap:20px;margin-top:20px;font-size:13px;color:var(--mute);flex-wrap:wrap}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:50%;border:2px solid var(--red);vertical-align:-1px;margin-right:6px}
+.legend i.d{border:2px dashed #C3D0D8}
+.yours{margin-top:34px;padding:24px 26px;border-radius:12px;background:var(--ice);display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.yours b{font:700 20px var(--serif)}
+.yours p{color:var(--mute);font-size:15px}
+@media(max-width:860px){.sgrid{grid-template-columns:repeat(3,1fr)}}
+
+/* 一起 */
+.together{background:var(--navy);color:#fff;padding:100px 0}
+.together .lead{color:#B9C8D4}
+.doors{margin-top:36px;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.doors a{display:block;text-decoration:none;padding:26px;border-radius:12px;background:#1E3149;border:1px solid #2F4560;transition:border-color .2s}
+.doors a:hover{border-color:var(--ice2)}
+.doors .k{font-size:13px;color:var(--ice2)}
+.doors b{display:block;font:700 22px/1.45 var(--serif);margin-top:6px}
+.doors p{color:#B9C8D4;font-size:15px;margin-top:6px}
+.doors .go{display:inline-block;margin-top:14px;font-weight:700;font-size:14px;color:#fff;border-bottom:1.5px solid var(--red)}
+.steps{list-style:none;counter-reset:s;margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.steps li{counter-increment:s;padding-top:14px;border-top:2px solid #3D5370}
+.steps li:before{content:counter(s);font:700 26px var(--serif);color:var(--red)}
+.steps b{display:block;font:700 17px var(--serif)}
+.steps span{font-size:14px;color:#B9C8D4}
+@media(max-width:860px){.doors,.steps{grid-template-columns:1fr}}
+
+/* 书 */
+.books{padding:96px 0;background:#fff}
+.books .top{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.books .top img{border-radius:10px}
+.shelf{margin-top:44px;display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.shelf img{aspect-ratio:3/4;object-fit:cover;border-radius:3px;box-shadow:0 12px 26px -14px rgba(22,38,58,.5)}
+.shelf figcaption{margin-top:10px;font-size:13px;color:var(--mute);line-height:1.55}
+.shelf figcaption b{display:block;color:var(--ink);font:700 15px var(--serif)}
+.shelf a{font-size:13px;color:var(--red);font-weight:700;text-decoration:none}
+@media(max-width:860px){.books .top{grid-template-columns:1fr;gap:26px}.shelf{grid-template-columns:repeat(5,62%);overflow-x:auto;scroll-snap-type:x mandatory}.shelf figure{scroll-snap-align:start}}
+
+/* 带走 */
+.take{padding:96px 0;background:var(--ice)}
+.cards{margin-top:30px;display:grid;grid-template-columns:.8fr .8fr 1.3fr;gap:18px;align-items:start}
+.cards a{text-decoration:none}
+.cards img{border-radius:8px;box-shadow:0 16px 36px -18px rgba(22,38,58,.5)}
+.cards span{display:flex;gap:6px;align-items:center;margin-top:10px;font-size:13px;color:var(--mute)}
+.cards .no{color:var(--red)}
+.share{margin-top:26px}
+@media(max-width:860px){.cards{grid-template-columns:1fr 1fr}.cards a:last-child{grid-column:span 2}}
+
+/* 联系 */
+.meet{padding:100px 0 120px;text-align:center}
+.meet .qr{width:220px;margin:30px auto 0;background:#fff;padding:12px;border-radius:10px;box-shadow:0 16px 40px -18px rgba(22,38,58,.45)}
+.meet p{color:var(--mute);margin-top:14px}
+.meet .note{font-size:13px}
+footer{background:var(--navy);color:#9FB0C0;font-size:13px;padding:26px 24px 96px;display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:center}
+footer a{color:#DCE6EE;text-decoration:none}
+.dock{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:20;display:none;gap:10px;padding:8px;border-radius:999px;background:rgba(22,38,58,.95);backdrop-filter:blur(8px);box-shadow:0 10px 30px rgba(22,38,58,.35);transition:transform .3s,opacity .3s}
+.dock a{flex:1;text-align:center;text-decoration:none;color:#fff;font:700 14px/1 var(--sans);padding:12px 0;border-radius:999px}
+.dock a.main{background:var(--red)}
+.dock.hide{transform:translateY(140%);opacity:0}
+@media(max-width:860px){.dock{display:flex}}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--navy);color:#fff;padding:10px 18px;border-radius:999px;font-size:14px;z-index:30;opacity:0;transition:opacity .3s;pointer-events:none}
+.toast.on{opacity:1}
+</style>
+</head>
+<body id="top">
+
+<header class="bar" id="bar">
+  <a class="home" href="../"><img src="../img/logo-icon.png" alt="">边玩边赚</a>
+  <a class="btn" href="#meet">加微信</a>
+</header>
+
+<section class="hero">
+  <div class="pic" role="img" aria-label="千百合在卡萨布兰卡海边，身穿红衣，手里拿着《边玩边赚》"></div>
+  <div class="txt">
+    <p class="hi">卡萨布兰卡 · 2026 年 4 月</p>
+    <h1><span>放得下，</span><span>走得开。</span></h1>
+    <p class="me">千百合<small>Lily · 达拉斯</small></p>
+    <p class="roles">边玩边赚联合创始人 · 老板 IP 商业重构师 · 20+ 畅销书出品人/译者</p>
+    <div class="row"><a class="btn" href="#story">读我的故事</a><a class="btn line" href="#ask">问自己一句话</a></div>
+  </div>
+</section>
+
+<section class="pass-wrap" aria-label="千百合的登机牌">
+  <div class="w">
+    <div class="pass">
+      <div class="main">
+        <div class="head"><span>边玩边赚 · 今天遇见谁</span><b>入场券 №01</b></div>
+        <div class="route">
+          <div><div class="k">出发</div><div class="v">守着一间办公室</div></div>
+          <div class="plane" aria-hidden="true">✈</div>
+          <div class="to"><div class="k">到达</div><div class="v">人生百国</div></div>
+        </div>
+        <div class="stats">
+          <div><b>54 / 100</b><span>走过的国家，还有 46 个在前头</span></div>
+          <div><b>20+</b><span>出品、翻译的畅销书</span></div>
+          <div><b>8 个时区</b><span>百位作者一起出书</span></div>
+          <div><b>100+</b><span>亲手做的 AI 智能体</span></div>
+        </div>
+      </div>
+      <div class="stub">
+        <div><div class="k">乘客</div><div class="v">千百合 Lily</div></div>
+        <div><div class="k">行李</div><div class="v">一只冰川蓝的箱子</div></div>
+        <div class="seat">01</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="card">
+  <div class="w">
+    <a href="card.jpg" target="_blank"><img src="card.jpg" alt="千百合的人生卡" loading="lazy"></a>
+    <div>
+      <span class="tag"><span class="no">①</span>人生卡</span>
+      <h2>你好，我是千百合</h2>
+      <p>哈尔滨双城长大。为了一个自由梦，退学出国；后来自己开公司，一周七天、从早到晚。</p>
+      <p>现在一个手机、一台电脑，世界就是我的办公室。我和边玩边赚的一百多位作者，一起写书、一起玩、一起赚。</p>
+      <p class="small">这张卡上的二维码，就通到这一页。</p>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="w">
+    <div class="grid">
+      <div class="read">
+        <span class="tag">书 5《走遍世界，活成自己》· №01</span>
+        <h2>走得开</h2>
+        <p class="lead">从守着一间办公室，到人生百国</p>
+        <p>宝贝女儿在外地上学。那年她放假回来看我。我到机场把她接上，没直接回家，先带她去了办公室——那儿还有一堆事等着。</p>
+        <p>接下来几天，不光我忙，我把她的日子也安排得满满的。终于有一天，她忍不住了：</p>
+        <p class="q">「妈咪，你帮我安排这安排那，也没问问我的感受。你啥时候能陪陪我呀？」</p>
+        <p>我抬头看她，她两眼泪汪汪。我的眼泪也下来了。那天晚上我问自己：我这么忙，为的是啥？</p>
+        <p class="big">我不是忙。<br>我是走不开。</p>
+        <p>后来，我把手上的活儿一件一件交出去。先是一位印度的虚拟助理，后来她带起一个团队，散在好几个国家，二十四小时连着转。等我再抬头，出一趟门就是一个月、四十五天。天没塌。</p>
+        <div class="player">
+          <span class="no">⑩</span>
+          <div><b>听我讲完这个故事</b><span class="s">有声书 · 16 分钟 · 路上、睡前都能听</span></div>
+          <audio src="audiobook.mp3" controls preload="none"></audio>
+        </div>
+        <div class="method" aria-label="三步，走得开">
+          <div><b>一看</b><span>今天干了什么，从早到晚过一遍</span></div>
+          <div><b>二问</b><span>挨个问出声：这件事，没有我，行不行？</span></div>
+          <div><b>三换</b><span>换下来的时间，拿去做真得我来的那一件</span></div>
+        </div>
+      </div>
+      <aside>
+        <a href="ebook-zh.pdf" target="_blank"><img src="ebook-cover.jpg" alt="电子书《走得开》封面" loading="lazy"></a>
+        <div>
+          <span class="tag" style="margin-top:14px"><span class="no">②</span>电子书 · 中英双版</span>
+          <div class="row"><a class="btn" href="ebook-zh.pdf" download>下载中文版</a><a class="btn line" href="ebook-en.pdf" download>English</a></div>
+          <p>书 4 里还有一篇《活成你》：<a href="book4-zh.pdf" download>中文</a> · <a href="book4-en.pdf" download>English</a></p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="ask" id="ask">
+  <div class="w n">
+    <h2>这件事，没有我，<br>行不行？</h2>
+    <p class="lead">这二十多年，我就靠着这一句话走到今天。你也试一试：写下今天手上的一件事，问出声。</p>
+    <form id="f" autocomplete="off">
+      <input id="task" maxlength="40" placeholder="比如：回客户消息、做月报、管孩子作业" aria-label="写下一件你今天做的事">
+      <button class="btn" type="submit">问一问</button>
+    </form>
+    <div class="q2" id="q2" hidden>
+      <p>「<em id="tname"></em>」，没有你，行不行？</p>
+      <div class="opts">
+        <button type="button" data-a="0">行，不做也行</button>
+        <button type="button" data-a="1">别人也能做</button>
+        <button type="button" data-a="2">AI 能做</button>
+        <button type="button" data-a="3">真得我来</button>
+      </div>
+    </div>
+    <ul class="list" id="list"></ul>
+    <p class="sum" id="sum" hidden></p>
+  </div>
+</section>
+
+<section class="lines" id="quotes">
+  <div class="w">
+    <h2>书里的几句话</h2>
+    <p class="lead">点开视频，或者把图存下来，发给那个走不开的朋友。</p>
+    <div class="strip">
+      <figure><img src="q2.jpg" alt="金句：我不是忙，我是走不开" loading="lazy"><figcaption><span class="no">⑦</span>金句海报</figcaption></figure>
+      <figure><video src="14-2.mp4" poster="14-2.jpg" controls playsinline preload="none"></video><figcaption><span class="no">⑭</span>金句短视频</figcaption></figure>
+      <figure><img src="q1.jpg" alt="金句：这件事，没有我，行不行" loading="lazy"><figcaption><span class="no">⑦</span>金句海报</figcaption></figure>
+      <figure><video src="14-5.mp4" poster="14-5.jpg" controls playsinline preload="none"></video><figcaption><span class="no">⑭</span>金句短视频</figcaption></figure>
+      <figure><img src="q3.jpg" alt="金句：困住我的从来不是那些事" loading="lazy"><figcaption><span class="no">⑦</span>金句海报</figcaption></figure>
+      <figure><video src="14-1.mp4" poster="14-1.jpg" controls playsinline preload="none"></video><figcaption><span class="no">⑭</span>金句短视频</figcaption></figure>
+      <figure><img src="q5.jpg" alt="金句：世界就是我的办公室" loading="lazy"><figcaption><span class="no">⑦</span>金句海报</figcaption></figure>
+      <figure><video src="14-3.mp4" poster="14-3.jpg" controls playsinline preload="none"></video><figcaption><span class="no">⑭</span>金句短视频</figcaption></figure>
+      <figure><img src="q4.jpg" alt="金句：我没早生多少，只是早上场了一步" loading="lazy"><figcaption><span class="no">⑦</span>金句海报</figcaption></figure>
+      <figure><video src="14-4.mp4" poster="14-4.jpg" controls playsinline preload="none"></video><figcaption><span class="no">⑭</span>金句短视频</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="watch" id="watch">
+  <div class="w">
+    <h2>看一看这一路</h2>
+    <div class="grid">
+      <figure class="wide"><video src="15.mp4" poster="15.jpg" controls playsinline preload="none"></video><figcaption><span class="no">⑮</span>故事短片 · 20 秒</figcaption></figure>
+      <figure class="tall"><video src="16.mp4" poster="16.jpg" controls playsinline preload="none"></video><figcaption><span class="no">⑯</span>人生动画</figcaption></figure>
+    </div>
+    <div class="talk">
+      <a href="talk.html" target="_blank"><img src="talk.jpg" alt="演讲 PPT《走得开》第一页" loading="lazy"></a>
+      <div>
+        <span class="tag"><span class="no">③</span>演讲 PPT + 讲稿</span>
+        <b>三分钟，把这个故事讲给一屋子人听</b>
+        <p>12 页，浏览器打开就能讲。按 N 看讲稿，左右键翻页。</p>
+        <div class="row"><a class="btn" href="talk.html" target="_blank">打开演讲</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stamps" id="eighteen">
+  <div class="w">
+    <h2>一篇故事，盖了十八个章</h2>
+    <p class="lead">边玩边赚的「十八般武艺」：把一篇故事，变成十八样能用的东西。红章是已经到站的，虚线是下一站。</p>
+    <ul class="sgrid">
+      <li><a href="card.jpg" target="_blank"><b>①</b><strong>人生卡</strong></a></li>
+      <li><a href="#story"><b>②</b><strong>电子书</strong><small>中英双版</small></a></li>
+      <li><a href="talk.html" target="_blank"><b>③</b><strong>演讲 PPT</strong><small>带讲稿</small></a></li>
+      <li><a href="poster.jpg" target="_blank"><b>④</b><strong>自我介绍海报</strong></a></li>
+      <li><div><b>⑤</b><strong>故事配图</strong><small>下一站</small></div></li>
+      <li><div><b>⑥</b><strong>个人写真</strong><small>下一站</small></div></li>
+      <li><a href="#quotes"><b>⑦</b><strong>金句海报</strong><small>5 张</small></a></li>
+      <li><a href="moments.jpg" target="_blank"><b>⑧</b><strong>朋友圈封面</strong></a></li>
+      <li><div><b>⑨</b><strong>声音名片</strong><small>下一站</small></div></li>
+      <li><a href="#story"><b>⑩</b><strong>有声书</strong><small>16 分钟</small></a></li>
+      <li><div><b>⑪</b><strong>双人播客</strong><small>下一站</small></div></li>
+      <li><div><b>⑫</b><strong>主题曲</strong><small>下一站</small></div></li>
+      <li><div><b>⑬</b><strong>数字人</strong><small>下一站</small></div></li>
+      <li><a href="#quotes"><b>⑭</b><strong>金句短视频</strong><small>5 条</small></a></li>
+      <li><a href="#watch"><b>⑮</b><strong>故事短片</strong></a></li>
+      <li><a href="#watch"><b>⑯</b><strong>人生动画</strong></a></li>
+      <li><div><b>⑰</b><strong>故事智能体</strong><small>下一站</small></div></li>
+      <li><a href="#top"><b>⑱</b><strong>个人主页</strong><small>就是这一页</small></a></li>
+    </ul>
+    <div class="legend"><span><i></i>已到站 · 11 样</span><span><i class="d"></i>下一站 · 7 样</span></div>
+    <div class="yours">
+      <div><b>你的故事，也可以盖满十八个章</b><p>先写一篇，剩下的，我们一起做。</p></div>
+      <a class="btn" href="../../18/">看看十八般武艺</a>
+    </div>
+  </div>
+</section>
+
+<section class="together" id="together">
+  <div class="w">
+    <h2>换下来的时间，<br>我拿来做这几件事</h2>
+    <p class="lead">都是「真得我来」的事。你要是也有兴趣，我们可以一起。</p>
+    <div class="doors">
+      <a href="../../laugh/"><span class="k">一起出书 · 书 6 正在招募</span><b>《穿过悲欢，笑答人生》</b><p>一百多位普通人，已经一起写了五本书。下一本，可以有你的一篇。</p><span class="go">看看怎么一起写</span></a>
+      <a href="#meet"><span class="k">老板 IP · 商业重构</span><b>把能力变资产，把经验变产品</b><p>给成熟的创业者和企业主，一对一。先聊，再定。</p><span class="go">加微信，先聊一次</span></a>
+      <a href="../../agent.html"><span class="k">课程</span><b>人人都能做 AI 智能体</b><p>我交给 AI 的那些事，你也可以。从第一个智能体开始。</p><span class="go">看看这门课</span></a>
+      <a href="../../island/"><span class="k">包下一座岛</span><b>五天，和边玩边赚的大家庭一起去玩</b><p>走哪条路、住在哪里、到了岛上做什么，我自己去踩点、自己设计。</p><span class="go">看看这座岛</span></a>
+    </div>
+    <ol class="steps">
+      <li><b>加微信</b><span>备注「官网」，说说你想聊哪一件</span></li>
+      <li><b>聊一次，不付款</b><span>先听你的事，看看合不合适</span></li>
+      <li><b>合适了，再开始</b><span>出书、重构、上课、上岛，按你的节奏来</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="books" id="books">
+  <div class="w">
+    <div class="top">
+      <img src="../img/lily-beach.jpg" alt="千百合在海边" loading="lazy">
+      <div>
+        <h2>向我预约一本<br>亲笔签名书</h2>
+        <p class="lead">边玩边赚书系五本，每一本的第 01 篇都是我写的。加微信，告诉我你要哪一本、写给谁，我签好寄给你。</p>
+        <div class="row"><a class="btn red" href="#meet">加微信，预约签名书</a></div>
+      </div>
+    </div>
+    <div class="shelf">
+      <figure><img src="../img/cover1.webp" alt="边玩边赚 第一本" loading="lazy"><figcaption><b>边玩边赚，不是梦想，而是现实</b>第一本 · AI 时代的自由人生</figcaption></figure>
+      <figure><img src="../img/cover2.webp" alt="边玩边赚 第二本" loading="lazy"><figcaption><b>先上场</b>第二本 · 人人都能做 AI 智能体</figcaption></figure>
+      <figure><img src="../img/cover3.webp" alt="边玩边赚 第三本" loading="lazy"><figcaption><b>钱顺了</b>第三本 · AI 时代的财富思维</figcaption></figure>
+      <figure><img src="../img/cover4.webp" alt="边玩边赚 第四本" loading="lazy"><figcaption><b>活成你</b>第四本 · AI 时代的个人品牌<br><a href="book4-zh.pdf" download>先读这一篇</a></figcaption></figure>
+      <figure><img src="../img/cover5.webp" alt="边玩边赚 第五本" loading="lazy"><figcaption><b>走得开</b>第五本 · 走遍世界，活成自己<br><a href="ebook-zh.pdf" download>先读这一篇</a></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="take">
+  <div class="w">
+    <h2>带走一张我</h2>
+    <p class="lead">点开大图，长按保存。转给朋友，就是一张名片。</p>
+    <div class="cards">
+      <a href="card.jpg" target="_blank"><img src="card.jpg" alt="千百合的人生卡" loading="lazy"><span><span class="no">①</span>人生卡</span></a>
+      <a href="poster.jpg" target="_blank"><img src="poster.jpg" alt="千百合的自我介绍海报" loading="lazy"><span><span class="no">④</span>自我介绍海报</span></a>
+      <a href="moments.jpg" target="_blank"><img src="moments.jpg" alt="千百合的朋友圈封面" loading="lazy"><span><span class="no">⑧</span>朋友圈封面</span></a>
+    </div>
+    <button class="btn line share" type="button" id="share">把这一页转给一位朋友</button>
+  </div>
+</section>
+
+<section class="meet" id="meet">
+  <div class="w n">
+    <h2>扫码，走近千百合</h2>
+    <img class="qr" src="../img/lily-wechat.png" alt="千百合的微信二维码">
+    <p>预约签名书、一起出书、聊聊老板 IP 和商业重构，都可以。</p>
+    <p class="note">在微信里打开，长按二维码识别。加的时候请备注「官网」。</p>
+  </div>
+</section>
+
+<footer>
+  <a href="../">边玩边赚</a><a href="../#stars">作者雨林</a><a href="../../18/">十八般武艺</a><span>⑱ 个人主页 · playandprosper.com/lily</span>
+</footer>
+
+<nav class="dock" id="dock" aria-label="快速联系">
+  <a href="#books">预约签名书</a><a class="main" href="#meet">加微信</a>
+</nav>
+
+<script>
+(function(){
+  var bar=document.getElementById('bar'),dock=document.getElementById('dock'),meet=document.getElementById('meet');
+  function f(){
+    bar.classList.toggle('on',scrollY>window.innerHeight*.5);
+    dock.classList.toggle('hide',scrollY<window.innerHeight*.6||meet.getBoundingClientRect().top<window.innerHeight);
+  }
+  addEventListener('scroll',f,{passive:true});f();
+
+  // 一看 · 二问 · 三换
+  var A=['行——那就别做了','别人也行——那就让别人做','没人可让——那就让 AI 做','真得我来——那是你的本事'];
+  var form=document.getElementById('f'),inp=document.getElementById('task'),q2=document.getElementById('q2'),tn=document.getElementById('tname'),list=document.getElementById('list'),sum=document.getElementById('sum'),cur='',n=[0,0,0,0];
+  form.addEventListener('submit',function(e){e.preventDefault();cur=inp.value.trim();if(!cur){inp.focus();return}tn.textContent=cur;q2.hidden=false;q2.querySelector('button').focus()});
+  q2.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){
+    var k=+b.dataset.a;n[k]++;
+    var li=document.createElement('li');if(k===3)li.className='keep';
+    var d=document.createElement('div');d.textContent=cur;var s=document.createElement('span');s.textContent=A[k];
+    li.appendChild(d);li.appendChild(s);list.appendChild(li);
+    q2.hidden=true;inp.value='';inp.focus();
+    var out=n[0]+n[1]+n[2],t='';
+    if(out>0){t='你换出了 '+out+' 件事。换下来的时间，拿去做「真得我来」的那一件。';
+      if(n[2]>0)t+=' 要交给 AI 的那几件，可以从<a href="../../agent.html">做你的第一个智能体</a>开始。';
+      else if(n[1]>0)t+=' 交给别人之前，先把做法写成一条规矩，以后照规矩办。';}
+    else t='都是「真得我来」？那就再问一句：哪一步最费时间？那一步，没有我，行不行？';
+    if(n[0]+n[1]+n[2]+n[3]>=3)t+=' 想把整个摊子都这样过一遍，<a href="#meet">加我微信聊聊</a>。';
+    sum.innerHTML=t;sum.hidden=false;
+  })});
+
+  var toast=document.createElement('div');toast.className='toast';document.body.appendChild(toast);
+  function say(s){toast.textContent=s;toast.classList.add('on');setTimeout(function(){toast.classList.remove('on')},2200)}
+  document.getElementById('share').addEventListener('click',function(){
+    var u=location.href.split('#')[0],d={title:'千百合 · 放得下，走得开',text:'推荐你认识千百合：从守着一间办公室，到人生百国。',url:u};
+    if(navigator.share){navigator.share(d).catch(function(){});return}
+    if(navigator.clipboard){navigator.clipboard.writeText(d.text+' '+u).then(function(){say('链接已复制，去微信粘贴给朋友')},function(){say('长按地址栏复制链接')})}
+    else say('点右上角「…」，转发给朋友');
+  });
+})();
+</script>
+</body>
+</html>
