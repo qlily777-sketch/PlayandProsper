@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>万可 · 万事可成 | 边玩边赚</title>
+<meta name="description" content="万可，「万事可成」养成系创始人，前上海英文杂志主编，边玩边赚书 3、书 4 作者。24 岁那年，她在纸上写下两个字：万可。">
+<meta property="og:title" content="万可 · 我要万事皆可，万事可成">
+<meta property="og:description" content="「万事可成」养成系创始人 · 前上海英文杂志主编 · 边玩边赚书系作者">
+<meta property="og:image" content="https://www.playandprosper.com/v2/wanke/card.jpg">
+<meta name="theme-color" content="#F6EEE1">
+<link rel="icon" href="../img/logo-icon.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"万可","jobTitle":"「万事可成」养成系创始人","description":"前上海英文杂志主编，6本畅销书作者/译者。52岁获全国自由潜一金一银，53岁用AI把半生积累搭成课程和智能体。边玩边赚书3、书4作者。","url":"https://www.playandprosper.com/wanke/","memberOf":{"@type":"Organization","name":"边玩边赚 Play and Prosper","url":"https://www.playandprosper.com/"}}</script>
+<style>
+:root{
+  --paper:#F6EEE1;   /* 秋日纸色 */
+  --paper2:#EFE2CD;
+  --cream:#FBF7F0;
+  --ink:#3A2A1E;     /* 深茶 */
+  --ink2:#6B5644;
+  --amber:#B97A2E;   /* 普洱/秋叶 */
+  --leaf:#A8462E;    /* 枫红 */
+  --lake:#4F7488;    /* 雪山湖色 */
+  --line:#E2D2B8;
+  --serif:"Songti SC","STSong","Noto Serif SC","Noto Serif CJK SC","Source Han Serif SC",serif;
+  --sans:-apple-system,"PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.8}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--leaf);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+.w{max-width:1040px;margin:0 auto;padding:0 24px}
+.n{max-width:660px}
+section{padding:88px 0}
+h2{font-family:var(--serif);font-weight:700;font-size:clamp(26px,4.4vw,36px);line-height:1.4;letter-spacing:.04em}
+.kick{display:block;font-size:13px;letter-spacing:.18em;color:var(--amber);margin-bottom:12px}
+.lead{color:var(--ink2);margin-top:12px}
+.btn{display:inline-block;font:700 15px/1 var(--sans);text-decoration:none;padding:14px 22px;border-radius:999px;background:var(--ink);color:var(--cream);border:1.5px solid var(--ink);cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn:hover{background:var(--leaf);border-color:var(--leaf);color:#fff}
+
+/* 顶栏 */
+.bar{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:12px 20px;transition:background .3s}
+.bar.on{background:rgba(246,238,225,.94);backdrop-filter:blur(8px);box-shadow:0 1px 0 var(--line)}
+.bar a.home{display:flex;align-items:center;gap:8px;text-decoration:none;font:700 15px var(--serif)}
+.bar a.home img{width:24px;height:24px}
+.bar .btn{padding:9px 16px;font-size:14px}
+
+/* 第一屏 */
+.hero{position:relative;min-height:100svh;padding:0;overflow:hidden;
+  background:radial-gradient(circle at 72% 38%,#F3D9A8 0,#F1DEBC 18%,rgba(246,238,225,0) 46%),linear-gradient(180deg,#F9F1E3,var(--paper))}
+.hero .w{display:grid;grid-template-columns:1.05fr .95fr;align-items:end;min-height:100svh}
+.hero .txt{padding:120px 0 80px}
+.hero .who{font-size:14px;color:var(--ink2);letter-spacing:.08em}
+.hero h1{font-family:var(--serif);font-size:clamp(68px,12vw,128px);line-height:1;letter-spacing:.08em;margin:14px 0 18px}
+.hero h1 small{display:block;font-size:15px;letter-spacing:.06em;font-family:var(--sans);font-weight:400;color:var(--ink2);margin-top:14px;line-height:1.7}
+.hero .vow{font-family:var(--serif);font-size:clamp(22px,3.2vw,30px);line-height:1.6;color:var(--leaf);margin:26px 0 22px}
+.hero ul{list-style:none;display:grid;gap:6px;margin-bottom:30px;font-size:15px}
+.hero li{padding-left:18px;position:relative}
+.hero li:before{content:"";position:absolute;left:0;top:.75em;width:8px;height:8px;border-radius:50%;background:var(--amber)}
+.hero .row{display:flex;gap:12px;flex-wrap:wrap}
+.hero .pic{align-self:end;display:flex;justify-content:center}
+.hero .pic img{max-height:88svh;width:auto;filter:drop-shadow(0 24px 30px rgba(58,42,30,.18))}
+@media (max-width:760px){
+  .hero .w{grid-template-columns:1fr;align-items:start}
+  .hero .txt{padding:96px 0 0;order:1}
+  .hero .pic{order:2;margin-top:-10px}
+  .hero .pic img{max-height:62svh}
+}
+
+/* 自我介绍 */
+.intro{background:var(--cream);padding:72px 0}
+.intro p{font-family:var(--serif);font-size:clamp(18px,2.4vw,21px);line-height:2}
+.intro .tail{margin-top:18px;color:var(--leaf);letter-spacing:.12em}
+
+/* 人生卡 */
+.card .w{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.card .img{position:relative}
+.card .img img{width:100%;max-width:420px;margin:0 auto;border-radius:14px;box-shadow:0 30px 60px rgba(58,42,30,.22);cursor:zoom-in}
+.card .no{display:inline-grid;place-items:center;width:22px;height:22px;border:1px solid currentColor;border-radius:50%;font-size:12px;margin-right:6px;vertical-align:1px}
+.card p{margin-top:14px}
+.card .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.card .small{font-size:14px;color:var(--ink2)}
+@media (max-width:760px){.card .w{grid-template-columns:1fr;gap:36px}}
+
+/* 两个名字 */
+.names{background:var(--ink);color:var(--cream)}
+.names .kick{color:#E2B46F}
+.names .lead{color:#D8C8B3}
+.names .pair{display:flex;align-items:center;gap:18px;font-family:var(--serif);font-size:clamp(34px,6vw,56px);margin:30px 0 8px}
+.names .pair s{color:#8E7A66;text-decoration-thickness:2px}
+.names .pair i{font-style:normal;font-size:.5em;color:#8E7A66}
+.names .pair b{color:#F0C27B}
+.road{list-style:none;margin-top:48px;position:relative}
+.road:before{content:"";position:absolute;left:58px;top:8px;bottom:8px;border-left:1.5px dashed #7A6552}
+.road li{display:grid;grid-template-columns:58px 1fr;gap:26px;padding:12px 0;position:relative}
+.road li:after{content:"";position:absolute;left:53px;top:22px;width:11px;height:11px;border-radius:50%;background:var(--ink);border:2px solid #E2B46F}
+.road li.big:after{background:#F0C27B}
+.road .age{font-family:var(--serif);color:#E2B46F;text-align:right;padding-right:18px;font-size:15px;padding-top:4px}
+.road b{display:block;font-family:var(--serif);font-size:19px;font-weight:700}
+.road span{color:#D8C8B3;font-size:15px}
+
+/* 书里的两篇 */
+.books{background:var(--paper)}
+.essay{display:grid;grid-template-columns:200px 1fr;gap:44px;margin-top:56px;padding-top:56px;border-top:1px solid var(--line)}
+.essay:first-of-type{border-top:0;padding-top:0}
+.essay .cv img{width:100%;border-radius:4px;box-shadow:0 14px 30px rgba(58,42,30,.2)}
+.essay .cv small{display:block;text-align:center;margin-top:12px;color:var(--ink2);font-size:13px}
+.essay h3{font-family:var(--serif);font-size:clamp(24px,3.4vw,30px);line-height:1.4}
+.essay .sub{color:var(--ink2);font-size:14px;margin-top:6px}
+.essay .body p{margin-top:16px;font-family:var(--serif);font-size:17px;line-height:2}
+.essay .more{display:none}
+.essay.open .more{display:block}
+.essay blockquote{margin:26px 0 0;padding:18px 22px;border-left:3px solid var(--leaf);background:var(--cream);font-family:var(--serif);font-size:20px;line-height:1.7}
+.essay .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:24px}
+.essay .row .end{font-size:14px;color:var(--ink2)}
+@media (max-width:760px){.essay{grid-template-columns:1fr;gap:24px}.essay .cv{max-width:160px}}
+
+/* 她的玩 */
+.play{background:var(--cream)}
+.play .grid{display:grid;grid-template-columns:1.3fr 1fr;gap:16px;margin-top:40px}
+.play figure{position:relative;border-radius:12px;overflow:hidden}
+.play figure img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
+.play figcaption{position:absolute;left:0;right:0;bottom:0;padding:30px 18px 14px;color:#fff;font-size:14px;background:linear-gradient(transparent,rgba(0,0,0,.55))}
+.play .line{margin-top:34px;font-family:var(--serif);font-size:clamp(19px,2.6vw,23px);line-height:1.8;color:var(--lake)}
+.play .line small{display:block;font-family:var(--sans);font-size:13px;color:var(--ink2);margin-top:6px}
+@media (max-width:760px){.play .grid{grid-template-columns:1fr}}
+
+/* 足迹 */
+.trail .w{display:grid;grid-template-columns:320px 1fr;gap:48px;align-items:center}
+.trail video{width:100%;border-radius:14px;background:#000;box-shadow:0 20px 44px rgba(58,42,30,.22)}
+.trail .doing{margin-top:22px;padding:18px 20px;border:1px solid var(--line);border-radius:12px;background:var(--cream)}
+.trail .doing b{font-family:var(--serif);font-size:18px}
+@media (max-width:760px){.trail .w{grid-template-columns:1fr}.trail video{max-width:300px;margin:0 auto}}
+
+/* 一个小练习 */
+.ask{background:linear-gradient(180deg,var(--paper2),var(--paper));text-align:center}
+.ask h2{font-size:clamp(24px,4vw,34px)}
+.ask .steps{margin:26px auto 0;max-width:520px;text-align:left;color:var(--ink2)}
+.ask form{margin:26px auto 0;max-width:520px;display:grid;gap:12px}
+.ask textarea{width:100%;min-height:96px;padding:14px 16px;border:1.5px solid var(--line);border-radius:12px;background:#fff;font:16px/1.7 var(--sans);color:var(--ink);resize:vertical}
+.ask textarea:focus{outline:none;border-color:var(--amber)}
+.mine{margin:30px auto 0;max-width:420px;padding:34px 28px;border-radius:16px;background:var(--cream);box-shadow:0 18px 40px rgba(58,42,30,.15);text-align:left;position:relative}
+.mine .big{font-family:var(--serif);font-size:44px;color:var(--leaf);letter-spacing:.1em}
+.mine p{font-family:var(--serif);font-size:18px;margin-top:10px;white-space:pre-wrap}
+.mine small{display:block;margin-top:20px;color:var(--ink2);font-size:13px}
+.ask .hint{font-size:13px;color:var(--ink2);margin-top:12px}
+
+/* 走近她 */
+.meet{background:var(--ink);color:var(--cream);text-align:center}
+.meet h2{color:#F0C27B}
+.meet .qr{width:220px;margin:28px auto 18px;border-radius:12px;background:#fff;padding:12px}
+.meet .note{font-size:14px;color:#D8C8B3;margin-top:10px}
+.meet .ways{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:22px}
+.meet .ways span{border:1px solid #6E5A47;border-radius:999px;padding:6px 14px;font-size:14px}
+
+footer{background:#2C2016;color:#BDA98F;font-size:13px;padding:30px 24px 110px;text-align:center;line-height:2}
+footer a{color:#F0C27B;text-decoration:none}
+footer .you{display:block;margin-top:8px;font-size:15px;color:#E8DCCB}
+
+/* 底部浮条 */
+.dock{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:20;display:flex;gap:8px;padding:6px;border-radius:999px;background:rgba(58,42,30,.94);box-shadow:0 10px 30px rgba(0,0,0,.25);transition:opacity .3s,transform .3s}
+.dock a{color:var(--cream);text-decoration:none;font-size:14px;padding:10px 16px;border-radius:999px;white-space:nowrap}
+.dock a.main{background:var(--leaf);font-weight:700}
+.dock.hide{opacity:0;pointer-events:none;transform:translate(-50%,20px)}
+
+/* 大图 */
+.lb{position:fixed;inset:0;z-index:40;background:rgba(20,14,10,.92);display:none;align-items:center;justify-content:center;flex-direction:column;padding:20px}
+.lb.on{display:flex}
+.lb img{max-height:84vh;width:auto;border-radius:10px}
+.lb p{color:#E8DCCB;font-size:14px;margin-top:12px}
+.toast{position:fixed;left:50%;top:20px;transform:translate(-50%,-80px);background:var(--ink);color:#fff;padding:10px 18px;border-radius:999px;font-size:14px;z-index:50;transition:transform .3s}
+.toast.on{transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+
+<header class="bar" id="bar">
+  <a class="home" href="../"><img src="../img/logo-icon.png" alt="">边玩边赚</a>
+  <a class="btn" href="#meet">加万可微信</a>
+</header>
+
+<!-- 1 · 认出她 -->
+<section class="hero">
+  <div class="w">
+    <div class="txt">
+      <span class="who">边玩边赚书系作者 · 书 3 · 书 4</span>
+      <h1>万可<small>「万事可成」养成系创始人<br>前上海英文杂志主编</small></h1>
+      <p class="vow">我要万事皆可，<br>万事可成。</p>
+      <ul>
+        <li>帮 35+ 女性用真实活法，重建身心秩序</li>
+        <li>52 岁获全国自由潜一金一银，破广东省纪录</li>
+        <li>「万事可成」养成系终身践行者</li>
+      </ul>
+      <div class="row">
+        <a class="btn" href="#books">读她写的故事</a>
+        <a class="btn ghost" href="#card">看她的人生卡</a>
+      </div>
+    </div>
+    <div class="pic"><img src="hero.png" alt="万可的形象照：黑色上衣，肩上搭着一件针织衫"></div>
+  </div>
+</section>
+
+<!-- 2 · 她自己说 -->
+<section class="intro">
+  <div class="w n">
+    <span class="kick">她 自 己 说</span>
+    <p>前上海英文杂志主编，6 本畅销书作者 / 译者。用西方循证科学与东方佛道智慧，把自己从更年期失眠崩溃里修好，融成一套「万事可成养成系」。52 岁站上全国自由潜领奖台，53 岁用 AI 把半生积累搭成课程和智能体，陪更多女性从焦虑、身体困扰里走出来。</p>
+    <p class="tail">不讨好，不设限，不着急。用生命影响生命。</p>
+  </div>
+</section>
+
+<!-- 3 · 人生卡 -->
+<section class="card" id="card">
+  <div class="w">
+    <div class="img"><img src="card.jpg" alt="万可的人生卡：今天遇见谁 · 书 4 · 11" id="cardImg"></div>
+    <div>
+      <span class="kick">今 天 遇 见 谁 · 书 4 · №11</span>
+      <h2><span class="no">①</span>万可的人生卡</h2>
+      <p>24 岁生日那天，在丽江自己的咖啡馆里，田方在纸上写下两个字：万可。</p>
+      <p>她卖掉咖啡馆去转山；后来在上海，从校对每一处餐厅的地址和电话开始，做到了英文杂志主编。</p>
+      <p>「田方」和「万可」，是两种活法：一种按别人写好的剧本走，一种自己拿起笔，写自己的剧本。</p>
+      <div class="row">
+        <button class="btn" type="button" id="cardOpen">看大图 · 长按保存</button>
+        <button class="btn ghost" type="button" id="share">转给一位朋友</button>
+      </div>
+      <p class="small">这张卡上的二维码，就通到这一页。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · 两个名字，一条路 -->
+<section class="names">
+  <div class="w n">
+    <span class="kick">两 个 名 字 · 两 种 活 法</span>
+    <div class="pair"><s>田方</s><i>→</i><b>万可</b></div>
+    <p class="lead">父母取名田方，妹妹叫田圆，取的是「没有规矩，不成方圆」。她不要做规矩里的人。下面每一站，都是她写进书里的。</p>
+    <ol class="road">
+      <li><span class="age">8 岁</span><div><b>门口铺一块塑料布，开租书摊</b><span>一分钱看一本。挣来的钱不买吃的，攒着买新书。</span></div></li>
+      <li><span class="age">18 岁</span><div><b>放弃保送上海外国语大学的名额</b><span>「书以后还能读，眼下挣钱养家才是正事。」</span></div></li>
+      <li class="big"><span class="age">24 岁</span><div><b>在丽江的咖啡馆，写下两个字：万可</b><span>然后卖掉咖啡馆，用两个月去转山。</span></div></li>
+      <li><span class="age">上海</span><div><b>从校对餐厅地址，做到英文杂志主编</b><span>一位美国主编只跟她聊了五分钟，就做了决定。</span></div></li>
+      <li><span class="age">大理</span><div><b>开了「墨龙欢乐厨房」</b><span>学员说：来你身边待一天吸取的能量，够我回去用一个月。</span></div></li>
+      <li><span class="age">50 岁</span><div><b>一个早上，毛巾拧不动了</b><span>一头扎进去自学，啃下美国运动协会 ACE 三门全英文课程。</span></div></li>
+      <li class="big"><span class="age">52 岁</span><div><b>全国自由潜一金一银，破广东省纪录</b><span>那个被更年期打乱的身体，被她自己修了回来。</span></div></li>
+      <li><span class="age">53 岁</span><div><b>用 AI 一口气搭了八个智能体</b><span>把学语言、做菜、带团队、为身体交过的学费，一样一样沉淀进去。</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 5 · 书里的两篇 -->
+<section class="books" id="books">
+  <div class="w">
+    <span class="kick">她 写 进 书 里 的</span>
+    <h2>两本书，两篇故事</h2>
+    <p class="lead">都是万可自己写的。这里放开头，全文在书里。</p>
+
+    <article class="essay" id="e4">
+      <div class="cv"><img src="../img/cover4.webp" alt="边玩边赚书 4 封面" loading="lazy"><small>书 4 · 第 11 篇</small></div>
+      <div class="body">
+        <h3>万事可成</h3>
+        <p class="sub">一个名字，用大半辈子把它活成现实</p>
+        <p>24 岁生日那天，我在丽江，我自己的咖啡馆里。</p>
+        <p>晚秋的风有点凉。木板门开着，旁边有河水潺潺流动。一束光从门缝透进来，落在原木色的桌上，暖洋洋的橘黄。音箱里放着巴赫的无伴奏大提琴组曲，手边是一杯普洱茶。</p>
+        <p>我在想一件事。我想改姓，跟着妈妈姓「万」。我觉得这个字特别棒，可以有无数可能。我甚至开玩笑说想叫「万岁」。我妈笑着说，你承担不起。</p>
+        <div class="more">
+          <p>没想多久，大概半个小时。我在纸上写下两个字：万可。</p>
+          <p>原来我叫田方，妹妹叫田圆——没有规矩，不成方圆。可我不要做规矩里的人。我要万事皆可，万事可成。</p>
+          <p>这个名字不是包装，是一个决心——我这辈子，不想活在别人划好的格子里。</p>
+        </div>
+        <blockquote>一种，是按别人写好的剧本走。另一种，是自己拿起笔，写自己的剧本。选了，就不回头。</blockquote>
+        <div class="row"><button class="btn ghost" type="button" data-open="e4">接着读</button><span class="end">后面的转山、上海、大理，在书 4 里。</span></div>
+      </div>
+    </article>
+
+    <article class="essay" id="e3">
+      <div class="cv"><img src="../img/cover3.webp" alt="边玩边赚书 3 封面" loading="lazy"><small>书 3 · 第 34 篇</small></div>
+      <div class="body">
+        <h3>我最贵的资产，是自己</h3>
+        <p class="sub">我用五十三年，活出了这个答案</p>
+        <p>昨晚，一位老朋友在群里发来一条消息。她给孩子报夏令营，几万块眼都没眨；轮到自己想报一门课，一万出头，却纠结了整整三个星期。她问：「我是不是太自私了？」</p>
+        <p>我盯着那行字看了很久。我太懂她了。</p>
+        <div class="more">
+          <p>这些年，她把为人妻母的角色都做到了满分，却唯独忘了，在成为所有这些角色之前，她首先是她自己。那个曾经也有好多梦想的姑娘，被弄丢了。</p>
+          <p>我回她：你不是自私，你是太久没为自己做过一个决定了。</p>
+        </div>
+        <blockquote>那些花在自己身上的钱和时间，终于长成了一棵可以帮别人的树。</blockquote>
+        <div class="row"><button class="btn ghost" type="button" data-open="e3">接着读</button><span class="end">八岁的租书摊、拧不动的毛巾、八个智能体，在书 3 里。</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- 6 · 她的玩 -->
+<section class="play">
+  <div class="w">
+    <span class="kick">她 的 「 玩 」</span>
+    <h2>攀岩、潜水、划桨，<br>五十多岁还在折腾</h2>
+    <div class="grid">
+      <figure><img src="climb.jpg" alt="万可在湖边的岩壁上攀岩" loading="lazy"><figcaption>攀岩</figcaption></figure>
+      <figure><img src="paddle.jpg" alt="万可站在桨板上" loading="lazy"><figcaption>桨板</figcaption></figure>
+    </div>
+    <p class="line">「如果每走一段路就有一个温泉可以泡，我可以走遍全世界。」<small>—— 书 4《万事可成》，写在梅里雪山转山路上</small></p>
+  </div>
+</section>
+
+<!-- 7 · 足迹 -->
+<section class="trail">
+  <div class="w">
+    <video src="gz.mp4" poster="gz.jpg" controls playsinline preload="none"></video>
+    <div>
+      <span class="kick">足 迹</span>
+      <h2>广州 · 新书发布会</h2>
+      <p class="lead">2026 年 10 月 6 日，边玩边赚全球新书发布会广州站。万可作为联合作者上台，讲她的故事。</p>
+      <div class="doing"><b>正在办读书会</b><p>把边玩边赚办到身边：书出来了，她又带着大家一起读。想一起读，加她时备注「读书会」。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 · 一个小练习 -->
+<section class="ask" id="ask">
+  <div class="w n">
+    <span class="kick">万 可 留 给 你 的 一 个 小 练 习</span>
+    <h2>该不该为自己，<br>花这一笔？</h2>
+    <p class="steps">如果你正为这件事犹豫——她说：写下三个字，「我值得」。然后再往下写一句，你已经用了多少年，去证明这件事。</p>
+    <form id="f" autocomplete="off">
+      <textarea id="t" maxlength="80" placeholder="比如：我已经用了二十年，把所有人都照顾好了。" aria-label="写下你的一句话"></textarea>
+      <button class="btn" type="submit">写好了</button>
+    </form>
+    <div class="mine" id="mine" hidden>
+      <div class="big">我值得。</div>
+      <p id="mt"></p>
+      <small>—— 来自万可的一个小练习 · playandprosper.com/wanke</small>
+    </div>
+    <p class="hint">你写的话只留在你自己的手机上，可以截图保存。</p>
+  </div>
+</section>
+
+<!-- 9 · 走近她 -->
+<section class="meet" id="meet">
+  <div class="w n">
+    <h2>扫码，走近万可</h2>
+    <img class="qr" src="wechat.png" alt="万可的微信二维码">
+    <p>从她手里带走一本书，或者聊聊身体和活法。</p>
+    <div class="ways"><span>预约签名书</span><span>一起读书</span><span>聊聊身体</span><span>AI 智能体</span></div>
+    <p class="note">在微信里打开，长按二维码识别。加的时候请备注「官网」，再加上你感兴趣的那件事。</p>
+  </div>
+</section>
+
+<footer>
+  <a href="../">边玩边赚</a> · 边玩边赚书系作者主页 · playandprosper.com/wanke
+  <a class="you" href="../#wan">你也有一个故事？先玩一下 →</a>
+</footer>
+
+<nav class="dock" id="dock" aria-label="快速联系">
+  <a href="#books">读她的故事</a><a class="main" href="#meet">加微信</a>
+</nav>
+
+<div class="lb" id="lb" role="dialog" aria-label="人生卡大图"><img src="card.jpg" alt="万可的人生卡大图"><p>长按图片保存 · 点空白处关闭</p></div>
+
+<script>
+(function(){
+  var bar=document.getElementById('bar'),dock=document.getElementById('dock'),meet=document.getElementById('meet');
+  function f(){
+    bar.classList.toggle('on',scrollY>40);
+    var r=meet.getBoundingClientRect();
+    dock.classList.toggle('hide',scrollY<innerHeight*.6||r.top<innerHeight);
+  }
+  addEventListener('scroll',f,{passive:true});f();
+
+  var lb=document.getElementById('lb');
+  function open(){lb.classList.add('on')}
+  document.getElementById('cardImg').addEventListener('click',open);
+  document.getElementById('cardOpen').addEventListener('click',open);
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('on')});
+  addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList.remove('on')});
+
+  document.querySelectorAll('[data-open]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var e=document.getElementById(b.dataset.open);
+      var on=e.classList.toggle('open'); b.textContent=on?'收起':'接着读';
+    });
+  });
+
+  var toast=document.createElement('div');toast.className='toast';document.body.appendChild(toast);
+  function say(s){toast.textContent=s;toast.classList.add('on');setTimeout(function(){toast.classList.remove('on')},2200)}
+  document.getElementById('share').addEventListener('click',function(){
+    var u=location.href.split('#')[0],d={title:'万可 · 我要万事皆可，万事可成',text:'推荐你认识万可：「万事可成」养成系创始人，前上海英文杂志主编，52 岁拿下全国自由潜一金一银。',url:u};
+    if(navigator.share){navigator.share(d).catch(function(){});return}
+    if(navigator.clipboard){navigator.clipboard.writeText(d.text+' '+u).then(function(){say('链接已复制，去微信粘贴给朋友')},function(){say('长按地址栏复制链接')})}
+    else say('点右上角「…」，转发给朋友');
+  });
+
+  document.getElementById('f').addEventListener('submit',function(e){
+    e.preventDefault();
+    var v=document.getElementById('t').value.trim();
+    document.getElementById('mt').textContent=v||'我已经用了很多年，去证明这件事。';
+    var m=document.getElementById('mine');m.hidden=false;m.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+})();
+</script>
+</body>
+</html>
