@@ -692,6 +692,20 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
 @keyframes shake{from{transform:rotate(-5deg) scale(1.03)}to{transform:rotate(5deg) scale(.98)}}
 @keyframes pokeme{50%{transform:rotate(8deg) translateY(-8px) scale(1.06)}}
 @media (prefers-reduced-motion: reduce){.face-btn .face,.face .eyes-open,.face-btn .poke,.face-btn.laughing .face{animation:none}}
+
+/* 小笑脸也能戳 */
+.orbit .of{pointer-events:auto;cursor:pointer;background:none;border:0;padding:0;border-radius:30%;transition:transform .2s;z-index:2}
+.orbit .of:hover{transform:translate(-50%,-50%) scale(1.15)}
+.orbit .of.peek svg{animation:peek .7s ease-in-out}
+.orbit .of.laughing svg{animation:shake .12s ease-in-out infinite alternate}
+.orbit .of.laughing{transform:translate(-50%,-50%) scale(1.25);z-index:3}
+.orbit .of .who{position:absolute;left:50%;bottom:105%;transform:translateX(-50%);white-space:nowrap;background:var(--plum);color:var(--yellow);font-size:13px;font-weight:800;padding:3px 10px;border-radius:999px}
+@keyframes peek{30%{transform:translateY(-14%) rotate(-10deg) scale(1.1)}60%{transform:translateY(0) rotate(8deg)}}
+/* 大脸更像能戳的：时不时晃一下，气泡更显眼 */
+.face-btn:not(.poked){animation:callme 3.6s ease-in-out infinite}
+@keyframes callme{0%,80%,100%{transform:scale(1)}85%{transform:scale(1.05) rotate(-3deg)}90%{transform:scale(1.03) rotate(3deg)}95%{transform:scale(1.05) rotate(-2deg)}}
+.face-btn .poke{font-size:clamp(16px,4vw,22px)!important;background:#FF4F8B!important;color:#fff!important;border-color:var(--plum)!important;box-shadow:0 4px 0 var(--plum);z-index:5}
+@media (prefers-reduced-motion: reduce){.face-btn{animation:none!important}}
 </style>
 </head>
 <body>
@@ -733,7 +747,7 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
         </svg>
         <span class="poke" aria-hidden="true">戳我</span>
       </button>
-      <div class="hint">戳戳这张脸，听它笑<small id="laughs"></small></div>
+      <div class="hint">戳大脸听大笑，戳小脸各有各的笑<small id="laughs"></small></div>
     </div>
   </div>
   <figure class="hero-pol p1" aria-hidden="true"><img src="img/hero-lamb.jpg" alt=""></figure>
@@ -1049,17 +1063,42 @@ document.querySelectorAll('[data-k]').forEach(el=>el.innerHTML=face(el.dataset.k
 
 
 
-// 首屏环绕的 12 张笑脸
+// 首屏环绕的 12 张小笑脸：每张一种笑声，戳一下就笑
+// 以后哪位作者录好了真笑声：把 src 换成她的录音，who 填上名字，戳的时候会冒出名字
+const ORBIT=[
+  {src:'assets/orbit/o01.mp3',who:''},{src:'assets/orbit/o02.mp3',who:''},{src:'assets/orbit/o03.mp3',who:''},
+  {src:'assets/orbit/o04.mp3',who:''},{src:'assets/orbit/o05.mp3',who:''},{src:'assets/orbit/o06.mp3',who:''},
+  {src:'assets/orbit/o07.mp3',who:''},{src:'assets/orbit/o08.mp3',who:''},{src:'assets/orbit/o09.mp3',who:''},
+  {src:'assets/orbit/o10.mp3',who:''},{src:'assets/orbit/o11.mp3',who:''},{src:'assets/orbit/o12.mp3',who:''}
+];
 (function(){
-  const orbit=document.getElementById('orbit'),kinds=['big','smile','heart'];
-  for(let i=0;i<12;i++){
-    const a=i/12*Math.PI*2-Math.PI/2, r=46;
-    const d=document.createElement('div');d.className='of';
+  const orbit=document.getElementById('orbit'),kinds=['big','smile','heart'],els=[];
+  ORBIT.forEach((o,i)=>{
+    const a=i/12*Math.PI*2-Math.PI/2, r=46, k=kinds[i%3];
+    const d=document.createElement('button');d.type='button';d.className='of';
+    d.setAttribute('aria-label',o.who?'听'+o.who+'的笑声':'戳一下，听这张小脸笑');
     d.style.left=(50+r*Math.cos(a))+'%';d.style.top=(50+r*Math.sin(a))+'%';
-    d.innerHTML=face(kinds[i%3],'#FFFBEA');d.firstChild.style.setProperty('--r',(i%2?-1:1)*10+'deg');
-    d.firstChild.style.animationDelay=(i*0.04)+'s';
-    orbit.appendChild(d);
-  }
+    const calm=()=>{d.innerHTML=face(k,'#FFFBEA');d.firstChild.style.setProperty('--r',(i%2?-1:1)*10+'deg');d.firstChild.style.animationDelay=(i*0.04)+'s'};
+    calm();
+    let au2;
+    d.addEventListener('click',e=>{
+      e.stopPropagation();
+      au2=au2||new Audio(o.src);
+      au2.onended=()=>{d.classList.remove('laughing');calm();if(o.who)tag.remove()};
+      au2.currentTime=0;au2.play().catch(()=>{giggle();setTimeout(au2.onended,1200)});
+      d.innerHTML=face('big',C.lead);d.classList.remove('laughing');void d.offsetWidth;d.classList.add('laughing');
+      var tag;if(o.who){tag=document.createElement('span');tag.className='who';tag.textContent=o.who;d.appendChild(tag)}
+      const r=d.getBoundingClientRect();burstSmall(r.left+r.width/2,r.top+r.height/2);
+      document.getElementById('laugh').classList.add('poked');
+      n++;try{localStorage.setItem('xiaoyuan-laughs',n)}catch(e){}showN();
+    });
+    orbit.appendChild(d);els.push(d);
+  });
+  // 时不时有一张小脸探个头，提示它们也能戳
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches)setInterval(()=>{
+    const d=els[Math.floor(Math.random()*els.length)];if(d.classList.contains('laughing'))return;
+    d.classList.remove('peek');void d.offsetWidth;d.classList.add('peek');
+  },2200);
 })();
 
 // 已入园的作者：每入园一位，在这里加一行
