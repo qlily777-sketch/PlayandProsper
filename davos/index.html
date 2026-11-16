@@ -261,6 +261,25 @@ footer .credits{margin-top:12px;line-height:1.9}
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s ease}
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+/* 生动一点：雪、倒计时、悬停、呼吸 */
+canvas.snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+.fire .wrap{z-index:2}
+.closing{position:relative;overflow:hidden}
+.closing .wrap{position:relative;z-index:2}
+.hero .meta .cd{color:var(--gold2)}
+.hero .meta .cd b{font-family:var(--f-mono);font-weight:600;color:var(--gold2);font-size:1.05em}
+.cardx,.day,.step,.jstep,.res div,.qc{transition:transform .35s ease,box-shadow .35s ease}
+.cardx:hover,.day:hover,.step:hover,.res div:hover,.qc:hover{transform:translateY(-4px);box-shadow:0 18px 36px -22px rgba(16,29,50,.45)}
+.place:hover img{transform:scale(1.06)}
+.strip figure{overflow:hidden;border-radius:8px}
+.strip img{transition:transform 1s ease}
+.strip figure:hover img{transform:scale(1.05)}
+.fire .bgart{animation:kb 34s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.1) translate(-1.5%,-1%)}}
+.btn.gold{animation:breathe 3.6s ease-in-out infinite}
+@keyframes breathe{0%,100%{box-shadow:0 0 0 0 rgba(221,169,111,.0)}50%{box-shadow:0 0 0 10px rgba(221,169,111,.18)}}
+@media (prefers-reduced-motion:reduce){.fire .bgart,.btn.gold{animation:none}canvas.snow{display:none}}
+
 </style>
 </head>
 <body>
@@ -285,12 +304,13 @@ footer .credits{margin-top:12px;line-height:1.9}
   <video id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="img/hero-poster.jpg" aria-hidden="true"><source src="img/hero.mp4" type="video/mp4"></video>
   <div class="grid"></div>
   <div class="sun"></div>
+  <canvas class="snow" data-color="255,255,255" data-shadow="1" data-n="70"></canvas>
   <div class="wrap">
     <span class="chip">DAVOS 2027 · 第一届 <b>带着问题上山</b></span>
     <h1>达沃斯<span class="dot"> · </span>魔山问道</h1>
     <p class="tag">世界在达沃斯开会，我们带着问题上山。</p>
     <p class="sub">你不是去旁听世界的未来。你是带着自己的问题，去参与一场关于未来的对话。</p>
-    <div class="meta"><span>2027.1.17 — 1.24</span><span>瑞士 · 达沃斯及周边</span><span>小范围私人对话 · 仅限申请</span></div>
+    <div class="meta"><span>2027.1.17 — 1.24</span><span>瑞士 · 达沃斯及周边</span><span>小范围私人对话 · 仅限申请</span><span class="cd" id="cd" hidden>距出发还有 <b id="cdn">—</b> 天</span></div>
     <div class="cta">
       <a class="btn gold" href="https://dcntf99ii002.feishu.cn/share/base/form/shrcnglfXGYyGNfURYMFoREIRQd" target="_blank" rel="noopener">申请同行 →</a>
       <a class="btn ghost" href="#invite">先看看</a>
@@ -447,6 +467,7 @@ footer .credits{margin-top:12px;line-height:1.9}
 
 <!-- 魔山论坛 · 晚宴 -->
 <section class="fire" id="fire">
+  <canvas class="snow" data-color="255,246,232" data-n="55"></canvas>
   <img class="bgart" src="https://commons.wikimedia.org/wiki/Special:FilePath/Schatzalp.jpg?width=1800" alt="" loading="lazy">
   <div class="wrap reveal">
     <span class="eyebrow" style="text-align:center">Magic Mountain Forum</span>
@@ -598,6 +619,7 @@ footer .credits{margin-top:12px;line-height:1.9}
 
 <!-- 结尾 -->
 <section class="closing band">
+  <canvas class="snow" data-color="150,205,215" data-n="45"></canvas>
   <div class="wrap reveal">
     <p>世界的未来，不会在一周内揭晓。<br>但你自己的下一步，也许会因此变得清晰。<br><em>今年是第一届。</em></p>
     <a class="btn gold" style="margin-top:28px" href="https://dcntf99ii002.feishu.cn/share/base/form/shrcnglfXGYyGNfURYMFoREIRQd" target="_blank" rel="noopener">申请同行 →</a>
@@ -625,6 +647,42 @@ footer .credits{margin-top:12px;line-height:1.9}
   if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
   els.forEach(function(e){io.observe(e)});
+})();
+(function(){
+  /* 倒计时 */
+  var t=new Date('2027-01-17T00:00:00+01:00'), d=Math.ceil((t-new Date())/864e5), el=document.getElementById('cd');
+  if(el && d>0){document.getElementById('cdn').textContent=d; el.hidden=false;}
+  /* 数字滚动 */
+  var st=document.querySelector('.stats');
+  if(st && 'IntersectionObserver' in window){
+    var bs=st.querySelectorAll('b'), done=false;
+    var o=new IntersectionObserver(function(es){ if(done||!es[0].isIntersecting) return; done=true;
+      bs.forEach(function(b){ var raw=b.textContent, m=raw.match(/\d+/); if(!m) return; var end=+m[0], pre=raw.slice(0,m.index), post=raw.slice(m.index+m[0].length);
+        var start=end>1900? end-40 : 0, t0=null;
+        function step(ts){ if(!t0) t0=ts; var k=Math.min(1,(ts-t0)/1400), e=1-Math.pow(1-k,3); b.textContent=pre+Math.round(start+(end-start)*e)+post; if(k<1) requestAnimationFrame(step); }
+        requestAnimationFrame(step); });
+    },{threshold:.5}); o.observe(st);
+  }
+  /* 雪 */
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var small=window.innerWidth<700;
+  document.querySelectorAll('canvas.snow').forEach(function(c){
+    var ctx=c.getContext('2d'), col=c.dataset.color||'255,255,255', sh=c.dataset.shadow, n=+(c.dataset.n||50); if(small) n=Math.round(n*.5);
+    var W,H,dpr=Math.min(2,window.devicePixelRatio||1), fl=[], on=false;
+    function size(){ W=c.offsetWidth; H=c.offsetHeight; c.width=W*dpr; c.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
+    function mk(y){ return {x:Math.random()*W, y:y==null?Math.random()*H:y, r:.8+Math.random()*2.4, s:.25+Math.random()*.7, w:Math.random()*6.28, a:.35+Math.random()*.55}; }
+    size(); for(var i=0;i<n;i++) fl.push(mk());
+    window.addEventListener('resize',size);
+    function draw(){ if(!on) return; ctx.clearRect(0,0,W,H);
+      for(var i=0;i<fl.length;i++){ var f=fl[i]; f.y+=f.s; f.w+=.012; f.x+=Math.sin(f.w)*.35;
+        if(f.y>H+5){ fl[i]=mk(-5); continue; }
+        ctx.beginPath(); ctx.arc(f.x,f.y,f.r,0,6.283);
+        if(sh){ ctx.shadowColor='rgba(30,100,130,.35)'; ctx.shadowBlur=3; }
+        ctx.fillStyle='rgba('+col+','+f.a+')'; ctx.fill(); }
+      requestAnimationFrame(draw); }
+    if('IntersectionObserver' in window){ new IntersectionObserver(function(es){ var v=es[0].isIntersecting; if(v&&!on){on=true;requestAnimationFrame(draw)} else if(!v) on=false; }).observe(c); }
+    else { on=true; requestAnimationFrame(draw); }
+  });
 })();
 </script>
 </body>
