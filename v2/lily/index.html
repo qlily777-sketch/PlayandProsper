@@ -63,9 +63,9 @@ h2{font:700 clamp(28px,4.6vw,44px)/1.3 var(--serif);letter-spacing:.04em}
 .sea{position:absolute;left:0;right:0;bottom:0;height:26%;background:linear-gradient(180deg,rgba(160,215,205,.0),rgba(120,195,185,.55));overflow:hidden}
 .glint{position:absolute;width:var(--w,26px);height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.95),transparent);opacity:0;animation:glint var(--d,4s) ease-in-out var(--t,0s) infinite}
 @keyframes glint{0%,100%{opacity:0;transform:translateX(0) scaleX(.4)}45%{opacity:.9;transform:translateX(6px) scaleX(1)}70%{opacity:.2}}
-.boat{position:absolute;left:-90px;bottom:4.5%;width:70px;--go:calc(100vw + 180px);animation:sail 56s linear infinite}
+.boat{position:absolute;right:5%;bottom:24.2%;width:20px;--go:-80vw;opacity:.9;filter:saturate(.75);animation:sail 120s linear infinite}
 .boat svg{display:block;width:100%;overflow:visible;transform-origin:50% 92%;animation:bobble 4.2s ease-in-out infinite}
-@keyframes sail{0%{transform:translateX(0);opacity:0}4%{opacity:1}88%{opacity:1}100%{transform:translateX(var(--go));opacity:0}}
+@keyframes sail{0%{transform:translateX(0);opacity:0}6%{opacity:.9}84%{opacity:.9}94%,100%{transform:translateX(var(--go));opacity:0}}
 @keyframes bobble{0%,100%{transform:rotate(-2.5deg) translateY(0)}50%{transform:rotate(2deg) translateY(2px)}}
 .hero .island{position:absolute;right:-70px;bottom:23%;width:min(440px,34vw);opacity:.95}
 .hero .flower{position:absolute;left:-14px;bottom:-10px;width:min(230px,22vw);transform-origin:bottom left;animation:sway 7s ease-in-out infinite}
@@ -103,7 +103,7 @@ h2{font:700 clamp(28px,4.6vw,44px)/1.3 var(--serif);letter-spacing:.04em}
   .hero .txt{padding:118px 0 0}
   .hero .pic{width:min(360px,82vw);margin-top:34px}
   .hero .island{right:-30%;bottom:25%;width:90vw;opacity:.85}
-  .boat{left:auto;right:1%;bottom:23.6%;width:34px;--go:-11vw;animation-duration:40s}
+  .boat{right:3%;bottom:25.6%;width:14px;--go:-12vw;animation-duration:70s}
   .hero .flower{width:120px}
   .cue{display:none}
 }
@@ -243,7 +243,7 @@ footer a{color:#E3EEE9;text-decoration:none}
 
 <section class="hero">
   <div class="sea" aria-hidden="true"><span class="glint" style="left:8%;top:30%;--w:22px;--d:4.2s;--t:0s"></span><span class="glint" style="left:19%;top:62%;--w:34px;--d:5.1s;--t:1.3s"></span><span class="glint" style="left:31%;top:40%;--w:18px;--d:3.6s;--t:2.2s"></span><span class="glint" style="left:44%;top:78%;--w:28px;--d:4.8s;--t:0.6s"></span><span class="glint" style="left:57%;top:26%;--w:20px;--d:3.9s;--t:3.1s"></span><span class="glint" style="left:66%;top:58%;--w:30px;--d:5.4s;--t:1.8s"></span><span class="glint" style="left:78%;top:36%;--w:24px;--d:4.4s;--t:2.6s"></span><span class="glint" style="left:88%;top:70%;--w:32px;--d:5.0s;--t:0.9s"></span><span class="glint" style="left:13%;top:86%;--w:26px;--d:4.6s;--t:3.6s"></span><span class="glint" style="left:72%;top:88%;--w:22px;--d:4.1s;--t:2.0s"></span></div>
-  <div class="boat" aria-hidden="true"><svg viewBox="0 0 60 64"><path d="M30 4 L30 46" stroke="#2F5A4C" stroke-width="1.6"/><path d="M31.5 7 L50 44 L31.5 44 Z" fill="#FFFFFF" stroke="#2F5A4C" stroke-opacity=".35" stroke-width=".8"/><path d="M31.5 7 Q38 27 31.5 44" fill="none" stroke="#DCEBF3" stroke-width="1.2"/><path d="M28.5 12 L14 44 L28.5 44 Z" fill="#F2C28B" stroke="#2F5A4C" stroke-opacity=".3" stroke-width=".8"/><path d="M6 47 L54 47 L47 56 L13 56 Z" fill="#173F33"/><path d="M30 4 L38 7 L30 9 Z" fill="#B8342B"/><ellipse cx="30" cy="61" rx="22" ry="2.2" fill="#fff" opacity=".45"/></svg></div>
+  <div class="boat" aria-hidden="true"><svg viewBox="0 0 60 64"><path d="M30 4 L30 46" stroke="#2F5A4C" stroke-width="1.6"/><path d="M31.5 7 L50 44 L31.5 44 Z" fill="#FFFFFF" stroke="#2F5A4C" stroke-opacity=".35" stroke-width=".8"/><path d="M31.5 7 Q38 27 31.5 44" fill="none" stroke="#DCEBF3" stroke-width="1.2"/><path d="M28.5 12 L14 44 L28.5 44 Z" fill="#F2C28B" stroke="#2F5A4C" stroke-opacity=".3" stroke-width=".8"/><path d="M6 47 L54 47 L47 56 L13 56 Z" fill="#2F5A4C"/><path d="M30 4 L38 7 L30 9 Z" fill="#B8342B"/><ellipse cx="30" cy="58" rx="20" ry="1.6" fill="#fff" opacity=".35"/></svg></div>
   <img class="island" src="island.webp" alt="" aria-hidden="true">
   <img class="flower" src="flower.webp" alt="" aria-hidden="true">
   <div class="inner">
