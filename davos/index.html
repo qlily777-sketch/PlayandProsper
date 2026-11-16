@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="theme-color" content="#F5F7F5">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>达沃斯 · 与世界围炉 ｜ 边玩边赚</title>
-<meta name="description" content="2027 年 1 月，世界经济论坛年会期间，在达沃斯的雪山下生一炉火。第一炉：魔山问道——带着自己的问题，去听听世界怎么说。仅限申请。">
+<title>达沃斯 · 魔山问道 ｜ 边玩边赚</title>
+<meta name="description" content="达沃斯 · 魔山问道：2027 年 1 月世界经济论坛年会期间，带着自己的问题上山，去听听世界怎么说。仅限申请。">
 <link rel="icon" type="image/png" href="../island/img/logo-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
 <style>
-/* 雪线之上：雪山白的底，未来深蓝的字，冰川青是未来，炉火金是人 */
+/* 雪线之上：雪山白的底，未来深蓝的字，冰川青是未来，暖金是人 */
 :root{
   --bg:#F5F7F5;
   --bg2:#EAF4F6;
@@ -102,7 +102,13 @@ nav .btn{padding:9px 18px;font-size:.9rem}
 .place figcaption small{font-size:.66rem;opacity:.75;font-family:var(--f-mono)}
 @media (max-width:860px){.places{grid-template-columns:1fr 1fr}}
 /* host photos */
-.host .ph{width:84px;height:84px;border-radius:50%;object-fit:cover;object-position:top;margin-bottom:14px;border:3px solid #fff;box-shadow:0 6px 18px -8px rgba(16,29,50,.45);background:linear-gradient(160deg,var(--glacier),#fff)}
+.host .ph{width:88px;height:88px;border-radius:50%;object-fit:cover;object-position:center;margin-bottom:14px;border:3px solid #fff;box-shadow:0 6px 18px -8px rgba(16,29,50,.45);background:linear-gradient(160deg,var(--glacier),#fff)}
+/* wechat */
+.wx{display:flex;gap:20px;align-items:center;margin-top:26px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;max-width:560px}
+.wx img{width:120px;height:120px;border-radius:6px}
+.wx b{font-size:1.05rem}
+.wx p{margin-top:6px;font-size:.92rem}
+.mono{font-family:var(--f-mono);color:var(--deep);font-weight:500}
 /* faq */
 .faq{margin-top:32px;border-top:1px solid var(--line)}
 .faq details{border-bottom:1px solid var(--line);padding:16px 0}
@@ -215,12 +221,12 @@ figcaption{font-size:.74rem;color:var(--mist);margin-top:8px;font-family:var(--f
 .gates span{color:var(--mist);font-size:.95rem}
 
 /* hosts */
-.hosts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px}
+.hosts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
 .host{border:1px solid var(--line);border-radius:10px;padding:28px;background:var(--card)}
 .host small{font-family:var(--f-mono);color:var(--cyan);letter-spacing:.12em;font-size:.76rem}
 .host h3{font-size:1.5rem;margin:6px 0 12px}
 .host p{color:var(--mist)}
-@media (max-width:720px){.hosts{grid-template-columns:1fr}}
+@media (max-width:860px){.hosts{grid-template-columns:1fr}}
 
 /* join */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px}
@@ -255,11 +261,11 @@ footer .credits{margin-top:12px;line-height:1.9}
     <ul>
       <li><a href="#journey">一个问题的旅程</a></li>
       <li><a href="#theme">今年的主题</a></li>
-      <li><a href="#fire">围炉</a></li>
+      <li><a href="#fire">长桌晚宴</a></li>
       <li><a href="#days">八天</a></li>
       <li><a href="#you">我们在找你</a></li>
     </ul>
-    <a class="btn" href="https://dcntf99ii002.feishu.cn/share/base/form/shrcn7dOgtuSWU5rkLnnmQCHyqg" target="_blank" rel="noopener">申请入炉</a>
+    <a class="btn" href="https://dcntf99ii002.feishu.cn/share/base/form/shrcn7dOgtuSWU5rkLnnmQCHyqg" target="_blank" rel="noopener">申请同行</a>
   </div>
 </nav>
 
@@ -270,13 +276,13 @@ footer .credits{margin-top:12px;line-height:1.9}
   <div class="grid"></div>
   <div class="sun"></div>
   <div class="wrap">
-    <span class="chip">DAVOS 2027 · THE FIRST FIRE <b>魔山问道</b></span>
-    <h1>达沃斯<span class="dot"> · </span>与世界围炉</h1>
-    <p class="tag">世界在达沃斯开会，我们在雪山下生一炉火。</p>
+    <span class="chip">DAVOS 2027 · 第一届 <b>带着问题上山</b></span>
+    <h1>达沃斯<span class="dot"> · </span>魔山问道</h1>
+    <p class="tag">世界在达沃斯开会，我们带着问题上山。</p>
     <p class="sub">你不是去旁听世界的未来。你是带着自己的问题，去参与一场关于未来的对话。</p>
     <div class="meta"><span>2027.1.17 — 1.24</span><span>瑞士 · 达沃斯及周边</span><span>小范围私人对话 · 仅限申请</span></div>
     <div class="cta">
-      <a class="btn gold" href="https://dcntf99ii002.feishu.cn/share/base/form/shrcn7dOgtuSWU5rkLnnmQCHyqg" target="_blank" rel="noopener">申请入炉 →</a>
+      <a class="btn gold" href="https://dcntf99ii002.feishu.cn/share/base/form/shrcn7dOgtuSWU5rkLnnmQCHyqg" target="_blank" rel="noopener">申请同行 →</a>
       <a class="btn ghost" href="#invite">先看看</a>
     </div>
     <p class="note">本活动由「边玩边赚」独立策划，与世界经济论坛（WEF）无隶属关系，不包含年会官方主会场入场资格。</p>
@@ -307,7 +313,7 @@ footer .credits{margin-top:12px;line-height:1.9}
       <div>想把事业做到国外去，却不知道外面的人在想什么、要什么。</div>
       <div>一年忙到头，没有一个星期，是真正停下来想问题的。</div>
     </div>
-    <p class="res-end reveal">那这炉火，<em>就是为你生的。</em></p>
+    <p class="res-end reveal">那这一趟，<em>就是为你准备的。</em></p>
   </div>
 </section>
 
@@ -323,7 +329,7 @@ footer .credits{margin-top:12px;line-height:1.9}
       <div class="jstep"><div class="n">01</div><div><h3>写下你的问题</h3><p>报名时写下事业上最想解决、还没找到答案的那一个问题。</p></div></div>
       <div class="jstep"><div class="n">02</div><div><h3>画一张问题地图</h3><p>出发前，我们用 AI 帮你梳理相关的全球议题、值得关注的边会和要见的人。</p></div></div>
       <div class="jstep"><div class="n">03</div><div><h3>走进现场</h3><p>在达沃斯，按地图去听、去问，听听不同国家、不同行业的人怎么看。</p></div></div>
-      <div class="jstep"><div class="n">04</div><div><h3>回到炉边复盘</h3><p>晚上回到长桌前，把白天听到的拿出来，和同桌的人掰开了聊。</p></div></div>
+      <div class="jstep"><div class="n">04</div><div><h3>回到长桌复盘</h3><p>晚上回到长桌前，把白天听到的拿出来，和同桌的人掰开了聊。</p></div></div>
       <div class="jstep"><div class="n">05</div><div><h3>写成一篇文章</h3><p>下山后，把问题和答案写成署名文章，收进书里。</p></div></div>
     </div>
     <div class="map reveal">
@@ -364,7 +370,7 @@ footer .credits{margin-top:12px;line-height:1.9}
       <div><b>1971</b><span>两个人，在达沃斯办了第一届</span></div>
       <div><b>1979</b><span>论坛向中国打开大门</span></div>
       <div><b>~3000</b><span>2027 年会预计参会人数</span></div>
-      <div><b>2027</b><span>第 57 届，我们生起第一炉火</span></div>
+      <div><b>2027</b><span>第 57 届，我们第一次上山</span></div>
     </div>
   </div>
 </section>
@@ -386,7 +392,7 @@ footer .credits{margin-top:12px;line-height:1.9}
       <div class="qc ours"><b>05 · AI 与人</b><h3>AI 时代，如何让人更有力量？</h3><p>Empower humanity in the age of AI</p></div>
     </div>
     <div class="answer reveal">
-      <span class="eyebrow" style="color:var(--gold2)">我们在炉边的追问</span>
+      <span class="eyebrow" style="color:var(--gold2)">我们在长桌边的追问</span>
       <h3>世界经济论坛讨论全球如何走向未来。<br>我们追问：<span>当世界改变，你的事业、你的选择、你的人生，准备如何改变？</span></h3>
     </div>
   </div>
@@ -401,8 +407,8 @@ footer .credits{margin-top:12px;line-height:1.9}
         <figcaption>Philipp Bauknecht《达沃斯的冬夜》· 公有领域</figcaption>
       </figure>
       <div class="prose reveal">
-        <span class="eyebrow">The First Fire · 2027</span>
-        <h2 class="h2" style="margin-bottom:8px">第一炉：魔山问道</h2>
+        <span class="eyebrow">The Magic Mountain</span>
+        <h2 class="h2" style="margin-bottom:8px">为什么叫"魔山问道"</h2>
         <p class="lead muted" style="margin-bottom:22px">带着自己的问题，去听听世界怎么说。</p>
         <p>达沃斯是托马斯·曼小说《魔山》故事发生的地方。每年一月，这座“魔山”上聚满了想为世界找答案的人。我们也带着问题上山。</p>
         <p>我们不承诺每个人都会找到答案。但下山时，你对自己的问题，一定会比上山前看得更清楚。</p>
@@ -412,22 +418,22 @@ footer .credits{margin-top:12px;line-height:1.9}
   </div>
 </section>
 
-<!-- 一炉火 -->
+<!-- 长桌晚宴 -->
 <section class="fire" id="fire">
   <img class="bgart" src="https://commons.wikimedia.org/wiki/Special:FilePath/Schatzalp.jpg?width=1800" alt="" loading="lazy">
   <div class="wrap reveal">
-    <span class="eyebrow" style="text-align:center">The Fireside Dinner</span>
-    <h2>一炉火</h2>
-    <p class="lead">会期第二晚，我们在镇上生一炉火。不搭台子，不挂横幅，不卖门票。没有讲台，没有标准答案；一张长桌，坐的都是愿意彼此成就的人，还有我们请来的世界客人。</p>
-    <p class="topic"><small>今晚的议题 · 炉边谈未来</small>AI 重写商业，人如何定义自己？</p>
+    <span class="eyebrow" style="text-align:center">The Long Table</span>
+    <h2>魔山长桌宴</h2>
+    <p class="lead">会期第二晚，我们在镇上摆一张长桌。不搭台子，不挂横幅，不卖门票。没有讲台，没有标准答案；一张长桌，坐的都是愿意彼此成就的人，还有我们请来的世界客人。</p>
+    <p class="topic"><small>今晚的议题 · 长桌谈未来</small>AI 重写商业，人如何定义自己？</p>
     <div class="agenda">
       <div><b>01</b><h3>落座</h3><p>每人一句话：我是谁，我带来了什么问题。</p></div>
-      <div><b>02</b><h3>三轮炉边谈</h3><p>围绕议题分三轮，每轮一位起头，所有人都有机会开口。</p></div>
+      <div><b>02</b><h3>三轮长桌谈</h3><p>围绕议题分三轮，每轮一位起头，所有人都有机会开口。</p></div>
       <div><b>03</b><h3>世界客人</h3><p>请来的客人分享他们在自己国家看到的变化。</p></div>
       <div><b>04</b><h3>最后一问</h3><p>如果 AI 能替你做的事越来越多，哪件事你还是要亲自做？</p></div>
     </div>
-    <p class="rule">炉边的话留在炉边：晚宴上的私人谈话不录制、不公开；要引用，先征得本人同意。</p>
-    <p class="line">炉是我们生的。世界来坐，你来带走自己的答案。</p>
+    <p class="rule">桌上的话留在桌上：晚宴上的私人谈话不录制、不公开；要引用，先征得本人同意。</p>
+    <p class="line">桌是我们摆的。世界来坐，你带走自己的答案。</p>
   </div>
 </section>
 
@@ -443,7 +449,7 @@ footer .credits{margin-top:12px;line-height:1.9}
     <div class="days reveal" style="margin-top:16px">
       <div class="day"><small>1/17 周日</small><h3>落地 · 第一夜</h3><p>苏黎世接机，入住雪山下的私宅。晚饭时每人讲一件事：我这次带来的问题。</p></div>
       <div class="day"><small>1/18 周一 · 开幕</small><h3>走一遍 Promenade</h3><p>本地朋友带路，走进主街上对外开放的国家馆、企业馆和主题馆（如 AI House），先把这一周的达沃斯看全。</p></div>
-      <div class="day hot"><small>1/19 周二</small><h3>按地图去听 · 晚上围炉</h3><p>白天按你的问题地图，去听提前报好名的边会和主题论坛；晚上回到长桌前：与世界围炉。</p></div>
+      <div class="day hot"><small>1/19 周二</small><h3>按地图去听 · 晚上长桌宴</h3><p>白天按你的问题地图，去听提前报好名的边会和主题论坛；晚上回到长桌前：魔山长桌宴。</p></div>
       <div class="day"><small>1/20 周三</small><h3>见人 · 访谈 · 留影</h3><p>再访最有收获的场馆，约见、深谈、采访。摄影师为每个人拍一组在达沃斯的形象照。</p></div>
     </div>
     <h3 class="reveal" style="font-size:var(--s3);margin-top:36px">延伸行程 · 阿尔卑斯小游 <span class="muted" style="font-family:var(--f-body);font-size:.95rem;font-weight:400">（自愿参加，强烈推荐）</span></h3>
@@ -457,7 +463,7 @@ footer .credits{margin-top:12px;line-height:1.9}
     <div class="days reveal" style="margin-top:16px">
       <div class="day ext"><small>1/21 周四</small><h3>一天四国</h3><p>从住处出发，往列支敦士登、奥地利方向走。</p></div>
       <div class="day ext"><small>1/22 周五</small><h3>德国一线</h3><p>往慕尼黑方向走，见当地的朋友。</p></div>
-      <div class="day ext"><small>1/23 周六</small><h3>收炉</h3><p>回看这一周：我的问题，有答案了吗？当场动笔，写下初稿。</p></div>
+      <div class="day ext"><small>1/23 周六</small><h3>收官</h3><p>回看这一周：我的问题，有答案了吗？当场动笔，写下初稿。</p></div>
       <div class="day ext"><small>1/24 周日</small><h3>各自下山</h3><p>带着更清楚的方向，回到自己的世界。</p></div>
     </div>
     <div class="strip reveal">
@@ -480,7 +486,7 @@ footer .credits{margin-top:12px;line-height:1.9}
       <div class="cardx"><h3>一个更清楚的方向</h3><p>不一定是现成的答案，而可能是一个新方向、一个新的商业思路，或一个终于下定决心要做的决定。</p></div>
       <div class="cardx"><h3>一个作者身份</h3><p>这次经历不止于合影。你把一路的观察、对话与思考写成署名文章，收进《穿过悲欢，笑答人生》。</p></div>
       <div class="cardx"><h3>一组影像</h3><p>摄影师全程跟拍：你在达沃斯的形象照，还有这一周的纪录短片。</p></div>
-      <div class="cardx"><h3>一炉人</h3><p>不是一叠名片，而是一群真正深聊过、以后还能互相帮衬的同路人。</p></div>
+      <div class="cardx"><h3>一桌人</h3><p>不是一叠名片，而是一群真正深聊过、以后还能互相帮衬的同路人。</p></div>
     </div>
   </div>
 </section>
@@ -491,7 +497,7 @@ footer .credits{margin-top:12px;line-height:1.9}
     <div class="reveal">
       <span class="eyebrow">Who We're Looking For</span>
       <h2 class="h2">我们在找这样的你</h2>
-      <p class="lead" style="margin-top:14px">这炉火刻意不大。我们不以头衔决定座次，而看你正在创造什么、思考什么，能为这一桌人带来什么。我们挑人，也请你认真挑我们。</p>
+      <p class="lead" style="margin-top:14px">这张桌子刻意不大。我们不以头衔决定座次，而看你正在创造什么、思考什么，能为这一桌人带来什么。我们挑人，也请你认真挑我们。</p>
     </div>
     <ol class="gates reveal">
       <li><div><b>你手里有一份真事业</b><span>公司、产品，或一件你正在用全部力气推进的事。</span></div></li>
@@ -508,12 +514,12 @@ footer .credits{margin-top:12px;line-height:1.9}
   <div class="wrap">
     <div class="narrow reveal">
       <span class="eyebrow">Your Hosts</span>
-      <h2 class="h2">生火的人</h2>
-      <p class="lead" style="margin-top:14px">研究议题、挑选边会、当地安排、组织围炉、回来成书，这些麻烦事我们来做。你只管把心思放在人和事上。</p>
+      <h2 class="h2">带你上山的人</h2>
+      <p class="lead" style="margin-top:14px">研究议题、挑选边会、当地安排、组织晚宴、回来成书，这些麻烦事我们来做。你只管把心思放在人和事上。</p>
     </div>
     <div class="hosts reveal">
       <div class="host">
-        <img class="ph" src="img/host-lily.webp" alt="千百合">
+        <img class="ph" src="img/host-lily.jpg" alt="千百合">
         <small>美国 · 达拉斯</small>
         <h3>千百合</h3>
         <p>边玩边赚联合创始人。AI 教育者，畅销书出品人（20 多本），独立投资人，美国德州大学达拉斯分校 AI 硕士。带着玩赚队，把“玩、旅行、学习、赚钱”活成一件事。</p>
@@ -523,6 +529,12 @@ footer .credits{margin-top:12px;line-height:1.9}
         <small>瑞士</small>
         <h3>瑞士哈哈妈</h3>
         <p>生活在瑞士的多语言自由导师，教人用学母语的方式学外语。去年会期，她就组织过一群朋友一起走进达沃斯。</p>
+      </div>
+      <div class="host">
+        <img class="ph" src="img/host-muxiao.jpg" alt="木晓">
+        <small>随行摄影 · 上海</small>
+        <h3>木晓</h3>
+        <p>正念摄影艺术家，边玩边赚系列书的联合出品人。这一周，他负责把你在达沃斯的样子留下来。</p>
       </div>
     </div>
   </div>
@@ -534,18 +546,21 @@ footer .credits{margin-top:12px;line-height:1.9}
     <div class="narrow reveal">
       <span class="eyebrow">How to Join</span>
       <h2 class="h2">怎么加入</h2>
-      <p class="lead" style="margin-top:14px">仅限申请。我们只邀请同一炉的人。</p>
+      <p class="lead" style="margin-top:14px">仅限申请。每一份申请，我们都会认真看。</p>
     </div>
     <div class="steps reveal">
       <div class="step"><b>STEP 01</b><h3>写下你的问题</h3><p>写下你是谁、在做什么，以及这次想带去达沃斯的那个问题。</p></div>
-      <div class="step"><b>STEP 02</b><h3>一对一聊一次</h3><p>千百合或哈哈妈和你视频 30 分钟，互相看看是不是同一炉的人。</p></div>
-      <div class="step"><b>STEP 03</b><h3>确认入炉</h3><p>发出正式邀请，开始准备签证和行程，并在出发前收到你的问题地图。</p></div>
+      <div class="step"><b>STEP 02</b><h3>一对一聊一次</h3><p>千百合或哈哈妈和你视频 30 分钟，互相看看是不是合适的同行人。</p></div>
+      <div class="step"><b>STEP 03</b><h3>确认同行</h3><p>发出正式邀请，开始准备签证和行程，并在出发前收到你的问题地图。</p></div>
     </div>
     <div class="deadline reveal">
       <p class="d">申请截止：<em>2026 年 12 月 6 日</em></p>
       <a class="btn gold" href="https://dcntf99ii002.feishu.cn/share/base/form/shrcn7dOgtuSWU5rkLnnmQCHyqg" target="_blank" rel="noopener">填写申请（4 个问题，2 分钟）→</a>
     </div>
-    <p class="muted reveal" style="margin-top:12px">需要办申根签证的朋友，请尽早申请。也可以直接私信千百合或瑞士哈哈妈。</p>
+    <div class="wx reveal">
+      <img src="img/lily-wechat.jpg" alt="千百合的微信二维码">
+      <div><b>想先聊聊？加千百合的微信</b><p>微信号 <span class="mono">iamsohappy8</span>，加的时候备注"达沃斯"。</p><p class="muted">需要办申根签证的朋友，请尽早申请。</p></div>
+    </div>
     <div class="faq reveal">
       <details><summary>能进年会的主会场吗？</summary><p>不能，我们也不承诺。主会场靠邀请进入。我们去的是主会场外对公众开放的国家馆、主题馆和边会，这也是大多数人真正收获最多的地方。</p></details>
       <details><summary>英语不好，能参加吗？</summary><p>能。千百合和哈哈妈全程在，日常沟通和边会都会帮你翻译、引荐。</p></details>
@@ -560,7 +575,7 @@ footer .credits{margin-top:12px;line-height:1.9}
 <!-- 结尾 -->
 <section class="closing band">
   <div class="wrap reveal">
-    <p>世界的未来，不会在一周内揭晓。<br>但你自己的下一步，也许会因此变得清晰。<br><em>今年是第一炉。</em></p>
+    <p>世界的未来，不会在一周内揭晓。<br>但你自己的下一步，也许会因此变得清晰。<br><em>今年是第一届。</em></p>
   </div>
 </section>
 
@@ -574,6 +589,7 @@ footer .credits{margin-top:12px;line-height:1.9}
 <script>
 (function(){
   var hv=document.getElementById('heroVideo');
+  if(hv){var slow=function(){hv.playbackRate=0.6};slow();hv.addEventListener('loadedmetadata',slow);hv.addEventListener('play',slow);}
   if(hv && window.matchMedia('(prefers-reduced-motion: reduce)').matches){hv.removeAttribute('autoplay');hv.pause();hv.style.display='none'}
 })();
 (function(){
