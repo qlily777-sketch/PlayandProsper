@@ -215,6 +215,67 @@ h2{font:700 clamp(28px,4.6vw,44px)/1.3 var(--serif);letter-spacing:.04em}
 .else strong{color:var(--pine);font-size:14px}
 @media(max-width:860px){.meet .w{grid-template-columns:1fr;gap:44px}.fit li{grid-template-columns:1fr;gap:0}.fit i{display:none}.qrcard{max-width:340px;margin:0 auto}}
 
+/* ===== 三步，走得开 ===== */
+.steps{padding:110px 0;background:var(--paper)}
+.steps .lead{font:18px/1.9 var(--serif);color:var(--pine2)}
+.three{list-style:none;margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.three li{position:relative;background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:26px 24px 24px;transition:transform .4s var(--ease),box-shadow .4s}
+.three li:hover{transform:translateY(-5px);box-shadow:0 22px 40px -26px rgba(23,63,51,.5)}
+.three b{display:flex;align-items:baseline;gap:10px;font:900 30px/1 var(--serif)}
+.three b i{font-style:normal;font-size:13px;letter-spacing:.2em;color:var(--seal);font-family:var(--sans);font-weight:700}
+.three p{margin-top:12px;font:16px/1.85 var(--serif);color:var(--pine2)}
+.try{margin-top:28px;padding:30px 28px;border-radius:22px;background:linear-gradient(135deg,#EAF4F0,#F6EFE4);border:1.5px solid #DCE8E2}
+.try label{display:block;font:700 15px var(--sans);color:var(--pine2)}
+.try .in{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+.try input{flex:1;min-width:220px;font:17px var(--serif);padding:14px 18px;border-radius:999px;border:1.5px solid #C9DCD4;background:#fff;color:var(--pine);outline:none}
+.try input:focus{border-color:var(--pine)}
+.ask2{display:none;margin-top:24px}
+.ask2.on{display:block;animation:up .6s var(--ease) both}
+.ask2 q{display:block;font:900 clamp(22px,3vw,30px)/1.5 var(--serif);quotes:none}
+.ask2 q em{font-style:normal;color:var(--seal)}
+.opts{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.opts button{border:1.5px solid var(--pine);background:#fff;border-radius:999px;padding:11px 18px;font:700 15px var(--sans);cursor:pointer;transition:background .2s,color .2s}
+.opts button:hover,.opts button.on{background:var(--pine);color:#fff}
+.ans{margin-top:18px;min-height:3em;font:18px/1.85 var(--serif)}
+.ans b{color:var(--pine)}
+.ans small{display:block;margin-top:10px;font:15px/1.8 var(--sans);color:var(--mute)}
+.ans a{color:var(--pine);font-weight:700}
+@media(max-width:860px){.three{grid-template-columns:1fr}.try{padding:22px 18px}}
+
+/* ===== 人生百国 + 一起走的人 ===== */
+.world{padding:110px 0;background:linear-gradient(180deg,var(--cream),var(--paper))}
+.world .w{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.dots{display:grid;grid-template-columns:repeat(10,1fr);gap:9px;max-width:380px}
+.dots i{aspect-ratio:1;border-radius:50%;background:#E3E9E5;transition:background .4s,transform .4s}
+.dots i.on{background:var(--pine)}
+.dots i.on.last{background:var(--seal);transform:scale(1.25);box-shadow:0 0 0 4px rgba(184,52,43,.15)}
+.count{margin-top:22px;font:900 clamp(40px,6vw,64px)/1 var(--serif)}
+.count small{font-size:.38em;color:var(--mute);font-weight:700;margin-left:6px}
+.world .p{margin-top:16px;font:17.5px/2 var(--serif);color:var(--pine2)}
+.world .p a{color:var(--pine);font-weight:700}
+.with{margin-top:90px;grid-column:1/-1}
+.with h3{font:700 22px/1.5 var(--serif)}
+.with .p{max-width:40em}
+.faces{list-style:none;display:flex;flex-wrap:wrap;margin-top:22px}
+.faces li{margin-right:-10px}
+.faces img,.faces .more{width:58px;height:58px;border-radius:50%;object-fit:cover;border:3px solid var(--paper);box-shadow:0 6px 14px -8px rgba(23,63,51,.6);transition:transform .3s var(--ease)}
+.faces a:hover img,.faces li:hover img{transform:translateY(-6px)}
+.faces .more{display:grid;place-items:center;background:var(--pine);color:#fff;font:700 13px/1.2 var(--sans);text-align:center;text-decoration:none}
+@media(max-width:860px){.world .w{grid-template-columns:1fr;gap:34px}.dots{gap:7px;max-width:300px}.with{margin-top:40px}.faces img,.faces .more{width:48px;height:48px}}
+
+.screen .big-play{position:absolute;inset:0;display:grid;place-items:center;border:0;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.35));cursor:pointer}
+.screen .big-play span{display:grid;place-items:center;width:86px;height:86px;border-radius:50%;background:rgba(255,255,255,.92);box-shadow:0 12px 30px rgba(0,0,0,.3);transition:transform .3s var(--ease)}
+.screen .big-play:hover span{transform:scale(1.08)}
+.screen .big-play svg{width:30px;height:30px;margin-left:5px;color:var(--pine)}
+.screen .big-play.gone{display:none}
+
+.bye{padding:90px 24px 70px;text-align:center;background:var(--paper)}
+.bye p{font:900 clamp(26px,4vw,40px)/1.5 var(--serif);letter-spacing:.08em}
+.bye .sig{display:inline-flex;align-items:center;gap:10px;margin-top:20px}
+.bye .sig img.n{width:150px}
+.bye .sig img.s{width:34px}
+.meet .soft{margin-top:14px;font:17px/1.9 var(--serif);color:var(--pine2)}
+
 footer{background:var(--pine);color:#9FB8AF;font-size:13px;padding:28px 24px 100px;display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:center}
 footer a{color:#E3EEE9;text-decoration:none}
 
@@ -316,13 +377,75 @@ footer a{color:#E3EEE9;text-decoration:none}
   </div>
 </section>
 
+<section class="steps" id="steps">
+  <div class="w">
+    <div class="rv">
+      <span class="kick">书里送你的一个方法</span>
+      <h2>三步，走得开</h2>
+      <p class="lead">走不开，不是没时间。是你以为每件事都离不开你。</p>
+    </div>
+    <ol class="three rv">
+      <li><b>一看<i>LOOK</i></b><p>今天干了什么，从早到晚过一遍。不用列清单，不用写字。</p></li>
+      <li><b>二问<i>ASK</i></b><p>挨个问出声：这件事，没有我，行不行？</p></li>
+      <li><b>三换<i>SWAP</i></b><p>换下来的时间，拿去做「真得我来」的那一件。</p></li>
+    </ol>
+    <div class="try rv">
+      <label for="task">现在就试一件：今天最占你时间的一件事是……</label>
+      <div class="in"><input id="task" type="text" maxlength="30" placeholder="比如：回客户消息" autocomplete="off"><button class="btn" id="askBtn" type="button">问一问</button></div>
+      <div class="ask2" id="ask2">
+        <q>「<em id="taskName"></em>」<br>这件事，没有我，行不行？</q>
+        <div class="opts" id="opts">
+          <button type="button" data-a="0">行</button>
+          <button type="button" data-a="1">别人也行</button>
+          <button type="button" data-a="2">没人可让</button>
+          <button type="button" data-a="3">真得我来</button>
+        </div>
+        <div class="ans" id="ans" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="world" id="world">
+  <div class="w">
+    <div class="rv">
+      <div class="dots" id="dots" aria-hidden="true"></div>
+    </div>
+    <div class="rv">
+      <span class="kick">换下来的时间</span>
+      <p class="count"><span id="cnt">54</span><small>/ 100 个国家</small></p>
+      <p class="p">换下来的时间，我没有空着。拿去看世界，拿去做志愿者，拿去设计课程，拿去陪我心爱的家人。</p>
+      <p class="p">人生百国，五十四个了，还有四十六个在前头。今年我包了一座岛，带着边玩边赚的大家庭一起去玩——<a href="https://www.playandprosper.com/island/">这件事，真得我来</a>。</p>
+    </div>
+    <div class="with rv">
+      <h3>这条路上，不是我一个人</h3>
+      <p class="p">2026 年 10 月广州的新书发布会，二十多位作者从世界各地飞过来，还带了家人、朋友。流程、场地、每一个环节，没有一样是我经手的。</p>
+      <ul class="faces">
+        <li><img src="../img/authors/a014.jpg?v=3" alt="文亮" title="文亮" loading="lazy"></li>
+        <li><img src="../img/authors/a031.jpg?v=3" alt="木晓" title="木晓" loading="lazy"></li>
+        <li><img src="../img/authors/a025.jpg?v=3" alt="邹娜" title="邹娜" loading="lazy"></li>
+        <li><img src="../img/authors/a069.jpg?v=3" alt="窈窕姐姐" title="窈窕姐姐" loading="lazy"></li>
+        <li><a href="../jinrundi/"><img src="../img/authors/a003.jpg?v=5" alt="金闰迪" title="金闰迪 · 看她的主页" loading="lazy"></a></li>
+        <li><a href="../wanke/"><img src="../img/authors/a081.jpg?v=3" alt="万可" title="万可 · 看她的主页" loading="lazy"></a></li>
+        <li><img src="../img/authors/a090.jpg?v=3" alt="梓萱" title="梓萱" loading="lazy"></li>
+        <li><img src="../img/authors/a061.jpg?v=3" alt="张一一" title="张一一" loading="lazy"></li>
+        <li><img src="../img/authors/a077.jpg?v=3" alt="吴晓音" title="吴晓音" loading="lazy"></li>
+        <li><img src="../img/authors/a087.jpg?v=3" alt="韩玉娟" title="韩玉娟" loading="lazy"></li>
+        <li><img src="../img/authors/a086.jpg?v=3" alt="小屿" title="小屿" loading="lazy"></li>
+        <li><img src="../img/authors/a044.jpg?v=3" alt="易辰" title="易辰" loading="lazy"></li>
+        <li><a class="more" href="../#stars">115 位<br>作者</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <section class="film" id="film">
   <div class="w">
     <div class="rv">
       <span class="kick"><span class="no">15</span>故事短片</span>
       <h2>二十秒，看我走得开</h2>
     </div>
-    <div class="screen" id="screen"><video src="15.mp4" poster="15.jpg" controls playsinline preload="none"></video></div>
+    <div class="screen" id="screen"><video id="vid" src="15.mp4" poster="15.jpg" controls playsinline preload="none"></video><button class="big-play" id="bigPlay" type="button" aria-label="播放故事短片"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></span></button></div>
   </div>
 </section>
 
@@ -344,6 +467,7 @@ footer a{color:#E3EEE9;text-decoration:none}
   <div class="w">
     <div class="rv">
       <h2>也想边玩边赚？<br>来聊聊</h2>
+      <p class="soft">不用想好做什么再来。加我的时候，说一句你最近忘了时间的一件事就好。</p>
       <ul class="fit">
         <li><b>有故事、想出本书的人</b><i>→</i><span>怎么把经历写成一本书</span></li>
         <li><b>想换个活法的老板</b><i>→</i><span>怎么一边玩、一边赚</span></li>
@@ -358,6 +482,11 @@ footer a{color:#E3EEE9;text-decoration:none}
       <div class="else"><img src="../img/gzh-qr.jpg" alt="公众号「AI边玩边赚」二维码" loading="lazy"><div><strong>在别处找到我</strong><br>公众号、视频号都叫「AI边玩边赚」，每天一篇全球打卡</div></div>
     </div>
   </div>
+</section>
+
+<section class="bye">
+  <p class="rv">愿你，也走得开。</p>
+  <div class="sig rv"><img class="n" src="name.png" alt="千百合"><img class="s" src="seal.png" alt=""></div>
 </section>
 
 <footer>
@@ -419,6 +548,29 @@ footer a{color:#E3EEE9;text-decoration:none}
   rng.addEventListener('change',function(){var d=au.duration||1121;au.currentTime=rng.value/1000*d;drag=false;if(au.paused)au.play()});
   var S=[1,1.25,1.5,.8],si=0;
   sp.addEventListener('click',function(){si=(si+1)%S.length;au.playbackRate=S[si];sp.textContent=S[si]+'×'});
+
+  // 三步：问一问
+  var task=$('task'),ask2=$('ask2'),tn=$('taskName'),ans=$('ans');
+  var A=['<b>那就别做了。</b>','<b>那就让别人做。</b>','<b>没人可让，就让 AI 做；</b>都不行，就定一条规矩，以后照规矩办。','<b>那就留着。</b>那是你的本事，不是你的负担。这一类千万别交出去，交掉了，你就不是你了。'];
+  function go(){var v=(task.value||'').trim()||'回客户消息';tn.textContent=v;ask2.classList.add('on');ans.innerHTML='';document.querySelectorAll('#opts button').forEach(function(b){b.classList.remove('on')})}
+  $('askBtn').addEventListener('click',go);
+  task.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();go()}});
+  $('opts').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
+    document.querySelectorAll('#opts button').forEach(function(x){x.classList.toggle('on',x===b)});
+    ans.innerHTML=A[+b.dataset.a]+'<small>手还会痒。每次想伸回去，就再问一遍那句话。问上十天你会发现：真离不开你的，没几件。<br>想有人陪你一起问？<a href="#meet">来加我微信 →</a></small>'});
+
+  // 人生百国：54 个点亮起来
+  var dots=$('dots'),cnt=$('cnt'),N=54;
+  for(var i=0;i<100;i++){var d=document.createElement('i');dots.appendChild(d)}
+  var dd=dots.children,lit=false;
+  function light(){if(lit)return;lit=true;cnt.textContent='0';
+    for(let k=0;k<N;k++)setTimeout(function(){dd[k].classList.add('on');if(k===N-1)dd[k].classList.add('last');cnt.textContent=k+1},still?0:k*28)}
+  if('IntersectionObserver' in window){var io2=new IntersectionObserver(function(es){if(es[0].isIntersecting){light();io2.disconnect()}},{threshold:.4});io2.observe(dots)}else light();
+
+  // 短片大播放键
+  var vid=$('vid'),bp=$('bigPlay');
+  bp.addEventListener('click',function(){bp.classList.add('gone');vid.play()});
+  vid.addEventListener('play',function(){bp.classList.add('gone')});
 
   // 转发
   var toast=document.createElement('div');toast.className='toast';document.body.appendChild(toast);
