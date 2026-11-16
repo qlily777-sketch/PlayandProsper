@@ -162,7 +162,7 @@ figcaption{font-size:.74rem;color:var(--mist);margin-top:8px;font-family:var(--f
 @media (max-width:640px){.stats{grid-template-columns:1fr 1fr}.stats div:nth-child(3){border-left:0}.stats div:nth-child(n+3){border-top:1px solid var(--line)}}
 
 /* questions */
-.theme-en{font-family:var(--f-display);font-style:italic;font-size:var(--s2);line-height:1.3;color:var(--cyan);margin:8px 0 14px}
+.theme-en{font-family:var(--f-display);font-style:italic;font-size:min(var(--s2),4.4vw);line-height:1.3;color:var(--cyan);margin:8px 0 14px;white-space:nowrap;width:max-content;max-width:none}
 .qcards{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:36px}
 .qc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 16px;display:flex;flex-direction:column;gap:8px}
 .qc b{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.14em;color:var(--cyan)}
@@ -204,8 +204,40 @@ figcaption{font-size:.74rem;color:var(--mist);margin-top:8px;font-family:var(--f
 .day.hot{border-color:var(--gold);background:linear-gradient(160deg,#FFF3E2,var(--card) 60%)}
 .day.hot h3{color:var(--gold2)}
 .day.ext{background:rgba(255,255,255,.55);border-style:dashed;box-shadow:none}
-@media (max-width:900px){.days{grid-template-columns:1fr 1fr}}
-@media (max-width:520px){.days{grid-template-columns:1fr}}
+/* 主行程五天 · 路线卡 */
+.route{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin:28px 0 0;padding:14px 0 0;position:relative;counter-reset:d}
+.route::before{content:"";position:absolute;left:10%;right:10%;top:0;height:2px;background:linear-gradient(90deg,var(--glacier),var(--cyan) 70%,var(--gold))}
+.stop{position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 14px 34px -26px rgba(16,29,50,.55);transition:transform .35s ease,box-shadow .35s ease;display:flex;flex-direction:column}
+.stop::before{content:"";position:absolute;top:-21px;left:50%;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:#fff;border:3px solid var(--cyan);z-index:2}
+.stop:hover{transform:translateY(-6px);box-shadow:0 22px 40px -24px rgba(16,29,50,.55)}
+.stop figure{position:relative;margin:0;aspect-ratio:4/3;background-size:cover;border-radius:13px 13px 0 0;overflow:hidden;transition:background-size .6s ease}
+.stop figure::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,rgba(16,29,50,0) 35%,rgba(16,29,50,.72))}
+.stop .dn{position:absolute;left:14px;bottom:10px;z-index:1;color:#fff;font-family:var(--f-display);font-weight:900;font-size:1.55rem;letter-spacing:.04em;text-shadow:0 2px 12px rgba(0,0,0,.35)}
+.stop .tag{position:absolute;left:12px;top:12px;z-index:1;font-size:.72rem;font-weight:500;color:var(--ink);background:rgba(255,255,255,.88);padding:3px 9px;border-radius:99px;backdrop-filter:blur(4px)}
+.stop .tx{padding:16px 16px 18px}
+.stop small{display:block;font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;color:var(--cyan);margin-bottom:6px}
+.stop h3{font-size:1.08rem;margin-bottom:8px}
+.stop p{font-size:.88rem;color:var(--mist);line-height:1.7}
+.stop.finale{border:1.5px solid var(--gold);background:linear-gradient(170deg,#FFF3E2,#fff 55%);box-shadow:0 0 0 4px rgba(221,169,111,.16),0 20px 44px -22px rgba(185,119,47,.6)}
+.stop.finale::before{border-color:var(--gold);background:var(--gold);width:16px;height:16px;margin-left:-8px;top:-23px;box-shadow:0 0 0 6px rgba(221,169,111,.25);animation:pulse 2.4s ease-in-out infinite}
+.stop.finale figure::after{background:linear-gradient(180deg,rgba(185,119,47,.05) 30%,rgba(90,48,12,.78))}
+.stop.finale h3{color:var(--gold2)}
+.stop.finale .tag{background:var(--gold);color:#fff}
+.stop .badge{position:absolute;right:12px;top:12px;z-index:1;font-size:.72rem;font-weight:700;color:#fff;background:var(--deep);padding:3px 9px;border-radius:99px}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(221,169,111,.25)}50%{box-shadow:0 0 0 10px rgba(221,169,111,0)}}
+.route-hint{display:none;text-align:center;font-size:.8rem;color:var(--mist);margin-top:8px}
+@media (max-width:1100px){
+  .route{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;padding:28px 4px 16px;margin-left:calc(-1*var(--gl));margin-right:calc(-1*var(--gr));padding-left:var(--gl);padding-right:var(--gr);scrollbar-width:none}
+  .route::-webkit-scrollbar{display:none}
+  .route::before{left:0;right:0;top:14px}
+  .stop{flex:0 0 min(300px,78vw);scroll-snap-align:center}
+  .route-hint{display:block}
+}
+@media (prefers-reduced-motion:reduce){.stop,.stop figure{transition:none}.stop.finale::before{animation:none}}
+.days.five{grid-template-columns:repeat(5,1fr)}
+@media (max-width:1100px){.days.five{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:900px){.days,.days.five{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.days,.days.five{grid-template-columns:1fr}}
 .strip{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:26px}
 .strip figure{margin:0}
 .strip img{aspect-ratio:16/10;object-fit:cover;border-radius:8px;width:100%}
@@ -395,7 +427,7 @@ canvas.snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none
       <h2 class="h2">想象一下，2027 年 1 月的那一周</h2>
     </div>
     <div class="reveal" style="margin-top:30px">
-      <div class="moment"><b>清晨</b><p>你推开雪山下那栋房子的窗，小镇还在雪里。几公里外，各国的元首、企业掌门人和科学家，正陆续走进会议中心。</p></div>
+      <div class="moment"><b>清晨</b><p>你推开雪山下那栋房子的窗，山谷还在雪里。早饭后坐上进山的小火车，到达沃斯时，各国的元首、企业掌门人和科学家，正陆续走进会议中心。</p></div>
       <div class="moment"><b>上午</b><p>你走在 Promenade 大街上，左边是 AI House，右边是一个国家馆。门口几个人正用不同的语言聊着一个问题，正好是你带来的那个。</p></div>
       <div class="moment"><b>晚上</b><p>魔山论坛，轮到你讲自己的问题。讲完，有人接话：“这件事，我也许能帮上忙。”</p></div>
       <div class="moment"><b>下山</b><p>你的问题未必有了标准答案，但你清楚地知道，回去后要做的第一件事是什么。</p></div>
@@ -517,8 +549,8 @@ canvas.snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none
   <div class="wrap reveal">
     <span class="eyebrow" style="text-align:center">Magic Mountain Forum</span>
     <h2>魔山论坛 · 晚宴</h2>
-    <p class="lead">会期第二晚，我们在镇上办一场自己的小论坛，会后一起晚宴。怎么开、聊什么，留到那天晚上揭晓。</p>
-    <p class="topic"><small>只透露一点</small>每个人都会上场，每个人都会被认真听见。</p>
+    <p class="lead">1 月 21 日周四，是我们自己的论坛。在达沃斯走了三天、听了三天，这一天不赶场，把一整天留给这一桌人，会后一起晚宴。怎么开、聊什么，留到那天揭晓。</p>
+    <p class="topic"><small>只透露一点</small>每个人都会上场，轮流当一回「案主」，把带来的问题摆上桌，让大家一起帮你拆。</p>
     <p class="lead">这几天在达沃斯偶遇、聊得来的新朋友，也欢迎请来一起坐。</p>
     <p class="line">台子是我们搭的。世界来坐，你带走自己的答案。</p>
   </div>
@@ -530,15 +562,32 @@ canvas.snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none
     <div class="narrow reveal">
       <span class="eyebrow">Eight Days</span>
       <h2 class="h2">八天</h2>
-      <p class="lead" style="margin-top:14px">2027 年会会期是 1 月 18 日到 22 日。我们把达沃斯的四天放在开幕前后，场馆和边会最集中的那几天；之后四天走周边，自愿参加。住在雪山下的私宅，本地朋友带路。</p>
+      <p class="lead" style="margin-top:14px">2027 年会会期是 1 月 18 日到 22 日。主行程 5 天 4 夜：1 月 17 日落地；周一到周三三天走进达沃斯，赶上场馆和边会最集中的日子；周四是我们自己的魔山论坛。之后三天走周边，自愿参加。<br>整整一周住在同一栋雪山下的私宅，不换酒店、不拖行李箱。会期安保很严，进出达沃斯我们坐火车，不堵车、不怕查车；出游单程都在三小时以内，当天往返。本地朋友带路。</p>
     </div>
-    <h3 class="reveal" style="font-size:var(--s3);margin-top:40px">主行程 · 达沃斯</h3>
-    <div class="days reveal" style="margin-top:16px">
-      <div class="day"><small>1/17 周日</small><h3>落地 · 第一夜</h3><p>苏黎世接机，入住雪山下的私宅。晚饭时每人讲一件事：我这次带来的问题。</p></div>
-      <div class="day"><small>1/18 周一 · 开幕</small><h3>走一遍 Promenade</h3><p>本地朋友带路，走进主街上对外开放的国家馆、企业馆和主题馆（如 AI House），先把这一周的达沃斯看全。</p></div>
-      <div class="day hot"><small>1/19 周二</small><h3>按地图去听 · 晚上魔山论坛</h3><p>白天按你的问题地图，去听提前报好名的边会和主题论坛；晚上回到我们自己的魔山论坛，会后一起晚宴。</p></div>
-      <div class="day"><small>1/20 周三</small><h3>见人 · 访谈 · 留影</h3><p>再访最有收获的场馆，约见、深谈、采访。摄影师为每个人拍一组在达沃斯的形象照。</p></div>
-    </div>
+    <h3 class="reveal" style="font-size:var(--s3);margin-top:40px">主行程 · 达沃斯 <span class="muted" style="font-family:var(--f-body);font-size:.95rem;font-weight:400">（5 天 4 夜）</span></h3>
+    <ol class="route reveal">
+      <li class="stop">
+        <figure style="background-image:url(img/c-malans-900.jpg);background-position:50% 60%"><span class="tag">抵达</span><b class="dn">DAY 01</b></figure>
+        <div class="tx"><small>1/17 周日</small><h3>落地 · 第一夜</h3><p>苏黎世接机，入住雪山下的私宅。晚饭时每人讲一件事：我这次带来的问题。</p></div>
+      </li>
+      <li class="stop">
+        <figure style="background-image:url(img/c-congress-1400.jpg);background-position:50% 50%"><span class="tag">达沃斯</span><b class="dn">DAY 02</b></figure>
+        <div class="tx"><small>1/18 周一 · 开幕</small><h3>走一遍 Promenade</h3><p>本地朋友带路，走进主街上对外开放的国家馆、企业馆和主题馆（如 AI House），先把这一周的达沃斯看全。</p></div>
+      </li>
+      <li class="stop">
+        <figure style="background-image:url(img/c-congress-access-900.jpg);background-position:50% 60%"><span class="tag">达沃斯</span><b class="dn">DAY 03</b></figure>
+        <div class="tx"><small>1/19 周二</small><h3>按地图去听</h3><p>白天按你的问题地图，去听提前报好名的边会和主题论坛；晚上回到住处围坐，把白天听到的拿出来聊。</p></div>
+      </li>
+      <li class="stop">
+        <figure style="background-image:url(img/c-davos-lake-900.jpg);background-position:50% 55%"><span class="tag">达沃斯</span><b class="dn">DAY 04</b></figure>
+        <div class="tx"><small>1/20 周三</small><h3>见人 · 访谈 · 留影</h3><p>再访最有收获的场馆，约见、深谈、采访。摄影师为每个人拍一组在达沃斯的形象照。</p></div>
+      </li>
+      <li class="stop finale">
+        <figure style="background-image:url(img/c-bauknecht-1200.jpg);background-position:50% 45%"><span class="tag">我们的论坛</span><span class="badge">主行程收官</span><b class="dn">DAY 05</b></figure>
+        <div class="tx"><small>1/21 周四</small><h3>魔山论坛 · 晚宴</h3><p>不进城，不赶场。我们自己搭台，每个人轮流上场当案主，大家一起帮你把问题拆开。会后一起晚宴。</p></div>
+      </li>
+    </ol>
+    <p class="route-hint">← 左右滑动，看完五天 →</p>
     <h3 class="reveal" style="font-size:var(--s3);margin-top:36px">延伸行程 · 阿尔卑斯小游 <span class="muted" style="font-family:var(--f-body);font-size:.95rem;font-weight:400">（自愿参加，强烈推荐）</span></h3>
     <p class="reveal muted" style="margin-top:6px">大老远来一趟，就让它更值。会后顺道把阿尔卑斯看一看：琉森的老廊桥、山顶的城堡、雪山脚下的湖畔小镇、慕尼黑的老城，一天一个国家，把冬天看个够。窗外是雪山，身边是这一周同行的伙伴，这一周想明白的事，也在路上慢慢落了地。</p>
     <div class="places reveal">
@@ -548,9 +597,8 @@ canvas.snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none
       <figure class="place"><img src="img/trip-munich.jpg" alt="慕尼黑玛利亚广场新市政厅前的《边玩边赚》" loading="lazy" style="object-position:50% 100%"><figcaption><b>德国 · 慕尼黑玛利亚广场</b><small>千百合 摄 · 2025 秋</small></figcaption></figure>
     </div>
     <div class="days reveal" style="margin-top:16px">
-      <div class="day ext"><small>1/21 周四</small><h3>一天四国</h3><p>从住处出发，往列支敦士登、奥地利方向走。</p></div>
-      <div class="day ext"><small>1/22 周五</small><h3>德国一线</h3><p>往慕尼黑方向走，见当地的朋友。</p></div>
-      <div class="day ext"><small>1/23 周六</small><h3>收官</h3><p>回看这一周：我的问题，有答案了吗？当场动笔，写下初稿。</p></div>
+      <div class="day ext"><small>1/22 周五</small><h3>一天几国</h3><p>从住处出发，往列支敦士登、奥地利方向走，晚上回家。</p></div>
+      <div class="day ext"><small>1/23 周六</small><h3>德国一线 · 收官</h3><p>往慕尼黑方向走，见当地的朋友。晚上回看这一周：我的问题，有答案了吗？当场动笔，写下初稿。</p></div>
       <div class="day ext"><small>1/24 周日</small><h3>各自下山</h3><p>带着更清楚的方向，回到自己的世界。</p></div>
     </div>
     <div class="strip reveal">
@@ -616,10 +664,11 @@ canvas.snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none
         <p>留美 AI 硕士，100+ AI 智能体创作者。专注 AI 时代的商业结构重构，帮个人 IP、创业者和企业主把能力变成资产，把经验变成产品。带领百位作者跨 8 个时区协作出书，不卷不累，边玩边赚。</p>
       </div>
       <div class="host">
-        <img class="ph" src="img/host-hahama.jpg" alt="瑞士哈哈妈">
+        <img class="ph" src="img/host-hahama.jpg" alt="瑞士哈哈妈（姚丽雪）">
         <small>发起人 · 瑞士</small>
-        <h3>瑞士哈哈妈</h3>
-        <p>生活在瑞士的多语言自由导师，教人用学母语的方式学外语。去年会期，她就组织过一群朋友一起走进达沃斯。</p>
+        <h3>瑞士哈哈妈 <span class="muted" style="font-family:var(--f-body);font-size:.6em;font-weight:400">姚丽雪</span></h3>
+        <p class="tags"><span>瑞士 InterChange 咨询 CEO</span><span>塔牌外语创始人</span><span>2026 达沃斯国际参会团发起人</span></p>
+        <p>2013 年定居瑞士，做中瑞跨文化咨询和多语言教育，陪伴 10000+ 家庭培养孩子的英语自学力。2026 年 1 月，她带着教育、金融、科技领域的伙伴走进达沃斯；这一次，和千百合一起带你上山。</p>
       </div>
       <div class="host">
         <img class="ph" src="img/host-muxiao.jpg" alt="木晓">
@@ -643,7 +692,7 @@ canvas.snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none
     <div class="steps reveal">
       <div class="step"><b>STEP 01</b><h3>写下你的问题</h3><p>花 2 分钟，写下你是谁、在做什么，以及这次想带去达沃斯的那个问题。</p></div>
       <div class="step"><b>STEP 02</b><h3>一对一聊一次</h3><p>千百合或哈哈妈和你视频 30 分钟，互相看看是不是合适的同行人。</p></div>
-      <div class="step"><b>STEP 03</b><h3>确认同行</h3><p>发出正式邀请，开始准备签证和行程，并在出发前收到你的问题地图。</p></div>
+      <div class="step"><b>STEP 03</b><h3>确认同行</h3><p>发出正式邀请，开始准备签证和行程。出发前你会收到问题地图和一份准备清单：想在现场露出的品牌物料、想让摄影师帮你录的一段话，都可以提前备好。</p></div>
     </div>
     <div class="deadline reveal">
       <p class="d">申请截止：<em>2026 年 12 月 6 日</em></p>
@@ -656,8 +705,8 @@ canvas.snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none
     <div class="faq reveal">
       <details><summary>能进年会的主会场吗？</summary><p>不能，我们也不承诺。主会场靠邀请进入。我们去的是主会场外对公众开放的国家馆、主题馆和边会，这也是大多数人真正收获最多的地方。</p></details>
       <details><summary>英语不好，能参加吗？</summary><p>能。千百合和哈哈妈全程在，日常沟通和边会都会帮你翻译、引荐。</p></details>
-      <details><summary>费用包括什么？</summary><p>包括住宿、当地交通、晚宴、摄影跟拍、问题地图和成书。不包括国际机票、签证费和个人消费。具体费用在视频面谈时说明。</p></details>
-      <details><summary>只参加达沃斯的四天可以吗？</summary><p>可以。达沃斯这四天是主线，后四天的阿尔卑斯小游自愿参加，你可以 1 月 21 日直接返程。</p></details>
+      <details><summary>费用包括什么？</summary><p>包括住宿、当地交通（会期火车票、出游用车）、家常早餐、魔山论坛晚宴、摄影跟拍、问题地图和成书。午餐自理，会场里多是简餐。不包括国际机票、签证费和个人消费。具体费用在视频面谈时说明。</p></details>
+      <details><summary>只参加前面的主行程可以吗？</summary><p>可以。1 月 17 日到 21 日是主线，最后一天就是魔山论坛；后三天的阿尔卑斯小游自愿参加，你可以 1 月 22 日直接返程。</p></details>
       <details><summary>一定要写文章吗？</summary><p>是的，这是这趟行程的一部分。不用担心文笔，我们有编辑团队陪你一起写。</p></details>
     </div>
     <p class="disclaim reveal">本活动由边玩边赚千百合与瑞士哈哈妈共同发起、独立策划，与世界经济论坛（WEF）无隶属关系，不包含年会官方主会场入场资格。能否参加各场边会，以主办方的确认为准。</p>
