@@ -138,6 +138,7 @@ nav .btn{padding:9px 18px;font-size:.9rem}
 .map ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;position:relative;z-index:1}
 .map li{display:flex;gap:12px;align-items:baseline;border-bottom:1px dashed rgba(174,233,240,.25);padding-bottom:10px;font-size:.95rem}
 .map li span{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;color:var(--glacier);min-width:7.5em}
+.map li em{display:block;font-style:normal;font-size:.8rem;color:#8FB3C2;margin-top:3px}
 .map small{display:block;margin-top:14px;font-size:.78rem;color:#8FA3B5;position:relative;z-index:1}
 @media (max-width:760px){.map{grid-template-columns:1fr}}
 
@@ -279,6 +280,9 @@ canvas.snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none
 .cdbox{display:inline-flex;align-items:baseline;gap:10px;margin-top:20px;padding:10px 20px;border-radius:12px;background:rgba(16,29,50,.86);color:#F5F7F5;font-size:.95rem;box-shadow:0 12px 30px -16px rgba(16,29,50,.6)}
 .cdbox b{font-family:var(--f-mono);font-weight:600;font-size:2rem;line-height:1;color:var(--gold)}
 .cdbox[hidden]{display:none}
+.cdbox .cdsub{color:#B9C9D6;font-size:.8rem;margin-left:6px;font-family:var(--f-mono)}
+.mcta{display:none}
+@media (max-width:720px){.mcta{display:flex;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:50;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px 10px 18px;border-radius:14px;background:rgba(16,29,50,.94);color:#F5F7F5;box-shadow:0 14px 34px -14px rgba(16,29,50,.7);transform:translateY(140%);transition:transform .35s ease}.mcta.on{transform:none}.mcta small{font-size:.78rem;color:#B9C9D6}.mcta .btn{padding:10px 18px;font-size:.92rem}footer{padding-bottom:96px}}
 .cardx,.day,.step,.jstep,.res div,.qc{transition:transform .35s ease,box-shadow .35s ease}
 .cardx:hover,.day:hover,.step:hover,.res div:hover,.qc:hover{transform:translateY(-4px);box-shadow:0 18px 36px -22px rgba(16,29,50,.45)}
 .place:hover img{transform:scale(1.06)}
@@ -319,10 +323,10 @@ canvas.snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none
   <div class="wrap">
     <span class="chip">DAVOS 2027 · 第一届 <b>带着问题上山</b></span>
     <h1>达沃斯<span class="dot"> · </span>魔山问道</h1>
-    <p class="tag">世界在达沃斯开会，我们带着问题上山。</p>
+    <p class="tag">带着事业问题上山，带着行动方向下山。</p>
     <p class="sub">你不是去旁听世界的未来。你是带着自己的问题，去参与一场关于未来的对话。</p>
     <div class="meta"><span>2027.1.17 — 1.24</span><span>瑞士 · 达沃斯及周边</span><span>小范围私人对话 · 仅限申请</span></div>
-    <div class="cdbox" id="cd" hidden><span>距出发还有</span><b id="cdn">—</b><span>天</span></div>
+    <div class="cdbox" id="cd" hidden><span id="cdl">申请截止还有</span><b id="cdn">—</b><span>天</span><span class="cdsub" id="cds">12 月 6 日截止</span></div>
     <div class="cta">
       <a class="btn gold" href="https://dcntf99ii002.feishu.cn/share/base/form/shrcnglfXGYyGNfURYMFoREIRQd" target="_blank" rel="noopener">申请同行 →</a>
       <a class="btn ghost" href="#invite">先看看</a>
@@ -335,8 +339,8 @@ canvas.snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none
 <section id="invite">
   <div class="wrap narrow invite reveal">
     <span class="eyebrow">An Invitation</span>
-    <p>有些问题，在办公室里想不明白。</p>
-    <p>不是因为你不够努力，而是你已经听过太多熟悉的答案。</p>
+    <p>有些问题，在熟悉的环境里想不透。</p>
+    <p>不是努力不够，而是身边听到的答案，都太相似了。</p>
     <p>所以这一次，我们换一个地方。去达沃斯，听不同国家的人怎么看技术、资本、增长与未来；和有真实事业的人坐在一起，聊聊各自的看法。</p>
     <p>你不需要带一份漂亮的商业计划书来。<br><em>你只需要带来一个真实的问题。</em></p>
   </div>
@@ -368,8 +372,8 @@ canvas.snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none
     </div>
     <div class="reveal" style="margin-top:30px">
       <div class="moment"><b>清晨</b><p>你推开雪山下那栋房子的窗，小镇还在雪里。几公里外，各国的元首、企业掌门人和科学家，正陆续走进会议中心。</p></div>
-      <div class="moment"><b>上午</b><p>你走在 Promenade 大街上，左边是 AI House，右边是一个国家馆。门口有人用三种语言争论一个问题，恰好就是你带来的那个。</p></div>
-      <div class="moment"><b>晚上</b><p>魔山论坛轮到你上场。讲完 5 分钟，台下有人举手：“这件事，我也许能帮上忙。”</p></div>
+      <div class="moment"><b>上午</b><p>你走在 Promenade 大街上，左边是 AI House，右边是一个国家馆。门口几个人正用不同的语言聊着一个问题，正好是你带来的那个。</p></div>
+      <div class="moment"><b>晚上</b><p>魔山论坛，轮到你讲自己的问题。讲完，有人接话：“这件事，我也许能帮上忙。”</p></div>
       <div class="moment"><b>下山</b><p>你的问题未必有了标准答案，但你清楚地知道，回去后要做的第一件事是什么。</p></div>
     </div>
   </div>
@@ -403,13 +407,13 @@ canvas.snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none
         <p>出发前一周，你会收到一份为你的问题定制的地图。AI 负责把公开信息研究透，我们负责判断哪些最值得你花时间。</p>
       </div>
       <ul>
-        <li><span>MY QUESTION</span>你带来的那个问题</li>
-        <li><span>GLOBAL AGENDA</span>它对应 WEF 2027 的哪个议题</li>
-        <li><span>WHERE TO GO</span>值得申请的边会与时段</li>
-        <li><span>WHO TO MEET</span>值得认识的人是哪一类</li>
-        <li><span>AFTER DAVOS</span>回来后的行动方向</li>
+        <li><span>MY QUESTION</span><div>你带来的那个问题<em>例：AI 来了，我的客服和内容团队要不要重组？</em></div></li>
+        <li><span>GLOBAL AGENDA</span><div>它对应 WEF 2027 的哪个议题<em>例：05 · AI 时代，如何让人更有力量</em></div></li>
+        <li><span>WHERE TO GO</span><div>值得去的场馆、值得申请的边会<em>例：AI 主题馆的开放场次，两场关于工作与技能的边会</em></div></li>
+        <li><span>WHO TO MEET</span><div>值得认识的人是哪一类<em>例：已经用 AI 重组团队的同行企业主</em></div></li>
+        <li><span>AFTER DAVOS</span><div>回来后的第一步<em>例：先在一个部门做 30 天试点</em></div></li>
       </ul>
-      <small>能否参加各场边会，以主办方的确认为准；AI 只是帮你做准备，不代表保证能进场或见到某人。</small>
+      <small>以上为示例。这一周你会走进三类场合：主街上对公众开放的国家馆和主题馆；需要另行报名的边会（我们协助申请，以主办方确认为准）；以及我们自己办的魔山论坛。</small>
     </div>
   </div>
 </section>
@@ -423,7 +427,7 @@ canvas.snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none
         <h2 class="h2" style="margin-bottom:22px">一月的达沃斯，<br>世界在这里碰头</h2>
         <p>每年一月，全球的政策、资本、技术和商业思想，在这座小镇集中碰撞一周。主会场里坐着国家元首和全球大公司的掌门人；主会场外，一公里长的 Promenade 大街上，几百场边会同时在开。</p>
         <p>我们来这里，不是追逐热闹，而是找到和自己下一步有关的线索。</p>
-        <p><strong>在达沃斯，最昂贵的不是距离，而是注意力。</strong>我们帮你把时间留给真正值得听的观点、值得认识的人。</p>
+        <p><strong>在达沃斯，最稀缺的不是距离，而是注意力。</strong>我们帮你把时间留给真正值得听的观点、值得认识的人。</p>
       </div>
       <figure class="reveal">
         <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Davos_Congress_Centre.jpg?width=1400" alt="雪山下的达沃斯小镇与会议中心" loading="lazy">
@@ -502,7 +506,7 @@ canvas.snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none
     <div class="narrow reveal">
       <span class="eyebrow">Eight Days</span>
       <h2 class="h2">八天</h2>
-      <p class="lead" style="margin-top:14px">前四天在达沃斯，是这趟的主线；后四天走周边，自愿参加。住在雪山下的私宅，本地朋友带路。</p>
+      <p class="lead" style="margin-top:14px">2027 年会会期是 1 月 18 日到 22 日。我们把达沃斯的四天放在开幕前后，场馆和边会最集中的那几天；之后四天走周边，自愿参加。住在雪山下的私宅，本地朋友带路。</p>
     </div>
     <h3 class="reveal" style="font-size:var(--s3);margin-top:40px">主行程 · 达沃斯</h3>
     <div class="days reveal" style="margin-top:16px">
@@ -628,7 +632,7 @@ canvas.snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none
       <details><summary>能进年会的主会场吗？</summary><p>不能，我们也不承诺。主会场靠邀请进入。我们去的是主会场外对公众开放的国家馆、主题馆和边会，这也是大多数人真正收获最多的地方。</p></details>
       <details><summary>英语不好，能参加吗？</summary><p>能。千百合和哈哈妈全程在，日常沟通和边会都会帮你翻译、引荐。</p></details>
       <details><summary>费用包括什么？</summary><p>包括住宿、当地交通、晚宴、摄影跟拍、问题地图和成书。不包括国际机票、签证费和个人消费。具体费用在视频面谈时说明。</p></details>
-      <details><summary>只参加达沃斯的四天可以吗？</summary><p>可以。后四天的阿尔卑斯小游自愿参加，你可以 1 月 21 日直接返程。</p></details>
+      <details><summary>只参加达沃斯的四天可以吗？</summary><p>可以。达沃斯这四天是主线，后四天的阿尔卑斯小游自愿参加，你可以 1 月 21 日直接返程。</p></details>
       <details><summary>一定要写文章吗？</summary><p>是的，这是这趟行程的一部分。不用担心文笔，我们有编辑团队陪你一起写。</p></details>
     </div>
     <p class="disclaim reveal">本活动由边玩边赚千百合与瑞士哈哈妈共同发起、独立策划，与世界经济论坛（WEF）无隶属关系，不包含年会官方主会场入场资格。能否参加各场边会，以主办方的确认为准。</p>
@@ -643,6 +647,8 @@ canvas.snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none
     <a class="btn gold" style="margin-top:28px" href="https://dcntf99ii002.feishu.cn/share/base/form/shrcnglfXGYyGNfURYMFoREIRQd" target="_blank" rel="noopener">申请同行 →</a>
   </div>
 </section>
+
+<div class="mcta" id="mcta"><small>2 分钟 · 4 个问题<br>12 月 6 日截止</small><a class="btn gold" href="https://dcntf99ii002.feishu.cn/share/base/form/shrcnglfXGYyGNfURYMFoREIRQd" target="_blank" rel="noopener">申请同行 →</a></div>
 
 <footer>
   <div class="wrap">
@@ -668,8 +674,13 @@ canvas.snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none
 })();
 (function(){
   /* 倒计时 */
-  var t=new Date('2027-01-17T00:00:00+01:00'), d=Math.ceil((t-new Date())/864e5), el=document.getElementById('cd');
-  if(el && d>0){document.getElementById('cdn').textContent=d; el.hidden=false;}
+  var now=new Date(), dl=new Date('2026-12-06T23:59:00+08:00'), go=new Date('2027-01-17T00:00:00+01:00'), el=document.getElementById('cd');
+  var dd=Math.ceil((dl-now)/864e5), dg=Math.ceil((go-now)/864e5);
+  if(el){ if(dd>0){document.getElementById('cdn').textContent=dd; el.hidden=false;}
+    else if(dg>0){document.getElementById('cdl').textContent='距出发还有'; document.getElementById('cdn').textContent=dg; document.getElementById('cds').textContent=''; el.hidden=false;} }
+  /* 手机底部申请条：滑过首屏后出现 */
+  var mc=document.getElementById('mcta');
+  if(mc){ var tg=function(){ mc.classList.toggle('on', scrollY>innerHeight*.8); }; addEventListener('scroll',tg,{passive:true}); tg(); }
   /* 数字滚动 */
   var st=document.querySelector('.stats');
   if(st && 'IntersectionObserver' in window){
