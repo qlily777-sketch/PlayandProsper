@@ -69,7 +69,6 @@ nav .btn{padding:9px 18px;font-size:.9rem}
 
 /* hero */
 .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding-block:0;overflow:hidden}
-.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.08) brightness(1.08)}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 3%,rgba(245,247,245,.86) 32%,rgba(245,247,245,.28) 60%,rgba(245,247,245,0) 80%)}
 .hero .grid{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.55;background-image:linear-gradient(rgba(174,233,240,.55) 1px,transparent 1px),linear-gradient(90deg,rgba(174,233,240,.55) 1px,transparent 1px);background-size:72px 72px;-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 55%);mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 55%)}
 .hero .sun{position:absolute;right:-8vw;top:-14vh;width:58vw;height:58vw;border-radius:50%;z-index:1;pointer-events:none;background:radial-gradient(circle,rgba(255,226,170,.7),rgba(255,226,170,0) 60%)}
@@ -84,6 +83,33 @@ nav .btn{padding:9px 18px;font-size:.9rem}
 .hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
 .hero .note{margin-top:16px;font-size:.78rem;color:var(--mist);max-width:44em}
 
+.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.05) brightness(1.04)}
+/* resonance */
+.res{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:36px}
+.res div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px 22px;font-size:1.02rem;line-height:1.75;box-shadow:0 8px 24px -22px rgba(16,29,50,.4)}
+.res div::before{content:"“";font-family:var(--f-display);font-size:2rem;line-height:0;color:var(--glacier);vertical-align:-.45em;margin-right:4px}
+.res-end{margin-top:34px;font-family:var(--f-display);font-size:var(--s3)}
+.res-end em{font-style:normal;color:var(--gold2)}
+@media (max-width:720px){.res{grid-template-columns:1fr}}
+/* places */
+.places{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}
+.place{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:3/4;background:#ccd}
+.place img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.place:hover img{transform:scale(1.05)}
+.place::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(16,29,50,.78),rgba(16,29,50,0) 55%)}
+.place figcaption{position:absolute;left:14px;right:14px;bottom:12px;z-index:1;color:#fff;font-family:var(--f-body);margin:0}
+.place figcaption b{display:block;font-family:var(--f-display);font-size:1.15rem}
+.place figcaption small{font-size:.66rem;opacity:.75;font-family:var(--f-mono)}
+@media (max-width:860px){.places{grid-template-columns:1fr 1fr}}
+/* host photos */
+.host .ph{width:84px;height:84px;border-radius:50%;object-fit:cover;object-position:top;margin-bottom:14px;border:3px solid #fff;box-shadow:0 6px 18px -8px rgba(16,29,50,.45);background:linear-gradient(160deg,var(--glacier),#fff)}
+/* faq */
+.faq{margin-top:32px;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line);padding:16px 0}
+.faq summary{cursor:pointer;font-weight:700;font-size:1.04rem;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::after{content:"+";color:var(--cyan);font-family:var(--f-mono);font-size:1.2rem}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin-top:10px;color:var(--mist)}
 /* invite */
 .invite{font-family:var(--f-display);font-size:clamp(1.25rem,2.6vw,1.7rem);line-height:1.9}
 .invite p+p{margin-top:.9em}
@@ -233,13 +259,14 @@ footer .credits{margin-top:12px;line-height:1.9}
       <li><a href="#days">八天</a></li>
       <li><a href="#you">我们在找你</a></li>
     </ul>
-    <a class="btn" href="#join">申请入炉</a>
+    <a class="btn" href="https://dcntf99ii002.feishu.cn/share/base/form/shrcn7dOgtuSWU5rkLnnmQCHyqg" target="_blank" rel="noopener">申请入炉</a>
   </div>
 </nav>
 
 <!-- 首屏 -->
 <header class="hero" id="top">
-  <img class="bg" src="img/davosersee.jpg" alt="冬日的达沃斯湖与雪山" fetchpriority="high">
+  <img class="poster" src="img/hero-poster.jpg" alt="达沃斯魏斯弗卢峰的雪山航拍" fetchpriority="high">
+  <video id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="img/hero-poster.jpg" aria-hidden="true"><source src="img/hero.mp4" type="video/mp4"></video>
   <div class="grid"></div>
   <div class="sun"></div>
   <div class="wrap">
@@ -249,7 +276,7 @@ footer .credits{margin-top:12px;line-height:1.9}
     <p class="sub">你不是去旁听世界的未来。你是带着自己的问题，去参与一场关于未来的对话。</p>
     <div class="meta"><span>2027.1.17 — 1.24</span><span>瑞士 · 达沃斯及周边</span><span>小范围私人对话 · 仅限申请</span></div>
     <div class="cta">
-      <a class="btn gold" href="#join">申请入炉 →</a>
+      <a class="btn gold" href="https://dcntf99ii002.feishu.cn/share/base/form/shrcn7dOgtuSWU5rkLnnmQCHyqg" target="_blank" rel="noopener">申请入炉 →</a>
       <a class="btn ghost" href="#invite">先看看</a>
     </div>
     <p class="note">本活动由「边玩边赚」独立策划，与世界经济论坛（WEF）无隶属关系，不包含年会官方主会场入场资格。</p>
@@ -264,6 +291,23 @@ footer .credits{margin-top:12px;line-height:1.9}
     <p>不是因为你不够努力，而是你已经听过太多熟悉的答案。</p>
     <p>所以这一次，我们换一个地方。去达沃斯，听不同国家的人怎么看技术、资本、增长与未来；和有真实事业的人坐在一起，聊聊各自的看法。</p>
     <p>你不需要带一份漂亮的商业计划书来。<br><em>你只需要带来一个真实的问题。</em></p>
+  </div>
+</section>
+
+<!-- 共鸣 -->
+<section class="band" id="you-too">
+  <div class="wrap">
+    <div class="narrow reveal">
+      <span class="eyebrow">Sound Familiar?</span>
+      <h2 class="h2">如果你最近也常这样想</h2>
+    </div>
+    <div class="res reveal">
+      <div>生意做到今天，身边能聊透一件事的人，越来越少。</div>
+      <div>AI 的新闻天天看，可它到底会怎么改变我这门生意，还是看不清。</div>
+      <div>想把事业做到国外去，却不知道外面的人在想什么、要什么。</div>
+      <div>一年忙到头，没有一个星期，是真正停下来想问题的。</div>
+    </div>
+    <p class="res-end reveal">那这炉火，<em>就是为你生的。</em></p>
   </div>
 </section>
 
@@ -404,6 +448,12 @@ footer .credits{margin-top:12px;line-height:1.9}
     </div>
     <h3 class="reveal" style="font-size:var(--s3);margin-top:36px">延伸行程 · 阿尔卑斯小游 <span class="muted" style="font-family:var(--f-body);font-size:.95rem;font-weight:400">（自愿参加，强烈推荐）</span></h3>
     <p class="reveal muted" style="margin-top:6px">大老远来一趟，三天就飞回去太可惜。会后多走三天，把阿尔卑斯的冬天看够，也把这一周的收获慢慢消化。</p>
+    <div class="places reveal">
+      <figure class="place"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ch%C3%A2teau_de_Vaduz_-_2022.jpg?width=800" alt="列支敦士登瓦杜兹城堡" loading="lazy"><figcaption><b>列支敦士登 · 瓦杜兹城堡</b><small>Christian David · CC BY-SA 4.0</small></figcaption></figure>
+      <figure class="place"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Pavillon_Bregenz_Uferpromenade.JPG?width=800" alt="奥地利布雷根茨的博登湖畔" loading="lazy"><figcaption><b>奥地利 · 博登湖畔</b><small>Böhringer · CC BY-SA 2.5</small></figcaption></figure>
+      <figure class="place"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Neues_Rathaus_M%C3%BCnchen_w%C3%A4hrend_Weihnachtsmarkt_2024-12-02.jpg?width=800" alt="德国慕尼黑新市政厅" loading="lazy"><figcaption><b>德国 · 慕尼黑新市政厅</b><small>Strubbl · CC BY-SA 4.0</small></figcaption></figure>
+      <figure class="place"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Neuschwanstein,_Schwangau,_Alemania,_2015-02-15,_DD_16.JPG?width=800" alt="冬天的新天鹅堡" loading="lazy"><figcaption><b>德国 · 冬日新天鹅堡</b><small>Diego Delso · CC BY-SA 4.0</small></figcaption></figure>
+    </div>
     <div class="days reveal" style="margin-top:16px">
       <div class="day ext"><small>1/21 周四</small><h3>一天四国</h3><p>从住处出发，往列支敦士登、奥地利方向走。</p></div>
       <div class="day ext"><small>1/22 周五</small><h3>德国一线</h3><p>往慕尼黑方向走，见当地的朋友。</p></div>
@@ -463,11 +513,13 @@ footer .credits{margin-top:12px;line-height:1.9}
     </div>
     <div class="hosts reveal">
       <div class="host">
+        <img class="ph" src="img/host-lily.webp" alt="千百合">
         <small>美国 · 达拉斯</small>
         <h3>千百合</h3>
         <p>边玩边赚联合创始人。AI 教育者，畅销书出品人（20 多本），独立投资人，美国德州大学达拉斯分校 AI 硕士。带着玩赚队，把“玩、旅行、学习、赚钱”活成一件事。</p>
       </div>
       <div class="host">
+        <img class="ph" src="img/host-hahama.jpg" alt="瑞士哈哈妈">
         <small>瑞士</small>
         <h3>瑞士哈哈妈</h3>
         <p>生活在瑞士的多语言自由导师，教人用学母语的方式学外语。去年会期，她就组织过一群朋友一起走进达沃斯。</p>
@@ -491,7 +543,15 @@ footer .credits{margin-top:12px;line-height:1.9}
     </div>
     <div class="deadline reveal">
       <p class="d">申请截止：<em>2026 年 12 月 6 日</em></p>
-      <p class="muted">需要办申根签证的朋友，请尽早申请。想申请，请直接私信千百合或瑞士哈哈妈。</p>
+      <a class="btn gold" href="https://dcntf99ii002.feishu.cn/share/base/form/shrcn7dOgtuSWU5rkLnnmQCHyqg" target="_blank" rel="noopener">填写申请（4 个问题，2 分钟）→</a>
+    </div>
+    <p class="muted reveal" style="margin-top:12px">需要办申根签证的朋友，请尽早申请。也可以直接私信千百合或瑞士哈哈妈。</p>
+    <div class="faq reveal">
+      <details><summary>能进年会的主会场吗？</summary><p>不能，我们也不承诺。主会场靠邀请进入。我们去的是主会场外对公众开放的国家馆、主题馆和边会，这也是大多数人真正收获最多的地方。</p></details>
+      <details><summary>英语不好，能参加吗？</summary><p>能。千百合和哈哈妈全程在，日常沟通和边会都会帮你翻译、引荐。</p></details>
+      <details><summary>费用包括什么？</summary><p>包括住宿、当地交通、晚宴、摄影跟拍、问题地图和成书。不包括国际机票、签证费和个人消费。具体费用在视频面谈时说明。</p></details>
+      <details><summary>只参加达沃斯的四天可以吗？</summary><p>可以。后四天的阿尔卑斯小游自愿参加，你可以 1 月 21 日直接返程。</p></details>
+      <details><summary>一定要写文章吗？</summary><p>是的，这是这趟行程的一部分。不用担心文笔，我们有编辑团队陪你一起写。</p></details>
     </div>
     <p class="disclaim reveal">本活动由「边玩边赚」独立策划，与世界经济论坛（WEF）无隶属关系，不包含年会官方主会场入场资格。能否参加各场边会，以主办方的确认为准。</p>
   </div>
@@ -507,11 +567,15 @@ footer .credits{margin-top:12px;line-height:1.9}
 <footer>
   <div class="wrap">
     <p>© 2026 边玩边赚 Play and Prosper · 本活动为边玩边赚独立组织的私人行程与晚宴，与世界经济论坛（WEF）无隶属关系。</p>
-    <p class="credits">图片来源：首屏《Davos in Winter》摄影 Sabrina Schreiber，CC BY-SA 4.0；达沃斯小镇与会议中心、会议中心入口，摄影 World Economic Forum，CC BY-SA 2.0；Philipp Bauknecht《Winterabend in Davos》，公有领域；Schatzalp，摄影 Lantus，CC BY-SA 3.0；达沃斯湖畔，摄影 JoachimKohler-HB，CC BY-SA 4.0；格劳宾登冬日山谷，摄影 Kabelleger / David Gubler，CC BY-SA 4.0。均来自 <a href="https://commons.wikimedia.org" target="_blank" rel="noopener">Wikimedia Commons</a>。</p>
+    <p class="credits">图片与视频来源：首屏视频截取自《Weissfluhjoch, aerial video》，Capricorn4049，CC BY-SA 4.0；瓦杜兹城堡 Christian David，CC BY-SA 4.0；博登湖畔 Böhringer，CC BY-SA 2.5；慕尼黑新市政厅 Strubbl，CC BY-SA 4.0；新天鹅堡 Diego Delso，CC BY-SA 4.0；达沃斯小镇与会议中心、会议中心入口，摄影 World Economic Forum，CC BY-SA 2.0；Philipp Bauknecht《Winterabend in Davos》，公有领域；Schatzalp，摄影 Lantus，CC BY-SA 3.0；达沃斯湖畔，摄影 JoachimKohler-HB，CC BY-SA 4.0；格劳宾登冬日山谷，摄影 Kabelleger / David Gubler，CC BY-SA 4.0。均来自 <a href="https://commons.wikimedia.org" target="_blank" rel="noopener">Wikimedia Commons</a>。</p>
   </div>
 </footer>
 
 <script>
+(function(){
+  var hv=document.getElementById('heroVideo');
+  if(hv && window.matchMedia('(prefers-reduced-motion: reduce)').matches){hv.removeAttribute('autoplay');hv.pause();hv.style.display='none'}
+})();
 (function(){
   var nav=document.getElementById('nav');
   function onScroll(){ if(window.scrollY>40){nav.classList.add('solid')}else{nav.classList.remove('solid')} }
