@@ -149,7 +149,7 @@ h2{font-family:var(--serif);font-weight:700;font-size:clamp(26px,4.4vw,36px);lin
 .sign .top img{border-radius:4px}
 .sign .top p{margin-top:12px;color:var(--ink2);font-family:var(--serif);line-height:2}
 .shelf{margin-top:48px;display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
-.shelf figure img{aspect-ratio:3/4;object-fit:cover;border-radius:2px;box-shadow:0 10px 24px -12px rgba(30,50,40,.45)}
+.shelf figure img{aspect-ratio:3/4;width:100%;object-fit:contain;object-position:50% 100%;filter:drop-shadow(6px 10px 12px rgba(30,50,40,.28))}
 .shelf figcaption{margin-top:10px;font-size:13px;line-height:1.55;color:var(--ink2)}
 .shelf figcaption b{display:block;color:var(--ink);font:700 14px/1.5 var(--serif)}
 @media(max-width:820px){.sign .top{grid-template-columns:1fr;gap:26px}.shelf{grid-template-columns:repeat(5,62%);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}.shelf figure{scroll-snap-align:start}}
