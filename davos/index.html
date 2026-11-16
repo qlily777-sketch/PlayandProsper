@@ -277,6 +277,22 @@ footer .credits{margin-top:12px;line-height:1.9}
 .photoband .wrap{position:relative;z-index:1;text-align:center}
 .photoband p{font-family:var(--f-display);font-size:clamp(1.8rem,4.6vw,3.2rem);font-weight:700;text-shadow:0 4px 24px rgba(0,0,0,.35);line-height:1.4}
 .photoband em{font-style:normal;color:var(--gold)}
+
+/* 手机端细修 */
+nav .btn{white-space:nowrap}
+.hero .tag,.hero .sub{text-wrap:balance}
+@media (max-width:560px){
+  nav .wrap{height:56px}
+  nav .brand{font-size:.92rem;letter-spacing:.02em;white-space:nowrap}
+  nav .brand small{display:none}
+  nav .btn{padding:8px 14px;font-size:.84rem}
+  .hero::after{background:linear-gradient(to top,var(--bg) 8%,rgba(245,247,245,.93) 45%,rgba(245,247,245,.6) 70%,rgba(245,247,245,.15) 92%)}
+  .hero .tag{font-size:1.18rem}
+  .hero .sub{font-size:.98rem;color:#3E4E63}
+  .hero .meta{font-size:.78rem;gap:4px 14px}
+  .cdbox{padding:8px 16px}
+  .cdbox b{font-size:1.6rem}
+}
 /* 生动一点：雪、倒计时、悬停、呼吸 */
 canvas.snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
 .fire .wrap{z-index:2}
