@@ -1,0 +1,819 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="theme-color" content="#F5F7F5">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Davos · The Magic Mountain 2027 | Lily Li × Swiss Hahama</title>
+<meta name="description" content="Davos · The Magic Mountain: during the World Economic Forum week in January 2027, bring a real question about your work up the mountain and hear what the world has to say. By application only.">
+<meta property="og:title" content="Davos · The Magic Mountain 2027 | Bring your question up the mountain">
+<meta property="og:description" content="January 2027: a small private group of founders and business owners in Davos during WEF week. Co-hosted by Lily Li and Swiss Hahama. By application only.">
+<meta property="og:image" content="https://www.playandprosper.com/davos/img/hero-poster.jpg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.playandprosper.com/davos/en/">
+<link rel="alternate" hreflang="zh-CN" href="https://www.playandprosper.com/davos/">
+<link rel="alternate" hreflang="en" href="https://www.playandprosper.com/davos/en/">
+<link rel="icon" type="image/png" href="../../island/img/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;700&family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
+<style>
+/* 雪线之上：雪山白的底，未来深蓝的字，冰川青是未来，暖金是人 */
+:root{
+  --bg:#F5F7F5;
+  --bg2:#EAF4F6;
+  --card:#FFFFFF;
+  --ink:#101D32;
+  --mist:#55657A;
+  --line:rgba(16,29,50,.12);
+  --glacier:#AEE9F0;
+  --cyan:#1E8FA3;
+  --gold:#DDA96F;
+  --gold2:#B9772F;
+  --deep:#101D32;
+  --f-display:"Noto Serif SC","Source Han Serif SC","Songti SC","STSong","SimSun",serif;
+  --f-body:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Source Han Sans SC","Microsoft YaHei",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --s1:clamp(2.6rem,8vw,6rem);
+  --s2:clamp(1.8rem,4.2vw,2.9rem);
+  --s3:clamp(1.15rem,2.2vw,1.45rem);
+  --gl:max(18px,env(safe-area-inset-left,0px));
+  --gr:max(18px,env(safe-area-inset-right,0px));
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.85;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.25;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding-left:var(--gl);padding-right:var(--gr)}
+.narrow{max-width:760px}
+section{padding-block:clamp(72px,10vw,124px)}
+.band{background:var(--bg2)}
+.eyebrow{display:block;font-family:var(--f-mono);font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
+.h2{font-size:var(--s2)}
+.h2::after{content:"";display:block;width:46px;height:3px;margin-top:18px;border-radius:2px;background:linear-gradient(90deg,var(--gold),var(--glacier))}
+.lead{font-size:var(--s3);line-height:1.8}
+.muted{color:var(--mist)}
+.btn{display:inline-flex;align-items:center;gap:10px;font:inherit;font-weight:700;background:var(--deep);color:#fff;border:0;border-radius:999px;padding:14px 28px;text-decoration:none;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px -12px rgba(16,29,50,.6)}
+.btn.gold{background:var(--gold);color:var(--deep)}
+.btn.ghost{background:rgba(255,255,255,.6);border:1px solid var(--line);color:var(--ink)}
+.prose p+p{margin-top:1.05em}
+.prose strong{color:var(--gold2)}
+
+/* nav */
+nav{position:fixed;inset:0 0 auto 0;z-index:20;padding-top:env(safe-area-inset-top,0px);transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+nav.solid{background:rgba(245,247,245,.92);backdrop-filter:blur(10px);border-bottom-color:var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+nav .brand{font-family:var(--f-display);font-weight:700;letter-spacing:.06em;text-decoration:none}
+nav .brand small{font-family:var(--f-mono);font-weight:400;color:var(--mist);margin-left:8px;font-size:.72rem;letter-spacing:.12em}
+nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-size:.92rem}
+nav ul a{text-decoration:none;opacity:.78}
+nav ul a:hover{opacity:1;color:var(--cyan)}
+nav .btn{padding:9px 18px;font-size:.9rem}
+nav .lang{margin-left:auto;margin-right:-4px;font-size:.85rem;text-decoration:none;padding:6px 10px;border:1px solid var(--line);border-radius:999px;opacity:.85}nav .lang:hover{opacity:1;color:var(--cyan)}
+
+@media (max-width:900px){nav ul{display:none}}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding-block:0;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 3%,rgba(245,247,245,.86) 32%,rgba(245,247,245,.28) 60%,rgba(245,247,245,0) 80%)}
+.hero .grid{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.55;background-image:linear-gradient(rgba(174,233,240,.55) 1px,transparent 1px),linear-gradient(90deg,rgba(174,233,240,.55) 1px,transparent 1px);background-size:72px 72px;-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 55%);mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 55%)}
+.hero .sun{position:absolute;right:-8vw;top:-14vh;width:58vw;height:58vw;border-radius:50%;z-index:1;pointer-events:none;background:radial-gradient(circle,rgba(255,226,170,.7),rgba(255,226,170,0) 60%)}
+.hero .wrap{position:relative;z-index:2;padding-bottom:clamp(48px,9vh,96px);padding-top:120px}
+.hero .chip{display:inline-flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-family:var(--f-mono);font-size:.78rem;letter-spacing:.14em;color:var(--deep);background:rgba(255,255,255,.72);border:1px solid var(--line);border-radius:999px;padding:7px 16px;margin-bottom:22px;backdrop-filter:blur(6px)}
+.hero .chip b{color:var(--gold2);font-family:var(--f-display);letter-spacing:.08em;font-size:.95rem}
+.hero h1{font-size:var(--s1);font-weight:900;letter-spacing:.02em}
+.hero h1 .dot{color:var(--gold)}
+.hero .tag{font-family:var(--f-display);font-size:clamp(1.25rem,2.8vw,1.9rem);margin-top:16px}
+.hero .sub{margin-top:14px;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--mist);max-width:34em}
+.hero .meta{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:22px;font-family:var(--f-mono);font-size:.84rem;color:var(--mist);letter-spacing:.06em}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.hero .note{margin-top:16px;font-size:.78rem;color:var(--mist);max-width:44em}
+
+.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.05) brightness(1.04)}
+/* resonance */
+.res{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:36px}
+.res div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px 24px;font-family:var(--f-display);font-size:1.12rem;line-height:1.8;color:var(--ink);box-shadow:0 8px 24px -22px rgba(16,29,50,.4)}
+.res div::before{content:"“";font-family:var(--f-display);font-size:2rem;line-height:0;color:var(--glacier);vertical-align:-.45em;margin-right:4px}
+.res-end{margin-top:34px;font-family:var(--f-display);font-size:var(--s3)}
+.res-end em{font-style:normal;color:var(--gold2)}
+@media (max-width:720px){.res{grid-template-columns:1fr}}
+/* places */
+.places{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}
+.place{position:relative;margin:0;border-radius:10px;overflow:hidden;aspect-ratio:4/5;background:#ccd}
+.place img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.place:hover img{transform:scale(1.05)}
+.place::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(16,29,50,.78),rgba(16,29,50,0) 55%)}
+.place figcaption{position:absolute;left:14px;right:14px;bottom:12px;z-index:1;color:#fff;font-family:var(--f-body);margin:0}
+.place figcaption b{display:block;font-family:var(--f-display);font-size:1.15rem}
+.place figcaption small{font-size:.66rem;opacity:.75;font-family:var(--f-mono)}
+@media (max-width:860px){.places{grid-template-columns:1fr 1fr}}
+/* host photos */
+.host .ph{width:88px;height:88px;border-radius:50%;object-fit:cover;object-position:center;margin-bottom:14px;border:3px solid #fff;box-shadow:0 6px 18px -8px rgba(16,29,50,.45);background:linear-gradient(160deg,var(--glacier),#fff)}
+/* wechat */
+.wx{display:flex;gap:20px;align-items:center;margin-top:26px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;max-width:560px}
+.wx img{width:120px;height:120px;border-radius:6px}
+.wx b{font-size:1.05rem}
+.wx p{margin-top:6px;font-size:.92rem}
+.mono{font-family:var(--f-mono);color:var(--deep);font-weight:500}
+/* faq */
+.faq{margin-top:32px;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line);padding:16px 0}
+.faq summary{cursor:pointer;font-weight:700;font-size:1.04rem;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::after{content:"+";color:var(--cyan);font-family:var(--f-mono);font-size:1.2rem}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin-top:10px;color:var(--mist)}
+/* invite */
+.invite{font-family:var(--f-display);font-size:clamp(1.25rem,2.6vw,1.7rem);line-height:1.9}
+.invite p+p{margin-top:.9em}
+.invite em{font-style:normal;color:var(--gold2)}
+
+/* journey */
+.journey{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:48px;position:relative}
+.journey::before{content:"";position:absolute;left:0;right:0;top:27px;height:2px;background:linear-gradient(90deg,var(--glacier),var(--cyan) 60%,var(--gold));opacity:.9}
+.jstep{position:relative;padding:0 14px 0 0}
+.jstep .n{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--card);border:2px solid var(--glacier);font-family:var(--f-mono);font-weight:500;color:var(--cyan);position:relative;z-index:1;box-shadow:0 6px 18px -10px rgba(30,143,163,.6)}
+.jstep:last-child .n{border-color:var(--gold);color:var(--gold2)}
+.jstep h3{font-size:1.12rem;margin:18px 0 6px}
+.jstep p{font-size:.92rem;color:var(--mist);line-height:1.7}
+@media (max-width:900px){.journey{grid-template-columns:1fr;gap:22px}.journey::before{left:27px;right:auto;top:0;bottom:0;width:2px;height:auto;background:linear-gradient(180deg,var(--glacier),var(--cyan) 60%,var(--gold))}.jstep{display:grid;grid-template-columns:56px 1fr;gap:16px}.jstep h3{margin-top:12px}}
+.map{margin-top:40px;background:var(--deep);color:#EAF4F6;border-radius:10px;padding:clamp(22px,3.5vw,36px);display:grid;grid-template-columns:1fr 1.2fr;gap:28px;position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(174,233,240,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(174,233,240,.08) 1px,transparent 1px);background-size:28px 28px}
+.map h3{font-size:var(--s3);color:#fff}
+.map p{color:#B9C9D6;font-size:.94rem;margin-top:10px}
+.map ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;position:relative;z-index:1}
+.map li{display:flex;gap:12px;align-items:baseline;border-bottom:1px dashed rgba(174,233,240,.25);padding-bottom:10px;font-size:.95rem}
+.map li span{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;color:var(--glacier);flex:0 0 9.5em}
+.map li em{display:block;font-style:normal;font-size:.8rem;color:#8FB3C2;margin-top:3px}
+.map small{display:block;margin-top:14px;font-size:.78rem;color:#8FA3B5;position:relative;z-index:1}
+@media (max-width:760px){.map{grid-template-columns:1fr}}
+
+/* split */
+.split{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(28px,5vw,72px);align-items:center}
+.split figure{margin:0}
+.split img{border-radius:8px;aspect-ratio:4/3;object-fit:cover;width:100%}
+figcaption{font-size:.74rem;color:var(--mist);margin-top:8px;font-family:var(--f-mono)}
+@media (max-width:860px){.split{grid-template-columns:1fr}}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:clamp(40px,6vw,60px)}
+.stats div{padding:24px 8px;text-align:center}
+.stats div+div{border-left:1px solid var(--line)}
+.stats b{display:block;font-family:var(--f-mono);font-weight:500;font-size:clamp(1.7rem,4.2vw,2.8rem);line-height:1.15;color:var(--deep)}
+.stats div:last-child b{color:var(--gold2)}
+.stats span{font-size:.84rem;color:var(--mist)}
+@media (max-width:640px){.stats{grid-template-columns:1fr 1fr}.stats div:nth-child(3){border-left:0}.stats div:nth-child(n+3){border-top:1px solid var(--line)}}
+
+/* questions */
+.theme-en{font-family:var(--f-display);font-style:italic;font-size:min(var(--s2),4.4vw);line-height:1.3;color:var(--cyan);margin:8px 0 14px;white-space:nowrap;width:max-content;max-width:none}
+.qcards{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:36px}
+.qc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 16px;display:flex;flex-direction:column;gap:8px}
+.qc b{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.14em;color:var(--cyan)}
+.qc h3{font-size:1.02rem;line-height:1.5}
+.qc p{font-size:.74rem;color:var(--mist);font-family:var(--f-mono);line-height:1.5;margin-top:auto}
+.qc.ours{background:linear-gradient(160deg,#FFF6EA,var(--card) 70%);border-color:var(--gold)}
+.qc.ours b{color:var(--gold2)}
+@media (max-width:980px){.qcards{grid-template-columns:repeat(2,1fr)}.qc.ours{grid-column:1/-1}}
+.answer{margin-top:32px;padding:26px clamp(20px,4vw,40px);border-left:3px solid var(--gold);background:var(--card);border-radius:0 8px 8px 0;box-shadow:0 10px 30px -20px rgba(16,29,50,.35)}
+.answer h3{font-size:var(--s3);line-height:1.6}
+.answer h3 span{color:var(--gold2)}
+
+/* fire */
+.fire{position:relative;overflow:hidden;background:var(--deep);color:#F5F7F5}
+.fire .bgart{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.28}
+.fire::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 85%,rgba(221,169,111,.55),rgba(16,29,50,.9) 62%)}
+.fire .wrap{position:relative;z-index:1}
+.fire .eyebrow{color:var(--gold)}
+.fire h2{font-size:var(--s1);font-weight:900;text-align:center}
+.fire .lead{max-width:32em;margin:22px auto 0;text-align:center;color:#E3EAF0}
+.fire .topic{text-align:center;margin-top:30px;font-family:var(--f-display);font-size:var(--s2);color:#fff;line-height:1.35}
+.fire .topic small{display:block;font-family:var(--f-mono);font-size:.76rem;letter-spacing:.16em;color:var(--gold);margin-bottom:10px}
+.agenda{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:44px}
+.agenda div{border:1px solid rgba(245,247,245,.18);border-radius:10px;padding:18px;background:rgba(16,29,50,.55);backdrop-filter:blur(4px)}
+.agenda b{font-family:var(--f-mono);font-size:.74rem;color:var(--gold);letter-spacing:.12em}
+.agenda h3{font-size:1.05rem;margin:6px 0;color:#fff}
+.agenda p{font-size:.88rem;color:#C9D5DF;line-height:1.7}
+@media (max-width:860px){.agenda{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.agenda{grid-template-columns:1fr}}
+.rule{margin:28px auto 0;max-width:44em;text-align:center;font-size:.9rem;color:#C9D5DF;border-top:1px solid rgba(245,247,245,.18);padding-top:20px}
+.fire .line{text-align:center;font-family:var(--f-display);font-size:var(--s3);color:var(--gold);margin-top:30px}
+
+/* days */
+.days{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}
+.day{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px 18px;box-shadow:0 8px 24px -20px rgba(16,29,50,.4)}
+.day small{display:block;font-family:var(--f-mono);font-size:.74rem;letter-spacing:.1em;color:var(--mist);margin-bottom:6px}
+.day h3{font-size:1.1rem;margin-bottom:8px}
+.day p{font-size:.9rem;color:var(--mist);line-height:1.7}
+.day.hot{border-color:var(--gold);background:linear-gradient(160deg,#FFF3E2,var(--card) 60%)}
+.day.hot h3{color:var(--gold2)}
+.day.ext{background:rgba(255,255,255,.55);border-style:dashed;box-shadow:none}
+/* 主行程五天 · 路线卡 */
+.route{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin:28px 0 0;padding:14px 0 0;position:relative;counter-reset:d}
+.route::before{content:"";position:absolute;left:10%;right:10%;top:0;height:2px;background:linear-gradient(90deg,var(--glacier),var(--cyan) 70%,var(--gold))}
+.stop{position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 14px 34px -26px rgba(16,29,50,.55);transition:transform .35s ease,box-shadow .35s ease;display:flex;flex-direction:column}
+.stop::before{content:"";position:absolute;top:-21px;left:50%;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:#fff;border:3px solid var(--cyan);z-index:2}
+.stop:hover{transform:translateY(-6px);box-shadow:0 22px 40px -24px rgba(16,29,50,.55)}
+.stop figure{position:relative;margin:0;aspect-ratio:4/3;background-size:cover;border-radius:13px 13px 0 0;overflow:hidden;transition:background-size .6s ease}
+.stop figure::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,rgba(16,29,50,0) 35%,rgba(16,29,50,.72))}
+.stop .dn{position:absolute;left:14px;bottom:10px;z-index:1;color:#fff;font-family:var(--f-display);font-weight:900;font-size:1.55rem;letter-spacing:.04em;text-shadow:0 2px 12px rgba(0,0,0,.35)}
+.stop .tag{position:absolute;left:12px;top:12px;z-index:1;font-size:.72rem;font-weight:500;color:var(--ink);background:rgba(255,255,255,.88);padding:3px 9px;border-radius:99px;backdrop-filter:blur(4px)}
+.stop .tx{padding:16px 16px 18px}
+.stop small{display:block;font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;color:var(--cyan);margin-bottom:6px}
+.stop h3{font-size:1.08rem;margin-bottom:8px}
+.stop p{font-size:.88rem;color:var(--mist);line-height:1.7}
+.stop.finale{border:1.5px solid var(--gold);background:linear-gradient(170deg,#FFF3E2,#fff 55%);box-shadow:0 0 0 4px rgba(221,169,111,.16),0 20px 44px -22px rgba(185,119,47,.6)}
+.stop.finale::before{border-color:var(--gold);background:var(--gold);width:16px;height:16px;margin-left:-8px;top:-23px;box-shadow:0 0 0 6px rgba(221,169,111,.25);animation:pulse 2.4s ease-in-out infinite}
+.stop.finale figure::after{background:linear-gradient(180deg,rgba(185,119,47,.05) 30%,rgba(90,48,12,.78))}
+.stop.finale h3{color:var(--gold2)}
+.stop.finale .tag{background:var(--gold);color:#fff}
+.stop .badge{position:absolute;right:12px;top:12px;z-index:1;font-size:.72rem;font-weight:700;color:#fff;background:var(--deep);padding:3px 9px;border-radius:99px}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(221,169,111,.25)}50%{box-shadow:0 0 0 10px rgba(221,169,111,0)}}
+.route-hint{display:none;text-align:center;font-size:.8rem;color:var(--mist);margin-top:8px}
+@media (max-width:1100px){
+  .route{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;padding:28px 4px 16px;margin-left:calc(-1*var(--gl));margin-right:calc(-1*var(--gr));padding-left:var(--gl);padding-right:var(--gr);scrollbar-width:none}
+  .route::-webkit-scrollbar{display:none}
+  .route::before{left:0;right:0;top:14px}
+  .stop{flex:0 0 min(300px,78vw);scroll-snap-align:center}
+  .route-hint{display:block}
+}
+@media (prefers-reduced-motion:reduce){.stop,.stop figure{transition:none}.stop.finale::before{animation:none}}
+.days.five{grid-template-columns:repeat(5,1fr)}
+@media (max-width:1100px){.days.five{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:900px){.days,.days.five{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.days,.days.five{grid-template-columns:1fr}}
+.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:26px}
+.strip figure{margin:0}
+.strip img{aspect-ratio:16/10;object-fit:cover;border-radius:8px;width:100%}
+@media (max-width:640px){.strip{grid-template-columns:1fr}}
+
+/* take */
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}
+.cards.six{grid-template-columns:repeat(3,1fr)}
+.first-note{margin-top:30px;text-align:center;font-family:var(--f-display);font-size:var(--s3)}
+.first-note em{font-style:normal;color:var(--gold2)}
+.scene .moment{display:grid;grid-template-columns:96px 1fr;gap:18px;padding:22px 0;border-top:1px solid var(--line)}
+.scene .moment:last-of-type{border-bottom:1px solid var(--line)}
+.scene .moment b{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.14em;color:var(--cyan);padding-top:8px;font-weight:500}
+.scene .moment p{font-family:var(--f-display);font-size:clamp(1.06rem,2vw,1.28rem);line-height:1.85}
+.scene-end{margin-top:30px;font-family:var(--f-display);font-size:var(--s3)}
+.scene-end em{font-style:normal;color:var(--gold2)}
+@media (max-width:560px){.scene .moment{grid-template-columns:1fr;gap:4px}.scene .moment b{padding-top:0}}
+.cardx{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:24px;box-shadow:0 8px 24px -20px rgba(16,29,50,.4);border-top:3px solid var(--glacier)}
+.cardx:nth-child(2){border-top-color:var(--gold)}
+.cardx h3{font-size:1.18rem;margin-bottom:10px}
+.cardx p{color:var(--mist);font-size:.94rem}
+@media (max-width:980px){.cards,.cards.six{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.cards,.cards.six{grid-template-columns:1fr}}
+
+/* gates */
+.gates{counter-reset:g;list-style:none;margin:36px 0 0;padding:0}
+.gates li{counter-increment:g;display:grid;grid-template-columns:52px 1fr;gap:14px;padding:18px 0;border-top:1px solid var(--line)}
+.gates li::before{content:"0" counter(g);font-family:var(--f-mono);font-size:1.1rem;color:var(--cyan);line-height:1.6}
+.gates b{display:block;font-size:1.08rem}
+.gates span{color:var(--mist);font-size:.95rem}
+
+/* hosts */
+.hosts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+.host{border:1px solid var(--line);border-radius:10px;padding:28px;background:var(--card)}
+.host small{font-family:var(--f-mono);color:var(--cyan);letter-spacing:.12em;font-size:.76rem}
+.host h3{font-size:1.5rem;margin:6px 0 12px}
+.host p{color:var(--mist)}
+.host .tags{display:flex;flex-wrap:wrap;gap:6px;margin:-4px 0 12px}
+.host .tags span{font-size:.78rem;color:var(--deep);background:rgba(174,233,240,.45);border-radius:999px;padding:3px 10px}
+@media (max-width:860px){.hosts{grid-template-columns:1fr}}
+
+/* join */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px}
+.step{padding:24px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.step b{font-family:var(--f-mono);color:var(--cyan);font-size:.8rem;letter-spacing:.12em}
+.step h3{font-size:1.18rem;margin:8px 0}
+.step p{color:var(--mist);font-size:.94rem}
+@media (max-width:720px){.steps,.steps.five{grid-template-columns:1fr}}
+.steps.five{grid-template-columns:repeat(5,1fr)}
+@media (max-width:1100px){.steps.five{grid-template-columns:repeat(2,1fr)}}
+.know{margin-top:40px;padding:28px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(170deg,var(--bg2),#fff 70%)}
+.know h3{font-size:var(--s3);margin-bottom:18px}
+.kgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px 28px}
+.kgrid b{display:block;font-size:.98rem;color:var(--ink);margin-bottom:4px;padding-left:12px;border-left:3px solid var(--cyan)}
+.kgrid p{font-size:.92rem;color:var(--mist);line-height:1.75}
+@media (max-width:720px){.kgrid{grid-template-columns:1fr}.know{padding:20px}.steps.five{grid-template-columns:1fr}}
+
+.deadline{margin-top:30px;display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center}
+.deadline .d{font-family:var(--f-display);font-size:var(--s3)}
+.deadline .d em{font-style:normal;color:var(--gold2)}
+.disclaim{margin-top:20px;font-size:.82rem;color:var(--mist);border-left:2px solid var(--glacier);padding-left:12px;max-width:52em}
+
+/* closing */
+.closing{text-align:center;padding-block:clamp(90px,13vw,160px)}
+.closing p{font-family:var(--f-display);font-size:var(--s2);line-height:1.6}
+.closing p em{font-style:normal;color:var(--gold2)}
+
+footer{border-top:1px solid var(--line);padding:34px 0 calc(34px + env(safe-area-inset-bottom,0px));font-size:.78rem;color:var(--mist)}
+footer .credits{margin-top:12px;line-height:1.9}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+.photoband{position:relative;overflow:hidden;min-height:clamp(320px,58vh,560px);display:flex;align-items:center;padding:0;color:#fff}
+.photoband img{position:absolute;inset:-6% 0;width:100%;height:112%;object-fit:cover;will-change:transform}
+.photoband::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(16,29,50,.62),rgba(16,29,50,.25) 70%)}
+.photoband .wrap{position:relative;z-index:1;text-align:center}
+.photoband p{font-family:var(--f-display);font-size:clamp(1.8rem,4.6vw,3.2rem);font-weight:700;text-shadow:0 4px 24px rgba(0,0,0,.35);line-height:1.4}
+.photoband em{font-style:normal;color:var(--gold)}
+
+/* 手机端细修 */
+nav .btn{white-space:nowrap}
+.hero .tag,.hero .sub{text-wrap:balance}
+@media (max-width:560px){
+  nav .wrap{height:56px}
+  nav .brand{font-size:.92rem;letter-spacing:.02em;white-space:nowrap}
+  nav .brand small{display:none}
+  nav .btn{padding:8px 14px;font-size:.84rem}
+  .hero::after{background:linear-gradient(to top,var(--bg) 8%,rgba(245,247,245,.93) 45%,rgba(245,247,245,.6) 70%,rgba(245,247,245,.15) 92%)}
+  .hero .tag{font-size:1.18rem}
+  .hero .sub{font-size:.98rem;color:#3E4E63}
+  .hero .meta{font-size:.78rem;gap:4px 14px}
+  .cdbox{padding:8px 16px}
+  .cdbox b{font-size:1.6rem}
+  .place figcaption{left:10px;right:10px;bottom:9px}
+  .place figcaption b{font-size:.95rem;line-height:1.35}
+  .place figcaption small{font-size:.58rem}
+}
+/* 生动一点：雪、倒计时、悬停、呼吸 */
+canvas.snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+.fire .wrap{z-index:2}
+.closing{position:relative;overflow:hidden}
+.closing .wrap{position:relative;z-index:2}
+.cdbox{display:inline-flex;align-items:baseline;gap:10px;margin-top:20px;padding:10px 20px;border-radius:12px;background:rgba(16,29,50,.86);color:#F5F7F5;font-size:.95rem;box-shadow:0 12px 30px -16px rgba(16,29,50,.6)}
+.cdbox b{font-family:var(--f-mono);font-weight:600;font-size:2rem;line-height:1;color:var(--gold)}
+.cdbox[hidden]{display:none}
+.cdbox .cdsub{color:#B9C9D6;font-size:.8rem;margin-left:6px;font-family:var(--f-mono)}
+.mcta{display:none}
+@media (max-width:720px){.mcta{display:flex;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:50;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px 10px 18px;border-radius:14px;background:rgba(16,29,50,.94);color:#F5F7F5;box-shadow:0 14px 34px -14px rgba(16,29,50,.7);transform:translateY(140%);transition:transform .35s ease}.mcta.on{transform:none}.mcta small{font-size:.78rem;color:#B9C9D6}.mcta .btn{padding:10px 18px;font-size:.92rem}footer{padding-bottom:96px}}
+.cardx,.day,.step,.jstep,.res div,.qc{transition:transform .35s ease,box-shadow .35s ease}
+.cardx:hover,.day:hover,.step:hover,.res div:hover,.qc:hover{transform:translateY(-4px);box-shadow:0 18px 36px -22px rgba(16,29,50,.45)}
+.place:hover img{transform:scale(1.06)}
+.strip figure{overflow:hidden;border-radius:8px}
+.strip img{transition:transform 1s ease}
+.strip figure:hover img{transform:scale(1.05)}
+.fire .bgart{animation:kb 34s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.1) translate(-1.5%,-1%)}}
+.btn.gold{animation:breathe 3.6s ease-in-out infinite}
+@keyframes breathe{0%,100%{box-shadow:0 0 0 0 rgba(221,169,111,.0)}50%{box-shadow:0 0 0 10px rgba(221,169,111,.18)}}
+@media (prefers-reduced-motion:reduce){.fire .bgart,.btn.gold{animation:none}canvas.snow{display:none}}
+
+:root{--f-display:"Fraunces","Noto Serif SC",Georgia,serif;--f-body:"Inter","Noto Sans SC",system-ui,sans-serif}
+body{line-height:1.7}
+.hero h1{letter-spacing:0}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Lily Li × Swiss Hahama<small>2027</small></a>
+    <ul>
+      <li><a href="#journey">The Journey</a></li>
+      <li><a href="#theme">2027 Theme</a></li>
+      <li><a href="#fire">The Forum</a></li>
+      <li><a href="#days">Eight Days</a></li>
+      <li><a href="#you">Who We're Looking For</a></li>
+    </ul>
+    <a class="lang" href="../" lang="zh-CN">中文</a>
+    <a class="btn" href="#join">Apply</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <img class="poster" src="../img/hero-poster.jpg" alt="Aerial view of the snow-covered Weissfluhjoch above Davos" fetchpriority="high">
+  <video id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="../img/hero-poster.jpg" aria-hidden="true"><source src="../img/hero.mp4" type="video/mp4"></video>
+  <div class="grid"></div>
+  <div class="sun"></div>
+  <canvas class="snow" data-color="255,255,255" data-shadow="1" data-n="140"></canvas>
+  <div class="wrap">
+    <span class="chip">DAVOS 2027 <b>Bring Your Question</b></span>
+    <h1>Davos<span class="dot"> · </span>The Magic Mountain</h1>
+    <p class="tag">Go up the mountain with a question. Come down with a direction.</p>
+    <p class="sub">You're not there to watch the world talk about the future. You bring a real question about your own work, and join the conversation.</p>
+    <div class="meta"><span>Jan 17 – 24, 2027</span><span>Davos, Switzerland &amp; the Alps</span><span>Small private group · By application</span></div>
+    <div class="cdbox" id="cd" hidden><span id="cdl">Applications close in</span><b id="cdn">—</b><span>days</span><span class="cdsub" id="cds">Deadline Dec 6</span></div>
+    <div class="cta">
+      <a class="btn gold" href="#join">Apply to Join →</a>
+      <a class="btn ghost" href="#invite">Learn More</a>
+    </div>
+    <p class="note">An independent private program co-hosted by Lily Li (Play and Prosper) and Swiss Hahama. Not affiliated with the World Economic Forum (WEF); does not include access to the official Annual Meeting venue.</p>
+  </div>
+</header>
+
+<section id="invite">
+  <div class="wrap narrow invite reveal">
+    <span class="eyebrow">An Invitation</span>
+    <p>Some questions can't be solved where you usually stand.</p>
+    <p>It's not that you aren't trying hard enough. It's that the answers around you all start to sound the same.</p>
+    <p>So this time, we change the room. We go to Davos, hear how people from different countries think about technology, capital, growth and the future, and sit down with people who run real businesses to compare notes.</p>
+    <p>You don't need a polished business plan.<br><em>You only need one real question.</em></p>
+  </div>
+</section>
+
+<section class="band" id="you-too">
+  <div class="wrap">
+    <div class="narrow reveal">
+      <span class="eyebrow">Sound Familiar?</span>
+      <h2 class="h2">If you've been thinking lately…</h2>
+    </div>
+    <div class="res reveal">
+      <div>My business has grown, but there are fewer and fewer people I can really think things through with.</div>
+      <div>I read AI news every day, and I still can't see clearly how it will change my business.</div>
+      <div>I want to take my work across borders, but I don't know what people out there are thinking or looking for.</div>
+      <div>I'm busy all year. There isn't a single week where I truly stop and think.</div>
+    </div>
+    <p class="res-end reveal">Then this trip <em>was made for you.</em></p>
+  </div>
+</section>
+
+<section id="imagine">
+  <div class="wrap narrow scene">
+    <div class="reveal">
+      <span class="eyebrow">Picture This</span>
+      <h2 class="h2">Picture that week in January 2027</h2>
+    </div>
+    <div class="reveal" style="margin-top:30px">
+      <div class="moment"><b>Morning</b><p>You open the window of a house below the snow peaks; the valley is still white. After breakfast you take the little mountain train. By the time you reach Davos, heads of state, CEOs and scientists are walking into the Congress Centre.</p></div>
+      <div class="moment"><b>Midday</b><p>You walk down the Promenade. On your left, AI House; on your right, a country pavilion. A few people at the door are discussing, in different languages, the very question you brought.</p></div>
+      <div class="moment"><b>Evening</b><p>At the Magic Mountain Forum, it's your turn to put your question on the table. When you finish, someone says: "I might be able to help with that."</p></div>
+      <div class="moment"><b>Coming down</b><p>Your question may not have a textbook answer. But you know exactly the first thing you'll do when you get home.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="photoband" aria-label="Lake Davos in winter">
+  <img src="../img/c-davos-lake-2000.jpg" alt="The shore of Lake Davos in winter" loading="lazy">
+  <div class="wrap reveal"><p>A week like this <em>comes once a year.</em></p></div>
+</section>
+
+<section class="band" id="journey">
+  <div class="wrap">
+    <div class="narrow reveal">
+      <span class="eyebrow">The Question Journey</span>
+      <h2 class="h2">How one question meets the world</h2>
+      <p class="lead" style="margin-top:16px">The whole trip starts from your question, not from a sightseeing list.</p>
+    </div>
+    <div class="journey reveal">
+      <div class="jstep"><div class="n">01</div><div><h3>Write your question</h3><p>When you apply, write down the one business question you most want to solve and haven't cracked yet.</p></div></div>
+      <div class="jstep"><div class="n">02</div><div><h3>Draw a question map</h3><p>Before we leave, we use AI to map the global agenda topics, side events and people that matter for your question.</p></div></div>
+      <div class="jstep"><div class="n">03</div><div><h3>Go where it's happening</h3><p>In Davos, follow your map: listen, ask, and hear how people from other countries and industries see it.</p></div></div>
+      <div class="jstep"><div class="n">04</div><div><h3>Debrief by the fire</h3><p>In the evenings we sit together, bring out what we heard that day and pull it apart with the people at the table.</p></div></div>
+      <div class="jstep"><div class="n">05</div><div><h3>Write it up</h3><p>After the mountain, you turn your question and answers into a signed essay for our book.</p></div></div>
+    </div>
+    <div class="map reveal">
+      <div>
+        <span class="eyebrow" style="color:var(--glacier)">Your Question Map</span>
+        <h3>A question map for everyone</h3>
+        <p>A week before departure you receive a map built around your question. AI does the deep research on public information; we judge what's most worth your time.</p>
+      </div>
+      <ul>
+        <li><span>MY QUESTION</span><div>The question you bring<em>e.g. With AI here, should I restructure my support and content teams?</em></div></li>
+        <li><span>GLOBAL AGENDA</span><div>Which WEF 2027 theme it maps to<em>e.g. 05 · Empowering humanity in the age of AI</em></div></li>
+        <li><span>WHERE TO GO</span><div>Venues worth visiting, side events worth applying for<em>e.g. Open sessions at an AI house; two side events on work and skills</em></div></li>
+        <li><span>WHO TO MEET</span><div>The kind of people worth knowing<em>e.g. Business owners who have already rebuilt their teams with AI</em></div></li>
+        <li><span>AFTER DAVOS</span><div>Your first step back home<em>e.g. A 30-day pilot in one department</em></div></li>
+      </ul>
+      <small>Example only. During the week you'll enter three kinds of spaces: country and theme houses on the Promenade that are open to the public; side events that require separate registration (we help you apply; admission is up to each organizer); and our own Magic Mountain Forum.</small>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <div class="split">
+      <div class="prose reveal">
+        <span class="eyebrow">Why Davos</span>
+        <h2 class="h2" style="margin-bottom:22px">In January,<br>the world meets in Davos</h2>
+        <p>Every January, global policy, capital, technology and business thinking collide in this small town for one week. Inside the main venue sit heads of state and the leaders of the world's largest companies. Outside, along the one-kilometre Promenade, hundreds of side events run at the same time.</p>
+        <p>We don't come for the buzz. We come to find the threads that connect to our own next step.</p>
+        <p><strong>In Davos, the scarce thing isn't distance. It's attention.</strong> We help you spend your time on the ideas worth hearing and the people worth meeting.</p>
+      </div>
+      <figure class="reveal">
+        <img src="../img/c-congress-1400.jpg" alt="Davos and the Congress Centre below the mountains" loading="lazy">
+        <figcaption>Davos and the Congress Centre · World Economic Forum · CC BY-SA 2.0</figcaption>
+      </figure>
+    </div>
+    <div class="stats reveal">
+      <div><b>1971</b><span>The first meeting in Davos</span></div>
+      <div><b>1979</b><span>The Forum opens its doors to China</span></div>
+      <div><b>~3000</b><span>Expected participants in 2027</span></div>
+      <div><b>2027</b><span>The 57th meeting, and our first time up the mountain</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="theme">
+  <div class="wrap">
+    <div class="narrow reveal">
+      <span class="eyebrow">WEF 2027 · Theme</span>
+      <h2 class="h2">The 2027 Annual Meeting theme</h2>
+      <p class="theme-en">Deliberate Conversations on the Future</p>
+      <p class="lead">Calm, considered conversations about what comes next. Around it, the meeting asks five questions:</p>
+    </div>
+    <div class="qcards reveal">
+      <div class="qc"><b>01 · Growth</b><h3>How can new growth and jobs reach more people?</h3><p>Growth &amp; jobs for more people</p></div>
+      <div class="qc"><b>02 · Planet</b><h3>How can climate and nature solutions drive economic progress?</h3><p>Climate &amp; nature for progress</p></div>
+      <div class="qc"><b>03 · Resilience</b><h3>How do we stay resilient and competitive in a more contested world?</h3><p>Resilience in a contested world</p></div>
+      <div class="qc"><b>04 · Energy</b><h3>How can energy and infrastructure accelerate prosperity?</h3><p>Energy &amp; infrastructure</p></div>
+      <div class="qc ours"><b>05 · AI &amp; People</b><h3>How do we empower humanity in the age of AI?</h3><p>Empower humanity in the age of AI</p></div>
+    </div>
+    <div class="answer reveal">
+      <span class="eyebrow" style="color:var(--gold2)">The question we ask at our forum</span>
+      <h3>The World Economic Forum discusses how the world moves into the future.<br>We ask: <span>as the world changes, how will your business, your choices and your life change with it?</span></h3>
+    </div>
+  </div>
+</section>
+
+<section id="mountain">
+  <div class="wrap">
+    <div class="split">
+      <figure class="reveal">
+        <img src="../img/c-bauknecht-1200.jpg" alt="Philipp Bauknecht, Winter Evening in Davos" loading="lazy">
+        <figcaption>Philipp Bauknecht, <i>Winterabend in Davos</i> · Public domain</figcaption>
+      </figure>
+      <div class="prose reveal">
+        <span class="eyebrow">The Magic Mountain</span>
+        <h2 class="h2" style="margin-bottom:8px">Why "The Magic Mountain"</h2>
+        <p class="lead muted" style="margin-bottom:22px">Bring your own question, and hear what the world has to say.</p>
+        <p>Davos is where Thomas Mann set his novel <i>The Magic Mountain</i>. Every January this "magic mountain" fills with people looking for answers for the world. We go up with questions too.</p>
+        <p>We don't promise everyone will find an answer. But when you come down, you will see your question more clearly than when you went up.</p>
+        <p>Afterwards, these questions and what we learned become the "Magic Mountain" chapter of our new book, <strong><i>Play and Prosper</i>: Through Joy and Sorrow, Answering Life with a Smile</strong> (Chinese edition). Ask on the mountain; answer in the book.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fire" id="fire">
+  <canvas class="snow" data-color="255,246,232" data-n="90"></canvas>
+  <img class="bgart" src="../img/c-schatzalp-1800.jpg" alt="" loading="lazy">
+  <div class="wrap reveal">
+    <span class="eyebrow" style="text-align:center">Magic Mountain Forum</span>
+    <h2>The Forum &amp; Closing Dinner</h2>
+    <p class="lead">Thursday, January 21 is our own forum. After three days of walking and listening in Davos, we stop rushing and give a whole day to the people at this table. In the evening, a closing dinner with a sense of occasion. The format stays a surprise until the day.</p>
+    <p class="topic"><small>One hint</small>Everyone takes the stage once as the "case owner": you put your question on the table, and everyone helps you take it apart.</p>
+    <p class="lead">New friends you meet in Davos that week are welcome to join us at the table.</p>
+    <p class="line">We build the stage. The world takes a seat. You leave with your own answer.</p>
+  </div>
+</section>
+
+<section id="days">
+  <div class="wrap">
+    <div class="narrow reveal">
+      <span class="eyebrow">Eight Days</span>
+      <h2 class="h2">Eight days</h2>
+      <p class="lead" style="margin-top:14px">The 2027 Annual Meeting runs January 18–22. The main program is 5 days and 5 nights: arrive January 17; Monday to Wednesday in Davos during the busiest days of houses and side events; Thursday is our own Magic Mountain Forum; fly home on the morning of the 22nd. Want to stay longer? Join the Alpine extension on the 22nd and 23rd and fly home on the 24th: 8 days, 7 nights in total.<br>We stay the whole week in the same private chalet below the snow peaks. No hotel changes, no dragging suitcases. Security is tight during the meeting, so we go in and out of Davos by train: no traffic jams, no checkpoints.</p>
+    </div>
+    <h3 class="reveal" style="font-size:var(--s3);margin-top:40px">Main Program · Davos <span class="muted" style="font-family:var(--f-body);font-size:.95rem;font-weight:400">(5 days, 5 nights)</span></h3>
+    <ol class="route reveal">
+      <li class="stop">
+        <figure style="background-image:url(../img/c-malans-900.jpg);background-position:50% 60%"><span class="tag">Arrival</span><b class="dn">DAY 01</b></figure>
+        <div class="tx"><small>Sun, Jan 17</small><h3>Arrival · First Night</h3><p>Pickup at Zurich, then up into the valley to our chalet below the snow. At dinner, everyone shares one thing: the question I brought.</p></div>
+      </li>
+      <li class="stop">
+        <figure style="background-image:url(../img/c-congress-1400.jpg);background-position:50% 50%"><span class="tag">Davos</span><b class="dn">DAY 02</b></figure>
+        <div class="tx"><small>Mon, Jan 18 · Opening</small><h3>Walk the Promenade</h3><p>With a local friend as guide, we visit the country, company and theme houses open to the public (such as AI House) and get the whole picture of the week.</p></div>
+      </li>
+      <li class="stop">
+        <figure style="background-image:url(../img/c-congress-access-900.jpg);background-position:50% 60%"><span class="tag">Davos</span><b class="dn">DAY 03</b></figure>
+        <div class="tx"><small>Tue, Jan 19</small><h3>Follow Your Map</h3><p>By day, follow your question map to the side events and forums you registered for. In the evening, back at the chalet, we talk through what we heard.</p></div>
+      </li>
+      <li class="stop">
+        <figure style="background-image:url(../img/c-davos-lake-900.jpg);background-position:50% 55%"><span class="tag">Davos</span><b class="dn">DAY 04</b></figure>
+        <div class="tx"><small>Wed, Jan 20</small><h3>Meet · Interview · Portraits</h3><p>Return to the most useful venues for meetings, deep conversations and interviews. Our photographer takes a portrait series of each of you in Davos.</p></div>
+      </li>
+      <li class="stop finale">
+        <figure style="background-image:url(../img/c-schatzalp-1800.jpg);background-position:40% 50%"><span class="tag">The Forum</span><span class="badge">Main finale</span><b class="dn">DAY 05</b></figure>
+        <div class="tx"><small>Thu, Jan 21</small><h3>Magic Mountain Forum · Dinner</h3><p>No rushing into town. By day we run our own stage: each person takes a turn as case owner while everyone helps take the question apart. In the evening, dress up for a closing dinner with a sense of occasion, captured by our photographer.</p></div>
+      </li>
+    </ol>
+    <p class="route-hint">← Swipe to see all five days →</p>
+    <h3 class="reveal" style="font-size:var(--s3);margin-top:36px">Extension · Alpine Day Trips <span class="muted" style="font-family:var(--f-body);font-size:.95rem;font-weight:400">(optional, highly recommended)</span></h3>
+    <p class="reveal muted" style="margin-top:6px">You've come a long way, so make it count. After the meeting, see a bit of the Alps: Lucerne's old covered bridge, a hilltop castle, a lakeside village below the peaks, Munich's old town. A different country each day. Snow outside the window, the week's companions beside you, and the things you figured out this week settling in on the road.</p>
+    <p class="reveal" style="margin-top:10px;padding:10px 14px;border-left:3px solid #DDA96F;background:#FFF8EE;border-radius:6px">Extension trips (Jan 22–23): each is under three hours one way, there and back the same day, and we sleep at the chalet. A local friend guides us.</p>
+    <div class="places reveal">
+      <figure class="place"><img src="../img/trip-lucerne.jpg" alt="Chapel Bridge and Water Tower in Lucerne" loading="lazy"><figcaption><b>Switzerland · Lucerne</b><small>Photo by Lily · Autumn 2025</small></figcaption></figure>
+      <figure class="place"><img src="../img/c-vaduz-800.jpg" alt="Vaduz Castle, Liechtenstein" loading="lazy"><figcaption><b>Liechtenstein · Vaduz Castle</b><small>Christian David · CC BY-SA 4.0</small></figcaption></figure>
+      <figure class="place"><img src="../img/trip-hallstatt.jpg" alt="Lily by the lake in Hallstatt, Austria" loading="lazy" style="object-position:50% 30%"><figcaption><b>Austria · Hallstatt</b><small>Photo by Lily · Autumn 2025</small></figcaption></figure>
+      <figure class="place"><img src="../img/trip-munich.jpg" alt="The Play and Prosper book in front of Munich's New Town Hall" loading="lazy" style="object-position:50% 100%"><figcaption><b>Germany · Munich, Marienplatz</b><small>Photo by Lily · Autumn 2025</small></figcaption></figure>
+    </div>
+    <div class="days reveal" style="margin-top:16px">
+      <div class="day ext"><small>Fri, Jan 22</small><h3>Several Countries in a Day</h3><p>From the chalet toward Liechtenstein and Austria, home by evening.</p></div>
+      <div class="day ext"><small>Sat, Jan 23</small><h3>Germany · Wrap-up</h3><p>Toward Munich to meet local friends. In the evening we look back: has my question found an answer? We write the first draft on the spot.</p></div>
+      <div class="day ext"><small>Sun, Jan 24</small><h3>Down the Mountain</h3><p>Everyone heads home, with a clearer direction.</p></div>
+    </div>
+    <div class="strip reveal">
+      <figure><img src="../img/c-congress-access-900.jpg" alt="The Davos Congress Centre in snow" loading="lazy"><figcaption>Davos Congress Centre · World Economic Forum · CC BY-SA 2.0</figcaption></figure>
+      <figure><img src="../img/c-davos-lake-900.jpg" alt="Lake Davos in winter with a Rhaetian Railway train" loading="lazy"><figcaption>Lake Davos · JoachimKohler-HB · CC BY-SA 4.0</figcaption></figure>
+      <figure><img src="../img/c-malans-900.jpg" alt="A winter valley in Graubünden" loading="lazy"><figcaption>Graubünden in winter · Kabelleger / David Gubler · CC BY-SA 4.0</figcaption></figure>
+    </div>
+    <p class="muted" style="margin-top:16px;font-size:.86rem">The schedule may shift with weather and the meeting program. Access to Promenade houses and side events follows each organizer's rules; we register you in advance.</p>
+  </div>
+</section>
+
+<section class="band" id="take">
+  <div class="wrap">
+    <div class="narrow reveal">
+      <span class="eyebrow">Why Come</span>
+      <h2 class="h2">Why this trip is worth it</h2>
+    </div>
+    <div class="cards six reveal">
+      <div class="cardx"><h3>Be where it happens</h3><p>Once a year, global policy, capital and technology meet in one small town. Skip the second-hand takes: go listen and ask for yourself.</p></div>
+      <div class="cardx"><h3>Your question, taken seriously</h3><p>The group is deliberately small. Every question gets put on the table and worked through by people who run real businesses.</p></div>
+      <div class="cardx"><h3>A clearer direction</h3><p>Not necessarily a ready-made answer. Maybe a new direction, a new business idea, or a decision you finally commit to.</p></div>
+      <div class="cardx"><h3>A published author</h3><p>You turn your observations, conversations and thinking into a signed essay in our book. This week goes on the record.</p></div>
+      <div class="cardx"><h3>Photos and film</h3><p>Our photographer follows the whole week: your portraits in Davos, plus a short documentary of the trip.</p></div>
+      <div class="cardx"><h3>Fellow travelers</h3><p>We live, walk and take the stage together. Not a stack of business cards, but people who will keep helping each other long after.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="you">
+  <div class="wrap narrow">
+    <div class="reveal">
+      <span class="eyebrow">Who We're Looking For</span>
+      <h2 class="h2">We're looking for you if…</h2>
+      <p class="lead" style="margin-top:14px">This table is deliberately small. Seats don't go by title; we look at what you're building, what you're thinking about, and what you bring to the people around you. We choose carefully, and we ask you to choose us carefully too.</p>
+    </div>
+    <ol class="gates reveal">
+      <li><div><b>You have real work in your hands</b><span>A company, a product, or something you're pushing forward with everything you've got.</span></div></li>
+      <li><div><b>Your work is answering one of the five questions above</b><span>Growth and jobs, climate and nature, resilience and competition, energy and infrastructure, AI and people.</span></div></li>
+      <li><div><b>You want to give value</b><span>Share at the table, make introductions, so the people next to you gain something because you were there.</span></div></li>
+      <li><div><b>You're open to being filmed, and to writing</b><span>You agree to be photographed and filmed, and to contribute an essay.</span></div></li>
+      <li><div><b>You don't mind living together</b><span>We stay in a private chalet, not a standard hotel; living together is how the conversations go deep. Room types and arrangements are made clear before you confirm.</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band" id="hosts">
+  <div class="wrap">
+    <div class="narrow reveal">
+      <span class="eyebrow">Your Hosts</span>
+      <h2 class="h2">Who takes you up the mountain</h2>
+      <p class="lead" style="margin-top:14px">Co-hosted by Lily Li and Swiss Hahama: one based in the US, one living in Switzerland. Researching the agenda, choosing side events, local logistics, the dinner, the book afterwards: we handle the hard parts so you can focus on the people and the ideas.</p>
+    </div>
+    <div class="hosts reveal">
+      <div class="host">
+        <img class="ph" src="../img/host-lily.jpg" alt="Lily Li">
+        <small>Co-host · Dallas, USA</small>
+        <h3>Lily Li <span class="muted" style="font-family:var(--f-body);font-size:.6em;font-weight:400">千百合</span></h3>
+        <p class="tags"><span>Business model strategist for founder brands</span><span>Producer &amp; translator of 20+ bestsellers</span><span>Co-founder, Play and Prosper</span></p>
+        <p>AI master's from the US, creator of 100+ AI agents. She helps founders, creators and business owners rebuild their business for the AI era, turning skills into assets and experience into products. She has led a hundred authors across 8 time zones to co-write books, without burnout: play and prosper.</p>
+      </div>
+      <div class="host">
+        <img class="ph" src="../img/host-hahama.jpg" alt="Swiss Hahama (Lixue Yao)">
+        <small>Co-host · Switzerland</small>
+        <h3>Swiss Hahama <span class="muted" style="font-family:var(--f-body);font-size:.6em;font-weight:400">Lixue Yao</span></h3>
+        <p class="tags"><span>CEO, InterChange Consulting (Switzerland)</span><span>Founder of a language education brand</span><span>Organizer, 2026 Davos international delegation</span></p>
+        <p>Living in Switzerland since 2013, she works in Swiss-Chinese cross-cultural consulting and multilingual education, and has helped 10,000+ families build their children's ability to learn English on their own. In January 2026 she brought partners from education, finance and tech to Davos. This time, she and Lily take you up the mountain together.</p>
+      </div>
+      <div class="host">
+        <img class="ph" src="../img/host-muxiao.jpg" alt="Muxiao">
+        <small>Photographer · Shanghai</small>
+        <h3>Muxiao <span class="muted" style="font-family:var(--f-body);font-size:.6em;font-weight:400">木晓</span></h3>
+        <p class="tags"><span>Mindful photography artist</span><span>Co-founder, Play and Prosper</span><span>Explorer of everyday beauty</span></p>
+        <p>He finds his way through photography, witnessing the variety of life through lens and words. Founder of Play and Prosper's global check-in series and a nature-loving designer. This week, his job is to capture you in Davos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="join">
+  <div class="wrap">
+    <div class="narrow reveal">
+      <span class="eyebrow">How to Join</span>
+      <h2 class="h2">How to join</h2>
+      <p class="lead" style="margin-top:14px">By application only. We read every application carefully.</p>
+    </div>
+    <div class="steps five reveal">
+      <div class="step"><b>STEP 01</b><h3>Write your question</h3><p>About 3 minutes: who you are, what you're working on, and the question you want to bring to Davos. We schedule a call as soon as we receive it; no need to wait for the deadline.</p></div>
+      <div class="step"><b>STEP 02</b><h3>A 30-minute video call</h3><p>Lily or Hahama talks with you to see whether we're the right fit for each other. Fees, rooms and itinerary are explained on the call.</p></div>
+      <div class="step"><b>STEP 03</b><h3>Invitation &amp; agreement</h3><p>Within 48 hours of the call you receive a formal invitation, quote and participation agreement (including cancellation and consent terms).</p></div>
+      <div class="step"><b>STEP 04</b><h3>Deposit &amp; visa</h3><p>Pay a 30% deposit within 3 days to hold your seat; the balance is due by December 31. If you need a visa, we send the invitation letter, accommodation proof and day-by-day itinerary right away.</p></div>
+      <div class="step"><b>STEP 05</b><h3>Get ready, go up</h3><p>An online meet-up in late December so everyone gets acquainted; by January 10 you receive your question map and prep list, including any brand materials you'd like to show and a message you'd like our photographer to record.</p></div>
+    </div>
+    <div class="deadline reveal">
+      <p class="d">Application deadline: <em>December 6, 2026</em></p>
+      <a class="btn gold" href="https://dcntf99ii002.feishu.cn/share/base/form/shrcnglfXGYyGNfURYMFoREIRQd" target="_blank" rel="noopener">Apply (about 3 minutes) →</a>
+    </div>
+    <p class="muted reveal" style="text-align:center;margin-top:-6px;font-size:.88rem">The form is in Chinese and English is welcome: just answer in English.</p>
+    <div class="wx reveal">
+      <img src="../img/lily-wechat.jpg" alt="Lily's WeChat QR code">
+      <div><b>Want to talk first? Add Lily on WeChat</b><p>WeChat ID <span class="mono">iamsohappy8</span>, and mention "Davos".</p><p class="muted">If you hold a Chinese passport, please apply by December 1 to leave time for your Schengen visa.</p></div>
+    </div>
+    <div class="know reveal">
+      <h3>Good to know before you go</h3>
+      <div class="kgrid">
+        <div><b>Visa</b><p>US, Canadian, Australian and many other passports enter Switzerland visa-free (check entry rules before departure). Chinese passports need a Schengen visa: book a VFS appointment first; Swiss processing usually takes about 15 days, so we recommend applying by mid-December. Once you confirm, we provide the invitation letter, accommodation proof and itinerary.</p></div>
+        <div><b>Payment</b><p>Fees are explained on the call. A 30% deposit within 3 days of confirming; the balance by December 31.</p></div>
+        <div><b>Cancellation</b><p>Visa refused: full refund with the refusal letter (minus visa service fees already incurred). You cancel between deposit and December 31: 50% refund. Cancellations from January 1 are non-refundable but transferable to someone we've interviewed and approved. If we cancel: full refund.</p></div>
+        <div><b>Insurance</b><p>Please buy your own travel medical insurance with at least €30,000 coverage (required for Schengen visas); we recommend it also covers winter sports accidents and trip cancellation.</p></div>
+        <div><b>Accommodation</b><p>The whole week in one private chalet, about an hour from Davos by train. Room types (single or twin, private or shared bathroom) are given on the call; a single room may cost extra.</p></div>
+        <div><b>Venues</b><p>The official Annual Meeting venue is by WEF invitation only; we don't promise access. Side events are subject to each organizer's confirmation; if one isn't approved, we arrange an alternative.</p></div>
+        <div><b>Photos &amp; essays</b><p>Photos, film and your essay are used only for the book and this program's promotion; you approve where they appear and which ones aren't used, as set out in the agreement. Business information shared at the forum stays confidential.</p></div>
+        <div><b>The book</b><p>First draft written on January 23, editing with our team in mid-February, final version in March; publication follows the publisher's schedule. The book is published in Chinese.</p></div>
+      </div>
+    </div>
+    <div class="faq reveal">
+      <details><summary>Can we get into the official Annual Meeting?</summary><p>No, and we don't promise it. The main venue is invitation-only. We go to the houses, pavilions and side events outside it that are open to the public, which is where most people actually get the most value.</p></details>
+      <details><summary>What language is the trip in?</summary><p>Both Chinese and English. Lily and Hahama are with you the whole time and help with interpreting and introductions at side events.</p></details>
+      <details><summary>What's included?</summary><p>Accommodation, local transport (train passes during the meeting, cars for the day trips), home-style breakfasts, the forum dinner, photography, your question map and the book. Lunches are on your own; venues mostly offer light meals. Not included: international flights, visa fees and personal expenses. Exact fees are explained on the call.</p></details>
+      <details><summary>Can I join only the main program?</summary><p>Yes. January 17–21 is the main program, ending with the Magic Mountain Forum. The Alpine day trips afterwards are optional; you can fly home on the morning of January 22.</p></details>
+      <details><summary>Do I have to write an essay?</summary><p>Yes, it's part of the journey. You write a first draft on January 23, and our editors work with you afterwards, so don't worry about your writing.</p></details>
+    </div>
+    <p class="disclaim reveal">An independent private program co-hosted by Lily Li and Swiss Hahama. Not affiliated with the World Economic Forum (WEF); does not include access to the official Annual Meeting venue. Admission to side events is subject to each organizer's confirmation.</p>
+  </div>
+</section>
+
+<section class="closing band">
+  <canvas class="snow" data-color="120,190,205" data-n="70"></canvas>
+  <div class="wrap reveal">
+    <p>The world's future won't be revealed in a week.<br>But your own next step might become clear.</p>
+    <a class="btn gold" style="margin-top:28px" href="#join">Apply to Join →</a>
+  </div>
+</section>
+
+<div class="mcta" id="mcta"><small>About 3 minutes<br>Deadline Dec 6</small><a class="btn gold" href="#join">Apply →</a></div>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Lily Li × Swiss Hahama · Play and Prosper · A private trip and dinner co-hosted by Lily Li and Swiss Hahama, not affiliated with the World Economic Forum (WEF).</p>
+    <p class="credits">Image credits: Lucerne, Hallstatt and Munich photos by Lily; hero video from "Weissfluhjoch, aerial video", Capricorn4049, CC BY-SA 4.0; Vaduz Castle, Christian David, CC BY-SA 4.0; Davos and the Congress Centre, Congress Centre entrance, World Economic Forum, CC BY-SA 2.0; Philipp Bauknecht, <i>Winterabend in Davos</i>, public domain; Schatzalp, Lantus, CC BY-SA 3.0; Lake Davos, JoachimKohler-HB, CC BY-SA 4.0; Graubünden valley, Kabelleger / David Gubler, CC BY-SA 4.0. All via <a href="https://commons.wikimedia.org" target="_blank" rel="noopener">Wikimedia Commons</a>.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var hv=document.getElementById('heroVideo');
+  if(hv){var slow=function(){hv.playbackRate=0.6};slow();hv.addEventListener('loadedmetadata',slow);hv.addEventListener('play',slow);}
+  if(hv && window.matchMedia('(prefers-reduced-motion: reduce)').matches){hv.removeAttribute('autoplay');hv.pause();hv.style.display='none'}
+})();
+(function(){
+  var nav=document.getElementById('nav');
+  function onScroll(){ if(window.scrollY>40){nav.classList.add('solid')}else{nav.classList.remove('solid')} }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+(function(){
+  /* 倒计时 */
+  var now=new Date(), dl=new Date('2026-12-06T23:59:00+08:00'), go=new Date('2027-01-17T00:00:00+01:00'), el=document.getElementById('cd');
+  var dd=Math.ceil((dl-now)/864e5), dg=Math.ceil((go-now)/864e5);
+  if(el){ if(dd>0){document.getElementById('cdn').textContent=dd; el.hidden=false;}
+    else if(dg>0){document.getElementById('cdl').textContent='Departure in'; document.getElementById('cdn').textContent=dg; document.getElementById('cds').textContent=''; el.hidden=false;} }
+  /* 手机底部申请条：滑过首屏后出现 */
+  var mc=document.getElementById('mcta');
+  if(mc){ var tg=function(){ mc.classList.toggle('on', scrollY>innerHeight*.8); }; addEventListener('scroll',tg,{passive:true}); tg(); }
+  /* 数字滚动 */
+  var st=document.querySelector('.stats');
+  if(st && 'IntersectionObserver' in window){
+    var bs=st.querySelectorAll('b'), done=false;
+    var o=new IntersectionObserver(function(es){ if(done||!es[0].isIntersecting) return; done=true;
+      bs.forEach(function(b){ var raw=b.textContent, m=raw.match(/\d+/); if(!m) return; var end=+m[0], pre=raw.slice(0,m.index), post=raw.slice(m.index+m[0].length);
+        var start=end>1900? end-40 : 0, t0=null;
+        function step(ts){ if(!t0) t0=ts; var k=Math.min(1,(ts-t0)/1400), e=1-Math.pow(1-k,3); b.textContent=pre+Math.round(start+(end-start)*e)+post; if(k<1) requestAnimationFrame(step); }
+        requestAnimationFrame(step); });
+    },{threshold:.5}); o.observe(st);
+  }
+  /* 照片视差 */
+  var pb=document.querySelector('.photoband img');
+  if(pb && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var par=function(){ var r=pb.parentNode.getBoundingClientRect(); if(r.bottom<0||r.top>innerHeight) return; var k=(r.top+r.height/2-innerHeight/2)/innerHeight; pb.style.transform='translateY('+(k*-40)+'px)'; };
+    addEventListener('scroll',par,{passive:true}); par();
+  }
+  /* 雪 */
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var small=window.innerWidth<700;
+  document.querySelectorAll('canvas.snow').forEach(function(c){
+    var ctx=c.getContext('2d'), col=c.dataset.color||'255,255,255', sh=c.dataset.shadow, n=+(c.dataset.n||50); if(small) n=Math.round(n*.5);
+    var W,H,dpr=Math.min(2,window.devicePixelRatio||1), fl=[], on=false;
+    function size(){ W=c.offsetWidth; H=c.offsetHeight; c.width=W*dpr; c.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
+    function mk(y){ return {x:Math.random()*W, y:y==null?Math.random()*H:y, r:.6+Math.random()*1.5, c:Math.random()<.28, cr:2.6+Math.random()*2.8, rot:Math.random()*6.28, vr:(Math.random()-.5)*.02, s:.25+Math.random()*.7, w:Math.random()*6.28, a:.55+Math.random()*.45}; }
+    size(); for(var i=0;i<n;i++) fl.push(mk());
+    window.addEventListener('resize',size);
+    function draw(){ if(!on) return; ctx.clearRect(0,0,W,H);
+      for(var i=0;i<fl.length;i++){ var f=fl[i]; f.y+=f.s; f.w+=.012; f.x+=Math.sin(f.w)*.35;
+        if(f.y>H+5){ fl[i]=mk(-5); continue; }
+        if(sh){ ctx.shadowColor='rgba(20,80,110,.4)'; ctx.shadowBlur=2; }
+        if(f.c){ f.rot+=f.vr; ctx.save(); ctx.translate(f.x,f.y); ctx.rotate(f.rot); ctx.strokeStyle='rgba('+col+','+f.a+')'; ctx.lineWidth=.7; ctx.beginPath();
+          for(var k=0;k<6;k++){ var an=k*1.0472, ex=Math.cos(an)*f.cr, ey=Math.sin(an)*f.cr; ctx.moveTo(0,0); ctx.lineTo(ex,ey);
+            var bx=Math.cos(an)*f.cr*.55, by=Math.sin(an)*f.cr*.55, bl=f.cr*.32;
+            ctx.moveTo(bx,by); ctx.lineTo(bx+Math.cos(an+.6)*bl, by+Math.sin(an+.6)*bl); ctx.moveTo(bx,by); ctx.lineTo(bx+Math.cos(an-.6)*bl, by+Math.sin(an-.6)*bl); }
+          ctx.stroke(); ctx.restore(); }
+        else { ctx.beginPath(); ctx.arc(f.x,f.y,f.r,0,6.283); ctx.fillStyle='rgba('+col+','+f.a+')'; ctx.fill(); } }
+      requestAnimationFrame(draw); }
+    if('IntersectionObserver' in window){ new IntersectionObserver(function(es){ var v=es[0].isIntersecting; if(v&&!on){on=true;requestAnimationFrame(draw)} else if(!v) on=false; }).observe(c); }
+    else { on=true; requestAnimationFrame(draw); }
+  });
+})();
+</script>
+</body>
+</html>
