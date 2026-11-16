@@ -206,12 +206,22 @@ figcaption{font-size:.74rem;color:var(--mist);margin-top:8px;font-family:var(--f
 
 /* take */
 .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}
+.cards.six{grid-template-columns:repeat(3,1fr)}
+.first-note{margin-top:30px;text-align:center;font-family:var(--f-display);font-size:var(--s3)}
+.first-note em{font-style:normal;color:var(--gold2)}
+.scene .moment{display:grid;grid-template-columns:96px 1fr;gap:18px;padding:22px 0;border-top:1px solid var(--line)}
+.scene .moment:last-of-type{border-bottom:1px solid var(--line)}
+.scene .moment b{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.14em;color:var(--cyan);padding-top:8px;font-weight:500}
+.scene .moment p{font-family:var(--f-display);font-size:clamp(1.06rem,2vw,1.28rem);line-height:1.85}
+.scene-end{margin-top:30px;font-family:var(--f-display);font-size:var(--s3)}
+.scene-end em{font-style:normal;color:var(--gold2)}
+@media (max-width:560px){.scene .moment{grid-template-columns:1fr;gap:4px}.scene .moment b{padding-top:0}}
 .cardx{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:24px;box-shadow:0 8px 24px -20px rgba(16,29,50,.4);border-top:3px solid var(--glacier)}
 .cardx:nth-child(2){border-top-color:var(--gold)}
 .cardx h3{font-size:1.18rem;margin-bottom:10px}
 .cardx p{color:var(--mist);font-size:.94rem}
-@media (max-width:980px){.cards{grid-template-columns:1fr 1fr}}
-@media (max-width:560px){.cards{grid-template-columns:1fr}}
+@media (max-width:980px){.cards,.cards.six{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.cards,.cards.six{grid-template-columns:1fr}}
 
 /* gates */
 .gates{counter-reset:g;list-style:none;margin:36px 0 0;padding:0}
@@ -280,7 +290,7 @@ footer .credits{margin-top:12px;line-height:1.9}
     <h1>达沃斯<span class="dot"> · </span>魔山问道</h1>
     <p class="tag">世界在达沃斯开会，我们带着问题上山。</p>
     <p class="sub">你不是去旁听世界的未来。你是带着自己的问题，去参与一场关于未来的对话。</p>
-    <div class="meta"><span>2027.1.17 — 1.24</span><span>瑞士 · 达沃斯及周边</span><span>小范围私人对话 · 仅限申请</span></div>
+    <div class="meta"><span>2027.1.17 — 1.24</span><span>瑞士 · 达沃斯及周边</span><span>仅 6 个席位 · 仅限申请</span></div>
     <div class="cta">
       <a class="btn gold" href="https://dcntf99ii002.feishu.cn/share/base/form/shrcnglfXGYyGNfURYMFoREIRQd" target="_blank" rel="noopener">申请同行 →</a>
       <a class="btn ghost" href="#invite">先看看</a>
@@ -314,6 +324,23 @@ footer .credits{margin-top:12px;line-height:1.9}
       <div>一年忙到头，没有一个星期，是真正停下来想问题的。</div>
     </div>
     <p class="res-end reveal">那这一趟，<em>就是为你准备的。</em></p>
+  </div>
+</section>
+
+<!-- 想象一下 -->
+<section id="imagine">
+  <div class="wrap narrow scene">
+    <div class="reveal">
+      <span class="eyebrow">Picture This</span>
+      <h2 class="h2">想象一下，2027 年 1 月的那一周</h2>
+    </div>
+    <div class="reveal" style="margin-top:30px">
+      <div class="moment"><b>清晨</b><p>你推开雪山下那栋房子的窗，小镇还在雪里。几公里外，各国的元首、企业掌门人和科学家，正陆续走进会议中心。</p></div>
+      <div class="moment"><b>上午</b><p>你走在 Promenade 大街上，左边是 AI House，右边是一个国家馆。门口有人用三种语言争论一个问题，恰好就是你带来的那个。</p></div>
+      <div class="moment"><b>晚上</b><p>魔山论坛轮到你上场。讲完 5 分钟，台下有人举手：“这件事，我也许能帮上忙。”</p></div>
+      <div class="moment"><b>下山</b><p>你的问题未必有了标准答案，但你清楚地知道，回去后要做的第一件事是什么。</p></div>
+    </div>
+    <p class="scene-end reveal">这样的一周，<em>一年只有一次。</em></p>
   </div>
 </section>
 
@@ -424,15 +451,9 @@ footer .credits{margin-top:12px;line-height:1.9}
   <div class="wrap reveal">
     <span class="eyebrow" style="text-align:center">Magic Mountain Forum</span>
     <h2>魔山论坛 · 晚宴</h2>
-    <p class="lead">会期第二晚，我们在镇上办一场自己的小论坛。每人上场讲 5 分钟，台下接着问；讲完一起坐下吃晚饭，把话聊透。这几天在达沃斯偶遇、聊得来的新朋友，也欢迎请来一起坐。</p>
-    <p class="topic"><small>今晚的议题</small>AI 重写商业，人如何定义自己？</p>
-    <div class="agenda">
-      <div><b>01</b><h3>开场</h3><p>每人一句话：我是谁，我带来了什么问题。</p></div>
-      <div><b>02</b><h3>轮番上场</h3><p>每人 5 分钟：我的问题、这两天最打动我的一件事、我现在的答案。最后提一个具体的请求。</p></div>
-      <div><b>03</b><h3>Q&amp;A</h3><p>每人讲完，大家接着问。规矩只有一条：先问一个好问题，再给一个建议或资源。</p></div>
-      <div><b>04</b><h3>晚宴</h3><p>坐下来边吃边聊。每人把写好的"我能帮你的一件事"交给对方，带走一叠实打实的帮助。</p></div>
-    </div>
-    <p class="rule">场内的话留在场内：现场录音只用于大家复盘和写作，不对外公开；要引用，先征得本人同意。</p>
+    <p class="lead">会期第二晚，我们在镇上办一场自己的小论坛，会后一起晚宴。怎么开、聊什么，留到那天晚上揭晓。</p>
+    <p class="topic"><small>只透露一点</small>每个人都会上场，每个人都会被认真听见。</p>
+    <p class="lead">这几天在达沃斯偶遇、聊得来的新朋友，也欢迎请来一起坐。</p>
     <p class="line">台子是我们搭的。世界来坐，你带走自己的答案。</p>
   </div>
 </section>
@@ -475,19 +496,22 @@ footer .credits{margin-top:12px;line-height:1.9}
   </div>
 </section>
 
-<!-- 你会带走什么 -->
+<!-- 为什么值得来 -->
 <section class="band" id="take">
   <div class="wrap">
     <div class="narrow reveal">
-      <span class="eyebrow">What You Take Home</span>
-      <h2 class="h2">你会带走什么</h2>
+      <span class="eyebrow">Why Come</span>
+      <h2 class="h2">为什么值得你来这一趟</h2>
     </div>
-    <div class="cards reveal">
-      <div class="cardx"><h3>一个更清楚的方向</h3><p>不一定是现成的答案，而可能是一个新方向、一个新的商业思路，或一个终于下定决心要做的决定。</p></div>
-      <div class="cardx"><h3>一个作者身份</h3><p>这次经历不止于合影。你把一路的观察、对话与思考写成署名文章，收进《穿过悲欢，笑答人生》。</p></div>
+    <div class="cards six reveal">
+      <div class="cardx"><h3>站到世界的现场</h3><p>一年一次，全球的政策、资本和技术在同一个小镇碰头。不看二手解读，你自己去听、去问。</p></div>
+      <div class="cardx"><h3>你的问题，有人认真接</h3><p>一行只有 6 位同行者。每个人的问题都会被摆上台面，被一群有真事业的人掰开了聊。</p></div>
+      <div class="cardx"><h3>一个更清楚的方向</h3><p>不一定是现成的答案，也可能是一个新方向、一个新的商业思路，或一个终于下定决心要做的决定。</p></div>
+      <div class="cardx"><h3>一个作者身份</h3><p>你把一路的观察、对话与思考写成署名文章，收进《穿过悲欢，笑答人生》。这段经历，从此有据可查。</p></div>
       <div class="cardx"><h3>一组影像</h3><p>摄影师全程跟拍：你在达沃斯的形象照，还有这一周的纪录短片。</p></div>
-      <div class="cardx"><h3>一桌人</h3><p>不是一叠名片，而是一群真正深聊过、以后还能互相帮衬的同路人。</p></div>
+      <div class="cardx"><h3>一群同路人</h3><p>一起住、一起走、一起上场。不是一叠名片，而是回去以后还能互相帮衬的人。</p></div>
     </div>
+    <p class="first-note reveal">以后也许每年都会有，但第一届的同行者，<em>只有这一次。</em></p>
   </div>
 </section>
 
@@ -546,10 +570,10 @@ footer .credits{margin-top:12px;line-height:1.9}
     <div class="narrow reveal">
       <span class="eyebrow">How to Join</span>
       <h2 class="h2">怎么加入</h2>
-      <p class="lead" style="margin-top:14px">仅限申请。每一份申请，我们都会认真看。</p>
+      <p class="lead" style="margin-top:14px">仅 6 个席位，仅限申请。每一份申请我们都会认真看，并按收到的顺序约谈；席位确认满了，申请会提前关闭。</p>
     </div>
     <div class="steps reveal">
-      <div class="step"><b>STEP 01</b><h3>写下你的问题</h3><p>写下你是谁、在做什么，以及这次想带去达沃斯的那个问题。</p></div>
+      <div class="step"><b>STEP 01</b><h3>写下你的问题</h3><p>花 2 分钟，写下你是谁、在做什么，以及这次想带去达沃斯的那个问题。</p></div>
       <div class="step"><b>STEP 02</b><h3>一对一聊一次</h3><p>千百合或哈哈妈和你视频 30 分钟，互相看看是不是合适的同行人。</p></div>
       <div class="step"><b>STEP 03</b><h3>确认同行</h3><p>发出正式邀请，开始准备签证和行程，并在出发前收到你的问题地图。</p></div>
     </div>
@@ -576,6 +600,7 @@ footer .credits{margin-top:12px;line-height:1.9}
 <section class="closing band">
   <div class="wrap reveal">
     <p>世界的未来，不会在一周内揭晓。<br>但你自己的下一步，也许会因此变得清晰。<br><em>今年是第一届。</em></p>
+    <a class="btn gold" style="margin-top:28px" href="https://dcntf99ii002.feishu.cn/share/base/form/shrcnglfXGYyGNfURYMFoREIRQd" target="_blank" rel="noopener">申请同行 →</a>
   </div>
 </section>
 
