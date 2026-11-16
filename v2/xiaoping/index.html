@@ -69,7 +69,8 @@ h2{font:700 clamp(28px,4.6vw,44px)/1.35 var(--serif);letter-spacing:.04em}
 .hero .sub{margin-top:8px;font-size:16px;color:var(--mute)}
 .hero .roles{margin-top:22px;padding-left:14px;border-left:3px solid var(--gold);font-weight:700;font-size:15px;line-height:2}
 .hero .pic{align-self:end;justify-self:center;position:relative;width:min(470px,100%)}
-.hero .pic img{width:100%;filter:drop-shadow(0 30px 40px rgba(14,34,51,.22));-webkit-mask-image:linear-gradient(180deg,#000 80%,transparent 100%);mask-image:linear-gradient(180deg,#000 80%,transparent 100%)}
+.hero .pic{filter:drop-shadow(0 30px 40px rgba(14,34,51,.22))}
+.hero .pic img{width:100%;-webkit-mask-image:linear-gradient(180deg,#000 80%,transparent 100%);mask-image:linear-gradient(180deg,#000 80%,transparent 100%)}
 .hero .pic:before{content:"";position:absolute;left:8%;right:8%;top:8%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.95),rgba(255,255,255,0));z-index:-1}
 .cue{position:absolute;left:50%;bottom:20px;z-index:3;transform:translateX(-50%);font-size:12px;letter-spacing:.3em;color:var(--sea);text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:6px}
 .cue:after{content:"";width:1.5px;height:28px;background:var(--sea);animation:cue 1.8s ease-in-out infinite;transform-origin:top}
