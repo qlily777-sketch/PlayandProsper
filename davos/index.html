@@ -672,15 +672,19 @@ canvas.snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none
     var ctx=c.getContext('2d'), col=c.dataset.color||'255,255,255', sh=c.dataset.shadow, n=+(c.dataset.n||50); if(small) n=Math.round(n*.5);
     var W,H,dpr=Math.min(2,window.devicePixelRatio||1), fl=[], on=false;
     function size(){ W=c.offsetWidth; H=c.offsetHeight; c.width=W*dpr; c.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
-    function mk(y){ return {x:Math.random()*W, y:y==null?Math.random()*H:y, r:1.3+Math.random()*3, s:.25+Math.random()*.7, w:Math.random()*6.28, a:.55+Math.random()*.45}; }
+    function mk(y){ return {x:Math.random()*W, y:y==null?Math.random()*H:y, r:.6+Math.random()*1.5, c:Math.random()<.28, cr:2.6+Math.random()*2.8, rot:Math.random()*6.28, vr:(Math.random()-.5)*.02, s:.25+Math.random()*.7, w:Math.random()*6.28, a:.55+Math.random()*.45}; }
     size(); for(var i=0;i<n;i++) fl.push(mk());
     window.addEventListener('resize',size);
     function draw(){ if(!on) return; ctx.clearRect(0,0,W,H);
       for(var i=0;i<fl.length;i++){ var f=fl[i]; f.y+=f.s; f.w+=.012; f.x+=Math.sin(f.w)*.35;
         if(f.y>H+5){ fl[i]=mk(-5); continue; }
-        ctx.beginPath(); ctx.arc(f.x,f.y,f.r,0,6.283);
-        if(sh){ ctx.shadowColor='rgba(20,80,110,.55)'; ctx.shadowBlur=4; }
-        ctx.fillStyle='rgba('+col+','+f.a+')'; ctx.fill(); }
+        if(sh){ ctx.shadowColor='rgba(20,80,110,.4)'; ctx.shadowBlur=2; }
+        if(f.c){ f.rot+=f.vr; ctx.save(); ctx.translate(f.x,f.y); ctx.rotate(f.rot); ctx.strokeStyle='rgba('+col+','+f.a+')'; ctx.lineWidth=.7; ctx.beginPath();
+          for(var k=0;k<6;k++){ var an=k*1.0472, ex=Math.cos(an)*f.cr, ey=Math.sin(an)*f.cr; ctx.moveTo(0,0); ctx.lineTo(ex,ey);
+            var bx=Math.cos(an)*f.cr*.55, by=Math.sin(an)*f.cr*.55, bl=f.cr*.32;
+            ctx.moveTo(bx,by); ctx.lineTo(bx+Math.cos(an+.6)*bl, by+Math.sin(an+.6)*bl); ctx.moveTo(bx,by); ctx.lineTo(bx+Math.cos(an-.6)*bl, by+Math.sin(an-.6)*bl); }
+          ctx.stroke(); ctx.restore(); }
+        else { ctx.beginPath(); ctx.arc(f.x,f.y,f.r,0,6.283); ctx.fillStyle='rgba('+col+','+f.a+')'; ctx.fill(); } }
       requestAnimationFrame(draw); }
     if('IntersectionObserver' in window){ new IntersectionObserver(function(es){ var v=es[0].isIntersecting; if(v&&!on){on=true;requestAnimationFrame(draw)} else if(!v) on=false; }).observe(c); }
     else { on=true; requestAnimationFrame(draw); }
