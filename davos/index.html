@@ -46,6 +46,7 @@ section{padding-block:clamp(72px,10vw,124px)}
 .band{background:var(--bg2)}
 .eyebrow{display:block;font-family:var(--f-mono);font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
 .h2{font-size:var(--s2)}
+.h2::after{content:"";display:block;width:46px;height:3px;margin-top:18px;border-radius:2px;background:linear-gradient(90deg,var(--gold),var(--glacier))}
 .lead{font-size:var(--s3);line-height:1.8}
 .muted{color:var(--mist)}
 .btn{display:inline-flex;align-items:center;gap:10px;font:inherit;font-weight:700;background:var(--deep);color:#fff;border:0;border-radius:999px;padding:14px 28px;text-decoration:none;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease}
@@ -86,7 +87,7 @@ nav .btn{padding:9px 18px;font-size:.9rem}
 .hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.05) brightness(1.04)}
 /* resonance */
 .res{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:36px}
-.res div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px 22px;font-size:1.02rem;line-height:1.75;box-shadow:0 8px 24px -22px rgba(16,29,50,.4)}
+.res div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px 24px;font-family:var(--f-display);font-size:1.12rem;line-height:1.8;color:var(--ink);box-shadow:0 8px 24px -22px rgba(16,29,50,.4)}
 .res div::before{content:"“";font-family:var(--f-display);font-size:2rem;line-height:0;color:var(--glacier);vertical-align:-.45em;margin-right:4px}
 .res-end{margin-top:34px;font-family:var(--f-display);font-size:var(--s3)}
 .res-end em{font-style:normal;color:var(--gold2)}
@@ -263,6 +264,13 @@ footer .credits{margin-top:12px;line-height:1.9}
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s ease}
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+.photoband{position:relative;overflow:hidden;min-height:clamp(320px,58vh,560px);display:flex;align-items:center;padding:0;color:#fff}
+.photoband img{position:absolute;inset:-6% 0;width:100%;height:112%;object-fit:cover;will-change:transform}
+.photoband::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,29,50,.15),rgba(16,29,50,.55))}
+.photoband .wrap{position:relative;z-index:1;text-align:center}
+.photoband p{font-family:var(--f-display);font-size:clamp(1.8rem,4.6vw,3.2rem);font-weight:700;text-shadow:0 4px 24px rgba(0,0,0,.35);line-height:1.4}
+.photoband em{font-style:normal;color:var(--gold)}
 /* 生动一点：雪、倒计时、悬停、呼吸 */
 canvas.snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
 .fire .wrap{z-index:2}
@@ -364,8 +372,13 @@ canvas.snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none
       <div class="moment"><b>晚上</b><p>魔山论坛轮到你上场。讲完 5 分钟，台下有人举手：“这件事，我也许能帮上忙。”</p></div>
       <div class="moment"><b>下山</b><p>你的问题未必有了标准答案，但你清楚地知道，回去后要做的第一件事是什么。</p></div>
     </div>
-    <p class="scene-end reveal">这样的一周，<em>一年只有一次。</em></p>
   </div>
+</section>
+
+<!-- 画面过渡 -->
+<section class="photoband" aria-label="冬天的达沃斯湖">
+  <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Badeanstalt_am_Davosersee_im_Winter.jpg?width=2000" alt="冬天的达沃斯湖畔" loading="lazy">
+  <div class="wrap reveal"><p>这样的一周，<em>一年只有一次。</em></p></div>
 </section>
 
 <!-- 一个问题的旅程 -->
@@ -459,7 +472,7 @@ canvas.snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none
       </figure>
       <div class="prose reveal">
         <span class="eyebrow">The Magic Mountain</span>
-        <h2 class="h2" style="margin-bottom:8px">为什么叫"魔山问道"</h2>
+        <h2 class="h2" style="margin-bottom:8px">为什么叫「魔山问道」</h2>
         <p class="lead muted" style="margin-bottom:22px">带着自己的问题，去听听世界怎么说。</p>
         <p>达沃斯是托马斯·曼小说《魔山》故事发生的地方。每年一月，这座“魔山”上聚满了想为世界找答案的人。我们也带着问题上山。</p>
         <p>我们不承诺每个人都会找到答案。但下山时，你对自己的问题，一定会比上山前看得更清楚。</p>
@@ -609,7 +622,7 @@ canvas.snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none
     </div>
     <div class="wx reveal">
       <img src="img/lily-wechat.jpg" alt="千百合的微信二维码">
-      <div><b>想先聊聊？加千百合的微信</b><p>微信号 <span class="mono">iamsohappy8</span>，加的时候备注"达沃斯"。</p><p class="muted">需要办申根签证的朋友，请尽早申请。</p></div>
+      <div><b>想先聊聊？加千百合的微信</b><p>微信号 <span class="mono">iamsohappy8</span>，加的时候备注“达沃斯”。</p><p class="muted">需要办申根签证的朋友，请尽早申请。</p></div>
     </div>
     <div class="faq reveal">
       <details><summary>能进年会的主会场吗？</summary><p>不能，我们也不承诺。主会场靠邀请进入。我们去的是主会场外对公众开放的国家馆、主题馆和边会，这也是大多数人真正收获最多的地方。</p></details>
@@ -667,6 +680,12 @@ canvas.snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none
         function step(ts){ if(!t0) t0=ts; var k=Math.min(1,(ts-t0)/1400), e=1-Math.pow(1-k,3); b.textContent=pre+Math.round(start+(end-start)*e)+post; if(k<1) requestAnimationFrame(step); }
         requestAnimationFrame(step); });
     },{threshold:.5}); o.observe(st);
+  }
+  /* 照片视差 */
+  var pb=document.querySelector('.photoband img');
+  if(pb && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var par=function(){ var r=pb.parentNode.getBoundingClientRect(); if(r.bottom<0||r.top>innerHeight) return; var k=(r.top+r.height/2-innerHeight/2)/innerHeight; pb.style.transform='translateY('+(k*-40)+'px)'; };
+    addEventListener('scroll',par,{passive:true}); par();
   }
   /* 雪 */
   if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
