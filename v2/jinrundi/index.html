@@ -53,8 +53,36 @@ h2{font-family:var(--serif);font-weight:700;font-size:clamp(26px,4.4vw,36px);lin
 
 /* 第一屏：山雾里的名字 */
 .hero{position:relative;min-height:100svh;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;overflow:hidden;background:var(--mist)}
-.hero .art{position:absolute;inset:0 0 0 38%;background:url('hero.jpg') center 30%/cover;
+.hero .art{position:absolute;inset:0 0 0 38%;overflow:hidden;
   -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 34%);mask-image:linear-gradient(90deg,transparent 0,#000 34%)}
+/* 画面会动：山在呼吸、阳光一明一暗、山雾慢慢飘、树叶往下落 */
+.art .bg{position:absolute;inset:0;background:url('hero.jpg') center 30%/cover;transform-origin:50% 40%}
+.art .rays{position:absolute;left:-10%;top:-12%;width:80%;height:70%;pointer-events:none;mix-blend-mode:screen;opacity:.0;
+  background:repeating-linear-gradient(115deg,rgba(255,244,214,0) 0 7%,rgba(255,244,214,.55) 9%,rgba(255,244,214,0) 13%);
+  -webkit-mask-image:radial-gradient(ellipse at 40% 0,#000 0,transparent 70%);mask-image:radial-gradient(ellipse at 40% 0,#000 0,transparent 70%)}
+.art .fog{position:absolute;left:68%;right:0;top:6%;height:34%;overflow:hidden;pointer-events:none;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 25%);mask-image:linear-gradient(90deg,transparent,#000 25%)}
+.art .mist{position:absolute;left:-90%;width:110%;height:38%;border-radius:50%;pointer-events:none;
+  background:radial-gradient(ellipse at center,rgba(255,255,255,.85) 0,rgba(255,255,255,.4) 40%,rgba(255,255,255,0) 70%);filter:blur(4px);opacity:0}
+.art .mist.m1{top:30%}
+.art .mist.m2{top:58%;height:30%;width:90%}
+.art .leaf{position:absolute;top:-6%;width:var(--s,16px);height:calc(var(--s,16px)*.55);border-radius:0 100% 0 100%;pointer-events:none;
+  background:linear-gradient(135deg,#D9C46A,#8FAE5C);opacity:0;box-shadow:inset 0 0 0 .5px rgba(80,100,40,.3),0 1px 3px rgba(40,60,20,.25)}
+@media(prefers-reduced-motion:no-preference){
+  .art .bg{animation:breathe 40s ease-in-out infinite alternate}
+  @keyframes breathe{from{transform:none}to{transform:scale(1.04)}}
+  .art .rays{animation:rays 9s ease-in-out infinite}
+  @keyframes rays{0%,100%{opacity:.2}50%{opacity:.85}}
+  .art .mist.m1{animation:drift 38s linear infinite}
+  .art .mist.m2{animation:drift 52s linear -24s infinite}
+  @keyframes drift{0%{transform:translateX(0);opacity:0}15%{opacity:.9}85%{opacity:.9}100%{transform:translateX(170%);opacity:0}}
+  .art .leaf{animation:fall var(--d,14s) linear var(--t,0s) infinite}
+  @keyframes fall{0%{transform:translate(0,0) rotate(0);opacity:0}8%{opacity:.85}25%{transform:translate(var(--x1,30px),25vh) rotate(120deg)}50%{transform:translate(var(--x2,-20px),50vh) rotate(230deg)}75%{transform:translate(var(--x1,30px),75vh) rotate(330deg)}92%{opacity:.7}100%{transform:translate(0,100vh) rotate(420deg);opacity:0}}
+  .couplet span{animation:up 1.4s 1.2s both}.couplet span+span{animation-delay:1.5s}
+  .hero .line,.hero .sub,.hero .who,.hero .go{animation:up .9s both}
+  .hero .line{animation-delay:.9s}.hero .sub{animation-delay:1.05s}.hero .who{animation-delay:1.2s}.hero .go{animation-delay:1.35s}
+  @keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+}
 .hero .txt{position:relative;padding:110px 0 72px max(24px,calc((100vw - 1040px)/2 + 24px))}
 .hero .name{width:min(520px,82vw);margin-left:-10px}
 .hero h1{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
@@ -256,7 +284,7 @@ footer a{color:#DCE7E1;text-decoration:none}
 </header>
 
 <section class="hero">
-  <div class="art" role="img" aria-label="金闰迪站在山间溪边的水彩画"></div>
+  <div class="art" role="img" aria-label="金闰迪站在山间溪边的水彩画"><div class="bg"></div><div class="rays"></div><div class="fog"><div class="mist m1"></div><div class="mist m2"></div></div><i class="leaf" style="left:22%;--s:20px;--d:16s;--t:0s;--x1:40px;--x2:-25px"></i><i class="leaf" style="left:48%;--s:15px;--d:19s;--t:3.5s;--x1:-30px;--x2:20px"></i><i class="leaf" style="left:66%;--s:22px;--d:15s;--t:7s;--x1:35px;--x2:-35px"></i><i class="leaf" style="left:80%;--s:17px;--d:21s;--t:1.8s;--x1:-25px;--x2:30px"></i><i class="leaf" style="left:35%;--s:14px;--d:18s;--t:10s;--x1:30px;--x2:-20px"></i><i class="leaf" style="left:58%;--s:19px;--d:17s;--t:12.5s;--x1:-40px;--x2:25px"></i></div>
   <div class="couplet" aria-hidden="true"><span>此山非彼山，</span><span>此河非彼河。</span></div>
   <div class="txt">
     <h1>金闰迪</h1>
