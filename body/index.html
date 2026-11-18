@@ -190,17 +190,17 @@ svg.specs path,svg.specs circle{fill:none;stroke:var(--ink);stroke-width:9;strok
 <!-- S3 照片 → PDF -->
 <section class="sc" id="s3">
   <div class="abs tag a" style="left:120px;top:150px">AI 是我的读书搭子</div>
-  <div class="abs a" style="left:112px;top:200px;--d:.3s;display:flex;align-items:baseline;gap:16px"><span id="cnt" class="serif" style="font-size:230px;font-weight:900;color:var(--teal);line-height:1">0</span><span style="font-size:56px;font-weight:800">张照片</span></div>
-  <div class="abs sub a" style="left:122px;top:470px;--d:3.2s;font-size:38px;color:var(--ink)">书页照片拍了一大堆，<b style="color:var(--coral)">交给 AI 整理</b></div>
+  <div class="abs a" style="left:112px;top:200px;--d:.3s;display:flex;align-items:baseline;gap:16px"><span id="cnt" class="serif" style="font-size:150px;font-weight:900;color:var(--teal);line-height:1.1">一大堆书页</span></div>
+  <div class="abs sub a" style="left:122px;top:470px;--d:3.2s;font-size:38px;color:var(--ink)">拍下来，<b style="color:var(--coral)">交给 AI 整理</b></div>
   <div class="abs big serif a" style="left:118px;top:610px;font-size:96px;--d:8.6s">它干活，<br>我<span style="color:var(--teal)">喝水</span>。</div>
   <div class="abs a fade" style="left:640px;top:690px;--d:8.8s">
     <div class="steam" style="left:40px;top:-60px"></div><div class="steam" style="left:80px;top:-70px;animation-delay:.8s"></div><div class="steam" style="left:110px;top:-55px;animation-delay:1.5s"></div>
     <div class="glass"><div class="w"></div></div>
   </div>
   <div id="pages"></div>
-  <div class="pdf a pop" style="left:1060px;top:330px;--d:9.6s;transform:rotate(-4deg)"><b>PDF</b><p>辨识<br>健康</p><small>33 页 · 已排好</small></div>
-  <div class="pdf a pop" style="left:1400px;top:360px;--d:10.2s"><b>PDF</b><p>"藏"安<br>健康</p><small>33 页 · 已排好</small></div>
-  <div class="abs a" style="left:1100px;top:760px;--d:11.4s;font-size:30px;color:var(--ink2)">一杯水还没喝完，<b style="color:var(--ink)">两份 PDF 排排坐好</b> ✓</div>
+  <div class="pdf a pop" style="left:1060px;top:330px;--d:9.6s;transform:rotate(-4deg)"><b>✓ 整理好</b><p>读书<br>笔记</p><small>要点 · 一页看清</small></div>
+  <div class="pdf a pop" style="left:1400px;top:360px;--d:10.2s"><b>✓ 记着呢</b><p>晨间<br>记录</p><small>每天一句 · 一周回看</small></div>
+  <div class="abs a" style="left:1100px;top:760px;--d:11.4s;font-size:30px;color:var(--ink2)">一杯水还没喝完，<b style="color:var(--ink)">书页已经排排坐好</b> ✓</div>
   <div class="foot">读懂身体，活成自己 · 千百合</div>
 </section>
 
@@ -413,7 +413,7 @@ const SND={
 // ---------- per-scene cues: [秒, 动作] ----------
 const CUE={
  s2:[[2.6,'pop'],[6,'pop'],[7.4,'pop'],[8.8,'pop'],[11.5,'thump']],
- s3:[[.3,()=>count()],[5.6,()=>flyPages()],[8.6,'pop'],[9.2,'pop']],
+ s3:[[5.6,()=>flyPages()],[8.6,'pop'],[9.2,'pop']],
  s4:[[1.4,'chime'],[6,'pop'],[8.5,'pop']],
  s5:[[6.4,'pop'],[9.2,'pop'],[12,'pop'],[21,'thump']],
  s6:[[3.6,'thump']],
@@ -452,7 +452,7 @@ const scenes=SC.map((s,i)=>({...s,el:document.getElementById(s.id),end:(SC[i+1]|
 function resetScene(s){const el=s.el;el.classList.remove('on','k1','k2','k3');
  if(s.id==='s13'){document.getElementById('ask').style.visibility='';document.getElementById('ask').style.display='';document.getElementById('ask2').style.visibility='';document.getElementById('cd').textContent=''}
  if(s.id==='s12'){document.getElementById('typing').style.display='flex'}
- if(s.id==='s3'){document.getElementById('cnt').textContent='0'}}
+ }
 function enter(s){scenes.forEach(x=>{if(x!==s)x.el.classList.remove('on','k1','k2','k3')});resetScene(s);void s.el.offsetWidth;s.el.classList.add('on');cur=s;fired=new Set();if(s.id==='s3')resetPages();if(s.t>0)SND.whoosh()}
 function sceneAt(t){let r=scenes[0];for(const s of scenes)if(t>=s.t)r=s;return r}
 function fmt(t){t=Math.max(0,Math.floor(t));return Math.floor(t/60)+':'+String(t%60).padStart(2,'0')}
