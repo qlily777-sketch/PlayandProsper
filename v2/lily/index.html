@@ -104,18 +104,19 @@ h2{font:700 clamp(28px,4.6vw,44px)/1.3 var(--serif);letter-spacing:.04em}
   .cue{display:none}
 }
 
-/* ===== 七件套 ===== */
+/* ===== 十八般武艺（已上线的那几样） ===== */
 .seven{background:var(--paper);padding:70px 0 40px}
 .seven .head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}
 .seven h2{font-size:clamp(24px,3.4vw,32px)}
 .seven .head p{color:var(--mute);font-size:15px}
-.chips{list-style:none;margin-top:28px;display:grid;grid-template-columns:repeat(7,1fr);gap:12px}
+.chips{list-style:none;margin-top:28px;display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
 .chips a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;aspect-ratio:1;border-radius:22px;text-decoration:none;
   background:#fff;border:1.5px solid var(--line);box-shadow:0 10px 24px -18px rgba(23,63,51,.5);transition:transform .35s var(--ease),border-color .3s,box-shadow .3s;transform:rotate(var(--r,0deg))}
 .chips li:nth-child(odd) a{--r:-3deg}.chips li:nth-child(even) a{--r:2.5deg}
 .chips a:hover{transform:rotate(0) translateY(-6px);border-color:var(--pine);box-shadow:0 20px 34px -18px rgba(23,63,51,.55)}
 .chips b{font:700 15px/1.3 var(--serif);text-align:center}
 .chips small{font-size:11.5px;color:var(--mute);margin-top:-6px}
+.chips li:nth-child(3n) a{--r:-1.5deg}
 @media(max-width:860px){.chips{grid-template-columns:repeat(4,1fr);gap:10px}.chips a{border-radius:18px;gap:6px}.chips b{font-size:13.5px}.chips small{display:none}}
 
 /* ===== ① 人生卡：斜着、会动 ===== */
@@ -176,6 +177,63 @@ h2{font:700 clamp(28px,4.6vw,44px)/1.3 var(--serif);letter-spacing:.04em}
 .seek input::-moz-range-thumb{width:16px;height:16px;border:0;border-radius:50%;background:#fff}
 .speed{border:1px solid rgba(255,255,255,.25);background:transparent;color:#EAF2EE;border-radius:999px;padding:7px 12px;font-size:13px;font-weight:700;cursor:pointer;min-width:58px}
 @media(max-width:860px){.story .grid{grid-template-columns:1fr;gap:44px}.book3d{max-width:200px}.player{gap:14px;padding:18px}.play{width:54px;height:54px}.player .t b{font-size:16px}.speed{padding:6px 10px;min-width:48px}.player .t b{font-size:15.5px;flex-wrap:wrap;gap:6px}.player .bars{display:none}}
+
+/* ===== ⑪ 双人播客：第二个播放器 ===== */
+.player+.player{margin-top:18px}
+.player.pod .play{background:#9FD3C7}
+.player.pod .bars i{background:#9FD3C7}
+.player.pod .seek input{background:linear-gradient(90deg,#9FD3C7 var(--p,0%),rgba(255,255,255,.18) 0)}
+
+/* ===== ⑦ 金句海报：撒在桌上的方卡 ===== */
+.quotes{padding:110px 0 120px;background:linear-gradient(180deg,var(--cream),#EFE6D6);overflow:hidden}
+.table{position:relative;margin-top:50px;display:grid;grid-template-columns:repeat(5,1fr);gap:22px;align-items:start}
+.table a{display:block;position:relative;border-radius:6px;transform:rotate(var(--r)) translateY(var(--y,0));transition:transform .5s var(--ease),box-shadow .5s;box-shadow:0 0 0 6px #fff,0 24px 40px -18px rgba(80,60,30,.5);animation:drift var(--d,7s) ease-in-out var(--t,0s) infinite}
+.table a:hover{animation-play-state:paused;transform:rotate(0) translateY(-10px) scale(1.06);z-index:2;box-shadow:0 0 0 6px #fff,0 34px 60px -18px rgba(80,60,30,.6)}
+.table img{border-radius:6px}
+@keyframes drift{0%,100%{translate:0 0}50%{translate:0 -9px}}
+.table a:nth-child(1){--r:-6deg;--y:18px;--d:7s}
+.table a:nth-child(2){--r:4deg;--y:-6px;--d:8s;--t:-2s}
+.table a:nth-child(3){--r:-2deg;--y:26px;--d:6.5s;--t:-4s}
+.table a:nth-child(4){--r:5deg;--y:0px;--d:7.5s;--t:-1s}
+.table a:nth-child(5){--r:-4deg;--y:14px;--d:8.5s;--t:-3s}
+@media(max-width:860px){.table{grid-template-columns:repeat(2,1fr);gap:22px 18px}.table a:nth-child(5){grid-column:1/-1;width:62%;margin:0 auto}}
+
+/* ===== ⑭⑯ 竖屏小片：一排斜着的手机 ===== */
+.reels{padding:110px 0 120px;background:var(--pine);color:#EAF2EE;overflow:hidden}
+.reels .kick{color:#9FCFC4}
+.reels .lead{color:#B9D0C7}
+.phones{list-style:none;margin-top:50px;display:flex;gap:22px;overflow-x:auto;padding:20px 6px 34px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.phones::-webkit-scrollbar{display:none}
+.phones li{flex:0 0 176px;scroll-snap-align:center;transform:rotate(var(--r,0deg));transition:transform .5s var(--ease)}
+.phones li:nth-child(odd){--r:-3.5deg}.phones li:nth-child(even){--r:3deg;margin-top:26px}
+.phones li:hover{transform:rotate(0) translateY(-8px)}
+.phone{position:relative;border-radius:26px;padding:7px;background:#0d221b;box-shadow:0 0 0 1.5px #3c6a5c,0 30px 50px -20px rgba(0,0,0,.7)}
+.phone video{display:block;width:100%;aspect-ratio:9/16;border-radius:20px;background:#000;object-fit:cover}
+.phone button{position:absolute;inset:7px;border:0;border-radius:20px;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.45));cursor:pointer;display:grid;place-items:center}
+.phone button span{width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center}
+.phone button svg{width:20px;height:20px;margin-left:3px;color:var(--pine)}
+.phone button.gone{display:none}
+.phones small{display:flex;gap:8px;align-items:center;justify-content:center;margin-top:14px;font-size:13px;color:#B9D0C7}
+.phones li.anim{flex-basis:200px}
+.phones li.anim .phone{box-shadow:0 0 0 2px #F2C28B,0 30px 50px -20px rgba(0,0,0,.7)}
+
+/* ===== ③ 演讲 ===== */
+.talk{padding:110px 0;background:var(--paper)}
+.talk .w{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center}
+.slide{display:block;position:relative;border-radius:14px;overflow:hidden;transform:perspective(1400px) rotateY(10deg) rotateZ(-2deg);transition:transform .7s var(--ease);box-shadow:0 0 0 6px #fff,0 40px 70px -26px rgba(23,63,51,.55)}
+.slide:hover{transform:perspective(1400px) rotateY(0) rotateZ(0) translateY(-6px)}
+.slide img{width:100%}
+.slide i{position:absolute;right:14px;bottom:12px;font:700 12px/1 var(--sans);font-style:normal;color:#fff;background:rgba(0,0,0,.45);padding:7px 10px;border-radius:999px;letter-spacing:.08em}
+.talk .p{margin-top:16px;font:17px/2 var(--serif);color:var(--pine2)}
+@media(max-width:860px){.talk .w{grid-template-columns:1fr;gap:40px}.slide{transform:rotate(-2deg)}}
+
+/* ===== 另一篇 · 书 4 ===== */
+.other{position:relative;padding:110px 0;background:linear-gradient(180deg,#E9F3EE,var(--paper));overflow:hidden}
+.other .w{display:grid;grid-template-columns:260px 1fr;gap:70px;align-items:center}
+.other .book3d a{box-shadow:-2px 0 0 #0b3d2c,24px 34px 50px -18px rgba(23,63,51,.5)}
+.other .p{margin-top:16px;font:17px/2 var(--serif);color:var(--pine2);max-width:34em}
+.other .big{margin-top:18px;font:900 clamp(24px,3.4vw,34px)/1.5 var(--serif);letter-spacing:.04em}
+@media(max-width:860px){.other .w{grid-template-columns:1fr;gap:40px}.other .book3d{max-width:190px}}
 
 /* ===== ⑮ 故事短片 ===== */
 .film{padding:110px 0;background:linear-gradient(180deg,var(--sky),var(--lagoon))}
@@ -318,16 +376,21 @@ footer a{color:#E3EEE9;text-decoration:none}
 <section class="seven" id="seven">
   <div class="w">
     <div class="head rv">
-      <h2>一篇故事，七件套</h2>
-      <p>书 5《走遍世界，活成自己》里我写的那一篇，做成了这七样。</p>
+      <h2>一篇故事，十八般武艺</h2>
+      <p>书 5 里我写的《走得开》，做成了十八样东西。已经做好的 12 样，都在这一页，点一下就到。</p>
     </div>
     <ol class="chips rv">
       <li><a href="#card"><span class="no">1</span><b>人生卡</b><small>今天遇见谁</small></a></li>
       <li><a href="#story"><span class="no">2</span><b>电子书</b><small>中英双版</small></a></li>
+      <li><a href="#talk"><span class="no">3</span><b>演讲 PPT</b><small>12 页</small></a></li>
       <li><a href="#take"><span class="no">4</span><b>自我介绍<br>海报</b></a></li>
+      <li><a href="#quotes"><span class="no">7</span><b>金句海报</b><small>5 张</small></a></li>
       <li><a href="#take"><span class="no">8</span><b>朋友圈<br>封面</b></a></li>
       <li><a href="#listen"><span class="no">10</span><b>有声书</b><small>19 分钟</small></a></li>
+      <li><a href="#pod"><span class="no">11</span><b>双人播客</b><small>13 分钟</small></a></li>
+      <li><a href="#reels"><span class="no">14</span><b>金句<br>短视频</b><small>5 条</small></a></li>
       <li><a href="#film"><span class="no">15</span><b>故事短片</b><small>20 秒</small></a></li>
+      <li><a href="#reels"><span class="no">16</span><b>人生动画</b><small>37 秒</small></a></li>
       <li><a href="#top"><span class="no">18</span><b>个人主页</b><small>就是这一页</small></a></li>
     </ol>
   </div>
@@ -373,6 +436,13 @@ footer a{color:#E3EEE9;text-decoration:none}
       <button class="speed" id="speed" type="button" aria-label="播放速度">1×</button>
       <div class="seek"><span id="cur">0:00</span><input id="bar2" type="range" min="0" max="1000" value="0" aria-label="播放进度"><span id="dur">18:41</span></div>
       <audio id="au" src="audiobook.mp3?v=20261115" preload="none"></audio>
+    </div>
+    <div class="player pod rv" id="pod">
+      <button class="play" type="button" aria-label="播放双人播客"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></button>
+      <div class="t"><b><span class="no">11</span>两个人，聊我的故事 <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span></b><small>双人播客 · 两位主持人一问一答，像一档节目</small></div>
+      <button class="speed" type="button" aria-label="播放速度">1×</button>
+      <div class="seek"><span class="cur">0:00</span><input type="range" min="0" max="1000" value="0" aria-label="播放进度"><span class="dur">12:45</span></div>
+      <audio src="podcast.mp3?v=20261118" preload="none"></audio>
     </div>
   </div>
 </section>
@@ -446,6 +516,66 @@ footer a{color:#E3EEE9;text-decoration:none}
       <h2>二十秒，看我走得开</h2>
     </div>
     <div class="screen" id="screen"><video id="vid" src="15.mp4" poster="15.jpg" controls playsinline preload="none"></video><button class="big-play" id="bigPlay" type="button" aria-label="播放故事短片"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></span></button></div>
+  </div>
+</section>
+
+<section class="reels" id="reels">
+  <div class="w">
+    <div class="rv">
+      <span class="kick"><span class="no">14</span><span class="no">16</span>竖屏小片</span>
+      <h2>刷到我，七秒就够</h2>
+      <p class="lead">五条金句短视频，一条一句，视频号、抖音直接发。最后一支是人生动画，把我走过的路一步步画出来。</p>
+    </div>
+    <ul class="phones rv">
+      <li><div class="phone"><video src="14-1.mp4" poster="14-1.jpg" playsinline loop preload="none"></video><button type="button" aria-label="播放金句短视频 1"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></span></button></div><small><span class="no">14</span>这件事，没有我，行不行？</small></li>
+      <li><div class="phone"><video src="14-2.mp4" poster="14-2.jpg" playsinline loop preload="none"></video><button type="button" aria-label="播放金句短视频 2"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></span></button></div><small><span class="no">14</span>我不是忙，我是走不开</small></li>
+      <li><div class="phone"><video src="14-3.mp4" poster="14-3.jpg" playsinline loop preload="none"></video><button type="button" aria-label="播放金句短视频 3"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></span></button></div><small><span class="no">14</span>困住我的，从来不是那些事</small></li>
+      <li><div class="phone"><video src="14-4.mp4" poster="14-4.jpg" playsinline loop preload="none"></video><button type="button" aria-label="播放金句短视频 4"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></span></button></div><small><span class="no">14</span>只是早上场了一步</small></li>
+      <li><div class="phone"><video src="14-5.mp4" poster="14-5.jpg" playsinline loop preload="none"></video><button type="button" aria-label="播放金句短视频 5"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></span></button></div><small><span class="no">14</span>世界就是我的办公室</small></li>
+      <li class="anim"><div class="phone"><video src="16.mp4" poster="16.jpg" playsinline preload="none"></video><button type="button" aria-label="播放人生动画"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></span></button></div><small><span class="no">16</span>人生动画 · 37 秒</small></li>
+    </ul>
+  </div>
+</section>
+
+<section class="quotes" id="quotes">
+  <div class="w">
+    <div class="rv">
+      <span class="kick"><span class="no">7</span>金句海报</span>
+      <h2>五句话，发朋友圈正好</h2>
+      <p class="lead">都是《走得开》里的原话。点开大图，长按保存。</p>
+    </div>
+    <div class="table rv">
+      <a href="q1.jpg" target="_blank"><img src="q1.jpg" alt="金句海报：这件事，没有我，行不行？" loading="lazy"></a>
+      <a href="q2.jpg" target="_blank"><img src="q2.jpg" alt="金句海报：我不是忙。我是走不开。" loading="lazy"></a>
+      <a href="q3.jpg" target="_blank"><img src="q3.jpg" alt="金句海报：困住我的从来不是那些事。是我以为它们都归我，是我放不下。" loading="lazy"></a>
+      <a href="q4.jpg" target="_blank"><img src="q4.jpg" alt="金句海报：我没早生多少，学问也不比谁大，只是早上场了一步。" loading="lazy"></a>
+      <a href="q5.jpg" target="_blank"><img src="q5.jpg" alt="金句海报：世界就是我的办公室。" loading="lazy"></a>
+    </div>
+  </div>
+</section>
+
+<section class="talk" id="talk">
+  <div class="w">
+    <a class="slide rv" href="talk.html" target="_blank"><img src="talk.jpg" alt="演讲 PPT《走得开》封面页" loading="lazy"><i>点开就能讲 →</i></a>
+    <div class="rv">
+      <span class="kick"><span class="no">3</span>演讲 PPT</span>
+      <h2>走得开，讲给你听</h2>
+      <p class="p">从守着一间办公室，到人生百国。一套 12 页的网页版 PPT，浏览器打开就能讲，配一篇 3 分钟的讲稿。</p>
+      <div class="row"><a class="btn" href="talk.html" target="_blank">打开演讲 PPT</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="other" id="book4">
+  <div class="w">
+    <div class="book3d rv"><a href="book4-zh.pdf" target="_blank"><img src="book4.jpg" alt="《活成你》封面" loading="lazy"></a></div>
+    <div class="rv">
+      <span class="kick">另一篇故事 · 书 4《AI 时代的个人品牌》第 01 篇</span>
+      <h2>活成你</h2>
+      <p class="p">那一年，我正落魄。在半导体公司朝九晚五，一干五年，每天坐在电脑前，屏幕亮着，心却不在了。后来，我坐在一个陌生人家里，她让我把一句话说出声——</p>
+      <p class="big">说出「我是」，再活成它。</p>
+      <div class="row"><a class="btn" href="book4-zh.pdf" download>下载中文版</a><a class="btn ghost" href="book4-en.pdf" download style="border-color:var(--pine)">English edition</a></div>
+    </div>
   </div>
 </section>
 
@@ -548,6 +678,28 @@ footer a{color:#E3EEE9;text-decoration:none}
   rng.addEventListener('change',function(){var d=au.duration||1121;au.currentTime=rng.value/1000*d;drag=false;if(au.paused)au.play()});
   var S=[1,1.25,1.5,.8],si=0;
   sp.addEventListener('click',function(){si=(si+1)%S.length;au.playbackRate=S[si];sp.textContent=S[si]+'×'});
+
+  // ⑪ 双人播客
+  (function(){
+    var box=$('pod'),a=box.querySelector('audio'),b=box.querySelector('.play'),ic=b.querySelector('path'),r=box.querySelector('input'),c=box.querySelector('.cur'),d=box.querySelector('.dur'),s=box.querySelector('.speed'),dr=false,k=0;
+    b.addEventListener('click',function(){if(a.paused){au.pause();a.play()}else a.pause()});
+    a.addEventListener('play',function(){box.classList.add('playing');ic.setAttribute('d',Q);b.setAttribute('aria-label','暂停')});
+    a.addEventListener('pause',function(){box.classList.remove('playing');ic.setAttribute('d',P);b.setAttribute('aria-label','播放双人播客')});
+    a.addEventListener('loadedmetadata',function(){d.textContent=mm(a.duration)});
+    a.addEventListener('timeupdate',function(){if(dr||!a.duration)return;var p=a.currentTime/a.duration*1000;r.value=p;r.style.setProperty('--p',p/10+'%');c.textContent=mm(a.currentTime)});
+    r.addEventListener('input',function(){dr=true;r.style.setProperty('--p',r.value/10+'%');c.textContent=mm(r.value/1000*(a.duration||765))});
+    r.addEventListener('change',function(){a.currentTime=r.value/1000*(a.duration||765);dr=false;if(a.paused)a.play()});
+    s.addEventListener('click',function(){k=(k+1)%S.length;a.playbackRate=S[k];s.textContent=S[k]+'×'});
+    au.addEventListener('play',function(){a.pause()});
+  })();
+
+  // ⑭⑯ 竖屏小片：点哪支放哪支，其他的停
+  var reels=[].slice.call(document.querySelectorAll('.phone video'));
+  document.querySelectorAll('.phone').forEach(function(p){
+    var v=p.querySelector('video'),bt=p.querySelector('button');
+    bt.addEventListener('click',function(){reels.forEach(function(x){if(x!==v)x.pause()});bt.classList.add('gone');v.controls=true;v.play()});
+    v.addEventListener('play',function(){bt.classList.add('gone')});
+  });
 
   // 三步：问一问
   var task=$('task'),ask2=$('ask2'),tn=$('taskName'),ans=$('ans');

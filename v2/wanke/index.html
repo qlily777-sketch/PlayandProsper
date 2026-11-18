@@ -8,7 +8,7 @@
 <meta name="description" content="万可，「万事可成」养成系创始人，前上海英文杂志主编，边玩边赚书 3、书 4 作者。24 岁那年，她在纸上写下两个字：万可。">
 <meta property="og:title" content="万可 · 我要万事皆可，万事可成">
 <meta property="og:description" content="「万事可成」养成系创始人 · 前上海英文杂志主编 · 边玩边赚书系作者">
-<meta property="og:image" content="https://www.playandprosper.com/v2/wanke/card.jpg?v=20261114">
+<meta property="og:image" content="https://www.playandprosper.com/v2/wanke/card.jpg?v=20261118">
 <meta name="theme-color" content="#F6EEE1">
 <link rel="icon" href="../img/logo-icon.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"万可","jobTitle":"「万事可成」养成系创始人","description":"前上海英文杂志主编，6本畅销书作者/译者。52岁获全国自由潜一金一银，53岁用AI把半生积累搭成课程和智能体。边玩边赚书3、书4作者。","url":"https://www.playandprosper.com/wanke/","memberOf":{"@type":"Organization","name":"边玩边赚 Play and Prosper","url":"https://www.playandprosper.com/"}}</script>
@@ -72,6 +72,35 @@ h2{font-family:var(--serif);font-weight:700;font-size:clamp(26px,4.4vw,36px);lin
   .hero .pic img{max-height:62svh}
 }
 
+/* 第一屏动起来：丽江的暖阳慢慢呼吸、光线转动、秋叶飘落、湖面波光；人像轻轻起伏 */
+.sky{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.sun{position:absolute;left:72%;top:38%;width:min(80vw,820px);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(closest-side,rgba(255,226,170,.95),rgba(243,217,168,.55) 38%,rgba(246,238,225,0) 72%);animation:sun 9s ease-in-out infinite alternate}
+@keyframes sun{from{transform:translate(-50%,-50%) scale(.94);opacity:.85}to{transform:translate(-50%,-50%) scale(1.06);opacity:1}}
+.rays{position:absolute;left:72%;top:38%;width:170vmax;height:170vmax;transform:translate(-50%,-50%);
+  background:repeating-conic-gradient(from 0deg,rgba(255,236,196,.22) 0 4deg,rgba(255,236,196,0) 4deg 15deg);
+  -webkit-mask-image:radial-gradient(closest-side,#000 8%,transparent 55%);mask-image:radial-gradient(closest-side,#000 8%,transparent 55%);animation:spin 140s linear infinite}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.lake{position:absolute;left:0;right:0;bottom:0;height:22%;background:linear-gradient(180deg,rgba(79,116,136,0),rgba(79,116,136,.12) 45%,rgba(79,116,136,.2))}
+.lake i{position:absolute;height:2px;width:var(--w,4%);border-radius:2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.9),transparent);opacity:0;animation:glint var(--d,4.5s) ease-in-out var(--t,0s) infinite}
+@keyframes glint{0%,100%{opacity:0;transform:translateX(0) scaleX(.4)}45%{opacity:.9;transform:translateX(8px) scaleX(1)}70%{opacity:.25}}
+.maple{position:absolute;top:-8%;width:var(--s,20px);height:var(--s,20px);opacity:0;animation:fall var(--d,16s) linear var(--t,0s) infinite}
+.maple svg{width:100%;height:100%;animation:twirl 5s ease-in-out infinite alternate}
+@keyframes fall{0%{transform:translate(0,0);opacity:0}8%{opacity:.85}50%{transform:translate(var(--x1,30px),55vh)}92%{opacity:.75}100%{transform:translate(var(--x2,-20px),112vh);opacity:0}}
+@keyframes twirl{from{transform:rotate(-35deg) rotateY(0)}to{transform:rotate(40deg) rotateY(160deg)}}
+.hero .w{position:relative;z-index:1}
+.hero .pic img{transform-origin:50% 100%}
+@media (prefers-reduced-motion:no-preference){
+  .hero .pic img{animation:rise 1.4s .2s cubic-bezier(.2,.8,.2,1) both,breathe 7s 1.6s ease-in-out infinite}
+  .hero .who,.hero h1,.hero .vow,.hero ul,.hero .row{animation:up .9s cubic-bezier(.2,.8,.2,1) both}
+  .hero h1{animation:ink 1.4s .1s cubic-bezier(.2,.8,.2,1) both}
+  .hero .vow{animation-delay:.55s}.hero ul{animation-delay:.75s}.hero .row{animation-delay:.95s}
+  @keyframes rise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+  @keyframes breathe{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-6px) scale(1.012)}}
+  @keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  @keyframes ink{from{opacity:0;filter:blur(10px);transform:translateX(-14px)}to{opacity:1;filter:none;transform:none}}
+}
+
 /* 自我介绍 */
 .intro{background:var(--cream);padding:72px 0}
 .intro p{font-family:var(--serif);font-size:clamp(18px,2.4vw,21px);line-height:2}
@@ -79,8 +108,20 @@ h2{font-family:var(--serif);font-weight:700;font-size:clamp(26px,4.4vw,36px);lin
 
 /* 人生卡 */
 .card .w{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
-.card .img{position:relative}
-.card .img img{width:100%;max-width:420px;margin:0 auto;border-radius:14px;box-shadow:0 30px 60px rgba(58,42,30,.22);cursor:zoom-in}
+/* 人生卡：斜着飘、跟手倾斜、有光扫过 */
+.card{background:linear-gradient(180deg,var(--paper),var(--paper2));overflow:hidden}
+.stage{position:relative;max-width:380px;width:100%;margin:0 auto;perspective:1200px}
+.stage .glow{position:absolute;inset:6% -12% -4% -12%;background:radial-gradient(closest-side,rgba(232,170,90,.5),rgba(232,170,90,0));filter:blur(12px)}
+.floaty{animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:rotate(-5deg) translateY(0)}50%{transform:rotate(-2.5deg) translateY(-12px)}}
+.tilt{display:block;position:relative;border-radius:14px;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.2,.8,.2,1);will-change:transform;cursor:zoom-in}
+.tilt img{width:100%;border-radius:14px;box-shadow:0 0 0 7px #fff,0 34px 60px -16px rgba(120,70,20,.45)}
+.tilt .shine{position:absolute;inset:0;border-radius:14px;pointer-events:none;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.5) 48%,transparent 62%);background-size:250% 250%;background-position:var(--sx,120%) 0;mix-blend-mode:soft-light;transition:background-position .4s;animation:sweep 7s ease-in-out 2s infinite}
+@keyframes sweep{0%,70%,100%{background-position:var(--sx,120%) 0}85%{background-position:-20% 0}}
+.sticker{position:absolute;right:-22px;top:26px;width:92px;height:92px;border-radius:50%;z-index:2;background:conic-gradient(from 0deg,#E9C77D,#C9933F,#E9C77D,#C9933F,#E9C77D);display:grid;place-items:center;text-align:center;font:900 13px/1.3 var(--serif);color:#5B3A0E;box-shadow:0 12px 26px rgba(120,80,20,.35),0 0 0 4px #fff;animation:bob 4.5s ease-in-out infinite}
+.sticker span{display:block;font-size:21px}
+@keyframes bob{0%,100%{transform:rotate(12deg)}50%{transform:rotate(4deg) translateY(-8px)}}
+@media (max-width:760px){.stage{max-width:280px}.sticker{width:78px;height:78px;right:-14px;font-size:12px}.sticker span{font-size:17px}}
 .card .no{display:inline-grid;place-items:center;width:22px;height:22px;border:1px solid currentColor;border-radius:50%;font-size:12px;margin-right:6px;vertical-align:1px}
 .card p{margin-top:14px}
 .card .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
@@ -153,7 +194,13 @@ h2{font-family:var(--serif);font-weight:700;font-size:clamp(26px,4.4vw,36px);lin
 /* 走近她 */
 .meet{background:var(--ink);color:var(--cream);text-align:center}
 .meet h2{color:#F0C27B}
-.meet .qr{width:220px;margin:28px auto 18px;border-radius:12px;background:#fff;padding:12px}
+.meet{overflow:hidden}
+.namecard{display:block;width:260px;margin:34px auto 22px;padding:16px 16px 14px;border-radius:16px;background:#fff;color:var(--ink);box-shadow:0 30px 60px -24px rgba(0,0,0,.6);transform:rotate(-4deg);animation:swing 6s ease-in-out infinite;transition:transform .5s}
+.namecard:hover{animation-play-state:paused;transform:rotate(0) scale(1.03)}
+@keyframes swing{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(-1.5deg) translateY(-8px)}}
+.namecard .qr{width:100%;border-radius:8px}
+.namecard b{display:block;margin-top:10px;font:700 18px var(--serif);letter-spacing:.1em}
+.namecard small{display:block;font-size:12px;color:var(--ink2)}
 .meet .note{font-size:14px;color:#D8C8B3;margin-top:10px}
 .meet .ways{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:22px}
 .meet .ways span{border:1px solid #6E5A47;border-radius:999px;padding:6px 14px;font-size:14px}
@@ -186,6 +233,7 @@ footer .you{display:block;margin-top:8px;font-size:15px;color:#E8DCCB}
 
 <!-- 1 · 认出她 -->
 <section class="hero">
+  <div class="sky" aria-hidden="true"><div class="rays"></div><div class="sun"></div><div class="lake"><i style="left:6%;top:30%;--w:4%;--d:4.4s;--t:0s"></i><i style="left:19%;top:58%;--w:6%;--d:5.2s;--t:1.3s"></i><i style="left:33%;top:40%;--w:3%;--d:3.8s;--t:2.4s"></i><i style="left:48%;top:70%;--w:5%;--d:4.9s;--t:.7s"></i><i style="left:61%;top:36%;--w:4%;--d:4.1s;--t:3.1s"></i><i style="left:74%;top:62%;--w:6%;--d:5.5s;--t:1.9s"></i><i style="left:88%;top:46%;--w:3.5%;--d:4.6s;--t:2.7s"></i></div><i class="maple" style="left:14%;--s:18px;--d:17s;--t:0s;--x1:40px;--x2:-20px;color:#B9542E"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l1.6 4.2 3.6-1.9-.9 4 4.1.2-3 2.8 2.6 2.2-4.1.5.6 4-3.5-2.2L12 22l-1-6.2-3.5 2.2.6-4-4.1-.5 2.6-2.2-3-2.8 4.1-.2-.9-4 3.6 1.9z"/></svg></i><i class="maple" style="left:31%;--s:14px;--d:20s;--t:4s;--x1:-30px;--x2:25px;color:#C9873A"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l1.6 4.2 3.6-1.9-.9 4 4.1.2-3 2.8 2.6 2.2-4.1.5.6 4-3.5-2.2L12 22l-1-6.2-3.5 2.2.6-4-4.1-.5 2.6-2.2-3-2.8 4.1-.2-.9-4 3.6 1.9z"/></svg></i><i class="maple" style="left:47%;--s:22px;--d:16s;--t:8s;--x1:35px;--x2:-35px;color:#A8462E"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l1.6 4.2 3.6-1.9-.9 4 4.1.2-3 2.8 2.6 2.2-4.1.5.6 4-3.5-2.2L12 22l-1-6.2-3.5 2.2.6-4-4.1-.5 2.6-2.2-3-2.8 4.1-.2-.9-4 3.6 1.9z"/></svg></i><i class="maple" style="left:63%;--s:16px;--d:22s;--t:2s;--x1:-25px;--x2:30px;color:#D29A45"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l1.6 4.2 3.6-1.9-.9 4 4.1.2-3 2.8 2.6 2.2-4.1.5.6 4-3.5-2.2L12 22l-1-6.2-3.5 2.2.6-4-4.1-.5 2.6-2.2-3-2.8 4.1-.2-.9-4 3.6 1.9z"/></svg></i><i class="maple" style="left:79%;--s:20px;--d:18s;--t:11s;--x1:30px;--x2:-25px;color:#B9542E"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l1.6 4.2 3.6-1.9-.9 4 4.1.2-3 2.8 2.6 2.2-4.1.5.6 4-3.5-2.2L12 22l-1-6.2-3.5 2.2.6-4-4.1-.5 2.6-2.2-3-2.8 4.1-.2-.9-4 3.6 1.9z"/></svg></i><i class="maple" style="left:90%;--s:15px;--d:19s;--t:6s;--x1:-35px;--x2:20px;color:#C9873A"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l1.6 4.2 3.6-1.9-.9 4 4.1.2-3 2.8 2.6 2.2-4.1.5.6 4-3.5-2.2L12 22l-1-6.2-3.5 2.2.6-4-4.1-.5 2.6-2.2-3-2.8 4.1-.2-.9-4 3.6 1.9z"/></svg></i><i class="maple" style="left:6%;--s:17px;--d:21s;--t:13s;--x1:25px;--x2:-30px;color:#A8462E"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l1.6 4.2 3.6-1.9-.9 4 4.1.2-3 2.8 2.6 2.2-4.1.5.6 4-3.5-2.2L12 22l-1-6.2-3.5 2.2.6-4-4.1-.5 2.6-2.2-3-2.8 4.1-.2-.9-4 3.6 1.9z"/></svg></i></div>
   <div class="w">
     <div class="txt">
       <span class="who">边玩边赚书系作者 · 书 3 · 书 4</span>
@@ -217,7 +265,16 @@ footer .you{display:block;margin-top:8px;font-size:15px;color:#E8DCCB}
 <!-- 3 · 人生卡 -->
 <section class="card" id="card">
   <div class="w">
-    <div class="img"><img src="card.jpg?v=20261114" alt="万可的人生卡：今天遇见谁 · 书 4 · 11" id="cardImg"></div>
+    <div class="stage">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="floaty">
+        <a class="tilt" id="tilt" href="card.jpg?v=20261118" aria-label="打开万可的人生卡大图">
+          <img src="card.jpg?v=20261118" alt="万可的人生卡：今天遇见谁 · 书 4 · 11" id="cardImg">
+          <span class="shine" aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="sticker" aria-hidden="true"><div>入场券<span>№11</span></div></div>
+    </div>
     <div>
       <span class="kick">今 天 遇 见 谁 · 书 4 · №11</span>
       <h2><span class="no">①</span>万可的人生卡</h2>
@@ -344,7 +401,7 @@ footer .you{display:block;margin-top:8px;font-size:15px;color:#E8DCCB}
 <section class="meet" id="meet">
   <div class="w n">
     <h2>扫码，走近万可</h2>
-    <img class="qr" src="wechat.png" alt="万可的微信二维码">
+    <div class="namecard"><img class="qr" src="wechat.png?v=20261118" alt="万可的微信二维码"><b>万可</b><small>「万事可成」养成系创始人</small></div>
     <p>从她手里带走一本书，或者聊聊身体和活法。</p>
     <div class="ways"><span>预约签名书</span><span>一起读书</span><span>聊聊身体</span><span>AI 智能体</span></div>
     <p class="note">在微信里打开，长按二维码识别。加的时候请备注「官网」，再加上你感兴趣的那件事。</p>
@@ -360,7 +417,7 @@ footer .you{display:block;margin-top:8px;font-size:15px;color:#E8DCCB}
   <a href="#books">读她的故事</a><a class="main" href="#meet">加微信</a>
 </nav>
 
-<div class="lb" id="lb" role="dialog" aria-label="人生卡大图"><img src="card.jpg?v=20261114" alt="万可的人生卡大图"><p>长按图片保存 · 点空白处关闭</p></div>
+<div class="lb" id="lb" role="dialog" aria-label="人生卡大图"><img src="card.jpg?v=20261118" alt="万可的人生卡大图"><p>长按图片保存 · 点空白处关闭</p></div>
 
 <script>
 (function(){
@@ -373,8 +430,15 @@ footer .you{display:block;margin-top:8px;font-size:15px;color:#E8DCCB}
   addEventListener('scroll',f,{passive:true});f();
 
   var lb=document.getElementById('lb');
-  function open(){lb.classList.add('on')}
-  document.getElementById('cardImg').addEventListener('click',open);
+  function open(e){if(e)e.preventDefault();lb.classList.add('on')}
+  document.getElementById('tilt').addEventListener('click',open);
+  (function(){
+    var t=document.getElementById('tilt');if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+    var st=t.closest('.stage');
+    st.addEventListener('pointermove',function(e){var r=st.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+      t.style.transform='rotateY('+(x*18)+'deg) rotateX('+(-y*14)+'deg) scale(1.03)';t.style.setProperty('--sx',(50-x*120)+'%')});
+    st.addEventListener('pointerleave',function(){t.style.transform='';t.style.removeProperty('--sx')});
+  })();
   document.getElementById('cardOpen').addEventListener('click',open);
   lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('on')});
   addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList.remove('on')});
