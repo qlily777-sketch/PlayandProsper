@@ -152,11 +152,12 @@ h2{font:700 clamp(28px,4.6vw,44px)/1.3 var(--serif);letter-spacing:.04em}
 .seed blockquote p.en{margin-top:10px;font:italic 15px/1.7 Georgia,serif;color:var(--mute)}
 .seed blockquote em{font-style:normal;color:var(--seal)}
 @media(max-width:860px){.seed .w{grid-template-columns:1fr;gap:40px}}
-/* 另一篇《走得开》 */
+/* 另一篇：书 3《钱顺了》故事短片 */
 .alt{padding:110px 0 90px;background:var(--pine);color:#EAF2EE}
 .alt .kick{color:#9FCFC4}
 .alt .lead{color:#B9D0C7;font:17px/1.95 var(--serif)}
-.alt .players{margin-top:34px}
+.players{margin-top:18px}
+.story .players .player{margin-top:18px}
 .alt .screen{margin-top:30px}
 @media(max-width:860px){.chips{grid-template-columns:repeat(4,1fr);gap:10px}.chips a{border-radius:18px;gap:6px}.chips b{font-size:13.5px}.chips small{display:none}}
 
@@ -487,6 +488,22 @@ footer a{color:#E3EEE9;text-decoration:none}
       </div>
       <p class="credit">词：千百合 × Claude（GPT、Gemini、DeepSeek 参与评审）· 2026-11-18 定稿</p>
     </details>
+    <div class="players">
+      <div class="player x rv" id="listen">
+        <button class="play" type="button" aria-label="播放有声书"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></button>
+        <div class="t"><b><span class="no">10</span>有声书 · 活成你 <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span></b><small>我自己的声音 · 路上、睡前都能听</small></div>
+        <button class="speed" type="button" aria-label="播放速度">1×</button>
+        <div class="seek"><span class="cur">0:00</span><input type="range" min="0" max="1000" value="0" aria-label="播放进度"><span class="dur">18:41</span></div>
+        <audio src="audiobook.mp3?v=20261115" preload="none"></audio>
+    </div>
+    <div class="player x pod rv" id="pod">
+        <button class="play" type="button" aria-label="播放双人播客"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></button>
+        <div class="t"><b><span class="no">11</span>双人播客 · 活成你 <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span></b><small>两位主持人聊《活成你》，一问一答，像一档节目</small></div>
+        <button class="speed" type="button" aria-label="播放速度">1×</button>
+        <div class="seek"><span class="cur">0:00</span><input type="range" min="0" max="1000" value="0" aria-label="播放进度"><span class="dur">12:45</span></div>
+        <audio src="podcast.mp3?v=20261118" preload="none"></audio>
+    </div>
+    </div>
   </div>
 </section>
 
@@ -538,29 +555,12 @@ footer a{color:#E3EEE9;text-decoration:none}
 <section class="alt" id="alt">
   <div class="w">
     <div class="rv">
-      <span class="kick">也听听、看看我的另一篇 · 书 5《走得开》</span>
-      <h2>听我讲，看我走</h2>
-      <p class="lead">下面这三样，讲的是书 5 里的《走得开》：从守着一间办公室，到人生百国。</p>
+      <span class="kick">再看一篇 · 书 3 里的《钱顺了》</span>
+      <h2>从一只鸭子，到一个钱搭子</h2>
+      <p class="lead">「小姑娘，我只有一块二。你就一块二卖给我吧。」那一年，我八岁。那一块二，我攥了很多年。</p>
     </div>
-    <div class="players">
-      <div class="player x rv" id="listen">
-        <button class="play" type="button" aria-label="播放有声书"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></button>
-        <div class="t"><b><span class="no">10</span>有声书 · 走得开 <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span></b><small>我自己的声音 · 路上、睡前都能听</small></div>
-        <button class="speed" type="button" aria-label="播放速度">1×</button>
-        <div class="seek"><span class="cur">0:00</span><input type="range" min="0" max="1000" value="0" aria-label="播放进度"><span class="dur">18:41</span></div>
-        <audio src="audiobook.mp3?v=20261115" preload="none"></audio>
-      </div>
-      <div class="player x pod rv" id="pod">
-        <button class="play" type="button" aria-label="播放双人播客"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></button>
-        <div class="t"><b><span class="no">11</span>双人播客 · 走得开 <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span></b><small>两位主持人一问一答，像一档节目</small></div>
-        <button class="speed" type="button" aria-label="播放速度">1×</button>
-        <div class="seek"><span class="cur">0:00</span><input type="range" min="0" max="1000" value="0" aria-label="播放进度"><span class="dur">12:45</span></div>
-        <audio src="podcast.mp3?v=20261118" preload="none"></audio>
-      </div>
-    </div>
-    <div class="rv" id="film" style="margin-top:56px">
-      <span class="kick"><span class="no">15</span>故事短片</span>
-      <h2>二十秒，看我走得开</h2>
+    <div class="rv" id="film" style="margin-top:40px">
+      <span class="kick"><span class="no">15</span>故事短片 · 钱顺了</span>
     </div>
     <div class="screen" id="screen"><video id="vid" src="15.mp4" poster="15.jpg" controls playsinline preload="none"></video><button class="big-play" id="bigPlay" type="button" aria-label="播放故事短片"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></span></button></div>
   </div>
@@ -667,7 +667,7 @@ footer a{color:#E3EEE9;text-decoration:none}
   // 主题曲：单曲 / 循环
   sp.addEventListener('click',function(){au.loop=!au.loop;sp.textContent=au.loop?'循环':'单曲'});
 
-  // ⑩ 有声书、⑪ 双人播客（《走得开》）：同一时间只放一个
+  // ⑩ 有声书、⑪ 双人播客（《活成你》）：同一时间只放一个
   var all=[au];
   document.querySelectorAll('.player.x').forEach(function(box){
     var a=box.querySelector('audio'),b=box.querySelector('.play'),ic=b.querySelector('path'),r=box.querySelector('input'),c=box.querySelector('.cur'),d=box.querySelector('.dur'),s=box.querySelector('.speed'),dr=false,k=0,lab=b.getAttribute('aria-label');
