@@ -117,6 +117,47 @@ h2{font:700 clamp(28px,4.6vw,44px)/1.3 var(--serif);letter-spacing:.04em}
 .chips b{font:700 15px/1.3 var(--serif);text-align:center}
 .chips small{font-size:11.5px;color:var(--mute);margin-top:-6px}
 .chips li:nth-child(3n) a{--r:-1.5deg}
+.chips.nine{grid-template-columns:repeat(9,1fr);gap:12px}
+@media(max-width:860px){.chips.nine{grid-template-columns:repeat(3,1fr);gap:10px}}
+/* ⑫ 主题曲：歌词 */
+.player.song .play{background:#F2C28B}
+.lyric{margin-top:14px;border-radius:18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}
+.lyric summary{cursor:pointer;list-style:none;padding:14px 20px;font:700 14px var(--sans);color:#C6D9D1}
+.lyric summary::-webkit-details-marker{display:none}
+.lyric summary:after{content:" ▾"}
+.lyric[open] summary:after{content:" ▴"}
+.lyric .ly{padding:0 20px 20px;display:grid;grid-template-columns:repeat(2,1fr);gap:18px 34px;font:15.5px/1.95 var(--serif);color:#DCE9E3}
+.lyric .ly b{display:block;font:700 12px var(--sans);letter-spacing:.2em;color:#9FCFC4;margin-bottom:2px}
+.lyric .ly em{font-style:normal;color:#F2C28B;font-weight:700}
+.lyric .credit{padding:0 20px 18px;font-size:12.5px;color:#8FB1A5}
+@media(max-width:860px){.lyric .ly{grid-template-columns:1fr}}
+/* 三步：把「我是」做出来 */
+.three b small{font:700 12px var(--sans);letter-spacing:.06em;color:var(--mute);margin-left:auto}
+.iam-in{display:grid;grid-template-columns:auto 1fr;gap:10px 12px;align-items:center;margin-top:14px}
+.iam-in span{font:900 18px var(--serif)}
+.iam-in input{min-width:0}
+.iam{display:none;margin-top:24px;padding:28px 26px;border-radius:20px;background:var(--pine);color:#fff;box-shadow:0 26px 50px -26px rgba(23,63,51,.7);transform:rotate(-1.2deg)}
+.iam.on{display:block;animation:up .6s var(--ease) both}
+.iam small{display:block;font:700 12px var(--sans);letter-spacing:.24em;color:#9FCFC4}
+.iam p{margin-top:10px;font:900 clamp(20px,2.8vw,27px)/1.7 var(--serif)}
+.iam p em{font-style:normal;color:#F2C28B}
+.iam i{display:block;margin-top:12px;font:15px/1.8 var(--serif);font-style:normal;color:#C6D9D1}
+/* 种子开花 */
+.seed{padding:110px 0;background:linear-gradient(180deg,var(--cream),var(--paper))}
+.seed .w{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.seed .p{margin-top:16px;font:17.5px/2 var(--serif);color:var(--pine2)}
+.seed .p a{color:var(--pine);font-weight:700}
+.seed blockquote{padding:30px 30px 26px;border-radius:22px;background:#fff;border:1.5px solid var(--line);box-shadow:0 26px 50px -30px rgba(23,63,51,.5);transform:rotate(1.5deg)}
+.seed blockquote p{font:700 clamp(18px,2.2vw,22px)/1.9 var(--serif)}
+.seed blockquote p.en{margin-top:10px;font:italic 15px/1.7 Georgia,serif;color:var(--mute)}
+.seed blockquote em{font-style:normal;color:var(--seal)}
+@media(max-width:860px){.seed .w{grid-template-columns:1fr;gap:40px}}
+/* 另一篇《走得开》 */
+.alt{padding:110px 0 90px;background:var(--pine);color:#EAF2EE}
+.alt .kick{color:#9FCFC4}
+.alt .lead{color:#B9D0C7;font:17px/1.95 var(--serif)}
+.alt .players{margin-top:34px}
+.alt .screen{margin-top:30px}
 @media(max-width:860px){.chips{grid-template-columns:repeat(4,1fr);gap:10px}.chips a{border-radius:18px;gap:6px}.chips b{font-size:13.5px}.chips small{display:none}}
 
 /* ===== ① 人生卡：斜着、会动 ===== */
@@ -366,7 +407,7 @@ footer a{color:#E3EEE9;text-decoration:none}
       <p class="slogan">一起玩，也一起赚</p>
       <p class="sub">你的故事成书，你的经验成品牌</p>
       <p class="roles">边玩边赚联合创始人<br>老板 IP 商业重构师<br>20+ 畅销书出品人/译者<br>百位作者同行</p>
-      <div class="row"><a class="btn" href="#story">读我的故事</a><a class="btn ghost" href="#listen">听我讲 ▸</a></div>
+      <div class="row"><a class="btn" href="#story">读我的故事</a><a class="btn ghost" href="#song">听主题曲 ▸</a></div>
     </div>
     <div class="pic"><img src="portrait.webp" alt="千百合" fetchpriority="high"></div>
   </div>
@@ -376,21 +417,18 @@ footer a{color:#E3EEE9;text-decoration:none}
 <section class="seven" id="seven">
   <div class="w">
     <div class="head rv">
-      <h2>一篇故事，十八般武艺</h2>
-      <p>书 5 里我写的《走得开》，做成了十八样东西。已经做好的 12 样，都在这一页，点一下就到。</p>
+      <h2>《活成你》，我的十八般武艺</h2>
+      <p>书 4 里我写的《活成你》：说出「我是」，再活成它。打磨好的，先放这几样，点一下就到。</p>
     </div>
-    <ol class="chips rv">
+    <ol class="chips nine rv">
       <li><a href="#card"><span class="no">1</span><b>人生卡</b><small>今天遇见谁</small></a></li>
       <li><a href="#story"><span class="no">2</span><b>电子书</b><small>中英双版</small></a></li>
-      <li><a href="#talk"><span class="no">3</span><b>演讲 PPT</b><small>12 页</small></a></li>
       <li><a href="#take"><span class="no">4</span><b>自我介绍<br>海报</b></a></li>
-      <li><a href="#quotes"><span class="no">7</span><b>金句海报</b><small>5 张</small></a></li>
       <li><a href="#take"><span class="no">8</span><b>朋友圈<br>封面</b></a></li>
       <li><a href="#listen"><span class="no">10</span><b>有声书</b><small>19 分钟</small></a></li>
       <li><a href="#pod"><span class="no">11</span><b>双人播客</b><small>13 分钟</small></a></li>
-      <li><a href="#reels"><span class="no">14</span><b>金句<br>短视频</b><small>5 条</small></a></li>
+      <li><a href="#song"><span class="no">12</span><b>主题曲</b><small>活成你</small></a></li>
       <li><a href="#film"><span class="no">15</span><b>故事短片</b><small>20 秒</small></a></li>
-      <li><a href="#reels"><span class="no">16</span><b>人生动画</b><small>37 秒</small></a></li>
       <li><a href="#top"><span class="no">18</span><b>个人主页</b><small>就是这一页</small></a></li>
     </ol>
   </div>
@@ -401,19 +439,19 @@ footer a{color:#E3EEE9;text-decoration:none}
     <div class="stage rv">
       <div class="glow" aria-hidden="true"></div>
       <div class="floaty">
-        <a class="tilt" id="tilt" href="card.jpg?v=20261115" target="_blank" aria-label="打开千百合的人生卡大图">
-          <img src="card.jpg?v=20261115" alt="千百合的人生卡：放得下，走得开" loading="lazy">
+        <a class="tilt" id="tilt" href="card.jpg?v=20261118b" target="_blank" aria-label="打开千百合的人生卡大图">
+          <img src="card.jpg?v=20261118b" alt="千百合的人生卡：先做我喜欢的那个我，钱，跟在后面来" loading="lazy">
           <span class="shine" aria-hidden="true"></span>
         </a>
       </div>
-      <div class="sticker" aria-hidden="true"><div>入场券<span>№01</span></div></div>
+      <div class="sticker" aria-hidden="true"><div>入场券<span>书4·01</span></div></div>
     </div>
     <div class="copy rv">
       <span class="kick"><span class="no">1</span>人生卡 · 今天遇见谁</span>
       <h2>你好，我是千百合</h2>
       <p>浙大没读完，后来在美国读了 AI 硕士。这些年<b>一边走世界</b>，一边带着上百位普通人，<b>跨 8 个时区一起写书</b>。</p>
-      <p>20 多本书做下来，我越信一件事：每个人的经验都值钱，只是还没被写出来。</p>
-      <div class="ask"><strong>这件事，<em>没有我</em>，行不行？</strong><span>这一句话，让我从守着一间办公室，走到了第 54 个国家。</span></div>
+      <p>那一年我正落魄，在半导体公司朝九晚五，屏幕亮着，心却不在了。后来在奥斯汀的湖边客厅里，我第一次把一句「我是」说出了声。</p>
+      <div class="ask"><strong>先做我喜欢的那个我，<em>钱</em>，跟在后面来。</strong><span>那句话里，「有钱」落在最末。这个顺序，就是我要的活法。</span></div>
     </div>
   </div>
 </section>
@@ -421,29 +459,34 @@ footer a{color:#E3EEE9;text-decoration:none}
 <section class="story" id="story">
   <div class="w">
     <div class="grid">
-      <div class="book3d rv"><a href="ebook-zh.pdf" target="_blank"><img src="ebook-cover.jpg" alt="电子书《走得开》封面" loading="lazy"></a></div>
+      <div class="book3d rv"><a href="book4-zh.pdf" target="_blank"><img src="book4.jpg" alt="《活成你》封面" loading="lazy"></a></div>
       <div class="rv">
-        <span class="kick"><span class="no">2</span>电子书 · 书 5 第 01 篇</span>
-        <h2>走得开</h2>
-        <p class="p">宝贝女儿放假回来，也被我排进了公司的日程。几天后，她两眼泪汪汪：「妈咪，你啥时候能陪陪我呀？」那天晚上我才明白——</p>
-        <p class="big">我不是忙。<br>我是<em>走不开</em>。</p>
-        <div class="row"><a class="btn" href="ebook-zh.pdf" download>下载中文版</a><a class="btn ghost" href="ebook-en.pdf" download>English edition</a></div>
+        <span class="kick"><span class="no">2</span>电子书 · 书 4《AI 时代的个人品牌》第 01 篇</span>
+        <h2>活成你</h2>
+        <p class="p">落地窗外，绿草坪上支着一张蹦极床，再往下是树林，远处一汪大湖。我坐在一个陌生人家里，第一次去，开了快四个小时的车。她让我把一句话说出声。我说了。那一刻，我觉得自己——好轻松，好欣喜，好像，长高了。</p>
+        <p class="big">说出「我是」，<br>再<em>活成它</em>。</p>
+        <div class="row"><a class="btn" href="book4-zh.pdf" download>下载中文版</a><a class="btn ghost" href="book4-en.pdf" download>English edition</a></div>
       </div>
     </div>
-    <div class="player rv" id="listen">
-      <button class="play" id="play" type="button" aria-label="播放有声书"><svg viewBox="0 0 24 24" fill="currentColor"><path id="ico" d="M7 4.5v15l13-7.5z"/></svg></button>
-      <div class="t"><b><span class="no">10</span>听我讲完这个故事 <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span></b><small>有声书 · 我自己的声音 · 路上、睡前都能听</small></div>
-      <button class="speed" id="speed" type="button" aria-label="播放速度">1×</button>
-      <div class="seek"><span id="cur">0:00</span><input id="bar2" type="range" min="0" max="1000" value="0" aria-label="播放进度"><span id="dur">18:41</span></div>
-      <audio id="au" src="audiobook.mp3?v=20261115" preload="none"></audio>
+    <div class="player song rv" id="song">
+      <button class="play" id="play" type="button" aria-label="播放主题曲"><svg viewBox="0 0 24 24" fill="currentColor"><path id="ico" d="M7 4.5v15l13-7.5z"/></svg></button>
+      <div class="t"><b><span class="no">12</span>主题曲 · 活成你 <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span></b><small>边玩边赚书系主题曲 · 大家唱版 · 词：千百合</small></div>
+      <button class="speed" id="speed" type="button" aria-label="循环播放">单曲</button>
+      <div class="seek"><span id="cur">0:00</span><input id="bar2" type="range" min="0" max="1000" value="0" aria-label="播放进度"><span id="dur">2:41</span></div>
+      <audio id="au" src="song.mp3?v=20261118" preload="none"></audio>
     </div>
-    <div class="player pod rv" id="pod">
-      <button class="play" type="button" aria-label="播放双人播客"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></button>
-      <div class="t"><b><span class="no">11</span>两个人，聊我的故事 <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span></b><small>双人播客 · 两位主持人一问一答，像一档节目</small></div>
-      <button class="speed" type="button" aria-label="播放速度">1×</button>
-      <div class="seek"><span class="cur">0:00</span><input type="range" min="0" max="1000" value="0" aria-label="播放进度"><span class="dur">12:45</span></div>
-      <audio src="podcast.mp3?v=20261118" preload="none"></audio>
-    </div>
+    <details class="lyric rv">
+      <summary>看歌词</summary>
+      <div class="ly">
+        <p><b>主歌一</b>凌晨的灯火，照着赶路的影子<br>拿别人的尺子，量自己的日子<br>人前是榜样，活成体面的样子<br>深夜对镜子，认不出自己</p>
+        <p><b>导歌</b>心里那句话，压了多年没敢讲<br>不用等谁来，自己推开那扇窗</p>
+        <p><b>副歌</b><em>活成你，活成你<br>活成自己喜欢的你</em><br>说出心里话，走下去<br>一天一天，活成你</p>
+        <p><b>主歌二</b>有人刚出发，有人换了个活法<br>有人在远方，有人守着一个家<br>不用等完美，也别等到白头发<br>今天就开口，说出心里那句话</p>
+        <p><b>桥段</b>谁不是一边怕，一边往前走<br>谁不是关上门，又偷偷留个窗口<br>原来走过的每一段路<br>都在带你，活成自己</p>
+        <p><b>间奏轻唱</b>认下来（认下来）<br>说出声（说出声）<br>做出来（做出来）<br>这一生，值不值得（<em>我值得</em>）</p>
+      </div>
+      <p class="credit">词：千百合 × Claude（GPT、Gemini、DeepSeek 参与评审）· 2026-11-18 定稿</p>
+    </details>
   </div>
 </section>
 
@@ -451,131 +494,75 @@ footer a{color:#E3EEE9;text-decoration:none}
   <div class="w">
     <div class="rv">
       <span class="kick">书里送你的一个方法</span>
-      <h2>三步，走得开</h2>
-      <p class="lead">走不开，不是没时间。是你以为每件事都离不开你。</p>
+      <h2>三步，把「我是」做出来</h2>
+      <p class="lead">它不是咒语，念了钱就来。是你一旦认定「我是谁」，那些不像这个人会做的事，做起来就别扭，慢慢就放下了。</p>
     </div>
     <ol class="three rv">
-      <li><b>一看<i>LOOK</i></b><p>今天干了什么，从早到晚过一遍。不用列清单，不用写字。</p></li>
-      <li><b>二问<i>ASK</i></b><p>挨个问出声：这件事，没有我，行不行？</p></li>
-      <li><b>三换<i>SWAP</i></b><p>换下来的时间，拿去做「真得我来」的那一件。</p></li>
+      <li><b>认下来<i>I AM</i></b><p>一口气说三句：用「我是」认下身份，用「因为」给它一个理由，再用「我感觉」，把那个对的感觉记在身上。</p></li>
+      <li><b>说出声<i>SAY IT</i></b><p>别默念，出声，天天说。</p></li>
+      <li><b>做出来<i>SAY SO, DO SO</i></b><p>每天，辟一段只属于它的时间，一遍遍去做。一天一天，做到底。</p></li>
     </ol>
     <div class="try rv">
-      <label for="task">现在就试一件：今天最占你时间的一件事是……</label>
-      <div class="in"><input id="task" type="text" maxlength="30" placeholder="比如：回客户消息" autocomplete="off"><button class="btn" id="askBtn" type="button">问一问</button></div>
-      <div class="ask2" id="ask2">
-        <q>「<em id="taskName"></em>」<br>这件事，没有我，行不行？</q>
-        <div class="opts" id="opts">
-          <button type="button" data-a="0">行</button>
-          <button type="button" data-a="1">别人也行</button>
-          <button type="button" data-a="2">没人可让</button>
-          <button type="button" data-a="3">真得我来</button>
-        </div>
-        <div class="ans" id="ans" aria-live="polite"></div>
+      <label>现在就试一句。想一件你一做就浑身舒展、忘了时间的事，那种感觉，就是它。</label>
+      <div class="iam-in">
+        <span>我是</span><input id="i1" type="text" maxlength="24" placeholder="比如：一个温柔、通透、自由的人" autocomplete="off">
+        <span>因为</span><input id="i2" type="text" maxlength="20" placeholder="比如：我值得" autocomplete="off">
+        <span>我感觉</span><input id="i3" type="text" maxlength="20" placeholder="比如：轻松、自由" autocomplete="off">
+      </div>
+      <div class="in" style="margin-top:16px"><button class="btn" id="iamBtn" type="button">认下来</button></div>
+      <div class="iam" id="iam" aria-live="polite">
+        <small>我的「我是」</small>
+        <p id="iamText"></p>
+        <i>现在，把它大声说一遍。明天再说一遍。<br>只留在你自己的手机上，可以截图保存。一时说不出口，就先说这一句：我值得。</i>
       </div>
     </div>
   </div>
 </section>
 
-<section class="world" id="world">
+<section class="seed" id="seed">
   <div class="w">
+    <blockquote class="rv">
+      <p>我是一个温柔、甜美、优雅、通透、<em>有钱</em>的人。因为我值得。我感觉自由。</p>
+      <p class="en">“I am a soft, sweet, graceful, enlightened, millionaire. Because I’m worthy. And I feel free.”</p>
+    </blockquote>
     <div class="rv">
-      <div class="dots" id="dots" aria-hidden="true"></div>
-    </div>
-    <div class="rv">
-      <span class="kick">换下来的时间</span>
-      <p class="count"><span id="cnt">54</span><small>/ 100 个国家</small></p>
-      <p class="p">换下来的时间，我没有空着。拿去看世界，拿去做志愿者，拿去设计课程，拿去陪我心爱的家人。</p>
-      <p class="p">人生百国，五十四个了，还有四十六个在前头。今年我包了一座岛，带着边玩边赚的大家庭一起去玩——<a href="https://www.playandprosper.com/island/">这件事，真得我来</a>。</p>
-    </div>
-    <div class="with rv">
-      <h3>这条路上，不是我一个人</h3>
-      <p class="p">2026 年 10 月广州的新书发布会，二十多位作者从世界各地飞过来，还带了家人、朋友。流程、场地、每一个环节，没有一样是我经手的。</p>
-      <ul class="faces">
-        <li><img src="../img/authors/a014.jpg?v=3" alt="文亮" title="文亮" loading="lazy"></li>
-        <li><img src="../img/authors/a031.jpg?v=3" alt="木晓" title="木晓" loading="lazy"></li>
-        <li><img src="../img/authors/a025.jpg?v=3" alt="邹娜" title="邹娜" loading="lazy"></li>
-        <li><img src="../img/authors/a069.jpg?v=3" alt="窈窕姐姐" title="窈窕姐姐" loading="lazy"></li>
-        <li><a href="../jinrundi/"><img src="../img/authors/a003.jpg?v=5" alt="金闰迪" title="金闰迪 · 看她的主页" loading="lazy"></a></li>
-        <li><a href="../wanke/"><img src="../img/authors/a081.jpg?v=3" alt="万可" title="万可 · 看她的主页" loading="lazy"></a></li>
-        <li><img src="../img/authors/a090.jpg?v=3" alt="梓萱" title="梓萱" loading="lazy"></li>
-        <li><img src="../img/authors/a061.jpg?v=3" alt="张一一" title="张一一" loading="lazy"></li>
-        <li><img src="../img/authors/a077.jpg?v=3" alt="吴晓音" title="吴晓音" loading="lazy"></li>
-        <li><img src="../img/authors/a087.jpg?v=3" alt="韩玉娟" title="韩玉娟" loading="lazy"></li>
-        <li><img src="../img/authors/a086.jpg?v=3" alt="小屿" title="小屿" loading="lazy"></li>
-        <li><img src="../img/authors/a044.jpg?v=3" alt="易辰" title="易辰" loading="lazy"></li>
-        <li><a class="more" href="../#stars">115 位<br>作者</a></li>
-      </ul>
+      <span class="kick">先变的不是钱</span>
+      <h2>那颗种子，开花了</h2>
+      <p class="p">说出那句话之后，最先变的，不是我的存款，是我的选择。只做喜欢的事，不喜欢的一概不碰。我成了 Cindy Cashman 的译者，那阵子一口气译了五本书。</p>
+      <p class="p">又过了几年，我买下一栋临湖、背后一条绿色林带的房子。这不就是当年在 Cindy 家落地窗前，落进我心里的那颗种子吗——它开花了。</p>
+      <p class="p">这句「我是」，从来不是我一个人的。书 4 有三十六位作者，三十六种活法。好的故事，是让你在别人的人生里，撞见你自己。<a href="../#stars">去作者雨林看看 →</a></p>
     </div>
   </div>
 </section>
 
-<section class="film" id="film">
+<section class="alt" id="alt">
   <div class="w">
     <div class="rv">
+      <span class="kick">也听听、看看我的另一篇 · 书 5《走得开》</span>
+      <h2>听我讲，看我走</h2>
+      <p class="lead">下面这三样，讲的是书 5 里的《走得开》：从守着一间办公室，到人生百国。</p>
+    </div>
+    <div class="players">
+      <div class="player x rv" id="listen">
+        <button class="play" type="button" aria-label="播放有声书"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></button>
+        <div class="t"><b><span class="no">10</span>有声书 · 走得开 <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span></b><small>我自己的声音 · 路上、睡前都能听</small></div>
+        <button class="speed" type="button" aria-label="播放速度">1×</button>
+        <div class="seek"><span class="cur">0:00</span><input type="range" min="0" max="1000" value="0" aria-label="播放进度"><span class="dur">18:41</span></div>
+        <audio src="audiobook.mp3?v=20261115" preload="none"></audio>
+      </div>
+      <div class="player x pod rv" id="pod">
+        <button class="play" type="button" aria-label="播放双人播客"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></button>
+        <div class="t"><b><span class="no">11</span>双人播客 · 走得开 <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span></b><small>两位主持人一问一答，像一档节目</small></div>
+        <button class="speed" type="button" aria-label="播放速度">1×</button>
+        <div class="seek"><span class="cur">0:00</span><input type="range" min="0" max="1000" value="0" aria-label="播放进度"><span class="dur">12:45</span></div>
+        <audio src="podcast.mp3?v=20261118" preload="none"></audio>
+      </div>
+    </div>
+    <div class="rv" id="film" style="margin-top:56px">
       <span class="kick"><span class="no">15</span>故事短片</span>
       <h2>二十秒，看我走得开</h2>
     </div>
     <div class="screen" id="screen"><video id="vid" src="15.mp4" poster="15.jpg" controls playsinline preload="none"></video><button class="big-play" id="bigPlay" type="button" aria-label="播放故事短片"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></span></button></div>
-  </div>
-</section>
-
-<section class="reels" id="reels">
-  <div class="w">
-    <div class="rv">
-      <span class="kick"><span class="no">14</span><span class="no">16</span>竖屏小片</span>
-      <h2>刷到我，七秒就够</h2>
-      <p class="lead">五条金句短视频，一条一句，视频号、抖音直接发。最后一支是人生动画，把我走过的路一步步画出来。</p>
-    </div>
-    <ul class="phones rv">
-      <li><div class="phone"><video src="14-1.mp4" poster="14-1.jpg" playsinline loop preload="none"></video><button type="button" aria-label="播放金句短视频 1"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></span></button></div><small><span class="no">14</span>这件事，没有我，行不行？</small></li>
-      <li><div class="phone"><video src="14-2.mp4" poster="14-2.jpg" playsinline loop preload="none"></video><button type="button" aria-label="播放金句短视频 2"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></span></button></div><small><span class="no">14</span>我不是忙，我是走不开</small></li>
-      <li><div class="phone"><video src="14-3.mp4" poster="14-3.jpg" playsinline loop preload="none"></video><button type="button" aria-label="播放金句短视频 3"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></span></button></div><small><span class="no">14</span>困住我的，从来不是那些事</small></li>
-      <li><div class="phone"><video src="14-4.mp4" poster="14-4.jpg" playsinline loop preload="none"></video><button type="button" aria-label="播放金句短视频 4"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></span></button></div><small><span class="no">14</span>只是早上场了一步</small></li>
-      <li><div class="phone"><video src="14-5.mp4" poster="14-5.jpg" playsinline loop preload="none"></video><button type="button" aria-label="播放金句短视频 5"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></span></button></div><small><span class="no">14</span>世界就是我的办公室</small></li>
-      <li class="anim"><div class="phone"><video src="16.mp4" poster="16.jpg" playsinline preload="none"></video><button type="button" aria-label="播放人生动画"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></span></button></div><small><span class="no">16</span>人生动画 · 37 秒</small></li>
-    </ul>
-  </div>
-</section>
-
-<section class="quotes" id="quotes">
-  <div class="w">
-    <div class="rv">
-      <span class="kick"><span class="no">7</span>金句海报</span>
-      <h2>五句话，发朋友圈正好</h2>
-      <p class="lead">都是《走得开》里的原话。点开大图，长按保存。</p>
-    </div>
-    <div class="table rv">
-      <a href="q1.jpg" target="_blank"><img src="q1.jpg" alt="金句海报：这件事，没有我，行不行？" loading="lazy"></a>
-      <a href="q2.jpg" target="_blank"><img src="q2.jpg" alt="金句海报：我不是忙。我是走不开。" loading="lazy"></a>
-      <a href="q3.jpg" target="_blank"><img src="q3.jpg" alt="金句海报：困住我的从来不是那些事。是我以为它们都归我，是我放不下。" loading="lazy"></a>
-      <a href="q4.jpg" target="_blank"><img src="q4.jpg" alt="金句海报：我没早生多少，学问也不比谁大，只是早上场了一步。" loading="lazy"></a>
-      <a href="q5.jpg" target="_blank"><img src="q5.jpg" alt="金句海报：世界就是我的办公室。" loading="lazy"></a>
-    </div>
-  </div>
-</section>
-
-<section class="talk" id="talk">
-  <div class="w">
-    <a class="slide rv" href="talk.html" target="_blank"><img src="talk.jpg" alt="演讲 PPT《走得开》封面页" loading="lazy"><i>点开就能讲 →</i></a>
-    <div class="rv">
-      <span class="kick"><span class="no">3</span>演讲 PPT</span>
-      <h2>走得开，讲给你听</h2>
-      <p class="p">从守着一间办公室，到人生百国。一套 12 页的网页版 PPT，浏览器打开就能讲，配一篇 3 分钟的讲稿。</p>
-      <div class="row"><a class="btn" href="talk.html" target="_blank">打开演讲 PPT</a></div>
-    </div>
-  </div>
-</section>
-
-<section class="other" id="book4">
-  <div class="w">
-    <div class="book3d rv"><a href="book4-zh.pdf" target="_blank"><img src="book4.jpg" alt="《活成你》封面" loading="lazy"></a></div>
-    <div class="rv">
-      <span class="kick">另一篇故事 · 书 4《AI 时代的个人品牌》第 01 篇</span>
-      <h2>活成你</h2>
-      <p class="p">那一年，我正落魄。在半导体公司朝九晚五，一干五年，每天坐在电脑前，屏幕亮着，心却不在了。后来，我坐在一个陌生人家里，她让我把一句话说出声——</p>
-      <p class="big">说出「我是」，再活成它。</p>
-      <div class="row"><a class="btn" href="book4-zh.pdf" download>下载中文版</a><a class="btn ghost" href="book4-en.pdf" download style="border-color:var(--pine)">English edition</a></div>
-    </div>
   </div>
 </section>
 
@@ -615,7 +602,7 @@ footer a{color:#E3EEE9;text-decoration:none}
 </section>
 
 <section class="bye">
-  <p class="rv">愿你，也走得开。</p>
+  <p class="rv">说出口，是开头。<br>一天一天，活成你。</p>
   <div class="sig rv"><img class="n" src="name.png" alt="千百合"><img class="s" src="seal.png" alt=""></div>
 </section>
 
@@ -624,7 +611,7 @@ footer a{color:#E3EEE9;text-decoration:none}
 </footer>
 
 <nav class="dock" id="dock" aria-label="快速入口">
-  <button type="button" id="dplay">▸ 听有声书</button><a class="main" href="#meet">加微信</a>
+  <button type="button" id="dplay">▸ 听主题曲</button><a class="main" href="#meet">加微信</a>
 </nav>
 
 <script>
@@ -663,61 +650,48 @@ footer a{color:#E3EEE9;text-decoration:none}
   }
 
   // ⑩ 有声书
-  var au=$('au'),pl=$('listen'),btn=$('play'),ico=$('ico'),rng=$('bar2'),cur=$('cur'),dur=$('dur'),sp=$('speed'),dp=$('dplay');
+  var au=$('au'),pl=$('song'),btn=$('play'),ico=$('ico'),rng=$('bar2'),cur=$('cur'),dur=$('dur'),sp=$('speed'),dp=$('dplay');
   var P='M7 4.5v15l13-7.5z',Q='M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z';
   function mm(s){s=Math.max(0,Math.floor(s||0));return Math.floor(s/60)+':'+('0'+s%60).slice(-2)}
   function toggle(){if(au.paused){au.play()}else au.pause()}
   btn.addEventListener('click',toggle);
   dp.addEventListener('click',function(){pl.scrollIntoView({behavior:'smooth',block:'center'});if(au.paused)au.play()});
   au.addEventListener('play',function(){pl.classList.add('playing');ico.setAttribute('d',Q);btn.setAttribute('aria-label','暂停');dp.textContent='❚❚ 正在听'});
-  au.addEventListener('pause',function(){pl.classList.remove('playing');ico.setAttribute('d',P);btn.setAttribute('aria-label','播放有声书');dp.textContent='▸ 听有声书'});
+  au.addEventListener('pause',function(){pl.classList.remove('playing');ico.setAttribute('d',P);btn.setAttribute('aria-label','播放主题曲');dp.textContent='▸ 听主题曲'});
   au.addEventListener('loadedmetadata',function(){dur.textContent=mm(au.duration)});
   var drag=false;
   au.addEventListener('timeupdate',function(){if(drag||!au.duration)return;var p=au.currentTime/au.duration*1000;rng.value=p;rng.style.setProperty('--p',p/10+'%');cur.textContent=mm(au.currentTime)});
-  rng.addEventListener('input',function(){drag=true;rng.style.setProperty('--p',rng.value/10+'%');var d=au.duration||1121;cur.textContent=mm(rng.value/1000*d)});
-  rng.addEventListener('change',function(){var d=au.duration||1121;au.currentTime=rng.value/1000*d;drag=false;if(au.paused)au.play()});
-  var S=[1,1.25,1.5,.8],si=0;
-  sp.addEventListener('click',function(){si=(si+1)%S.length;au.playbackRate=S[si];sp.textContent=S[si]+'×'});
+  rng.addEventListener('input',function(){drag=true;rng.style.setProperty('--p',rng.value/10+'%');var d=au.duration||161;cur.textContent=mm(rng.value/1000*d)});
+  rng.addEventListener('change',function(){var d=au.duration||161;au.currentTime=rng.value/1000*d;drag=false;if(au.paused)au.play()});
+  var S=[1,1.25,1.5,.8];
+  // 主题曲：单曲 / 循环
+  sp.addEventListener('click',function(){au.loop=!au.loop;sp.textContent=au.loop?'循环':'单曲'});
 
-  // ⑪ 双人播客
-  (function(){
-    var box=$('pod'),a=box.querySelector('audio'),b=box.querySelector('.play'),ic=b.querySelector('path'),r=box.querySelector('input'),c=box.querySelector('.cur'),d=box.querySelector('.dur'),s=box.querySelector('.speed'),dr=false,k=0;
-    b.addEventListener('click',function(){if(a.paused){au.pause();a.play()}else a.pause()});
-    a.addEventListener('play',function(){box.classList.add('playing');ic.setAttribute('d',Q);b.setAttribute('aria-label','暂停')});
-    a.addEventListener('pause',function(){box.classList.remove('playing');ic.setAttribute('d',P);b.setAttribute('aria-label','播放双人播客')});
+  // ⑩ 有声书、⑪ 双人播客（《走得开》）：同一时间只放一个
+  var all=[au];
+  document.querySelectorAll('.player.x').forEach(function(box){
+    var a=box.querySelector('audio'),b=box.querySelector('.play'),ic=b.querySelector('path'),r=box.querySelector('input'),c=box.querySelector('.cur'),d=box.querySelector('.dur'),s=box.querySelector('.speed'),dr=false,k=0,lab=b.getAttribute('aria-label');
+    all.push(a);
+    b.addEventListener('click',function(){if(a.paused){a.play()}else a.pause()});
+    a.addEventListener('play',function(){all.forEach(function(x){if(x!==a)x.pause()});box.classList.add('playing');ic.setAttribute('d',Q);b.setAttribute('aria-label','暂停')});
+    a.addEventListener('pause',function(){box.classList.remove('playing');ic.setAttribute('d',P);b.setAttribute('aria-label',lab)});
     a.addEventListener('loadedmetadata',function(){d.textContent=mm(a.duration)});
     a.addEventListener('timeupdate',function(){if(dr||!a.duration)return;var p=a.currentTime/a.duration*1000;r.value=p;r.style.setProperty('--p',p/10+'%');c.textContent=mm(a.currentTime)});
-    r.addEventListener('input',function(){dr=true;r.style.setProperty('--p',r.value/10+'%');c.textContent=mm(r.value/1000*(a.duration||765))});
-    r.addEventListener('change',function(){a.currentTime=r.value/1000*(a.duration||765);dr=false;if(a.paused)a.play()});
+    r.addEventListener('input',function(){dr=true;r.style.setProperty('--p',r.value/10+'%');c.textContent=mm(r.value/1000*(a.duration||0))});
+    r.addEventListener('change',function(){if(a.duration)a.currentTime=r.value/1000*a.duration;dr=false;if(a.paused)a.play()});
     s.addEventListener('click',function(){k=(k+1)%S.length;a.playbackRate=S[k];s.textContent=S[k]+'×'});
-    au.addEventListener('play',function(){a.pause()});
-  })();
-
-  // ⑭⑯ 竖屏小片：点哪支放哪支，其他的停
-  var reels=[].slice.call(document.querySelectorAll('.phone video'));
-  document.querySelectorAll('.phone').forEach(function(p){
-    var v=p.querySelector('video'),bt=p.querySelector('button');
-    bt.addEventListener('click',function(){reels.forEach(function(x){if(x!==v)x.pause()});bt.classList.add('gone');v.controls=true;v.play()});
-    v.addEventListener('play',function(){bt.classList.add('gone')});
   });
+  au.addEventListener('play',function(){all.forEach(function(x){if(x!==au)x.pause()})});
 
-  // 三步：问一问
-  var task=$('task'),ask2=$('ask2'),tn=$('taskName'),ans=$('ans');
-  var A=['<b>那就别做了。</b>','<b>那就让别人做。</b>','<b>没人可让，就让 AI 做；</b>都不行，就定一条规矩，以后照规矩办。','<b>那就留着。</b>那是你的本事，不是你的负担。这一类千万别交出去，交掉了，你就不是你了。'];
-  function go(){var v=(task.value||'').trim()||'回客户消息';tn.textContent=v;ask2.classList.add('on');ans.innerHTML='';document.querySelectorAll('#opts button').forEach(function(b){b.classList.remove('on')})}
-  $('askBtn').addEventListener('click',go);
-  task.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();go()}});
-  $('opts').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
-    document.querySelectorAll('#opts button').forEach(function(x){x.classList.toggle('on',x===b)});
-    ans.innerHTML=A[+b.dataset.a]+'<small>手还会痒。每次想伸回去，就再问一遍那句话。问上十天你会发现：真离不开你的，没几件。<br>想有人陪你一起问？<a href="#meet">来加我微信 →</a></small>'});
-
-  // 人生百国：54 个点亮起来
-  var dots=$('dots'),cnt=$('cnt'),N=54;
-  for(var i=0;i<100;i++){var d=document.createElement('i');dots.appendChild(d)}
-  var dd=dots.children,lit=false;
-  function light(){if(lit)return;lit=true;cnt.textContent='0';
-    for(let k=0;k<N;k++)setTimeout(function(){dd[k].classList.add('on');if(k===N-1)dd[k].classList.add('last');cnt.textContent=k+1},still?0:k*28)}
-  if('IntersectionObserver' in window){var io2=new IntersectionObserver(function(es){if(es[0].isIntersecting){light();io2.disconnect()}},{threshold:.4});io2.observe(dots)}else light();
+  // 三步：认下来
+  function clean(x){return (x||'').trim().replace(/^(我是|因为|我感觉)/,'').replace(/[。.！!]+$/,'')}
+  $('iamBtn').addEventListener('click',function(){
+    var a1=clean($('i1').value)||'一个温柔、通透、自由的人',a2=clean($('i2').value)||'我值得',a3=clean($('i3').value)||'轻松、自由';
+    var t=$('iamText');t.textContent='';
+    var e1=document.createElement('em');e1.textContent=a1;
+    t.append('我是',e1,'。因为'+a2+'。我感觉'+a3+'。');
+    $('iam').classList.add('on');
+  });
 
   // 短片大播放键
   var vid=$('vid'),bp=$('bigPlay');
