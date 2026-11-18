@@ -325,22 +325,22 @@ svg.specs path,svg.specs circle{fill:none;stroke:var(--ink);stroke-width:9;strok
 
 <!-- S12 AI 搭子 -->
 <section class="sc" id="s12">
-  <div class="abs tag a" style="left:120px;top:170px">AI 读书搭子</div>
+  <div class="abs tag a" style="left:120px;top:170px">AI 健康搭子</div>
   <div class="abs big serif a" style="left:112px;top:220px;font-size:84px;--d:.3s">照完镜子，<br>发它一句。</div>
-  <div class="abs big serif a" style="left:112px;top:520px;font-size:64px;--d:9s;color:var(--teal)">它记着，<br>一周后陪我回看。</div>
-  <div class="abs a" style="left:120px;top:800px;--d:13s;font-size:34px;font-weight:700;color:var(--ink2);border-left:6px solid var(--sun);padding:6px 0 6px 20px">它是搭子，不是大夫。</div>
+  <div class="abs big serif a" style="left:112px;top:520px;font-size:64px;--d:15s;color:var(--teal)">它记着，<br>一周后陪我回看。</div>
+  <div class="abs a" style="left:120px;top:800px;--d:25s;font-size:34px;font-weight:700;color:var(--ink2);border-left:6px solid var(--sun);padding:6px 0 6px 20px">它是搭子，不是大夫。</div>
   
   <div class="phone a rt" style="left:1180px;top:150px;width:560px;height:780px;--d:.2s">
     <div class="scr" style="background:#F4F5F4">
       <div class="isl"></div>
       <div style="padding:66px 24px 14px;text-align:center;border-bottom:1px solid #e3e6e4;background:#fff"><div style="font-size:22px;font-weight:800">AI 健康搭子</div><div style="font-size:15px;color:var(--teal)">● 在线</div></div>
       <div class="chat" style="position:relative;padding:26px 20px;gap:18px">
-        <div class="msg me a rt" style="--d:1.2s"><div class="bb" style="font-size:30px;max-width:440px">嘴唇有点淡，眼睛挺亮，昨晚睡得还行。</div></div>
-        <div class="msg a fade" style="--d:2.6s;--du:.3s" id="typing"><div class="typing"><i></i><i></i><i></i></div></div>
-        <div class="msg a lf" style="--d:4.4s"><div class="bb" style="font-size:30px;max-width:440px">记下了 ✓ 本周第 6 天<div style="display:flex;gap:10px;margin-top:14px">
+        <div class="msg me a rt" style="--d:2s"><div class="bb" style="font-size:30px;max-width:440px">嘴唇有点淡，眼睛挺亮，昨晚睡得还行。</div></div>
+        <div class="msg a fade" style="--d:3.4s;--du:.3s" id="typing"><div class="typing"><i></i><i></i><i></i></div></div>
+        <div class="msg a lf" style="--d:5.2s"><div class="bb" style="font-size:30px;max-width:440px">记下了 ✓ 本周第 6 天<div style="display:flex;gap:10px;margin-top:14px">
           <span style="width:46px;height:46px;border-radius:12px;background:var(--mint)"></span><span style="width:46px;height:46px;border-radius:12px;background:var(--mint)"></span><span style="width:46px;height:46px;border-radius:12px;background:#F6C9C2"></span><span style="width:46px;height:46px;border-radius:12px;background:var(--mint)"></span><span style="width:46px;height:46px;border-radius:12px;background:var(--mint)"></span><span style="width:46px;height:46px;border-radius:12px;background:var(--sun)"></span><span style="width:46px;height:46px;border-radius:12px;border:2px dashed #b9c2bf"></span></div>
           <div style="font-size:24px;color:var(--mute);margin-top:12px">一周后，陪你回看 📅</div></div></div>
-        
+        <div class="msg a lf" style="--d:18s"><div class="bb" style="font-size:26px;max-width:440px;line-height:1.6"><b>📅 本周回看</b><br>👄 唇色红润 5 天<br>👀 眼睛有神 6 天<br>🌙 早睡 4 天 → 继续保持</div></div>
       </div>
     </div>
   </div>
@@ -394,7 +394,7 @@ const TOTAL=290;
 // 每页开始秒数（按逐字稿语速排好）
 const SC=[
  {id:'s1',t:0},{id:'s2',t:17},{id:'s5',t:37},{id:'s6',t:67},{id:'s7',t:82},{id:'s8',t:112},{id:'s9',t:138},
- {id:'s10',t:150},{id:'s11',t:182},{id:'s3',t:197},{id:'s12',t:215},{id:'s4',t:233},{id:'s13',t:249},{id:'s14',t:275}];
+ {id:'s10',t:150},{id:'s11',t:182},{id:'s12',t:197},{id:'s4',t:233},{id:'s13',t:249},{id:'s14',t:275}];
 // ---------- sound ----------
 let AC=null,muted=false;
 function ac(){if(!AC){try{AC=new (window.AudioContext||window.webkitAudioContext)()}catch(e){}}return AC}
@@ -422,7 +422,7 @@ const CUE={
  s9:[[1.4,'pop'],[2.8,'pop'],[4.2,'pop']],
  s10:[[9.6,()=>{K('s10','k1');SND.pop()}],[11,()=>K('s10','k2')],[14,'laugh'],[23,'pop']],
  s11:[[3.5,'pop'],[6.5,'pop'],[10,'pop']],
- s12:[[1.2,'pop'],[4.4,()=>{hideTyping();SND.ding()}]],
+ s12:[[2,'pop'],[5.2,()=>{hideTyping();SND.ding()}],[15,'pop'],[18,'ding']],
  s13:[[3.2,()=>cd(3)],[4.2,()=>cd(2)],[5.2,()=>cd(1)],[6.2,()=>snap()],[12,'ding']],
  s14:[[3.5,'whoosh'],[9,'chime']]
 };
