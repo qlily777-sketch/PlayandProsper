@@ -228,6 +228,10 @@ h2{font-family:var(--serif);font-weight:700;font-size:clamp(26px,4.4vw,38px);lin
 .strip img{height:clamp(220px,32vw,360px);width:auto;max-width:none;border-radius:1px}
 .strip figcaption{padding:10px 2px 0;font-size:12.5px;line-height:1.5;color:rgba(243,235,221,.82)}
 .strip figcaption b{display:inline;margin-right:8px;font:600 10.5px var(--mono);letter-spacing:.12em;color:var(--gold2)}
+.gh{margin-top:44px;font:700 17px var(--serif);letter-spacing:.12em;color:var(--sand)}
+.gh+.strip{margin-top:14px}
+.strip.mine img{height:clamp(180px,24vw,260px)}
+.strip a{display:block}
 .hint{margin-top:12px;font-size:12.5px;color:rgba(243,235,221,.5)}
 
 /* 取景练习 */
@@ -366,7 +370,7 @@ footer a{color:#D9CFBC;text-decoration:none}
     <p class="line">以摄影入道，觉察生命之美</p>
     <p class="sub">用镜头与文字，见证生命的多样性</p>
     <div class="who"><span>正念摄影艺术家</span><span>「边玩边赚」联合创始人</span><span>生活美学探索者</span></div>
-    <div class="go"><a class="btn light" href="#road">读我的故事</a><a class="btn out" href="#meet">私信我「玩赚」</a></div>
+    <div class="go"><a class="btn light" href="#eyes">看我的摄影作品</a><a class="btn out" href="#road">读我的故事</a></div>
   </div>
 </section>
 
@@ -412,6 +416,51 @@ footer a{color:#D9CFBC;text-decoration:none}
       <p>学的是土木，后来转做建筑设计，又拿起了相机。</p>
       <p>为了看一次火箭发射，我从上海一路向西到了嘉峪关。倒计时响起，身边的手机一部接一部举起来，我却放下了相机，全身心地迎接那一次升空。</p>
       <p class="sig"><a class="btn" href="#road">从一个问题说起</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="eyes" id="eyes">
+  <div class="w">
+    <span class="tag">换一双眼睛看世界</span>
+    <h2>镜头里，镜头外</h2>
+    <p class="intro n">先看我拍的，再看镜头前的我。往左滑，慢慢看；点开看原图。</p>
+    <h3 class="gh">木晓眼中的世界</h3>
+    <div class="strip" tabindex="0" aria-label="木晓拍的照片，可以左右滑动">
+      <figure><a href="p-zootopia.jpg?v=20261119b" target="_blank"><img src="p-zootopia.jpg?v=20261119b" alt="徐家汇地铁站，大屏幕上的动物和行色匆匆的人群" loading="lazy"></a><figcaption><b>书 4 · 徐家汇地铁站</b>两个世界，共享同一条路</figcaption></figure>
+      <figure><a href="p-clock.jpg?v=20261119b" target="_blank"><img src="p-clock.jpg?v=20261119b" alt="红色的框和远处的塔顶" loading="lazy"></a><figcaption><b>书 4</b>红框里的塔尖</figcaption></figure>
+      <figure><a href="w-yellow.jpg?v=20261119b" target="_blank"><img src="w-yellow.jpg?v=20261119b" alt="黄墙黄字" loading="lazy"></a><figcaption><b>木晓摄</b>黄墙，黄字</figcaption></figure>
+      <figure><a href="w-puer.jpg?v=20261119c" target="_blank"><img src="w-puer.jpg?v=20261119c" alt="普洱的蓝调时刻，城市剪影和晚霞" loading="lazy"></a><figcaption><b>木晓摄</b>普洱，蓝调时刻</figcaption></figure>
+      <figure><a href="p-street.jpg" target="_blank"><img src="p-street.jpg" alt="上海街头的电动车与斑马线" loading="lazy"></a><figcaption><b>书 3</b>街口</figcaption></figure>
+    </div>
+    <h3 class="gh">镜头前的木晓</h3>
+    <div class="strip mine" tabindex="0" aria-label="镜头前的木晓">
+      <figure><img src="p-reed.jpg?v=20261119b" alt="木晓站在芦苇丛里" loading="lazy"><figcaption><b>书 2</b>镜头前的我</figcaption></figure>
+      <figure><img src="p-blossom.jpg?v=20261119b" alt="木晓站在樱花树下" loading="lazy"><figcaption><b>书 3</b>镜头前的我</figcaption></figure>
+      <figure><img src="p-lake.jpg" alt="黄昏湖面上，一个人站在木栈桥上" loading="lazy"><figcaption><b>书 1</b>湖面</figcaption></figure>
+    </div>
+    <p class="hint">电脑上可以按住 Shift 滚动滚轮，手机上直接左右滑</p>
+
+    <div class="try" id="try">
+      <div>
+        <span class="tag">一个小练习 · 取景</span>
+        <h3>停下来，找一个<br>只有你看得见的画面</h3>
+        <p class="d">一个普通的街口，每天有很多人走过去。拖动取景框，找到让你心里「亮了一下」的那一格，再按下快门。</p>
+        <div class="scene" id="scene">
+          <img id="src" src="p-street.jpg?v=20261119b" alt="一个普通的街口，电动车和斑马线">
+          <div class="frame" id="frame"><span>1 : 1 · 拖我</span></div>
+          <div class="fl" id="fl"></div>
+        </div>
+        <div class="ctrl"><button class="btn light shutter" type="button" id="shoot"><i aria-hidden="true"></i>按下快门</button><button class="btn out" type="button" id="zoom">换个焦段</button></div>
+      </div>
+      <div>
+        <div class="pola" id="pola">
+          <div class="pic" id="pic">你的这一张，会在这里显影</div>
+          <p id="pcap">拍什么，永远比怎么拍更重要。</p>
+          <small id="pmeta">PLAY AND PROSPER · 和木晓一起拍</small>
+        </div>
+        <p class="save" id="save">拍好以后，长按照片可以保存；也可以<a href="#meet" style="color:var(--gold2)">带着这一张来找我</a></p>
+      </div>
     </div>
   </div>
 </section>
@@ -470,46 +519,7 @@ footer a{color:#D9CFBC;text-decoration:none}
   </div>
 </section>
 
-<section class="eyes" id="eyes">
-  <div class="w">
-    <span class="tag">换一双眼睛看世界</span>
-    <h2>镜头里，镜头外</h2>
-    <p class="intro n">书里写到的那些画面，和镜头前后的我。往左滑，慢慢看。</p>
-    <div class="strip" tabindex="0" aria-label="木晓的照片，可以左右滑动">
-      <figure><img src="p-zootopia.jpg?v=20261119b" alt="徐家汇地铁站，大屏幕上的动物和行色匆匆的人群" loading="lazy"><figcaption><b>书 4 · 徐家汇地铁站</b>两个世界，共享同一条路</figcaption></figure>
-      <figure><img src="p-clock.jpg?v=20261119b" alt="红色的框和远处的塔顶" loading="lazy"><figcaption><b>书 4</b>红框里的塔尖</figcaption></figure>
-      <figure><img src="w-yellow.jpg?v=20261119b" alt="黄墙黄字" loading="lazy"><figcaption><b>木晓摄</b>黄墙，黄字</figcaption></figure>
-      <figure><img src="w-puer.jpg?v=20261119c" alt="普洱的蓝调时刻，城市剪影和晚霞" loading="lazy"><figcaption><b>木晓摄</b>普洱，蓝调时刻</figcaption></figure>
-      <figure><img src="p-street.jpg" alt="上海街头的电动车与斑马线" loading="lazy"><figcaption><b>书 3</b>街口</figcaption></figure>
-      <figure><img src="p-reed.jpg?v=20261119b" alt="木晓站在芦苇丛里" loading="lazy"><figcaption><b>书 2</b>镜头前的我</figcaption></figure>
-      <figure><img src="p-blossom.jpg?v=20261119b" alt="木晓站在樱花树下" loading="lazy"><figcaption><b>书 3</b>镜头前的我</figcaption></figure>
-      <figure><img src="p-lake.jpg" alt="黄昏湖面上，一个人站在木栈桥上" loading="lazy"><figcaption><b>书 1</b>湖面</figcaption></figure>
-    </div>
-    <p class="hint">电脑上可以按住 Shift 滚动滚轮，手机上直接左右滑</p>
 
-    <div class="try" id="try">
-      <div>
-        <span class="tag">一个小练习 · 取景</span>
-        <h3>停下来，找一个<br>只有你看得见的画面</h3>
-        <p class="d">一个普通的街口，每天有很多人走过去。拖动取景框，找到让你心里「亮了一下」的那一格，再按下快门。</p>
-        <div class="scene" id="scene">
-          <img id="src" src="p-street.jpg?v=20261119b" alt="一个普通的街口，电动车和斑马线">
-          <div class="frame" id="frame"><span>1 : 1 · 拖我</span></div>
-          <div class="fl" id="fl"></div>
-        </div>
-        <div class="ctrl"><button class="btn light shutter" type="button" id="shoot"><i aria-hidden="true"></i>按下快门</button><button class="btn out" type="button" id="zoom">换个焦段</button></div>
-      </div>
-      <div>
-        <div class="pola" id="pola">
-          <div class="pic" id="pic">你的这一张，会在这里显影</div>
-          <p id="pcap">拍什么，永远比怎么拍更重要。</p>
-          <small id="pmeta">PLAY AND PROSPER · 和木晓一起拍</small>
-        </div>
-        <p class="save" id="save">拍好以后，长按照片可以保存</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <section class="now" id="now">
   <div class="w">
