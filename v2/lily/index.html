@@ -127,6 +127,14 @@ h2{font:700 clamp(28px,4.6vw,44px)/1.3 var(--serif);letter-spacing:.04em}
 .way .pic i{position:absolute;right:12px;bottom:10px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center;font-style:normal;font-size:22px;color:var(--pine);box-shadow:0 6px 16px rgba(0,0,0,.18)}
 .way b{display:block;margin:16px 8px 0;font:900 26px/1.2 var(--serif);letter-spacing:.12em}
 .way small{display:block;margin:6px 8px 0;font-size:13.5px;color:var(--mute)}
+.ways3.four{grid-template-columns:repeat(4,1fr);gap:20px}
+.way .its{display:flex;flex-wrap:wrap;gap:6px;margin:10px 8px 0}
+.way .its a{font-size:13px;color:var(--pine2);text-decoration:none;padding:4px 11px;border-radius:999px;background:var(--cream);transition:background .3s}
+.way .its a:hover{background:var(--lagoon)}
+.way .pic i{padding-left:2px}
+.way:nth-child(4){--r:2deg}
+.tally a{color:inherit}
+@media(max-width:860px){.ways3.four{grid-template-columns:1fr}.way .its{margin:6px 0 0;align-self:start}.way .its a{font-size:12.5px;padding:3px 9px}}
 .tally{margin-top:22px;text-align:right;font-size:12px;letter-spacing:.2em;color:var(--mute)}
 @media(max-width:860px){.ways3{grid-template-columns:1fr;gap:18px}.way{display:grid;grid-template-columns:110px 1fr;align-items:center;column-gap:16px;padding:10px;border-radius:18px}.way:nth-child(2){margin-top:0}.way .pic{grid-row:1/3;aspect-ratio:1}.way b{margin:0;font-size:22px;align-self:end}.way small{margin:4px 0 0;align-self:start}.way .pic i{width:34px;height:34px;font-size:17px;right:8px;bottom:8px}.tally{text-align:center}}
 @media(max-width:860px){.chips.nine{grid-template-columns:repeat(3,1fr);gap:10px}}
@@ -446,15 +454,16 @@ footer a{color:#E3EEE9;text-decoration:none}
 <section class="seven" id="seven">
   <div class="w">
     <div class="head rv">
-      <h2>一个故事，三种打开方式</h2>
-      <p>书 4 里我写的《活成你》：说出「我是」，再活成它。</p>
+      <h2>一篇故事，四种形态</h2>
+      <p>书 4 里我写的《活成你》：说出「我是」，再活成它。写成字、画成图、念成声、拍成片。</p>
     </div>
-    <div class="ways3 rv">
-      <a class="way" href="#card"><span class="pic"><img src="book4.jpg" alt="" loading="lazy" style="object-position:50% 18%"></span><b>读</b><small>人生卡 · 电子书 · 中英双版</small></a>
-      <a class="way" href="#song"><span class="pic"><img src="sea.jpg" alt="" loading="lazy" style="object-position:50% 70%"><i aria-hidden="true">♪</i></span><b>听</b><small>主题曲 · 有声书 · 双人播客</small></a>
-      <a class="way" href="#take"><span class="pic"><img src="poster.jpg?v=20261115" alt="" loading="lazy" style="object-position:50% 8%"></span><b>带走</b><small>自我介绍海报 · 朋友圈封面</small></a>
+    <div class="ways3 four rv">
+      <div class="way"><a class="pic" href="#story"><img src="book4.jpg" alt="" loading="lazy" style="object-position:50% 18%"></a><b>文字</b><span class="its"><a href="#story">电子书 · 中英双版</a></span></div>
+      <div class="way"><a class="pic" href="#card"><img src="card.jpg?v=20261118b" alt="" loading="lazy" style="object-position:50% 12%"></a><b>图片</b><span class="its"><a href="#card">人生卡</a><a href="#take">自我介绍海报</a><a href="#take">朋友圈封面</a></span></div>
+      <div class="way"><a class="pic" href="#song"><img src="sea.jpg" alt="" loading="lazy" style="object-position:50% 70%"><i aria-hidden="true">♪</i></a><b>音频</b><span class="its"><a href="#song">主题曲</a><a href="#listen">有声书</a><a href="#pod">双人播客</a></span></div>
+      <div class="way"><a class="pic" href="#film"><img src="15.jpg" alt="" loading="lazy"><i aria-hidden="true">▶</i></a><b>视频</b><span class="its"><a href="#film">故事短片</a></span></div>
     </div>
-    <p class="tally rv">十八般武艺 · 已上线 9 样</p>
+    <p class="tally rv"><a href="../../18/">十八般武艺</a> · 已上线 9 样</p>
   </div>
 </section>
 
