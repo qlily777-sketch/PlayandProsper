@@ -131,14 +131,14 @@ h2{font-family:var(--serif);font-weight:700;font-size:clamp(26px,4.4vw,38px);lin
 .kit .kh{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .kit .kh b{font:700 20px var(--serif)}
 .kit .kh span{font-size:13px;color:var(--ink2)}
-.kit ol{list-style:none;margin-top:18px;display:grid;grid-template-columns:repeat(4,minmax(0,160px));gap:14px}
+.kit ol{list-style:none;margin-top:18px;display:grid;grid-template-columns:repeat(5,minmax(0,160px));gap:14px}
 .kit a{display:block;text-decoration:none;text-align:center;transition:transform .35s}
 .kit a:hover{transform:translateY(-4px)}
 .kit .th{position:relative;display:block;aspect-ratio:3/4;border-radius:10px;overflow:hidden;background:var(--sand);border:3px solid #fff;box-shadow:0 12px 24px -16px rgba(42,38,32,.6)}
 .kit .th img{width:100%;height:100%;object-fit:cover}
 .kit .th em{position:absolute;left:6px;top:6px;font:700 10px/1 var(--mono);font-style:normal;padding:4px 6px;border-radius:4px;background:rgba(23,21,15,.75);color:var(--sand)}
 .kit b.k{display:block;margin-top:10px;font:700 13.5px/1.35 var(--serif)}
-@media(max-width:820px){.kit ol{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.kit b.k{font-size:12.5px}}
+@media(max-width:820px){.kit ol{grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}.kit b.k{font-size:12.5px}}
 
 /* 人生卡 */
 .hello{padding:84px 0;background:var(--paper)}
@@ -325,6 +325,21 @@ footer a{color:#D9CFBC;text-decoration:none}
 @media(max-width:820px){.dock{display:flex}}
 .toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;border-radius:999px;font-size:14px;z-index:30;opacity:0;transition:opacity .3s;pointer-events:none}
 .toast.on{opacity:1}
+/* 动漫短片 */
+.anime{background:var(--dark2);color:var(--sand);padding:96px 0}
+.anime .tag{color:var(--gold2)}
+.anime .intro{margin-top:12px;color:rgba(243,235,221,.72);font-family:var(--serif);line-height:2;max-width:680px}
+.screen{position:relative;margin-top:34px;border-radius:8px;overflow:hidden;background:#000;box-shadow:0 40px 80px -30px rgba(0,0,0,.8),0 0 0 1px #3A352C}
+.screen video{display:block;width:100%;aspect-ratio:960/528;background:#000}
+.screen .cover{position:absolute;inset:0;border:0;padding:0;cursor:pointer;background:#000 url('16.jpg?v=20261119') center/cover;display:grid;place-items:center}
+.screen .cover:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.55),rgba(0,0,0,0) 45%)}
+.screen .cover i{position:relative;z-index:1;width:86px;height:86px;border-radius:50%;background:rgba(243,235,221,.92);display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.4);transition:transform .3s}
+.screen .cover:hover i{transform:scale(1.08)}
+.screen .cover i:before{content:"";margin-left:6px;border-left:24px solid var(--dark);border-top:15px solid transparent;border-bottom:15px solid transparent}
+.screen .cover b{position:absolute;z-index:1;left:22px;bottom:18px;font:700 clamp(20px,3vw,30px) var(--serif);letter-spacing:.2em;color:#fff;text-align:left}
+.screen .cover b small{display:block;font:600 11px var(--mono);letter-spacing:.16em;color:var(--gold2);margin-bottom:4px}
+.scenes{list-style:none;margin-top:22px;display:flex;flex-wrap:wrap;gap:8px}
+.scenes li{font-size:13px;padding:6px 12px;border-radius:999px;border:1px solid #4A443A;color:rgba(243,235,221,.8)}
 </style>
 </head>
 <body id="top">
@@ -368,6 +383,7 @@ footer a{color:#D9CFBC;text-decoration:none}
       <li><a href="#hello"><span class="th"><img src="kit-1.jpg?v=20261119" alt="" loading="lazy"><em>①</em></span><b class="k">人生卡</b></a></li>
       <li><a href="#book"><span class="th"><img src="kit-2.jpg?v=20261119" alt="" loading="lazy"><em>②</em></span><b class="k">电子书</b></a></li>
       <li><a href="#take"><span class="th"><img src="kit-4.jpg?v=20261119" alt="" loading="lazy"><em>⑧</em></span><b class="k">朋友圈封面</b></a></li>
+      <li><a href="#film"><span class="th"><img src="kit-16.jpg?v=20261119" alt="" loading="lazy"><em>▶</em></span><b class="k">动漫短片</b></a></li>
       <li><a href="#top"><span class="th"><img src="hero.jpg?v=20261119" alt="" loading="lazy" style="object-position:62% 40%"><em>⑱</em></span><b class="k">个人主页</b></a></li>
     </ol>
   </div>
@@ -432,6 +448,19 @@ footer a{color:#D9CFBC;text-decoration:none}
       <p class="q">停下来，才能看见。看见了，才值得拍。</p>
       <div class="go"><a class="btn" href="book-zh.pdf" download>下载电子书</a><span>10 页，手机上就能读完</span></div>
     </div>
+  </div>
+</section>
+
+<section class="anime" id="film">
+  <div class="w">
+    <span class="tag">⑯ 动漫短片 · 2 分 31 秒</span>
+    <h2>追梦人</h2>
+    <p class="intro">书 2《一个笨小孩的艺术梦》，画成了一部动漫。窗外飘着雪，我刚做好第一个智能体，端着咖啡走到窗前——十二年前的那个夜晚，也是这样的雪。</p>
+    <div class="screen">
+      <video id="anime" src="16.mp4?v=20261119" poster="16.jpg?v=20261119" controls playsinline preload="none"></video>
+      <button class="cover" type="button" id="animeGo" aria-label="播放动漫短片《追梦人》"><i aria-hidden="true"></i><b><small>PLAY · 追梦人</small>一个笨小孩的艺术梦</b></button>
+    </div>
+    <ul class="scenes" aria-label="片中的几站"><li>东北的雪</li><li>考场上的六个小时</li><li>工地屋顶的雨</li><li>30 块一晚的六人间</li><li>第三只眼睛</li><li>上海的夜</li></ul>
   </div>
 </section>
 
@@ -616,6 +645,10 @@ footer a{color:#D9CFBC;text-decoration:none}
       if(innerWidth<821)pola.scrollIntoView({behavior:'smooth',block:'center'});
     });
   })();
+
+  // 动漫短片：点封面开始播放
+  (function(){var v=document.getElementById('anime'),b=document.getElementById('animeGo');if(!v||!b)return;
+    b.addEventListener('click',function(){b.remove();v.play().catch(function(){})});})();
 
   var toast=document.createElement('div');toast.className='toast';document.body.appendChild(toast);
   function say(s){toast.textContent=s;toast.classList.add('on');setTimeout(function(){toast.classList.remove('on')},2200)}
