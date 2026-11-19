@@ -179,10 +179,11 @@ h2{font:700 clamp(28px,4.6vw,44px)/1.35 var(--serif);letter-spacing:.04em}
 
 /* ===== 小手牵大手 ===== */
 .hands{padding:110px 0 120px;background:linear-gradient(180deg,var(--ice),var(--ice2));overflow:hidden}
-.pola{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;margin-top:56px;align-items:center}
+.pola{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:56px;align-items:center}
 .pola figure{background:#fff;padding:14px 14px 18px;border-radius:6px;box-shadow:0 30px 60px -28px rgba(14,34,51,.5);transition:transform .6s var(--ease)}
 .pola figure:nth-child(1){transform:rotate(-4deg)}
-.pola figure:nth-child(2){transform:rotate(3.5deg) translateY(30px)}
+.pola figure:nth-child(2){transform:rotate(2.5deg) translateY(28px)}
+.pola figure:nth-child(3){transform:rotate(-2deg) translateY(6px)}
 .pola figure:hover{transform:rotate(0) translateY(-8px) scale(1.02)}
 .pola img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:2px}
 .pola figcaption{margin-top:12px;text-align:center;font:600 16px var(--serif);color:var(--ink)}
@@ -190,7 +191,7 @@ h2{font:700 clamp(28px,4.6vw,44px)/1.35 var(--serif);letter-spacing:.04em}
 .voice{margin:80px auto 0;max-width:640px;text-align:center}
 .voice p{font:900 clamp(24px,3.6vw,34px)/1.6 var(--serif);color:var(--sea)}
 .voice small{display:block;margin-top:10px;font-size:13px;color:var(--mute)}
-@media(max-width:860px){.pola{grid-template-columns:1fr;gap:34px}.pola figure:nth-child(2){transform:rotate(3deg)}}
+@media(max-width:860px){.pola{grid-template-columns:1fr;gap:34px}.pola figure:nth-child(2){transform:rotate(3deg)}.pola figure:nth-child(3){transform:rotate(-2.5deg)}}
 
 /* ===== 一个小练习 ===== */
 .ask{padding:110px 0;background:var(--snow);text-align:center}
@@ -379,8 +380,9 @@ footer .you{display:block;margin-top:6px;font-size:15px;color:#E6EFF5}
     <span class="kick">小手牵大手</span>
     <h2 class="rv">小时候她带女儿看风景，<br>长大后女儿带她看世界</h2>
     <div class="pola">
+      <figure class="rv"><img src="pku.jpg" alt="肖萍和女儿在北京大学法学院毕业典礼前合影" loading="lazy"><figcaption>北大<small>2012 年，女儿毕业那天</small></figcaption></figure>
+      <figure class="rv"><img src="aurora.jpg?v=20261118" alt="肖萍和女儿在芬兰罗瓦涅米的极光下合影" loading="lazy"><figcaption>芬兰 · 极光<small>2018 年 2 月，罗瓦涅米</small></figcaption></figure>
       <figure class="rv"><img src="antarctica.jpg" alt="肖萍和女儿在南极雪地上举着南极旗" loading="lazy"><figcaption>南极<small>2025 年，和女儿一起</small></figcaption></figure>
-      <figure class="rv"><img src="pku.jpg" alt="肖萍和女儿在北京大学法学院毕业典礼前合影" loading="lazy"><figcaption>北大<small>女儿毕业那天</small></figcaption></figure>
     </div>
     <div class="voice rv"><p>「妈妈别急，你跟着我来，拖箱拿好。」</p><small>—— 书 5，大阪机场，离飞机起飞只剩二十多分钟</small></div>
   </div>
