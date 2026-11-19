@@ -108,6 +108,13 @@ section{padding:96px 0}
 .nums .say b{color:var(--gold2);font-weight:700}
 @media(max-width:820px){.nums .g{grid-template-columns:1fr 1fr}}
 
+/* ===== 真书墙 ===== */
+.bw{background:linear-gradient(180deg,var(--ink) 0,var(--ink) 30%,var(--paper) 30%);padding-top:10px}
+.bw figure{position:relative;cursor:zoom-in}
+.bw figure img{width:100%}
+.bw figcaption{margin-top:18px;font-size:14.5px;color:var(--mute);text-align:center}
+.bw figcaption b{color:var(--txt)}
+
 /* ===== 序 ===== */
 .xu{background:linear-gradient(180deg,var(--paper),var(--cream))}
 .shelf5{display:flex;gap:18px;margin-top:40px;align-items:flex-end;flex-wrap:wrap}
@@ -275,6 +282,14 @@ footer .you{display:inline-block;margin-top:6px;color:var(--gold2);text-decorati
       <div class="num rv"><b data-to="5000">5000<sup>+</sup></b><p>位 DISC 授权讲师，由他亲自认证</p></div>
     </div>
     <p class="say rv">这几个数字里，他说自己<b>最在意的是 2000</b>——“能够百分之百帮到普通人，成为畅销书作者，我觉得是非常骄傲的一件事情。”</p>
+  </div>
+</section>
+
+<!-- 真书墙 -->
+<section class="bw" style="padding-bottom:70px">
+  <div class="w">
+    <figure class="rv" id="bwall"><img src="bookwall.webp?v=20261119" alt="李海峰老师出品的书墙：已出版 90 本实体书" loading="lazy" width="1408" height="1000"></figure>
+    <p class="rv" style="text-align:center;margin-top:18px;font-size:14.5px;color:var(--mute)">这是他出品到 <b style="color:var(--txt)">第 90 本</b>时的书墙，边玩边赚第一本就在最后一排。现在，已经一百多本了。</p>
   </div>
 </section>
 
@@ -540,6 +555,7 @@ document.documentElement.classList.add('js');
   function open(list){pgs.innerHTML='';list.forEach(function(s){var i=new Image();i.src=s;i.alt='';pgs.appendChild(i)});lb.classList.add('on')}
   document.querySelectorAll('[data-pages]').forEach(function(b){b.addEventListener('click',function(){open(b.dataset.pages.split(','))})});
   $('lcard').addEventListener('click',function(){open(['card.jpg?v=20261119'])});
+  $('bwall').addEventListener('click',function(){open(['bookwall.webp?v=20261119'])});
   lb.addEventListener('click',function(e){if(e.target===lb||e.target===pgs)lb.classList.remove('on')});
   addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList.remove('on')});
 
