@@ -296,9 +296,11 @@ h2{font-family:var(--serif);font-weight:700;font-size:clamp(26px,4.4vw,38px);lin
 /* 带走一张我 */
 .take{padding:96px 0;background:var(--paper)}
 .take .intro{color:var(--ink2);margin-top:10px}
-.cards{margin-top:44px;display:flex;justify-content:center;align-items:flex-start;gap:56px}
-.cards a:nth-child(1) img{height:min(560px,62vw);width:auto}
-.cards a:nth-child(2) img{height:min(480px,52vw);width:auto;margin-top:40px}
+.cards{margin-top:44px;display:flex;justify-content:center;align-items:flex-start;gap:40px}
+.cards a:nth-child(1) img{height:min(560px,40vw);width:auto}
+.cards a:nth-child(2) img{height:min(560px,40vw);width:auto}
+.cards a:nth-child(3) img{height:min(420px,30vw);width:auto;margin-top:70px}
+.cards a:nth-child(3){transform:rotate(-2deg)}
 .cards a{display:block;text-decoration:none;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
 .cards img{border-radius:8px;box-shadow:0 0 0 6px #fff,0 26px 50px -20px rgba(42,38,32,.5)}
 .cards a:nth-child(1){transform:rotate(-4deg)}
@@ -307,7 +309,7 @@ h2{font-family:var(--serif);font-weight:700;font-size:clamp(26px,4.4vw,38px);lin
 .cards span{display:block;margin-top:16px;font-size:13px;color:var(--ink2);text-align:center}
 .share{margin-top:34px;background:none;border:1.5px solid var(--ink);color:var(--ink);font:700 14px var(--sans);padding:11px 18px;border-radius:999px;cursor:pointer}
 .share:hover{background:var(--ink);color:#fff}
-@media(max-width:820px){.cards{flex-direction:column;align-items:center;gap:40px}.cards a:nth-child(1) img{height:auto;width:min(70vw,280px)}.cards a:nth-child(2) img{height:auto;width:calc(100vw - 72px);margin-top:0}}
+@media(max-width:820px){.cards{flex-direction:column;align-items:center;gap:40px}.cards a:nth-child(1) img{height:auto;width:min(70vw,280px)}.cards a:nth-child(2) img{height:auto;width:min(70vw,280px)}.cards a:nth-child(3) img{height:auto;width:calc(100vw - 72px);margin-top:0}}
 
 /* 加微信 */
 .meet{padding:100px 0 120px;background:var(--dark);color:var(--sand);text-align:center}
@@ -391,7 +393,7 @@ footer a{color:#D9CFBC;text-decoration:none}
     <ol>
       <li><a href="#hello"><span class="th"><img src="kit-1.jpg?v=20261119d" alt="" loading="lazy"></span><b class="k">人生卡</b></a></li>
       <li><a href="#book"><span class="th"><img src="kit-2.jpg?v=20261119d" alt="" loading="lazy"></span><b class="k">电子书</b></a></li>
-      <li><span class="soon"><span class="th"><span class="ph">自我介绍<br>海报</span><em>即将上线</em></span><b class="k">自我介绍海报</b></span></li>
+      <li><a href="#take"><span class="th"><img src="kit-3.jpg?v=20261119e" alt="" loading="lazy"></span><b class="k">自我介绍海报</b></a></li>
       <li><a href="#take"><span class="th"><img src="kit-4.jpg?v=20261119d" alt="" loading="lazy"></span><b class="k">朋友圈封面</b></a></li>
       <li><span class="soon"><span class="th"><img src="kit-10.jpg?v=20261119d" alt="" loading="lazy"><i aria-hidden="true">♪</i><em>即将上线</em></span><b class="k">有声书</b></span></li>
       <li><a href="#film"><span class="th"><img src="kit-16.jpg?v=20261119d" alt="" loading="lazy"><i aria-hidden="true">▶</i></span><b class="k">故事短片</b></a></li>
@@ -561,11 +563,12 @@ footer a{color:#D9CFBC;text-decoration:none}
 
 <section class="take" id="take">
   <div class="w">
-    <span class="tag">① 人生卡 · ⑧ 朋友圈封面</span>
+    <span class="tag">① 人生卡 · ④ 自我介绍海报 · ⑧ 朋友圈封面</span>
     <h2>带走一张我</h2>
     <p class="intro">点开大图，长按保存。转给朋友，就是一张名片。</p>
     <div class="cards">
       <a href="card.jpg?v=20261119" target="_blank"><img src="card.jpg?v=20261119" alt="木晓的人生卡" loading="lazy"><span>人生卡 · 今天遇见谁 №28</span></a>
+      <a href="poster.jpg?v=20261119e" target="_blank"><img src="poster.jpg?v=20261119e" alt="木晓的自我介绍海报：以摄影入道，觉察生命之美" loading="lazy"><span>自我介绍海报</span></a>
       <a href="moments.jpg?v=20261119" target="_blank"><img src="moments.jpg?v=20261119" alt="木晓的朋友圈封面：以摄影入道，觉察生命之美" loading="lazy"><span>朋友圈封面</span></a>
     </div>
     <button class="share" type="button" id="share">把这一页转给一位朋友</button>
@@ -578,8 +581,10 @@ footer a{color:#D9CFBC;text-decoration:none}
     <h2>也想边玩边赚？<br>私信我「玩赚」</h2>
     <a class="qrc" href="wechat.png" target="_blank"><img src="wechat.png" alt="木晓的微信二维码"><span>WECHAT · 木晓</span></a>
     <ul class="ways">
+      <li><span>想用手机拍出好照片</span><b>摄影</b></li>
+      <li><span>总觉得日子太匆忙，想慢下来</span><b>慢生活</b></li>
+      <li><span>想边走边玩，一起加入全球打卡</span><b>全球打卡</b></li>
       <li><span>想一起写书、走进边玩边赚</span><b>玩赚</b></li>
-      <li><span>想跟我去拍一场展览</span><b>拍照</b></li>
       <li><span>想从我手里带走一本书</span><b>书</b></li>
     </ul>
     <p class="note">在微信里打开，长按二维码识别。加的时候请备注「官网」，再加上面一个词。</p>
