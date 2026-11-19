@@ -117,8 +117,6 @@ section{padding:96px 0}
 .bk span b{display:block;color:var(--txt);font-weight:700}
 .bk[aria-selected=true]{transform:translateY(-14px)}
 .bk[aria-selected=true] img{box-shadow:0 18px 34px rgba(40,30,15,.35),0 0 0 3px var(--gold)}
-.bk:disabled{cursor:default;opacity:.55}
-.bk:disabled span:after{content:"序 · 整理中";display:block;color:var(--gold)}
 .page{margin-top:36px;background:#FFFDF8;border:1px solid var(--line);border-radius:6px;box-shadow:0 30px 60px -30px rgba(60,40,10,.35);padding:56px clamp(22px,6vw,72px) 48px;position:relative}
 .page:before{content:"";position:absolute;left:0;top:0;bottom:0;width:8px;background:linear-gradient(90deg,rgba(0,0,0,.06),transparent)}
 .page .tl{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:16px}
@@ -279,7 +277,7 @@ footer .you{display:inline-block;margin-top:6px;color:var(--gold2);text-decorati
     <div class="shelf5 rv" role="tablist" aria-label="选择一本书">
       <button class="bk" role="tab" aria-selected="true" data-x="x1"><img src="../img/cover1.webp" alt="边玩边赚 1 封面"><span><b>书 1</b>AI 时代的自由人生</span></button>
       <button class="bk" role="tab" aria-selected="false" data-x="x2"><img src="../img/cover2.webp" alt="边玩边赚 2 封面"><span><b>书 2</b>人人都能做 AI 智能体</span></button>
-      <button class="bk" role="tab" aria-selected="false" disabled><img src="../img/cover3.webp" alt="边玩边赚 3 封面"><span><b>书 3</b>AI 时代的财富思维</span></button>
+      <button class="bk" role="tab" aria-selected="false" data-x="x3"><img src="../img/cover3.webp" alt="边玩边赚 3 封面"><span><b>书 3</b>AI 时代的财富思维</span></button>
       <button class="bk" role="tab" aria-selected="false" data-x="x4"><img src="../img/cover4.webp" alt="边玩边赚 4 封面"><span><b>书 4</b>AI 时代的个人品牌</span></button>
     </div>
 
@@ -315,6 +313,37 @@ footer .you{display:inline-block;margin-top:6px;color:var(--gold2);text-decorati
         </div>
       </div>
       <div class="acts"><button class="tog">读完整篇 ↓</button><button data-pages="xu2-1.jpg,xu2-2.jpg">看书里的原页</button></div>
+    </article>
+
+    <article class="page" id="x3" hidden>
+      <div class="tl"><span>海峰 · 序 &nbsp;|&nbsp; 边玩边赚 3</span><em>北京日报出版社</em></div>
+      <h3>先玩起来，钱才顺过来。</h3>
+      <div class="body">
+        <p><mark>2026 年，两条曲线第一次相交。</mark></p>
+        <p>一条是 AI。它从极客手里的玩具，变成了普通人桌上的工具。去年你还在观望，今年你身边的人已经用它写文案、做报表、剪视频。不是技术变了，是门槛没了。</p>
+        <p>另一条是人心。这一代华人，不管在北京还是多伦多，不管三十五岁还是五十五岁，都在追问同一句：我能不能换种活法？</p>
+        <p>以前这两条线各走各的。AI 在技术圈狂奔，这句问话在心里打转。2026 年，它们撞上了。相交的意思是：<mark>AI 第一次让“换种活法”这件事，真的可以跑通了。</mark>不是未来主义。是此刻，你打开一个对话框，就能开始。</p>
+        <div class="more">
+        <p>早一年，这本书是预言。晚一年，它就不够新了。所以就是现在。这本书出现在这个窗口，不是巧合，是时候。</p>
+        <p>这本书不是一个人写的。三十六个人，三十六种活法，三十六个回答。回答的是同一个问题：我和钱的关系，怎么才算顺？</p>
+        <p>有人在北京，有人在悉尼。有人三十岁，有人五十岁。有人已经上路，有人才刚听说。有人用 AI 把爱好变成了收入，有人把副业活成了生活方式。</p>
+        <p>三十六个人里，有几个我认识，更多我不认识。读完却觉得都认识了。因为他们写的不是经验，是困惑。<mark>一个人的答案是经验。三十六个人的答案，是地图。</mark></p>
+        <p>你不用把三十六条路都走一遍。你只需要找到离自己最近的那个点，然后迈出去。联合出书不是凑数，是合力。三十六个困惑摆在你面前，比任何一个标准答案都诚实。</p>
+        <p>但我要先说清楚，这本书不是什么。它不是 AI 赚钱教程。这里没有“三步月入过万”的配方，因为那东西不存在。<mark>AI 是转换器，不是印钞机。</mark></p>
+        <p>它也不是成功学案例集。三十六个人不是三十六个模板。他们做对了什么不重要，他们困惑过什么才重要。它更不会让你自惭形秽。这里没有榜样，只有同代人。榜样让人焦虑：凭什么别人行，我不行。同代人让人敢动：他也没准备好，他不也走了吗。</p>
+        <p>这本书真正给你的，不是方法，是视角。比如你刷到同行用 AI 接单赚钱，第一反应通常是：我也得赶紧学这个工具。读完这本书，你的反应可能会变成：我手里有什么，是 AI 能帮我放大的？同一个动作，起点变了。前一个是焦虑驱动，后一个是盘点驱动。</p>
+        <p>读完它，你手里的活儿还是那些。但你可能会停下来，重新看见自己和钱的关系。那个关系一直都在，只是你太忙了，没顾上看它一眼。</p>
+        <p>这本书的两位主编，千百合和文亮，就是最好的例子。千百合八岁那年，抱着自己养大的鸭子去集市，被人领进巷子，一块二换走了她一个夏天。她哭着回家，从此把“说话算数”刻进了做生意的底子。可她后来发现，钱早就来了，她却几十年没好好待过它。于是她定了一件很小的事：每月一次“数钱日”，找一个“钱搭子”，隔着时区，各看各的账。她写下的那句话是：数完了，钱还在。</p>
+        <p>文亮的路完全不同。被裁那天，他反而觉得自由。考验在后面：补偿金见底，房贷照付，孩子照样上学，靠信用卡倒腾着过日子，像在走钢丝。他给哥哥打电话，话没说完，那头只回了一句：把账号发给我。他后来才明白，自己缺的从来不是努力，是财富思维。</p>
+        <p>一个从委屈里学会了不躲，一个从谷底里学会了补课。路不同，卡住他们的是同一件事：有一身本事，却没人教过怎么跟钱相处。三十六个人里，没有一个是“准备好了才动”的。这不是成功案例合集，是三十六次“先走了再说”。</p>
+        <p>读的时候，留意一样东西：那个“咯噔”一下的瞬间。不是你突然变有钱的那天。是某个普通的下午，你忽然意识到，自己和钱的关系一直是拧着的。三十六个故事里，总有一个瞬间，跟你心里那个长得很像。</p>
+        <p>如果你隐隐觉得，自己跟钱的关系哪里不太对，又说不清哪里不对——这本书就是为你写的。</p>
+        <p>三十六个人已经替你走了一段。他们走的不是你的路，但他们证明了：路是可以自己走的，活法是可以换的，AI 是真的能把“想”变成“做”的。</p>
+        <p><mark>玩是心法，赚是结果，AI 是转换器——而你，是那个变量。</mark></p>
+        <div class="sig"><b>李海峰</b>独立投资人 · 畅销书出品人</div>
+        </div>
+      </div>
+      <div class="acts"><button class="tog">读完整篇 ↓</button></div>
     </article>
 
     <article class="page" id="x4" hidden>
