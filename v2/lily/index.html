@@ -169,6 +169,21 @@ h2{font:700 clamp(28px,4.6vw,44px)/1.3 var(--serif);letter-spacing:.04em}
 .iamimg figcaption{margin-top:8px;font-size:12.5px;color:#C6D9D1}
 .iam i{display:block;margin-top:12px;font:15px/1.8 var(--serif);font-style:normal;color:#C6D9D1}
 /* 种子开花 */
+.shelf{padding:110px 0 90px;background:linear-gradient(180deg,#F2EBDD,var(--paper))}
+.shelf .w:first-child{display:grid;grid-template-columns:300px 1fr;gap:70px;align-items:center}
+.big3d{display:block;transform:perspective(1200px) rotateY(-16deg) rotate(-2deg);transition:transform .7s var(--ease);filter:drop-shadow(24px 34px 34px rgba(23,63,51,.35))}
+.big3d:hover{transform:perspective(1200px) rotateY(0) rotate(0) translateY(-6px)}
+.big3d img{border-radius:3px 8px 8px 3px}
+.shelf .p{margin-top:16px;font:17px/2 var(--serif);color:var(--pine2);max-width:32em}
+.shelf .hint{margin-top:12px;font-size:13.5px;color:var(--mute)}
+.five{list-style:none;margin-top:60px;display:grid;grid-template-columns:repeat(5,1fr);gap:22px;align-items:end}
+.five li{text-align:center;transition:transform .45s var(--ease)}
+.five li:hover{transform:translateY(-8px)}
+.five img{border-radius:2px 6px 6px 2px;box-shadow:0 18px 30px -18px rgba(23,63,51,.6)}
+.five li.on img{box-shadow:0 0 0 3px #F2C28B,0 22px 36px -18px rgba(23,63,51,.7)}
+.five small{display:block;margin-top:10px;font-size:12.5px;color:var(--mute)}
+.five-t{margin-top:18px;text-align:center;font-size:13.5px;color:var(--mute)}
+@media(max-width:860px){.shelf .w:first-child{grid-template-columns:1fr;gap:40px}.big3d{max-width:220px}.five{grid-template-columns:repeat(5,1fr);gap:8px;margin-top:44px}.five small{font-size:11px}.five small span{display:none}}
 .proof{padding:20px 0 100px;background:var(--paper)}
 .nums{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);border-top:1.5px solid var(--line);border-bottom:1.5px solid var(--line)}
 .nums li{padding:26px 18px;text-align:center}
@@ -340,6 +355,7 @@ h2{font:700 clamp(28px,4.6vw,44px)/1.3 var(--serif);letter-spacing:.04em}
 .fit b{font:700 17px/1.5 var(--serif)}
 .fit i{font-style:normal;color:var(--pine2)}
 .fit span{color:var(--pine2);font-size:15px}
+.fit span a{color:var(--pine);font-weight:700}
 .also{margin-top:18px;font-size:14px;color:var(--pine2)}
 .qrcard{background:#fff;border-radius:22px;padding:28px 26px;text-align:center;box-shadow:0 30px 60px -28px rgba(23,63,51,.55);transform:rotate(2deg);transition:transform .5s var(--ease)}
 .qrcard:hover{transform:rotate(0)}
@@ -539,6 +555,29 @@ footer a{color:#E3EEE9;text-decoration:none}
   </div>
 </section>
 
+<section class="shelf" id="books">
+  <div class="w">
+    <a class="big3d rv" href="#meet" aria-label="从我手里，带走一本书"><img src="../img/cover4.webp" alt="《边玩边赚：AI 时代的个人品牌》封面" loading="lazy"></a>
+    <div class="rv">
+      <span class="kick">这一篇，在这本书里</span>
+      <h2>从我手里，<br>带走一本书</h2>
+      <p class="p">《活成你》选自《边玩边赚：AI 时代的个人品牌》，李海峰、千百合、木晓主编，台海出版社。三十六位作者，三十六种活法。</p>
+      <div class="row"><a class="btn" href="#meet">从我手里，带走一本书</a></div>
+      <p class="hint">扫码加我微信，备注「官网 · 书」，说一声想要哪一本。</p>
+    </div>
+  </div>
+  <div class="w">
+    <ul class="five rv">
+      <li><img src="../img/cover1.webp" alt="边玩边赚：AI 时代的自由人生" loading="lazy"><small>第一本<span> · 自由人生</span></small></li>
+      <li><img src="../img/cover2.webp" alt="边玩边赚：人人都能做 AI 智能体" loading="lazy"><small>第二本<span> · AI 智能体</span></small></li>
+      <li><img src="../img/cover3.webp" alt="边玩边赚：AI 时代的财富思维" loading="lazy"><small>第三本<span> · 财富思维</span></small></li>
+      <li class="on"><img src="../img/cover4.webp" alt="边玩边赚：AI 时代的个人品牌" loading="lazy"><small>第四本<span> · 个人品牌</span></small></li>
+      <li><img src="../img/cover5.webp" alt="边玩边赚：走遍世界，活成自己" loading="lazy"><small>第五本<span> · 出版中</span></small></li>
+    </ul>
+    <p class="five-t rv">边玩边赚书系五本书，每一本我都是主编之一。</p>
+  </div>
+</section>
+
 <section class="steps" id="steps">
   <div class="w">
     <div class="rv">
@@ -650,16 +689,16 @@ footer a{color:#E3EEE9;text-decoration:none}
       <h2>也想边玩边赚？<br>来聊聊</h2>
       <p class="soft">不用想好做什么再来。加我的时候，说一句你最近忘了时间的一件事就好。</p>
       <ul class="fit">
-        <li><b>有故事、想出本书的人</b><i>→</i><span>怎么把经历写成一本书</span></li>
-        <li><b>想换个活法的老板</b><i>→</i><span>怎么一边玩、一边赚</span></li>
-        <li><b>想让 AI 帮自己干活的人</b><i>→</i><span>让 AI 帮你干活，把经验变产品</span></li>
+        <li><b>想要一本书</b><i>→</i><span>备注「书」，从我手里带走一本</span></li>
+        <li><b>有故事、想一起写书</b><i>→</i><span>书 6 正在招募，<a href="../../laugh/">先看看 →</a></span></li>
+        <li><b>想换个活法、用好 AI</b><i>→</i><span>备注「聊聊」，怎么一边玩、一边赚</span></li>
       </ul>
       <p class="also">我们可能聊得来：爱旅行 · 爱读书 · 海外生活 · 玩 AI</p>
     </div>
     <div class="qrcard rv">
       <img class="qr" src="../img/lily-wechat.png" alt="千百合的微信二维码">
       <b>扫码，走近千百合</b>
-      <p>在微信里长按识别。加的时候说说你想聊的：出书、换活法、用 AI。</p>
+      <p>在微信里长按识别。加的时候备注「官网」，再加一个词：书 · 写书 · 聊聊。</p>
       <div class="else"><img src="../img/gzh-qr.jpg" alt="公众号「AI边玩边赚」二维码" loading="lazy"><div><strong>在别处找到我</strong><br>公众号、视频号都叫「AI边玩边赚」，每天一篇全球打卡</div></div>
     </div>
   </div>
@@ -675,7 +714,7 @@ footer a{color:#E3EEE9;text-decoration:none}
 </footer>
 
 <nav class="dock" id="dock" aria-label="快速入口">
-  <button type="button" id="dplay">▸ 听主题曲</button><a class="main" href="#meet">加微信</a>
+  <a href="#books">带走一本书</a><a class="main" href="#meet">加微信</a>
 </nav>
 
 <script>
@@ -714,14 +753,13 @@ footer a{color:#E3EEE9;text-decoration:none}
   }
 
   // ⑩ 有声书
-  var au=$('au'),pl=$('song'),btn=$('play'),ico=$('ico'),rng=$('bar2'),cur=$('cur'),dur=$('dur'),sp=$('speed'),dp=$('dplay');
+  var au=$('au'),pl=$('song'),btn=$('play'),ico=$('ico'),rng=$('bar2'),cur=$('cur'),dur=$('dur'),sp=$('speed'),dp=null;
   var P='M7 4.5v15l13-7.5z',Q='M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z';
   function mm(s){s=Math.max(0,Math.floor(s||0));return Math.floor(s/60)+':'+('0'+s%60).slice(-2)}
   function toggle(){if(au.paused){au.play()}else au.pause()}
   btn.addEventListener('click',toggle);
-  dp.addEventListener('click',function(){pl.scrollIntoView({behavior:'smooth',block:'center'});if(au.paused)au.play()});
-  au.addEventListener('play',function(){pl.classList.add('playing');ico.setAttribute('d',Q);btn.setAttribute('aria-label','暂停');dp.textContent='❚❚ 正在听'});
-  au.addEventListener('pause',function(){pl.classList.remove('playing');ico.setAttribute('d',P);btn.setAttribute('aria-label','播放主题曲');dp.textContent='▸ 听主题曲'});
+  au.addEventListener('play',function(){pl.classList.add('playing');ico.setAttribute('d',Q);btn.setAttribute('aria-label','暂停')});
+  au.addEventListener('pause',function(){pl.classList.remove('playing');ico.setAttribute('d',P);btn.setAttribute('aria-label','播放主题曲')});
   au.addEventListener('loadedmetadata',function(){dur.textContent=mm(au.duration)});
   var drag=false;
   au.addEventListener('timeupdate',function(){if(drag||!au.duration)return;var p=au.currentTime/au.duration*1000;rng.value=p;rng.style.setProperty('--p',p/10+'%');cur.textContent=mm(au.currentTime)});
