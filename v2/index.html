@@ -392,6 +392,25 @@ footer .say i{font-style:normal;display:inline-block;margin:4px 4px 0 0;padding:
 .path li b{color:var(--ink)}
 .path.vip li b{color:#fff}
 @media(min-width:1180px){.now-list{grid-template-columns:repeat(4,1fr)}}
+.path{display:flex;flex-direction:column;padding:30px 28px 28px;box-shadow:0 30px 60px -45px rgba(40,30,10,.45);overflow:hidden}
+.path:before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,#E0552B,#F6B24E)}
+.path.vip:before{background:linear-gradient(90deg,#F6B24E,#fff3d6,#F6B24E)}
+.path.vip{background:radial-gradient(120% 80% at 100% 0%,#3a3020 0%,#1d1a15 55%)}
+.path .for{font-family:var(--serif);font-size:17px;line-height:1.7;margin:6px 0 18px;color:var(--ink)}
+.path.vip .for{color:#F6E7C8}
+.path .plus{font-size:13px;letter-spacing:.06em;color:#F6B24E;margin-bottom:10px}
+.path ul{gap:12px;line-height:1.7;flex:1}
+.path li{padding-left:30px}
+.path li:before{content:"✓";left:0;top:.15em;width:20px;height:20px;line-height:20px;text-align:center;font-size:12px;font-weight:900;color:#fff;background:var(--orange)}
+.path.vip li:before{background:#F6B24E;color:#1d1a15}
+.path .badge{position:absolute;top:22px;right:22px;font-size:12px;font-weight:700;padding:4px 12px;border-radius:999px;background:#F6B24E;color:#1d1a15}
+.path .pay{margin-top:24px;padding-top:18px;border-top:1px dashed var(--line);display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 16px}
+.path.vip .pay{border-top-color:#ffffff30}
+.path .pay .price{margin:0;font-size:30px}
+.path .pay p{font-size:13px;color:var(--mute)}
+.path.vip .pay p{color:#b9ae9a}
+.path .btn{align-self:flex-start;margin-top:18px}
+@media(max-width:600px){.path{padding:26px 20px 22px}.path .badge{position:static;align-self:flex-start;margin-bottom:10px}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "边玩边赚是什么？", "acceptedAnswer": {"@type": "Answer", "text": "边玩边赚，就是活成自己，也创造价值。具体说，它是一个由普通人一起写书、一起用好 AI、一起把\"玩\"活成事业的生态，由千百合（Lily Li）发起，李海峰老师任出品人和主编。边玩边赚书系共 6 本：4 本已出版，1 本出版中，1 本招募中；115 位作者来自 9 个国家和地区。"}}, {"@type": "Question", "name": "不会写作，也能出书吗？", "acceptedAnswer": {"@type": "Answer", "text": "能。访谈 90 分钟起，AI 帮忙整理成稿，改稿两次，每人约 2000 字，署名正式出版。"}}, {"@type": "Question", "name": "怎么收费？", "acceptedAnswer": {"@type": "Answer", "text": "以书 6《穿过悲欢，笑答人生》为例：共创席 ¥18,888 / 一年期，私塾席 ¥28,888 / 一年期。先聊一次，不付款，聊过彼此确认同频再说。"}}, {"@type": "Question", "name": "书在哪里出版？", "acceptedAnswer": {"@type": "Answer", "text": "书 1 由华中科技大学出版社出版；书 2、书 3 由北京日报出版社出版；书 4 由台海出版社出版。书 5《走遍世界，活成自己》由北京日报出版社出版中；书 6《穿过悲欢，笑答人生》计划由北京日报出版社出版，正在招募作者。"}}, {"@type": "Question", "name": "\"包下一座岛\"是什么？", "acceptedAnswer": {"@type": "Answer", "text": "首届岛主计划，2026 年 12 月 6 日启航，地点是菲律宾巴拉望鲜花岛：5 天，岛上只有我们，一起学习、创作、交朋友。"}}, {"@type": "Question", "name": "作者的个人主页是什么？", "acceptedAnswer": {"@type": "Answer", "text": "每位作者都有一个自己的网页，地址是 playandprosper.com/名字，收好这个人的故事和作品，是十八般武艺的第 18 样，陆续上线中。"}}, {"@type": "Question", "name": "怎么联系边玩边赚？", "acceptedAnswer": {"@type": "Answer", "text": "直接加千百合的微信 iamsohappy8，备注「官网」，再加一个词说说你想聊什么：出书、AI、上岛，或者随便聊聊。日常动态看公众号和视频号「AI边玩边赚」，公众号每天都有一篇全球打卡。"}}]}</script>
 </head>
@@ -671,7 +690,7 @@ footer .say i{font-style:normal;display:inline-block;margin:4px 4px 0 0;padding:
   <div class="board doers reveal">
     <h3>把边玩边赚办到身边的人</h3>
     <p>有人在自己的城市办读书会，有人张罗新书发布会，有人把新作者带进来。最近在做事的人，就站在这里。</p>
-    <ul class="doer-list"><li><img src="img/authors/a013.jpg?v=3" alt="荣辉" loading="lazy"><div><b>荣辉</b><small>多伦多 · 办了两届读书会</small></div></li><li><img src="img/authors/a006.jpg?v=3" alt="德州康姐" loading="lazy"><div><b>德州康姐</b><small>达拉斯 · 办了读书会</small></div></li><li><img src="img/authors/a003.jpg?v=5" alt="金闰迪" loading="lazy"><div><b>金闰迪</b><small>深圳 · 办了读书会</small></div></li><li><img src="img/authors/a019.jpg?v=3" alt="魏宏翰" loading="lazy"><div><b>魏宏翰</b><small>深圳 · 办了读书会</small></div></li><li><img src="img/authors/a096.jpg?v=3" alt="彭惠林" loading="lazy"><div><b>彭惠林</b><small>深圳艺术家村 · 办了读书会</small></div></li><li><img src="img/authors/a069.jpg?v=3" alt="窈窕姐姐" loading="lazy"><div><b>窈窕姐姐</b><small>广州 · 办了读书会</small></div></li><li><img src="img/authors/a081.jpg?v=3" alt="万可" loading="lazy"><div><b>万可</b><small>昆明 · 办了读书会</small></div></li><li><img src="img/authors/a044.jpg?v=3" alt="易辰" loading="lazy"><div><b>易辰</b><small>协助办读书会</small></div></li><li><img src="img/authors/a090.jpg?v=3" alt="梓萱" loading="lazy"><div><b>梓萱</b><small>办了上海新书发布会</small></div></li><li><img src="img/authors/a100.jpg?v=3" alt="金凤凰" loading="lazy"><div><b>金凤凰</b><small>在美国湾区推广边玩边赚</small></div></li><li><img src="img/authors/a087.jpg?v=3" alt="韩玉娟" loading="lazy"><div><b>韩玉娟</b><small>在美国房地产协会开《人人都能做 AI 智能体》课</small></div></li><li><img src="img/authors/a086.jpg?v=3" alt="小屿" loading="lazy"><div><b>小屿</b><small>为边玩边赚护航</small></div></li><li><img src="img/authors/a082.jpg?v=3" alt="马继红" loading="lazy"><div><b>马继红</b><small>每次开营、结营，都来站台的导师</small></div></li><li><img src="img/authors/a098.jpg?v=3" alt="金雨麒" loading="lazy"><div><b>金雨麒</b><small>公开课特邀嘉宾 · 送福利、招新作者</small></div></li><li><img src="img/authors/a046.jpg?v=3" alt="闻千予" loading="lazy"><div><b>闻千予</b><small>公开课特邀嘉宾 · 送福利、招新作者</small></div></li><li><span class="ini">汪</span><div><b>汪燕</b><small>推荐新人</small></div></li></ul>
+    <ul class="doer-list"><li><img src="img/authors/a013.jpg?v=3" alt="荣辉" loading="lazy"><div><b>荣辉</b><small>多伦多 · 办了两届新书发布会</small></div></li><li><img src="img/authors/a006.jpg?v=3" alt="德州康姐" loading="lazy"><div><b>德州康姐</b><small>达拉斯 · 办了新书发布会</small></div></li><li><img src="img/authors/a003.jpg?v=5" alt="金闰迪" loading="lazy"><div><b>金闰迪</b><small>深圳 · 办了新书发布会</small></div></li><li><img src="img/authors/a019.jpg?v=3" alt="魏宏翰" loading="lazy"><div><b>魏宏翰</b><small>深圳 · 办了新书发布会</small></div></li><li><img src="img/authors/a096.jpg?v=3" alt="彭惠林" loading="lazy"><div><b>彭惠林</b><small>深圳艺术家村 · 办了新书发布会</small></div></li><li><img src="img/authors/a069.jpg?v=3" alt="窈窕姐姐" loading="lazy"><div><b>窈窕姐姐</b><small>广州 · 办了新书发布会和读书会</small></div></li><li><img src="img/authors/a081.jpg?v=3" alt="万可" loading="lazy"><div><b>万可</b><small>昆明 · 办了读书会</small></div></li><li><img src="img/authors/a044.jpg?v=3" alt="易辰" loading="lazy"><div><b>易辰</b><small>办读书会</small></div></li><li><img src="img/authors/a090.jpg?v=3" alt="梓萱" loading="lazy"><div><b>梓萱</b><small>办了上海新书发布会</small></div></li><li><img src="img/authors/a100.jpg?v=3" alt="金凤凰" loading="lazy"><div><b>金凤凰</b><small>在美国湾区推广边玩边赚</small></div></li><li><img src="img/authors/a087.jpg?v=3" alt="韩玉娟" loading="lazy"><div><b>韩玉娟</b><small>在美国房地产协会开《人人都能做 AI 智能体》课</small></div></li><li><img src="img/authors/a086.jpg?v=3" alt="小屿" loading="lazy"><div><b>小屿</b><small>为边玩边赚护航</small></div></li><li><img src="img/authors/a082.jpg?v=3" alt="马继红" loading="lazy"><div><b>马继红</b><small>每次开营、结营，都来站台的导师</small></div></li><li><img src="img/authors/a098.jpg?v=3" alt="金雨麒" loading="lazy"><div><b>金雨麒</b><small>公开课特邀嘉宾 · 送福利、招新作者</small></div></li><li><img src="img/authors/a046.jpg?v=3" alt="闻千予" loading="lazy"><div><b>闻千予</b><small>公开课特邀嘉宾 · 送福利、招新作者</small></div></li><li><img src="img/authors/a033.jpg?v=3" alt="燕子" loading="lazy"><div><b>燕子</b><small>推荐新人</small></div></li></ul>
   </div>
   <p class="whisper2">标签谁都有，不值钱；那个让你忘了时间的动作，是你的，别人抢不走。一个圆，生出下一个圆。</p>
 </div></section>
@@ -743,14 +762,18 @@ footer .say i{font-style:normal;display:inline-block;margin:4px 4px 0 0;padding:
   <div class="paths">
     <div class="path reveal">
       <div class="pt">路线一</div><h3>共创席</h3>
-      <div class="price">¥18,888 <small>/ 一年期</small></div>
+      <p class="for">把你的故事写进书里，一起用好 AI，一直有人同行。</p>
       <ul><li><b>一书</b>：你的故事正式出版，名字印在书上</li><li><b>一课</b>：《人人都能做 AI 智能体》课程，亲手做出属于自己的智能体</li><li><b>一生态</b>：加入边玩边赚空中俱乐部，每周线上相聚，书出版了也一直在</li><li><b>人生卡 + 个人主页</b>：你的一页名片，照片、书里的一句话、一分钟的小故事和一个二维码，一扫就到你的主页</li><li><b>笑园专属</b>：一个笑号，你的笑声收录在笑声馆</li></ul>
+      <div class="pay"><div class="price">¥18,888 <small>/ 一年期</small></div><p>先聊一次，不付款；确认一起写，再付款。</p></div>
       <a class="btn btn-line" href="https://www.playandprosper.com/laugh/#price">先聊聊共创席</a>
     </div>
     <div class="path vip reveal">
+      <span class="badge">含个人品牌七件套</span>
       <div class="pt">路线二</div><h3>私塾席</h3>
-      <div class="price">¥28,888 <small>/ 一年期</small></div>
-      <ul><li>共创席的全部内容，再加：</li><li><b>编委会留名</b>：名字印在本册编委会名单上</li><li><b>个人品牌七件套</b>：人生卡、个人主页之外，再加电子书、自我介绍海报、朋友圈封面、有声书、故事短片（也可从十八般武艺里换）</li><li><b>专属 AI 助手</b>：装在你自己的机器上，数据留在你手里</li><li><b>与千百合一对一两次</b>：每次 60 分钟</li></ul>
+      <p class="for">从一本书出发，把你这个人，做成一个看得见的品牌。</p>
+      <p class="plus">共创席的全部内容，再加：</p>
+      <ul><li><b>编委会留名</b>：名字印在本册编委会名单上</li><li><b>个人品牌七件套</b>：人生卡、个人主页之外，再加电子书、自我介绍海报、朋友圈封面、有声书、故事短片（也可从十八般武艺里换）</li><li><b>专属 AI 助手</b>：装在你自己的机器上，数据留在你手里</li><li><b>与千百合一对一两次</b>：每次 60 分钟</li></ul>
+      <div class="pay"><div class="price">¥28,888 <small>/ 一年期</small></div><p>先聊一次，不付款；确认一起写，再付款。</p></div>
       <a class="btn btn-orange" href="https://www.playandprosper.com/laugh/#price">先聊聊私塾席</a>
     </div>
   </div>
