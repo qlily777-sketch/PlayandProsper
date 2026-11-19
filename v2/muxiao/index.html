@@ -293,7 +293,9 @@ h2{font-family:var(--serif);font-weight:700;font-size:clamp(26px,4.4vw,38px);lin
 /* 带走一张我 */
 .take{padding:96px 0;background:var(--paper)}
 .take .intro{color:var(--ink2);margin-top:10px}
-.cards{margin-top:40px;display:grid;grid-template-columns:.62fr 1.38fr;gap:44px;align-items:start}
+.cards{margin-top:44px;display:flex;justify-content:center;align-items:flex-start;gap:56px}
+.cards a:nth-child(1) img{height:min(560px,62vw);width:auto}
+.cards a:nth-child(2) img{height:min(480px,52vw);width:auto;margin-top:40px}
 .cards a{display:block;text-decoration:none;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
 .cards img{border-radius:8px;box-shadow:0 0 0 6px #fff,0 26px 50px -20px rgba(42,38,32,.5)}
 .cards a:nth-child(1){transform:rotate(-4deg)}
@@ -302,7 +304,7 @@ h2{font-family:var(--serif);font-weight:700;font-size:clamp(26px,4.4vw,38px);lin
 .cards span{display:block;margin-top:16px;font-size:13px;color:var(--ink2);text-align:center}
 .share{margin-top:34px;background:none;border:1.5px solid var(--ink);color:var(--ink);font:700 14px var(--sans);padding:11px 18px;border-radius:999px;cursor:pointer}
 .share:hover{background:var(--ink);color:#fff}
-@media(max-width:820px){.cards{grid-template-columns:1fr;gap:40px}.cards a:nth-child(1){width:72%;margin:0 auto}}
+@media(max-width:820px){.cards{flex-direction:column;align-items:center;gap:40px}.cards a:nth-child(1) img{height:auto;width:min(70vw,280px)}.cards a:nth-child(2) img{height:auto;width:calc(100vw - 72px);margin-top:0}}
 
 /* 加微信 */
 .meet{padding:100px 0 120px;background:var(--dark);color:var(--sand);text-align:center}
@@ -387,7 +389,7 @@ footer a{color:#D9CFBC;text-decoration:none}
     <ol>
       <li><a href="#hello"><span class="th"><img src="kit-1.jpg?v=20261119" alt="" loading="lazy"><em>①</em></span><b class="k">人生卡</b></a></li>
       <li><a href="#book"><span class="th"><img src="kit-2.jpg?v=20261119" alt="" loading="lazy"><em>②</em></span><b class="k">电子书</b></a></li>
-      <li><a href="#take"><span class="th"><img src="kit-4.jpg?v=20261119" alt="" loading="lazy"><em>⑧</em></span><b class="k">朋友圈封面</b></a></li>
+      <li><a href="#take"><span class="th"><img src="kit-4.jpg?v=20261119c" alt="" loading="lazy"><em>⑧</em></span><b class="k">朋友圈封面</b></a></li>
       <li><a href="#film"><span class="th"><img src="kit-16.jpg?v=20261119" alt="" loading="lazy"><em>▶</em></span><b class="k">动漫短片</b></a></li>
       <li><a href="#top"><span class="th"><img src="hero.jpg?v=20261119" alt="" loading="lazy" style="object-position:62% 40%"><em>⑱</em></span><b class="k">个人主页</b></a></li>
     </ol>
@@ -479,7 +481,7 @@ footer a{color:#D9CFBC;text-decoration:none}
       <figure><img src="p-zootopia.jpg?v=20261119b" alt="徐家汇地铁站，大屏幕上的动物和行色匆匆的人群" loading="lazy"><figcaption><b>书 4 · 徐家汇地铁站</b>两个世界，共享同一条路</figcaption></figure>
       <figure><img src="p-clock.jpg?v=20261119b" alt="红色的框和远处的塔顶" loading="lazy"><figcaption><b>书 4</b>红框里的塔尖</figcaption></figure>
       <figure><img src="w-yellow.jpg?v=20261119b" alt="黄墙黄字" loading="lazy"><figcaption><b>木晓摄</b>黄墙，黄字</figcaption></figure>
-      <figure><img src="w-kevin.jpg" alt="Kevin 在写生" loading="lazy"><figcaption><b>木晓摄</b>Kevin 写生</figcaption></figure>
+      <figure><img src="w-puer.jpg?v=20261119c" alt="普洱的蓝调时刻，城市剪影和晚霞" loading="lazy"><figcaption><b>木晓摄</b>普洱，蓝调时刻</figcaption></figure>
       <figure><img src="p-street.jpg" alt="上海街头的电动车与斑马线" loading="lazy"><figcaption><b>书 3</b>街口</figcaption></figure>
       <figure><img src="p-reed.jpg?v=20261119b" alt="木晓站在芦苇丛里" loading="lazy"><figcaption><b>书 2</b>镜头前的我</figcaption></figure>
       <figure><img src="p-blossom.jpg?v=20261119b" alt="木晓站在樱花树下" loading="lazy"><figcaption><b>书 3</b>镜头前的我</figcaption></figure>
@@ -517,7 +519,7 @@ footer a{color:#D9CFBC;text-decoration:none}
     <h2>以前是一个人，一个相机。<br>这一次，是一群人。</h2>
     <p class="intro">这几件事，现在就可以一起来。</p>
     <div class="nows">
-      <article class="rv"><img src="w-kevin.jpg?v=20261119b" alt="木晓拍的 Kevin 写生" loading="lazy"><div class="tx"><span class="k">我发起的 · 图为木晓摄</span><h3>和木晓拍 100 场展览</h3><p>不再一个人背着相机，而是带着大家，用摄影的方式在展览里发现美、记录美、传递美。第二场去红砖美术馆，碰上周一闭馆，我们就在门口开了一堂课，从横平竖直讲起。</p><q>红砖那扇门没开，我们就自己造了一扇。</q></div></article>
+      <article class="rv"><img src="w-henan.jpg?v=20261119c" alt="夜色里的墙上写着「我是河南人」，墙下一个撑伞的剪影" loading="lazy"><div class="tx"><span class="k">我发起的 · 图为木晓摄于郑州</span><h3>和木晓拍 100 场展览</h3><p>不再一个人背着相机，而是带着大家，用摄影的方式在展览里发现美、记录美、传递美。第二场去红砖美术馆，碰上周一闭馆，我们就在门口开了一堂课，从横平竖直讲起。</p><q>红砖那扇门没开，我们就自己造了一扇。</q></div></article>
       <article class="rv"><img src="p-redbrick.jpg?v=20261119b" alt="几位作者拿着《边玩边赚》站在红砖美术馆门口" loading="lazy"><div class="tx"><span class="k">我发起的</span><h3>边玩边赚全球打卡</h3><p>分布在全球各地的作者，在不同城市、不同风景前，和同一本书合影——书里装着每个人的故事，书外是各自的天空。每天一篇，在公众号「AI边玩边赚」。</p><a class="more" href="#meet">在公众号里看每天的打卡</a></div></article>
       <article class="rv"><div class="tx"><span class="k">2026.11.15 · 空中会客厅 · 第 2 期</span><h3>换一双眼睛看世界</h3><p>千百合 × 木晓。她用 AI 画人物卡，我用练了多年的眼睛看——两双眼睛，看同一个人，会看出什么不一样。</p></div></article>
       <article class="rv"><div class="tx"><span class="k">2027 · 达沃斯 · 与世界围炉</span><h3>随行摄影</h3><p>这一周，我负责把你在达沃斯的样子留下来。</p><a class="more" href="https://www.playandprosper.com/davos/">看达沃斯这一程</a></div></article>
