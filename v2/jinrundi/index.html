@@ -158,6 +158,9 @@ h2{font-family:var(--serif);font-weight:700;font-size:clamp(26px,4.4vw,36px);lin
 
 /* 电子书 */
 .book{padding:88px 0;background:var(--paper)}
+.book .cover{display:block;box-shadow:0 30px 50px -24px rgba(35,51,44,.55);transform:rotate(-2deg);transition:transform .5s}
+.book .cover:hover{transform:rotate(0) translateY(-6px)}
+.book .q{margin-top:14px;font:700 19px/1.7 var(--serif);color:var(--seal)}
 .book .w{display:grid;grid-template-columns:260px 1fr;gap:52px;align-items:center}
 .book .cover{box-shadow:0 22px 50px -18px rgba(30,50,40,.45);border-radius:3px;transform:rotate(-1.5deg)}
 .book p{margin-top:14px;color:var(--ink2)}
@@ -302,6 +305,14 @@ footer a{color:#DCE7E1;text-decoration:none}
 .listen.on{flex-wrap:wrap;border-style:solid;background:var(--paper)}.listen.on audio{width:100%;margin-top:6px}
 
 /* 2026-11-18 自制播放器（和千百合页同款，换成山色） */
+.kit{padding:30px 0 6px}
+.kit .w{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.kit .kt{font:700 13px var(--sans);letter-spacing:.2em;color:var(--jade)}
+.kit ol{list-style:none;display:flex;flex-wrap:wrap;gap:8px;counter-reset:k}
+.kit li{counter-increment:k}
+.kit a{display:inline-flex;align-items:center;gap:6px;padding:6px 13px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:13.5px;color:var(--ink);text-decoration:none;transition:border-color .3s,transform .3s}
+.kit a:before{content:counter(k);font:700 11px var(--sans);color:var(--seal)}
+.kit a:hover{border-color:var(--jade);transform:translateY(-2px)}
 .aps{margin-top:26px;display:grid;gap:14px}
 .ap{display:grid;grid-template-columns:auto 1fr auto;grid-template-areas:"p t s" "k k k";gap:12px 16px;align-items:center;padding:18px 20px;border-radius:14px;background:#fff;border:1px solid var(--line);box-shadow:0 14px 30px -24px rgba(35,51,44,.5)}
 .ap .play{grid-area:p;width:52px;height:52px;border-radius:50%;border:0;background:var(--jade);color:#fff;display:grid;place-items:center;cursor:pointer;transition:transform .3s}
@@ -321,7 +332,7 @@ footer a{color:#DCE7E1;text-decoration:none}
 .ap .bars i:nth-child(2){animation-delay:.2s}.ap .bars i:nth-child(3){animation-delay:.4s}.ap .bars i:nth-child(4){animation-delay:.1s}
 .ap.playing .bars{display:inline-flex}
 @keyframes eq{0%,100%{height:3px}50%{height:12px}}
-.ap:first-child .play{background:var(--seal)}
+
 /* 电脑版：时间线右边放一张随滚动停住的照片 */
 @media(min-width:1000px){
   .road .w.n{max-width:1040px;display:grid;grid-template-columns:minmax(0,600px) 1fr;column-gap:70px}
@@ -337,7 +348,7 @@ footer a{color:#DCE7E1;text-decoration:none}
 @media(min-width:1000px){.road .aside{display:block}}
 </style>
 </head>
-<body>
+<body id="top">
 
 <header class="bar" id="bar">
   <a class="home" href="../"><img src="../img/logo-icon.png" alt="">边玩边赚</a>
@@ -366,7 +377,22 @@ footer a{color:#DCE7E1;text-decoration:none}
   </div>
 </section>
 
-<section class="hello">
+<section class="kit" aria-label="个人品牌七件套">
+  <div class="w">
+    <p class="kt">个人品牌七件套</p>
+    <ol>
+      <li><a href="#hello">人生卡</a></li>
+      <li><a href="#book">电子书</a></li>
+      <li><a href="#take">自我介绍海报</a></li>
+      <li><a href="#take">朋友圈封面</a></li>
+      <li><a href="#watch">有声书</a></li>
+      <li><a href="#watch">故事短片</a></li>
+      <li><a href="#top">个人主页</a></li>
+    </ol>
+  </div>
+</section>
+
+<section class="hello" id="hello">
   <div class="w">
     <div class="stage">
       <div class="glow" aria-hidden="true"></div>
@@ -403,7 +429,7 @@ footer a{color:#DCE7E1;text-decoration:none}
       <div class="stop"><div class="when">这几年</div><h3>做减法</h3><p>凡是让我觉得累的，我都停下来。</p></div>
       <div class="stop"><div class="when">深圳梧桐山</div><h3>老家河沟里也长这个</h3><p>住上来的第一个早上，我去河边走。石头缝里那一丛鱼腥草，薄荷、水竹草、三棱草——全是我们老家河沟边上长的东西。</p><figure><img src="p-hill.jpg" alt="金闰迪在梧桐山上" loading="lazy"><figcaption>梧桐山上</figcaption></figure></div>
     </div>
-    <div class="more"><a class="btn" href="#book">读完整篇故事</a><span>十分钟读完，免费下载</span></div>
+    <div class="more"><a class="btn" href="#book">下载她的电子书</a><span>中英双版，免费下载</span></div>
   </div>
 </section>
 
@@ -416,42 +442,29 @@ footer a{color:#DCE7E1;text-decoration:none}
 
 <section class="book" id="book">
   <div class="w">
-    <img class="cover" src="ebook-cover.jpg" alt="电子书《这座山，是我自己挑的》封面" loading="lazy">
+    <a class="cover" href="book-zh.pdf" target="_blank"><img src="ebook-cover.jpg?v=20261118" alt="电子书《我把每一道痛，都活成了一个身份》封面" loading="lazy"></a>
     <div>
-      <span class="tag">电子书</span>
-      <h2>这座山，是我自己挑的</h2>
-      <p>整篇故事，约 1900 字，十分钟读完。中文版和英文版都可以下载，转给朋友看。</p>
-      <div class="go"><a class="btn" href="ebook-zh.pdf" download>下载中文版</a><a class="btn ghost" href="ebook-en.pdf" download>English edition</a></div>
+      <span class="tag">电子书 · 中英双版</span>
+      <h2>我把每一道痛，<br>都活成了一个身份</h2>
+      <p>选自《边玩边赚：AI 时代的个人品牌》。那年六一，为了一块钱的红领巾，我趴在水沟边找了很久。就在那条水沟边，我心里发了一个誓：这辈子，我再也不向任何人伸手要钱。</p>
+      <p class="q">你怎么活，世界就怎么记住你。</p>
+      <div class="go"><a class="btn" href="book-zh.pdf" download>下载中文版</a><a class="btn ghost" href="book-en.pdf" download>English edition</a></div>
     </div>
   </div>
 </section>
 
-<section class="watch">
+<section class="watch" id="watch">
   <div class="w">
-    <span class="tag">故事短片 · 有声书 · 声音名片 · 双人播客</span>
+    <span class="tag">故事短片 · 有声书</span>
     <h2>看一看，听一听这座山</h2>
     <div class="film"><video src="15.mp4" poster="15.jpg" controls playsinline preload="none"></video></div>
 <div class="aps">
-    <div class="ap">
-      <button class="play" type="button" aria-label="播放：一分半钟，认识我"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></button>
-      <div class="t"><b>一分半钟，认识我 <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span></b><small>声音名片 · 先从这一段听起</small></div>
-      <button class="speed" type="button" aria-label="播放速度">1×</button>
-      <div class="seek"><span class="cur">0:00</span><input type="range" min="0" max="1000" value="0" aria-label="播放进度"><span class="dur">1:24</span></div>
-      <audio src="voice.mp3?v=20261118" preload="none"></audio>
-    </div>
     <div class="ap">
       <button class="play" type="button" aria-label="播放：听我讲这座山"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></button>
       <div class="t"><b>听我讲这座山 <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span></b><small>有声书 · 我自己的声音，路上、睡前都能听</small></div>
       <button class="speed" type="button" aria-label="播放速度">1×</button>
       <div class="seek"><span class="cur">0:00</span><input type="range" min="0" max="1000" value="0" aria-label="播放进度"><span class="dur">11:08</span></div>
       <audio src="audiobook.mp3?v=20261117" preload="none"></audio>
-    </div>
-    <div class="ap">
-      <button class="play" type="button" aria-label="播放：两个人，聊聊我的故事"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></button>
-      <div class="t"><b>两个人，聊聊我的故事 <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span></b><small>双人播客 · 两位主持人一问一答，像一档节目</small></div>
-      <button class="speed" type="button" aria-label="播放速度">1×</button>
-      <div class="seek"><span class="cur">0:00</span><input type="range" min="0" max="1000" value="0" aria-label="播放进度"><span class="dur">6:01</span></div>
-      <audio src="podcast.mp3?v=20261118" preload="none"></audio>
     </div>
     </div>
   </div>
@@ -511,7 +524,7 @@ footer a{color:#DCE7E1;text-decoration:none}
   </div>
 </section>
 
-<section class="take">
+<section class="take" id="take">
   <div class="w">
     <h2>带走一张我</h2>
     <p class="intro">自我介绍海报和朋友圈封面。点开大图，长按保存，转给朋友就是一张名片。</p>
