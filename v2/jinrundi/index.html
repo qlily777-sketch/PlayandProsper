@@ -8,7 +8,7 @@
 <meta name="description" content="金闰迪，丽姿蓝生物科技创始人，肝胆肾结石排毒专家，国家级营养师。湖北房县山里长大，十七岁揣着20元出门，走了大半个中国，如今住在深圳梧桐山。你的身体养回来，你的日子活出来。">
 <meta property="og:title" content="金闰迪 · 这座山，是我自己挑的">
 <meta property="og:description" content="丽姿蓝生物科技创始人 · 肝胆肾结石排毒专家 · 国家级营养师">
-<meta property="og:image" content="https://www.playandprosper.com/v2/jinrundi/card.jpg?v=20261117">
+<meta property="og:image" content="https://www.playandprosper.com/v2/jinrundi/card.jpg?v=20261118">
 <meta name="theme-color" content="#E7ECE6">
 <link rel="icon" href="../img/logo-icon.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"金闰迪","alternateName":"Jin Rundi","jobTitle":"国家级营养师","description":"湖北房县山里长大，十七岁揣着20元出门，走了大半个中国。丽姿蓝生物科技创始人，肝胆肾结石排毒专家，国家级营养师，住在深圳梧桐山。","homeLocation":{"@type":"Place","name":"深圳梧桐山"},"url":"https://www.playandprosper.com/jinrundi/","memberOf":{"@type":"Organization","name":"边玩边赚 Play and Prosper","url":"https://www.playandprosper.com/"}}</script>
@@ -114,6 +114,7 @@ h2{font-family:var(--serif);font-weight:700;font-size:clamp(26px,4.4vw,36px);lin
 .sticker{position:absolute;right:-22px;top:22px;width:86px;height:86px;border-radius:50%;z-index:2;display:grid;place-items:center;text-align:center;
   background:radial-gradient(circle at 35% 30%,#F3F0D8,#C9D9A8);font:900 13px/1.25 var(--serif);color:var(--ink);box-shadow:0 12px 26px rgba(40,70,50,.3),0 0 0 4px #fff}
 .sticker span{display:block;font-size:20px}
+.sticker small{display:block;font-size:10px;letter-spacing:.1em;opacity:.8}
 .book .cover{transform:perspective(1100px) rotateY(-18deg) rotateZ(-2deg);transition:transform .7s cubic-bezier(.2,.7,.2,1);box-shadow:14px 22px 46px -16px rgba(30,50,40,.5)}
 .book .cover:hover{transform:perspective(1100px) rotateY(-4deg) rotateZ(0)}
 .cards a{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
@@ -299,6 +300,41 @@ footer a{color:#DCE7E1;text-decoration:none}
 .elsewhere .k{font-size:12px;color:var(--jade)}
 @media(max-width:600px){.elsewhere{grid-template-columns:1fr}}
 .listen.on{flex-wrap:wrap;border-style:solid;background:var(--paper)}.listen.on audio{width:100%;margin-top:6px}
+
+/* 2026-11-18 自制播放器（和千百合页同款，换成山色） */
+.aps{margin-top:26px;display:grid;gap:14px}
+.ap{display:grid;grid-template-columns:auto 1fr auto;grid-template-areas:"p t s" "k k k";gap:12px 16px;align-items:center;padding:18px 20px;border-radius:14px;background:#fff;border:1px solid var(--line);box-shadow:0 14px 30px -24px rgba(35,51,44,.5)}
+.ap .play{grid-area:p;width:52px;height:52px;border-radius:50%;border:0;background:var(--jade);color:#fff;display:grid;place-items:center;cursor:pointer;transition:transform .3s}
+.ap .play:hover{transform:scale(1.06)}
+.ap .play svg{width:20px;height:20px;margin-left:2px}
+.ap.playing .play svg{margin-left:0}
+.ap .t{grid-area:t;min-width:0}
+.ap .t b{display:flex;align-items:center;gap:10px;font:700 17px/1.4 var(--serif);color:var(--ink)}
+.ap .t small{display:block;font-size:13px;color:var(--ink2);margin-top:2px}
+.ap .speed{grid-area:s;border:1px solid var(--line);background:transparent;border-radius:999px;padding:7px 12px;font:700 12px var(--sans);color:var(--jade);cursor:pointer}
+.ap .seek{grid-area:k;display:flex;align-items:center;gap:12px;font:12px var(--sans);color:var(--ink2);font-variant-numeric:tabular-nums}
+.ap .seek input{flex:1;-webkit-appearance:none;appearance:none;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--jade) var(--p,0%),var(--mist2) 0);outline:0}
+.ap .seek input::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:var(--jade);border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.ap .seek input::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--jade);border:2px solid #fff}
+.ap .bars{display:none;gap:2px;align-items:flex-end;height:12px}
+.ap .bars i{width:3px;background:var(--seal);border-radius:2px;animation:eq .9s ease-in-out infinite}
+.ap .bars i:nth-child(2){animation-delay:.2s}.ap .bars i:nth-child(3){animation-delay:.4s}.ap .bars i:nth-child(4){animation-delay:.1s}
+.ap.playing .bars{display:inline-flex}
+@keyframes eq{0%,100%{height:3px}50%{height:12px}}
+.ap:first-child .play{background:var(--seal)}
+/* 电脑版：时间线右边放一张随滚动停住的照片 */
+@media(min-width:1000px){
+  .road .w.n{max-width:1040px;display:grid;grid-template-columns:minmax(0,600px) 1fr;column-gap:70px}
+  .road .w.n>*{grid-column:1}
+  .road .w.n>.aside{grid-column:2;grid-row:1/span 5}
+  .road .aside{grid-column:2;grid-row:1/span 4;position:relative}
+  .road .aside figure{position:sticky;top:110px;margin-top:120px;transform:rotate(2deg)}
+  .road .aside img{border-radius:6px;box-shadow:0 0 0 8px #fff,0 30px 60px -24px rgba(35,51,44,.55)}
+  .road .aside figcaption{margin-top:14px;font-size:13px;color:var(--ink2);text-align:center}
+  .road .stop figure{display:none}
+}
+.road .aside{display:none}
+@media(min-width:1000px){.road .aside{display:block}}
 </style>
 </head>
 <body>
@@ -335,15 +371,15 @@ footer a{color:#DCE7E1;text-decoration:none}
     <div class="stage">
       <div class="glow" aria-hidden="true"></div>
       <div class="floaty">
-        <a class="tilt" id="tilt" href="card.jpg?v=20261117" target="_blank" aria-label="打开金闰迪的人生卡大图">
-          <img src="card.jpg?v=20261117" alt="金闰迪的人生卡：今天遇见谁 · 第 33 位" loading="lazy">
+        <a class="tilt" id="tilt" href="card.jpg?v=20261118" target="_blank" aria-label="打开金闰迪的人生卡大图">
+          <img src="card.jpg?v=20261118" alt="金闰迪的人生卡：今天遇见谁 · 书5 №33" loading="lazy">
           <span class="shine" aria-hidden="true"></span>
         </a>
       </div>
-      <div class="sticker" aria-hidden="true"><div>入场券<span>№33</span></div></div>
+      <div class="sticker" aria-hidden="true"><div>入场券<span>№33</span><small>书 5</small></div></div>
     </div>
     <div>
-      <span class="tag"><b>①</b>人生卡 · 今天遇见谁 · 第 33 位</span>
+      <span class="tag">人生卡 · 今天遇见谁 · 书5 №33</span>
       <h2>你好，我是金闰迪</h2>
       <p>从湖北房县的大山，走到深圳梧桐山，我走了大半辈子。</p>
       <p>现在，我在梧桐山过自己挑的日子。山里有茶，有花草，有素食，也有愿意慢下来聊聊天的人。云谷精舍的素食体验，已经办到第 36 期。</p>
@@ -354,6 +390,7 @@ footer a{color:#DCE7E1;text-decoration:none}
 
 <section class="road" id="road">
   <div class="w n">
+    <aside class="aside" aria-hidden="true"><figure><img src="p-hill.jpg" alt="" loading="lazy"><figcaption>梧桐山上</figcaption></figure></aside>
     <h2>从那座山，到这座山</h2>
     <p class="intro">书 5《走遍世界，活成自己》里，我写了这一路。</p>
     <div class="path">
@@ -381,7 +418,7 @@ footer a{color:#DCE7E1;text-decoration:none}
   <div class="w">
     <img class="cover" src="ebook-cover.jpg" alt="电子书《这座山，是我自己挑的》封面" loading="lazy">
     <div>
-      <span class="tag"><b>②</b>电子书</span>
+      <span class="tag">电子书</span>
       <h2>这座山，是我自己挑的</h2>
       <p>整篇故事，约 1900 字，十分钟读完。中文版和英文版都可以下载，转给朋友看。</p>
       <div class="go"><a class="btn" href="ebook-zh.pdf" download>下载中文版</a><a class="btn ghost" href="ebook-en.pdf" download>English edition</a></div>
@@ -391,12 +428,32 @@ footer a{color:#DCE7E1;text-decoration:none}
 
 <section class="watch">
   <div class="w">
-    <span class="tag"><b>⑮</b>故事短片</span>
+    <span class="tag">故事短片 · 有声书 · 声音名片 · 双人播客</span>
     <h2>看一看，听一听这座山</h2>
     <div class="film"><video src="15.mp4" poster="15.jpg" controls playsinline preload="none"></video></div>
-    <div class="listen on"><i>⑩</i><div><b>听我讲这座山</b>有声书 · 11 分钟 · 我自己的声音，路上、睡前都能听</div><audio src="audiobook.mp3" controls preload="none"></audio></div>
-    <div class="listen on"><i>⑨</i><div><b>一分半钟，认识我</b>声音名片 · 1 分 24 秒</div><audio src="voice.mp3?v=20261118" controls preload="none"></audio></div>
-    <div class="listen on"><i>⑪</i><div><b>两个人，聊聊我的故事</b>双人播客 · 6 分钟 · 两位主持人聊我的故事，像一档节目</div><audio src="podcast.mp3?v=20261118" controls preload="none"></audio></div>
+<div class="aps">
+    <div class="ap">
+      <button class="play" type="button" aria-label="播放：一分半钟，认识我"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></button>
+      <div class="t"><b>一分半钟，认识我 <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span></b><small>声音名片 · 先从这一段听起</small></div>
+      <button class="speed" type="button" aria-label="播放速度">1×</button>
+      <div class="seek"><span class="cur">0:00</span><input type="range" min="0" max="1000" value="0" aria-label="播放进度"><span class="dur">1:24</span></div>
+      <audio src="voice.mp3?v=20261118" preload="none"></audio>
+    </div>
+    <div class="ap">
+      <button class="play" type="button" aria-label="播放：听我讲这座山"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></button>
+      <div class="t"><b>听我讲这座山 <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span></b><small>有声书 · 我自己的声音，路上、睡前都能听</small></div>
+      <button class="speed" type="button" aria-label="播放速度">1×</button>
+      <div class="seek"><span class="cur">0:00</span><input type="range" min="0" max="1000" value="0" aria-label="播放进度"><span class="dur">11:08</span></div>
+      <audio src="audiobook.mp3?v=20261117" preload="none"></audio>
+    </div>
+    <div class="ap">
+      <button class="play" type="button" aria-label="播放：两个人，聊聊我的故事"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></button>
+      <div class="t"><b>两个人，聊聊我的故事 <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span></b><small>双人播客 · 两位主持人一问一答，像一档节目</small></div>
+      <button class="speed" type="button" aria-label="播放速度">1×</button>
+      <div class="seek"><span class="cur">0:00</span><input type="range" min="0" max="1000" value="0" aria-label="播放进度"><span class="dur">6:01</span></div>
+      <audio src="podcast.mp3?v=20261118" preload="none"></audio>
+    </div>
+    </div>
   </div>
 </section>
 
@@ -460,8 +517,8 @@ footer a{color:#DCE7E1;text-decoration:none}
     <p class="intro">自我介绍海报和朋友圈封面。点开大图，长按保存，转给朋友就是一张名片。</p>
     <div class="cards">
       
-      <a href="poster.jpg?v=20261118" target="_blank"><img src="poster.jpg?v=20261118" alt="金闰迪的自我介绍海报" loading="lazy"><span><span class="tag"><b>④</b></span>自我介绍海报</span></a>
-      <a href="moments.jpg?v=20261117" target="_blank"><img src="moments.jpg?v=20261117" alt="金闰迪的朋友圈封面" loading="lazy"><span><span class="tag"><b>⑧</b></span>朋友圈封面</span></a>
+      <a href="poster.jpg?v=20261118" target="_blank"><img src="poster.jpg?v=20261118" alt="金闰迪的自我介绍海报" loading="lazy"><span>自我介绍海报</span></a>
+      <a href="moments.jpg?v=20261117" target="_blank"><img src="moments.jpg?v=20261117" alt="金闰迪的朋友圈封面" loading="lazy"><span>朋友圈封面</span></a>
     </div>
     <button class="share" type="button" id="share">把这一页转给一位朋友</button>
   </div>
@@ -522,6 +579,23 @@ footer a{color:#DCE7E1;text-decoration:none}
       document.querySelectorAll('.ways div').forEach(function(d){d.classList.toggle('hit',d.id===t[2])});
     });
   });
+
+  // 自制播放器：同一时间只放一个
+  var P='M7 4.5v15l13-7.5z',Q='M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z',S=[1,1.25,1.5,.8],all=[];
+  function mm(x){x=Math.max(0,Math.floor(x||0));return Math.floor(x/60)+':'+('0'+x%60).slice(-2)}
+  document.querySelectorAll('.ap').forEach(function(box){
+    var a=box.querySelector('audio'),b=box.querySelector('.play'),ic=b.querySelector('path'),r=box.querySelector('input'),c=box.querySelector('.cur'),d=box.querySelector('.dur'),sp=box.querySelector('.speed'),dr=false,k=0,lab=b.getAttribute('aria-label');
+    all.push(a);
+    b.addEventListener('click',function(){if(a.paused){a.play()}else a.pause()});
+    a.addEventListener('play',function(){all.forEach(function(x){if(x!==a)x.pause()});document.querySelectorAll('video').forEach(function(v){v.pause()});box.classList.add('playing');ic.setAttribute('d',Q);b.setAttribute('aria-label','暂停')});
+    a.addEventListener('pause',function(){box.classList.remove('playing');ic.setAttribute('d',P);b.setAttribute('aria-label',lab)});
+    a.addEventListener('loadedmetadata',function(){d.textContent=mm(a.duration)});
+    a.addEventListener('timeupdate',function(){if(dr||!a.duration)return;var p=a.currentTime/a.duration*1000;r.value=p;r.style.setProperty('--p',p/10+'%');c.textContent=mm(a.currentTime)});
+    r.addEventListener('input',function(){dr=true;r.style.setProperty('--p',r.value/10+'%');c.textContent=mm(r.value/1000*(a.duration||0))});
+    r.addEventListener('change',function(){if(a.duration)a.currentTime=r.value/1000*a.duration;dr=false;if(a.paused)a.play()});
+    sp.addEventListener('click',function(){k=(k+1)%S.length;a.playbackRate=S[k];sp.textContent=S[k]+'×'});
+  });
+  document.querySelectorAll('video').forEach(function(v){v.addEventListener('play',function(){all.forEach(function(x){x.pause()})})});
 
   var toast=document.createElement('div');toast.className='toast';document.body.appendChild(toast);
   function say(s){toast.textContent=s;toast.classList.add('on');setTimeout(function(){toast.classList.remove('on')},2200)}
