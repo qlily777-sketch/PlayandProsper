@@ -204,6 +204,23 @@ nav.scrolled{border-color:var(--line)}
 .rain-q{font-family:var(--serif);font-size:clamp(20px,4.6vw,26px);color:#fff;margin-top:6px}
 .rain-a{font-family:var(--serif);font-size:clamp(20px,4.6vw,26px);color:#F6B24E;margin:4px 0 16px}
 .rain-c{font-family:var(--serif);font-size:18px;color:#F6B24E;margin-top:14px}
+.homes{margin-top:22px;padding:22px 18px 20px;border-radius:18px;background:linear-gradient(180deg,#ffffff12,#ffffff06);border:1px solid #F6B24E55}
+.homes-h{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.homes-h b{font-family:var(--serif);font-size:20px;color:#F6B24E}
+.homes-h span{font-size:13px;color:#cfd9d5}
+.homes ul{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px}
+.homes a{display:block;text-align:center;color:#fff;padding:10px 4px 12px;border-radius:14px;transition:background .3s,transform .3s}
+.homes a:hover{background:#ffffff14;transform:translateY(-3px)}
+.homes img{width:64px;height:64px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 8px;border:3px solid #F6B24E;box-shadow:0 0 0 0 #F6B24E88;animation:homeGlow 2.8s ease-in-out infinite}
+.homes li:nth-child(2) img{animation-delay:.5s}.homes li:nth-child(3) img{animation-delay:1s}.homes li:nth-child(4) img{animation-delay:1.5s}.homes li:nth-child(5) img{animation-delay:2s}
+@keyframes homeGlow{0%,100%{box-shadow:0 0 0 0 #F6B24E00}50%{box-shadow:0 0 0 6px #F6B24E33,0 0 22px #F6B24E66}}
+.homes b{display:block;font-size:14px}
+.homes small{display:block;font-size:11px;color:#cfd9d5;margin-top:2px;line-height:1.35;min-height:2.7em}
+.homes em{display:inline-block;white-space:nowrap;margin-top:6px;font-style:normal;font-size:11px;font-weight:700;color:#1c2b27;background:#F6B24E;border-radius:999px;padding:3px 9px}
+.forest-sub{margin-top:26px;font-size:13px;color:#cfd9d5}
+@media(max-width:600px){.homes{padding:16px 10px}.homes ul{gap:2px}.homes img{width:52px;height:52px;border-width:2px}.homes b{font-size:13px}.homes small{display:none}.homes b{margin-bottom:2px}.homes em{font-size:10px;padding:2px 7px}}
+@media(min-width:860px){.homes img{width:84px;height:84px}.homes b{font-size:16px}.homes small{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.homes img{animation:none}}
 .forest-head{margin-top:26px;font-family:var(--serif);font-size:18px;color:#cfd9d5}
 .forest-head b{font-size:40px;color:#F6B24E;margin-right:4px}
 .forest{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:14px 8px;margin-top:16px}
@@ -491,7 +508,7 @@ footer .say i{font-style:normal;display:inline-block;margin:4px 4px 0 0;padding:
     <div class="stat"><b>115</b><span>位作者</span></div>
     <div class="stat"><b>9</b><span>个国家和地区</span></div>
   </div>
-  <p class="cred">当当影响力作家 <a href="https://www.playandprosper.com/haifeng/">李海峰</a>、<a href="lily/">千百合</a>、邹娜、金雨麒。下一位，可能就是你。</p>
+  <p class="cred">当当影响力作家 <a href="https://www.playandprosper.com/haifeng">李海峰</a>、<a href="lily/">千百合</a>、邹娜、金雨麒。下一位，可能就是你。</p>
 </div></section>
 
 <section class="stars" id="stars"><div class="wrap">
@@ -502,14 +519,23 @@ footer .say i{font-style:normal;display:inline-block;margin:4px 4px 0 0;padding:
   <p class="lead">边玩边赚也是这样长出来的。写第一本书的时候，有人策划开营，有人剪视频，有人发起写作挑战，有人提议成立工作组，有人组成护航队。一本一本走下来，有人推荐新作者进来，有人在自己的城市办读书会，有人张罗新书发布会。每一位作者都是这片雨林的主人，每个人都会有自己的个人主页，陆续上线中。</p>
   <p class="rain-c">当我们彼此成就，世界便回以丰盛。</p>
   <div class="forest-head"><b>115</b> 位作者，还在长</div>
+  <div class="homes">
+    <p class="homes-h"><b>点开，看主页</b><span>已上线 5 位，陆续还有</span></p>
+    <ul>
+      <li><a href="https://www.playandprosper.com/haifeng"><img src="img/av-haifeng.jpg?v=3" alt="李海峰" loading="lazy"><b>李海峰</b><small>出品人 · 主编</small><em>主页 →</em></a></li>
+      <li><a href="lily/"><img src="img/authors/a001.jpg?v=3" alt="千百合" loading="lazy"><b>千百合</b><small>联合创始人</small><em>主页 →</em></a></li>
+      <li><a href="jinrundi/"><img src="img/authors/a003.jpg?v=5" alt="金闰迪" loading="lazy"><b>金闰迪</b><small>国家认证营养师</small><em>主页 →</em></a></li>
+      <li><a href="wanke/"><img src="img/authors/a081.jpg?v=3" alt="万可" loading="lazy"><b>万可</b><small>读书会发起人</small><em>主页 →</em></a></li>
+      <li><a href="xiaoping/"><img src="img/authors/a099.jpg?v=3" alt="肖萍" loading="lazy"><b>肖萍</b><small>第一任计算机老师</small><em>主页 →</em></a></li>
+    </ul>
+  </div>
+  <p class="forest-sub">其余作者的主页，正在一位一位做出来</p>
   <ul class="forest" id="forest">
-    <li class="has-page" title="李海峰 · 出品人、主编"><a href="https://www.playandprosper.com/haifeng/"><img src="img/av-haifeng.jpg?v=3" alt="李海峰" loading="lazy"><span>李海峰</span></a></li>
     <li title="文亮 · 书1、书2、书3、书4、书5 · 一名感性的理工男"><img src="img/authors/a014.jpg?v=3" alt="文亮" loading="lazy"><span>文亮</span></li>
     <li title="木晓 · 书1、书2、书3、书4、书5 · 正念摄影艺术家"><img src="img/authors/a031.jpg?v=3" alt="木晓" loading="lazy"><span>木晓</span></li>
     <li title="邹娜 · 书1、书2、书3、书4、书5 · AI智能体私域营销顾问"><img src="img/authors/a025.jpg?v=3" alt="邹娜" loading="lazy"><span>邹娜</span></li>
     <li title="窈窕姐姐（邓琇文） · 书3、书5 · 国家一级礼仪师"><img src="img/authors/a069.jpg?v=3" alt="窈窕姐姐" loading="lazy"><span>窈窕姐姐</span></li>
     <li title="荣辉 · 书1、书2、书3、书4、书5 · 多资产经营者"><img src="img/authors/a013.jpg?v=3" alt="荣辉" loading="lazy"><span>荣辉</span></li>
-    <li class="has-page" title="金闰迪 · 书1、书2、书3、书4、书5 · 国家认证营养师"><a href="jinrundi/"><img src="img/authors/a003.jpg?v=5" alt="金闰迪" loading="lazy"><span>金闰迪</span></a></li>
     <li title="德州康姐 · 书1、书2、书3、书4、书5 · 全球事业开拓者"><img src="img/authors/a006.jpg?v=3" alt="德州康姐" loading="lazy"><span>德州康姐</span></li>
     <li title="杰森 · 书1、书2、书3、书4、书5 · 第二曲线开拓者"><img src="img/authors/a007.jpg?v=3" alt="杰森" loading="lazy"><span>杰森</span></li>
     <li title="馨怡 · 书2、书3、书4、书5 · 从一张折叠桌起步的加拿大CPA"><img src="img/authors/a047.jpg?v=3" alt="馨怡" loading="lazy"><span>馨怡</span></li>
@@ -526,14 +552,13 @@ footer .say i{font-style:normal;display:inline-block;margin:4px 4px 0 0;padding:
     <li title="洪梓萱 · 书4 · 诗人"><img src="img/authors/a090.jpg?v=3" alt="洪梓萱" loading="lazy"><span>洪梓萱</span></li>
     <li title="小屿 · 书4 · 玩愈岛 IP 主理人"><img src="img/authors/a086.jpg?v=3" alt="小屿" loading="lazy"><span>小屿</span></li>
     <li title="易辰 · 书2、书4"><img src="img/authors/a044.jpg?v=3" alt="易辰" loading="lazy"><span>易辰</span></li>
-    <li title="万可 · 书3、书4 · 帮35+女性用真实活法，重建身心秩序"><img src="img/authors/a081.jpg?v=3" alt="万可" loading="lazy"><span>万可</span></li>
     <li title="魏宏翰 · 书1、书2、书3、书4 · 极客玩家"><img src="img/authors/a019.jpg?v=3" alt="魏宏翰" loading="lazy"><span>魏宏翰</span></li>
     <li title="卢蔚青 · 书1、书3、书4、书5 · 房地产规划与投资管理者"><img src="img/authors/a028.jpg?v=3" alt="卢蔚青" loading="lazy"><span>卢蔚青</span></li>
     <li title="贺丽轩 · 书1、书2、书3 · 以色列华人跨文化连接者"><img src="img/authors/a022.jpg?v=3" alt="贺丽轩" loading="lazy"><span>贺丽轩</span></li>
     <li title="袁星光 · 书1、书5 · 幸福导师"><img src="img/authors/a002.jpg?v=4" alt="袁星光" loading="lazy"><span>袁星光</span></li>
     <li title="王伊迪 · 书1、书3 · 金融风控实战派"><img src="img/authors/a008.jpg?v=3" alt="王伊迪" loading="lazy"><span>王伊迪</span></li>
     <li title="无为（上海） · 书3、书5 · 自学日/韩/英三语的跨境创业者"><img src="img/authors/a012.jpg?v=4" alt="无为（上海）" loading="lazy"><span>无为（上海）</span></li>
-    <li title="无为（伦敦） · 书1、书2 · 伦敦AWA自然医学学院创始人"><img src="img/authors/a012b.jpg?v=4" alt="无为（伦敦）" loading="lazy"><span>无为（伦敦）</span></li>
+    <li title="无为（伦敦） · 书1、书2 · 伦敦AWA自然医学学院创始人"><img src="img/authors/a012b.jpg?v=5" alt="无为（伦敦）" loading="lazy"><span>无为（伦敦）</span></li>
     <li title="玄音徵阳 · 书1、书2 · 文旅部中华文促会乐道文化首席导师"><img src="img/authors/a034.jpg?v=4" alt="玄音徵阳" loading="lazy"><span>玄音徵阳</span></li>
     <li title="田华瀚 · 书1、书4 · 走遍全球193国的旅行者"><img src="img/authors/a035.jpg?v=3" alt="田华瀚" loading="lazy"><span>田华瀚</span></li>
     <li title="明月常在 · 书2、书4 · 五序生命花园园丁"><img src="img/authors/a043.jpg?v=3" alt="明月常在" loading="lazy"><span>明月常在</span></li>
@@ -597,7 +622,6 @@ footer .say i{font-style:normal;display:inline-block;margin:4px 4px 0 0;padding:
     <li title="也红 · 书4 · 情绪翻译官"><img src="img/authors/a094.jpg?v=3" alt="也红" loading="lazy"><span>也红</span></li>
     <li title="黄庆 · 书4 · 一人公司创业者"><img src="img/authors/a095.jpg?v=3" alt="黄庆" loading="lazy"><span>黄庆</span></li>
     <li title="杨淇 · 书4 · 五行经络瑜伽创始人"><img src="img/authors/a097.jpg?v=3" alt="杨淇" loading="lazy"><span>杨淇</span></li>
-    <li title="肖萍 · 书5 · 学校里第一任计算机老师"><img src="img/authors/a099.jpg?v=3" alt="肖萍" loading="lazy"><span>肖萍</span></li>
     <li title="陈敏飞 · 书5 · 美国联邦医疗保险资深代理人"><img src="img/authors/a101.jpg?v=3" alt="陈敏飞" loading="lazy"><span>陈敏飞</span></li>
     <li title="曹例雄 · 书5 · 皮肤与健康管理导师"><img src="img/authors/a102.jpg?v=3" alt="曹例雄" loading="lazy"><span>曹例雄</span></li>
     <li title="王洁 · 书5 · 纽约州、新泽西州执照中医师并创办诊所"><img src="img/authors/a103.jpg?v=4" alt="王洁" loading="lazy"><span>王洁</span></li>
@@ -618,7 +642,6 @@ footer .say i{font-style:normal;display:inline-block;margin:4px 4px 0 0;padding:
     <li title="贾洪涛 · 书2"><img src="img/authors/jia.jpg?v=4" alt="贾洪涛" loading="lazy"><span>贾洪涛</span></li>
     <li title="神仙姐姐 · 书2"><img src="img/authors/shenxian.jpg?v=3" alt="神仙姐姐" loading="lazy"><span>神仙姐姐</span></li>
     <li title="Ai浩叔 · 书3 · 全国省市各级新闻奖获得者"><i>A</i><span>Ai浩叔</span></li>
-    <li class="has-page" title="千百合 · 出品人 · 书1、书2、书3、书4、书5 · 老板IP商业重构师"><a href="lily/"><img src="img/authors/a001.jpg?v=3" alt="千百合" loading="lazy"><span>千百合</span></a></li>
     <li class="next-tree"><a href="#wan"><i>你</i><span>下一棵，是你</span></a></li>
   </ul>
   <button class="forest-more" id="forestMore" type="button">展开整片雨林</button>
