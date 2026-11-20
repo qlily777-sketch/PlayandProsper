@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex, nofollow">
 <title>李海峰 · 出品了一百多本书的主编 | 边玩边赚</title>
 <meta name="description" content="李海峰，畅销书出品人、独立投资人、DISC+社群联合创始人，2020—2026 年每年都是当当影响力作家。出品一百多本书，让两千个普通人的名字第一次变成铅字。边玩边赚书系出品人、主编。">
-<meta property="og:title" content="李海峰 · 一百本书，两千个名字">
+<meta property="og:title" content="李海峰｜出品一百多本书，更在意两千个第一次出书的人">
 <meta property="og:description" content="畅销书出品人 · 独立投资人 · DISC+社群联合创始人 · 边玩边赚书系出品人、主编">
 <meta property="og:image" content="https://www.playandprosper.com/v2/lihaifeng/share.jpg?v=20261119c">
 <meta name="theme-color" content="#1B130E">
@@ -384,6 +384,59 @@ footer .sign img:first-child{height:54px;width:auto;filter:brightness(1.6) satur
 footer .sign img:last-child{height:40px;width:auto;transform:rotate(-3deg)}
 footer .motto{font:400 17px/1.8 var(--serif);color:#E9DFCB;letter-spacing:.2em;margin-bottom:22px}
 @media(prefers-reduced-motion:reduce){.js .rv{filter:none}.glint{display:none}}
+
+/* ===== 三方评审后：克制版 ===== */
+.js .rv{transform:translateY(16px);filter:none;transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.hero h1 em{background-size:100% 100%;background:linear-gradient(100deg,#D9A84E,#F2D08A 50%,#D9A84E);-webkit-background-clip:text;background-clip:text;animation:none}
+.hero .nm .n{animation:up .7s var(--ease) .15s forwards}
+.hero .nm .s{transform:rotate(-3deg) scale(1.22);animation:stamp .45s cubic-bezier(.22,1,.36,1) .65s forwards}
+.rw{animation:wallin .8s var(--ease) 0s forwards;translate:none}
+.stage .por{animation:up .8s var(--ease) .35s forwards;translate:none}
+.hero .sub{margin-top:16px;font:400 clamp(16px,1.6vw,19px)/1.75 var(--serif);color:#E9DFCB;letter-spacing:.03em}
+.hero .tags{margin-top:18px}
+.btn small{font:400 11.5px/1 var(--sans);opacity:.7;margin-left:2px}
+/* 浅底上的金色小字加深，保证看得清 */
+.xu .kick,.who .kick,.with .kick,.idsec .kick,.take .kick,.meet .kick{color:#94692A}
+.ids b,.meet li b{color:#94692A}
+.tli time{color:#8C6428}
+.hint{font-size:13px;color:var(--mute);margin-top:22px;letter-spacing:.06em}
+.hint:before{content:"☞ ";color:var(--gold)}
+.shelf5{margin-top:22px}
+.bk img{opacity:.78;transition:opacity .3s,transform .45s var(--ease),filter .3s}
+.bk:hover img,.bk[aria-selected=true] img{opacity:1}
+.bk[aria-selected=true] img{transform:translateY(-6px)}
+.page.flip{animation:pg .32s var(--ease)}
+/* 时间线：拍立得少歪一点；手机单数不留空 */
+.tli .pol{transform:rotate(calc(var(--r) * .45))}
+@media(max-width:860px){.tli:last-child:nth-child(odd){grid-column:1/-1;width:calc(50% - 7px);justify-self:center}}
+/* 金句：一大七小，用宋体（访客设备上本来就是宋体） */
+.wd p{font:400 19px/1.75 var(--serif);letter-spacing:.04em}
+.words .g{columns:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.wd{margin:0}
+.wd.big{grid-column:1/-1;padding:40px 44px 30px;text-align:center;background:linear-gradient(180deg,rgba(229,193,122,.12),rgba(229,193,122,.03));border-color:rgba(229,193,122,.4)}
+.wd.big:before{left:50%;transform:translateX(-50%);top:4px}
+.wd.big p{font:700 clamp(26px,3.4vw,36px)/1.5 var(--serif);color:var(--gold2);letter-spacing:.12em}
+.wd:last-child{grid-column:1/-1;text-align:center;padding:26px 26px 20px}
+.wd:last-child:before{left:50%;transform:translateX(-50%)}
+.wd:last-child p{font-size:22px;color:var(--gold2)}
+@media(max-width:860px){.words .g{grid-template-columns:1fr}.wd.big{padding:34px 22px 24px}}
+.page .sig b{font:700 30px/1.3 var(--serif);letter-spacing:.2em}
+/* 生日礼物：页尾番外，轻一些 */
+.gift{padding:0 0 70px;background:var(--paper)}
+.gift .box{padding:26px clamp(20px,4vw,44px);gap:26px}
+.gift .bkc{width:116px;padding:14px 12px}
+.gift .bkc b{font-size:14px}.gift .bkc small{font-size:9.5px}
+.gift h3{font-size:clamp(19px,2.2vw,22px)}
+.gift p{font-size:14.5px}
+.meet{padding-bottom:64px}
+/* 手机第一屏：人叠在书墙右下角 */
+@media(max-width:900px){
+  .stage{padding-bottom:22%}
+  .stage .por{position:absolute;right:-2%;bottom:0;width:40%;margin:0}
+  .stage .note{position:absolute;left:0;right:42%;bottom:6%;text-align:left;font-size:11.5px;line-height:1.6}
+  .hero .in{padding-bottom:40px}
+  .gift .box{grid-template-columns:auto 1fr}
+}
 </style>
 </head>
 <body>
@@ -412,14 +465,15 @@ footer .motto{font:400 17px/1.8 var(--serif);color:#E9DFCB;letter-spacing:.2em;m
       <div class="nm"><img class="n" src="name2.png" alt="李海峰"><img class="s" src="seal2.png" alt=""></div>
       <div class="en">LI HAIFENG</div>
       <h1>出品了<em>一百多本书</em><span style="white-space:nowrap">的主编</span></h1>
+      <p class="sub">一百多本书，是他的作品。<br>两千个第一次出书的人，是他更在意的事。</p>
       <div class="tags"><span>畅销书出品人</span><span>独立投资人</span><span>DISC+社群联合创始人</span><span>当当影响力作家 · 2020—2026</span></div>
       <div class="row">
         <a class="btn" href="#xu">读他写的序</a>
-        <a class="btn ghost" href="#take">带走一张他</a>
+        <a class="btn ghost" href="#take">带走一张他<small>人生卡 · 名片</small></a>
       </div>
     </div>
     <div class="stage">
-      <figure class="rw" id="bwall"><span class="glint" aria-hidden="true"></span><img src="bookwall100.jpg?v=20261119c" alt="李海峰老师出品的书墙：已出品出版 100 本实体书" width="2000" height="1379"></figure>
+      <figure class="rw" id="bwall"><img src="bookwall100c.jpg?v=20261120" alt="李海峰老师出品的书墙：已出品出版 100 本实体书" width="2000" height="1231"></figure>
       <div class="por"><img src="portrait-fade.webp?v=20261120" alt="李海峰老师形象照" width="1000" height="1637"></div>
       <p class="note">他出品出版的 100 本实体书 · 边玩边赚就在最下面一排</p>
     </div>
@@ -446,6 +500,7 @@ footer .motto{font:400 17px/1.8 var(--serif);color:#E9DFCB;letter-spacing:.2em;m
     <div class="kick rv"><i class="yin">壹</i>他为边玩边赚写的序</div>
     <h2 class="rv">每一本，<em>他都先写一页</em></h2>
     <p class="lead rv">边玩边赚书系，他和千百合一起担任出品人。每一本书的第一页，是他写的序。点一本书，读那一篇。</p>
+    <p class="hint rv">点开任意一本，读他写的那一篇</p>
     <div class="shelf5 rv" role="tablist" aria-label="选择一本书">
       <button class="bk" role="tab" aria-selected="true" data-x="x1"><img src="c1.webp?v=20261120c" alt="《边玩边赚：AI 时代的自由人生》封面"><span>AI 时代的自由人生</span></button>
       <button class="bk" role="tab" aria-selected="false" data-x="x2"><img src="c2.webp?v=20261120c" alt="《边玩边赚：人人都能做 AI 智能体》封面"><span>人人都能做 AI 智能体</span></button>
@@ -549,7 +604,7 @@ footer .motto{font:400 17px/1.8 var(--serif);color:#E9DFCB;letter-spacing:.2em;m
     </article>
 
     <article class="page" id="x5" hidden>
-      <div class="tl"><span>边玩边赚 · 走遍世界，活成自己</span><em>北京日报出版社 · 出版中</em></div>
+      <div class="tl"><span>海峰 · 序 &nbsp;|&nbsp; 边玩边赚 5</span><em>北京日报出版社 · 出版中 · 序言待更新</em></div>
       <h3>世界是一本书，这次你来写。</h3>
       <div class="body"><p>这一本正在出版的路上，36 位作者从世界各地写回来。书到了，他的序也会放在这里。</p></div>
     </article>
@@ -591,7 +646,7 @@ footer .motto{font:400 17px/1.8 var(--serif);color:#E9DFCB;letter-spacing:.2em;m
     <div class="kick rv"><i class="yin">肆</i>他常说的话</div>
     <h2 class="rv">一句一句，<em>都是他做过的事</em></h2>
     <div class="g">
-      <div class="wd rv"><p>不做旁观者，勇做组局人。</p><small>2026 年 4 月，生日嘉年华开场</small></div>
+      <div class="wd big rv"><p>不做旁观者，勇做组局人。</p><small>2026 年 4 月，生日嘉年华开场</small></div>
       <div class="wd rv"><p>独著代表专业水平，合集代表江湖地位。</p><small>他摸索出的新打法：把独著和合集放进同一本书</small></div>
       <div class="wd rv"><p>只让别人锦上添花，不要让别人雪中送炭。</p><small>他出品的书，先做到第一，再请朋友转发</small></div>
       <div class="wd rv"><p>创造不在场的影响力。</p><small>送出去的书，搬家也不会扔</small></div>
@@ -632,16 +687,6 @@ footer .motto{font:400 17px/1.8 var(--serif);color:#E9DFCB;letter-spacing:.2em;m
   </div>
 </section>
 
-<!-- 一份生日礼物 -->
-<section class="gift">
-  <div class="w">
-    <a class="box rv" href="https://www.playandprosper.com/haifeng" style="text-decoration:none">
-      <div class="bkc"><b>不做旁观者，<br>勇做组局人</b><small>海峰老师生日嘉年华<br>众友现场实录</small></div>
-      <div><div class="kick" style="color:var(--gold2)">一份生日礼物</div><h3>8 天，38 位嘉宾，一本书</h3><p>2026 年 4 月，海峰老师的生日嘉年华在直播间开了 8 天。边玩边赚团队把 38 段即时演讲整理成书，在他生日当天送到他手上。点开，读整本 →</p></div>
-    </a>
-  </div>
-</section>
-
 <!-- 加微信 -->
 <section class="meet" id="meet">
   <div class="w g">
@@ -657,6 +702,16 @@ footer .motto{font:400 17px/1.8 var(--serif);color:#E9DFCB;letter-spacing:.2em;m
       <div class="else rv"><span>视频号 <b>畅销书出品人.李海峰</b></span><span>公众号 <b>李海峰DISC</b></span></div>
     </div>
     <div class="qr rv"><img src="wechat.png" alt="李海峰老师的微信二维码" loading="lazy"><p>微信扫一扫 · 加海峰老师</p></div>
+  </div>
+</section>
+
+<!-- 一份生日礼物 -->
+<section class="gift">
+  <div class="w">
+    <a class="box rv" href="https://www.playandprosper.com/haifeng" style="text-decoration:none">
+      <div class="bkc"><b>不做旁观者，<br>勇做组局人</b><small>海峰老师生日嘉年华<br>众友现场实录</small></div>
+      <div><div class="kick" style="color:var(--gold2)">一份生日礼物</div><h3>8 天，38 位嘉宾，一本书</h3><p>2026 年 4 月，海峰老师的生日嘉年华在直播间开了 8 天。边玩边赚团队把 38 段即时演讲整理成书，在他生日当天送到他手上。点开，读整本 →</p></div>
+    </a>
   </div>
 </section>
 
@@ -678,7 +733,7 @@ document.documentElement.classList.add('js');
 (function(){
   var $=function(i){return document.getElementById(i)};
   var still=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  var dust=$('dust');if(!still)for(var k=0;k<26;k++){var d=document.createElement('i');d.style.left=Math.random()*100+'%';d.style.top=(30+Math.random()*65)+'%';d.style.setProperty('--t',(6+Math.random()*6)+'s');d.style.setProperty('--d',(-Math.random()*10)+'s');dust.appendChild(d)}
+  var dust=$('dust');if(false)for(var k=0;k<26;k++){var d=document.createElement('i');d.style.left=Math.random()*100+'%';d.style.top=(30+Math.random()*65)+'%';d.style.setProperty('--t',(6+Math.random()*6)+'s');d.style.setProperty('--d',(-Math.random()*10)+'s');dust.appendChild(d)}
 
   /* 顶栏、浮条 */
   var bar=$('bar'),dock=$('dock'),meet=$('meet');
@@ -703,7 +758,7 @@ document.documentElement.classList.add('js');
 
   /* 第一屏轻微视差 */
   var hero=$('top'),stage=hero.querySelector('.stage');
-  if(!still&&matchMedia('(hover:hover) and (min-width:901px)').matches)hero.addEventListener('mousemove',function(e){
+  if(false)hero.addEventListener('mousemove',function(e){
     var x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;stage.style.setProperty('--mx',x);stage.style.setProperty('--my',y)});
 
   /* 序：换书 */
@@ -717,7 +772,7 @@ document.documentElement.classList.add('js');
   var lb=$('lb'),pgs=$('pgs');
   function open(list){pgs.innerHTML='';list.forEach(function(s){var i=new Image();i.src=s;i.alt='';pgs.appendChild(i)});lb.classList.add('on')}
   document.querySelectorAll('[data-pages]').forEach(function(b){b.addEventListener('click',function(){open(b.dataset.pages.split(','))})});
-  $('bwall').addEventListener('click',function(){open(['bookwall100.jpg?v=20261119c'])});
+  $('bwall').addEventListener('click',function(){open(['bookwall100c.jpg?v=20261120'])});
   document.querySelectorAll('[data-big]').forEach(function(el){el.addEventListener('click',function(){open([el.dataset.big])})});
   lb.addEventListener('click',function(e){if(e.target===lb||e.target===pgs)lb.classList.remove('on')});
   addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList.remove('on')});
