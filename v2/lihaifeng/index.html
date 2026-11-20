@@ -151,14 +151,17 @@ section{padding:96px 0}
 .pol small{display:block;color:var(--mute);font-size:13px;line-height:1.6;margin-top:4px}
 @media(max-width:860px){.with .g{grid-template-columns:1fr 1fr;gap:18px}}
 
-.tl6{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:46px 30px;margin-top:48px;position:relative}
+.tl6{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:48px;position:relative}
 .tli{position:relative;padding-top:34px}
-.tli:before{content:"";position:absolute;left:-30px;right:0;top:9px;height:2px;background:linear-gradient(90deg,rgba(193,146,63,.15),var(--gold),rgba(193,146,63,.15))}
+.tli:before{content:"";position:absolute;left:-18px;right:0;top:9px;height:2px;background:linear-gradient(90deg,rgba(193,146,63,.15),var(--gold),rgba(193,146,63,.15))}
 .tli .dot{position:absolute;left:0;top:3px;width:14px;height:14px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 5px rgba(193,146,63,.2)}
-.tli time{position:absolute;left:22px;top:0;font:700 14px/20px var(--serif);color:var(--gold);letter-spacing:.06em;background:var(--paper);padding:0 10px 0 6px}
-.tli .pol{margin-top:6px}
+.tli time{position:absolute;left:18px;top:0;font:700 12.5px/20px var(--serif);white-space:nowrap;color:var(--gold);letter-spacing:.06em;background:var(--paper);padding:0 10px 0 6px}
+.tli .pol{margin-top:6px;padding:8px 8px 12px}
+.tli .pol b{font-size:13.5px;margin-top:9px}
+.tli .pol small{font-size:12px;line-height:1.55}
 .tli .pol img{aspect-ratio:4/3}
-@media(max-width:860px){.tl6{grid-template-columns:1fr;gap:30px;padding-left:26px}.tl6:before{content:"";position:absolute;left:6px;top:8px;bottom:0;width:2px;background:linear-gradient(var(--gold),rgba(193,146,63,.15))}.tli{padding-top:28px}.tli:before{display:none}.tli .dot{left:-26px}.tli time{left:0}}
+@media(max-width:1000px) and (min-width:861px){.tl6{grid-template-columns:repeat(3,1fr);gap:30px 18px}}
+@media(max-width:860px){.tl6{grid-template-columns:1fr 1fr;gap:26px 14px}.tli:before{left:0}.tli time{left:18px;font-size:12px}}
 /* ===== 原话 ===== */
 .words{background:var(--ink);color:var(--paper);overflow:hidden}
 .words .g{margin-top:40px;columns:3 260px;column-gap:20px}
@@ -429,12 +432,11 @@ footer .you{display:inline-block;margin-top:6px;color:var(--gold2);text-decorati
     <div class="kick rv">和边玩边赚在一起的他</div>
     <h2 class="rv">从一面之缘，<em>到一起出书</em></h2>
     <ol class="tl6">
-      <li class="tli rv"><span class="dot"></span><time>2024 · 7 · 南京</time><figure class="pol" style="--r:-3deg"><img src="with-nj.jpg?v=20261120" alt="2024 · 7 · 南京，一面之缘" loading="lazy" style="object-position:50% 30%"><b>一面之缘</b><small>友者生存海峰见面会南京站，千百合带着鲜花饼来见他</small></figure></li>
-      <li class="tli rv"><span class="dot"></span><time>2024 · 12</time><figure class="pol" style="--r:2deg"><img src="with-flower.jpg?v=20261120" alt="2024 · 12，出品人闭门会" loading="lazy" style="object-position:50% 40%"><b>出品人闭门会</b><small>千百合从大洋彼岸飞过去，第一次成为出品人</small></figure></li>
-      <li class="tli rv"><span class="dot"></span><time>2025 · 1 · 广州</time><figure class="pol" style="--r:-2deg"><img src="with-gz.jpg?v=20261120" alt="2025 · 1 · 广州，DISC+ 授权讲师班" loading="lazy" style="object-position:50% 30%"><b>DISC+ 授权讲师班</b><small>第 120 期，一起上课的同学</small></figure></li>
-      <li class="tli rv"><span class="dot"></span><time>2026 · 5 · 广州</time><figure class="pol" style="--r:3deg"><img src="stage.jpg?v=20261120" alt="2026 · 5 · 广州，联合出书实操方案班" loading="lazy" style="object-position:50% 30%"><b>联合出书实操方案班</b><small>他在台上讲怎么把一群人组成一本书</small></figure></li>
-      <li class="tli rv"><span class="dot"></span><time>2026 · 10 · 广州</time><figure class="pol" style="--r:-2deg"><img src="t-oct-books.jpg?v=20261120" alt="2026 · 10 · 广州，方案班 · 全球新书发布会" loading="lazy" style="object-position:50% 35%"><b>方案班 · 全球新书发布会</b><small>四本书，抱在千百合怀里</small></figure></li>
-      <li class="tli rv"><span class="dot"></span><time>2026 · 10 · 上海</time><figure class="pol" style="--r:2deg"><img src="t-oct-yuqi.jpg?v=20261120" alt="2026 · 10 · 上海，金雨麒 AI-OPC 峰会" loading="lazy" style="object-position:50% 88%"><b>金雨麒 AI-OPC 峰会</b><small>千百合和金雨麒同台，边玩边赚走到更多人面前</small></figure></li>
+      <li class="tli rv"><span class="dot"></span><time>2024 · 7 · 南京</time><figure class="pol" style="--r:-2deg"><img src="with-nj.jpg?v=20261120b" alt="2024 · 7 · 南京，一面之缘" loading="lazy" style="object-position:50% 30%"><b>一面之缘</b><small>友者生存海峰见面会南京站，千百合带着鲜花饼来见他</small></figure></li>
+      <li class="tli rv"><span class="dot"></span><time>2024 · 12</time><figure class="pol" style="--r:2deg"><img src="with-flower.jpg?v=20261120b" alt="2024 · 12，出品人闭门会" loading="lazy" style="object-position:50% 40%"><b>出品人闭门会</b><small>千百合从大洋彼岸飞过去，第一次成为出品人</small></figure></li>
+      <li class="tli rv"><span class="dot"></span><time>深圳 · 梧桐山</time><figure class="pol" style="--r:-1.5deg"><img src="t-sz.jpg?v=20261120b" alt="深圳 · 梧桐山，全球新书发布会 · 深圳站" loading="lazy" style="object-position:50% 45%"><b>全球新书发布会 · 深圳站</b><small>他坐在正中间，作者们围着他比心</small></figure></li>
+      <li class="tli rv"><span class="dot"></span><time>2026 · 5 · 广州</time><figure class="pol" style="--r:2deg"><img src="t-may.jpg?v=20261120b" alt="2026 · 5 · 广州，联合出书实操方案班" loading="lazy" style="object-position:50% 30%"><b>联合出书实操方案班</b><small>他和千百合在方案班合影</small></figure></li>
+      <li class="tli rv"><span class="dot"></span><time>2026 · 10 · 广州</time><figure class="pol" style="--r:-2deg"><img src="t-oct.jpg?v=20261120b" alt="2026 · 10 · 广州，联合出书实操方案班" loading="lazy" style="object-position:50% 30%"><b>联合出书实操方案班</b><small>十月，他又站上方案班的讲台</small></figure></li>
     </ol>
   </div>
 </section>
@@ -479,10 +481,10 @@ footer .you{display:inline-block;margin-top:6px;color:var(--gold2);text-decorati
     <h2 class="rv">人生卡，和一张<em>名片</em></h2>
     <div class="g2">
       <figure class="tk rv"><span class="tag">入场券 №书4-00</span><div class="in" data-big="card.jpg?v=20261120"><img src="card.jpg?v=20261120" alt="李海峰的人生卡：今天遇见谁，你怎么活，世界就怎么记住你" loading="lazy" width="1080" height="1920"></div><figcaption><b>人生卡</b>书四 · 序：先活，再被记住</figcaption></figure>
-      <figure class="tk rv" style="--r:3deg"><div class="in" data-big="intro.jpg?v=20261120"><img src="intro.jpg?v=20261120" alt="李海峰的个人名片：不做旁观者，勇做组局人" loading="lazy" width="1080" height="1920"></div><figcaption><b>个人名片</b>不做旁观者，勇做组局人</figcaption></figure>
+      <figure class="tk rv" style="--r:3deg"><div class="in" data-big="intro.jpg?v=20261120b"><img src="intro.jpg?v=20261120b" alt="李海峰的个人名片：不做旁观者，勇做组局人" loading="lazy" width="1080" height="1920"></div><figcaption><b>个人名片</b>不做旁观者，勇做组局人</figcaption></figure>
     </div>
     <h3 class="rv" style="text-align:center">转给一个正在想“要不要出书”的朋友</h3>
-    <div class="dl rv" style="justify-content:center"><a href="card.jpg?v=20261120" download="李海峰-人生卡.jpg">保存人生卡</a><a href="intro.jpg?v=20261120" download="李海峰-个人名片.jpg">保存个人名片</a></div>
+    <div class="dl rv" style="justify-content:center"><a href="card.jpg?v=20261120" download="李海峰-人生卡.jpg">保存人生卡</a><a href="intro.jpg?v=20261120b" download="李海峰-个人名片.jpg">保存个人名片</a></div>
   </div>
 </section>
 
