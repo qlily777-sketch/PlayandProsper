@@ -54,9 +54,10 @@ section{padding:96px 0}
 
 /* ===== 第一屏：真书墙 ===== */
 .hero{position:relative;min-height:100svh;overflow:hidden;color:var(--paper);
-  background:radial-gradient(70% 70% at 70% 40%,#5A3828 0%,#36211A 50%,#1C120E 100%)}
+  background:#121110}
 .hero:before{content:"";position:absolute;inset:0;background:radial-gradient(40% 40% at 72% 38%,rgba(255,214,150,.22),transparent 70%);pointer-events:none}
 .dust{position:absolute;inset:0;pointer-events:none;z-index:1}
+.dust{display:none}
 .dust i{position:absolute;width:3px;height:3px;border-radius:50%;background:#E3CFA0;opacity:0;animation:fl var(--t) linear var(--d) infinite}
 @keyframes fl{0%{opacity:0;transform:translateY(0)}15%{opacity:.8}100%{opacity:0;transform:translateY(-160px)}}
 .hero .in{position:relative;z-index:2;min-height:100svh;display:grid;grid-template-columns:.82fr 1.18fr;align-items:center;gap:34px;padding-top:80px;padding-bottom:40px}
@@ -126,7 +127,7 @@ section{padding:96px 0}
 .page .body .more{display:none}
 .page.open .body .more{display:block}
 .page .sig{margin-top:30px;text-align:right;font:400 15px/1.9 var(--serif);color:var(--mute)}
-.page .sig b{display:block;font:400 30px/1.3 "Ma Shan Zheng",var(--serif);color:var(--txt)}
+.page .sig b{display:block;font:400 30px/1.3 var(--serif);color:var(--txt)}
 .page .acts{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
 .page .acts button{font-size:14px;padding:10px 18px;border-radius:999px;border:1px solid var(--line);background:var(--cream)}
 .page .acts button:hover{border-color:var(--gold)}
@@ -168,7 +169,7 @@ section{padding:96px 0}
 .words .g{margin-top:40px;columns:3 260px;column-gap:20px}
 .wd{break-inside:avoid;margin-bottom:20px;padding:24px 24px 20px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(214,190,140,.18);transition:background .3s,transform .3s var(--ease)}
 .wd:hover{background:rgba(214,190,140,.08);transform:translateY(-3px)}
-.wd p{font:400 22px/1.6 "Ma Shan Zheng",var(--serif);color:#F3E9D6}
+.wd p{font:400 22px/1.6 var(--serif);color:#F3E9D6}
 .wd small{display:block;margin-top:10px;font-size:12.5px;color:#9C9483;line-height:1.6}
 
 /* ===== 身份 ===== */
@@ -463,6 +464,8 @@ footer .motto{font:400 17px/1.8 var(--serif);color:#E9DFCB;letter-spacing:.2em;m
 h1,h2,h3,.lead,.num p,.st p,.wd p,.wd small,.sub,.say{text-wrap:balance}
 .num p{font-size:14.5px}
 ::selection{background:rgba(214,190,140,.4)}
+
+@media(max-width:640px){.tl6{grid-template-columns:1fr;gap:22px}.tli:last-child:nth-child(odd){width:auto}.tli .pol{display:grid;grid-template-columns:42% 1fr;gap:4px 12px;align-items:start;transform:none}.tli .pol img{grid-row:span 3;aspect-ratio:4/3}.tli .pol b{margin-top:2px;font-size:15px}.tli .pol small{font-size:13px}}
 </style>
 </head>
 <body>
@@ -499,7 +502,7 @@ h1,h2,h3,.lead,.num p,.st p,.wd p,.wd small,.sub,.say{text-wrap:balance}
       </div>
     </div>
     <div class="stage">
-      <figure class="rw" id="bwall"><img src="bookwall100c.jpg?v=20261120" alt="李海峰老师出品的书墙：已出品出版 100 本实体书" width="2000" height="1231"></figure>
+      <figure class="rw" id="bwall"><img src="bookwall100d.jpg?v=20261120" alt="李海峰老师出品的书墙：已出品出版 100 本实体书" width="2000" height="1032"></figure>
       <div class="por"><img src="portrait-fade.webp?v=20261120" alt="李海峰老师形象照" width="1000" height="1637"></div>
       <p class="note">他出品出版的 100 本实体书 · 边玩边赚就在最下面一排</p>
     </div>
@@ -665,8 +668,8 @@ h1,h2,h3,.lead,.num p,.st p,.wd p,.wd small,.sub,.say{text-wrap:balance}
     </ol>
 
     <div class="shelf8">
-      <h3 class="rv">他主编的书里，<em>也有千百合</em></h3>
-      <p class="lead rv">从《自由人生》开始，千百合一本接一本，跟着海峰老师出书：《我是写作者》做主编，其余做作者。点封面，看出版当月的当当榜单截图。</p>
+      <h3 class="rv">八本书，<em>见证一场长期同行</em></h3>
+      <p class="lead rv">从《自由人生》到《一人公司心智模式》，千百合在海峰老师主编的八本书里，从作者走到主编。每一本出版当月都登上当当新书榜或好评榜第一。点封面，看当时的榜单截图。</p>
       <ol class="sbs">
       <li class="sb rv"><div class="cv" data-big="books/p-ziyou.jpg" title="看当时的当当截图"><img src="books/ziyou.webp?v=4" alt="《自由人生：你想活出怎样的人生？》封面" loading="lazy"></div></li>
       <li class="sb rv"><div class="cv" data-big="books/p-wuxian.jpg" title="看当时的当当截图"><img src="books/wuxian.webp" alt="《无限可能》封面" loading="lazy"></div></li>
@@ -813,7 +816,7 @@ document.documentElement.classList.add('js');
   var lb=$('lb'),pgs=$('pgs');
   function open(list){pgs.innerHTML='';list.forEach(function(s){var i=new Image();i.src=s;i.alt='';pgs.appendChild(i)});lb.classList.add('on')}
   document.querySelectorAll('[data-pages]').forEach(function(b){b.addEventListener('click',function(){open(b.dataset.pages.split(','))})});
-  $('bwall').addEventListener('click',function(){open(['bookwall100c.jpg?v=20261120'])});
+  $('bwall').addEventListener('click',function(){open(['bookwall100d.jpg?v=20261120'])});
   document.querySelectorAll('[data-big]').forEach(function(el){el.addEventListener('click',function(){open([el.dataset.big])})});
   lb.addEventListener('click',function(e){if(e.target===lb||e.target===pgs)lb.classList.remove('on')});
   addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList.remove('on')});
