@@ -105,12 +105,13 @@ section{padding:96px 0}
 /* ===== 序 ===== */
 .xu{background:linear-gradient(180deg,var(--paper),var(--cream))}
 .shelf5{display:flex;gap:clamp(10px,2vw,22px);margin-top:40px;align-items:flex-end;flex-wrap:wrap}
-.bk{width:clamp(96px,15vw,128px);text-align:left;position:relative;transition:transform .35s var(--ease)}
-.bk img{width:100%;filter:drop-shadow(0 12px 16px rgba(40,30,15,.28));transition:filter .3s}
+.bk{width:clamp(96px,15vw,128px);display:flex;flex-direction:column;align-items:flex-start;text-align:left;position:relative;transition:transform .35s var(--ease)}
+.bk img{width:auto;max-width:100%;height:clamp(136px,21vw,182px);object-fit:contain;object-position:left bottom;filter:drop-shadow(0 12px 16px rgba(40,30,15,.28));transition:filter .3s}
 .bk span{display:block;font-size:12.5px;color:var(--mute);margin-top:10px;line-height:1.5}
 .bk span b{display:block;color:var(--txt);font-weight:700}
-.bk[aria-selected=true]{transform:translateY(-14px)}
-.bk[aria-selected=true] img{filter:drop-shadow(0 18px 22px rgba(40,30,15,.38)) drop-shadow(0 0 3px var(--gold))}
+.bk:after{content:"";display:block;height:3px;margin-top:8px;border-radius:2px;background:transparent;transition:background .3s}
+.bk[aria-selected=true]:after{background:var(--gold)}
+.bk:hover img{filter:drop-shadow(0 16px 20px rgba(40,30,15,.34))}
 .bk[aria-selected=true] span{color:var(--txt);font-weight:700}
 .page{margin-top:36px;background:#FFFDF8;border:1px solid var(--line);border-radius:6px;box-shadow:0 30px 60px -30px rgba(60,40,10,.35);padding:56px clamp(22px,6vw,72px) 48px;position:relative}
 .page:before{content:"";position:absolute;left:0;top:0;bottom:0;width:8px;background:linear-gradient(90deg,rgba(0,0,0,.06),transparent)}
@@ -303,11 +304,11 @@ footer .you{display:inline-block;margin-top:6px;color:var(--gold2);text-decorati
     <h2 class="rv">每一本，<em>他都先写一页</em></h2>
     <p class="lead rv">边玩边赚书系，他和千百合一起担任出品人。每一本书的第一页，是他写的序。点一本书，读那一篇。</p>
     <div class="shelf5 rv" role="tablist" aria-label="选择一本书">
-      <button class="bk" role="tab" aria-selected="true" data-x="x1"><img src="c1.webp?v=20261120" alt="《边玩边赚：AI 时代的自由人生》封面"><span>AI 时代的自由人生</span></button>
-      <button class="bk" role="tab" aria-selected="false" data-x="x2"><img src="c2.webp?v=20261120" alt="《边玩边赚：人人都能做 AI 智能体》封面"><span>人人都能做 AI 智能体</span></button>
-      <button class="bk" role="tab" aria-selected="false" data-x="x3"><img src="c3.webp?v=20261120" alt="《边玩边赚：AI 时代的财富思维》封面"><span>AI 时代的财富思维</span></button>
-      <button class="bk" role="tab" aria-selected="false" data-x="x4"><img src="c4.webp?v=20261120" alt="《边玩边赚：AI 时代的个人品牌》封面"><span>AI 时代的个人品牌</span></button>
-      <button class="bk" role="tab" aria-selected="false" data-x="x5"><img src="c5.webp?v=20261120" alt="《边玩边赚：走遍世界，活成自己》封面"><span>走遍世界，活成自己</span></button>
+      <button class="bk" role="tab" aria-selected="true" data-x="x1"><img src="c1.webp?v=20261120c" alt="《边玩边赚：AI 时代的自由人生》封面"><span>AI 时代的自由人生</span></button>
+      <button class="bk" role="tab" aria-selected="false" data-x="x2"><img src="c2.webp?v=20261120c" alt="《边玩边赚：人人都能做 AI 智能体》封面"><span>人人都能做 AI 智能体</span></button>
+      <button class="bk" role="tab" aria-selected="false" data-x="x3"><img src="c3.webp?v=20261120c" alt="《边玩边赚：AI 时代的财富思维》封面"><span>AI 时代的财富思维</span></button>
+      <button class="bk" role="tab" aria-selected="false" data-x="x4"><img src="c4.webp?v=20261120c" alt="《边玩边赚：AI 时代的个人品牌》封面"><span>AI 时代的个人品牌</span></button>
+      <button class="bk" role="tab" aria-selected="false" data-x="x5"><img src="c5.webp?v=20261120c" alt="《边玩边赚：走遍世界，活成自己》封面"><span>走遍世界，活成自己</span></button>
     </div>
 
     <article class="page rv" id="x1">
@@ -433,10 +434,10 @@ footer .you{display:inline-block;margin-top:6px;color:var(--gold2);text-decorati
     <h2 class="rv">从一面之缘，<em>到一起出书</em></h2>
     <ol class="tl6">
       <li class="tli rv"><span class="dot"></span><time>2024 · 7 · 南京</time><figure class="pol" style="--r:-2deg"><img src="with-nj.jpg?v=20261120b" alt="2024 · 7 · 南京，一面之缘" loading="lazy" style="object-position:50% 30%"><b>一面之缘</b><small>友者生存海峰见面会南京站，千百合带着鲜花饼来见他</small></figure></li>
-      <li class="tli rv"><span class="dot"></span><time>2024 · 12</time><figure class="pol" style="--r:2deg"><img src="with-flower.jpg?v=20261120b" alt="2024 · 12，出品人闭门会" loading="lazy" style="object-position:50% 40%"><b>出品人闭门会</b><small>千百合从大洋彼岸飞过去，第一次成为出品人</small></figure></li>
-      <li class="tli rv"><span class="dot"></span><time>深圳 · 梧桐山</time><figure class="pol" style="--r:-1.5deg"><img src="t-sz.jpg?v=20261120b" alt="深圳 · 梧桐山，全球新书发布会 · 深圳站" loading="lazy" style="object-position:50% 45%"><b>全球新书发布会 · 深圳站</b><small>他坐在正中间，作者们围着他比心</small></figure></li>
+      <li class="tli rv"><span class="dot"></span><time>2024 · 12 · 广州</time><figure class="pol" style="--r:2deg"><img src="with-flower.jpg?v=20261120b" alt="2024 · 12 · 广州，出品人闭门会" loading="lazy" style="object-position:50% 40%"><b>出品人闭门会</b><small>千百合从大洋彼岸飞过去，第一次成为出品人</small></figure></li>
+      <li class="tli rv"><span class="dot"></span><time>2025 · 5 · 深圳梧桐山</time><figure class="pol" style="--r:-1.5deg"><img src="t-sz.jpg?v=20261120b" alt="2025 · 5 · 深圳梧桐山，全球新书发布会 · 深圳站" loading="lazy" style="object-position:50% 45%"><b>全球新书发布会 · 深圳站</b><small>他坐在正中间，作者们围着他比心</small></figure></li>
       <li class="tli rv"><span class="dot"></span><time>2026 · 5 · 广州</time><figure class="pol" style="--r:2deg"><img src="t-may.jpg?v=20261120b" alt="2026 · 5 · 广州，联合出书实操方案班" loading="lazy" style="object-position:50% 30%"><b>联合出书实操方案班</b><small>他和千百合在方案班合影</small></figure></li>
-      <li class="tli rv"><span class="dot"></span><time>2026 · 10 · 广州</time><figure class="pol" style="--r:-2deg"><img src="t-oct.jpg?v=20261120b" alt="2026 · 10 · 广州，联合出书实操方案班" loading="lazy" style="object-position:50% 30%"><b>联合出书实操方案班</b><small>十月，他又站上方案班的讲台</small></figure></li>
+      <li class="tli rv"><span class="dot"></span><time>2026 · 10 · 广州</time><figure class="pol" style="--r:-2deg"><img src="t-oct.jpg?v=20261120c" alt="2026 · 10 · 广州，联合出书实操方案班" loading="lazy" style="object-position:30% 30%"><b>联合出书实操方案班</b><small>十月，他又站上方案班的讲台，讲一书一课一联盟</small></figure></li>
     </ol>
   </div>
 </section>
@@ -481,10 +482,10 @@ footer .you{display:inline-block;margin-top:6px;color:var(--gold2);text-decorati
     <h2 class="rv">人生卡，和一张<em>名片</em></h2>
     <div class="g2">
       <figure class="tk rv"><span class="tag">入场券 №书4-00</span><div class="in" data-big="card.jpg?v=20261120"><img src="card.jpg?v=20261120" alt="李海峰的人生卡：今天遇见谁，你怎么活，世界就怎么记住你" loading="lazy" width="1080" height="1920"></div><figcaption><b>人生卡</b>书四 · 序：先活，再被记住</figcaption></figure>
-      <figure class="tk rv" style="--r:3deg"><div class="in" data-big="intro.jpg?v=20261120b"><img src="intro.jpg?v=20261120b" alt="李海峰的个人名片：不做旁观者，勇做组局人" loading="lazy" width="1080" height="1920"></div><figcaption><b>个人名片</b>不做旁观者，勇做组局人</figcaption></figure>
+      <figure class="tk rv" style="--r:3deg"><div class="in" data-big="intro.jpg?v=20261120c"><img src="intro.jpg?v=20261120c" alt="李海峰的个人名片：不做旁观者，勇做组局人" loading="lazy" width="1080" height="1920"></div><figcaption><b>个人名片</b>不做旁观者，勇做组局人</figcaption></figure>
     </div>
     <h3 class="rv" style="text-align:center">转给一个正在想“要不要出书”的朋友</h3>
-    <div class="dl rv" style="justify-content:center"><a href="card.jpg?v=20261120" download="李海峰-人生卡.jpg">保存人生卡</a><a href="intro.jpg?v=20261120b" download="李海峰-个人名片.jpg">保存个人名片</a></div>
+    <div class="dl rv" style="justify-content:center"><a href="card.jpg?v=20261120" download="李海峰-人生卡.jpg">保存人生卡</a><a href="intro.jpg?v=20261120c" download="李海峰-个人名片.jpg">保存个人名片</a></div>
   </div>
 </section>
 
