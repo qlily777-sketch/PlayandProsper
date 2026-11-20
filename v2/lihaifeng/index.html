@@ -473,6 +473,12 @@ h1,h2,h3,.lead,.num p,.st p,.wd p,.wd small,.sub,.say{text-wrap:balance}
 @keyframes lbimg{from{opacity:0;transform:scale(.96)}}
 .words{padding-bottom:120px}
 @media(max-width:900px){.hero .sub{font-size:15.5px;margin-top:12px}.hero .tags{margin-top:14px}.hero .row{margin-top:22px}}
+
+/* 手机断行：一句话按逗号成组，不拆半句 */
+.cl{display:inline-block}
+h2 em{display:inline-block}
+.num p{word-break:keep-all}
+@media(max-width:600px){.bk span{font-size:10.5px;letter-spacing:0;line-height:1.45}}
 </style>
 </head>
 <body>
@@ -547,7 +553,7 @@ h1,h2,h3,.lead,.num p,.st p,.wd p,.wd small,.sub,.say{text-wrap:balance}
 
     <article class="page rv" id="x1">
       <div class="tl"><span>海峰 · 序 &nbsp;|&nbsp; 边玩边赚 1</span><em>写于 2025 年 6 月 20 日</em></div>
-      <h3>这个时代真正活得惬意的人，是边玩边把钱赚了的人。</h3>
+      <h3><span class="cl">这个时代真正活得惬意的人，</span><span class="cl">是边玩边把钱赚了的人。</span></h3>
       <div class="body">
         <p>很多人在 AI 时代受益：</p>
         <p class="c">职场人厌倦“996”，用下班后的时间做副业；<br>数字游民先驱带着电脑旅居全球，在他乡赚取高额薪资；<br>轻资产创业者拒绝重资本投入，靠个人品牌实现复利收入；<br>健康生活家拒绝以健康换钱，将运动、正念融入创富活动；<br>AI 变现先锋用 AI 绘图、写作、营销，提高变现效率。</p>
@@ -654,9 +660,9 @@ h1,h2,h3,.lead,.num p,.st p,.wd p,.wd small,.sub,.say{text-wrap:balance}
     <div class="kick rv"><i class="yin">贰</i>他为什么做这件事</div>
     <h2 class="rv">他相信，<em>书是一家人的爱的载体</em></h2>
     <div class="g">
-      <div class="st rv"><div class="no">01</div><h3>请妈妈写一本书</h3><p>妈妈是深圳的五星义工。他请她动笔，她不肯：“我出了谁来看？”他笑着说：至少家里的人会看。后来，妈妈的《深圳 12 年》出版了，她到现在还保持着写作的习惯。</p><q>你 30 岁，写不出 10 岁的感觉了。不管出不出版，每个人都应该写书。</q></div>
-      <div class="st rv"><div class="no">02</div><h3>孩子在书里，找爸爸妈妈的名字</h3><p>太太成为年度影响力作家那年，家里的欢迎词从“欢迎大美女”，变成了“欢迎大作家”。书出版那天，孩子翻着书找爸爸妈妈的照片和名字，找到了，就在那里尖叫。</p><q>他可以走很远，但是书里面承载着爸爸妈妈的爱。</q></div>
-      <div class="st rv"><div class="no">03</div><h3>两千字，换来人生第一个总监</h3><p>十年前，社群里一位志愿者默默付出。他组了一个局：把十五位大咖和十几位素人，放进同一本书。那位志愿者只写了两千字，老板读完，直接打电话请他去做总监。</p><q>我这个人最见不得有人付出，却没得到回报。</q></div>
+      <div class="st rv"><div class="no">01</div><h3><span class="cl">请妈妈写一本书</span></h3><p>妈妈是深圳的五星义工。他请她动笔，她不肯：“我出了谁来看？”他笑着说：至少家里的人会看。后来，妈妈的《深圳 12 年》出版了，她到现在还保持着写作的习惯。</p><q>你 30 岁，写不出 10 岁的感觉了。不管出不出版，每个人都应该写书。</q></div>
+      <div class="st rv"><div class="no">02</div><h3><span class="cl">孩子在书里，</span><span class="cl">找爸爸妈妈的名字</span></h3><p>太太成为年度影响力作家那年，家里的欢迎词从“欢迎大美女”，变成了“欢迎大作家”。书出版那天，孩子翻着书找爸爸妈妈的照片和名字，找到了，就在那里尖叫。</p><q>他可以走很远，但是书里面承载着爸爸妈妈的爱。</q></div>
+      <div class="st rv"><div class="no">03</div><h3><span class="cl">两千字，</span><span class="cl">换来人生第一个总监</span></h3><p>十年前，社群里一位志愿者默默付出。他组了一个局：把十五位大咖和十几位素人，放进同一本书。那位志愿者只写了两千字，老板读完，直接打电话请他去做总监。</p><q>我这个人最见不得有人付出，却没得到回报。</q></div>
     </div>
   </div>
 </section>
@@ -697,14 +703,14 @@ h1,h2,h3,.lead,.num p,.st p,.wd p,.wd small,.sub,.say{text-wrap:balance}
     <div class="kick rv"><i class="yin">肆</i>他常说的话</div>
     <h2 class="rv">一句一句，<em>都是他做过的事</em></h2>
     <div class="g">
-      <div class="wd big rv"><p>不做旁观者，勇做组局人。</p><small>2026 年 4 月，生日嘉年华开场</small></div>
-      <div class="wd rv"><p>独著代表专业水平，合集代表江湖地位。</p><small>他摸索出的新打法：把独著和合集放进同一本书</small></div>
-      <div class="wd rv"><p>只让别人锦上添花，不要让别人雪中送炭。</p><small>他出品的书，先做到第一，再请朋友转发</small></div>
-      <div class="wd rv"><p>创造不在场的影响力。</p><small>送出去的书，搬家也不会扔</small></div>
-      <div class="wd rv"><p>未来不属于超级个体，只属于超级联盟。</p><small>一书 · 一课 · 一联盟 · 一生态</small></div>
-      <div class="wd rv"><p>你跟谁在一起，定义了你是谁。</p><small>写进《边玩边赚 4》的序</small></div>
-      <div class="wd rv"><p>我要让你身旁资源丰盈，贵人环绕，努力生生不息。</p><small>他想为身边的人做的事</small></div>
-      <div class="wd rv"><p>我说的，就是我做的。我做的，就是我说的。</p><small>他给自己定的规矩</small></div>
+      <div class="wd big rv"><p><span class="cl">不做旁观者，</span><span class="cl">勇做组局人。</span></p><small>2026 年 4 月，生日嘉年华开场</small></div>
+      <div class="wd rv"><p><span class="cl">独著代表专业水平，</span><span class="cl">合集代表江湖地位。</span></p><small>他摸索出的新打法：把独著和合集放进同一本书</small></div>
+      <div class="wd rv"><p><span class="cl">只让别人锦上添花，</span><span class="cl">不要让别人雪中送炭。</span></p><small>他出品的书，先做到第一，再请朋友转发</small></div>
+      <div class="wd rv"><p><span class="cl">创造不在场的影响力。</span></p><small>送出去的书，搬家也不会扔</small></div>
+      <div class="wd rv"><p><span class="cl">未来不属于超级个体，</span><span class="cl">只属于超级联盟。</span></p><small>一书 · 一课 · 一联盟 · 一生态</small></div>
+      <div class="wd rv"><p><span class="cl">你跟谁在一起，</span><span class="cl">定义了你是谁。</span></p><small>写进《边玩边赚 4》的序</small></div>
+      <div class="wd rv"><p><span class="cl">我要让你身旁资源丰盈，</span><span class="cl">贵人环绕，</span><span class="cl">努力生生不息。</span></p><small>他想为身边的人做的事</small></div>
+      <div class="wd rv"><p><span class="cl">我说的，</span><span class="cl">就是我做的。</span><span class="cl">我做的，</span><span class="cl">就是我说的。</span></p><small>他给自己定的规矩</small></div>
     </div>
   </div>
 </section>
