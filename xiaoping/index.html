@@ -1,8 +1,524 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>正在打开…</title>
-<link rel="canonical" href="https://www.playandprosper.com/v2/xiaoping/">
-<meta http-equiv="refresh" content="0; url=/v2/xiaoping/">
-<script>location.replace('/v2/xiaoping/'+location.search+location.hash)</script>
-</head><body style="font-family:sans-serif;text-align:center;padding:40px"><a href="/v2/xiaoping/">点这里打开</a></body></html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>肖萍 · 小手牵大手，一起看世界 | 边玩边赚</title>
+<link rel="canonical" href="https://www.playandprosper.com/xiaoping/">
+<meta name="description" content="肖萍，嘉林财富学院总院长，学校里第一任计算机老师，跟着女儿环游 30+ 国家，从北欧到南极。边玩边赚书 5 作者。">
+<meta property="og:title" content="肖萍 · 时代会把你往前推，可你自己得跟得上">
+<meta property="og:description" content="学校里第一任计算机老师 · 跟着女儿环游 30+ 国家，从北欧到南极 · 嘉林财富学院总院长">
+<meta property="og:image" content="https://www.playandprosper.com/xiaoping/card.jpg?v=20261119">
+<meta name="theme-color" content="#D6E8F2">
+<link rel="icon" href="../img/logo-icon.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"肖萍","jobTitle":"嘉林财富学院总院长","homeLocation":"江西赣州","description":"在铁路边出生并长大，九十年代自学电脑，做过学校里第一任计算机老师。跟着女儿环游30+国家，从北欧到南极。63岁从南极回来，开启新事业。边玩边赚书5作者。","url":"https://www.playandprosper.com/xiaoping/","memberOf":{"@type":"Organization","name":"边玩边赚 Play and Prosper","url":"https://www.playandprosper.com/"}}</script>
+<style>
+:root{
+  --night:#0E2233;--night2:#183A52;--sea:#2C6C8D;--ice:#EAF3F8;--ice2:#D6E8F2;--snow:#FAFCFD;
+  --gold:#B8893A;--gold2:#E6C27E;--jacket:#8DC63F;--ink:#16293A;--mute:#55697A;--line:#CFE0EA;--seal:#B23A2E;
+  --serif:"Songti SC","STSong","Noto Serif SC","Noto Serif CJK SC","Source Han Serif SC",serif;
+  --sans:-apple-system,"PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--snow);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.8;overflow-x:hidden}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.w{max-width:1100px;margin:0 auto;padding:0 24px}
+.n{max-width:720px}
+h2{font:700 clamp(28px,4.6vw,44px)/1.35 var(--serif);letter-spacing:.04em}
+.kick{display:inline-flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.24em;color:var(--sea);margin-bottom:14px}
+.kick:before{content:"";width:22px;height:1.5px;background:currentColor}
+.lead{color:var(--mute);margin-top:12px;max-width:34em;font-size:16.5px}
+.no{display:inline-grid;place-items:center;min-width:26px;height:26px;padding:0 6px;border-radius:999px;background:var(--gold);color:#fff;font:700 12.5px/1 var(--sans)}
+.btn{display:inline-flex;align-items:center;gap:8px;font:700 15px/1 var(--sans);text-decoration:none;padding:15px 24px;border-radius:999px;background:var(--night);color:#fff;border:1.5px solid var(--night);cursor:pointer;transition:transform .25s var(--ease),background .25s}
+.btn:hover{transform:translateY(-2px);background:var(--sea);border-color:var(--sea)}
+.btn.ghost{background:rgba(255,255,255,.6);color:var(--night);backdrop-filter:blur(6px)}
+.btn.ghost:hover{background:#fff;color:var(--night)}
+.row{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+
+/* 顶栏 */
+.bar{position:fixed;top:0;left:0;right:0;z-index:30;display:flex;justify-content:space-between;align-items:center;padding:12px 20px;transition:background .3s,box-shadow .3s}
+.bar.on{background:rgba(250,252,253,.9);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--line)}
+.bar a.home{display:flex;align-items:center;gap:8px;text-decoration:none;font:700 15px var(--serif)}
+.bar a.home img{width:24px;height:24px}
+.bar .btn{padding:10px 18px;font-size:14px}
+
+/* ===== 第一屏：南极的早晨 ===== */
+.hero{position:relative;min-height:100svh;overflow:hidden;background:linear-gradient(180deg,#BBD7EA 0%,#D6E8F2 34%,#EEF5F9 62%,#F7FAFC 100%)}
+.aurora{position:absolute;left:-20%;right:-20%;top:-8%;height:58%;pointer-events:none;opacity:.55;filter:blur(38px);
+  background:radial-gradient(40% 55% at 30% 40%,rgba(120,220,190,.75),transparent 70%),radial-gradient(35% 45% at 62% 30%,rgba(110,170,235,.7),transparent 70%),radial-gradient(30% 40% at 85% 50%,rgba(170,140,235,.45),transparent 70%);
+  animation:aur 18s ease-in-out infinite alternate}
+@keyframes aur{to{transform:translateX(6%) skewX(-6deg)}}
+/* 2026-11-18：人像轻轻起伏、冰海上有波光、人生卡定时有光扫过、名片斜着轻轻晃 */
+.sea{position:absolute;left:0;right:0;bottom:0;height:12%;z-index:1;pointer-events:none}
+.sea i{position:absolute;height:2px;width:var(--w,4%);border-radius:2px;background:linear-gradient(90deg,transparent,#fff,transparent);opacity:0;animation:glint var(--d,4.5s) ease-in-out var(--t,0s) infinite}
+@keyframes glint{0%,100%{opacity:0;transform:translateX(0) scaleX(.4)}45%{opacity:.95;transform:translateX(8px) scaleX(1)}70%{opacity:.25}}
+.peaks{animation:drift 30s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translateX(-1.5%)}}
+@keyframes breathe{0%,100%{translate:0 0;scale:1}50%{translate:0 -6px;scale:1.012}}
+.qrcard{animation:swing 6s ease-in-out 1.5s infinite}
+@keyframes swing{0%,100%{rotate:0deg;translate:0 0}50%{rotate:-2.5deg;translate:0 -8px}}
+.qrcard:hover{animation-play-state:paused}
+#snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+.peaks{position:absolute;left:0;right:0;bottom:0;width:100%;height:34%;z-index:1}
+.hero .inner{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:0 24px;min-height:100svh;display:grid;grid-template-columns:1.05fr .95fr;align-items:center}
+.hero .txt{padding:120px 0 90px}
+.hero .hi{font-size:13px;letter-spacing:.24em;color:var(--sea)}
+.namebox{display:flex;align-items:flex-end;gap:18px;margin-top:10px}
+.hero h1{font:900 clamp(84px,14vw,150px)/1 var(--serif);letter-spacing:.06em;color:var(--night);
+  background:linear-gradient(180deg,#0E2233 0%,#24506E 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sealbox{writing-mode:vertical-rl;border:2px solid var(--seal);color:var(--seal);border-radius:6px;padding:8px 6px;font:700 15px/1.2 var(--serif);letter-spacing:.2em;margin-bottom:12px;background:rgba(255,255,255,.4)}
+.hero .slogan{margin-top:22px;font:900 clamp(24px,3.4vw,36px)/1.45 var(--serif);letter-spacing:.05em}
+.hero .slogan em{font-style:normal;color:var(--sea)}
+.hero .sub{margin-top:8px;font-size:16px;color:var(--mute)}
+.hero .roles{margin-top:22px;padding-left:14px;border-left:3px solid var(--gold);font-weight:700;font-size:15px;line-height:2}
+.hero .pic{align-self:end;justify-self:center;position:relative;width:min(470px,100%)}
+.hero .pic{filter:drop-shadow(0 30px 40px rgba(14,34,51,.22))}
+.hero .pic img{width:100%;-webkit-mask-image:linear-gradient(180deg,#000 80%,transparent 100%);mask-image:linear-gradient(180deg,#000 80%,transparent 100%)}
+.hero .pic:before{content:"";position:absolute;left:8%;right:8%;top:8%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.95),rgba(255,255,255,0));z-index:-1}
+.cue{position:absolute;left:50%;bottom:20px;z-index:3;transform:translateX(-50%);font-size:12px;letter-spacing:.3em;color:var(--sea);text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:6px}
+.cue:after{content:"";width:1.5px;height:28px;background:var(--sea);animation:cue 1.8s ease-in-out infinite;transform-origin:top}
+@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+@media(prefers-reduced-motion:no-preference){
+  .hero h1{animation:ink 1.4s .1s var(--ease) both}
+  .sealbox{animation:stamp .7s 1.1s var(--ease) both}
+  .hero .slogan,.hero .sub,.hero .roles,.hero .row{animation:up .9s var(--ease) both}
+  .hero .slogan{animation-delay:.6s}.hero .sub{animation-delay:.75s}.hero .roles{animation-delay:.9s}.hero .row{animation-delay:1.05s}
+  .hero .pic{animation:rise 1.4s .25s var(--ease) both}
+  .hero .pic img{transform-origin:50% 100%;animation:breathe 7s 1.7s ease-in-out infinite}
+  .tilt .shine{animation:sweep 7s ease-in-out 2s infinite}
+  @keyframes sweep{0%,70%,100%{background-position:var(--sx,120%) 0}85%{background-position:-20% 0}}
+  @keyframes ink{from{opacity:0;filter:blur(10px);transform:translateX(-14px)}to{opacity:1;filter:none;transform:none}}
+  @keyframes stamp{from{opacity:0;transform:scale(1.8) rotate(-12deg)}to{opacity:1;transform:none}}
+  @keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  @keyframes rise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+}
+@media(max-width:860px){
+  .hero .inner{grid-template-columns:1fr;min-height:auto}
+  .hero .txt{padding:96px 0 0}
+  .hero .pic{width:min(360px,84vw);margin-top:6px}
+  .cue{display:none}
+}
+
+/* ===== 三个数字 ===== */
+.nums{background:var(--snow);padding:64px 0 30px}
+.nums ul{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.nums li{position:relative;padding:26px 24px;border-radius:20px;background:#fff;border:1.5px solid var(--line);box-shadow:0 14px 30px -24px rgba(14,34,51,.45);transform:rotate(var(--r,0));transition:transform .4s var(--ease)}
+.nums li:nth-child(1){--r:-1.5deg}.nums li:nth-child(2){--r:1deg}.nums li:nth-child(3){--r:-.8deg}
+.nums li:hover{transform:rotate(0) translateY(-6px)}
+.nums b{display:block;font:900 clamp(38px,5vw,52px)/1 var(--serif);color:var(--sea);letter-spacing:.02em}
+.nums b small{font-size:.42em;margin-left:4px;color:var(--ink)}
+.nums span{display:block;margin-top:10px;font-size:15px;color:var(--mute)}
+.say{margin-top:44px;padding:30px 0 0;border-top:1px dashed var(--line);display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start}
+.say .q{font:900 64px/0.8 var(--serif);color:var(--gold2)}
+.say p{font:18px/2.05 var(--serif)}
+.say small{display:block;margin-top:8px;font-size:13px;color:var(--mute);letter-spacing:.1em}
+@media(max-width:860px){.nums ul{grid-template-columns:1fr;gap:14px}.say{grid-template-columns:1fr;gap:6px}.say .q{font-size:48px}}
+
+/* ===== ① 人生卡：斜着、会动 ===== */
+.card{padding:90px 0 110px;background:linear-gradient(180deg,var(--snow),var(--ice))}
+.card .w{display:grid;grid-template-columns:.95fr 1.05fr;gap:70px;align-items:center}
+.stage{position:relative;max-width:400px;width:100%;margin:0 auto;perspective:1200px}
+.stage .glow{position:absolute;inset:6% -12% -4% -12%;background:radial-gradient(closest-side,rgba(110,180,225,.55),rgba(110,180,225,0));filter:blur(14px)}
+.floaty{animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:rotate(-5deg) translateY(0)}50%{transform:rotate(-2.5deg) translateY(-12px)}}
+.tilt{display:block;position:relative;border-radius:16px;transform-style:preserve-3d;transition:transform .5s var(--ease);will-change:transform;cursor:zoom-in}
+.tilt img{border-radius:16px;box-shadow:0 0 0 7px #fff,0 34px 60px -16px rgba(14,34,51,.45)}
+.tilt .shine{position:absolute;inset:0;border-radius:16px;pointer-events:none;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.5) 48%,transparent 62%);background-size:250% 250%;background-position:var(--sx,120%) 0;mix-blend-mode:soft-light;transition:background-position .4s}
+.sticker{position:absolute;right:-26px;top:26px;width:98px;height:98px;border-radius:50%;z-index:2;
+  background:conic-gradient(from 0deg,#EED39A,#C9933F,#EED39A,#C9933F,#EED39A);display:grid;place-items:center;text-align:center;
+  font:900 13px/1.3 var(--serif);color:#5B3A0E;box-shadow:0 12px 26px rgba(120,80,20,.35),0 0 0 4px #fff;animation:bob 4.5s ease-in-out infinite}
+.sticker span{display:block;font-size:22px}
+@keyframes bob{0%,100%{transform:rotate(12deg)}50%{transform:rotate(4deg) translateY(-8px)}}
+.card .copy p{margin-top:16px;font:18px/2 var(--serif)}
+.card .copy p b{background:linear-gradient(transparent 62%,rgba(110,180,225,.38) 0)}
+.card .tip{margin-top:22px;font-size:14px;color:var(--mute)}
+@media(max-width:860px){.card .w{grid-template-columns:1fr;gap:54px}.stage{max-width:290px}.sticker{width:82px;height:82px;right:-16px;font-size:12px}.sticker span{font-size:18px}}
+
+/* ===== 「我也来学」：一条路 ===== */
+.road{position:relative;padding:110px 0 120px;background:radial-gradient(70% 50% at 80% 0%,rgba(80,200,170,.22),transparent 70%),radial-gradient(60% 50% at 10% 20%,rgba(90,140,230,.22),transparent 70%),var(--night);color:#E6EFF5;overflow:hidden}
+.road .kick{color:#8FC9E6}
+.road h2{font-size:clamp(42px,7vw,72px);color:var(--gold2);letter-spacing:.06em}
+.road .lead{color:#A9C0D0}
+.route{position:relative;list-style:none;margin-top:56px;max-width:760px}
+.route:before{content:"";position:absolute;left:96px;top:10px;bottom:10px;border-left:1.5px dashed rgba(169,192,208,.35)}
+.route .fill{position:absolute;left:95px;top:10px;width:3px;height:calc((100% - 20px) * var(--p,0));background:linear-gradient(180deg,var(--gold2),#7FD4C2);border-radius:3px;transition:height .2s linear}
+.route li{position:relative;display:grid;grid-template-columns:96px 1fr;gap:34px;padding:16px 0}
+.route li:after{content:"";position:absolute;left:89px;top:27px;width:13px;height:13px;border-radius:50%;background:var(--night);border:2px solid #7FA6BF;transition:background .4s,border-color .4s,box-shadow .4s}
+.route li.in:after{background:var(--gold2);border-color:var(--gold2);box-shadow:0 0 0 6px rgba(230,194,126,.18)}
+.route li.big b{color:var(--gold2)}
+.route .age{font:600 15px var(--serif);color:#8FC9E6;text-align:right;padding:6px 20px 0 0}
+.route b{display:block;font:700 20px/1.55 var(--serif);color:#fff}
+.route span{color:#A9C0D0;font-size:15px}
+@media(max-width:860px){.route:before{left:62px}.route .fill{left:61px}.route li{grid-template-columns:62px 1fr;gap:26px}.route li:after{left:55px}.route .age{font-size:13px;padding-right:12px}.route b{font-size:18px}}
+
+/* ===== 书里的一篇 ===== */
+.books{padding:110px 0;background:var(--snow)}
+.essay{display:grid;grid-template-columns:280px 1fr;gap:70px;align-items:start;margin-top:50px}
+.book3d{perspective:1100px;max-width:260px;position:sticky;top:100px}
+.book3d a{display:block;transition:transform .6s var(--ease)}
+.book3d a:hover{transform:translateY(-8px) rotate(-1deg)}
+.book3d img{filter:drop-shadow(14px 20px 22px rgba(14,34,51,.32))}
+.book3d small{display:block;text-align:center;margin-top:18px;color:var(--mute);font-size:13px}
+.essay h3{font:900 clamp(26px,3.6vw,34px)/1.4 var(--serif)}
+.essay .sub{color:var(--mute);font-size:14px;margin-top:6px}
+.essay .body p{margin-top:18px;font:17.5px/2.05 var(--serif)}
+.essay .body p.first{font-weight:700;font-size:19px;color:var(--sea)}
+.more{display:none}
+.essay.open .more{display:block}
+.essay blockquote{margin:30px 0 0;padding:24px 26px;border-radius:16px;background:linear-gradient(135deg,var(--ice),#fff);border:1.5px solid var(--line);font:700 22px/1.7 var(--serif);position:relative}
+.essay blockquote:before{content:"“";position:absolute;left:14px;top:-26px;font:900 72px var(--serif);color:var(--gold2)}
+.essay .end{font-size:14px;color:var(--mute);margin-top:14px}
+@media(max-width:860px){.essay{grid-template-columns:1fr;gap:36px}.book3d{position:static;max-width:190px}}
+
+/* ===== 小手牵大手 ===== */
+.hands{padding:110px 0 120px;background:linear-gradient(180deg,var(--ice),var(--ice2));overflow:hidden}
+.pola{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:56px;align-items:center}
+.pola figure{background:#fff;padding:14px 14px 18px;border-radius:6px;box-shadow:0 30px 60px -28px rgba(14,34,51,.5);transition:transform .6s var(--ease)}
+.pola figure:nth-child(1){transform:rotate(-4deg)}
+.pola figure:nth-child(2){transform:rotate(2.5deg) translateY(28px)}
+.pola figure:nth-child(3){transform:rotate(-2deg) translateY(6px)}
+.pola figure:hover{transform:rotate(0) translateY(-8px) scale(1.02)}
+.pola img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:2px}
+.pola figcaption{margin-top:12px;text-align:center;font:600 16px var(--serif);color:var(--ink)}
+.pola figcaption small{display:block;font:13px var(--sans);color:var(--mute);margin-top:2px}
+.voice{margin:80px auto 0;max-width:640px;text-align:center}
+.voice p{font:900 clamp(24px,3.6vw,34px)/1.6 var(--serif);color:var(--sea)}
+.voice small{display:block;margin-top:10px;font-size:13px;color:var(--mute)}
+@media(max-width:860px){.pola{grid-template-columns:1fr;gap:34px}.pola figure:nth-child(2){transform:rotate(3deg)}.pola figure:nth-child(3){transform:rotate(-2.5deg)}}
+
+/* ===== 一个小练习 ===== */
+.ask{padding:110px 0;background:var(--snow);text-align:center}
+.ask h2{font-size:clamp(26px,4.2vw,38px)}
+.ask .steps{margin:22px auto 0;max-width:30em;color:var(--mute)}
+.ask form{margin:30px auto 0;max-width:520px;display:grid;grid-template-columns:1fr auto;gap:10px}
+.ask input{width:100%;padding:16px 20px;border:1.5px solid var(--line);border-radius:999px;background:#fff;font:16px var(--sans);color:var(--ink)}
+.ask input:focus{outline:none;border-color:var(--sea)}
+.ticket{position:relative;margin:40px auto 0;max-width:460px;display:grid;grid-template-columns:1fr 112px;border-radius:18px;overflow:hidden;text-align:left;box-shadow:0 30px 60px -26px rgba(14,34,51,.5);transform:rotate(-2deg)}
+.ticket .l{padding:26px 26px 22px;background:linear-gradient(135deg,#123049,#2C6C8D)}
+.ticket .l small{display:block;font-size:11.5px;letter-spacing:.24em;color:#9DC8E0}
+.ticket .l .t1{margin-top:10px;font:900 30px/1.2 var(--serif);color:var(--gold2);letter-spacing:.06em}
+.ticket .l .t2{margin-top:6px;font:700 24px/1.5 var(--serif);color:#fff;word-break:break-all}
+.ticket .l .t3{margin-top:16px;font-size:12px;color:#9DC8E0}
+.ticket .r{background:#F4F8FA;border-left:2px dashed #B5CAD7;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font:700 12px var(--sans);color:var(--mute);letter-spacing:.1em}
+.ticket .r b{font:900 28px var(--serif);color:var(--sea)}
+.ticket[hidden]{display:none}
+.ticket:before,.ticket:after{content:"";position:absolute;right:103px;width:18px;height:18px;border-radius:50%;background:var(--snow)}
+.ticket:before{top:-9px}.ticket:after{bottom:-9px}
+.ask .hint{font-size:13px;color:var(--mute);margin-top:22px}
+@media(max-width:560px){.ask h2{font-size:24px}.ask form{grid-template-columns:1fr}.ask .btn{justify-content:center}.ticket{grid-template-columns:1fr 88px}.ticket:before,.ticket:after{right:79px}.ticket .l .t2{font-size:20px}}
+
+/* ===== 加微信 ===== */
+.meet{position:relative;padding:110px 0 120px;background:linear-gradient(180deg,var(--ice2),#B9D6E8);overflow:hidden}
+.meet .w{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+.fit{margin-top:28px;list-style:none;border-top:1px solid rgba(14,34,51,.16)}
+.fit li{display:grid;grid-template-columns:1fr 24px auto;gap:10px;align-items:center;padding:16px 0;border-bottom:1px solid rgba(14,34,51,.16)}
+.fit b{font:700 17px/1.5 var(--serif)}
+.fit i{font-style:normal;color:var(--sea)}
+.fit span{color:var(--sea);font-size:14px;background:#fff;border-radius:999px;padding:4px 12px}
+.also{margin-top:18px;font-size:14px;color:var(--mute)}
+.qrcard{background:#fff;border-radius:22px;padding:28px 26px;text-align:center;box-shadow:0 30px 60px -28px rgba(14,34,51,.55);transform:rotate(2deg);transition:transform .5s var(--ease)}
+.qrcard:hover{transform:rotate(0)}
+.qrcard img{width:220px;margin:0 auto}
+.qrcard b{display:block;margin-top:14px;font:700 20px var(--serif)}
+.qrcard p{font-size:13px;color:var(--mute);margin-top:4px}
+@media(max-width:860px){.meet .w{grid-template-columns:1fr;gap:44px}.qrcard{max-width:340px;margin:0 auto}}
+
+footer{background:var(--night);color:#8FA7B8;font-size:13px;padding:30px 24px 100px;text-align:center;line-height:2}
+footer a{color:var(--gold2);text-decoration:none}
+footer .you{display:block;margin-top:6px;font-size:15px;color:#E6EFF5}
+
+.dock{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:30;display:none;gap:8px;padding:7px;border-radius:999px;background:rgba(14,34,51,.94);backdrop-filter:blur(8px);box-shadow:0 10px 30px rgba(14,34,51,.35);transition:transform .35s,opacity .35s}
+.dock a{flex:1;text-align:center;text-decoration:none;color:#fff;font:700 14px/1 var(--sans);padding:13px 0;border-radius:999px}
+.dock .main{background:var(--gold2);color:var(--night)}
+.dock.hide{transform:translateY(150%);opacity:0}
+@media(max-width:860px){.dock{display:flex}}
+.lb{position:fixed;inset:0;z-index:40;background:rgba(8,18,28,.92);display:none;align-items:center;justify-content:center;flex-direction:column;padding:20px}
+.lb.on{display:flex}
+.lb img{max-height:84vh;width:auto;border-radius:10px}
+.lb p{color:#DCE7EF;font-size:14px;margin-top:12px}
+.toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%);background:var(--night);color:#fff;padding:10px 18px;border-radius:999px;font-size:14px;z-index:50;opacity:0;transition:opacity .3s;pointer-events:none}
+.toast.on{opacity:1}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}#snow{display:none}}
+</style>
+</head>
+<body>
+
+<header class="bar" id="bar">
+  <a class="home" href="../"><img src="../img/logo-icon.png" alt="">边玩边赚</a>
+  <a class="btn" href="#meet">加肖萍微信</a>
+</header>
+
+<!-- 1 · 认出她 -->
+<section class="hero">
+  <div class="aurora"></div>
+  <canvas id="snow" aria-hidden="true"></canvas>
+  <svg class="peaks" viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 210 L120 150 L210 190 L330 95 L430 170 L560 120 L690 185 L820 110 L930 160 L1060 80 L1180 165 L1300 120 L1440 170 L1440 300 L0 300Z" fill="#D9E9F3"/>
+    <path d="M330 95 L360 118 L345 122 L372 140 L330 128 L300 116Z M1060 80 L1095 108 L1078 112 L1105 132 L1060 118 L1030 104Z" fill="#fff" opacity=".9"/>
+    <path d="M0 250 L160 205 L300 238 L470 190 L640 236 L800 200 L980 240 L1150 205 L1300 232 L1440 214 L1440 300 L0 300Z" fill="#E8F1F7"/>
+    <path d="M0 278 Q360 262 720 276 T1440 270 L1440 300 L0 300Z" fill="#F7FAFC"/>
+  </svg>
+  <div class="sea" aria-hidden="true"><i style="left:5%;top:40%;--w:4%;--d:4.4s;--t:0s"></i><i style="left:18%;top:70%;--w:6%;--d:5.2s;--t:1.3s"></i><i style="left:32%;top:50%;--w:3%;--d:3.8s;--t:2.4s"></i><i style="left:46%;top:78%;--w:5%;--d:4.9s;--t:.7s"></i><i style="left:60%;top:46%;--w:4%;--d:4.1s;--t:3.1s"></i><i style="left:73%;top:72%;--w:6%;--d:5.5s;--t:1.9s"></i><i style="left:87%;top:54%;--w:3.5%;--d:4.6s;--t:2.7s"></i></div>
+  <div class="inner">
+    <div class="txt">
+      <span class="hi">今天遇见谁 · 书 5 · №06</span>
+      <div class="namebox"><h1>肖萍</h1><span class="sealbox">书五作者</span></div>
+      <p class="slogan">时代会把你往前推，<br><em>可你自己得跟得上。</em></p>
+      <p class="sub">在铁路边长大 · 现居江西赣州 · 63 岁从南极回来，开启新事业</p>
+      <div class="roles">学校里第一任计算机老师<br>跟着女儿环游 30+ 国家，从北欧到南极<br>嘉林财富学院总院长</div>
+      <div class="row">
+        <a class="btn" href="#books">读她写的故事</a>
+        <a class="btn ghost" href="#card">看她的人生卡</a>
+      </div>
+    </div>
+    <div class="pic"><img src="hero.png" alt="肖萍的形象照：黑色长裙，戴着珍珠项链"></div>
+  </div>
+  <a class="cue" href="#nums">往下看</a>
+</section>
+
+<!-- 2 · 三个数字 + 她自己说 -->
+<section class="nums" id="nums">
+  <div class="w">
+    <ul class="rv">
+      <li><b>1990<small>年代</small></b><span>自费两千多元学电脑，成了学校第一任计算机老师</span></li>
+      <li><b>30+<small>国家</small></b><span>跟着女儿一路走，从北欧的极光到南极的冰原</span></li>
+      <li><b>63<small>岁</small></b><span>从南极回来，开启新事业，从财到富</span></li>
+    </ul>
+    <div class="say rv">
+      <span class="q">“</span>
+      <div><p>在铁路边出生并长大，小学担任武术队队长，比赛拿着木头剑。九十年代自学电脑，做过学校里第一任计算机老师。63 岁，从南极回来，开启新事业，从财到富，享受丰盛人生。</p><small>—— 肖萍的自我介绍</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · ① 人生卡 -->
+<section class="card" id="card">
+  <div class="w">
+    <div class="stage rv">
+      <div class="glow"></div>
+      <div class="floaty">
+        <a class="tilt" id="tilt" href="card.jpg?v=20261119" aria-label="打开肖萍的人生卡大图">
+          <img src="card.jpg?v=20261119" alt="肖萍的人生卡：今天遇见谁 · 书 5 · №06">
+          <span class="shine"></span>
+        </a>
+      </div>
+      <div class="sticker">入场券<span>№06</span></div>
+    </div>
+    <div class="copy rv">
+      <span class="kick">今天遇见谁 · 人生卡</span>
+      <h2>肖萍的人生卡</h2>
+      <p>九十年代，她<b>自费两千多元学电脑</b>，一个个单词死记硬背，成了学校的第一任计算机老师。</p>
+      <p>女儿小时候，她带女儿看国内的风景；女儿长大后，<b>牵着她的手，从北欧一路走到南极</b>。</p>
+      <p>63 岁从南极回来，她和女儿设立嘉林财富学院，教大家在 AI 时代<b>从财到富</b>。</p>
+      <div class="row">
+        <button class="btn" type="button" id="cardOpen">看大图 · 长按保存</button>
+        <button class="btn ghost" type="button" id="share">转给一位朋友</button>
+      </div>
+      <p class="tip">卡上的二维码是肖萍的微信，扫一下就能加她。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · 我也来学 -->
+<section class="road">
+  <div class="w">
+    <span class="kick">从一把木头剑，到南极</span>
+    <h2 class="rv">「我也来学。」</h2>
+    <p class="lead rv">这句话，她说过两次：一次是九十年代坐到电脑前，一次是 63 岁去学 AI。下面每一站，都是她写进书里的。</p>
+    <ol class="route" id="route">
+      <span class="fill"></span>
+      <li><span class="age">小学</span><div><b>武术队长，拿着木头剑去比赛</b><span>省城孩子的剑配着剑鞘。她明白了：不是基本功不扎实，是见识太少。</span></div></li>
+      <li><span class="age">九十年代</span><div><b>铅字打字机，拉一下，打一下</b><span>在铁路中学教务处，打了半年字。</span></div></li>
+      <li class="big"><span class="age">自学</span><div><b>「我也来学。」自费两千多元学电脑</b><span>DOS 命令一个个单词死记硬背，厚厚一本五笔字型用心地啃。</span></div></li>
+      <li><span class="age">考证</span><div><b>全国计算机等级考试二级证书</b><span>学校因此开办第一个计算机班，她成了第一任老师。</span></div></li>
+      <li><span class="age">女儿</span><div><b>用五笔一字一字，敲出《女儿成长的足迹》</b><span>从女儿出生，到北京大学硕士毕业。</span></div></li>
+      <li><span class="age">2018</span><div><b>女儿兑现承诺，带她去北欧看极光</b><span>芬兰、瑞典、挪威、丹麦，在雪地里行走。</span></div></li>
+      <li class="big"><span class="age">2025.12</span><div><b>南极游轮上，过了一个生日</b><span>女儿请了近三十位游客同席。</span></div></li>
+      <li class="big"><span class="age">2026</span><div><b>「我也来学。」去广州，学 AI，学写书</b><span>回来后出了二十几条短视频，讲故事，聊财富。</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 5 · 书里的一篇 -->
+<section class="books" id="books">
+  <div class="w">
+    <span class="kick">她写进书里的</span>
+    <h2 class="rv">一本书，一篇故事</h2>
+    <p class="lead rv">是肖萍自己写的。这里放开头，全文在书里。</p>
+    <article class="essay" id="e5">
+      <div class="book3d rv"><a href="#meet" aria-label="从我手里带走一本书"><img src="../img/cover5.webp" alt="边玩边赚书 5《走遍世界，活成自己》封面" loading="lazy"></a><small>书 5 · 篇一 带着爱上路 · 第 06 篇</small></div>
+      <div class="body rv">
+        <h3>小手牵大手，一起看世界</h3>
+        <p class="sub">书 5《走遍世界，活成自己》</p>
+        <p class="first">2025 年 12 月，我在南极的游轮上。</p>
+        <p>每天清晨 6 点前，房间门口都会准时送来一张彩色简报，正面中文，背面英文。今天天气如何、游轮驶向哪里、吃些什么、有哪些讲座，写得清清楚楚。</p>
+        <p>看了几天，我暗自想：「这么快，这么准，一定是用了 AI。」</p>
+        <div class="more">
+          <p>我今年 63 岁，已退休 8 年了。望着这张简报，我想起了九十年代第一次坐到电脑前的情景。再往前追溯，是一把木头剑。</p>
+          <p>女儿小时候，每年暑假我都带她去旅行。她说：「妈妈，你带我看国内的风景，等我长大了，我带你看世界的风景。」</p>
+          <p>孩子一直在往前走。父母若不学习新知识，便跟不上她的脚步，也无法与她交流。</p>
+        </div>
+        <blockquote>我是退休了，但我还能做回我自己想做的事。</blockquote>
+        <div class="row"><button class="btn ghost" type="button" data-open="e5">接着读</button><a class="btn" href="#meet">从我手里带走一本书</a></div>
+        <p class="end">木头剑、五笔字型、大阪机场的二十分钟、南极的生日宴，都在书 5 里。书 5 正在出版中，可以先预约一本。</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- 6 · 小手牵大手 -->
+<section class="hands">
+  <div class="w">
+    <span class="kick">小手牵大手</span>
+    <h2 class="rv">小时候她带女儿看风景，<br>长大后女儿带她看世界</h2>
+    <div class="pola">
+      <figure class="rv"><img src="pku.jpg" alt="肖萍和女儿在北京大学法学院毕业典礼前合影" loading="lazy"><figcaption>北大<small>2012 年，女儿毕业那天</small></figcaption></figure>
+      <figure class="rv"><img src="aurora.jpg?v=20261118" alt="肖萍和女儿在芬兰罗瓦涅米的极光下合影" loading="lazy"><figcaption>芬兰 · 极光<small>2018 年 2 月，罗瓦涅米</small></figcaption></figure>
+      <figure class="rv"><img src="antarctica.jpg" alt="肖萍和女儿在南极雪地上举着南极旗" loading="lazy"><figcaption>南极<small>2025 年，和女儿一起</small></figcaption></figure>
+    </div>
+    <div class="voice rv"><p>「妈妈别急，你跟着我来，拖箱拿好。」</p><small>—— 书 5，大阪机场，离飞机起飞只剩二十多分钟</small></div>
+  </div>
+</section>
+
+<!-- 7 · 一个小练习 -->
+<section class="ask" id="ask">
+  <div class="w n">
+    <span class="kick">肖萍留给你的一个小练习</span>
+    <h2 class="rv">有没有一样东西，<br>你觉得「老了，不需要了」？</h2>
+    <p class="steps rv">身边许多同龄人这么说。她的回答是三个字：我也来学。写下那样东西，领一张你自己的「登船券」。</p>
+    <form id="f" autocomplete="off" class="rv">
+      <input id="t" maxlength="16" placeholder="比如：AI、英语、拍短视频" aria-label="写下一样你想学的东西">
+      <button class="btn" type="submit">我也来学</button>
+    </form>
+    <div class="ticket" id="mine" hidden>
+      <div class="l"><small>BOARDING PASS · 我也来学号</small><div class="t1">我也来学</div><div class="t2" id="mt"></div><div class="t3">肖萍的小练习 · playandprosper.com/xiaoping</div></div>
+      <div class="r">登船<b id="mn">№</b>今天出发</div>
+    </div>
+    <p class="hint">你写的话只留在你自己的手机上，可以截图保存、发朋友圈。</p>
+  </div>
+</section>
+
+<!-- 8 · 走近她 -->
+<section class="meet" id="meet">
+  <div class="w">
+    <div class="rv">
+      <span class="kick">扫码，走近肖萍</span>
+      <h2>从我手里带走一本书，<br>或者听我讲讲南极</h2>
+      <ul class="fit">
+        <li><b>从我手里带走一本书</b><i>→</i><span>备注「书」</span></li>
+        <li><b>了解嘉林财富学院</b><i>→</i><span>备注「财富」</span></li>
+        <li><b>听南极的故事</b><i>→</i><span>备注「南极」</span></li>
+        <li><b>一起学 AI</b><i>→</i><span>备注「AI」</span></li>
+      </ul>
+      <p class="also">加的时候请先写「官网」，再加上你感兴趣的那件事。</p>
+    </div>
+    <div class="qrcard rv">
+      <img src="wechat.png" alt="肖萍的微信二维码">
+      <b>肖萍</b>
+      <p>在微信里打开，长按二维码识别</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="../">边玩边赚</a> · 边玩边赚书系作者主页 · playandprosper.com/xiaoping
+  <a class="you" href="../#wan">你也有一个故事？先玩一下 →</a>
+</footer>
+
+<nav class="dock" id="dock" aria-label="快速联系">
+  <a href="#books">读她的故事</a><a class="main" href="#meet">加微信</a>
+</nav>
+
+<div class="lb" id="lb" role="dialog" aria-label="人生卡大图"><img src="card.jpg?v=20261119" alt="肖萍的人生卡大图"><p>长按图片保存 · 点空白处关闭</p></div>
+
+<script>
+document.documentElement.classList.add('js');
+(function(){
+  var $=function(i){return document.getElementById(i)};
+  var still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var bar=$('bar'),dock=$('dock'),meet=$('meet'),route=$('route');
+  function onScroll(){
+    bar.classList.toggle('on',scrollY>40);
+    var r=meet.getBoundingClientRect();
+    dock.classList.toggle('hide',scrollY<innerHeight*.6||r.top<innerHeight);
+    var rr=route.getBoundingClientRect(),p=(innerHeight*.6-rr.top)/rr.height;
+    route.style.setProperty('--p',Math.max(0,Math.min(1,p)));
+  }
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  // 进场
+  var els=[].slice.call(document.querySelectorAll('.rv,.route li'));
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(e){io.observe(e)});
+  }else els.forEach(function(e){e.classList.add('in')});
+
+  // 第一屏：雪
+  var cv=$('snow');
+  if(!still&&cv.getContext){
+    var cx=cv.getContext('2d'),fl=[],W,H,dpr=Math.min(2,devicePixelRatio||1);
+    function size(){W=cv.offsetWidth;H=cv.offsetHeight;cv.width=W*dpr;cv.height=H*dpr;cx.setTransform(dpr,0,0,dpr,0,0)}
+    size();addEventListener('resize',size);
+    var N=W<700?45:90;
+    for(var i=0;i<N;i++)fl.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*2.2+.6,s:Math.random()*.5+.25,d:Math.random()*Math.PI*2});
+    var run=true;
+    new IntersectionObserver(function(e){run=e[0].isIntersecting;if(run)tick()}).observe(cv);
+    function tick(){
+      if(!run)return;
+      cx.clearRect(0,0,W,H);cx.fillStyle='rgba(255,255,255,.9)';
+      fl.forEach(function(f){f.d+=.01;f.y+=f.s;f.x+=Math.sin(f.d)*.35;if(f.y>H){f.y=-4;f.x=Math.random()*W}
+        cx.beginPath();cx.arc(f.x,f.y,f.r,0,6.283);cx.fill()});
+      requestAnimationFrame(tick);
+    }
+  }
+
+  // ① 人生卡：跟着手指/鼠标倾斜，点开看大图
+  var t=$('tilt'),stage=t.closest('.stage'),lb=$('lb');
+  if(!still){
+    stage.addEventListener('pointermove',function(e){
+      var r=stage.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+      t.style.transform='rotateY('+(x*18)+'deg) rotateX('+(-y*14)+'deg) scale(1.03)';
+      t.style.setProperty('--sx',(50-x*120)+'%');
+    });
+    stage.addEventListener('pointerleave',function(){t.style.transform='';t.style.removeProperty('--sx')});
+  }
+  function openLb(e){if(e)e.preventDefault();lb.classList.add('on')}
+  t.addEventListener('click',openLb);
+  $('cardOpen').addEventListener('click',openLb);
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('on')});
+  addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList.remove('on')});
+
+  // 接着读
+  document.querySelectorAll('[data-open]').forEach(function(b){
+    b.addEventListener('click',function(){var e=$(b.dataset.open);var on=e.classList.toggle('open');b.textContent=on?'收起':'接着读'});
+  });
+
+  // 转给朋友
+  var toast=document.createElement('div');toast.className='toast';document.body.appendChild(toast);
+  function say(s){toast.textContent=s;toast.classList.add('on');setTimeout(function(){toast.classList.remove('on')},2200)}
+  $('share').addEventListener('click',function(){
+    var u=location.href.split('#')[0],d={title:'肖萍 · 时代会把你往前推，可你自己得跟得上',text:'推荐你认识肖萍：学校里第一任计算机老师，跟着女儿从北欧走到南极，63 岁开启新事业。',url:u};
+    if(navigator.share){navigator.share(d).catch(function(){});return}
+    if(navigator.clipboard){navigator.clipboard.writeText(d.text+' '+u).then(function(){say('链接已复制，去微信粘贴给朋友')},function(){say('长按地址栏复制链接')})}
+    else say('点右上角「…」，转发给朋友');
+  });
+
+  // 登船券
+  $('f').addEventListener('submit',function(e){
+    e.preventDefault();
+    var v=$('t').value.trim()||'AI';
+    $('mt').textContent=v;$('mn').textContent='№'+String(Math.floor(Math.random()*900)+100);
+    var m=$('mine');m.hidden=false;m.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+})();
+</script>
+</body>
+</html>
