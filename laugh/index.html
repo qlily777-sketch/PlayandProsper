@@ -706,6 +706,20 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
 @keyframes callme{0%,80%,100%{transform:scale(1)}85%{transform:scale(1.05) rotate(-3deg)}90%{transform:scale(1.03) rotate(3deg)}95%{transform:scale(1.05) rotate(-2deg)}}
 .face-btn .poke{font-size:clamp(16px,4vw,22px)!important;background:#FF4F8B!important;color:#fff!important;border-color:var(--plum)!important;box-shadow:0 4px 0 var(--plum);z-index:5}
 @media (prefers-reduced-motion: reduce){.face-btn{animation:none!important}}
+
+/* 校→笑 更好懂 */
+.pun-cue{margin-top:18px;font-weight:900;font-size:clamp(17px,2.4vw,21px);color:var(--plum);display:inline-block;background:var(--yellow);padding:6px 14px;border-radius:999px;animation:cue 1.8s ease-in-out infinite}
+.pun-cue.done{animation:none;background:#FF4F8B;color:#fff}
+@keyframes cue{50%{transform:translateY(4px)}}
+.flip{position:relative;box-shadow:0 5px 0 var(--plum);transition:background .25s,transform .12s,box-shadow .12s}
+.flip:hover{transform:translateY(-2px);box-shadow:0 7px 0 var(--plum)}
+.flip:active{transform:translateY(3px);box-shadow:0 2px 0 var(--plum)}
+.flip .x{text-decoration:underline wavy #FF4F8B 2px;text-underline-offset:4px}
+.flip .tapme{position:absolute;top:-12px;right:-8px;font-style:normal;font-size:12px;font-weight:900;background:#FF4F8B;color:#fff;padding:2px 9px;border-radius:999px;border:2px solid var(--plum);animation:pokeme 1.4s ease-in-out infinite;transition:opacity .3s}
+.flip.touched .tapme{opacity:0;pointer-events:none}
+.flip.demo::after{content:"👆";position:absolute;right:14%;bottom:-18px;font-size:30px;animation:tap .7s ease-in-out 2}
+@keyframes tap{50%{transform:translate(-4px,-8px) scale(.9)}}
+@media (prefers-reduced-motion: reduce){.pun-cue,.flip .tapme{animation:none}}
 </style>
 </head>
 <body>
@@ -854,8 +868,9 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
 <section class="sec" style="padding-top:0">
   <div class="wrap">
     <h2>也有了一所笑园</h2>
-    <p class="sub">"笑"和"校"同音。这本书的作者，组成了一所学校 —— 学校里有什么，笑园就有什么。点一下，把"校"变成"笑"。</p>
+    <p class="sub">"笑"和"校"同音。这本书的作者，组成了一所学校 —— 学校里有什么，笑园就有什么。</p>
     <p class="sub" style="margin-top:6px">笑园 · 笑长 · 笑友 —— 一日笑友，终身笑友。</p>
+    <p class="pun-cue">👇 点下面三张卡片，把"校"变成"笑"</p>
     <div class="pun">
       <button class="flip" type="button"><span class="w"><span class="x">校</span><span class="o">笑</span></span>园<small>一个地方</small></button>
       <button class="flip" type="button"><span class="w"><span class="x">校</span><span class="o">笑</span></span>长<small>第一个笑的人</small></button>
@@ -1109,10 +1124,10 @@ const TAKEN=[
   {name:'邹娜',k:'big',img:'img/av-zouna.jpg'},
   {name:'木晓',k:'heart',img:'img/av-muxiao.jpg'},
   {name:'杰森',k:'smile',img:'img/av-jason.jpg'},
-  {name:'刘小玲',k:'big',img:'img/av-xiaoling.jpg'},
   {name:'志铮',k:'heart',img:'img/av-huang.jpg'},
   {name:'小麦姐',k:'smile',img:'img/av-xiaomai.jpg'},
-  {name:'唐笑长',k:'big',img:'img/av-tang.jpg'}
+  {name:'唐笑长',k:'big',img:'img/av-tang.jpg'},
+  {name:'哈哈妈',k:'smile',img:'img/av-hahama.jpg'}
 ];
 (function(){
   const seats=document.getElementById('seats');
@@ -1214,8 +1229,21 @@ btn.addEventListener('click',()=>{
 });
 
 // 校 → 笑
-document.querySelectorAll('.flip').forEach(b=>b.addEventListener('click',()=>{
-  b.classList.toggle('on');
+const flips=[...document.querySelectorAll('.flip')];
+flips.forEach(b=>b.insertAdjacentHTML('beforeend','<em class="tapme" aria-hidden="true">点我</em>'));
+function allDone(){if(flips.every(f=>f.classList.contains('on'))){const c=document.querySelector('.pun-cue');c.textContent='🎉 笑园 · 笑长 · 笑友，齐了！';c.classList.add('done')}}
+// 滚到这里时，先自己翻一张给你看，再翻回去
+(function(){
+  const pun=document.querySelector('.pun');if(!pun||!('IntersectionObserver' in window))return;
+  const io=new IntersectionObserver(es=>{if(!es[0].isIntersecting)return;io.disconnect();
+    const b=flips[0];if(RM||b.classList.contains('touched'))return;
+    setTimeout(()=>{if(!b.classList.contains('touched'))b.classList.add('on','demo')},700);
+    setTimeout(()=>{if(!b.classList.contains('touched'))b.classList.remove('on','demo')},2300);
+  },{threshold:.6});io.observe(pun);
+})();
+flips.forEach(b=>b.addEventListener('click',()=>{
+  b.classList.add('touched');b.classList.remove('demo');
+  b.classList.toggle('on');allDone();
   if(b.classList.contains('on')){const r=b.getBoundingClientRect();parts.length<40&&burstSmall(r.left+20,r.top+r.height/2)}
 }));
 function burstSmall(x,y){
@@ -1230,7 +1258,7 @@ const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 // 笑脸墙：两条电影胶片——笑园里的人（作者 + 笑长 + 几张 AI 绘）
 (function(){
   const AI=['f01','g02','g03','g04'];
-  const a=['a-haifeng','a-wenliang','a-zouna','a-muxiao','a-jason','a-xiaoling','a-huang','a-xiaomai','a-tang'],
+  const a=['a-haifeng','a-wenliang','a-zouna','a-muxiao','a-jason','a-huang','a-xiaomai','a-tang','a-hahama'],
         b=['f01','f-gull','g04','f-bookhead','f-henan','g03','f-pink','g02','f-books'];
   const fr=n=>'<figure class="fr"><img src="img/'+n+'.jpg" alt="" loading="lazy">'+(AI.includes(n)?'<span class="ai-tag">AI 绘</span>':'')+'</figure>';
   const fill=(el,list)=>{el.innerHTML=list.concat(list).map(fr).join('')};
