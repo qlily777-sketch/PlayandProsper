@@ -870,11 +870,11 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
     <h2>也有了一所笑园</h2>
     <p class="sub">"笑"和"校"同音。这本书的作者，组成了一所学校 —— 学校里有什么，笑园就有什么。</p>
     <p class="sub" style="margin-top:6px">笑园 · 笑长 · 笑友 —— 一日笑友，终身笑友。</p>
-    <p class="pun-cue">👇 点下面三张卡片，把"校"变成"笑"</p>
+    <p class="pun-cue">👇 点一下卡片，把"校"变成"笑"，听听它笑</p>
     <div class="pun">
-      <button class="flip" type="button"><span class="w"><span class="x">校</span><span class="o">笑</span></span>园<small>一个地方</small></button>
-      <button class="flip" type="button"><span class="w"><span class="x">校</span><span class="o">笑</span></span>长<small>第一个笑的人</small></button>
-      <button class="flip" type="button"><span class="w"><span class="x">校</span><span class="o">笑</span></span>友<small>一起笑的人</small></button>
+      <button class="flip" type="button"><span class="w"><span class="x">校</span><span class="o">笑</span></span>园<small data-on="30 个人的笑声，都住在这里">一个地方</small></button>
+      <button class="flip" type="button"><span class="w"><span class="x">校</span><span class="o">笑</span></span>长<small data-on="笑长先笑，大家就笑了">第一个笑的人</small></button>
+      <button class="flip" type="button"><span class="w"><span class="x">校</span><span class="o">笑</span></span>友<small data-on="下一个笑友，也许就是你">一起笑的人</small></button>
     </div>
   </div>
 </section>
@@ -1231,7 +1231,7 @@ btn.addEventListener('click',()=>{
 // 校 → 笑
 const flips=[...document.querySelectorAll('.flip')];
 flips.forEach(b=>b.insertAdjacentHTML('beforeend','<em class="tapme" aria-hidden="true">点我</em>'));
-function allDone(){if(flips.every(f=>f.classList.contains('on'))){const c=document.querySelector('.pun-cue');c.textContent='🎉 笑园 · 笑长 · 笑友，齐了！';c.classList.add('done')}}
+function allDone(){if(flips.every(f=>f.classList.contains('on'))){const c=document.querySelector('.pun-cue');c.textContent='🎉 齐了！全园一起笑';c.classList.add('done')}}
 // 滚到这里时，先自己翻一张给你看，再翻回去
 (function(){
   const pun=document.querySelector('.pun');if(!pun||!('IntersectionObserver' in window))return;
@@ -1241,9 +1241,23 @@ function allDone(){if(flips.every(f=>f.classList.contains('on'))){const c=docume
     setTimeout(()=>{if(!b.classList.contains('touched'))b.classList.remove('on','demo')},2300);
   },{threshold:.6});io.observe(pun);
 })();
-flips.forEach(b=>b.addEventListener('click',()=>{
+// 每张卡翻成「笑」时笑一声，换一句话；三张齐了，全园一起笑
+const FLIP_LAUGH=['assets/orbit/o03.mp3','assets/orbit/o01.mp3','assets/orbit/o10.mp3'];
+let flipAu,crowdAu;
+flips.forEach((b,i)=>{const sm=b.querySelector('small');sm.dataset.off=sm.textContent});
+flips.forEach((b,i)=>b.addEventListener('click',()=>{
   b.classList.add('touched');b.classList.remove('demo');
-  b.classList.toggle('on');allDone();
+  b.classList.toggle('on');
+  const sm=b.querySelector('small'),on=b.classList.contains('on');sm.textContent=on?sm.dataset.on:sm.dataset.off;
+  if(on){
+    const done=flips.every(f=>f.classList.contains('on'));
+    try{flipAu&&flipAu.pause();
+      if(done){crowdAu=crowdAu||new Audio('assets/laugh-crowd.mp3');crowdAu.currentTime=0;crowdAu.play().catch(giggle)}
+      else{flipAu=new Audio(FLIP_LAUGH[i]);flipAu.play().catch(giggle)}
+    }catch(e){}
+    if(done){const r=b.closest('.pun').getBoundingClientRect();burst(r.left+r.width/2,r.top+r.height/2)}
+  }
+  allDone();
   if(b.classList.contains('on')){const r=b.getBoundingClientRect();parts.length<40&&burstSmall(r.left+20,r.top+r.height/2)}
 }));
 function burstSmall(x,y){
