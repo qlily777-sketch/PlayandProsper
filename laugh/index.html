@@ -1257,9 +1257,9 @@ function burstSmall(x,y){
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 // 笑脸墙：两条电影胶片——笑园里的人（作者 + 笑长 + 几张 AI 绘）
 (function(){
-  const AI=['f01','g02','g03','g04'];
+  const AI=['f01','g02','g03','g04','g-boy'];
   const a=['a-haifeng','a-wenliang','a-zouna','a-muxiao','a-jason','a-huang','a-xiaomai','a-tang','a-hahama'],
-        b=['f01','f-gull','g04','f-bookhead','f-henan','g03','f-pink','g02','f-books'];
+        b=['f01','f-gull','g04','f-bookhead','g-boy','f-henan','g03','f-pink','g02','f-books'];
   const fr=n=>'<figure class="fr"><img src="img/'+n+'.jpg" alt="" loading="lazy">'+(AI.includes(n)?'<span class="ai-tag">AI 绘</span>':'')+'</figure>';
   const fill=(el,list)=>{el.innerHTML=list.concat(list).map(fr).join('')};
   fill(document.getElementById('wall1'),a);fill(document.getElementById('wall2'),b);
