@@ -269,7 +269,7 @@ footer .ft b{font-family:var(--kai);font-size:26px;color:var(--ink);letter-spaci
 
 <!-- HERO -->
 <header class="hero">
-  <div class="topbar"><div class="byline"><img class="logo js-logo" style="filter:brightness(0) invert(1) sepia(.18) drop-shadow(0 4px 10px rgba(120,20,0,.35))" src="" alt="边玩边赚"></div></div>
+  <div class="topbar"><div class="byline"><a href="/" title="回到边玩边赚首页" aria-label="回到边玩边赚首页"><img class="logo js-logo" style="filter:brightness(0) invert(1) sepia(.18) drop-shadow(0 4px 10px rgba(120,20,0,.35))" src="" alt="边玩边赚"></a></div></div>
   <div class="wrap">
     <div>
       
@@ -498,5 +498,6 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.targ
   io.unobserve(e.target)}}),{threshold:.14});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 </script>
+<a href="/" style="position:fixed;left:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:99;background:rgba(255,255,255,.92);color:#5a1a0a;text-decoration:none;font:600 13px/1 -apple-system,'PingFang SC',sans-serif;padding:10px 14px;border-radius:999px;box-shadow:0 6px 18px -8px rgba(0,0,0,.4)">← 边玩边赚首页</a>
 </body>
 </html>

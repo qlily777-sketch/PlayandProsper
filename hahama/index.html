@@ -38,13 +38,16 @@ h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.3;letter-spacing
 .bar{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,box-shadow .3s}
 .bar .w{display:flex;align-items:center;gap:24px;height:62px}
 .bar.on{background:rgba(246,242,236,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line)}
+.home{display:flex;align-items:center;gap:7px;text-decoration:none;font:700 15px var(--serif);color:var(--ink);white-space:nowrap}
+.home img{width:24px;height:24px}
+.sep{color:var(--line);margin:0 -12px}
 .me{font-family:var(--serif);font-weight:700;font-size:18px;text-decoration:none;white-space:nowrap}
 .me small{font:400 12px var(--sans);color:var(--mute);margin-left:6px}
 .bar nav{display:flex;gap:20px;margin-left:auto;font-size:14px}
 .bar nav a{text-decoration:none;color:var(--ink2);padding:4px 0;border-bottom:2px solid transparent}
 .bar nav a.cur{color:var(--ink);border-color:var(--or)}
 .bar .btn{padding:9px 18px;font-size:14px}
-@media(max-width:860px){.bar nav{display:none}.bar .btn{margin-left:auto}}
+@media(max-width:860px){.bar nav{display:none}.bar .btn{margin-left:auto}.bar .w{gap:16px}.me small{display:none}}
 
 /* ① 第一屏 */
 .hero{position:relative;padding:118px 0 72px;overflow:hidden;background:linear-gradient(180deg,#EEF3F6 0%,var(--paper) 62%)}
@@ -187,6 +190,16 @@ h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.3;letter-spacing
 .qr p em{font-style:normal;color:var(--or);font-weight:600}
 @media(max-width:860px){.find .w{grid-template-columns:1fr}.qr{max-width:340px}}
 
+.book6{padding:80px 0;background:linear-gradient(160deg,#F3E9F2,#EFE9F6 60%,var(--paper))}
+.book6 .w{display:grid;grid-template-columns:240px 1fr;gap:56px;align-items:center}
+.b6-cover{aspect-ratio:2/3;border-radius:6px 14px 14px 6px;background:linear-gradient(160deg,#5B3F78,#3B2A55);color:#F6EEDF;padding:26px 22px;display:flex;flex-direction:column;box-shadow:14px 18px 40px -18px rgba(59,42,85,.6),inset 6px 0 0 rgba(255,255,255,.08)}
+.b6-cover small{font-size:12px;letter-spacing:.2em;opacity:.75}
+.b6-cover b{font-family:var(--serif);font-size:30px;line-height:1.35;margin-top:auto}
+.b6-cover i{font-style:normal;font-size:12px;margin-top:18px;border:1px solid rgba(246,238,223,.5);border-radius:999px;padding:3px 12px;align-self:flex-start}
+.book6 h2{font-size:clamp(24px,3vw,34px);margin-bottom:14px}
+.book6 p{color:var(--ink2);max-width:38em;margin-bottom:10px}
+.b6-go{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:20px}
+@media(max-width:860px){.book6{padding:60px 0}.book6 .w{grid-template-columns:1fr;gap:28px}.b6-cover{width:170px}.b6-cover b{font-size:22px}}
 footer{padding:36px 0 110px;font-size:13.5px;color:var(--mute);line-height:1.8}
 footer .w{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 footer a{color:var(--ink2)}
@@ -210,7 +223,9 @@ footer a{color:var(--ink2)}
 
 <header class="bar" id="bar">
   <div class="w">
-    <a class="me" href="#top">瑞士哈哈妈 <small>姚丽雪</small></a>
+    <a class="home" href="../" title="回到边玩边赚首页"><img src="../img/logo-icon.png" alt="" width="24" height="24">边玩边赚</a>
+    <span class="sep" aria-hidden="true">/</span>
+    <a class="me" href="#top">瑞士哈哈妈 <small>书 6 作者</small></a>
     <nav aria-label="页面目录">
       <a href="#bang">能帮你</a><a href="#ping">凭什么</a><a href="#hezuo">怎么合作</a><a href="#woshi">我是谁</a><a href="#daizou">带走</a><a href="#zhaowo">找我</a>
     </nav>
@@ -393,6 +408,25 @@ footer a{color:var(--ink2)}
   </div>
 </section>
 
+
+<!-- 书 6 · 回到边玩边赚 -->
+<section class="book6" id="shu6">
+  <div class="w rv">
+    <div class="b6-cover" aria-hidden="true"><small>边玩边赚 · 书 6</small><b>穿过悲欢，<br>笑答人生</b><i>正在写</i></div>
+    <div class="b6-txt">
+      <span class="no"><i>书</i>我在写的书</span>
+      <h2>边玩边赚书 6《穿过悲欢，笑答人生》</h2>
+      <p>我是这本书的作者，也是私塾的同学。在边玩边赚，私塾的每一位同学都是编委，这本书里叫「笑董」；校长是千百合，其他作者是校友。达沃斯那一周，也会写进书里的「魔山问道」篇。</p>
+      <p>书还在写。先到边玩边赚看看：115 位作者，在世界各地边玩边赚，一起写书、一起用好 AI。</p>
+      <div class="b6-go">
+        <a class="btn" href="../laugh/">看书 6 · 笑园</a>
+        <a class="btn ghost" href="../">回到边玩边赚首页</a>
+        <a class="txt-link" href="../#stars">认识更多作者 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ⑥ 找我 -->
 <section class="sec find" id="zhaowo">
   <div class="w">
@@ -422,7 +456,7 @@ footer a{color:var(--ink2)}
 <footer>
   <div class="w">
     <div>瑞士哈哈妈 · 姚丽雪 · 边玩边赚书 6 作者 · 私塾 · 笑董<br>playandprosper.com/hahama</div>
-    <div><a href="../">← 回到边玩边赚</a> · <a href="../davos/">达沃斯 · 魔山问道</a></div>
+    <div><a href="../">← 回到边玩边赚首页</a> · <a href="../#stars">作者雨林</a> · <a href="../laugh/">书 6 · 笑园</a> · <a href="../davos/">达沃斯 · 魔山问道</a></div>
   </div>
 </footer>
 

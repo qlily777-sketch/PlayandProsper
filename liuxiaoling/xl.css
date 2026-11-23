@@ -331,3 +331,7 @@ footer .other small{display:block;color:#A99A9F}
 @media(max-width:860px){.gal.g3{grid-template-columns:1fr 1fr;grid-template-rows:none;grid-auto-rows:180px}.hero .m img{aspect-ratio:16/11;object-position:60% 20%}}
 
 @media(max-width:860px){.trust{flex-wrap:wrap}.trust li{flex:1 1 45%}.hero .say br{display:none}}
+
+.bar .pp-home{display:flex;align-items:center;gap:6px;text-decoration:none;font:700 14px var(--serif);white-space:nowrap;padding-right:14px;border-right:1px solid rgba(0,0,0,.12)}
+.bar .pp-home img{width:22px;height:22px}
+@media(max-width:860px){.bar .pp-home{font-size:0;gap:0;padding-right:10px}.bar .me small{display:none}}
