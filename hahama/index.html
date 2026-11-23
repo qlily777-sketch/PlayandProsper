@@ -41,13 +41,14 @@ h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.3;letter-spacing
 .home{display:flex;align-items:center;gap:7px;text-decoration:none;font:700 15px var(--serif);color:var(--ink);white-space:nowrap}
 .home img{width:24px;height:24px}
 .sep{color:var(--line);margin:0 -12px}
-.me{font-family:var(--serif);font-weight:700;font-size:18px;text-decoration:none;white-space:nowrap}
+.me{display:flex;align-items:center;text-decoration:none}
+.me img{height:30px;width:auto}
 .me small{font:400 12px var(--sans);color:var(--mute);margin-left:6px}
 .bar nav{display:flex;gap:20px;margin-left:auto;font-size:14px}
 .bar nav a{text-decoration:none;color:var(--ink2);padding:4px 0;border-bottom:2px solid transparent}
 .bar nav a.cur{color:var(--ink);border-color:var(--or)}
 .bar .btn{padding:9px 18px;font-size:14px}
-@media(max-width:860px){.bar nav{display:none}.bar .btn{margin-left:auto}.bar .w{gap:16px}.me small{display:none}}
+@media(max-width:860px){.bar nav{display:none}.bar .btn{margin-left:auto;white-space:nowrap;padding:8px 14px}.bar .w{gap:12px}.home{font-size:0;gap:0}.sep{margin:0 -6px}.me img{height:24px}}
 
 /* ① 第一屏 */
 .hero{position:relative;padding:118px 0 72px;overflow:hidden;background:linear-gradient(180deg,#EEF3F6 0%,var(--paper) 62%)}
@@ -59,7 +60,9 @@ h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.3;letter-spacing
 @keyframes fall{to{transform:translate3d(30px,110vh,0)}}
 .hero .w{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
 .who{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:18px}
-.who b{font-family:var(--serif);font-size:22px;color:var(--or)}
+.who{flex-direction:column;align-items:flex-start;gap:8px}
+.who .brush{margin:0}.who .brush img{height:clamp(54px,6vw,78px);width:auto;margin-left:-6px}
+.who span{line-height:1.6}
 .who span{font-size:14px;color:var(--ink2)}
 .hero h1{font-size:clamp(36px,5.4vw,62px);margin-bottom:18px}
 .hero h1 em{font-style:normal;color:var(--or)}
@@ -165,7 +168,14 @@ h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.3;letter-spacing
 .take b{display:block;font-family:var(--serif);font-size:19px;margin:6px 0}
 .take span{font-size:14.5px;color:var(--ink2);line-height:1.65;display:block}
 .test{margin-top:20px;background:var(--snow);border:1px solid var(--line);border-left:4px solid var(--or);border-radius:16px;padding:22px 26px}.test ol{padding-left:22px;font-size:16px;line-height:1.8}.test p{margin-top:10px;font-size:14.5px;color:var(--ink2)}.take .test a{display:inline;padding:0;border:0;background:none;border-radius:0;color:var(--or);text-decoration:underline;transform:none;box-shadow:none}.num .txt-link{display:inline-block;margin-top:6px;font-size:14px}
-@media(max-width:860px){.take .grid{grid-template-columns:1fr}}
+.kit{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:20px;align-items:end;margin-top:30px}
+.kit figure{cursor:zoom-in}
+.kit img{width:100%;border-radius:14px;box-shadow:0 18px 36px -22px rgba(28,42,64,.55);transition:transform .3s}
+.kit figure:hover img{transform:translateY(-4px)}
+.kit figcaption{font-size:13px;color:var(--mute);margin-top:10px;line-height:1.5}
+.kit figcaption b{display:block;font-family:var(--serif);font-size:16px;color:var(--ink)}
+.kit-tip{font-size:13px;color:var(--mute);margin:12px 0 26px}
+@media(max-width:860px){.take .grid{grid-template-columns:1fr}.kit{grid-template-columns:1fr 1fr;gap:14px}.kit .sq{grid-column:1/-1}}
 
 /* ⑥ 找我 */
 .find{background:var(--ink);color:#EEF1F4}
@@ -188,18 +198,24 @@ h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.3;letter-spacing
 .qr b{font-family:var(--serif);font-size:18px}
 .qr p{font-size:13.5px;color:var(--ink2);line-height:1.6;margin-top:6px}
 .qr p em{font-style:normal;color:var(--or);font-weight:600}
+.qr .qr-s{font-size:12.5px;color:var(--mute);margin-top:10px}
 @media(max-width:860px){.find .w{grid-template-columns:1fr}.qr{max-width:340px}}
 
 .book6{padding:80px 0;background:linear-gradient(160deg,#F3E9F2,#EFE9F6 60%,var(--paper))}
-.book6 .w{display:grid;grid-template-columns:240px 1fr;gap:56px;align-items:center}
-.b6-cover{aspect-ratio:2/3;border-radius:6px 14px 14px 6px;background:linear-gradient(160deg,#5B3F78,#3B2A55);color:#F6EEDF;padding:26px 22px;display:flex;flex-direction:column;box-shadow:14px 18px 40px -18px rgba(59,42,85,.6),inset 6px 0 0 rgba(255,255,255,.08)}
-.b6-cover small{font-size:12px;letter-spacing:.2em;opacity:.75}
-.b6-cover b{font-family:var(--serif);font-size:30px;line-height:1.35;margin-top:auto}
-.b6-cover i{font-style:normal;font-size:12px;margin-top:18px;border:1px solid rgba(246,238,223,.5);border-radius:999px;padding:3px 12px;align-self:flex-start}
+.book6 .w{display:grid;grid-template-columns:280px 1fr;gap:56px;align-items:center}
+.b6-cover{display:block;text-decoration:none;text-align:center}
+.b6-cover img{width:100%;filter:drop-shadow(14px 22px 26px rgba(59,30,90,.35));transition:transform .4s}
+.b6-cover:hover img{transform:rotate(-1.5deg) translateY(-4px)}
+.b6-cover i{display:inline-block;font-style:normal;font-size:12px;color:#6B4C8A;margin-top:14px;border:1px solid rgba(107,76,138,.35);border-radius:999px;padding:3px 12px}
+
+
+
+
 .book6 h2{font-size:clamp(24px,3vw,34px);margin-bottom:14px}
 .book6 p{color:var(--ink2);max-width:38em;margin-bottom:10px}
+.book6 .b6-sub{font-family:var(--serif);font-size:19px;color:#6B4C8A;margin-top:-6px}
 .b6-go{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:20px}
-@media(max-width:860px){.book6{padding:60px 0}.book6 .w{grid-template-columns:1fr;gap:28px}.b6-cover{width:170px}.b6-cover b{font-size:22px}}
+@media(max-width:860px){.book6{padding:60px 0}.book6 .w{grid-template-columns:1fr;gap:28px}.b6-cover{width:200px;margin:0 auto}}
 footer{padding:36px 0 110px;font-size:13.5px;color:var(--mute);line-height:1.8}
 footer .w{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 footer a{color:var(--ink2)}
@@ -225,7 +241,7 @@ footer a{color:var(--ink2)}
   <div class="w">
     <a class="home" href="../" title="回到边玩边赚首页"><img src="../img/logo-icon.png" alt="" width="24" height="24">边玩边赚</a>
     <span class="sep" aria-hidden="true">/</span>
-    <a class="me" href="#top">瑞士哈哈妈 <small>书 6 作者</small></a>
+    <a class="me" href="#top" aria-label="瑞士哈哈妈"><img src="hh-name-ink.png?v=1" alt="瑞士哈哈妈" width="900" height="154"></a>
     <nav aria-label="页面目录">
       <a href="#bang">能帮你</a><a href="#ping">凭什么</a><a href="#hezuo">怎么合作</a><a href="#woshi">我是谁</a><a href="#daizou">带走</a><a href="#zhaowo">找我</a>
     </nav>
@@ -238,22 +254,22 @@ footer a{color:var(--ink2)}
   <svg class="mtn" viewBox="0 0 1440 240" preserveAspectRatio="none" aria-hidden="true"><path d="M0 240V150l120-60 90 40 140-100 110 80 80-40 150 110 120-70 140 60 160-120 130 90 100-30 100 50v80z" fill="#DCE6EE"/><path d="M0 240v-50l160-50 120 40 170-70 150 80 130-40 170 60 180-80 140 60 220-40v90z" fill="#fff"/></svg>
   <div class="w" id="bang">
     <div class="copy">
-      <div class="who rv"><b>瑞士哈哈妈</b><span>姚丽雪 · 国际教育与家庭成长实践者 · 2013 年定居瑞士</span></div>
+      <div class="who rv"><h2 class="brush"><img src="hh-name.png?v=1" alt="瑞士哈哈妈" width="900" height="161"></h2><span>妈妈乐哈哈，人生顶呱呱<br>姚丽雪 · 塔牌外语创始人 · 瑞士 InterChange 咨询 CEO</span></div>
       <h1 class="rv">普通家庭，<br><em>也可以有选择。</em></h1>
       <p class="say rv">我做多语言教育，最在意的不是孩子今天背了多少单词，而是他能不能慢慢学会自己学。2016 年在广东阳春创办塔牌外语，心里装的是资源不多的普通家庭；不到两年，从 0 做到 1000 多名学员。到今天，陪伴过 10000+ 家庭。</p>
       <ul class="fit rv" aria-label="如果你是，我能帮你">
         <li class="th"><span>如果你是</span><span>我能帮你</span></li>
-        <li><b>孩子学英语总要催的家长</b><span>不靠刷题和死记硬背，用母语式的路径，让孩子自己会学</span></li>
-        <li><b>在 AI 时代替孩子着急的家长</b><span>一起分清哪些能力值得先练，哪些焦虑可以先放下</span></li>
-        <li><b>要走进瑞士、达沃斯的人</b><span>中瑞跨文化咨询；论坛那一周，跟着住在瑞士的人上山</span></li>
+        <li><b>孩子学英语开不了口的家长</b><span>在家陪娃，把英语学成直觉，不靠刷题和死记硬背</span></li>
+        <li><b>想给孩子多一条路的家庭</b><span>从读绘本，走到自主阅读；AI 时代，分清哪些能力值得先练</span></li>
+        <li><b>想走出去看看世界的人</b><span>一起去达沃斯，和世界对话；中瑞跨文化咨询</span></li>
       </ul>
       <div class="act rv">
-        <a class="btn" href="#zhaowo">说说你家的情况，先聊一次</a>
+        <a class="btn" href="#zhaowo">想让孩子英语自由？加我聊聊</a>
         <a class="txt-link" href="#hezuo">先看怎么合作 ↓</a>
       </div>
       <ul class="trust rv" aria-label="我的底气">
-        <li><b>1000+</b>学员，不到两年</li>
-        <li><b>10000+</b>家庭</li>
+        <li><b>29</b>年外语教育</li>
+        <li><b>1 万多</b>个家庭</li>
         <li><b>2019</b>Rosetta Stone 官方案例</li>
       </ul>
     </div>
@@ -339,7 +355,7 @@ footer a{color:var(--ink2)}
 
     <h3 class="sub rv">怎么开始</h3>
     <ol class="steps rv">
-      <li><b>加微信，说说情况</b>孩子几岁、在哪里上学、现在卡在哪。现在由边玩边赚团队先接，转给我本人。不知道怎么开口，用页面最下面的小纸条。</li>
+      <li><b>加微信，说说情况</b>扫页面最下面的二维码加我本人。说说孩子几岁、在哪里上学、现在卡在哪；不知道怎么开口，用小纸条。</li>
       <li><b>视频聊一次</b>先听你说，再说我看到的。合不合适，聊完都清楚。</li>
       <li><b>给你一个方向</b>哪一件最要紧、先做什么、不做什么。</li>
       <li><b>说定再开始</b>方式、时间和费用，开始之前讲清楚。</li>
@@ -364,14 +380,15 @@ footer a{color:var(--ink2)}
       <div class="rv">
         <span class="no"><i>04</i>我是谁</span>
         <h2>我是哈哈妈，<br>住在阿尔卑斯山下</h2>
-        <p class="lead">大家叫我哈哈妈，因为我是 Haha 的妈妈。先是一个妈妈，然后才是做教育、做咨询的人。</p>
+        <p class="lead">大家叫我哈哈妈，因为我是 Haha 的妈妈。农村放牛娃出身，先是一个妈妈，然后才是做教育、做咨询的人。</p>
       </div>
       <ol class="road">
-        <li class="rv big"><span class="y">2013</span><b>定居瑞士</b><span>瑞士有四种官方语言。在这里生活，孩子天天在几种语言之间切换。</span></li>
+        <li class="rv"><span class="y">1997</span><b>站上乡镇中学的讲台</b><span>当英语老师，想带山里孩子看世界。后来去英国研修，却和房东聊不了家常。</span></li>
+        <li class="rv big"><span class="y">34 岁</span><b>定居瑞士，从零学德语</b><span>四个月后，在自己的婚礼上，用德语和满场瑞士亲戚聊天。瑞士有四种官方语言，孩子也天天在几种语言之间切换。</span></li>
         <li class="rv"><span class="y">跨文化</span><b>做中瑞之间的那座桥</b><span>创办 InterChange 咨询，做中瑞跨文化：怎么来、怎么住下、怎么把事做成。</span></li>
-        <li class="rv big"><span class="y">2016</span><b>女儿学得那么快，我坐不住了</b><span>女儿 Haha 学了德语、意大利语和英语，我亲眼看见她学得又快又好；回头看国内的学生，学英语学得那么苦。我觉得有责任把这条路带回去，于是在广东阳春创办了哈哈妈塔牌外语，尤其关注资源少的农村学校。</span></li>
+        <li class="rv big"><span class="y">2016</span><b>女儿学得那么快，我坐不住了</b><span>女儿 Haha 学了德语、意大利语和英语，我亲眼看见她学得又快又好；回头看国内的学生，学英语学得那么苦。我觉得有责任把这条路带回去，于是回到家乡小山城广东阳春，创办了哈哈妈塔牌外语，尤其关注资源少的农村学校。</span></li>
         <li class="rv"><span class="y">2018</span><b>不到两年，从 0 到 1000 多名学员</b><span>在家自己学，周末来中心分组练。孩子们开口的胆子大了，发音也好了。</span></li>
-        <li class="rv"><span class="y">2019</span><b>Rosetta Stone 把我们写成官方案例</b><span>《哈哈妈塔牌外语：混合式学习丰富语言教学》。之后继续做多语言自由导师，到今天陪伴过 10000+ 家庭。</span></li>
+        <li class="rv"><span class="y">2019</span><b>Rosetta Stone 把我们写成官方案例</b><span>《哈哈妈塔牌外语：混合式学习丰富语言教学》。十一年下来，陪一万多个家庭，笑着走英语自由之路。</span></li>
         <li class="rv"><span class="y">2024</span><b>在达沃斯，见到珍·古道尔</b><span>世界在山上谈未来，我住在山下。</span></li>
         <li class="rv big"><span class="y">2026.1</span><b>吆喝一群朋友，一起走进达沃斯</b><span>9 个人，费用平摊，朋友开车，晚上一起做饭、聊到深夜。回来办了一场「达沃斯归来」闭门会。</span></li>
         <li class="rv"><span class="y">2026</span><b>进边玩边赚私塾，成为书 6 的笑董</b><span>书 6《穿过悲欢，笑答人生》作者；私塾的同学都是编委，在这本书里叫「笑董」。</span></li>
@@ -391,7 +408,14 @@ footer a{color:var(--ink2)}
     <div class="rv">
       <span class="no"><i>05</i>带走一样</span>
       <h2>不急着找我，先带走一样</h2>
+      <p class="lead">我的三件套：人生卡、自我介绍、背景墙。</p>
     </div>
+    <div class="kit rv">
+      <figure data-lb="card.jpg"><img src="card.jpg?v=1" alt="瑞士哈哈妈的人生卡" loading="lazy" width="900" height="1600"><figcaption><b>人生卡</b>书 6 · 今天遇见谁 · 入场券</figcaption></figure>
+      <figure data-lb="intro.jpg"><img src="intro.jpg?v=1" alt="瑞士哈哈妈的自我介绍海报" loading="lazy" width="1000" height="1778"><figcaption><b>自我介绍</b>你好，我是瑞士哈哈妈</figcaption></figure>
+      <figure data-lb="wall.jpg" class="sq"><img src="wall.jpg?v=1" alt="瑞士哈哈妈的朋友圈背景墙" loading="lazy" width="1200" height="1200"><figcaption><b>背景墙</b>妈妈乐哈哈，人生顶呱呱</figcaption></figure>
+    </div>
+    <p class="kit-tip rv">点开看大图，长按就能保存、转给朋友。</p>
     <div class="grid">
       <a class="rv" href="https://resources.rosettastone.com/CDN/cn/pdfs/Hahama-Case-Study-CHI-1.pdf" target="_blank" rel="noopener"><small>第三方记录 · PDF</small><b>Rosetta Stone 官方案例</b><span>2019 年发布，写的是塔牌外语怎样用混合式学习，带孩子学会自己学。</span></a>
       <a class="rv" href="../davos/"><small>2027 · 1 月</small><b>达沃斯 · 魔山问道</b><span>哈哈妈 × 千百合发起，论坛那一周上山，仅限申请。</span></a>
@@ -412,12 +436,13 @@ footer a{color:var(--ink2)}
 <!-- 书 6 · 回到边玩边赚 -->
 <section class="book6" id="shu6">
   <div class="w rv">
-    <div class="b6-cover" aria-hidden="true"><small>边玩边赚 · 书 6</small><b>穿过悲欢，<br>笑答人生</b><i>正在写</i></div>
+    <a class="b6-cover" href="../laugh/" aria-label="书 6 · 笑园"><img src="cover6.webp?v=1" alt="边玩边赚书 6《穿过悲欢，笑答人生》封面" width="560" height="793" loading="lazy"><i>即将出版 · 北京日报出版社</i></a>
     <div class="b6-txt">
-      <span class="no"><i>书</i>我在写的书</span>
+      <span class="no"><i>书</i>我的书</span>
       <h2>边玩边赚书 6《穿过悲欢，笑答人生》</h2>
-      <p>我是这本书的作者，也是私塾的同学。在边玩边赚，私塾的每一位同学都是编委，这本书里叫「笑董」；校长是千百合，其他作者是校友。达沃斯那一周，也会写进书里的「魔山问道」篇。</p>
-      <p>书还在写。先到边玩边赚看看：115 位作者，在世界各地边玩边赚，一起写书、一起用好 AI。</p>
+      <p class="b6-sub">微笑是日常，大笑是本事。</p>
+      <p>我是这本书的作者，在书里挂「笑董」。在边玩边赚，报了私塾的同学都是编委，书 6 里叫「笑董」；校长是千百合，其他作者是校友。达沃斯那一周，也会写进书里的「魔山问道」篇。</p>
+      <p>书很快就和大家见面。先到边玩边赚看看：115 位作者，在世界各地边玩边赚，一起写书、一起用好 AI。</p>
       <div class="b6-go">
         <a class="btn" href="../laugh/">看书 6 · 笑园</a>
         <a class="btn ghost" href="../">回到边玩边赚首页</a>
@@ -442,13 +467,14 @@ footer a{color:var(--ink2)}
         <label class="mk-row"><span class="mk-l">孩子几岁</span><input id="mkAge" maxlength="20" placeholder="比如：9 岁，三年级（可以不填）"></label>
         <label class="mk-row"><span class="mk-l">在哪里</span><input id="mkWhere" maxlength="20" placeholder="比如：上海 / 德国（可以不填）"></label>
         <div class="mk-out"><p id="mkText"></p><button type="button" class="btn" id="mkCopy">复制这段话</button></div>
-        <ol class="mk-steps"><li>复制上面这段话</li><li>扫微信二维码</li><li>粘贴发过去，就开始了</li></ol>
+        <ol class="mk-steps"><li>复制上面这段话</li><li>扫二维码加哈哈妈</li><li>粘贴发过去，就开始了</li></ol>
       </div>
     </div>
     <div class="qr rv">
-      <img src="via-wechat.jpg?v=1" alt="微信二维码：千百合，加时备注哈哈妈" width="600" height="600" loading="lazy">
-      <b>加微信，备注「哈哈妈」</b>
-      <p>我常住瑞士，有时差。现在由边玩边赚联合创始人千百合先接，备注<em>哈哈妈</em>，会直接拉你和我本人对接。</p>
+      <img src="qr.png?v=1" alt="瑞士哈哈妈本人的微信二维码" width="600" height="600" loading="lazy">
+      <b>扫码，走近瑞士哈哈妈</b>
+      <p>这是我本人的微信。加我时说说你想聊的：<em>孩子英语 · 家庭教育 · 达沃斯</em></p>
+      <p class="qr-s">想让孩子英语自由？私信我「英语」。<br>我们可能聊得来：当妈妈 · 学外语 · 海外生活 · 爱旅行</p>
     </div>
   </div>
 </section>
@@ -495,7 +521,7 @@ document.documentElement.classList.add('js');
   addEventListener('keydown',function(e){if(e.key==='Escape')close()});
   document.querySelectorAll('[data-lb]').forEach(function(a){a.addEventListener('click',function(){box.innerHTML='<img src="'+a.dataset.lb+'" alt="">';lb.classList.add('on');requestAnimationFrame(function(){lb.classList.add('vis')});document.body.style.overflow='hidden'})});
   // 合作说明
-  var coop='瑞士哈哈妈（姚丽雪）｜2013 年定居瑞士，陪伴 10000+ 家庭培养孩子的英语自学力。\n她能帮的三件事：\n1. 孩子的英语自学力：用母语式的路径，让孩子自己会学（哈哈妈塔牌外语，2016 年创办，2019 年 Rosetta Stone 官方案例）\n2. 给孩子搭一个能力底盘：一起分清 AI 时代哪些能力值得先练，哪些焦虑可以先放下\n3. 走进瑞士和达沃斯：中瑞跨文化咨询；2027 年 1 月「达沃斯 · 魔山问道」\n先加微信聊一次，说定再开始。\nhttps://www.playandprosper.com/hahama/#hezuo';
+  var coop='瑞士哈哈妈（姚丽雪）｜29 年外语教育，十一年陪一万多个家庭走英语自由之路；边玩边赚书 6 作者。\n她能帮的三件事：\n1. 孩子的英语自学力：用母语式的路径，让孩子自己会学（哈哈妈塔牌外语，2016 年创办，2019 年 Rosetta Stone 官方案例）\n2. 给孩子搭一个能力底盘：一起分清 AI 时代哪些能力值得先练，哪些焦虑可以先放下\n3. 走进瑞士和达沃斯：中瑞跨文化咨询；2027 年 1 月「达沃斯 · 魔山问道」\n先加微信聊一次，说定再开始。\nhttps://www.playandprosper.com/hahama/#hezuo';
   $('copyCoop').addEventListener('click',function(){copy(coop,'已复制，发给家人或朋友吧')});
   $('selfTest').addEventListener('click',function(){var t=$('testBox');t.hidden=!t.hidden;if(!t.hidden)t.classList.add('in')});
   // 小纸条
@@ -503,7 +529,7 @@ document.documentElement.classList.add('js');
   function build(){
     var p=chips.filter(function(b){return b.getAttribute('aria-pressed')==='true'}).map(function(b){return b.textContent});
     var a=age.value.trim(),w=where.value.trim();
-    var s=['您好，我是在官网上看到瑞士哈哈妈的，想请您帮我介绍认识。'];
+    var s=['哈哈妈您好，我是在边玩边赚官网上看到您的。'];
     if(w)s.push('我在'+w+'。');
     if(a)s.push('孩子'+a+'。');
     if(p.indexOf('孩子英语')>-1)s.push('想聊聊孩子学英语，怎么让他自己会学。');
