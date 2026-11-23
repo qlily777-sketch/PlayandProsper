@@ -253,6 +253,8 @@ h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.3;letter-spacing
 
 .book6 h2{font-size:clamp(24px,3vw,34px);margin-bottom:14px}
 .book6 p{color:var(--ink2);max-width:38em;margin-bottom:10px}
+.book6 .b6-join{background:rgba(255,255,255,.7);border-left:3px solid #6B4C8A;border-radius:10px;padding:12px 16px;color:var(--ink)}
+.book6 .b6-join a{color:#6B4C8A;font-weight:600;text-decoration:none;white-space:nowrap;margin-left:4px}
 .book6 .b6-sub{font-family:var(--serif);font-size:19px;color:#6B4C8A;margin-top:-6px}
 .b6-go{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:20px}
 @media(max-width:860px){.book6{padding:60px 0}.book6 .w{grid-template-columns:1fr;gap:28px}.b6-cover{width:200px;margin:0 auto}}
@@ -494,8 +496,9 @@ footer a{color:var(--ink2)}
       <span class="no"><i>书</i>我的书</span>
       <h2>《边玩边赚 · 穿过悲欢，笑答人生》</h2>
       <p class="b6-sub">微笑是日常，大笑是本事。</p>
-      <p>我是这本书的作者，也是书里的「笑董」。从农村放牛娃，到站上英语讲台，再到阿尔卑斯山下的哈哈妈，一路上关于成长、选择和笑的故事，都在这里。2027 年 1 月的「魔山问道」，也会写进书里。</p>
-      <p>书正在筹备出版。先到边玩边赚看看：115 位作者，在世界各地边玩边赚，一起写书、一起用好 AI。</p>
+      <p>这本书刚开始招募，我就加入了，成了它的作者，也是书里的「笑董」。从农村放牛娃，到站上英语讲台，再到阿尔卑斯山下的哈哈妈，一路上关于成长、选择和笑的故事，都在这里。2027 年 1 月的「魔山问道」，也会写进书里。</p>
+      <p class="b6-join">这本书还在招募作者。你也有一段想写下来的故事？来找我，我们一起写进这本书。<a href="#zhaowo" data-pick="一起写书">我也想写进这本书 →</a></p>
+      <p>先到边玩边赚看看：115 位作者，在世界各地边玩边赚，一起写书、一起用好 AI。</p>
       <div class="b6-go">
         <a class="btn" href="../laugh/">看这本书 · 笑园</a>
         <a class="btn ghost" href="../">回到边玩边赚首页</a>
@@ -515,7 +518,7 @@ footer a{color:var(--ink2)}
       <div class="maker">
         <div class="mk-row"><span class="mk-l">想聊</span>
           <div class="chips" id="chips" role="group" aria-label="想聊什么，可多选">
-            <button type="button" aria-pressed="true">孩子英语</button><button type="button" aria-pressed="false">孩子的未来能力</button><button type="button" aria-pressed="false">瑞士 · 达沃斯</button>
+            <button type="button" aria-pressed="true">孩子英语</button><button type="button" aria-pressed="false">孩子的未来能力</button><button type="button" aria-pressed="false">瑞士 · 达沃斯</button><button type="button" aria-pressed="false">一起写书</button>
           </div></div>
         <label class="mk-row" id="ageRow"><span class="mk-l">孩子几岁</span><input id="mkAge" maxlength="20" placeholder="比如：9 岁，三年级（可以不填）"></label>
         <label class="mk-row"><span class="mk-l">在哪里</span><input id="mkWhere" maxlength="20" placeholder="比如：上海 / 德国（可以不填）"></label>
@@ -598,9 +601,10 @@ document.documentElement.classList.add('js');
     if(p.indexOf('孩子英语')>-1)s.push('想聊聊孩子学英语，怎么让他自己会学。');
     if(p.indexOf('孩子的未来能力')>-1)s.push('也想聊聊 AI 时代孩子要先练哪些能力。');
     if(p.indexOf('瑞士 · 达沃斯')>-1)s.push('另外也想了解瑞士和达沃斯。');
+    if(p.indexOf('一起写书')>-1)s.push('我也有一段故事，想和您一起写进《边玩边赚 · 穿过悲欢，笑答人生》。');
     if(p.length===1&&p[0]==='瑞士 · 达沃斯'){s=['哈哈妈您好，我是在边玩边赚官网上看到您的。'];if(w)s.push('我在'+w+'。');s.push('想了解瑞士，也想聊聊达沃斯 · 魔山问道。');}
     if(s.length===1)s.push('先认识一下，聊一次。');
-    $('ageRow').style.display=(p.length===1&&p[0]==='瑞士 · 达沃斯')?'none':'';
+    $('ageRow').style.display=(p.length&&p.every(function(x){return x==='瑞士 · 达沃斯'||x==='一起写书'}))?'none':'';
     txt.textContent=s.join('');
   }
   chips.forEach(function(b){b.addEventListener('click',function(){b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')==='true'?'false':'true');build()})});
