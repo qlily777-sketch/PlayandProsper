@@ -134,6 +134,14 @@ h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.3;letter-spacing
 .card li:before{content:"";position:absolute;left:2px;top:15px;width:8px;height:8px;border-radius:50%;border:2px solid var(--or)}
 .card .go{margin-top:auto;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .card .go .btn{padding:10px 18px;font-size:14.5px}
+.price{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0 10px}
+.price div{background:var(--snow);border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px;display:flex;flex-direction:column;gap:4px}
+.price b{font-size:16px}
+.price span{font-size:13px;color:var(--mute)}
+.price em{font-style:normal;font-family:var(--serif);font-size:22px;color:var(--or);margin-top:8px}
+.price .dv{background:linear-gradient(170deg,#24425C,#1C2A40);color:#F1EEE8;border:0}.price .dv span{color:#B9C3CE}.price .dv em{color:#F3C9A2}
+.price-n{font-size:14px;color:var(--ink2);margin-bottom:40px}
+@media(max-width:860px){.price{grid-template-columns:1fr 1fr}}@media(max-width:560px){.price{grid-template-columns:1fr}.price div{flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:2px 10px}.price em{margin:4px 0 0;font-size:20px;width:100%}}.price em{white-space:nowrap}
 .card.dv{background:linear-gradient(170deg,#24425C,#1C2A40);color:#F1EEE8;border:0}
 .card.dv .for,.card.dv li{color:#C9D3DD}
 .card.dv li{border-color:rgba(255,255,255,.14)}
@@ -405,6 +413,15 @@ footer a{color:var(--ink2)}
       </article>
     </div>
 
+    <h3 class="sub rv">四个项目，价格写在前面</h3>
+    <div class="price rv">
+      <div><b>家庭英语自学力陪跑</b><span>建立长期学习能力</span><em>1.28 万元 / 年</em></div>
+      <div><b>初高中英语偏科突破</b><span>能力突破 · 高效自学</span><em>9800 元 / 3 个月</em></div>
+      <div><b>家庭英语教育判断力教练</b><span>专业成长 · 教练培养</span><em>2.98 万元 / 3 个月</em></div>
+      <div class="dv"><b>达沃斯 · 魔山问道</b><span>升级人生下半场 · 仅限申请</span><em>6.8 万元 / 人</em></div>
+    </div>
+    <p class="price-n rv">先聊一次不收费。哪一项适合你、从哪一项开始，聊完再定。</p>
+
     <h3 class="sub rv">怎么开始</h3>
     <ol class="steps rv">
       <li><b>加微信，说说情况</b>扫页面最下面的二维码加我本人。说说孩子几岁、在哪里上学、现在卡在哪；不知道怎么开口，用小纸条。</li>
@@ -418,7 +435,7 @@ footer a{color:var(--ink2)}
       <details><summary>孩子多大可以开始？</summary><p>4 到 12 岁开始，孩子更容易像学母语一样学第二语言；大一点也能开始，每个孩子的环境和方法不一样。先说说孩子的年龄和现在的英语情况。</p></details>
       <details><summary>我自己英语不好，能帮上孩子吗？</summary><p>能。母语式的路径是让孩子沉浸在英语里自己学，不需要家长当英语老师。你要做的是陪伴和守住节奏，具体哪些要你配合，聊的时候按你家情况说清楚。</p></details>
       <details><summary>不在瑞士，也能找你吗？</summary><p>能。2016 年起，就有很多学生只在网上学，由老师带着用好学习系统。现在具体怎么陪，聊的时候说清楚。</p></details>
-      <details><summary>怎么收费？</summary><p>不同需求，合作方式不一样。先确认适不适合，再把方式、周期和费用一次讲清楚，你认可了才开始。不合适，就不勉强。</p></details>
+      <details><summary>怎么收费？</summary><p>价格都写在上面「四个项目」里：家庭英语自学力陪跑 1.28 万元 / 年；初高中英语偏科突破 9800 元 / 3 个月；家庭英语教育判断力教练 2.98 万元 / 3 个月；达沃斯 · 魔山问道 6.8 万元 / 人。先聊一次，确认适合再开始；不合适，就不勉强。</p></details>
       <details><summary>达沃斯 · 魔山问道怎么参加？</summary><p>申请制，不公开售卖。行程、费用和申请方式都在<a href="../davos/">达沃斯 · 魔山问道的页面</a>上。</p></details>
     </div>
     <div class="copyrow rv"><button type="button" class="btn ghost" id="copyCoop">复制合作说明，发给家人或朋友</button><span>复制的是这一节的文字 + 链接</span></div>
@@ -441,7 +458,7 @@ footer a{color:var(--ink2)}
         <li class="rv"><span class="y">跨文化</span><b>做中瑞之间的那座桥</b><span>创办 InterChange 咨询，做中瑞跨文化：怎么来、怎么住下、怎么把事做成。</span></li>
         <li class="rv big"><span class="y">2016</span><b>女儿学得那么快，我坐不住了</b><span>女儿 Haha 五年学会了四门外语：六岁德语，七岁意大利语，八岁英语，十岁法语。我亲眼看见她学得又快又好；回头看国内的学生，学英语学得那么苦。我觉得有责任把这条路带回去，于是回到家乡小山城广东阳春，创办了哈哈妈塔牌外语，尤其关注资源少的农村学校。</span></li>
         <li class="rv"><span class="y">2018</span><b>不到两年，从 0 到 1000 多名学员</b><span>在家自己学，周末来中心分组练。孩子们开口的胆子大了，发音也好了。</span></li>
-        <li class="rv"><span class="y">2019</span><b>Rosetta Stone 把我们写成官方案例</b><span>《哈哈妈塔牌外语：混合式学习丰富语言教学》。十一年下来，陪一万多个家庭，笑着走英语自由之路。</span></li>
+        <li class="rv"><span class="y">2019</span><b>Rosetta Stone 把我们写成官方案例</b><span>《哈哈妈塔牌外语：混合式学习丰富语言教学》。十一年陪跑实践，陪一万多个家庭，笑着走英语自由之路。</span></li>
         <li class="rv"><span class="y">2024</span><b>在达沃斯，见到珍·古道尔（Jane Goodall）</b><span>研究黑猩猩六十多年的英国科学家，联合国和平使者。她一辈子最相信年轻人的力量，创办的青少年行动项目「根与芽」（Roots &amp; Shoots）走进了 75 个以上国家。让孩子自己长出力量，也是我做教育的方向。</span></li>
         <li class="rv"><span class="y">2024.7</span><b>赞助 World Child Forum</b><span>这是一个面向 10 到 22 岁青少年的国际论坛，用开放空间的形式进行。那年 4 月，我在达沃斯和论坛的发起人见面；7 月，我们赞助了这一届论坛，论坛期间也做了很多协助性工作，还带了孩子去参加。</span></li>
         <li class="rv big"><span class="y">2026.1</span><b>发起国际参会团，带 9 位伙伴走进达沃斯</b><span>教育、金融、科技、健康领域的伙伴，从德国、英国、瑞士和欧洲各地赶来。我在当地接待，朋友开车；白天走进论坛那一周，晚上一起做饭，聊到深夜还有聊不完的话。回来办了一场「达沃斯归来」线上闭门分享会。</span></li>
@@ -542,7 +559,7 @@ footer a{color:var(--ink2)}
       <img src="qr.png?v=1" alt="瑞士哈哈妈本人的微信二维码" width="600" height="600" loading="lazy">
       <b>扫码，走近瑞士哈哈妈</b>
       <p>这是我本人的微信。加我时说说你想聊的：<em>孩子英语 · 家庭教育 · 达沃斯</em></p>
-      <p class="qr-s">视频号：瑞士哈哈妈自由成长<br>想让孩子英语自由？私信我「英语」。<br>我们可能聊得来：当妈妈 · 学外语 · 海外生活 · 爱旅行</p>
+      <p class="qr-s">视频号：瑞士哈哈妈自由成长<br>想让孩子自由成长，让自己拥有更多人生可能？私信我「自由」。<br>我们可能聊得来：当妈妈 · 学外语 · 海外生活 · 爱旅行</p>
     </div>
   </div>
 </section>
