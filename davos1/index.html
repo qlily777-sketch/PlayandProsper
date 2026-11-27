@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>达沃斯 · 魔山问道 · 线上开山会</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;900&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE  明亮、雪山、像一张上山的车票
+   IDEA   红色小火车载着「你的问题」上山：每页是一站，底部轨道就是进度
+   PICTURE 达沃斯的雪、湖、红火车，满版照片
+   COLOUR 雪白 #FBFAF7 · 夜蓝 #10233F · 瑞士红 #D52B1E · 冰川蓝 #9CC3E6
+   TYPE   Noto Serif SC 900 做大字，Noto Sans SC 做正文 */
+:root{--snow:#FBFAF7;--ink:#10233F;--ink2:#4A5A70;--red:#D52B1E;--ice:#9CC3E6;--line:#E3E0D8}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:#0d1a2e;color:var(--ink);font-family:"Noto Sans SC","PingFang SC",sans-serif;-webkit-font-smoothing:antialiased}
+.serif{font-family:"Noto Serif SC","Songti SC",serif}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform:translate(-50%,-50%) scale(var(--s,1));overflow:hidden;background:var(--snow)}
+.slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .7s,visibility .7s}
+.slide.on{opacity:1;visibility:visible}
+.bg{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.06);transition:transform 9s ease-out}
+.on .bg{transform:scale(1)}
+.u{opacity:0;transform:translateY(26px);transition:opacity .9s,transform .9s cubic-bezier(.2,.7,.2,1)}
+.on .u{opacity:1;transform:none}
+.on .u1{transition-delay:.3s}.on .u2{transition-delay:.7s}.on .u3{transition-delay:1.1s}.on .u4{transition-delay:1.6s}.on .u5{transition-delay:2.2s}.on .u6{transition-delay:2.9s}
+.abs{position:absolute}
+.kick{font-weight:700;font-size:28px;letter-spacing:.12em;color:var(--red)}
+.h1{font-family:"Noto Serif SC",serif;font-weight:900;line-height:1.05;color:var(--ink)}
+.lead{font-size:38px;line-height:1.6;color:var(--ink2)}
+.tag{display:inline-block;background:var(--red);color:#fff;font-weight:700;font-size:30px;padding:10px 26px;border-radius:8px;letter-spacing:.08em}
+.white,.white .h1,.white .lead{color:#fff}
+.photo{position:absolute;background-size:cover;background-position:center;border-radius:18px;box-shadow:0 24px 60px rgba(16,35,63,.22)}
+.cap{position:absolute;left:18px;bottom:14px;color:#fff;font-size:20px;font-weight:500;text-shadow:0 2px 10px rgba(0,0,0,.5)}
+/* 轨道与小火车 */
+#track{position:absolute;left:0;right:0;bottom:0;height:64px;z-index:20;pointer-events:none}
+#track .rail{position:absolute;left:120px;right:120px;bottom:28px;height:3px;background:repeating-linear-gradient(90deg,var(--ink) 0 14px,transparent 14px 22px);opacity:.35}
+#track .stn{position:absolute;bottom:23px;width:13px;height:13px;margin-left:-6px;border-radius:50%;background:var(--snow);border:3px solid var(--ink);opacity:.5}
+#track .stn.done{background:var(--red);border-color:var(--red);opacity:1}
+#train{position:absolute;bottom:31px;width:116px;height:40px;margin-left:-58px;transition:left 1.4s cubic-bezier(.5,0,.3,1)}
+#track.dark .rail{background:repeating-linear-gradient(90deg,#fff 0 14px,transparent 14px 22px)}
+#track.dark .stn{background:transparent;border-color:#fff}
+#stnname{position:absolute;bottom:6px;font-size:19px;font-weight:700;color:var(--red);white-space:nowrap;transform:translateX(-50%);transition:left 1.4s cubic-bezier(.5,0,.3,1)}
+#track.dark #stnname{color:#fff}
+/* 时钟 */
+.clock{position:absolute;width:500px;height:560px;background:#fff;border-radius:26px;box-shadow:0 24px 60px rgba(16,35,63,.14);padding:44px 40px;text-align:center}
+.clock .face{width:120px;height:120px;border-radius:50%;background-size:cover;background-position:center;margin:0 auto 22px;border:4px solid #fff;box-shadow:0 0 0 3px var(--red)}
+.clock .city{font-size:30px;font-weight:700;color:var(--ink)}
+.clock .who{font-size:22px;color:var(--ink2);margin-top:6px}
+.clock .time{font-family:"Noto Serif SC",serif;font-weight:900;font-size:108px;color:var(--ink);margin-top:26px;letter-spacing:.02em;font-variant-numeric:tabular-nums}
+.clock .day{font-size:24px;color:var(--red);font-weight:700}
+.clock.you .face{background:var(--red);display:flex;align-items:center;justify-content:center;color:#fff;font:900 56px "Noto Serif SC",serif}
+#chips{position:absolute;left:120px;right:120px;top:900px;height:60px}
+.chip{display:inline-block;margin:0 12px 0 0;background:#fff;border:2px solid var(--red);color:var(--red);font-weight:700;font-size:24px;padding:6px 20px;border-radius:30px;animation:pop .5s cubic-bezier(.2,1.4,.4,1)}
+@keyframes pop{from{transform:scale(.4);opacity:0}}
+/* 车票 */
+.ai{position:absolute;left:760px;top:70px;width:1060px;height:900px;pointer-events:auto}
+.ai .bar{display:flex;gap:12px}
+.ai textarea{flex:1;height:84px;resize:none;border:2px solid var(--line);border-radius:14px;padding:12px 16px;font:22px/1.5 "Noto Sans SC",sans-serif;color:var(--ink);outline:0;background:#fff}
+.ai textarea:focus{border-color:var(--red)}
+.ai button{border:0;border-radius:14px;background:var(--red);color:#fff;font:700 22px "Noto Sans SC",sans-serif;padding:0 26px;cursor:pointer}
+.ai button.g{background:#fff;color:var(--ink2);border:2px solid var(--line);font-weight:500;font-size:17px;padding:7px 14px}
+.ai button:disabled{opacity:.45}
+.ai .tools{display:flex;gap:10px;margin-top:10px;align-items:center}
+.ai .st{margin-left:auto;font-size:17px;color:var(--ink2);font-variant-numeric:tabular-nums}
+.ai .st b{color:var(--red)}
+.ticket{position:relative;margin-top:22px;height:700px;background:#fff;border-radius:22px;box-shadow:0 30px 70px rgba(16,35,63,.2);display:flex;overflow:hidden}
+.ticket .side{width:150px;background:var(--red);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:30px 0;position:relative}
+.ticket .side::after{content:"";position:absolute;right:-1px;top:0;bottom:0;border-right:4px dotted var(--snow)}
+.ticket .side .v{writing-mode:vertical-rl;font:900 40px "Noto Serif SC",serif;letter-spacing:.3em}
+.ticket .side .no{font-size:18px;letter-spacing:.1em;writing-mode:vertical-rl}
+.ticket .main{flex:1;padding:36px 46px;position:relative}
+.ticket .row1{display:flex;justify-content:space-between;font-size:18px;color:var(--ink2);letter-spacing:.08em}
+.ticket .k{font-size:17px;font-weight:700;letter-spacing:.2em;color:var(--red);margin:22px 0 8px}
+.ticket .q{font:900 48px/1.3 "Noto Serif SC",serif;color:var(--ink);text-wrap:balance}
+.ticket .see div{font-size:24px;line-height:1.65;color:var(--ink2)}.ticket .see b{color:var(--ink)}
+.ticket .ask{font:600 30px/1.5 "Noto Serif SC",serif;color:var(--ink)}
+.ticket .say{font-size:22px;line-height:1.75;color:var(--ink2);min-height:118px;padding-right:170px}
+.ticket .say button{font-size:17px;padding:6px 14px;margin-right:10px;vertical-align:middle}
+.ticket .stamp{position:absolute;right:46px;bottom:40px;width:150px;height:150px;border:5px solid var(--red);border-radius:50%;color:var(--red);display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:900;transform:rotate(-14deg) scale(1.6);opacity:0;transition:.35s cubic-bezier(.2,1.5,.4,1)}
+.ticket.ok .stamp{opacity:.9;transform:rotate(-14deg) scale(1)}
+.ticket .stamp span{font-size:18px;letter-spacing:.1em}.ticket .stamp b{font:900 30px "Noto Serif SC",serif}
+.ticket .empty{font:900 46px/1.5 "Noto Serif SC",serif;color:#c9c4b8;margin-top:120px}
+.ticket .wait{font-size:30px;color:var(--ink2);margin-top:140px}
+.ticket .wait b{display:block;font:900 120px "Noto Serif SC",serif;color:var(--red);font-variant-numeric:tabular-nums}
+/* 价值卡 */
+.vc{position:absolute;width:330px;height:420px;background:#fff;border-radius:22px;box-shadow:0 20px 50px rgba(16,35,63,.12);padding:34px 30px;border-top:8px solid var(--red)}
+.vc .n{font:900 52px "Noto Serif SC",serif;color:var(--ink)}
+.vc .t{font-size:25px;line-height:1.6;color:var(--ink2);margin-top:16px}
+.vc .t b{color:var(--ink)}
+.qr{position:absolute;width:330px;background:#fff;border-radius:22px;box-shadow:0 24px 60px rgba(16,35,63,.16);padding:28px;text-align:center}
+.qr img{width:274px;height:274px;display:block;margin:0 auto 16px}
+.qr .nm{font-size:28px;font-weight:700}.qr .ds{font-size:20px;color:var(--red);font-weight:700;margin-top:4px}
+
+.ava{width:150px;height:150px;border-radius:50%;background-size:cover;background-position:center;border:5px solid #fff;box-shadow:0 10px 30px rgba(0,0,0,.2);margin:0 auto}
+.avn{font-size:24px;font-weight:700;margin-top:10px}
+.clk{width:380px;height:170px;background:#fff;border-radius:22px;box-shadow:0 18px 44px rgba(16,35,63,.12);display:flex;align-items:center;gap:22px;padding:0 28px}
+.clk .face{flex:none;width:92px;height:92px;border-radius:50%;background-size:cover;background-position:center;box-shadow:0 0 0 3px var(--red)}
+.clk.you .face{background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font:900 44px "Noto Serif SC",serif}
+.clk .city{font-size:22px;font-weight:700;color:var(--ink2)}
+.clk .time{font:900 76px "Noto Serif SC",serif;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.1}
+.route{position:absolute;left:120px;top:430px;width:1680px;height:420px}
+.route .ln{position:absolute;left:60px;right:60px;top:150px;height:8px;background:repeating-linear-gradient(90deg,var(--ink) 0 26px,transparent 26px 40px);opacity:.3}
+.route .st{position:absolute;top:0;width:280px;margin-left:-140px;text-align:center}
+.route .st i{display:block;width:56px;height:56px;margin:122px auto 0;border-radius:50%;background:#fff;border:6px solid var(--red);font:900 26px/44px "Noto Serif SC",serif;color:var(--red);font-style:normal}
+.route .st b{display:block;margin-top:22px;font:900 40px "Noto Serif SC",serif;color:var(--ink)}
+.route .st:last-child i{background:var(--red);color:#fff}
+.nums{display:flex;gap:56px}.nums div{display:flex;flex-direction:column}.nums b{font:900 84px "Noto Serif SC",serif;color:var(--red);line-height:1.1}.nums span{font-size:22px;color:var(--ink2);margin-top:6px;max-width:220px}
+.line{display:grid;grid-template-columns:repeat(3,1fr);gap:18px 30px}.line div{font-size:25px;color:var(--ink);background:#fff;border-radius:14px;padding:16px 20px;box-shadow:0 10px 28px rgba(16,35,63,.08)}.line b{display:block;font:900 30px "Noto Serif SC",serif;color:var(--ink);margin-bottom:4px}.line b.r{color:var(--red)}
+.pain{position:absolute;width:800px;height:170px;background:#fff;border-radius:20px;box-shadow:0 16px 40px rgba(16,35,63,.1);padding:34px 40px 34px 104px;font:600 32px/1.5 "Noto Serif SC",serif;color:var(--ink)}
+.pain::before{content:"“";position:absolute;left:30px;top:14px;font:900 80px "Noto Serif SC",serif;color:var(--red)}
+.gain{position:absolute;width:520px;height:250px;background:#fff;border-radius:20px;border-top:8px solid var(--red);box-shadow:0 16px 40px rgba(16,35,63,.1);padding:30px 32px;font-size:24px;line-height:1.65;color:var(--ink2)}
+.gain b{display:block;font:900 38px "Noto Serif SC",serif;color:var(--ink);margin-bottom:12px}
+.wk{width:400px;font-size:24px;line-height:1.6;color:var(--ink2)}.wk b{display:block;font:900 38px "Noto Serif SC",serif;color:var(--ink);margin-bottom:8px}.wk b.r{color:var(--red)}
+.stack{width:840px;display:flex;flex-direction:column;gap:14px}.stack.r{width:790px}
+.stack div{background:#fff;border-radius:16px;padding:16px 24px;box-shadow:0 10px 28px rgba(16,35,63,.08);border-left:6px solid var(--ink)}
+.stack.r div{border-left-color:var(--red)}
+.stack b{display:block;font:900 30px "Noto Serif SC",serif;color:var(--ink)}.stack span{font-size:21px;color:var(--ink2);line-height:1.5}
+.mini{background:#fff;border-radius:14px;padding:10px;text-align:center;width:215px}.mini img{width:195px;height:195px;display:block}.mini span{font-size:18px;font-weight:700}
+.nums.sm b{font-size:64px}.nums.sm span{max-width:200px}
+/* 讲者视图 & 工具 */
+#hint{position:fixed;left:14px;top:10px;font-size:12px;color:rgba(255,255,255,.35);z-index:30}
+#pill{position:fixed;right:14px;top:10px;font:13px Menlo,monospace;color:rgba(255,255,255,.4);z-index:30}
+#pill.warn{color:#f5a623}#pill.over{color:#ff5a3c}
+#black{position:fixed;inset:0;background:#000;opacity:0;pointer-events:none;transition:.4s;z-index:50}#black.on{opacity:1;pointer-events:auto}
+#wordbox{position:fixed;left:50%;bottom:14vh;transform:translateX(-50%);display:none;z-index:60;background:#fff;border:3px solid var(--red);border-radius:40px;padding:10px 24px}
+#wordbox.on{display:flex;gap:12px;align-items:center}#wordbox input{border:0;outline:0;font-size:24px;width:320px;font-family:inherit}#wordbox span{color:#999;font-size:13px}
+#help{position:fixed;inset:0;background:rgba(13,26,46,.96);color:#fff;display:none;z-index:70;padding:8vh 10vw;font-size:18px;line-height:2.1}#help.on{display:block}#help b{color:#ffb4a8;display:inline-block;width:120px}
+#hist{position:fixed;inset:6vh 8vw;background:#fff;border-radius:16px;z-index:65;display:none;padding:24px;box-shadow:0 30px 80px rgba(0,0,0,.4)}
+#hist.on{display:flex;flex-direction:column;gap:12px}#hist textarea{flex:1;border:1px solid #ddd;border-radius:10px;padding:14px;font:15px/1.7 "Noto Sans SC",sans-serif}
+#hist button{align-self:flex-end;border:0;background:var(--ink);color:#fff;padding:10px 20px;border-radius:10px;cursor:pointer}
+body.pres{overflow:auto;background:#111}
+#pres{display:none;padding:28px;color:#fff;gap:28px;grid-template-columns:1fr 1.3fr;height:100vh}
+body.pres #pres{display:grid}body.pres #stage,body.pres #hint,body.pres #pill{display:none}
+#pres .box{background:#1c1c1c;border-radius:14px;padding:24px;overflow:auto}
+#pres .tt{font-size:24px;font-weight:700}#pres .nx{color:#999;margin:6px 0 18px}
+#pres .ck{font:600 66px Menlo,monospace}#pres .ck.warn{color:#f5a623}#pres .ck.over{color:#ff5a3c}
+#pres .tg{font:14px Menlo,monospace;color:#999;margin-top:6px}
+#pres .nt{font-size:21px;line-height:1.8;white-space:pre-wrap;color:#e6e6e6}
+#pres .ctl{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}#pres .ctl button{background:#333;color:#fff;border:0;padding:12px 18px;border-radius:10px;font-size:16px;cursor:pointer}
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- 01 封面 · 出发 -->
+<section class="slide" data-sec="0" data-dark="1">
+  <div class="bg" style="background-image:url(img/lake.jpg)"></div>
+  <div class="abs" style="inset:0;background:linear-gradient(180deg,rgba(16,35,63,0) 30%,rgba(251,250,247,.0) 45%,rgba(251,250,247,.8) 70%)"></div>
+  <div class="abs u u1" style="left:120px;top:560px"><span class="tag">线上开山会</span></div>
+  <div class="abs h1 u u2" style="left:112px;top:640px;font-size:150px">达沃斯 · 魔山问道</div>
+  <div class="abs u u3" style="left:122px;top:830px;font-size:34px;font-weight:500;color:var(--ink)">带着事业问题上山，带着行动方向下山</div>
+  <div class="abs u u4" style="right:120px;top:640px;display:flex;gap:26px;align-items:center">
+    <div style="text-align:center"><div class="ava" style="background-image:url(img/lily.jpg)"></div><div class="avn">边玩边赚千百合</div></div>
+    <div style="text-align:center;margin-top:-30px"><svg width="96" height="64" viewBox="0 0 96 64"><path d="M4 60 L34 18 L48 36 L62 10 L92 60 Z" fill="#10233F"/><path d="M34 18 L41 28 L37 31 L33 26 L28 30 Z M62 10 L70 23 L65 27 L61 21 L55 25 Z" fill="#fff"/></svg><div style="font-size:20px;font-weight:700;color:var(--ink);letter-spacing:.2em;margin-top:2px">一起上山</div></div>
+    <div style="text-align:center"><div class="ava" style="background-image:url(img/hahama.jpg)"></div><div class="avn">瑞士哈哈妈</div></div>
+  </div>
+</section>
+
+<!-- 02 同一刻 + 今晚路线 -->
+<section class="slide" data-sec="0">
+  <div class="abs kick u u1" style="left:120px;top:80px">此刻，三个时区</div>
+  <div class="abs h1 u u1" style="left:116px;top:126px;font-size:104px">同一刻</div>
+  <div class="abs u u2" style="left:620px;top:90px;display:flex;gap:30px">
+    <div class="clk"><div class="face" style="background-image:url(img/lily.jpg)"></div><div><div class="city">美国 · 千百合</div><div class="time" data-tz="America/Los_Angeles">--:--</div></div></div>
+    <div class="clk"><div class="face" style="background-image:url(img/hahama.jpg)"></div><div><div class="city">瑞士 · 哈哈妈</div><div class="time" data-tz="Europe/Zurich">--:--</div></div></div>
+    <div class="clk you"><div class="face">你</div><div><div class="city">北京 · 你</div><div class="time" data-tz="Asia/Shanghai">--:--</div></div></div>
+  </div>
+  <div class="abs u u3" style="left:120px;top:330px;font-size:32px;color:var(--ink2)">你在哪里？<b style="color:var(--red)">打在评论区</b>　·　今晚这趟车，一共 6 站：</div>
+  <div class="route u u4" id="route"></div>
+  <div id="chips"></div>
+</section>
+
+<!-- 03 千百合（哈哈妈来介绍） -->
+<section class="slide" data-sec="1">
+  <div class="photo u u2" style="left:1260px;top:80px;width:540px;height:880px;background-image:url(img/lily-red.jpg);background-position:center 30%"><div class="cap">千百合 · 在路上</div></div>
+  <div class="abs kick u u1" style="left:120px;top:90px">带你上山的人 · 哈哈妈来介绍</div>
+  <div class="abs h1 u u1" style="left:116px;top:140px;font-size:130px">千百合</div>
+  <div class="abs u u2" style="left:122px;top:310px;font-size:28px;color:var(--ink2);line-height:1.6">老板 IP 商业重构师 · 20+ 畅销书出品人 / 译者 · 边玩边赚联合创始人<br>浙大没读完，后来在美国读了 AI 硕士，做了 100+ 个 AI 智能体</div>
+  <div class="abs u u3 nums" style="left:120px;top:430px">
+    <div><b>20+</b><span>本畅销书，出品或翻译</span></div><div><b>115</b><span>位作者一起写书</span></div><div><b>8</b><span>个时区协作</span></div><div><b>2</b><span>届当当影响力作家</span></div>
+  </div>
+  <div class="abs u u4" style="left:122px;top:640px;font-size:24px;font-weight:700;color:var(--red);letter-spacing:.1em">她一直在「现场」</div>
+  <div class="abs u u4 line" style="left:120px;top:690px;width:1080px">
+    <div><b>2018</b>平昌冬奥会，现场 30 多天</div><div><b>2023</b>带朋友参观 SpaceX</div><div><b>2025</b>登上哈利法塔</div>
+    <div><b>2026.1</b>美国 CES</div><div><b>2026.12</b>包下菲律宾一座岛 · 下海</div><div><b class="r">2027.1</b>达沃斯 · 上山</div>
+  </div>
+</section>
+
+<!-- 04 瑞士哈哈妈（千百合来介绍） -->
+<section class="slide" data-sec="1">
+  <div class="photo u u2" style="left:1240px;top:80px;width:560px;height:520px;background-image:url(img/hh-davos.jpg);background-position:center 25%"><div class="cap">2024 · 达沃斯 · 和珍·古道尔</div></div>
+  <div class="photo u u3" style="left:1240px;top:630px;width:560px;height:330px;background-image:url(img/hh-portrait.jpg);background-position:center 20%"></div>
+  <div class="abs kick u u1" style="left:120px;top:90px">带你上山的人 · 千百合来介绍</div>
+  <div class="abs h1 u u1" style="left:116px;top:140px;font-size:130px">瑞士哈哈妈</div>
+  <div class="abs u u2" style="left:122px;top:310px;font-size:28px;color:var(--ink2);line-height:1.6">姚丽雪 · 瑞士 InterChange 咨询 CEO · 塔牌外语创始人<br>2013 年定居瑞士，2026 达沃斯国际参会团发起人</div>
+  <div class="abs u u3 nums" style="left:120px;top:430px">
+    <div><b>29</b><span>年外语教育</span></div><div><b>1 万+</b><span>个家庭</span></div><div><b>2019</b><span>Rosetta Stone 官方案例</span></div><div><b>9</b><span>位伙伴，2026.1 一起走进达沃斯</span></div>
+  </div>
+  <div class="abs u u4" style="left:122px;top:650px;width:1040px;font:900 50px/1.4 'Noto Serif SC',serif;color:var(--ink)">去达沃斯的人很多，<br>我们是<span style="color:var(--red)">住在山下的人</span>。</div>
+  <div class="abs u u5" style="left:122px;top:830px;font-size:26px;color:var(--ink2)">全程中英双语陪同 · 本地人带路 · 这一周的门道，她都熟</div>
+</section>
+
+<!-- 05 为什么上山 -->
+<section class="slide" data-sec="2">
+  <div class="abs kick u u1" style="left:120px;top:90px">为什么上山</div>
+  <div class="abs h1 u u1" style="left:116px;top:140px;width:1100px;font-size:84px;line-height:1.25">有些问题，<br>在熟悉的环境里想不透。</div>
+  <div class="abs u u2" style="left:122px;top:380px;font-size:34px;color:var(--ink2)">不是努力不够，是身边听到的答案，都太相似了。</div>
+  <div class="abs u u3" style="left:122px;top:480px;font-size:24px;font-weight:700;color:var(--red);letter-spacing:.1em">你最近，是不是也常这样想</div>
+  <div class="pain u u3" style="left:120px;top:530px">生意做到今天，身边能聊透一件事的人，越来越少。</div>
+  <div class="pain u u4" style="left:960px;top:530px">AI 的新闻天天看，它到底会怎么改变我这门生意，还是看不清。</div>
+  <div class="pain u u5" style="left:120px;top:730px">想把事业做到国外去，却不知道外面的人在想什么、要什么。</div>
+  <div class="pain u u6" style="left:960px;top:730px">一年忙到头，没有一个星期，是真正停下来想问题的。</div>
+</section>
+
+<!-- 06 为什么是达沃斯 -->
+<section class="slide" data-sec="2">
+  <div class="photo u u2" style="left:1060px;top:80px;width:740px;height:520px;background-image:url(img/congress.jpg)"><div class="cap">达沃斯小镇与会议中心 · 一年只有这一周</div></div>
+  <div class="abs kick u u1" style="left:120px;top:90px">为什么偏偏是达沃斯</div>
+  <div class="abs h1 u u1" style="left:116px;top:140px;width:900px;font-size:84px;line-height:1.2">每年一月，<br>世界在这里碰头。</div>
+  <div class="abs u u2" style="left:122px;top:380px;width:880px;font-size:30px;line-height:1.7;color:var(--ink2)">全球的政策、资本、技术和商业思想，在这座小镇集中碰撞一周。主会场里是国家元首和全球大公司的掌门人；主会场外，一公里长的 Promenade 大街上，<b style="color:var(--ink)">几百场边会同时在开</b>。</div>
+  <div class="abs u u3 nums sm" style="left:120px;top:640px;gap:40px;width:900px">
+    <div><b>1971</b><span>第一届</span></div><div><b>1979</b><span>向中国打开大门</span></div><div><b>~3000</b><span>2027 预计参会人数</span></div><div><b>第 57 届</b><span>2027 年会</span></div>
+  </div>
+  <div class="abs u u4" style="left:1060px;top:640px;width:740px;background:#fff;border-left:8px solid var(--red);border-radius:16px;padding:24px 30px;box-shadow:0 16px 40px rgba(16,35,63,.1)">
+    <div style="font-size:20px;color:var(--red);font-weight:700;letter-spacing:.1em">2027 年会主题</div>
+    <div style="font:900 32px/1.35 'Noto Serif SC',serif;margin-top:6px">Deliberate Conversations on the Future</div>
+    <div style="font-size:24px;color:var(--ink2);margin-top:6px">从容地、深思熟虑地，谈一谈未来</div></div>
+  <div class="abs u u5" style="left:122px;top:850px;width:1680px;font:900 40px 'Noto Serif SC',serif;color:var(--ink)">在达沃斯，最稀缺的不是距离，是<span style="color:var(--red)">注意力</span>。我们帮你把时间，留给和你下一步有关的人和话。</div>
+</section>
+
+<!-- 06 见学 -->
+<section class="slide" data-sec="2" data-dark="1">
+  <div class="bg" style="background-image:url(img/schatzalp.jpg)"></div>
+  <div class="abs" style="inset:0;background:linear-gradient(180deg,rgba(16,35,63,.0) 25%,rgba(16,35,63,.86) 70%)"></div>
+  <div class="abs u u1" style="left:120px;top:470px"><div class="kick" style="color:#ffb4a8">千百合 · 为什么叫魔山问道</div></div>
+  <div class="abs h1 u u2" style="left:112px;top:520px;font-size:160px;color:#fff">见学</div>
+  <div class="abs u u3" style="left:122px;top:730px;font-size:42px;line-height:1.6;color:#fff;font-weight:500">游学，是被带去看风景；<br>见学，是带着自己的问题去。</div>
+  <div class="abs u u4" style="right:120px;top:780px;width:780px;font-size:24px;line-height:1.7;color:rgba(255,255,255,.88);text-align:right">托马斯·曼《魔山》（1924）的故事，就发生在达沃斯。<br>每年一月，这座「魔山」上聚满了想为世界找答案的人。<br>我们也带着问题上山。</div>
+</section>
+
+<!-- 07 如果你是老板 -->
+<section class="slide" data-sec="3">
+  <div class="abs kick u u1" style="left:120px;top:90px">和你有关 · 如果你是老板</div>
+  <div class="abs h1 u u1" style="left:116px;top:140px;font-size:104px">你带回去的</div>
+  <div class="abs u u2" style="left:122px;top:290px;font-size:28px;color:var(--ink2)">2027 年会五个问题：增长 · 地球 · 韧性 · 能源 · AI 与人 —— <b style="color:var(--red)">你的事业，正在回答哪一个？</b></div>
+  <div class="gain u u2" style="left:120px;top:380px"><b>站到世界的现场</b>全球的政策、资本和技术在同一个小镇碰头。不看二手解读，自己去听、去问。</div>
+  <div class="gain u u3" style="left:680px;top:380px"><b>你的问题，有人认真接</b>人数刻意很少，每个人的问题都会被摆上台面，被一群有真事业的人掰开了聊。</div>
+  <div class="gain u u3" style="left:1240px;top:380px"><b>一个更清楚的方向</b>不一定是现成答案，也可能是一个新思路，或一个终于下定决心的决定。</div>
+  <div class="gain u u4" style="left:120px;top:660px"><b>一个作者身份</b>一路的观察和思考写成署名文章，收进边玩边赚系列新书。</div>
+  <div class="gain u u5" style="left:680px;top:660px"><b>一组影像</b>摄影师全程跟拍：你在达沃斯的形象照，和这一周的纪录短片。</div>
+  <div class="gain u u5" style="left:1240px;top:660px"><b>一群同路人</b>一起住、一起走、一起上场。回去以后，还能互相帮衬。</div>
+</section>
+
+<!-- 08 如果你是年轻人 / 家长 -->
+<section class="slide" data-sec="3">
+  <div class="photo u u2" style="left:1300px;top:80px;width:500px;height:880px;background-image:url(img/see.jpg)"></div>
+  <div class="abs kick u u1" style="left:120px;top:90px">和你有关 · 如果你是年轻人，或是家长</div>
+  <div class="abs h1 u u1" style="left:116px;top:140px;font-size:110px">青年提问官</div>
+  <div class="abs u u2" style="left:120px;top:310px;width:1100px;background:#fff;border-left:8px solid var(--red);border-radius:14px;padding:26px 32px;font-size:28px;line-height:1.7;box-shadow:0 16px 40px rgba(16,35,63,.08)">一个中国女孩，<b>18 岁生日那天</b>，第一次来到论坛周的达沃斯。<br>如今 19 岁，她是 Global Shaper：从<b>场外看的人</b>，变成了<b style="color:var(--red)">被请进场的人</b>。<br>这一次，她每天和我们住在一起。</div>
+  <div class="abs u u3" style="left:122px;top:600px;font:900 46px/1.4 'Noto Serif SC',serif">我们不把你当娃，<br>把你当成大人，去看世界。</div>
+  <div class="abs u u4" style="left:122px;top:760px;width:1100px;font-size:26px;line-height:1.85;color:var(--ink2)">18 岁以上可以自己报名 · 16、17 岁和父母同行<br>定一个问题 → 去现场问 → 在论坛上发言 → 回来写进书里：<b style="color:var(--ink)">一次完整的寒假社会实践</b><br>父母一起来，也不是陪同：<b style="color:var(--ink)">你也带一个自己的问题</b></div>
+</section>
+
+<!-- 09 这一周 -->
+<section class="slide" data-sec="3">
+  <div class="abs kick u u1" style="left:120px;top:100px">2027.1.17 – 1.24 · 世界经济论坛那一周</div>
+  <div class="abs h1 u u1" style="left:116px;top:150px;font-size:120px">这一周</div>
+  <div class="abs u u2" style="left:120px;top:350px;width:1680px;height:6px;background:var(--red);border-radius:3px"></div>
+  <div class="abs u u2 wk" style="left:120px;top:380px"><b>1/17 周日</b>苏黎世落地，住进雪山下的私宅。晚饭时，每人讲一件事：我带来的问题</div>
+  <div class="abs u u3 wk" style="left:540px;top:380px"><b>周一 – 周三</b>本地朋友带路走 Promenade，按你的问题地图去听、去问；晚上围坐复盘</div>
+  <div class="abs u u4 wk" style="left:960px;top:380px"><b class="r">周四</b>达沃斯魔山论坛 · 晚宴：不赶场，每个人轮流当案主；晚上一场有仪式感的收官晚宴</div>
+  <div class="abs u u5 wk" style="left:1380px;top:380px"><b>之后</b>顺道走瑞士、列支敦士登、奥地利、德国，1/24 各自下山</div>
+  <div class="photo u u4" style="left:120px;top:690px;width:400px;height:270px;background-image:url(img/congress.jpg)"><div class="cap">达沃斯</div></div>
+  <div class="photo u u5" style="left:540px;top:690px;width:400px;height:270px;background-image:url(img/lake.jpg)"><div class="cap">进山的小火车</div></div>
+  <div class="photo u u5" style="left:960px;top:690px;width:400px;height:270px;background-image:url(img/schatzalp.jpg)"><div class="cap">雪山</div></div>
+  <div class="abs u u6" style="left:1380px;top:690px;display:grid;grid-template-columns:200px 200px;gap:20px">
+    <div class="photo" style="position:relative;height:125px;background-image:url(img/ch.jpg)"><div class="cap">瑞士</div></div><div class="photo" style="position:relative;height:125px;background-image:url(img/li.jpg)"><div class="cap">列支敦士登</div></div>
+    <div class="photo" style="position:relative;height:125px;background-image:url(img/at.jpg)"><div class="cap">奥地利</div></div><div class="photo" style="position:relative;height:125px;background-image:url(img/de.jpg)"><div class="cap">德国</div></div></div>
+</section>
+
+<!-- 10 价值：这一周里 + 下山之后 -->
+<section class="slide" data-sec="3">
+  <div class="abs kick u u1" style="left:120px;top:80px">你得到的，不止一趟旅行</div>
+  <div class="abs h1 u u1" style="left:116px;top:126px;font-size:96px">山上一周，下山一年</div>
+  <div class="abs u u2" style="left:120px;top:280px;font-size:24px;font-weight:700;color:var(--red);letter-spacing:.12em">山上 · 这一周</div>
+  <div class="abs u u2 stack" style="left:120px;top:325px">
+    <div><b>雪山下的私宅，住一整周</b><span>论坛那一周，达沃斯一小时车程内的房子，一晚就要几千瑞郎，还常常订不到</span></div>
+    <div><b>本地人全程中英双语陪同</b><span>哈哈妈带路，坐火车进出，不堵车、不怕查车</span></div>
+    <div><b>出发前，一张你的问题地图</b><span>AI 研究透公开信息，我们判断哪些最值得你花时间</span></div>
+    <div><b>达沃斯魔山论坛 · 晚宴</b><span>你当一次案主，一桌人帮你拆问题</span></div>
+    <div><b>形象照 + 纪录短片</b><span>摄影师木晓全程跟拍</span></div>
+  </div>
+  <div class="abs u u4" style="left:1010px;top:280px;font-size:24px;font-weight:700;color:var(--red);letter-spacing:.12em">下山 · 这一年　<span style="color:var(--ink2);font-weight:500;letter-spacing:0">作者共创席（¥18,888）全部权益</span></div>
+  <div class="abs u u4 stack r" style="left:1010px;top:325px">
+    <div><b>一书</b><span>边玩边赚畅销系列新书，你是联合作者</span></div>
+    <div><b>一课</b><span>《人人都能做 AI 智能体》，亲手做出自己的智能体</span></div>
+    <div><b>一生态</b><span>边玩边赚俱乐部，一年 52 场直播</span></div>
+    <div><b>一年共创</b><span>下山不散，接着一起做</span></div>
+  </div>
+</section>
+
+<!-- 11 上山车票（AI） -->
+<section class="slide" data-sec="4">
+  <div class="abs kick u u1" style="left:120px;top:110px">第三位嘉宾 · AI</div>
+  <div class="abs h1 u u1" style="left:116px;top:160px;font-size:120px">上山<br>车票</div>
+  <div class="abs lead u u2" style="left:122px;top:460px;width:560px;font-size:32px">把你的问题打在评论区，<br>AI 现场给你开一张<br><b style="color:var(--red)">上山车票</b></div>
+  <div class="abs u u3" style="left:122px;top:690px;width:560px;font-size:25px;line-height:1.7;color:var(--ink2)">它就是出发前那张<b style="color:var(--ink)">「问题地图」</b>的第一页。<br>然后，我们俩当场陪你聊。</div>
+  <div class="ai u u2" id="ai">
+    <div class="bar"><textarea id="ai-in" placeholder="把评论区的问题贴在这里（可带称呼和城市）"></textarea><button id="ai-go">开车票</button></div>
+    <div class="tools"><button class="g" id="ai-ex1">示例 · 年轻作曲家</button><button class="g" id="ai-ex2">示例 · 工厂老板</button><button class="g" id="ai-hist">今晚的车票</button><span class="st" id="ai-st">AI 嘉宾准备中…</span></div>
+    <div class="ticket" id="tk">
+      <div class="side"><div class="no" id="tk-no">No. 0000</div><div class="v">上山车票</div><div class="no">DAVOS</div></div>
+      <div class="main" id="tk-main"><div class="empty">评论区里，<br>谁的问题先上车？</div></div>
+      <div class="stamp"><span>魔山问道</span><b>上山</b><span>2027·1</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 领你的车票（第一次二维码） -->
+<section class="slide" data-sec="4">
+  <div class="abs kick u u1" style="left:120px;top:110px">每个人都可以有一张</div>
+  <div class="abs h1 u u1" style="left:116px;top:160px;font-size:110px;line-height:1.15">想要你自己的<br>那张车票？</div>
+  <div class="abs u u2" style="left:122px;top:470px;font-size:36px;line-height:1.7">扫码加我们任何一位，<br>把你的问题发过来，<b style="color:var(--red)">备注「车票」</b>。</div>
+  <div class="abs u u3" style="left:122px;top:650px;font-size:28px;color:var(--ink2);line-height:1.7">会后，我们陆续给你发回一张。</div>
+  <div class="qr u u2" style="left:1080px;top:200px"><img src="img/qr-lily.jpg" alt="千百合微信二维码"><div class="nm">千百合</div><div class="ds">加微信 · 发问题</div></div>
+  <div class="qr u u3" style="left:1470px;top:200px"><img src="img/qr-hahama.png" alt="瑞士哈哈妈微信二维码"><div class="nm">瑞士哈哈妈</div><div class="ds">加微信 · 发问题</div></div>
+</section>
+
+<!-- 13 上车（诚意金） -->
+<section class="slide" data-sec="5">
+  <div class="abs kick u u1" style="left:120px;top:90px">上车</div>
+  <div class="abs h1 u u1" style="left:116px;top:140px;font-size:130px">想聊聊</div>
+  <div class="abs u u2" style="left:120px;top:330px;display:flex;align-items:center;gap:18px;font-weight:700;font-size:36px">
+    <span class="tag" style="font-size:36px">¥500 诚意金</span><span style="color:var(--red)">→</span><span>面谈</span><span style="color:var(--red)">→</span><span>正式邀请</span></div>
+  <div class="abs u u3" style="left:122px;top:440px;font-size:38px;font-weight:700">聊完觉得不合适，诚意金<span style="color:var(--red)">全额退</span>。</div>
+  <div class="abs u u3" style="left:122px;top:520px;width:860px;font-size:28px;line-height:1.7;color:var(--ink2)">面谈时，我们俩专门陪你聊你那张车票。</div>
+  <div class="abs u u4" style="left:122px;top:650px;font-size:28px;line-height:1.85;color:var(--ink)">带着问题的企业家 · 18 岁以上的年轻人（16、17 岁和父母同行）<br><span style="color:var(--ink2)">每人 ¥68,000 · 再收 5 位 · 12 月 12 日截止<br>需要签证的朋友，请在 12 月 1 日前申请</span></div>
+  <div class="abs u u2" style="left:1130px;top:70px;width:670px;height:900px;background:#fff;border-radius:26px;box-shadow:0 30px 70px rgba(16,35,63,.18);display:flex;align-items:center;justify-content:center"><img src="img/pay-hahama.jpg" alt="¥500 诚意金收款码" style="height:860px;border-radius:12px"></div>
+</section>
+
+<!-- 14 山上见 -->
+<section class="slide" data-sec="5" data-dark="1">
+  <div class="bg" style="background-image:url(img/aerial.jpg)"></div>
+  <div class="abs" style="inset:0;background:linear-gradient(90deg,rgba(16,35,63,.75),rgba(16,35,63,.35) 60%,rgba(16,35,63,.5))"></div>
+  <div class="abs u u1" style="left:120px;top:200px"><div class="kick" style="color:#ffb4a8">达沃斯 · 魔山问道</div></div>
+  <div class="abs h1 u u2" style="left:112px;top:260px;font-size:160px;color:#fff">带着问题<br>山上相见</div>
+  <div class="abs u u4" style="left:122px;top:700px;font-size:32px;color:#fff;line-height:1.7">把你的问题，最后打在评论区一次。<br>想聊聊，扫右边的码。</div>
+  <div class="abs u u3" style="left:1350px;top:80px;width:450px;height:580px;background:#fff;border-radius:22px;display:flex;align-items:center;justify-content:center;box-shadow:0 30px 70px rgba(0,0,0,.35)"><img src="img/pay-hahama.jpg" alt="¥500 诚意金收款码" style="height:550px;border-radius:10px"></div>
+  <div class="abs u u5" style="left:1350px;top:690px;display:flex;gap:20px">
+    <div class="mini"><img src="img/qr-lily.jpg" alt=""><span>千百合</span></div><div class="mini"><img src="img/qr-hahama.png" alt=""><span>瑞士哈哈妈</span></div></div>
+</section>
+
+<div id="track"><div class="rail"></div><div id="stns"></div>
+  <svg id="train" viewBox="0 0 116 40"><rect x="2" y="6" width="50" height="26" rx="6" fill="#D52B1E"/><rect x="58" y="6" width="56" height="26" rx="8" fill="#D52B1E"/><rect x="8" y="11" width="12" height="9" rx="2" fill="#fff"/><rect x="24" y="11" width="12" height="9" rx="2" fill="#fff"/><rect x="64" y="11" width="12" height="9" rx="2" fill="#fff"/><rect x="80" y="11" width="12" height="9" rx="2" fill="#fff"/><rect x="98" y="11" width="11" height="12" rx="3" fill="#fff"/><rect x="52" y="17" width="6" height="4" fill="#10233F"/><circle cx="14" cy="34" r="4" fill="#10233F"/><circle cx="40" cy="34" r="4" fill="#10233F"/><circle cx="72" cy="34" r="4" fill="#10233F"/><circle cx="102" cy="34" r="4" fill="#10233F"/></svg>
+  <div id="stnname"></div>
+</div>
+</div>
+
+<div id="hint">← → 翻页 · F 全屏 · T 评论区词上屏 · ? 帮助</div>
+<div id="pill"></div>
+<div id="black"></div>
+<div id="wordbox"><input id="wordin" placeholder="敲评论区的城市，回车上屏"><span>Esc 关闭</span></div>
+<div id="help"><b>← → 空格</b>翻页<br><b>1–9 · 0</b>跳页（0 = 第 10 页；- 诚意金页；= 最后一页）<br><b>F</b>全屏<br><b>T</b>第 2 页：把评论区的城市敲上屏<br><b>B</b>黑屏　<b>S</b>计时归零<br><b>讲者视图</b>另开一个标签页，打开同一链接，末尾加 #presenter（两边同步翻页）</div>
+<div id="pres">
+  <div class="box"><div class="tt" id="p-t"></div><div class="nx" id="p-n"></div><div class="ck" id="p-c">00:00</div><div class="tg" id="p-g"></div>
+    <div class="ctl"><button data-c="prev">← 上一页</button><button data-c="next">下一页 →</button><button data-c="reset">计时归零</button><button data-c="black">黑屏</button></div></div>
+  <div class="box"><div class="tt" style="margin-bottom:12px">本页提纲</div><div class="nt" id="p-x"></div></div>
+</div>
+
+<script>
+{
+const SECS=['出发','带你上山的人','为什么上山','和你有关','你的车票','上车'];
+const NOTES=[
+{t:'封面',end:120,n:`【开播前】20:20 开会议室停在这页；20:00 两人彩排，试一遍「上山车票」，共享屏幕勾「共享电脑声音」。
+【整场只有一个成交动作】¥500 诚意金（第 13 页）。第 12 页加微信领车票，是给所有人的。
+
+【千百合】大家好，我是边玩边赚千百合。
+【哈哈妈】我是瑞士哈哈妈。
+【千百合】今晚叫「开山会」：我们俩要发起一件事，1 月一起去达沃斯。今晚只做一件事——帮你找到你的那一个问题。`},
+{t:'同一刻 · 今晚路线',end:300,n:`（三个钟是实时走的）
+【千百合】我这边是美国凌晨 4 点半，
+【哈哈妈】我这边是瑞士下午 1 点半，
+【千百合】你那边是北京晚上 8 点半。三个时区，同一刻在线——这就是魔山问道的样子。
+【千百合】请在评论区打：你在哪个城市？（按 T 敲上屏）
+【哈哈妈】今晚我们坐这趟小火车，一共 6 站：先认识我们俩，再说为什么上山、和你有什么关系，然后 AI 给你开一张上山车票，最后一站，上车。看底下的小火车，就知道我们到哪了。`},
+{t:'千百合（哈哈妈介绍）',end:540,n:`【哈哈妈来讲 · 约 4 分钟 · 抬千百合】
+【哈哈妈】先说说我是怎么认识千百合的……（海峰老师的书、共学营、她送我的那本《边玩边赚》）
+【哈哈妈】她是老板 IP 商业重构师，20 多本畅销书的出品人，带着 115 位作者跨 8 个时区一起写书，两届当当影响力作家。
+【哈哈妈】最打动我的是：她一直在现场。平昌冬奥会待了 30 多天，去 CES，12 月包下菲律宾一座岛——下海；1 月，和我一起上山。
+【千百合】谢谢哈哈妈。那我也来说说你。`},
+{t:'瑞士哈哈妈（千百合介绍）',end:780,n:`【千百合来讲 · 约 4 分钟 · 抬哈哈妈】
+【千百合】哈哈妈做了 29 年外语教育，陪过 1 万多个家庭，2019 年被 Rosetta Stone 写成官方案例。2013 年定居瑞士，在那里做中瑞跨文化咨询。
+【千百合】2024 年她在达沃斯见到了珍·古道尔；今年 1 月，她带着 9 位伙伴走进了达沃斯。
+【千百合】她有一句话我特别喜欢：「去达沃斯的人很多，我们是住在山下的人。」——这一周不是「被带着看」，是有人带你走进去。
+【哈哈妈】（接）论坛那一周的达沃斯，是这样的……（讲 1 分钟真实现场：雪、火车、小镇、Promenade）`},
+{t:'为什么上山',end:960,n:`【千百合 · 约 4 分钟】
+【千百合】为什么要上山？有些问题，在熟悉的环境里想不透。不是不努力，是身边听到的答案都太相似了。
+【千百合】你最近是不是也这样想？（一条一条念，停一下）
+【哈哈妈】（挑一条讲一个真实的人：去年同行的伙伴里，谁带着这样的问题来）
+【千百合】如果有一条说中了你，在评论区打一个「1」。`},
+{t:'为什么是达沃斯',end:1140,n:`【千百合 · 约 3 分钟】
+【千百合】走出去，不是随便去一个地方都行。为什么偏偏是达沃斯？
+【千百合】每年一月，全球的政策、资本、技术和商业思想，在这个只有一万多人的小镇集中碰撞一周。主会场里是国家元首和大公司掌门人；主会场外，一公里长的 Promenade，几百场边会同时在开。
+【哈哈妈】（补一句现场）那一周走在街上，擦肩而过的就是在讨论世界问题的人。
+【千百合】2027 年的主题是：从容地、深思熟虑地，谈一谈未来。——这不正是我们说的「带一个问题上山」吗？
+【千百合】在达沃斯，最稀缺的不是距离，是注意力。我们帮你把时间留给真正值得听的观点、值得认识的人。`},
+{t:'见学',end:1260,n:`【千百合 · 约 4 分钟】
+【千百合】一百年前，托马斯·曼写了《魔山》，故事就发生在达沃斯：一个年轻人上山看亲戚，一住七年，把人生的问题想清楚了。
+【千百合】游学，是被带去看风景；见学，是带着自己的问题去。我们这一趟叫「私享见学」。`},
+{t:'如果你是老板',end:1500,n:`【和你有关 · 千百合主导，约 4 分钟】
+【千百合】2027 年的年会提了五个问题：增长、地球、韧性、能源、AI 与人。你的事业，正在回答哪一个？
+【千百合】你带回去的，是这六样。（重点讲：你的问题有人认真接；一个作者身份）
+【哈哈妈】去年同行的伙伴回来后……（一句真实的变化）`},
+{t:'如果你是年轻人 / 家长',end:1740,n:`【和你有关 · 哈哈妈主导（她最懂家长），约 4 分钟】
+【哈哈妈】讲这个女孩的故事（不说名字）：18 岁生日那天第一次来达沃斯，如今 19 岁，是 Global Shaper，被请进场。这一次她每天和我们住在一起。
+【哈哈妈】我们不把孩子当娃，当成大人去看世界。18 岁以上可以自己来，16、17 岁和父母一起来。
+【千百合】父母来了，也不是陪同，你也带一个自己的问题。定一个问题、去现场问、论坛上发言、回来写进书里——这是一次完整的寒假社会实践。`},
+{t:'这一周',end:1980,n:`【哈哈妈主讲 · 约 4 分钟】
+【哈哈妈】1 月 17 日苏黎世落地，住进雪山下的私宅。晚饭时，每人讲一件事：我带来的问题。
+【哈哈妈】周一到周三，我带大家走 Promenade，按每个人的问题地图去听、去问；晚上围坐复盘。
+【千百合】周四是我们自己的「达沃斯魔山论坛 · 晚宴」。之后顺道走四国，1/24 各自下山。`},
+{t:'山上一周，下山一年（价值）',end:2280,n:`【价值塑造 · 哈哈妈主导，约 5 分钟】
+【哈哈妈】很多人问：这一趟到底包括什么？左边是山上这一周，右边是下山这一年。
+【哈哈妈】先说住：论坛那一周，达沃斯一小时车程内的房子，一晚就要几千瑞郎，还常常订不到。我们整整一周住在雪山下的私宅。
+【哈哈妈】全程我中英双语陪着；出发前每个人一张问题地图；周四你当一次案主；木晓给你拍形象照和纪录短片。
+【千百合】下山之后：作者共创席 ¥18,888 的全部权益一起给——一书、一课《人人都能做 AI 智能体》、俱乐部一年 52 场直播、一年共创。
+【千百合】说到问题地图——今晚我们就现场演示一次。`},
+{t:'上山车票（AI）',end:2880,n:`【亮点 · 约 10 分钟】
+【千百合】我自己做了 100 多个智能体。今晚请来第三位嘉宾：AI。它开的这张车票，就是你出发前那张「问题地图」的第一页。
+① 先点「示例 · 年轻作曲家」，车票盖章；点「读出来」，AI 开口。
+② 请大家把问题打在评论区。挑 1～2 个贴进输入框 → 开车票。等的时候两人先聊这个人。
+③【小魔山】每张 5 分钟：【哈哈妈】到了达沃斯去哪里找答案；【千百合】追问一句，帮他想深一层。
+卡住了：用示例车票讲，或者直接聊。`},
+{t:'领你的车票（二维码 1）',end:3000,n:`【约 2 分钟 · 第一次放码，门槛低】
+【千百合】没被抽中的朋友别急：每个人都可以有一张。扫码加我们任何一位，把你的问题发过来，备注「车票」，会后我们陆续发回给你。
+（停 30 秒，让大家扫）`},
+{t:'上车（诚意金）',end:3300,n:`【成交 · 约 5 分钟 · 只有一个动作】
+【哈哈妈】想上车的朋友：扫这个码交 ¥500 诚意金，我们约一次面谈，聊完合适再发正式邀请。聊完觉得不合适，诚意金全额退。
+【千百合】面谈的时候，我们俩专门陪你聊你那张车票。
+【千百合】每人 ¥68,000，再收 5 位，12 月 12 日截止。需要签证的朋友 12 月 1 日前申请。
+（停 30 秒，让大家扫）`},
+{t:'山上见',end:3600,n:`【答疑 + 收尾，这页一直留着码】先答 2～3 个评论区问题。
+【千百合】最后，请每个人把你的那一个问题，打在评论区。
+【哈哈妈】带着它，
+【千百合 + 哈哈妈】山上相见。
+【会后】哈哈妈 + 机器猫：给每个留过问题、加了微信的人发车票（第 11 页「今晚的车票」可调出全部）。`}];
+
+const W=1920,H=1080,stage=document.getElementById('stage'),slides=[...document.querySelectorAll('.slide')],NS=slides.length;
+const isPres=location.hash.includes('presenter');
+let i=-1,t0=null;
+function fit(){const s=Math.min(innerWidth/W,innerHeight/H);document.documentElement.style.setProperty('--s',s)}
+addEventListener('resize',fit);fit();
+// 轨道
+const stns=document.getElementById('stns'),train=document.getElementById('train'),sn=document.getElementById('stnname'),track=document.getElementById('track');
+const X=k=>120+(1680)*(k/(SECS.length-1));
+SECS.forEach((s,k)=>{const d=document.createElement('div');d.className='stn';d.style.left=X(k)+'px';stns.appendChild(d)});
+const rt=document.getElementById('route');if(rt){const l=document.createElement('div');l.className='ln';rt.appendChild(l);SECS.forEach((nm,k)=>{const d=document.createElement('div');d.className='st';d.style.left=(60+1560*k/(SECS.length-1))+'px';const ii=document.createElement('i');ii.textContent=k+1;const bb=document.createElement('b');bb.textContent=nm;d.append(ii,bb);rt.appendChild(d)})}
+const bc=('BroadcastChannel' in window)?new BroadcastChannel('kaishan-1128b'):null;
+function go(n,silent){n=Math.max(0,Math.min(NS-1,n));if(n===i)return;if(i>=0)slides[i].classList.remove('on');i=n;slides[i].classList.add('on');
+  const sc=+slides[i].dataset.sec;train.style.left=X(sc)+'px';sn.style.left=X(sc)+'px';sn.textContent='第 '+(sc+1)+' 站 · '+SECS[sc]+(sc<SECS.length-1?' · 还有 '+(SECS.length-1-sc)+' 站':' · 终点');
+  [...stns.children].forEach((d,k)=>d.classList.toggle('done',k<=sc));track.classList.toggle('dark',!!slides[i].dataset.dark);
+  if(t0===null&&i>0)t0=Date.now();if(!isPres)try{history.replaceState(null,'','#p'+(i+1))}catch(e){}
+  if(!silent&&bc)bc.postMessage({type:'state',i,t0});renderPres()}
+function cmd(c){if(c==='next')go(i+1);else if(c==='prev')go(i-1);else if(c==='reset'){t0=Date.now();bc&&bc.postMessage({type:'state',i,t0})}else if(c==='black'){document.getElementById('black').classList.toggle('on');bc&&bc.postMessage({type:'black'})}}
+function renderPres(){if(!isPres)return;const p=NOTES[i];document.getElementById('p-t').textContent=(i+1)+' / '+NS+' · '+p.t;document.getElementById('p-n').textContent=i<NS-1?'下一页：'+NOTES[i+1].t:'最后一页';document.getElementById('p-x').textContent=p.n;const E=p.end;document.getElementById('p-g').textContent='本页应在 '+Math.floor(E/60)+':'+String(E%60).padStart(2,'0')+' 前翻走 · 全程 60:00'}
+function tick(){const el=isPres?document.getElementById('p-c'):document.getElementById('pill');if(t0===null){el.textContent='00:00';return}const e=Math.floor((Date.now()-t0)/1000),E=NOTES[i].end;el.textContent=String(Math.floor(e/60)).padStart(2,'0')+':'+String(e%60).padStart(2,'0');el.classList.toggle('warn',e>E-20&&e<=E);el.classList.toggle('over',e>E)}
+setInterval(tick,500);
+// 实时三地时钟
+function clocks(){const now=new Date();document.querySelectorAll('[data-tz]').forEach(el=>{el.textContent=new Intl.DateTimeFormat('zh-CN',{timeZone:el.dataset.tz,hour:'2-digit',minute:'2-digit',hour12:false}).format(now)});
+  document.querySelectorAll('[data-tzd]').forEach(el=>{el.textContent=new Intl.DateTimeFormat('zh-CN',{timeZone:el.dataset.tzd,month:'numeric',day:'numeric',weekday:'short'}).format(now)})}
+clocks();setInterval(clocks,1000);
+if(bc)bc.onmessage=ev=>{const m=ev.data;if(m.type==='state'){t0=m.t0;go(m.i,true)}else if(m.type==='cmd')cmd(m.c);else if(m.type==='black'&&!isPres)document.getElementById('black').classList.toggle('on')};
+if(isPres){document.body.classList.add('pres');document.querySelectorAll('#pres [data-c]').forEach(b=>b.onclick=()=>bc&&bc.postMessage({type:'cmd',c:b.dataset.c}))}
+const wb=document.getElementById('wordbox'),wi=document.getElementById('wordin'),chips=document.getElementById('chips');
+wi.addEventListener('keydown',e=>{e.stopPropagation();if(e.key==='Enter'&&wi.value.trim()){const c=document.createElement('span');c.className='chip';c.textContent=wi.value.trim();chips.appendChild(c);wi.value=''}if(e.key==='Escape')wb.classList.remove('on')});
+addEventListener('keydown',e=>{const tg=e.target;if(tg===wi||(tg.closest&&tg.closest('#ai textarea,#hist')))return;const k=e.key;
+  if(['ArrowRight','ArrowDown','PageDown',' ','Enter'].includes(k)){e.preventDefault();isPres?bc&&bc.postMessage({type:'cmd',c:'next'}):go(i+1)}
+  else if(['ArrowLeft','ArrowUp','PageUp'].includes(k)){e.preventDefault();isPres?bc&&bc.postMessage({type:'cmd',c:'prev'}):go(i-1)}
+  else if(k>='1'&&k<='9')go(+k-1);else if(k==='0')go(9);else if(k==='-')go(NS-2);else if(k==='=')go(NS-1);
+  else if(k==='f'||k==='F'){try{document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}catch(_){}}
+  else if((k==='t'||k==='T')&&i===1){e.preventDefault();wb.classList.add('on');wi.focus()}
+  else if(k==='b'||k==='B')cmd('black');else if(k==='s'||k==='S')cmd('reset');
+  else if(k==='?'||k==='/')document.getElementById('help').classList.toggle('on');
+  else if(k==='Escape'){document.getElementById('help').classList.remove('on');wb.classList.remove('on')}});
+addEventListener('click',e=>{if(isPres)return;if(e.target.closest('#help')){document.getElementById('help').classList.remove('on');return}if(e.target.closest('#ai,#hist,#wordbox,#black'))return;go(e.clientX>innerWidth/3?i+1:i-1)});
+const hm=location.hash.match(/p(\d+)/);go(hm?+hm[1]-1:0,isPres);
+
+// ================= AI 嘉宾 · 上山车票 =================
+const $=id=>document.getElementById(id);
+const inEl=$('ai-in'),goBtn=$('ai-go'),tk=$('tk'),main=$('tk-main'),st=$('ai-st');
+let SAMPLE=null,TTS=null,busy=false,typer=null;const HKEY='kaishan-tickets';
+let seq=(()=>{try{return +localStorage.getItem(HKEY+'-n')||0}catch(e){return 0}})();
+const EX={
+ ex1:{who:'一位在纽约读研的年轻作曲家',q:'AI 会作曲以后，人的音乐还剩下什么？',see:[{where:'AI House',why:'听做 AI 的人自己怎么看创造力'},{where:'达沃斯魔山论坛 · 晚宴',why:'当一次案主，讲年轻艺术家的答案'}],ask:'如果 AI 能写出好听的曲子，你最想守住的，是曲子，还是写曲子的那个你？',say:'你的问题，也是今天很多人在问的：AI 来了，人的价值在哪里。带着它上山，去 AI House 听做 AI 的人怎么说；再在达沃斯魔山论坛上，讲出一个年轻作曲家自己的答案。'},
+ ex2:{who:'一位做了二十年工厂的老板',q:'二十年的工厂，下一个二十年靠什么？',see:[{where:'Promenade 上的国家馆',why:'看各国在争取什么样的产业和合作'},{where:'世界经济论坛期间的边会',why:'听贸易和供应链的人在担心什么'}],ask:'如果明天订单全停，你的客户还会因为什么来找你？',say:'二十年的工厂，是你最硬的底气。这一趟不是去追一个新风口，是去听听世界下一步需要什么，再回头看看，你的二十年里，哪一块最值钱。'}};
+const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+const setSt=t=>{st.textContent=t};
+function stopType(){if(typer){clearInterval(typer);typer=null}}
+function render(c,demo){stopType();tk.classList.remove('ok');main.textContent='';
+  const r=el('div','row1');r.appendChild(el('span',null,'乘客 · '+(c.who||'评论区的朋友')));r.appendChild(el('span',null,'2027.1 · 达沃斯'));main.appendChild(r);
+  main.appendChild(el('div','k','你的上山问题'));main.appendChild(el('div','q',c.q||''));
+  main.appendChild(el('div','k','停靠站'));const s=el('div','see');(c.see||[]).slice(0,2).forEach(x=>{const d=el('div');d.appendChild(el('b',null,x.where||''));d.appendChild(document.createTextNode('　'+(x.why||'')));s.appendChild(d)});main.appendChild(s);
+  main.appendChild(el('div','k','追问你一句'));main.appendChild(el('div','ask',c.ask||''));
+  main.appendChild(el('div','k','AI 嘉宾说'));const sy=el('div','say');const b=el('button','g','🔊 读出来');b.onclick=ev=>{ev.stopPropagation();b.blur();speak(c.say,txt)};if(!TTS)b.style.display='none';const txt=el('span',null,c.say||'');sy.append(b,txt);main.appendChild(sy);
+  seq++;try{localStorage.setItem(HKEY+'-n',seq)}catch(e){}$('tk-no').textContent='No. '+String(seq).padStart(4,'0');
+  setTimeout(()=>tk.classList.add('ok'),350)}
+async function speak(text,span){if(!TTS||!text)return;try{TTS.stop()}catch(e){}stopType();let n=0;span.textContent='';typer=setInterval(()=>{n++;span.textContent=text.slice(0,n);if(n>=text.length)stopType()},190);
+  try{setSt('AI 嘉宾正在说话…');await TTS.speak(text,{voice:'airy'});stopType();span.textContent=text;setSt('AI 嘉宾在线')}catch(err){stopType();span.textContent=text;setSt(err&&err.code==='rate_limited'?'语音稍等再试':'语音暂不可用，看屏幕文字')}}
+function prompt(q){return `你是「达沃斯 · 魔山问道」线上开山会的第三位嘉宾：AI 嘉宾。主持人是边玩边赚千百合（在美国）和瑞士哈哈妈（在瑞士）。她们 2027 年 1 月世界经济论坛那一周，发起一群企业家和年轻人去达沃斯「私享见学」：每个人带着自己事业上最想解决的一个问题上山，白天听世界怎么说，周四办我们自己的「达沃斯魔山论坛 · 晚宴」，人人轮流当案主；下山后每人写一篇文章收进边玩边赚系列新书。
+
+直播评论区里有人提了下面这个问题（可能带着称呼和城市）：
+「${q}」
+
+请为他开一张「上山车票」。只输出一个 JSON 对象，不要任何其他文字、不要代码块：
+{"who":"对提问者的称呼，6～16 个字，例如「来自深圳的张总」；没有称呼就写「评论区的朋友」","q":"上山问题：把他的问题提炼成一句更深、更有力的问句，不超过 22 个字","see":[{"where":"去处","why":"为什么去，不超过 20 个字"},{"where":"去处","why":"不超过 20 个字"}],"ask":"一句追问，帮他把问题想深一层，不超过 34 个字","say":"AI 嘉宾的口播，70～100 个字，温暖、具体，直接对他说（用「你」），不要客套话"}
+
+where 只能从这几个里选两个最贴切的：Promenade 上的国家馆；AI House；世界经济论坛期间的边会；达沃斯魔山论坛 · 晚宴；和一位 19 岁 Global Shaper 每天的交流。
+规矩：不编造具体的会议名、演讲嘉宾名或日期；不提价格、名额、住宿、论坛在哪里举办；不承诺以后每年都有；不用「游学」这个词；提到论坛一律叫「达沃斯魔山论坛」；不推销、不催促报名。用简体中文。
+如果问题和事业、人生无关或不适合在直播里公开讨论，就温和地把它引向「你这次最想想清楚的一件事」。`}
+const parse=t=>{const a=t.indexOf('{'),b=t.lastIndexOf('}');if(a<0||b<=a)throw new Error('nojson');return JSON.parse(t.slice(a,b+1))};
+async function generate(){const q=inEl.value.trim();if(!q||busy)return;if(!SAMPLE){setSt('AI 嘉宾不在线，先用示例车票');return}
+  busy=true;goBtn.disabled=true;stopType();tk.classList.remove('ok');main.textContent='';const w=el('div','wait','列车进站中');const sec=el('b',null,'0');w.appendChild(sec);main.appendChild(w);
+  const t1=Date.now();const tm=setInterval(()=>{const s=Math.round((Date.now()-t1)/1000);sec.textContent=s;setSt('')},250);
+  try{let c;try{c=parse((await SAMPLE(prompt(q),{modelTier:'default',cache:false})).text)}catch(e1){if(e1&&e1.code)throw e1;c=parse((await SAMPLE(prompt(q)+'\n\n只输出 JSON。',{modelTier:'default',cache:false})).text)}
+    c.from=q;render(c);try{const a=JSON.parse(localStorage.getItem(HKEY)||'[]');a.push(c);localStorage.setItem(HKEY,JSON.stringify(a.slice(-80)))}catch(e){}
+    st.innerHTML='';st.append('出票用时 ',el('b',null,Math.round((Date.now()-t1)/1000)+' 秒'))}
+  catch(err){main.textContent='';main.appendChild(el('div','empty','这一班没接上，\n再开一次，或者直接聊。'));setSt(err&&err.code==='not_granted'?'需要先允许页面使用 Claude':err&&err.code==='rate_limited'?'请求太快，稍等再试':'没接上，再试一次')}
+  finally{clearInterval(tm);busy=false;goBtn.disabled=false}}
+goBtn.onclick=e=>{e.stopPropagation();goBtn.blur();generate()};
+inEl.addEventListener('keydown',e=>{e.stopPropagation();if(e.key==='Enter'&&(e.metaKey||e.ctrlKey)){e.preventDefault();generate()}});
+$('ai-ex1').onclick=e=>{e.stopPropagation();e.currentTarget.blur();render(EX.ex1)};
+$('ai-ex2').onclick=e=>{e.stopPropagation();e.currentTarget.blur();render(EX.ex2)};
+const hist=el('div');hist.id='hist';const hh=el('div',null,'今晚开出的车票（会后复制给哈哈妈和机器猫，逐个私信跟进）');const ht=document.createElement('textarea');ht.readOnly=true;const hc=el('button',null,'关闭');hist.append(hh,ht,hc);document.body.appendChild(hist);
+hc.onclick=()=>hist.classList.remove('on');ht.addEventListener('keydown',e=>{e.stopPropagation();if(e.key==='Escape')hist.classList.remove('on')});
+$('ai-hist').onclick=e=>{e.stopPropagation();e.currentTarget.blur();let a=[];try{a=JSON.parse(localStorage.getItem(HKEY)||'[]')}catch(_){}ht.value=a.length?a.map((c,k)=>`${k+1}. ${c.who||''}\n原问题：${c.from||''}\n上山问题：${c.q}\n追问：${c.ask}\n`).join('\n'):'还没有开过车票';hist.classList.add('on')};
+(async()=>{if(!(window.claude&&claude.use)){setSt('离线预览：只能用示例车票');return}
+  try{SAMPLE=await claude.use('sample')}catch(e){}try{TTS=await claude.use('tts')}catch(e){}
+  setSt(SAMPLE?(TTS?'AI 嘉宾在线 · 可开口':'AI 嘉宾在线'):'AI 嘉宾不在线：只能用示例车票')})();
+}
+</script>
+</body>
+</html>
