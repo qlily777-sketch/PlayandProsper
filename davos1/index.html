@@ -107,13 +107,13 @@ html,body{height:100%;overflow:hidden;background:#0d1a2e;color:var(--ink);font-f
 .route .st b{display:block;margin-top:22px;font:900 40px "Noto Serif SC",serif;color:var(--ink)}
 .route .st:last-child i{background:var(--red);color:#fff}
 .nums{display:flex;gap:56px}.nums div{display:flex;flex-direction:column}.nums b{font:900 84px "Noto Serif SC",serif;color:var(--red);line-height:1.1}.nums span{font-size:22px;color:var(--ink2);margin-top:6px;max-width:220px}
-.line{display:grid;grid-template-columns:repeat(3,1fr);gap:18px 30px}.line div{font-size:25px;color:var(--ink);background:#fff;border-radius:14px;padding:16px 20px;box-shadow:0 10px 28px rgba(16,35,63,.08)}.line b{display:block;font:900 30px "Noto Serif SC",serif;color:var(--ink);margin-bottom:4px}.line b.r{color:var(--red)}
+.line{display:grid;grid-template-columns:repeat(2,1fr);gap:18px 30px}.line div{font-size:25px;color:var(--ink);background:#fff;border-radius:14px;padding:16px 20px;box-shadow:0 10px 28px rgba(16,35,63,.08)}.line b{display:block;font:900 30px "Noto Serif SC",serif;color:var(--ink);margin-bottom:4px}.line b.r{color:var(--red)}
 .pain{position:absolute;width:800px;height:170px;background:#fff;border-radius:20px;box-shadow:0 16px 40px rgba(16,35,63,.1);padding:34px 40px 34px 104px;font:600 32px/1.5 "Noto Serif SC",serif;color:var(--ink)}
 .pain::before{content:"“";position:absolute;left:30px;top:14px;font:900 80px "Noto Serif SC",serif;color:var(--red)}
 .gain{position:absolute;width:520px;height:250px;background:#fff;border-radius:20px;border-top:8px solid var(--red);box-shadow:0 16px 40px rgba(16,35,63,.1);padding:30px 32px;font-size:24px;line-height:1.65;color:var(--ink2)}
 .gain b{display:block;font:900 38px "Noto Serif SC",serif;color:var(--ink);margin-bottom:12px}
 .wk{width:400px;font-size:24px;line-height:1.6;color:var(--ink2)}.wk b{display:block;font:900 38px "Noto Serif SC",serif;color:var(--ink);margin-bottom:8px}.wk b.r{color:var(--red)}
-.stack{width:840px;display:flex;flex-direction:column;gap:14px}.stack.r{width:790px}
+.stack{width:840px;display:flex;flex-direction:column;gap:14px}.stack.sm{gap:12px}.stack.sm div{padding:13px 24px}.stack.r{width:790px}
 .stack div{background:#fff;border-radius:16px;padding:16px 24px;box-shadow:0 10px 28px rgba(16,35,63,.08);border-left:6px solid var(--ink)}
 .stack.r div{border-left-color:var(--red)}
 .stack b{display:block;font:900 30px "Noto Serif SC",serif;color:var(--ink)}.stack span{font-size:21px;color:var(--ink2);line-height:1.5}
@@ -193,8 +193,8 @@ body.pres #pres{display:grid}body.pres #stage,body.pres #hint,body.pres #pill{di
   </div>
   <div class="abs u u4" style="left:122px;top:640px;font-size:24px;font-weight:700;color:var(--red);letter-spacing:.1em">她一直在「现场」</div>
   <div class="abs u u4 line" style="left:120px;top:690px;width:1080px">
-    <div><b>2018</b>平昌冬奥会，现场 30 多天</div><div><b>2023</b>带朋友参观 SpaceX</div><div><b>2025</b>登上哈利法塔</div>
-    <div><b>2026.1</b>美国 CES</div><div><b>2026.12</b>包下菲律宾一座岛 · 下海</div><div><b class="r">2027.1</b>达沃斯 · 上山</div>
+    <div><b>2018</b>平昌冬奥会，现场 30 多天</div><div><b>2023</b>带朋友参观 SpaceX</div>
+    <div><b>2026.1</b>美国 CES</div><div><b class="r">2027.1</b>达沃斯 · 上山</div>
   </div>
 </section>
 
@@ -277,7 +277,7 @@ body.pres #pres{display:grid}body.pres #stage,body.pres #hint,body.pres #pill{di
   <div class="abs h1 u u1" style="left:116px;top:140px;font-size:110px">青年提问官</div>
   <div class="abs u u2" style="left:120px;top:310px;width:1100px;background:#fff;border-left:8px solid var(--red);border-radius:14px;padding:26px 32px;font-size:28px;line-height:1.7;box-shadow:0 16px 40px rgba(16,35,63,.08)">一个中国女孩，<b>18 岁生日那天</b>，第一次来到论坛周的达沃斯。<br>如今 19 岁，她是 Global Shaper：从<b>场外看的人</b>，成了<b style="color:var(--red)">论坛周的参与者</b>。<br>这一次，她每天和我们住在一起。</div>
   <div class="abs u u3" style="left:122px;top:600px;font:900 46px/1.4 'Noto Serif SC',serif">我们不把你当娃，<br>把你当成大人，去看世界。</div>
-  <div class="abs u u4" style="left:122px;top:760px;width:1100px;font-size:26px;line-height:1.85;color:var(--ink2)">18 岁以上可以自己报名 · 16、17 岁和父母同行<br>父母一起来，也不是陪同：<b style="color:var(--ink)">你也带一个自己的问题</b></div>
+  <div class="abs u u4" style="left:122px;top:740px;width:1100px;font-size:26px;line-height:1.8;color:var(--ink2)">这一趟以带着问题的企业家为主；<b style="color:var(--ink)">年轻人名额很少，同样要面谈</b>。<br>18 岁以上可以自己报名 · 16、17 岁和父母同行<br>父母一起来，也不是陪同：<b style="color:var(--ink)">你也带一个自己的问题</b></div>
 </section>
 
 <!-- 09 这一周 -->
@@ -302,20 +302,21 @@ body.pres #pres{display:grid}body.pres #stage,body.pres #hint,body.pres #pill{di
   <div class="abs kick u u1" style="left:120px;top:80px">你得到的，不止一趟旅行</div>
   <div class="abs h1 u u1" style="left:116px;top:126px;font-size:96px">山上一周，下山一年</div>
   <div class="abs u u2" style="left:120px;top:280px;font-size:24px;font-weight:700;color:var(--red);letter-spacing:.12em">山上 · 这一周</div>
-  <div class="abs u u2 stack" style="left:120px;top:325px">
-    <div><b>雪山下的私宅，住一整周</b><span>论坛那一周，达沃斯一小时车程内的房子，一晚就要几千瑞郎，还常常订不到</span></div>
-    <div><b>本地人全程中英双语陪同</b><span>哈哈妈带路，坐火车进出，不堵车、不怕查车</span></div>
+  <div class="abs u u2 stack sm" style="left:120px;top:325px">
+    <div><b>7 晚雪山私宅，每天早餐和晚餐</b><span>两人一间。论坛那一周，达沃斯附近的房子一房难求</span></div>
+    <div><b>7 天当地交通</b><span>会期达沃斯火车票和出游用车，哈哈妈全程中英双语陪同</span></div>
     <div><b>出发前，一张你的问题地图</b><span>AI 研究透公开信息，我们判断哪些最值得你花时间</span></div>
-    <div><b>达沃斯魔山论坛 · 晚宴</b><span>你当一次案主，一桌人帮你拆问题</span></div>
+    <div><b>达沃斯魔山论坛与收官晚宴</b><span>你当一次案主，一桌人帮你拆问题</span></div>
     <div><b>形象照 + 纪录短片</b><span>摄影师木晓全程跟拍</span></div>
   </div>
-  <div class="abs u u4" style="left:1010px;top:280px;font-size:24px;font-weight:700;color:var(--red);letter-spacing:.12em">下山 · 这一年　<span style="color:var(--ink2);font-weight:500;letter-spacing:0">作者共创席（¥18,888）全部权益</span></div>
+  <div class="abs u u4" style="left:1010px;top:280px;font-size:24px;font-weight:700;color:var(--red);letter-spacing:.12em">下山 · 这一年　<span style="color:var(--ink2);font-weight:500;letter-spacing:0">作者共创席全部权益</span></div>
   <div class="abs u u4 stack r" style="left:1010px;top:325px">
     <div><b>一书</b><span>边玩边赚畅销系列新书，你是联合作者</span></div>
     <div><b>一课</b><span>《人人都能做 AI 智能体》，亲手做出自己的智能体</span></div>
     <div><b>一生态</b><span>边玩边赚俱乐部，一年 52 场直播</span></div>
     <div><b>一年共创</b><span>下山不散，接着一起做</span></div>
   </div>
+  <div class="abs u u5" style="left:1010px;top:835px;width:790px;background:#fff;border-radius:16px;padding:18px 24px;box-shadow:0 10px 28px rgba(16,35,63,.08);font-size:22px;line-height:1.6;color:var(--ink2)"><b style="color:var(--ink)">每人 ¥68,000</b>，以上全部包含<br>不含：国际机票、签证费、午餐和个人消费</div>
 </section>
 
 <!-- 11 上山车票（AI） -->
@@ -352,7 +353,7 @@ body.pres #pres{display:grid}body.pres #stage,body.pres #hint,body.pres #pill{di
   <div class="abs u u2" style="left:122px;top:300px;font-size:32px;color:var(--ink2)">你带一个问题，我们陪你认真聊一次。</div>
   <div class="abs u u2 flow4" style="left:120px;top:380px"><span>加微信</span><i>→</i><span class="r">¥500 诚意金</span><i>→</i><span>双人面谈</span><i>→</i><span>双向选择</span></div>
   <div class="abs u u3" style="left:122px;top:510px;font:900 44px 'Noto Serif SC',serif">聊完不合适，<span style="color:var(--red)">¥500 全额退</span>。</div>
-  <div class="abs u u4" style="left:122px;top:620px;width:900px;font-size:26px;line-height:1.85;color:var(--ink2)">适合：带着问题的企业家 · 18 岁以上的年轻人（16、17 岁和父母同行）<br>私享见学 ¥68,000 / 人 · 再收 5 位 · 12 月 12 日截止<br>需要签证的朋友，请在 12 月 1 日前申请</div>
+  <div class="abs u u4" style="left:122px;top:620px;width:900px;font-size:26px;line-height:1.85;color:var(--ink2)">以带着问题的企业家为主 · 少量年轻人（同样面谈）<br>私享见学 ¥68,000 / 人 · 小规模同行 · 面谈邀请制<br>12 月 12 日截止 · 需要签证的朋友请在 12 月 1 日前申请</div>
   <div class="abs u u2" style="left:1130px;top:70px;width:670px;height:900px;background:#fff;border-radius:26px;box-shadow:0 30px 70px rgba(16,35,63,.18);display:flex;align-items:center;justify-content:center"><img src="img/pay-hahama.jpg" alt="¥500 诚意金收款码" style="height:860px;border-radius:12px"></div>
 </section>
 
@@ -404,7 +405,7 @@ const NOTES=[
 {t:'千百合（哈哈妈介绍）',end:540,n:`【哈哈妈来讲 · 约 4 分钟 · 抬千百合】
 【哈哈妈】先说说我是怎么认识千百合的……（海峰老师的书、共学营、她送我的那本《边玩边赚》）
 【哈哈妈】她是老板 IP 商业重构师，20 多本畅销书的出品人，带着 115 位作者跨 8 个时区一起写书，两届当当影响力作家。
-【哈哈妈】最打动我的是：她一直在现场。平昌冬奥会待了 30 多天，去 CES，12 月包下菲律宾一座岛——下海；1 月，和我一起上山。
+【哈哈妈】最打动我的是：她一直在现场。平昌冬奥会待了 30 多天，今年 1 月去 CES；明年 1 月，和我一起上山。
 【千百合】谢谢哈哈妈。那我也来说说你。`},
 {t:'瑞士哈哈妈（千百合介绍）',end:780,n:`【千百合来讲 · 约 4 分钟 · 抬哈哈妈】
 【千百合】哈哈妈做了 29 年外语教育，陪过 1 万多个家庭，2019 年被 Rosetta Stone 写成官方案例。2013 年定居瑞士，在那里做中瑞跨文化咨询。
@@ -442,7 +443,7 @@ const NOTES=[
 【哈哈妈】很多人问：这一趟到底包括什么？左边是山上这一周，右边是下山这一年。
 【哈哈妈】先说住：论坛那一周，达沃斯一小时车程内的房子，一晚就要几千瑞郎，还常常订不到。我们整整一周住在雪山下的私宅。
 【哈哈妈】全程我中英双语陪着；出发前每个人一张问题地图；周四你当一次案主；木晓给你拍形象照和纪录短片。
-【千百合】下山之后：作者共创席 ¥18,888 的全部权益一起给——一书、一课《人人都能做 AI 智能体》、俱乐部一年 52 场直播、一年共创。
+【千百合】下山之后：作者共创席的全部权益一起给——一书、一课《人人都能做 AI 智能体》、俱乐部一年 52 场直播、一年共创。
 【千百合】说到问题地图——今晚我们就现场演示一次。`},
 {t:'上山车票（AI）',end:2880,n:`【亮点 · 约 10 分钟】
 【千百合】我自己做了 100 多个智能体。今晚请来第三位嘉宾：AI。它开的这张车票，就是你出发前那张「问题地图」的第一页。
@@ -458,7 +459,7 @@ const NOTES=[
 {t:'上车（诚意金）',end:3300,n:`【成交 · 约 5 分钟 · 只有一个动作】
 【哈哈妈】我们不希望大家听完一场直播，就决定花 68,000 元。我们希望先认识你，听听你的问题，也让你认真了解我们。
 【哈哈妈】所以是：加微信 → ¥500 诚意金 → 我们俩和你面谈 → 双方都觉得合适，再同行。聊完不合适，¥500 全额退。
-【千百合】私享见学每人 ¥68,000，再收 5 位，12 月 12 日截止；需要签证的朋友 12 月 1 日前申请。
+【千百合】私享见学每人 ¥68,000，含 7 晚私宅和早晚餐、当地交通、论坛晚宴、跟拍和新书；不含机票、签证、午餐。小规模同行，面谈邀请制，12 月 12 日截止；需要签证的朋友 12 月 1 日前申请。
 （停 30 秒，让大家扫码）`},
 {t:'山上见',end:3600,n:`【答疑 + 收尾，这页一直留着码】先答 2～3 个评论区问题。
 【千百合】我们不缺一次去远方的旅行。缺的，可能是一次认真面对自己问题的机会。
