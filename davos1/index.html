@@ -119,6 +119,12 @@ html,body{height:100%;overflow:hidden;background:#0d1a2e;color:var(--ink);font-f
 .stack b{display:block;font:900 30px "Noto Serif SC",serif;color:var(--ink)}.stack span{font-size:21px;color:var(--ink2);line-height:1.5}
 .mini{background:#fff;border-radius:14px;padding:10px;text-align:center;width:215px}.mini img{width:195px;height:195px;display:block}.mini span{font-size:18px;font-weight:700}
 .nums.sm b{font-size:64px}.nums.sm span{max-width:200px}
+.path{background:#fff;border-radius:22px;box-shadow:0 24px 60px rgba(16,35,63,.14);padding:44px 40px;display:flex;flex-direction:column;gap:30px;background-image:linear-gradient(var(--red),var(--red));background-size:4px 560px;background-position:70px 190px;background-repeat:no-repeat}
+.path .pt{font-size:24px;font-weight:700;color:var(--red);letter-spacing:.1em;margin-bottom:6px}
+.path .st{position:relative;padding-left:84px;min-height:130px}
+.path .st i{position:absolute;left:0;top:0;width:60px;height:60px;border-radius:50%;background:var(--red);color:#fff;font:900 30px/60px "Noto Serif SC",serif;text-align:center;font-style:normal;box-shadow:0 0 0 6px #fff}
+.path .st b{display:block;font:900 38px "Noto Serif SC",serif;color:var(--ink)}
+.path .st span{display:block;font-size:25px;line-height:1.55;color:var(--ink2);margin-top:6px}
 /* 讲者视图 & 工具 */
 #hint{position:fixed;left:14px;top:10px;font-size:12px;color:rgba(255,255,255,.35);z-index:30}
 #pill{position:fixed;right:14px;top:10px;font:13px Menlo,monospace;color:rgba(255,255,255,.4);z-index:30}
@@ -175,7 +181,7 @@ body.pres #pres{display:grid}body.pres #stage,body.pres #hint,body.pres #pill{di
 <!-- 03 千百合（哈哈妈来介绍） -->
 <section class="slide" data-sec="1">
   <div class="photo u u2" style="left:1260px;top:80px;width:540px;height:880px;background-image:url(img/lily-red.jpg);background-position:center 30%"><div class="cap">千百合 · 在路上</div></div>
-  <div class="abs kick u u1" style="left:120px;top:90px">带你上山的人 · 哈哈妈来介绍</div>
+  <div class="abs kick u u1" style="left:120px;top:90px">带你上山的人</div>
   <div class="abs h1 u u1" style="left:116px;top:140px;font-size:130px">千百合</div>
   <div class="abs u u2" style="left:122px;top:310px;font-size:28px;color:var(--ink2);line-height:1.6">老板 IP 商业重构师 · 20+ 畅销书出品人 / 译者 · 边玩边赚联合创始人<br>浙大没读完，后来在美国读了 AI 硕士，做了 100+ 个 AI 智能体</div>
   <div class="abs u u3 nums" style="left:120px;top:430px">
@@ -192,7 +198,7 @@ body.pres #pres{display:grid}body.pres #stage,body.pres #hint,body.pres #pill{di
 <section class="slide" data-sec="1">
   <div class="photo u u2" style="left:1240px;top:80px;width:560px;height:520px;background-image:url(img/hh-davos.jpg);background-position:center 25%"><div class="cap">2024 · 达沃斯 · 和珍·古道尔</div></div>
   <div class="photo u u3" style="left:1240px;top:630px;width:560px;height:330px;background-image:url(img/hh-portrait.jpg);background-position:center 20%"></div>
-  <div class="abs kick u u1" style="left:120px;top:90px">带你上山的人 · 千百合来介绍</div>
+  <div class="abs kick u u1" style="left:120px;top:90px">带你上山的人</div>
   <div class="abs h1 u u1" style="left:116px;top:140px;font-size:130px">瑞士哈哈妈</div>
   <div class="abs u u2" style="left:122px;top:310px;font-size:28px;color:var(--ink2);line-height:1.6">姚丽雪 · 瑞士 InterChange 咨询 CEO · 塔牌外语创始人<br>2013 年定居瑞士，2026 达沃斯国际参会团发起人</div>
   <div class="abs u u3 nums" style="left:120px;top:430px">
@@ -255,12 +261,18 @@ body.pres #pres{display:grid}body.pres #stage,body.pres #hint,body.pres #pill{di
 
 <!-- 08 如果你是年轻人 / 家长 -->
 <section class="slide" data-sec="3">
-  <div class="photo u u2" style="left:1300px;top:80px;width:500px;height:880px;background-image:url(img/see.jpg)"></div>
+  <div class="abs u u2 path" style="left:1300px;top:80px;width:500px;height:880px">
+    <div class="pt">一次完整的寒假社会实践</div>
+    <div class="st"><i>1</i><b>出发前</b><span>定一个自己真正关心的问题</span></div>
+    <div class="st"><i>2</i><b>在达沃斯</b><span>带着问题去听、去问</span></div>
+    <div class="st"><i>3</i><b>论坛上</b><span>站上达沃斯魔山论坛，讲出自己的发现</span></div>
+    <div class="st"><i>4</i><b>回来后</b><span>写进边玩边赚新书，署上自己的名字</span></div>
+  </div>
   <div class="abs kick u u1" style="left:120px;top:90px">和你有关 · 如果你是年轻人，或是家长</div>
   <div class="abs h1 u u1" style="left:116px;top:140px;font-size:110px">青年提问官</div>
   <div class="abs u u2" style="left:120px;top:310px;width:1100px;background:#fff;border-left:8px solid var(--red);border-radius:14px;padding:26px 32px;font-size:28px;line-height:1.7;box-shadow:0 16px 40px rgba(16,35,63,.08)">一个中国女孩，<b>18 岁生日那天</b>，第一次来到论坛周的达沃斯。<br>如今 19 岁，她是 Global Shaper：从<b>场外看的人</b>，变成了<b style="color:var(--red)">被请进场的人</b>。<br>这一次，她每天和我们住在一起。</div>
   <div class="abs u u3" style="left:122px;top:600px;font:900 46px/1.4 'Noto Serif SC',serif">我们不把你当娃，<br>把你当成大人，去看世界。</div>
-  <div class="abs u u4" style="left:122px;top:760px;width:1100px;font-size:26px;line-height:1.85;color:var(--ink2)">18 岁以上可以自己报名 · 16、17 岁和父母同行<br>定一个问题 → 去现场问 → 在论坛上发言 → 回来写进书里：<b style="color:var(--ink)">一次完整的寒假社会实践</b><br>父母一起来，也不是陪同：<b style="color:var(--ink)">你也带一个自己的问题</b></div>
+  <div class="abs u u4" style="left:122px;top:760px;width:1100px;font-size:26px;line-height:1.85;color:var(--ink2)">18 岁以上可以自己报名 · 16、17 岁和父母同行<br>父母一起来，也不是陪同：<b style="color:var(--ink)">你也带一个自己的问题</b></div>
 </section>
 
 <!-- 09 这一周 -->
