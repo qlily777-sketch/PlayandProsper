@@ -125,6 +125,10 @@ html,body{height:100%;overflow:hidden;background:#0d1a2e;color:var(--ink);font-f
 .path .st i{position:absolute;left:0;top:0;width:60px;height:60px;border-radius:50%;background:var(--red);color:#fff;font:900 30px/60px "Noto Serif SC",serif;text-align:center;font-style:normal;box-shadow:0 0 0 6px #fff}
 .path .st b{display:block;font:900 38px "Noto Serif SC",serif;color:var(--ink)}
 .path .st span{display:block;font-size:25px;line-height:1.55;color:var(--ink2);margin-top:6px}
+.step2{width:860px;background:#fff;border-radius:20px;box-shadow:0 16px 40px rgba(16,35,63,.1);padding:28px 32px 28px 116px}
+.step2 .n{position:absolute;left:32px;top:30px;width:60px;height:60px;border-radius:50%;background:var(--red);color:#fff;font:900 30px/60px "Noto Serif SC",serif;text-align:center}
+.step2 b{display:block;font:900 40px "Noto Serif SC",serif;color:var(--ink)}.step2 span{display:block;font-size:26px;line-height:1.6;color:var(--ink2);margin-top:8px}
+.flow4{display:flex;align-items:center;gap:16px}.flow4 span{background:#fff;border:2px solid var(--ink);border-radius:12px;padding:12px 22px;font-size:30px;font-weight:700}.flow4 span.r{background:var(--red);border-color:var(--red);color:#fff}.flow4 i{font-style:normal;color:var(--red);font-size:30px;font-weight:700}
 /* 讲者视图 & 工具 */
 #hint{position:fixed;left:14px;top:10px;font-size:12px;color:rgba(255,255,255,.35);z-index:30}
 #pill{position:fixed;right:14px;top:10px;font:13px Menlo,monospace;color:rgba(255,255,255,.4);z-index:30}
@@ -173,7 +177,7 @@ body.pres #pres{display:grid}body.pres #stage,body.pres #hint,body.pres #pill{di
     <div class="clk"><div class="face" style="background-image:url(img/hahama.jpg)"></div><div><div class="city">瑞士 · 哈哈妈</div><div class="time" data-tz="Europe/Zurich">--:--</div></div></div>
     <div class="clk you"><div class="face">你</div><div><div class="city">北京 · 你</div><div class="time" data-tz="Asia/Shanghai">--:--</div></div></div>
   </div>
-  <div class="abs u u3" style="left:120px;top:330px;font-size:32px;color:var(--ink2)">你在哪里？<b style="color:var(--red)">打在评论区</b>　·　今晚这趟车，一共 6 站：</div>
+  <div class="abs u u3" style="left:120px;top:330px;font-size:32px;color:var(--ink2)">如果只能带<b style="color:var(--red)">一个问题</b>上山，你会带什么？先打在评论区　·　今晚这趟车，一共 6 站：</div>
   <div class="route u u4" id="route"></div>
   <div id="chips"></div>
 </section>
@@ -226,13 +230,14 @@ body.pres #pres{display:grid}body.pres #stage,body.pres #hint,body.pres #pill{di
   <div class="abs kick u u1" style="left:120px;top:90px">为什么偏偏是达沃斯</div>
   <div class="abs h1 u u1" style="left:116px;top:140px;width:900px;font-size:84px;line-height:1.2">每年一月，<br>世界在这里碰头。</div>
   <div class="abs u u2" style="left:122px;top:380px;width:880px;font-size:30px;line-height:1.7;color:var(--ink2)">全球的政策、资本、技术和商业思想，在这座小镇集中碰撞一周。主会场里是国家元首和全球大公司的掌门人；主会场外，一公里长的 Promenade 大街上，<b style="color:var(--ink)">几百场边会同时在开</b>。</div>
-  <div class="abs u u3 nums sm" style="left:120px;top:640px;gap:40px;width:900px">
+  <div class="abs u u3 nums sm" style="left:120px;top:610px;gap:40px;width:900px">
     <div><b>1971</b><span>第一届</span></div><div><b>1979</b><span>向中国打开大门</span></div><div><b>~3000</b><span>2027 预计参会人数</span></div><div><b>第 57 届</b><span>2027 年会</span></div>
   </div>
   <div class="abs u u4" style="left:1060px;top:640px;width:740px;background:#fff;border-left:8px solid var(--red);border-radius:16px;padding:24px 30px;box-shadow:0 16px 40px rgba(16,35,63,.1)">
     <div style="font-size:20px;color:var(--red);font-weight:700;letter-spacing:.1em">2027 年会主题</div>
     <div style="font:900 32px/1.35 'Noto Serif SC',serif;margin-top:6px">Deliberate Conversations on the Future</div>
     <div style="font-size:24px;color:var(--ink2);margin-top:6px">从容地、深思熟虑地，谈一谈未来</div></div>
+  <div class="abs u u4" style="left:122px;top:790px;font-size:21px;color:var(--ink2)">独立策划的私享见学 · 与世界经济论坛无隶属关系 · 不含年会主会场入场资格</div>
   <div class="abs u u5" style="left:122px;top:850px;width:1680px;font:900 40px 'Noto Serif SC',serif;color:var(--ink)">在达沃斯，最稀缺的不是距离，是<span style="color:var(--red)">注意力</span>。我们帮你把时间，留给和你下一步有关的人和话。</div>
 </section>
 
@@ -270,7 +275,7 @@ body.pres #pres{display:grid}body.pres #stage,body.pres #hint,body.pres #pill{di
   </div>
   <div class="abs kick u u1" style="left:120px;top:90px">和你有关 · 如果你是年轻人，或是家长</div>
   <div class="abs h1 u u1" style="left:116px;top:140px;font-size:110px">青年提问官</div>
-  <div class="abs u u2" style="left:120px;top:310px;width:1100px;background:#fff;border-left:8px solid var(--red);border-radius:14px;padding:26px 32px;font-size:28px;line-height:1.7;box-shadow:0 16px 40px rgba(16,35,63,.08)">一个中国女孩，<b>18 岁生日那天</b>，第一次来到论坛周的达沃斯。<br>如今 19 岁，她是 Global Shaper：从<b>场外看的人</b>，变成了<b style="color:var(--red)">被请进场的人</b>。<br>这一次，她每天和我们住在一起。</div>
+  <div class="abs u u2" style="left:120px;top:310px;width:1100px;background:#fff;border-left:8px solid var(--red);border-radius:14px;padding:26px 32px;font-size:28px;line-height:1.7;box-shadow:0 16px 40px rgba(16,35,63,.08)">一个中国女孩，<b>18 岁生日那天</b>，第一次来到论坛周的达沃斯。<br>如今 19 岁，她是 Global Shaper：从<b>场外看的人</b>，成了<b style="color:var(--red)">论坛周的参与者</b>。<br>这一次，她每天和我们住在一起。</div>
   <div class="abs u u3" style="left:122px;top:600px;font:900 46px/1.4 'Noto Serif SC',serif">我们不把你当娃，<br>把你当成大人，去看世界。</div>
   <div class="abs u u4" style="left:122px;top:760px;width:1100px;font-size:26px;line-height:1.85;color:var(--ink2)">18 岁以上可以自己报名 · 16、17 岁和父母同行<br>父母一起来，也不是陪同：<b style="color:var(--ink)">你也带一个自己的问题</b></div>
 </section>
@@ -332,23 +337,22 @@ body.pres #pres{display:grid}body.pres #stage,body.pres #hint,body.pres #pill{di
 
 <!-- 12 领你的车票（第一次二维码） -->
 <section class="slide" data-sec="4">
-  <div class="abs kick u u1" style="left:120px;top:110px">每个人都可以有一张</div>
-  <div class="abs h1 u u1" style="left:116px;top:160px;font-size:110px;line-height:1.15">想要你自己的<br>那张车票？</div>
-  <div class="abs u u2" style="left:122px;top:470px;font-size:36px;line-height:1.7">扫码加我们任何一位，<br>把你的问题发过来，<b style="color:var(--red)">备注「车票」</b>。</div>
-  <div class="abs u u3" style="left:122px;top:650px;font-size:28px;color:var(--ink2);line-height:1.7">会后，我们陆续给你发回一张。</div>
-  <div class="qr u u2" style="left:1080px;top:200px"><img src="img/qr-lily.jpg" alt="千百合微信二维码"><div class="nm">千百合</div><div class="ds">加微信 · 发问题</div></div>
-  <div class="qr u u3" style="left:1470px;top:200px"><img src="img/qr-hahama.png" alt="瑞士哈哈妈微信二维码"><div class="nm">瑞士哈哈妈</div><div class="ds">加微信 · 发问题</div></div>
+  <div class="abs kick u u1" style="left:120px;top:100px">每个人都可以有一张</div>
+  <div class="abs h1 u u1" style="left:116px;top:150px;font-size:88px;line-height:1.2">AI 给你一张车票，<br>我们陪你读懂它。</div>
+  <div class="abs u u2 step2" style="left:120px;top:420px"><div class="n">1</div><b>你的上山车票</b><span>扫码加微信，发来你的问题，备注「车票」。AI 帮你把问题理清楚，会后发给你。</span></div>
+  <div class="abs u u3 step2" style="left:120px;top:660px"><div class="n">2</div><b>你的上山面谈</b><span>我们俩和你一起判断：这个问题，值不值得带去达沃斯。</span></div>
+  <div class="qr u u2" style="left:1080px;top:200px"><img src="img/qr-lily.jpg" alt="千百合微信二维码"><div class="nm">千百合</div><div class="ds">加微信 · 备注「车票」</div></div>
+  <div class="qr u u3" style="left:1470px;top:200px"><img src="img/qr-hahama.png" alt="瑞士哈哈妈微信二维码"><div class="nm">瑞士哈哈妈</div><div class="ds">加微信 · 备注「车票」</div></div>
 </section>
 
 <!-- 13 上车（诚意金） -->
 <section class="slide" data-sec="5">
   <div class="abs kick u u1" style="left:120px;top:90px">上车</div>
-  <div class="abs h1 u u1" style="left:116px;top:140px;font-size:130px">想聊聊</div>
-  <div class="abs u u2" style="left:120px;top:330px;display:flex;align-items:center;gap:18px;font-weight:700;font-size:36px">
-    <span class="tag" style="font-size:36px">¥500 诚意金</span><span style="color:var(--red)">→</span><span>面谈</span><span style="color:var(--red)">→</span><span>正式邀请</span></div>
-  <div class="abs u u3" style="left:122px;top:440px;font-size:38px;font-weight:700">聊完觉得不合适，诚意金<span style="color:var(--red)">全额退</span>。</div>
-  <div class="abs u u3" style="left:122px;top:520px;width:860px;font-size:28px;line-height:1.7;color:var(--ink2)">面谈时，我们俩专门陪你聊你那张车票。</div>
-  <div class="abs u u4" style="left:122px;top:650px;font-size:28px;line-height:1.85;color:var(--ink)">带着问题的企业家 · 18 岁以上的年轻人（16、17 岁和父母同行）<br><span style="color:var(--ink2)">每人 ¥68,000 · 再收 5 位 · 12 月 12 日截止<br>需要签证的朋友，请在 12 月 1 日前申请</span></div>
+  <div class="abs h1 u u1" style="left:116px;top:140px;font-size:104px">先聊，再决定同行</div>
+  <div class="abs u u2" style="left:122px;top:300px;font-size:32px;color:var(--ink2)">你带一个问题，我们陪你认真聊一次。</div>
+  <div class="abs u u2 flow4" style="left:120px;top:380px"><span>加微信</span><i>→</i><span class="r">¥500 诚意金</span><i>→</i><span>双人面谈</span><i>→</i><span>双向选择</span></div>
+  <div class="abs u u3" style="left:122px;top:510px;font:900 44px 'Noto Serif SC',serif">聊完不合适，<span style="color:var(--red)">¥500 全额退</span>。</div>
+  <div class="abs u u4" style="left:122px;top:620px;width:900px;font-size:26px;line-height:1.85;color:var(--ink2)">适合：带着问题的企业家 · 18 岁以上的年轻人（16、17 岁和父母同行）<br>私享见学 ¥68,000 / 人 · 再收 5 位 · 12 月 12 日截止<br>需要签证的朋友，请在 12 月 1 日前申请</div>
   <div class="abs u u2" style="left:1130px;top:70px;width:670px;height:900px;background:#fff;border-radius:26px;box-shadow:0 30px 70px rgba(16,35,63,.18);display:flex;align-items:center;justify-content:center"><img src="img/pay-hahama.jpg" alt="¥500 诚意金收款码" style="height:860px;border-radius:12px"></div>
 </section>
 
@@ -417,6 +421,7 @@ const NOTES=[
 【千百合】每年一月，全球的政策、资本、技术和商业思想，在这个只有一万多人的小镇集中碰撞一周。主会场里是国家元首和大公司掌门人；主会场外，一公里长的 Promenade，几百场边会同时在开。
 【哈哈妈】（补一句现场）那一周走在街上，擦肩而过的就是在讨论世界问题的人。
 【千百合】2027 年的主题是：从容地、深思熟虑地，谈一谈未来。——这不正是我们说的「带一个问题上山」吗？
+【哈哈妈】先说清楚：这是我们独立策划的私享见学，不含年会主会场。真正的干货在 Promenade 上的国家馆和边会，我们根据你的问题，帮你挑值得去的场合。
 【千百合】在达沃斯，最稀缺的不是距离，是注意力。我们帮你把时间留给真正值得听的观点、值得认识的人。`},
 {t:'见学',end:1260,n:`【千百合 · 约 4 分钟】
 【千百合】一百年前，托马斯·曼写了《魔山》，故事就发生在达沃斯：一个年轻人上山看亲戚，一住七年，把人生的问题想清楚了。
@@ -445,19 +450,21 @@ const NOTES=[
 ② 请大家把问题打在评论区。挑 1～2 个贴进输入框 → 开车票。等的时候两人先聊这个人。
 ③【小魔山】每张 5 分钟：【哈哈妈】到了达沃斯去哪里找答案；【千百合】追问一句，帮他想深一层。
 卡住了：用示例车票讲，或者直接聊。`},
-{t:'领你的车票（二维码 1）',end:3000,n:`【约 2 分钟 · 第一次放码，门槛低】
-【千百合】没被抽中的朋友别急：每个人都可以有一张。扫码加我们任何一位，把你的问题发过来，备注「车票」，会后我们陆续发回给你。
-（停 30 秒，让大家扫）`},
+{t:'领你的车票（二维码 1）',end:3000,n:`【约 2 分钟 · 车票是入口，面谈是目标】
+【千百合】AI 给你一张车票，我们陪你读懂它。
+【千百合】第一步：扫码加我们任何一位，发来你的问题，备注「车票」，会后发给你。
+【哈哈妈】第二步：我们俩和你面谈，一起判断这个问题值不值得带去达沃斯。
+（停 30 秒，让大家扫码）`},
 {t:'上车（诚意金）',end:3300,n:`【成交 · 约 5 分钟 · 只有一个动作】
-【哈哈妈】想上车的朋友：扫这个码交 ¥500 诚意金，我们约一次面谈，聊完合适再发正式邀请。聊完觉得不合适，诚意金全额退。
-【千百合】面谈的时候，我们俩专门陪你聊你那张车票。
-【千百合】每人 ¥68,000，再收 5 位，12 月 12 日截止。需要签证的朋友 12 月 1 日前申请。
-（停 30 秒，让大家扫）`},
+【哈哈妈】我们不希望大家听完一场直播，就决定花 68,000 元。我们希望先认识你，听听你的问题，也让你认真了解我们。
+【哈哈妈】所以是：加微信 → ¥500 诚意金 → 我们俩和你面谈 → 双方都觉得合适，再同行。聊完不合适，¥500 全额退。
+【千百合】私享见学每人 ¥68,000，再收 5 位，12 月 12 日截止；需要签证的朋友 12 月 1 日前申请。
+（停 30 秒，让大家扫码）`},
 {t:'山上见',end:3600,n:`【答疑 + 收尾，这页一直留着码】先答 2～3 个评论区问题。
-【千百合】最后，请每个人把你的那一个问题，打在评论区。
-【哈哈妈】带着它，
-【千百合 + 哈哈妈】山上相见。
-【会后】哈哈妈 + 机器猫：给每个留过问题、加了微信的人发车票（第 11 页「今晚的车票」可调出全部）。`}];
+【千百合】我们不缺一次去远方的旅行。缺的，可能是一次认真面对自己问题的机会。
+【哈哈妈】达沃斯是不是你的下一站，我们先见一面，再决定。
+【千百合】你的问题，就是你的第一张上山车票。
+【千百合 + 哈哈妈】带着问题，山上相见。`}];
 
 const W=1920,H=1080,stage=document.getElementById('stage'),slides=[...document.querySelectorAll('.slide')],NS=slides.length;
 const isPres=location.hash.includes('presenter');
